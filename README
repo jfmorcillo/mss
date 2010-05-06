@@ -1,0 +1,42 @@
+MSS files organization
+
+== XML-RPC server ==
+
+agent/				# all files related to the XML-RPC server
+	modules/		# available modules for MSS
+		openldap/	# some module
+	agent2.py		# XML-RPC server
+	locale/			# gettext translation files for agent strings
+
+* module directory example :
+
+	openldap/
+		locale/		# gettext translation files for module strings
+		desc.xml	# description of the module
+				# name, desc, pre-installation text (opt)
+				# packages to install
+				# definition of medias w/o authentication (opt)
+				# configuration definition (opt)
+		__init__.py	# python functions:
+				# get_current_config : return current config values
+				#                      for module
+				# get_config_info : return script name and args
+
+== Web interface ==
+
+www/				# all files related to the web interface
+	locale/			# gettext translation files for web interface strings
+	media/			# CSS, images, JS...
+	mss/			# web appliance
+		config.py	# layout configuration
+	templates/		# HTML templates for page rendering
+	manage.py		# used to start the webserver (and more) :
+				# ./manage.py runserver 0.0.0.0:8000 (start server)
+				# ./manage.py makemessages -l fr (update po files for lang)
+				# ./manage.py compilemessages -l fr (build mo files)
+
+bin/				# files for production environnement
+				# init scripts, wsgi server...
+	build_pot.sh		# create po files for the agent and all modules
+	build_mo.sh		# update mo files for the agent and all modules
+
