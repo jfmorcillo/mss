@@ -1,0 +1,14 @@
+{% load i18n %}{% ifnotequal code 2000 %}<script type="text/javascript">
+    updater.stop();
+    scrollLog();
+    {% ifequal code 0 %}
+        $("task").update("{% trans "Installation succeded." %}");
+        $("next").value = "{% trans "Continue" %}";
+        $$("#mss input").each(function(i){ i.disabled = false; });
+    {% endifequal %}
+    {% ifnotequal code 0 %}
+        $("task").update("{% trans "Installation failed." %}");
+        $("next").value = "{% trans "Can't continue" %}";
+        $("back").disabled = false;
+    {% endifnotequal %}
+</script>{% endifnotequal %}{{ output }}

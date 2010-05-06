@@ -1,0 +1,46 @@
+{% load i18n %}
+<html>
+    <head>
+        <title>Mandriva Server Setup</title>  
+        <script src="{{ MEDIA_URL }}js/prototype.js" type="text/javascript"></script>
+        <script src="{{ MEDIA_URL }}js/scriptaculous/scriptaculous.js?load=effects" type="text/javascript"></script>
+        <link type="text/css" title="mss" media="screen" href="{{ MEDIA_URL }}css/style.css" rel="stylesheet"/>
+    </head>
+    <body>
+        <script type="text/javascript">
+            Event.observe(window, 'load', function() {
+                if ($("back")) {
+                    $("back").observe('click', function() {
+                        history.back();
+                    });
+                }
+            });
+            toggleLog = function(button) {
+                var button = $(button);
+                var log = button.up().next(".log");
+                Effect.toggle(log, 'blind', { duration: 0.4 });
+                if(log.style.display == "none") {
+                    button.value = "{% trans "Hide log" %}";
+                }
+                else {
+                    button.value = "{% trans "Show log" %}";
+                }
+            }
+        </script>
+        <div id="head">
+            <div id="logo">
+                <a href="/" class="logo"><img src="{{ MEDIA_URL}}img/mandriva-logo-opt.png" height="32px" /> Mandriva Server Setup 2.0 beta</a>
+            </div>
+            <div id="quickbar">
+                <div id="quick-personal">
+                {% if user.is_authenticated %}
+                    {% block head %}<a href="{% url logout %}">{% trans "Logout" %}</a>{% endblock %}
+                {% endif %}
+                </div>
+            </div>
+        </div>
+        <div id="content">
+            {% block content %}{% endblock %}
+        </div>
+    </body>
+</html>

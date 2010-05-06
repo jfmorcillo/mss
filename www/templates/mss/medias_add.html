@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="block block-height">
+    <h2>{% trans "Medias" %}</h2>
+    <p>{% trans "Medias successfully added." %}<p>
+    <form name="mss" action="{% url install %}" method="post">
+        <div class="validation">
+            <input type="submit" name="continue" value="{% trans "Continue" %}" />
+            <input type="button" id="back" value="{% trans "Back" %}" />
+        </div>
+    </form>
+</div>
+{% endblock %}

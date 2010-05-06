@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: 1.0\n"
+"POT-Creation-Date: 2010-04-30 17:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/dhcp/desc.xml:2(name)
+msgid "DHCP server"
+msgstr "Serveur DHCP"
+
+#: modules/dhcp/desc.xml:3(desc)
+msgid "Configure your clients IP settings with dhcpd"
+msgstr "Configuration IP de vos clients avec le logiciel dhcpd"
+
+#: modules/dhcp/desc.xml:4(icon)
+msgid "dhcp.png"
+msgstr ""
+
+#: modules/dhcp/desc.xml:7(rpm)
+msgid "dhcp-server"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/dhcp/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

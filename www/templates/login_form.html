@@ -1,0 +1,18 @@
+{% load i18n %}
+{% get_available_languages as LANGUAGES %}
+<form action="{% url login %}" method="post" accept-charset="utf-8">
+    <input type="hidden" name="username" value="admin" id="username" size="10" />
+    <p>
+        <label for="password">{% trans "Password" %}: </label>
+        <input type="password" name="password" value="" id="password" size="10" />
+    </p>
+    <p>
+        <label for="language">{% trans "Language" %}: </label>
+        <select id="language" name="language">
+        {% for lang in LANGUAGES %}
+            <option value="{{ lang.0 }}" {% ifequal DEFAULT_LANGUAGE lang.0 %}selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+        {% endfor %}
+        </select>
+    </p>
+    <div class="right"><input type="submit" value="{% trans "Enter" %} →"></div>
+</form>

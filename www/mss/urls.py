@@ -1,0 +1,22 @@
+from django.conf.urls.defaults import *
+
+urlpatterns = patterns('mss.views',
+    url(r'^$', 'first_time', name="first_time"),
+    url(r'^account/create/$', 'create_admin', name="create_admin"),
+    url(r'^account/authentication/$', 'login_form', name="login_form"),
+    url(r'^account/login/$', 'mylogin', name="login"),
+    url(r'^account/logout/$', 'mylogout', name="logout"),
+    url(r'^sections/$', 'sections', name="sections"),    
+    url(r'^sections/(?P<section>[\w]+)/$', 'section', name="section"),    
+    url(r'^error/(?P<code>[\d]+)/$', 'error', name="error"),
+    url(r'^preinst/$', 'preinst', name="preinst"),
+    url(r'^medias/$', 'medias', name="medias"),
+    url(r'^medias/add/$', 'add_medias', name="add_medias"),
+    url(r'^install/$', 'install', name="install"),
+    url(r'^install/state/$', 'install_state', name="install_state"),
+    url(r'^config/$', 'config', name="config"),
+    url(r'^config/validation/$', 'config_valid', name="config_valid"),
+    url(r'^config/start/$', 'config_start', name="config_start"),
+    url(r'^config/run/(?P<module>[\w-]+)/$', 'config_run', name="config_run"),
+    url(r'^config/state/$', 'config_state', name="config_state"),
+)

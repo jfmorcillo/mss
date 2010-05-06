@@ -1,0 +1,26 @@
+<module id="mds-mmc">
+    <name>MDS main components</name>
+    <desc>MMC web interface and OpenLDAP directory</desc>
+    <packages>
+        <target name="all">
+            <rpm>mmc-web-base</rpm>
+            <rpm>python-mmc-base</rpm>
+            <rpm>mmc-agent</rpm>
+            <rpm>openldap-servers</rpm>
+            <rpm>nss_ldap</rpm>
+	        <rpm>openldap-clients</rpm>
+            <rpm>pam_ldap</rpm>
+            <rpm>openldap-mandriva-dit</rpm>
+        </target>
+    </packages>
+    <config>
+        <text name="mdsdomain" require="yes" default="example.com">
+            <label>MDS domain name</label>
+            <help>Usually the domain name (eg: domain.com) managed with MDS. This define the LDAP root.</help>
+        </text>
+        <password name="mdspasswd" require="yes">
+            <label>MDS password</label>
+            <help>The MDS admin password.</help>
+        </password>
+    </config>
+</module>

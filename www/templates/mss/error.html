@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="block block-height">
+    <h2>{% trans "An error has occured." %}</h2>
+    {% ifequal code "111" %}
+    <p>{% trans "XML-RPC server is unreacheable." %}<br />{% blocktrans %}Check the service status with the <strong>service mss-rpc status</strong> command.{% endblocktrans %}</p>
+    {% endifequal %}
+    <form id="mss" name="mss" action="{% url sections %}" method="post">
+        <div class="validation">
+            <input id="next" type="submit" name="continue" value="{% trans "Home" %}" />
+        </div>
+    </form>
+</div>
+{% endblock %}

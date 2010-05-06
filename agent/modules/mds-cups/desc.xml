@@ -1,0 +1,15 @@
+<module id="mds-cups">
+    <name>Printing server</name>
+    <desc>Install and configure network printers</desc>
+    <packages>
+        <target name="all">
+            <rpm>cups</rpm>
+            <rpm>cups-drivers</rpm>
+            <rpm>cups-windows</rpm>
+            <rpm>foomatic-filters</rpm>
+            <rpm>hplip-hpijs-ppds</rpm>
+            <rpm>postscript-ppds</rpm>
+            <rpm>hplip</rpm>
+        </target>
+    </packages>
+</module>

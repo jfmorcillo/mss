@@ -1,0 +1,10 @@
+{% load i18n %}{% ifnotequal code 2000 %}<script type="text/javascript">    
+    updater.stop();    
+    {% ifequal code 0 %}
+        current_task.update('{% trans "Installation succeded." %}');
+        nextmodule();
+    {% endifequal %}    
+    {% ifnotequal code 0 %}
+        current_task.update('{% trans "Installation failed." %}');
+    {% endifnotequal %}    
+</script>{% endifnotequal %}{{ output }}

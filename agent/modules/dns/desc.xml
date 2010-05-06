@@ -1,0 +1,14 @@
+<module id="dns">
+  <name>DNS server</name>
+  <desc>Resolve hostname with bind</desc>
+  <icon>dns.png</icon>
+  <packages>
+    <target name="all">
+      <rpm>bind</rpm>
+      <rpm>bind-utils</rpm>
+    </target>
+  </packages>
+  <preinst>
+    <text>Welcome !</text>
+  </preinst>
+</module>

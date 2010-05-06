@@ -1,0 +1,13 @@
+<module id="mds-webmail">
+    <name>Webmail server</name>
+    <desc>Integrate roundcube for your MDS installation</desc>
+    <packages>
+        <target name="all">
+            <rpm>roundcubemail</rpm>
+            <rpm>sqlite-tools</rpm>
+            <rpm>php-fileinfo</rpm>
+            <rpm>php-mcrypt</rpm>
+            <rpm>php-pear-MDB2_Driver_sqlite</rpm>
+        </target>
+    </packages>
+</module>

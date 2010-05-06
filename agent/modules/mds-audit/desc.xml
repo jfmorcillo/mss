@@ -1,0 +1,10 @@
+<module id="mds-audit">
+    <name>Audit module for MDS</name>
+    <desc>Track any changes made on the MDS interface</desc>
+    <packages>
+        <target name="all">
+            <rpm>mmc-web-audit</rpm>
+            <rpm>python-mmc-audit</rpm>
+        </target>
+    </packages>
+</module>

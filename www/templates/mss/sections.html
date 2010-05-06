@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    {% for section in sections %}
+    <div class="block block-2 block-border">
+        <div class="block-logo">
+            {% if section.icon %}
+            <img src="{{ MEDIA_URL }}img/{{ section.icon }}" />
+            {% endif %}
+        </div>
+        <div class="block-content">
+            <h2>{% trans section.name %}</h2>
+            <p class="desc">{% blocktrans with section.desc|safe as desc %}
+                {{ desc }}
+            {% endblocktrans %}</p>
+        </div>
+        <form name="mss" action="{% url section section.id %}" method="post">
+            <div class="validation right">
+                <input type="submit" name="continue" value="{% trans "Enter" %}" />
+            </div>
+        </form>
+    </div>
+    {% endfor %}
+{% endblock %}
+

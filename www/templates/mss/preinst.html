@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="block block-height">
+    <h2>{% trans "Preinstallation" %}</h2>
+    <p>{% trans "You have selected the following modules." %}</p>
+    <fieldset>
+        <legend>{% trans "Modules" %}</legend>
+        {% for id, module in modules.items %}
+        <h3>{{ module.name }}</h3>
+        <p class="help">{{ module.desc }}</p>
+        {% if module.preinst %}
+        <p class="desc">{{ module.preinst }}</p>
+        {% endif %}
+        {% endfor %}
+        {% if deps %}
+        <p>{% trans "The selected modules needs other modules to be installed" %} :</p>
+        {% for id, module in deps.items %}
+        <h3>{{ module.name }} : {{ module.desc }}</h3>
+        {% if module.preinst %}
+        <p class="desc">{{ module.preinst }}</p>
+        {% endif %}
+        {% endfor %}  
+        {% endif %}
+    </fieldset>
+    <form name="mss" action="{% url medias %}" method="post">
+        <div class="validation">
+            <input type="submit" name="continue" value="{% trans "Continue" %}" />
+            <input type="button" id="back" value="{% trans "Back" %}" />
+        </div>
+    </form>
+</div>
+{% endblock %}

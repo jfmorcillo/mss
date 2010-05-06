@@ -1,0 +1,39 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-04-30 17:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/dns/desc.xml:2(name)
+msgid "DNS server"
+msgstr "Serveur DNS"
+
+#: modules/dns/desc.xml:3(desc)
+msgid "Resolve hostname with bind"
+msgstr "Résous les noms de machine avec le logiciel bind"
+
+#: modules/dns/desc.xml:4(icon)
+msgid "dns.png"
+msgstr ""
+
+#: modules/dns/desc.xml:7(rpm)
+msgid "bind"
+msgstr ""
+
+#: modules/dns/desc.xml:8(rpm)
+msgid "bind-utils"
+msgstr ""
+
+#: modules/dns/desc.xml:12(text)
+msgid "Welcome !"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/dns/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

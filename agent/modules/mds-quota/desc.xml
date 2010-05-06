@@ -1,0 +1,11 @@
+<module id="mds-quota">
+    <name>User quota support</name>
+    <desc>Set file quotas on the file server</desc>
+    <packages>
+        <target name="all">
+            <rpm>quota</rpm>
+            <rpm>python-mmc-quota</rpm>
+            <rpm>mmc-web-quota</rpm>
+        </target>
+    </packages>
+</module>

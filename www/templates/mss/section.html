@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load mss_tags %}
+{% load i18n %}
+{% block content %}
+    <form name="mss" action="{% url preinst %}" method="post">
+    {% for bundle in section %}
+        <div class="block block-border {{ bundle.conf.class }}">
+            <div class="block-logo">
+                <img src="{{ MEDIA_URL }}img/{{ bundle.icon }}" />
+            </div>
+            <div class="block-content">
+                <div class="head">
+                    <h2>{% trans bundle.name %}</h2>
+                    <p class="desc">{% trans bundle.desc %}</p>
+                </div>
+                <div class="detail">
+                {% for module in bundle.modules %}
+                    <input type="checkbox" name="{{ module }}" id="{{ module }}" 
+                        {% if bundle.conf.required %}checked="checked" 
+                        onclick="this.checked='checked'"{% endif %} />
+                    <label for="{{ module }}">{{ modules|key:module|key:"name" }}</label>
+                    {% if modules|key:module|key:"install" %}({% trans "Installed" %}){% endif %}
+                    <p class="desc">{{ modules|key:module|key:"desc"|safe }}</p>
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+        <div class="validation">
+            <input type="submit" value="{% trans "Install components" %}" />
+            <input type="button" id="back" value="{% trans "Back" %}" />
+        </div>
+    </form>
+{% endblock %}

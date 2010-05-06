@@ -1,0 +1,22 @@
+<module id="mds-dns">
+    <name>DNS server</name>
+    <desc>Resolve computer names on your network</desc>
+    <packages>
+        <target name="all">
+            <rpm>bind</rpm>
+            <rpm>bind-utils</rpm>
+            <rpm>mmc-web-network</rpm>
+            <rpm>python-mmc-network</rpm>
+        </target>
+    </packages>
+    <config>
+        <network name="bind_networks">
+            <label>My networks</label>
+            <help>Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0.</help>
+        </network>
+        <ip name="bind_forwarders">
+            <label>Forwarders</label>
+            <help>Forward external DNS queries to DNS of your choice</help>
+        </ip>
+    </config>
+</module>

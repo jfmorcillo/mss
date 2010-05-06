@@ -1,0 +1,53 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2010-04-30 17:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: module.py:152 module.py:445 module.py:447 module.py:449
+msgid "The media seems to be down. Please try later."
+msgstr ""
+
+#: module.py:154
+msgid "You don't have access to the media."
+msgstr ""
+
+#: module.py:156
+msgid "Bad login/password."
+msgstr ""
+
+#: module.py:158
+msgid "Service unavailable. Please try later."
+msgstr ""
+
+#: module.py:160
+msgid "Unknow error."
+msgstr ""
+
+#: module.py:162
+msgid "Your login does not look like an email address."
+msgstr ""
+
+#: module.py:378
+msgid "This field can't be empty."
+msgstr ""
+
+#: module.py:383
+msgid "Password mismatch."
+msgstr ""
+
+#: module.py:422
+msgid "Incorrect FQDN."
+msgstr ""

@@ -1,0 +1,11 @@
+<module id="mds-dhcp">
+    <name>DHCP server</name>
+    <desc>Configure your client computers IP settings</desc>
+    <packages>
+        <target name="all">
+            <rpm>dhcp-server</rpm>
+            <rpm>mmc-web-network</rpm>
+            <rpm>python-mmc-network</rpm>
+        </target>
+    </packages>
+</module>

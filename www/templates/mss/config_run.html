@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+
+{% ifequal mode "run" %}
+<script type="text/javascript">
+    var modules = new Array({% for module, values in modules.items %}'{{ module }}'{% if not forloop.last %},{% endif %}{% endfor %});
+    var current_module = 0;
+    var current_log = "";
+    var current_task = "";
+    var updater = "";
+
+    scrollLog = function() {
+        $('log').scrollTop = $('log').scrollHeight;
+    }
+    
+    nextmodule = function() {   
+        current_module++;  
+        if(modules[current_module])
+            runconfig();
+        else {
+            $("next").value = "{% trans "Home page" %}";
+            $("sumary").update("{% trans "Configuration terminated, details are displayed below." %}");
+            $$("#mss input").each(function(i){ i.disabled = false; });
+        }
+    }
+    
+    checkconfig = function() {
+        updater = new Ajax.PeriodicalUpdater(current_log, "{% url config_state %}", {
+            frequency: 1,
+            decay: 1,
+            evalScripts: true,
+            on200: scrollLog,
+        });
+    }    
+    
+    runconfig = function() {
+        current_log = $$("#"+modules[current_module]+" .log")[0];
+        current_task = $$("#"+modules[current_module]+" .task")[0];
+        current_task.update('{% trans "Please wait..."%} <img src="/site_media/img/loader.gif" />');
+        new Ajax.Request('/mss/config/run/'+modules[current_module]+'/', {
+            method: 'get',
+            onSuccess: checkconfig,
+        });
+    }
+        
+    Event.observe(window, 'load', function() {
+        runconfig();
+    });
+</script>
+{% endifequal %}
+<div class="block block-height">
+    <h2>Configuration</h2>
+    {% ifequal mode "start" %}
+    <p>{% trans "The following modules will be configured. Please wait during the configuration process." %}</p>
+    <p>{% trans "To run the configuration, click on the &laquo;Run configuration&raquo; button below." %}</p>
+    {% endifequal %}
+
+    {% ifequal mode "run" %}
+    <p id="sumary">{% trans "Configuration in progress..." %}</p>
+    {% endifequal %}
+
+    {% for module, values in modules.items %}
+        <fieldset id="{{ module }}">
+            <legend>{{ values.name }}</legend>
+            <p class="desc">{{ values.desc }}</p>
+            {% ifequal mode "run" %}
+            <div class="install">
+                <p class="task">{% trans "Waiting..." %}</p>
+                <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
+                <div id="log" class="log" style="display: none;"> </div>
+            </div>
+            {% endifequal %}
+        </fieldset>
+    {% endfor %}
+
+    {% ifequal mode "start" %}
+    <form id="mss" name="mss" action="{% url config_start %}" method="post">
+        <div class="validation">
+            <input type="submit" name="continue" value="{% trans "Run configuration" %}" />
+            <input type="button" id="back" value="{% trans "Back" %}" />
+        </div>
+    </form>
+    {% endifequal %}
+
+    {% ifequal mode "run" %}
+    <form id="mss" name="mss" action="{% url sections %}" method="post">
+        <div class="validation">
+            <input id="next" type="submit" name="continue" value="{% trans "Please wait..." %}" disabled="disabled" />
+        </div>
+    </form>
+    {% endifequal %}
+</div>
+{% endblock %}

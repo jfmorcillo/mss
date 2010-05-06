@@ -1,0 +1,88 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-04-30 17:13+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/openldap/desc.xml:2(name)
+msgid "OpenLDAP"
+msgstr "OpenLDAP"
+
+#: modules/openldap/desc.xml:3(desc)
+msgid "Open Source LDAP directory"
+msgstr "Annuaire LDAP Open Source"
+
+#: modules/openldap/desc.xml:4(icon)
+msgid "authentication.png"
+msgstr ""
+
+#: modules/openldap/desc.xml:7(rpm)
+msgid "openldap-servers"
+msgstr ""
+
+#: modules/openldap/desc.xml:8(rpm)
+msgid "nss_ldap"
+msgstr ""
+
+#: modules/openldap/desc.xml:9(rpm)
+msgid "openldap-clients"
+msgstr ""
+
+#: modules/openldap/desc.xml:10(rpm)
+msgid "pam_ldap"
+msgstr ""
+
+#: modules/openldap/desc.xml:11(rpm)
+msgid "openldap-mandriva-dit"
+msgstr ""
+
+#: modules/openldap/desc.xml:14(rpm)
+msgid "lib64truc"
+msgstr ""
+
+#: modules/openldap/desc.xml:17(rpm)
+msgid "libtruc"
+msgstr ""
+
+#: modules/openldap/desc.xml:21(module)
+msgid "samba"
+msgstr ""
+
+#: modules/openldap/desc.xml:24(text)
+msgid "Welcome !"
+msgstr "Bienvenue !"
+
+#: modules/openldap/desc.xml:27(url)
+msgid "dl.mandriva.com/mes5/addons/groupoffice/release"
+msgstr ""
+
+#: modules/openldap/desc.xml:28(url)
+msgid "dl.mandriva.com/mes5/addons/groupoffice/updates"
+msgstr ""
+
+#: modules/openldap/desc.xml:32(label)
+msgid "LDAP root"
+msgstr "Racine LDAP"
+
+#: modules/openldap/desc.xml:33(help)
+msgid "Usually the domain name (eg: domain.com). This define the LDAP root."
+msgstr ""
+"En général votre nom de domaine (ex: domaine.com). Ceci défini la racine LDAP"
+
+#: modules/openldap/desc.xml:36(label)
+msgid "LDAP password"
+msgstr "Mot de passe LDAP"
+
+#: modules/openldap/desc.xml:37(help)
+msgid "The LDAP admin password."
+msgstr "Le mot de passe de l'administrateur LDAP"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/openldap/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

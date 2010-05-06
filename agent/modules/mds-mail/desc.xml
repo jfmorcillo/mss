@@ -1,0 +1,34 @@
+<module id="mds-mail">
+    <name>Mail server</name>
+    <desc>Mail/POP/IMAP server with virtual domains, anti-virus and anti-spam toolkits</desc>
+    <packages>
+        <target name="all">
+            <rpm>postfix</rpm>
+            <rpm>mmc-web-mail</rpm>
+            <rpm>python-mmc-mail</rpm>
+            <rpm>amavisd-new</rpm>
+            <rpm>spamassassin</rpm>
+            <rpm>spamassassin-tools</rpm>
+            <rpm>clamd</rpm>
+            <rpm>dovecot</rpm>
+            <rpm>dovecot-plugins-ldap</rpm>
+        </target>
+    </packages>
+    <config>
+        <text name="smtpd_myhostname" require="yes" validation="fqdn">
+            <label>My hostname</label>
+            <help>The host FQDN (eg: smtp.domain.com)</help>
+        </text>
+        <network name="smtpd_mynetworks">
+            <label>My networks</label>
+            <help>Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0</help>
+        </network>
+        <options name="popimap_proto" require="yes">
+            <label>Protocols supported</label>
+            <help>Protocols that the dovecot server will provide.</help>
+            <option value="imap imaps pop3 pop3s">IMAPS and POP3S</option>            
+            <option value="imaps imap">IMAPS</option>
+            <option value="pop3 pop3s">POP3S</option>
+        </options>
+    </config>
+</module>

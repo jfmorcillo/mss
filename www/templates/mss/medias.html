@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<div class="block">
+    <h2>{% trans "Medias" %}</h2>
+    <p>{% trans "Some medias needs your authentication in order to install" %} :
+    {% for media in auth %}
+        {{ media.name }}{% if not forloop.last %},{% endif %}
+    {% endfor %}
+    </p>
+    <form name="mss" action="{% url add_medias %}" method="post">
+    {% for auth in types %}
+        {% ifequal auth "my" %}
+        <fieldset>
+            <legend>{% trans "My authentication" %}</legend>
+            <p>
+                <label for="{{ auth }}_login">{% trans "Login" %} : </label>
+                <input name="{{ auth }}_login" id="{{ auth }}_login" type="text" />
+            </p>
+            <p class="help">
+            {% trans "Your my.mandriva.com email address." %}
+            </p>
+            <p>
+                <label for="{{ auth}}_passwd">{% trans "Password" %} : </label>
+                <input name="{{ auth}}_passwd" id="{{ auth}}_passwd" type="password" />
+            </p>
+            <p class="help">
+            {% trans "Your my.mandriva.com password." %}
+            </p>
+            {% if fail %}
+            {% for media in fail %}
+            <p class="error">{% blocktrans with media.name as name and media.err as err %}
+            An error occured when adding the {{ name }} media : {{ err }}{% endblocktrans %}</p>
+            {% endfor %}
+            {% endif %}
+        </fieldset>    
+        {% endifequal %}
+    {% endfor %}
+        <div class="validation">
+            <input type="submit" value="{% trans "Add medias" %}" />
+            <input type="button" id="back" value="{% trans "Back" %}" />
+        </div>
+    </form>
+</div>    
+{% endblock %}

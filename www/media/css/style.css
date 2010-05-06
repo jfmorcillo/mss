@@ -1,0 +1,240 @@
+/* GENERAL */
+
+* {
+    font-family: "Droid Sans", Arial, sans-serif;
+    font-size: 12px;
+    color: #222;
+}
+
+p {
+    margin-top: 5px;
+    margin-bottom: 5px;    
+}
+
+h1 { font-size: 22px; }
+h2 { font-size: 18px; color: #21449C; }
+h3 { font-size: 14px; }
+
+form {
+    margin-bottom: 0;
+}
+
+a {
+    color: #464979;
+}
+
+a:hover {
+    font-weight: bold;
+}
+
+/* LAYOUT */
+
+body {
+    margin: 0;
+    background: white url(../img/top-bg-blue-gradient.png) repeat-x;
+}
+
+div#content {
+    margin: 10px;
+    padding: 10px;
+}
+
+div#head {
+    font-size: 0.9em;
+    color: #2854B0;
+    text-shadow:0 1px 2px #FFFFFF;
+}
+div#head a { 
+    color: #2854B0;
+    text-shadow:0 1px 2px #FFFFFF;
+}
+
+div#head div#logo a {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    height: 32px;
+    line-height: 32px;
+    border: 0;
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;  
+    text-shadow: 0 1px 2px #ddd;
+}
+div#head div#logo a img {
+    border: 0;
+    margin-bottom: -2px;
+}
+
+div#head div#quickbar {
+    padding-left: 1em; 
+    /*border-bottom: 1px solid white;*/
+    height:44px;
+    padding-bottom:5px;
+    padding-left:1em;
+    padding-top:5px;
+}
+
+div#head div#quick-personal {
+    float: right;
+    margin-right: 1em;
+}
+
+/* Blocks */
+
+div.install .log {
+    height: 200px;
+    border: 1px solid #aaa;    
+    overflow: auto;
+    margin-top: 10px;
+    white-space: pre-wrap;
+    background: #222;
+    color: white;
+    font-family: monospace;
+    font-size: 11px;
+}
+
+div.block {
+    padding: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    background: white;
+    margin-bottom: 10px;
+}
+
+div.block-height {
+    min-height: 250px;
+}
+
+div.block-border {
+    border: 1px solid #ccc;
+    margin-right: 10px;    
+}
+
+div.block-3 {
+    float: left;
+    width: 30%;
+}
+
+div.block-2 {
+    float: left;
+    width: 46.6%;
+}
+
+div.block-clear {
+    clear: left;
+}
+
+div.block-center {
+    margin: auto;
+    width: 35%;
+}
+
+div.block-logo {
+    float: left;
+    width: 50px;
+    text-align: center;
+    margin-top: 5px;
+    margin-left: -5px;
+}
+
+div.block-content {
+    margin-left: 45px;
+}
+
+div.block h2, div.block h3 {
+    margin: 0px;
+}
+
+div.block h3 {
+    margin-top: 10px;
+}
+
+div.block p.help {
+    color: #555;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 10px;
+}
+
+div.block p.desc {
+    color: #555;
+    margin: 0;
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+div.block div.head {
+    margin-bottom: 10px;
+}
+
+div.block div.detail p.desc {
+    margin-left: 25px;
+}
+
+div.push {
+    margin-left: 10px;
+}
+
+input {
+    border: 1px solid #7683BC;
+    background: white;
+    padding-left: 2px;
+}
+
+input[type=button], input[type=submit] {
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding: 2px;
+}
+
+input:disabled {
+    background: #AAA;
+    color: #666;
+}
+
+input:hover {
+    background: #4B62AB;
+    color: white;
+}
+
+input.error {
+    border: 1px solid #D72828;    
+}
+
+span.error, p.error {
+    color: #D72828;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;  
+}
+
+div.validation {
+    clear: both;
+    margin-top: 10px;
+    /*border-top: 1px dotted #999;*/
+    padding-top: 10px;
+}
+
+div.right {
+    text-align: right;
+}
+
+fieldset {
+    margin-top: 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    border: 1px solid #ccc;
+}
+
+fieldset legend {
+    font-weight: bold;
+    font-size: 14px;
+}
+
+/*label {
+    float: left;
+    width: 100px;
+    text-align: right;
+    padding-right: 5px;
+}*/

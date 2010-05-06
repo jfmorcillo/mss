@@ -1,0 +1,33 @@
+<module id="mds-smb">
+    <name>Samba PDC and file server</name>
+    <desc>Share files and printers and authenticate users on a Microsoft network</desc>
+    <packages>
+        <target name="all">
+            <rpm>samba-server</rpm>
+            <rpm>samba-client</rpm>
+            <rpm>samba-common</rpm>
+            <rpm>samba-doc</rpm>
+            <rpm>smbldap-tools</rpm>
+            <rpm>mmc-web-samba</rpm>
+            <rpm>python-mmc-samba</rpm>
+        </target>
+    </packages>
+    <config>
+        <text name="smbdomain" require="yes" default="MES5DOMAIN">
+            <label>Samba domain name</label>
+            <help>The name of your Microsoft domain.</help>
+        </text>
+        <text name="smbnetbios" require="yes" default="MES5SRV">
+            <label>Netbios name</label>
+            <help>The name of your Samba server in the Microsoft domain.</help>
+        </text>
+        <text name="smbadmin" require="yes" default="admin">
+            <label>Administrator name</label>
+            <help>The name of the Microsoft domain administrator.</help>
+        </text>         
+        <password name="smbpasswd" require="yes">
+            <label>Adminstrator password</label>
+            <help>Password for the Microsoft domain administrator.</help>
+        </password>
+    </config>
+</module>
