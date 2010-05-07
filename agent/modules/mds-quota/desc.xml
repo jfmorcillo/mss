@@ -4,8 +4,14 @@
     <packages>
         <target name="all">
             <rpm>quota</rpm>
-            <rpm>python-mmc-quota</rpm>
-            <rpm>mmc-web-quota</rpm>
+            <rpm>python-mmc-userquota</rpm>
+            <rpm>mmc-web-userquota</rpm>
         </target>
     </packages>
+    <config>
+        <text name="filesystems" require="yes" default="Home:/dev/sda6" multi="yes">
+            <label>Filesystems</label>
+            <help>Specify the filesystems where you want to apply user quotas with the following format : Identifier string:Device path</help>
+        </text>
+    </config>
 </module>

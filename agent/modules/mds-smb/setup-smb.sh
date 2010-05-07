@@ -1,41 +1,51 @@
 #!/bin/bash
 # Copyright Mandriva 2009, 2010 all rights reserved
+
 if [ "`id -u`" != "0" ]; then
 	echo "1Error, must be root user"
 	exit 1
 fi
 
-. '/usr/share/mmc-wizard/dit-mds/functions.sh'
+. ../functions.sh
 
-base_smb_template="/usr/share/mmc-wizard/dit-mds/mandriva-setup-smb-templates/mandriva-mds-smb-template.conf"
-smbldap_bind_template="/usr/share/mmc-wizard/dit-mds/mandriva-setup-smb-templates/mandriva-mds-smbldap_bind-template.conf"
-smbldap_template="/usr/share/mmc-wizard/dit-mds/mandriva-setup-smb-templates/mandriva-mds-smbldap-template.conf"
-mds_smb_template="/usr/share/mmc-wizard/dit-mds/mandriva-setup-smb-templates/mandriva-mds-samba-template.conf"
-ldap_conf_template="/usr/share/mmc-wizard/dit-mds/mandriva-setup-smb-templates/mandriva-mds-ldapconf-template.conf"
-nsswitch_template="/usr/share/mmc-wizard/dit-mds/mandriva-setup-smb-templates/mandriva-mds-nsswitch-template.conf"
+base_smb_template="templates/smb.conf.tpl"
+smbldap_bind_template="templates/smbldap_bind.conf.tpl"
+smbldap_template="templates/smbldap.conf.tpl"
+mds_smb_template="templates/samba.ini.tpl"
+ldap_conf_template="templates/ldap.conf.tpl"
+nsswitch_template="templates/nsswitch.conf.tpl"
 
-mydomain="$1"
-mypass="$2"
-workgroup="$3"
-netbiosname="$4"
-server="$5"
-smbpass="$6"
+mds_base_ini="/etc/mmc/plugins/base.ini"
+
+if [ ! -f $mds_base_ini ]; then
+    echo "2MMC interface is not installed."
+    echo "2Can't continue."
+    exit 1
+fi
+
+mdssuffix=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+mdspass=`grep '^password' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+mdsserver=127.0.0.1
+
+smbdomain="$1"
+smbnetbios="$2"
+smbadmin="$3"
+smbpass="$4"
 
 # first, slapd.conf
 myslapdconf=`make_temp`
-mysuffix=`calc_suffix $mydomain`
 
 #### Now /etc/samba/smb.conf
 backup /etc/samba/smb.conf
 cat $base_smb_template > /etc/samba/smb.conf
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/samba/smb.conf
-sed -i "s/\@WORKGROUP\@/$workgroup/" /etc/samba/smb.conf
-sed -i "s/\@NETBIOSNAME\@/$netbiosname/" /etc/samba/smb.conf
+sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/samba/smb.conf
+sed -i "s/\@WORKGROUP\@/$smbdomain/" /etc/samba/smb.conf
+sed -i "s/\@NETBIOSNAME\@/$smbnetbios/" /etc/samba/smb.conf
 if [ $? -eq 0 ]; then echo "0Samba configuration done. (/etc/samba/smb.conf updated)";
 else echo "2Error while configuring Samba. (/etc/samba/smb.conf)"; exit 1
 fi
 
-smbpasswd -w $mypass
+smbpasswd -w $mdspass
 if [ $? -eq 0 ]; then echo "0Samba password set.";
 else echo "2Error while setting Samba password. (smbpasswd)"; exit 1
 fi
@@ -45,14 +55,14 @@ if [ $? -eq 0 ]; then echo "0Service Samba reloaded succesfully."
 else echo "2Service Samba fails restarting."; exit 1
 fi
 
-sid=`net getlocalsid $workgroup | cut -d ':' -f2 | cut -d ' ' -f2`
+sid=`net getlocalsid $smbdomain | cut -d ':' -f2 | cut -d ' ' -f2`
 
 backup /etc/nsswitch.conf
 cat $nsswitch_template > /etc/nsswitch.conf
 backup /etc/ldap.conf
 cat $ldap_conf_template > /etc/ldap.conf
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/ldap.conf
-sed -i "s/\@SERVER\@/$server/" /etc/ldap.conf
+sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/ldap.conf
+sed -i "s/\@SERVER\@/$mdsserver/" /etc/ldap.conf
 if [ $? -eq 0 ]; then echo "0lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)";
 else echo "2Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"; exit 1
 fi
@@ -60,21 +70,21 @@ fi
 ###### now /etc/smbldap-tools/smbldap.conf
 backup /etc/smbldap-tools/smbldap.conf
 cat $smbldap_template > /etc/smbldap-tools/smbldap.conf
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/smbldap-tools/smbldap.conf
-sed -i "s/\@WORKGROUP\@/$workgroup/" /etc/smbldap-tools/smbldap.conf
+sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/smbldap-tools/smbldap.conf
+sed -i "s/\@WORKGROUP\@/$smbdomain/" /etc/smbldap-tools/smbldap.conf
 sed -i "s/\@SID\@/$sid/" /etc/smbldap-tools/smbldap.conf
-sed -i "s/\@SERVER\@/$server/" /etc/smbldap-tools/smbldap.conf
+sed -i "s/\@SERVER\@/$mdsserver/" /etc/smbldap-tools/smbldap.conf
 
 ###### now /etc/smbldap-tools/smbldap_bind.conf
 backup /etc/smbldap-tools/smbldap_bind.conf
 cat $smbldap_bind_template > /etc/smbldap-tools/smbldap_bind.conf 
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/smbldap-tools/smbldap_bind.conf
-sed -i "s/\@PASSWORD\@/$mypass/" /etc/smbldap-tools/smbldap_bind.conf
+sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/smbldap-tools/smbldap_bind.conf
+sed -i "s/\@PASSWORD\@/$mdspass/" /etc/smbldap-tools/smbldap_bind.conf
 if [ $? -eq 0 ]; then echo "0smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf updated)";
 else echo "2Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf)"; exit 1
 fi
 
-echo -e "$smbpass\n$smbpass" | smbldap-populate -m 512 -k 512 -a admin
+echo -e "$smbpass\n$smbpass" | smbldap-populate -m 512 -k 512 -a "$smbadmin"
 if [ $? -eq 0 ]; then echo "0Directory populated for Samba.";
 else echo "2Error while populating directory. (smbldap-populate -m 512 -k 512 -a admin)"; exit 1
 fi
@@ -87,7 +97,7 @@ fi
 ###### now /etc/mmc/plugins/samba.ini
 backup /etc/mmc/plugins/samba.ini
 cat $mds_smb_template > /etc/mmc/plugins/samba.ini
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/samba.ini
+sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/samba.ini
 if [ $? -eq 0 ]; then echo "0MDS Samba configuration done.";
 else echo "2Error while configuring MDS Samba module."; exit 1
 fi
@@ -101,7 +111,7 @@ if [ $? -eq 0 ]; then echo "0Service MMC reloaded succesfully."
 else echo "2Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"; exit 1
 fi
 
-net rpc rights grant "$workgroup\Domain Admins" SeMachineAccountPrivilege -S "127.0.0.1" -U admin%$smbpass > /dev/null 2>&1
+net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $mdsserver -U admin%$smbpass > /dev/null 2>&1
 if [ $? -eq 0 ]; then echo "0Successfully granted rights for Domain Admins group."
 else echo "2Failed granted rigths for Domain Admins group"; exit 1
 fi
@@ -126,14 +136,15 @@ fi
 rm -f /home/samba/test
 
 # confirmation
-echo "8Domain name : #$workgroup"
-echo "8Server name : #$netbiosname"
-echo 8Domain admin name : admin
-## echo "8Domain admin password : #$smbpass"
+echo "8Domain name : #$smbdomain"
+echo "8Server name : #$smbnetbios"
+echo "8Domain administrator : #$smbadmin"
 echo 7- a public share is created in /home/samba/shares/public
 echo 7- you can create a logon.bat script in /home/samba/netlogon
 echo 8Make sure you have enabled Samba services on your firewall.
 echo '8You can now use the MDS interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).'
-
 echo 1Profiles are disabled by default.
 echo 1- edit /etc/samba/smb.conf manually to activate them.
+
+sleep 1
+exit 0

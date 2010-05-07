@@ -11,12 +11,14 @@ import logging
 import locale
 import platform
 import xml.etree.ElementTree as ET
+from IPy import IP
 from httplib import HTTPSConnection
 from unserialize import PHPUnserialize
 from sets import Set
 
 from process import ExecManager
 from translation import TranslationManager
+from utils import formatExceptionInfo
 
 logging.basicConfig(level=logging.DEBUG)
 
@@ -79,7 +81,7 @@ class ModuleManager:
         for key, module in self.modules.items():
             if module.id in modules:                  
                 # get module packages
-                packages = set(module.get_packages())
+                packages = set(module.get_packages())                
                 # check if packages are installed
                 if len(packages) == len(packages.intersection(self.packages)):
                     install = True
@@ -237,7 +239,6 @@ class ModuleManager:
         config = {}
         for module in modules:
             config[module] = self.modules[module].get_config()
-        print config
         return config
 
     def valid_config(self, modules, modules_config):
@@ -281,6 +282,7 @@ class Module:
 
     def __init__(self, path, TM):
         self.TM = TM
+        self.logger = logging.getLogger()
         self.path = path
         tree = ET.parse(os.path.join(self.path, "desc.xml"))
         self.root = tree.getroot()
@@ -294,7 +296,8 @@ class Module:
             # load module
             self.module = imp.load_module(self.id, f, p, d)
         except Exception, err:
-            print err
+            self.logger.error("Can't load module %s __init__.py :" % self.id)
+            self.logger.error("%s" % err)
 
     def load(self):
         """ load module basic infos """
@@ -309,7 +312,7 @@ class Module:
         if self.root.findtext("preinst/text"):
             self._preinst = self.root.findtext("preinst/text")
         else:
-            self._preinst = " "
+            self._preinst = " "            
 
     def get_name(self):
         return _(self._name, self.id)
@@ -355,13 +358,19 @@ class Module:
 
     def get_config(self):
         """ get module current config """
-        #if not getattr(self, "config", None):
+        reload(self.module)
+        # reset config
         self.config = []
-        #try:
-        current_config = getattr(self.module, 'get_current_config')()
-        #except AttributeError:
-        #    current_config = {}
-        print current_config
+        # get current module config
+        try:
+            current_config = getattr(self.module, 'get_current_config')()
+        except AttributeError:
+            current_config = {}
+        except Exception, err:
+            self.logger.error("Error in get_current_config in %s module : " % self.id)
+            self.logger.error(str(err))
+            self.logger.error("Can't get module current config")
+            current_config = {}
         # get XML config
         fields = self.root.findall("config/*")
         for field in fields:
@@ -379,10 +388,17 @@ class Module:
                         {'name': option.text, 
                          'value': option.attrib.get('value')}
                     )
+            # get default value for multi fields
+            if ("multi", "default") in field_config:
+                if type(field_config["default"]) == str:
+                    default = field_config["default"].split(";")
+                    field_config["default"] = default
             # add current value if module is configured
             if current_config.get(field_config['name']):
                 field_config['default'] = current_config.get(field_config['name'])
             self.config.append(field_config)
+
+            print self.config
         return self.config
 
     def valid_config(self, user_config):
@@ -408,21 +424,23 @@ class Module:
                         ip = user_config.get(self.id+"_"+field_name+"_"+net+"_ip")
                         mask = user_config.get(self.id+"_"+field_name+"_"+net+"_mask")
                         field_value.append((ip, mask))
-                field['default'] = field_value
-            elif field_type == "ip":
+            # handle multi text fields
+            elif "multi" in field:
                 field_value = []
                 for user_field, user_value in user_config.items():
-                    ip = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_ip$", user_field)
-                    if ip:
-                        net = ip.group(1)
-                        ip = user_config.get(self.id+"_"+field_name+"_"+net+"_ip")
-                        field_value.append(ip)
-                field['default'] = field_value
+                    f = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_field$", user_field)
+                    if f:
+                        nb = f.group(1)
+                        value = user_config.get(self.id+"_"+field_name+"_"+nb+"_field")
+                        field_value.append(value)
             # set values for text,password,options fields
             else:
                 field_value = user_config.get(self.id+"_"+field_name)
-                field["default"] = field_value
-        
+
+            # set default value
+            field["default"] = field_value
+
+            # check if field is not empty
             if field.get("require"):                         
                 if not field_value:
                     errors = True
@@ -436,6 +454,7 @@ class Module:
                     if field.get("error"):
                         del field["error"]                        
 
+            # validate field data
             if field.get("validation"):
                 method = getattr(Validation(), field.get("validation"))
                 result = method(field_value)
@@ -449,6 +468,8 @@ class Module:
         if not errors:
             self.config = validated_config
 
+        print self.config
+
         return (errors, validated_config)
 
     def info_config(self):
@@ -459,10 +480,37 @@ class Module:
             script, args = (None, [])
         # get args values
         args_values = []
+
         for arg in args:
             for field in self.config:
                 if arg == field['name']:
-                    args_values.append(field['default'])
+                    print arg
+                    # network field values
+                    if field["type"] == "network":
+                        value = ''
+                        for ip, mask in field['default']:
+                            network = ip+"/"+mask
+                            if field["format"] == "long":
+                                network = str(IP(network))
+                            elif field["format"] == "short":
+                                network = str(IP(network, make_net=True))
+                            value += network+" "
+                        value = value[:-1]
+                        args_values.append(value)
+                    # multi text field
+                    elif "multi" in field:
+                        value = ''
+                        for text in field['default']:
+                            value += text+" "
+                        value = value[:-1]
+                        print value
+                        args_values.append(value)
+                    # other fields
+                    else:
+                        args_values.append(field['default'])
+
+        print args_values
+                        
         return (self.path, script, args_values)
 
     def __str__(self):
@@ -482,6 +530,21 @@ class Validation:
         else:
             return None
 
+    def network(self, networks):
+        for ip, mask in networks:
+            if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
+                return _("Incorrect IP address.", "agent")
+            if not mask == "false":
+                if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', mask):
+                    return _("Incorrect netmask address.", "agent")
+        return None
+
+    def ip(self, ips):
+        for ip in ips:
+            if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
+                return _("Incorrect IP address.", "agent")
+        return None
+        
 if __name__ == '__main__':
 
     EM = ExecManager()

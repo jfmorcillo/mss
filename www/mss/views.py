@@ -245,11 +245,16 @@ def install_state(request):
         return err
     else:
         code = result[0]
+        # get data from xmlrpclib.Binary object
         output = result[1].data
-        print output
     return render_to_response('mss/install_log.html',
         {'code': code, 'output': output},
         context_instance=RequestContext(request))
+
+def reload_packages(request):
+    err, result = xmlrpc.call('load_packages')
+    print result
+    return HttpResponse("")
 
 @login_required
 def config(request):
@@ -262,6 +267,8 @@ def config(request):
             return err
         else:
             config = result
+
+        print config
 
         do_config = False;            
         for module, values in config.items():

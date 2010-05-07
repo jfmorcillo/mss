@@ -10,13 +10,13 @@
         </target>
     </packages>
     <config>
-        <network name="bind_networks">
+        <network name="bind_networks" format="short" validation="network">
             <label>My networks</label>
             <help>Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0.</help>
         </network>
-        <ip name="bind_forwarders">
+        <text name="bind_forwarders" multi="yes" validation="ip">
             <label>Forwarders</label>
             <help>Forward external DNS queries to DNS of your choice</help>
-        </ip>
+        </text>
     </config>
 </module>

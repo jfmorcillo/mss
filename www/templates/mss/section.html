@@ -16,6 +16,8 @@
                 <div class="detail">
                 {% for module in bundle.modules %}
                     <input type="checkbox" name="{{ module }}" id="{{ module }}" 
+                        {% comment %}{% if modules|key:module|key:"install" %}checked="checked" 
+                        disabled="disabled"{% endif %}{% endcomment %}
                         {% if bundle.conf.required %}checked="checked" 
                         onclick="this.checked='checked'"{% endif %} />
                     <label for="{{ module }}">{{ modules|key:module|key:"name" }}</label>

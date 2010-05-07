@@ -89,8 +89,13 @@ class ExecThread(threading.Thread):
         while self.isAlive():
             self.process.poll()
             if self.process.returncode == None:
-                fd = select.select([self.process.stdout.fileno()],
-                    [], [], 5)[0][0]
+                try:
+                    fd = select.select([self.process.stdout.fileno()],
+                        [], [], 5)[0][0]
+                # raise an exception when the process doesn't make output
+                # for long time
+                except IndexError:
+                    pass
                 if fd:
                     self.lock.acquire()
                     self.EM.output += os.read(fd, 1)

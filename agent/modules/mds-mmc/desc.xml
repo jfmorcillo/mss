@@ -14,7 +14,7 @@
         </target>
     </packages>
     <config>
-        <text name="mdsdomain" require="yes" default="example.com">
+        <text name="mdsdomain" require="yes" default="example.com" validation="fqdn">
             <label>MDS domain name</label>
             <help>Usually the domain name (eg: domain.com) managed with MDS. This define the LDAP root.</help>
         </text>

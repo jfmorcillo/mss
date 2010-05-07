@@ -11,4 +11,6 @@
         $("next").value = "{% trans "Can't continue" %}";
         $("back").disabled = false;
     {% endifnotequal %}
-</script>{% endifnotequal %}{{ output }}
+    // reload package list after install
+    new Ajax.Request("{% url reload_packages %}");
+</script>{% endifnotequal %}{{ output }}<script>scrollLog();</script>

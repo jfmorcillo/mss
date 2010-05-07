@@ -19,14 +19,14 @@
             <label>My hostname</label>
             <help>The host FQDN (eg: smtp.domain.com)</help>
         </text>
-        <network name="smtpd_mynetworks">
+        <network name="smtpd_mynetworks" format="short" validation="network">
             <label>My networks</label>
             <help>Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0</help>
         </network>
         <options name="popimap_proto" require="yes">
             <label>Protocols supported</label>
             <help>Protocols that the dovecot server will provide.</help>
-            <option value="imap imaps pop3 pop3s">IMAPS and POP3S</option>            
+            <option value="imap imaps pop3 pop3s">IMAPS and POP3S</option>
             <option value="imaps imap">IMAPS</option>
             <option value="pop3 pop3s">POP3S</option>
         </options>

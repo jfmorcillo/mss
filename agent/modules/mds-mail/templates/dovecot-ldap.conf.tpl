@@ -1,0 +1,10 @@
+hosts = @HOST@
+auth_bind = yes 
+ldap_version = 3 
+base = ou=People,@SUFFIX@
+#user_attrs = mailbox=home,mailuserquota=quota=maildir:ignore=Trash:storage 
+user_attrs = mailbox=home,mailuserquota=quota=maildir:storage 
+user_filter = (&(objectClass=mailAccount)(mail=%u)(mailenable=OK)) 
+pass_attrs = mail=user,userPassword=password 
+pass_filter = (&(objectClass=mailAccount)(mail=%u)(mailenable=OK)) 
+#default_pass_scheme = CRYPT 

@@ -1,5 +1,6 @@
 {% load i18n %}{% ifnotequal code 2000 %}<script type="text/javascript">    
-    updater.stop();    
+    updater.stop();
+    scrollLog(); 
     {% ifequal code 0 %}
         current_task.update('{% trans "Installation succeded." %}');
         nextmodule();
@@ -7,4 +8,4 @@
     {% ifnotequal code 0 %}
         current_task.update('{% trans "Installation failed." %}');
     {% endifnotequal %}    
-</script>{% endifnotequal %}{{ output }}
+</script>{% endifnotequal %}{{ output }}<script>scrollLog();</script>

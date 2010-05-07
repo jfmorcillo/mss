@@ -36,7 +36,7 @@ SECTIONS_MODULES = {
             'icon': 'bundle_authentication.png',
             'desc': _('Required base components'),
             'modules': ["mds-mmc"],
-            'conf': {'required': True},
+            #'conf': {'required': True},
         },
         {
             'name': _('File server modules'),

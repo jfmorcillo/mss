@@ -1,7 +1,7 @@
 # dev setup on MES5
 
 1) install MES5 + mirrors + updates
-2) urpmi subversion python-django
+2) urpmi subversion python-django python-IPy
 3) svn co svn+ssh://login@svn.mandriva.com/svn/private/corporate/soft/mmc-wizard mmc-wizard
 in two terms :
 4) cd mmc-wizard/branches/wizard-2/agent/; ./agent2.py (XML-RPC agent)
