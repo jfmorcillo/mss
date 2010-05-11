@@ -4,7 +4,7 @@
 
 {% ifequal mode "run" %}
 <script type="text/javascript">
-    var modules = new Array({% for m in modules %}'{{ m.id }}'{% if not forloop.last %},{% endif %}{% endfor %});
+    var modules = new Array({% for m in modules %}{% if not m.skip_config %}'{{ m.id }}'{% if not forloop.last %},{% endif %}{% endif %}{% endfor %});
     var current_module = 0;
     var current_log = "";
     var current_task = "";
@@ -66,9 +66,13 @@
             <p class="desc">{{ m.desc }}</p>
             {% ifequal mode "run" %}
             <div class="install">
+                {% if m.skip_config %}
+                <p class="task">{% trans "No configuration for this module." %}</p>
+                {% else %}
                 <p class="task">{% trans "Waiting..." %}</p>
                 <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
                 <div id="log" class="log" style="display: none;"> </div>
+                {% endif %}
             </div>
             {% endifequal %}
         </fieldset>

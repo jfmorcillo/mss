@@ -258,19 +258,26 @@ def config(request):
         else:
             config = result
 
+        # check if the modules needs configuration
         do_config = False
+        # check if the module has a configuration script
         skip_config = True
-        for module in config:
-            if module[0].get('do_config'):
-                do_config = True
-            if not module[0].get('skip_config'):
-                skip_config = False
+        for m1 in config:
+            for m2 in modules:
+                if m1[0]['id'] == m2['id']:
+                    if m1[0].get('do_config'):
+                        do_config = True
+                    if not m1[0].get('skip_config'):
+                        skip_config = False
+                    # store in the module list skip_config
+                    # information for config_run view
+                    m2['skip_config'] = skip_config
+        request.session['modules'] = modules
 
-        print do_config
-        print skip_config
-
+        # all modules does'nt have a configuration script
         if skip_config:
             return HttpResponseRedirect(reverse('sections'))
+        # some module have a configuration
         elif do_config:
             return render_to_response('mss/config.html',
                 {'config': config, 'modules': modules},
@@ -303,7 +310,7 @@ def config_valid(request):
             context_instance=RequestContext(request))
     else:
         return render_to_response('mss/config_run.html',
-            {'modules': modules, 'mode': 'start'},
+            {'config': config, 'modules': modules, 'mode': 'start'},
             context_instance=RequestContext(request))
 
 @login_required  
