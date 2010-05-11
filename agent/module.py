@@ -11,7 +11,7 @@ import logging
 import locale
 import platform
 import xml.etree.ElementTree as ET
-#from IPy import IP
+from IPy import IP
 from httplib import HTTPSConnection
 from unserialize import PHPUnserialize
 from sets import Set
