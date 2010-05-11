@@ -15,14 +15,16 @@
                 </div>
                 <div class="detail">
                 {% for module in bundle.modules %}
-                    <input type="checkbox" name="{{ module }}" id="{{ module }}" 
-                        {% comment %}{% if modules|key:module|key:"install" %}checked="checked" 
+                    {% for m in modules %}
+                        {% ifequal m.id module %}
+                    <input type="checkbox" name="{{ m.id }}" id="{{ m.id }}" 
+                        {% comment %}{% if m.install %}checked="checked" 
                         disabled="disabled"{% endif %}{% endcomment %}
-                        {% if bundle.conf.required %}checked="checked" 
-                        onclick="this.checked='checked'"{% endif %} />
-                    <label for="{{ module }}">{{ modules|key:module|key:"name" }}</label>
-                    {% if modules|key:module|key:"install" %}({% trans "Installed" %}){% endif %}
-                    <p class="desc">{{ modules|key:module|key:"desc"|safe }}</p>
+                    <label for="{{ m.id }}">{{ m.name }}</label>
+                    {% if m.install %}({% trans "Installed" %}){% endif %}
+                    <p class="desc">{{ m.desc|safe }}</p>
+                        {% endifequal %}
+                    {% endfor %}
                 {% endfor %}
                 </div>
             </div>

@@ -36,52 +36,55 @@ function addField(module, fieldname, text) {
 <div class="block block-height">
     <h2>Configuration</h2>
     <form action="{% url config_valid %}" method="post">
-    {% for module, fields in config.items %}
-        {% if fields %}
+    {% for module in config %}
         <fieldset>
-            <legend>{{ modules|key:module|key:"name" }}</legend>
-            {% for field in fields %}
+            {% for m in modules %}
+                {% ifequal module.0.id m.id %}
+            <legend>{{ m.name }}</legend>
+                {% endifequal %}
+            {% endfor %}
+            {% for field in module %}
             <p class="field">
             {% ifequal field.type "text" %}        
-                <label for="{{ module }}_{{ field.name }}">{{ field.label }} : </label>
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
                 {% if field.multi %}
-                <a title="{% trans "Add field"%}" onclick="addField('{{ module }}', '{{ field.name }}', '')" ><img src="{{ MEDIA_URL }}img/network_add.png" /></a>
-                <span id="{{ module }}_{{ field.name }}" name="{{ module }}_{{ field.name }}">
+                <a title="{% trans "Add field"%}" onclick="addField('{{ field.id }}', '{{ field.name }}', '')" ><img src="{{ MEDIA_URL }}img/network_add.png" /></a>
+                <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
                 </span>
                 {% if field.default %}
                 <script type="text/javascript">
                 {% for text in field.default %}
-                    addField('{{ module }}', '{{ field.name }}', '{{ text }}');
+                    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
                 {% endfor %}
                 </script>
                 {% endif %}
                 {% else %}
                 <input {% if field.error %}class="error"{% endif %} 
-                       id="{{ module }}_{{ field.name }}" 
-                       name="{{ module }}_{{ field.name }}" 
+                       id="{{ field.id }}_{{ field.name }}" 
+                       name="{{ field.id }}_{{ field.name }}" 
                        type="text" size="20" value="{{ field.default }}" 
                 />
                 {% endif %}
             {% endifequal %}
             {% ifequal field.type "password" %}        
-                <label for="{{ module }}_{{ field.name }}">{{ field.label }} : </label>
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
                 <input {% if field.error %}class="error"{% endif %} 
-                       id="{{ module }}_{{ field.name }}" 
-                       name="{{ module }}_{{ field.name }}" 
+                       id="{{ field.id }}_{{ field.name }}" 
+                       name="{{ field.id }}_{{ field.name }}" 
                        type="password" size="20" value="{{ field.default }}"
                 />
-                <label for="{{ module }}_{{ field.name }}2">{% trans "Re-enter password" %} : </label>
+                <label for="{{ field.id }}_{{ field.name }}2">{% trans "Re-enter password" %} : </label>
                 <input {% if field.error %}class="error"{% endif %} 
-                       id="{{ module }}_{{ field.name }}2" 
-                       name="{{ module }}_{{ field.name }}2" 
+                       id="{{ field.id }}_{{ field.name }}2" 
+                       name="{{ field.id }}_{{ field.name }}2" 
                        type="password" size="20"
                 />
             {% endifequal %}
             {% ifequal field.type "options" %}
-                <label for="{{ module }}_{{ field.name }}">{{ field.label }} : </label>
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
                 <select {% if field.error %}class="error"{% endif %}
-                        id="{{ module }}_{{ field.name }}" 
-                        name="{{ module }}_{{ field.name }}">
+                        id="{{ field.id }}_{{ field.name }}" 
+                        name="{{ field.id }}_{{ field.name }}">
                     {% for option in field.options %}
                     <option value="{{ option.value }}" 
                             {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
@@ -91,18 +94,21 @@ function addField(module, fieldname, text) {
                 </select>
             {% endifequal %}
             {% ifequal field.type "network" %}
-                <label for="{{ module }}_{{ field.name }}">{{ field.label }} : </label>
-                <a title="{% trans "Add network"%}" onclick="addNetwork('{{ module }}', '{{ field.name }}', '', '')" ><img src="{{ MEDIA_URL }}img/network_add.png" /></a>
-                <span id="{{ module }}_{{ field.name }}" name="{{ module }}_{{ field.name }}">
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
+                <a title="{% trans "Add network"%}" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" ><img src="{{ MEDIA_URL }}img/network_add.png" /></a>
+                <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
                 </span>                
                 {% if field.default %}
                     <script type="text/javascript">
                     {% for network in field.default %}
-                        addNetwork('{{ module }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
+                        addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
                     {% endfor %}
                     </script>
                 {% endif %}
-            {% endifequal %}          
+            {% endifequal %}
+            {% if not field.type %}
+                {% trans "No configuration for this module." %}
+            {% endif %}
             {% if field.error %}
             <span class="error">
                 {{ field.error }}
@@ -116,7 +122,6 @@ function addField(module, fieldname, text) {
             {% endif %}
             {% endfor %}
         </fieldset>
-        {% endif %}
     {% endfor %}
         <div class="validation">
             <input type="submit" name="continue" value="{% trans "Continue" %}" />

@@ -14,6 +14,9 @@
             <rpm>dovecot-plugins-ldap</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mmc</module>
+    </deps>
     <config>
         <text name="smtpd_myhostname" require="yes" validation="fqdn">
             <label>My hostname</label>

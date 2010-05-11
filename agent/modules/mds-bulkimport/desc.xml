@@ -7,4 +7,7 @@
             <rpm>python-mmc-bulkimport</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mmc</module>
+    </deps>    
 </module>

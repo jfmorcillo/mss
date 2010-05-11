@@ -10,4 +10,7 @@
             <rpm>php-pear-MDB2_Driver_sqlite</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mail</module>
+    </deps>
 </module>

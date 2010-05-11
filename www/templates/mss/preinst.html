@@ -6,22 +6,14 @@
     <p>{% trans "You have selected the following modules." %}</p>
     <fieldset>
         <legend>{% trans "Modules" %}</legend>
-        {% for id, module in modules.items %}
+        {% for module in modules %}
         <h3>{{ module.name }}</h3>
-        <p class="help">{{ module.desc }}</p>
+        <p class="help">{{ module.desc }}
+        {% if module.dep %}(<strong>{% trans "Added as a dependency" %}</strong>){% endif %}</p>
         {% if module.preinst %}
         <p class="desc">{{ module.preinst }}</p>
         {% endif %}
         {% endfor %}
-        {% if deps %}
-        <p>{% trans "The selected modules needs other modules to be installed" %} :</p>
-        {% for id, module in deps.items %}
-        <h3>{{ module.name }} : {{ module.desc }}</h3>
-        {% if module.preinst %}
-        <p class="desc">{{ module.preinst }}</p>
-        {% endif %}
-        {% endfor %}  
-        {% endif %}
     </fieldset>
     <form name="mss" action="{% url medias %}" method="post">
         <div class="validation">

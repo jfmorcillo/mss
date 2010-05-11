@@ -12,6 +12,9 @@
             <rpm>python-mmc-samba</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mmc</module>
+    </deps>
     <config>
         <text name="smbdomain" require="yes" default="MES5DOMAIN">
             <label>Samba domain name</label>

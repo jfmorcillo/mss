@@ -8,24 +8,28 @@ SECTIONS = [
         'id': 'mds', 
         'icon': 'section_mds.png',
         'desc': _('MDS is an enterprise directory platform based on LDAP designed to manage identities, and various network services commonly used.<br/><br/>In addition, MDS is controlled through a modern and friendly web interface.<br /><br />For an overview of MDS, visit the <a href="http://mds.mandriva.org/">project website</a>.'),
+        'conf': {'class': 'block-2'},
     },
     { 
         'name': _('Pulse 2'), 
         'id': 'pulse2', 
         'icon': 'section_pulse2.png',
-        'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br /><br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.')
+        'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br /><br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.'),
+        'conf': {'class': 'block-2 block-last'},
     },
     { 
         'name': _('Partners'), 
         'id': 'partners', 
         'icon': 'section_partners.png',
         'desc': _('Install basic server stacks like DHCP, OpenLDAP or VPN software.'),
+        'conf': {'class': 'block-2 block-clear'},
     },    
     { 
         'name': _('Advanced'), 
         'id': 'advanced', 
         'icon': 'section_advanced.png',
         'desc': _('Install basic server stacks like DHCP, OpenLDAP or VPN software.'),
+        'conf': {'class': 'block-2 block-last'},
     },
 ]
 
@@ -49,7 +53,7 @@ SECTIONS_MODULES = {
             'name': _('Mail modules'),
             'icon': 'bundle_mail.png',
             'desc': _('SMTP, IMAP server and other tools'),
-            'conf': {'class': 'block-2'},            
+            'conf': {'class': 'block-2 block-last'},
             'modules': ["mds-mail", "mds-webmail"],
         },
         {
@@ -63,7 +67,7 @@ SECTIONS_MODULES = {
             'name': _('Other modules'),
             'icon': 'section_advanced.png',
             'desc': _('Various MDS modules'),
-            'conf': {'class': 'block-2'},            
+            'conf': {'class': 'block-2 block-last'},
             'modules': ["mds-audit", "mds-bulkimport"],
         }        
     ],

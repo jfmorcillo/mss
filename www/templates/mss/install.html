@@ -14,8 +14,8 @@
 <div class="block block-height">
     <h2>{% trans "Installation" %}</h2>
     <p>{% trans "The following modules are beeing install" %} :
-    {% for module, values in modules.items %}
-        <strong>{{ values.name }}</strong>{% if not forloop.last %},{% endif %}
+    {% for m in modules %}
+        <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>
     <div class="install">
         <p id="task" class="task">{% trans "Please wait..." %} <img src="/site_media/img/loader.gif" /></p>

@@ -4,7 +4,7 @@
 
 {% ifequal mode "run" %}
 <script type="text/javascript">
-    var modules = new Array({% for module, values in modules.items %}'{{ module }}'{% if not forloop.last %},{% endif %}{% endfor %});
+    var modules = new Array({% for m in modules %}'{{ m.id }}'{% if not forloop.last %},{% endif %}{% endfor %});
     var current_module = 0;
     var current_log = "";
     var current_task = "";
@@ -50,6 +50,7 @@
 {% endifequal %}
 <div class="block block-height">
     <h2>Configuration</h2>
+    
     {% ifequal mode "start" %}
     <p>{% trans "The following modules will be configured. Please wait during the configuration process." %}</p>
     <p>{% trans "To run the configuration, click on the &laquo;Run configuration&raquo; button below." %}</p>
@@ -59,10 +60,10 @@
     <p id="sumary">{% trans "Configuration in progress..." %}</p>
     {% endifequal %}
 
-    {% for module, values in modules.items %}
-        <fieldset id="{{ module }}">
-            <legend>{{ values.name }}</legend>
-            <p class="desc">{{ values.desc }}</p>
+    {% for m in modules %}
+        <fieldset id="{{ m.id }}">
+            <legend>{{ m.name }}</legend>
+            <p class="desc">{{ m.desc }}</p>
             {% ifequal mode "run" %}
             <div class="install">
                 <p class="task">{% trans "Waiting..." %}</p>

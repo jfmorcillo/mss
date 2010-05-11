@@ -11,7 +11,7 @@ import logging
 import locale
 import platform
 import xml.etree.ElementTree as ET
-from IPy import IP
+#from IPy import IP
 from httplib import HTTPSConnection
 from unserialize import PHPUnserialize
 from sets import Set
@@ -77,9 +77,10 @@ class ModuleManager:
     def get_modules(self, modules):
         """ return basic info for modules """
         self.logger.info("Get modules info : %s" % str(modules))
-        result = {}
-        for key, module in self.modules.items():
-            if module.id in modules:                  
+        result = []
+        for m in modules:
+            if m in self.modules:
+                module = self.modules[m]
                 # get module packages
                 packages = set(module.get_packages())                
                 # check if packages are installed
@@ -87,40 +88,94 @@ class ModuleManager:
                     install = True
                 else:
                     install = False
-                result[module.id] = {'name': module.name, 'desc': module.desc,
-                    'preinst': module.preinst, 'install': install}
+                result.append({ 'id': module.id, 'name': module.name, 'desc': module.desc,
+                    'preinst': module.preinst, 'install': install})
         return result
 
     def preinstall_modules(self, modules):
         """
         get deps for modules to install
-        return modules + deps infos
+        return modules infos
         """
-        self.logger.info("Pre-install modules : %s" % str(modules))
+        # store old modules list
+        old = modules
         # get deps for modules
-        deps = self.check_deps(modules)
+        modules = self.check_deps(modules, [])
+        modules = self.order_deps(modules)
+        # get difference for dep list
+        new = set(modules)
+        deps = list(new.difference(old))
         # get modules info
         modules = self.get_modules(modules)
-        # get deps info
-        deps = self.get_modules(deps)
-        return (modules, deps)
+        # tell if the module is an dependency of selected modules
+        for m in modules:
+            if m['id'] in deps:
+                m['dep'] = True
+            else:
+                m['dep'] = False
+        self.logger.info("Pre-install modules : %s" % str(modules))
+        return modules
 
-    def check_deps(self, modules):
-        """ get deps for modules """
-        deps = []
+    def order_deps(self, modules, cnt=1):
         for module in modules:
-            if getattr(self.modules[module], 'deps' or None):
-                for dep in self.modules[module].deps:
-                    self.logger.debug("Add %s module as dep of %s module."
-                         % (dep, module))
-                    if not dep in modules:
-                        try:
-                            if self.modules[dep]:
-                                deps.append(dep)
-                        except KeyError:
-                            self.logger.error("Module %s doesn't exists !"
-                                % dep)
-        return deps
+            # if the module has deps and is not indexed
+            if module[1] and module[2] == -1:
+                # for each dep of current module
+                set_index = True
+                for m1 in module[1]:
+                    # for each module
+                    for m2 in modules:
+                        # if the dep is not indexed (not >=0)
+                        if m1 == m2[0] and not m2[2] >= 0:
+                            set_index = False
+                # set the current module index to cnt
+                # if all deps are indexed
+                if set_index:
+                    module[2] = cnt
+
+        # make 3 pass to determine indexes
+        if(cnt < 4):
+            cnt += 1
+            modules = self.order_deps(modules, cnt)
+        # calcule module list from indexes
+        else:
+            result = []
+            for i in range(cnt):
+                for module in modules:
+                    if module[2] == i:
+                        if not module[0] in result:
+                            result.append(module[0])
+            modules = result
+        return modules
+
+    def check_deps(self, modules, dependencies):
+        """ get deps for modules
+            create a list with the form : [ [ module, [deps], index ],... ]
+        """
+        for module in modules:
+            deps = self.get_deps(module)
+            if deps:
+                # set the index a -1 to calculate index
+                dependencies.append([module, deps, -1])
+                dependencies = self.check_deps(deps, dependencies)
+            else:
+                # set the index at 0 as the module has no deps
+                dependencies.append([module, None, 0])
+        return dependencies
+
+    def get_deps(self, module):
+        """ get deps for module """
+        if getattr(self.modules[module], 'deps' or None):
+            deps = []
+            for dep in self.modules[module].deps:
+                try:
+                    if self.modules[dep]:
+                        deps.append(dep)
+                except KeyError:
+                    self.logger.error("Module %s doesn't exists !"
+                        % dep)
+            return deps
+        return None
 
     def get_medias(self, modules):
         """ get medias for modules """
@@ -236,30 +291,30 @@ class ModuleManager:
     def get_config(self, modules):
         """ get modules config """
         self.logger.info("Get config for modules : %s" % str(modules))
-        config = {}
+        config = []
         for module in modules:
-            config[module] = self.modules[module].get_config()
+            config.append(self.modules[module].get_config())
         return config
 
     def valid_config(self, modules, modules_config):
         """ validate user configuration for modules """
-        config = {}
+        config = []
         errors = False
         for module in modules:
             module_errors, module_config = self.modules[module].valid_config(modules_config)
-            config[module] = module_config
+            config.append(module_config)
             if module_errors:
                 errors = True
         return (errors, config)
 
-    def info_config(self, modules):
-        """ check if modules has a config script """
-        result = []
-        for module in modules:
-            path, script, args = self.modules[module].info_config()
-            if script:
-                result.append(module)
-        return result
+#    def info_config(self, modules):
+#        """ check if modules has a config script """
+#        result = []
+#        for module in modules:
+#            path, script, args = self.modules[module].info_config()
+#            if script:
+#                result.append(module)
+#        return resultg
 
     def run_config(self, module):
         """ run configuration for module """
@@ -359,8 +414,6 @@ class Module:
     def get_config(self):
         """ get module current config """
         reload(self.module)
-        # reset config
-        self.config = []
         # get current module config
         try:
             current_config = getattr(self.module, 'get_current_config')()
@@ -371,34 +424,52 @@ class Module:
             self.logger.error(str(err))
             self.logger.error("Can't get module current config")
             current_config = {}
-        # get XML config
-        fields = self.root.findall("config/*")
-        for field in fields:
-            field_config = field.attrib
-            field_help = field.findtext("help")
-            field_label = field.findtext("label")
-            field_config["help"] = _(field_help, self.id)
-            field_config["label"] = _(field_label, self.id)
-            field_config["type"] = field.tag
-            if field_config["type"] == "options":
-                options = field.findall("option")
-                field_config["options"] = []
-                for option in options:
-                    field_config["options"].append(
-                        {'name': option.text, 
-                         'value': option.attrib.get('value')}
-                    )
-            # get default value for multi fields
-            if ("multi", "default") in field_config:
-                if type(field_config["default"]) == str:
-                    default = field_config["default"].split(";")
-                    field_config["default"] = default
-            # add current value if module is configured
-            if current_config.get(field_config['name']):
-                field_config['default'] = current_config.get(field_config['name'])
-            self.config.append(field_config)
+        # get script name and args order
+        try:
+            script, args = getattr(self.module, 'get_config_info')()
+        except AttributeError:
+            script, args = (None, [])
 
-            print self.config
+        # reset config
+        self.config = []
+        # no config script we skip the configuration
+        if not script:
+            self.config.append({'id': self.id, 'skip_config': True, 'do_config': False})
+        # we have a config script
+        else:
+            self.config.append({'id': self.id, 'skip_config': False, 'do_config': False})
+            # get XML config
+            fields = self.root.findall("config/*")
+            if fields:
+                # if we have fields, show the configuration page
+                self.config[0]['do_config'] = True
+            for field in fields:
+                field_config = field.attrib
+                field_help = field.findtext("help")
+                field_label = field.findtext("label")
+                field_config["id"] = self.id
+                field_config["help"] = _(field_help, self.id)
+                field_config["label"] = _(field_label, self.id)
+                field_config["type"] = field.tag
+                if field_config["type"] == "options":
+                    options = field.findall("option")
+                    field_config["options"] = []
+                    for option in options:
+                        field_config["options"].append(
+                            {'name': option.text, 
+                             'value': option.attrib.get('value')}
+                        )
+                # get default value for multi fields
+                if ("multi", "default") in field_config:
+                    if type(field_config["default"]) == str:
+                        default = field_config["default"].split(";")
+                        field_config["default"] = default
+                # add current value if module is configured
+                if current_config.get(field_config['name']):
+                    field_config['default'] = current_config.get(field_config['name'])
+                self.config.append(field_config)
+
+        print self.config
         return self.config
 
     def valid_config(self, user_config):
@@ -414,55 +485,56 @@ class Module:
             field_name = field.get("name")
             field_type = field.get("type")
 
-            # set value for networks fields
-            if field_type == "network":
-                field_value = []
-                for user_field, user_value in user_config.items():
-                    ip = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_ip$", user_field)
-                    if ip:
-                        net = ip.group(1)
-                        ip = user_config.get(self.id+"_"+field_name+"_"+net+"_ip")
-                        mask = user_config.get(self.id+"_"+field_name+"_"+net+"_mask")
-                        field_value.append((ip, mask))
-            # handle multi text fields
-            elif "multi" in field:
-                field_value = []
-                for user_field, user_value in user_config.items():
-                    f = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_field$", user_field)
-                    if f:
-                        nb = f.group(1)
-                        value = user_config.get(self.id+"_"+field_name+"_"+nb+"_field")
-                        field_value.append(value)
-            # set values for text,password,options fields
-            else:
-                field_value = user_config.get(self.id+"_"+field_name)
-
-            # set default value
-            field["default"] = field_value
-
-            # check if field is not empty
-            if field.get("require"):                         
-                if not field_value:
-                    errors = True
-                    field["error"] = _("This field can't be empty.", "agent")
-                elif field_name.endswith("passwd"):
-                    field_value2 = user_config.get(self.id+"_"+field_name+"2")
-                    if field_value != field_value2:
-                        errors = True
-                        field["error"] = _("Password mismatch.", "agent")
+            if field_name:
+                # set value for networks fields
+                if field_type == "network":
+                    field_value = []
+                    for user_field, user_value in user_config.items():
+                        ip = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_ip$", user_field)
+                        if ip:
+                            net = ip.group(1)
+                            ip = user_config.get(self.id+"_"+field_name+"_"+net+"_ip")
+                            mask = user_config.get(self.id+"_"+field_name+"_"+net+"_mask")
+                            field_value.append((ip, mask))
+                # handle multi text fields
+                elif "multi" in field:
+                    field_value = []
+                    for user_field, user_value in user_config.items():
+                        f = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_field$", user_field)
+                        if f:
+                            nb = f.group(1)
+                            value = user_config.get(self.id+"_"+field_name+"_"+nb+"_field")
+                            field_value.append(value)
+                # set values for text,password,options fields
                 else:
-                    if field.get("error"):
-                        del field["error"]                        
+                    field_value = user_config.get(self.id+"_"+field_name)
 
-            # validate field data
-            if field.get("validation"):
-                method = getattr(Validation(), field.get("validation"))
-                result = method(field_value)
-                if result:
-                    errors = True
-                    field["error"] = _(result, "agent")
-                elif field.get("error"):
-                    del field["error"]
+                # set default value
+                field["default"] = field_value
+
+                # check if field is not empty
+                if field.get("require"):                         
+                    if not field_value:
+                        errors = True
+                        field["error"] = _("This field can't be empty.", "agent")
+                    elif field_name.endswith("passwd"):
+                        field_value2 = user_config.get(self.id+"_"+field_name+"2")
+                        if field_value != field_value2:
+                            errors = True
+                            field["error"] = _("Password mismatch.", "agent")
+                    else:
+                        if field.get("error"):
+                            del field["error"]                        
+
+                # validate field data
+                if field.get("validation"):
+                    method = getattr(Validation(), field.get("validation"))
+                    result = method(field_value)
+                    if result:
+                        errors = True
+                        field["error"] = _(result, "agent")
+                    elif field.get("error"):
+                        del field["error"]
 
         # store config if no errors
         if not errors:
@@ -483,16 +555,15 @@ class Module:
 
         for arg in args:
             for field in self.config:
-                if arg == field['name']:
-                    print arg
+                if arg == field.get('name'):
                     # network field values
-                    if field["type"] == "network":
+                    if field.get("type") == "network":
                         value = ''
                         for ip, mask in field['default']:
                             network = ip+"/"+mask
-                            if field["format"] == "long":
+                            if field.get("format") == "long":
                                 network = str(IP(network))
-                            elif field["format"] == "short":
+                            else:
                                 network = str(IP(network, make_net=True))
                             value += network+" "
                         value = value[:-1]
@@ -500,14 +571,14 @@ class Module:
                     # multi text field
                     elif "multi" in field:
                         value = ''
-                        for text in field['default']:
+                        for text in field.get('default'):
                             value += text+" "
                         value = value[:-1]
                         print value
                         args_values.append(value)
                     # other fields
                     else:
-                        args_values.append(field['default'])
+                        args_values.append(field.get('default'))
 
         print args_values
                         

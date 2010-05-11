@@ -9,6 +9,9 @@
             <rpm>python-mmc-network</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mmc</module>
+    </deps>
     <config>
         <network name="bind_networks" format="short" validation="network">
             <label>My networks</label>

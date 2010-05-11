@@ -113,7 +113,7 @@ def sections(request):
 def section(request, section):
     """ render section page """
     # flush user session data
-    for key in ('modules', 'modules_info', 'medias_auth', 'medias_auth_types'):
+    for key in ('modules', 'modules_list', 'medias_auth', 'medias_auth_types'):
         try:
             del request.session[key]
         except KeyError:
@@ -127,10 +127,11 @@ def section(request, section):
         return err
     else:
         modules = result
+        modules_list = [m.get('id') for m in modules]
         # remove modules not present server side
         for section in section_info:
             for module in section['modules']:
-                if not modules.get(module):
+                if module not in modules_list:
                     section['modules'].remove(module)
         return render_to_response('mss/section.html',
             {'section': section_info, 'modules': modules},
@@ -142,20 +143,19 @@ def preinst(request):
     if request.method == "POST":
         # get module list
         modules = []
-        print request.POST
         for module, value in request.POST.items():
             modules.append(module)
-        # store module list in session
-        request.session['modules'] = modules
         # get preinstall info for modules
         err, result = xmlrpc.call('preinstall_modules', modules)
         if err:
             return err
         else:
-            modules = result[0]
-            deps = result[1]
+            modules = result
+            # store module info in session
+            request.session['modules'] = modules
+            request.session['modules_list'] = [m.get('id') for m in modules]
             return render_to_response('mss/preinst.html',
-                {'modules': modules, 'deps': deps},
+                {'modules': modules},
                 context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('sections'))
@@ -164,8 +164,8 @@ def preinst(request):
 def medias(request):
     """ media page """
     if request.method == "POST":
-        modules = request.session['modules']
-        err, result = xmlrpc.call('get_medias', modules)
+        modules_list = request.session['modules_list']
+        err, result = xmlrpc.call('get_medias', modules_list)
         if err:
             return err
         else:
@@ -218,24 +218,14 @@ def add_medias(request):
 @login_required
 def install(request):
     """ install page """
-    modules = request.session['modules']
-    # get modules info
-    err, result = xmlrpc.call('get_modules', modules)
-    if err:
-        return err
-    else:
-        modules_info = result
-        request.session['modules_info'] = modules_info
     # launch modules install
-    err, result = xmlrpc.call('install_modules', modules)
+    err, result = xmlrpc.call('install_modules', request.session['modules_list'])
     if err:
         return err
     else:
         return render_to_response('mss/install.html',
-            {'modules': modules_info},
+            {'modules': request.session['modules']},
             context_instance=RequestContext(request))
-#    else:
-#        return HttpResponseRedirect(reverse('sections'))
 
 @login_required
 def install_state(request):
@@ -261,23 +251,29 @@ def config(request):
     """ configuration page """
     if request.method == "POST":
         modules = request.session['modules']
-        modules_info = request.session['modules_info']
-        err, result = xmlrpc.call('get_config', modules)
+        modules_list = request.session['modules_list']
+        err, result = xmlrpc.call('get_config', modules_list)
         if err:
             return err
         else:
             config = result
 
-        print config
-
-        do_config = False;            
-        for module, values in config.items():
-            if len(values) > 0:
+        do_config = False
+        skip_config = True
+        for module in config:
+            if module[0].get('do_config'):
                 do_config = True
+            if not module[0].get('skip_config'):
+                skip_config = False
 
-        if do_config:
+        print do_config
+        print skip_config
+
+        if skip_config:
+            return HttpResponseRedirect(reverse('sections'))
+        elif do_config:
             return render_to_response('mss/config.html',
-                {'config': config, 'modules': modules_info},
+                {'config': config, 'modules': modules},
                 context_instance=RequestContext(request))
         else:
             return HttpResponseRedirect(reverse('config_valid'))
@@ -288,13 +284,14 @@ def config(request):
 def config_valid(request):
     """ check user configuration """
     modules = request.session['modules']
-    modules_info = request.session['modules_info']
+    modules_list = request.session['modules_list']
     # get forms values
     config = {}
     for name, value in request.POST.items():
         config[name] = value
+    print config
     # validate values
-    err, result = xmlrpc.call('valid_config', modules, config)
+    err, result = xmlrpc.call('valid_config', modules_list, config)
     if err:
         return err
     else:
@@ -302,29 +299,19 @@ def config_valid(request):
         config = result[1]
     if errors:
         return render_to_response('mss/config.html',
-            {'config': config, 'modules': modules_info},
+            {'config': config, 'modules': modules},
             context_instance=RequestContext(request))
     else:
         return render_to_response('mss/config_run.html',
-            {'modules': modules_info, 'mode': 'start'},
+            {'modules': modules, 'mode': 'start'},
             context_instance=RequestContext(request))
 
 @login_required  
 def config_start(request):
     """ contiguration start page """
     modules = request.session['modules']
-    modules_info = request.session['modules_info']
-    # check if module has an configuration script
-    err, result = xmlrpc.call('info_config', modules)
-    if err:
-        return err
-    else:
-        modules_config = {}
-        for module in result:
-            modules_config[module] = modules_info[module]
-    
     return render_to_response('mss/config_run.html',
-        {'modules': modules_config, 'mode': 'run' },
+        {'modules': modules, 'mode': 'run' },
         context_instance=RequestContext(request))
 
 @login_required

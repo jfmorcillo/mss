@@ -1,10 +1,10 @@
 <module id="dhcp">
   <name>DHCP server</name>
   <desc>Configure your clients IP settings with dhcpd</desc>
-  <icon>dhcp.png</icon>
   <packages>
     <target name="all">
       <rpm>dhcp-server</rpm>
     </target>
   </packages>
+  <config>no</config>
 </module>

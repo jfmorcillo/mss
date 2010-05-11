@@ -8,4 +8,7 @@
             <rpm>python-mmc-network</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mmc</module>
+    </deps>
 </module>

@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
     {% for section in sections %}
-    <div class="block block-2 block-border">
+    <div class="block block-border {{ section.conf.class }}">
         <div class="block-logo">
             {% if section.icon %}
             <img src="{{ MEDIA_URL }}img/{{ section.icon }}" />

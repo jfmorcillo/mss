@@ -8,6 +8,9 @@
             <rpm>mmc-web-userquota</rpm>
         </target>
     </packages>
+    <deps>
+        <module>mds-mmc</module>
+    </deps>
     <config>
         <text name="filesystems" require="yes" default="Home:/dev/sda6" multi="yes">
             <label>Filesystems</label>
