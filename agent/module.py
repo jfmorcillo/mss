@@ -22,11 +22,28 @@ from utils import formatExceptionInfo
 
 logging.basicConfig(level=logging.DEBUG)
 
+def expose(f):
+    "Decorator to set exposed flag on a function."
+    f.exposed = True
+    return f
+
+def is_exposed(f):
+    "Test whether another function should be publicly exposed."
+    return getattr(f, 'exposed', False)
+
+
 class ModuleManager:
     """
     Class for managing modules
 
     """
+
+    def _dispatch(self, method, params):
+        func = getattr(self, method)            
+        if not is_exposed(func):
+            raise Exception('Method "%s" is not supported' % method)
+        
+        return func(*params)
 
     def __init__(self, EM, TM):        
         self.modulesDirectory = "modules"
@@ -44,10 +61,12 @@ class ModuleManager:
         self.load_packages()
         self.load_modules()
 
+    @expose
     def set_lang(self, lang):
         """ change lang during execution """
         self.TM.set_lang(lang)
 
+    @expose
     def load_packages(self):
         self.logger.info("Load packages...")
         self.packages = self.EM.load_packages()
@@ -74,6 +93,7 @@ class ModuleManager:
             ret.append(item.split("/")[1])
         return ret
 
+    @expose
     def get_modules(self, modules):
         """ return basic info for modules """
         self.logger.info("Get modules info : %s" % str(modules))
@@ -92,6 +112,7 @@ class ModuleManager:
                     'preinst': module.preinst, 'install': install})
         return result
 
+    @expose
     def preinstall_modules(self, modules):
         """
         get deps for modules to install
@@ -177,6 +198,7 @@ class ModuleManager:
             return deps
         return None
 
+    @expose
     def get_medias(self, modules):
         """ get medias for modules """
         self.logger.info("Get medias for modules : %s" % str(modules))
@@ -201,6 +223,7 @@ class ModuleManager:
 
         return (medias_auth, list(medias_auth_types), medias_done)
 
+    @expose
     def add_media(self, media, login, passwd):
         """ add media with authentication """
         self.logger.info("Add media : %s" % str(media))
@@ -278,6 +301,7 @@ class ModuleManager:
         elif user_data['code'] == 8:
             return 5
 
+    @expose
     def install_modules(self, modules):
         """ install modules packages """
         self.logger.info("Install modules : %s" % str(modules))
@@ -288,6 +312,7 @@ class ModuleManager:
         self.EM.install_packages(packages)
         return 0
 
+    @expose
     def get_config(self, modules):
         """ get modules config """
         self.logger.info("Get config for modules : %s" % str(modules))
@@ -296,6 +321,7 @@ class ModuleManager:
             config.append(self.modules[module].get_config())
         return config
 
+    @expose
     def valid_config(self, modules, modules_config):
         """ validate user configuration for modules """
         config = []
@@ -316,6 +342,7 @@ class ModuleManager:
 #                result.append(module)
 #        return resultg
 
+    @expose
     def run_config(self, module):
         """ run configuration for module """
         self.logger.debug("Run configuration for %s" % str(module))
@@ -324,6 +351,7 @@ class ModuleManager:
         path = os.path.join(os.getcwd(), path)
         self.EM.run_script(script, args, path)
 
+    @expose
     def get_state(self):
         """ return execution state """
         return self.EM.get_state()
