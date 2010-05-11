@@ -1,0 +1,72 @@
+#!/bin/sh
+#
+# MSS - Mandriva Server Setup
+#
+# chkconfig: 345 40 60
+# description: Mandriva Server Setup
+
+### BEGIN INIT INFO
+# Provides: mss
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Mandriva Server Setup
+# Description: Wizard for MDS/Pulse 2 setup and server stacks installation
+### END INIT INFO
+
+. /etc/rc.d/init.d/functions
+[ -r /etc/sysconfig/i18n ] && . /etc/sysconfig/i18n
+export LC_ALL
+export LANG
+
+prog=mss
+
+function start () {
+    gprintf "Starting %s: " "$prog"
+    if [ -f /var/lock/subsys/$prog ]; then
+	    echo -n "mss is running"
+	    success
+    else
+	    /usr/sbin/mss-agent.py start
+	    # wait pid file to be created
+	    sleep 1
+	    touch /var/lock/subsys/$prog
+	    [ -f /var/run/$prog.pid ] && success || failure
+    fi
+    echo
+}
+
+function stop () {
+    gprintf "Stopping %s: " "$prog"
+    if [ -f /var/lock/subsys/$prog ]; then
+        /usr/sbin/mss-agent.py stop
+        sleep 1
+        [ -f /var/run/$prog.pid ] && failure || success
+	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog
+    else
+	    echo -n "mss not running ?"
+	    failure
+    fi
+    echo
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    status)
+	status mss-agent.py
+	;;
+    restart)
+	stop
+	start
+	;;
+    *)
+	gprintf "Usage: $0 {start|stop|status|restart}\n"
+	exit 1
+esac
+

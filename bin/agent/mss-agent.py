@@ -3,14 +3,17 @@
 
 import sys
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-from module import ExecManager, ModuleManager  
+from module import ModuleManager
+from process import ExecManager
+from translation import TranslationManager
 from daemon import Daemon
 
 class MSS(Daemon):
     def run(self):
         EM = ExecManager()
-        MM = ModuleManager(EM)
-        server = SimpleXMLRPCServer(("localhost", 7000))
+        TM = TranslationManager()
+        MM = ModuleManager(EM, TM)
+        server = SimpleXMLRPCServer(("localhost", 7000), allow_none=True)
         server.register_instance(MM)
         server.serve_forever()
 
