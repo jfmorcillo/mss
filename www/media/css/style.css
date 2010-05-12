@@ -82,18 +82,6 @@ div#head div#quick-personal {
 
 /* Blocks */
 
-div.install .log {
-    height: 200px;
-    border: 1px solid #aaa;    
-    overflow: auto;
-    margin-top: 10px;
-    white-space: pre-wrap;
-    background: #222;
-    color: white;
-    font-family: monospace;
-    font-size: 11px;
-}
-
 div.block {
     padding: 10px;
     -moz-border-radius: 10px;
@@ -214,7 +202,7 @@ span.error, p.error {
     color: #D72828;
     font-size: 12px;
     font-weight: bold;
-    margin: 0;  
+    margin: 0;
 }
 
 div.validation {
@@ -244,10 +232,54 @@ div.field_multi {
     margin-top: 2px;
 }
 
-img.field_remove {
+img.field {
     vertical-align: bottom;
     padding-left: 5px;
 }
+
+/* Log display */
+
+div.install .log {
+    height: 200px;
+    border: 1px solid #aaa;    
+    overflow: auto;
+    margin-top: 10px;
+    white-space: pre-wrap;
+    background: #222;
+    color: white;
+    font-family: monospace;
+    font-size: 11px;    
+}
+
+div.log span {
+    color: #ddd;
+    font-family: monospace;
+    font-size: 11px;
+}
+div.log span.error { 
+    color: #FFDADF;
+}
+div.log span.warning {
+    color: #FFD365;
+}
+div.log span.summary {
+    font-weight: bold;
+    color: white;
+}
+
+div.summary h3 { color: #21449C; }
+div.warnings h3 { color: #E09200; }
+div.errors h3 { color: #E0000D; }
+div.summary h3, div.warnings h3, div.errors h3 {
+    margin: 0;
+}
+div.summary, div.warnings, div.errors {
+    margin: 10px;
+    padding-left: 10px;
+}
+div.summary { border-left: 2px dotted #21449C; }
+div.warnings { border-left: 2px dotted #E09200; }
+div.errors { border-left: 2px dotted #E0000D; }
 
 /*label {
     float: left;
