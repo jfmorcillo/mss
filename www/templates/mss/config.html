@@ -106,7 +106,7 @@ function addField(module, fieldname, text) {
                     </script>
                 {% endif %}
             {% endifequal %}
-            {% if not field.type %}
+            {% if not module.0.do_config %}
                 {% trans "No configuration for this module." %}
             {% endif %}
             {% if field.error %}
