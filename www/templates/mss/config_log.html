@@ -4,14 +4,14 @@
 {% endifequal %}
 {% ifnotequal code 2000 %}
     {% ifequal code 0 %}
-        <p class="task">{%trans "Configuration succeded." %}</p>
+        <p class="task">{% trans "Configuration succeded." %}</p>
     {% endifequal %}    
     {% ifnotequal code 0 %}
-        <p class="task">{%trans "Configuration failed." %}</p>
+        <p class="task">{% trans "Configuration failed." %}</p>
     {% endifnotequal %}
     {% if infos.summary %}
     <div class="summary">
-        <h3>Configuration summary</h3>
+        <h3>{% trans "Configuration summary" %}</h3>
         {% for line in infos.summary %}
         <p>{{ line }}</p>
         {% endfor %}
@@ -19,7 +19,7 @@
     {% endif %}
     {% if infos.warnings %}
     <div class="warnings">
-        <h3>Configuration warnings</h3>
+        <h3>{% trans "Configuration warnings" %}</h3>
         {% for line in infos.warnings %}
         <p>{{ line }}</p>
         {% endfor %}
@@ -27,7 +27,7 @@
     {% endif %}
     {% if infos.errors %}
     <div class="errors">
-        <h3>Configuration errors</h3>
+        <h3>{% trans "Configuration errors" %}</h3>
         {% for line in infos.errors %}
         <p>{{ line }}</p>
         {% endfor %}

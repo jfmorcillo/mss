@@ -14,7 +14,7 @@ function addNetwork(module, fieldname, ip, mask) {
     mask_field = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_mask",
         'type':'text', 'size':'15', 'maxlength':'15', 'value': mask});
     network.appendChild(mask_field);
-    remove = new Element('a', {'title':'Remove network'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
+    remove = new Element('a', {'title':'{% trans "Remove network" %}'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
     remove.observe('click', function(){ this.parentNode.remove(); });
     network.appendChild(remove);
     container.appendChild(network);
@@ -26,7 +26,7 @@ function addField(module, fieldname, text) {
     input = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_field",
             'type':'text', 'value': text});
     field.appendChild(input);
-    remove = new Element('a', {'title':'Remove field'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
+    remove = new Element('a', {'title':'{% trans "Remove field" %}'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
     remove.observe('click', function(){ this.parentNode.remove(); });
     field.appendChild(remove);
     container.appendChild(field);
