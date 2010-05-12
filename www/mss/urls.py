@@ -19,5 +19,5 @@ urlpatterns = patterns('mss.views',
     url(r'^config/validation/$', 'config_valid', name="config_valid"),
     url(r'^config/start/$', 'config_start', name="config_start"),
     url(r'^config/run/(?P<module>[\w-]+)/$', 'config_run', name="config_run"),
-    url(r'^config/state/$', 'config_state', name="config_state"),
+    url(r'^config/state/(?P<module>[\w-]+)/$', 'config_state', name="config_state"),
 )

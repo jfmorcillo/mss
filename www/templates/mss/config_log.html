@@ -1,11 +1,54 @@
-{% load i18n %}{% ifnotequal code 2000 %}<script type="text/javascript">    
-    updater.stop();
-    scrollLog(); 
+{% load i18n %}
+{% ifequal code 2000 %}
+<p class="task">{% trans "Please wait..."%} <img src="/site_media/img/loader.gif" /></p>
+{% endifequal %}
+{% ifnotequal code 2000 %}
     {% ifequal code 0 %}
-        current_task.update('{% trans "Installation succeded." %}');
-        nextmodule();
+        <p class="task">{%trans "Configuration succeded." %}</p>
     {% endifequal %}    
     {% ifnotequal code 0 %}
-        current_task.update('{% trans "Installation failed." %}');
-    {% endifnotequal %}    
-</script>{% endifnotequal %}{{ output }}<script>scrollLog();</script>
+        <p class="task">{%trans "Configuration failed." %}</p>
+    {% endifnotequal %}
+    {% if infos.summary %}
+    <div class="summary">
+        <h3>Configuration summary</h3>
+        {% for line in infos.summary %}
+        <p>{{ line }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if infos.warnings %}
+    <div class="warnings">
+        <h3>Configuration warnings</h3>
+        {% for line in infos.warnings %}
+        <p>{{ line }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    {% if infos.errors %}
+    <div class="errors">
+        <h3>Configuration errors</h3>
+        {% for line in infos.errors %}
+        <p>{{ line }}</p>
+        {% endfor %}
+    </div>
+    {% endif %}
+    <script type="text/javascript">
+        updater.stop();
+        scrollLog();
+        {% ifequal code 0 %}
+            nextmodule();
+        {% endifequal %}
+    </script>
+{% endifnotequal %}
+<div class="log_button">
+    <input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/>
+</div>
+<div class="log" {% ifequal request.GET.show_log "false" %}style="display: none;"{% endifequal %}>{% for code, line in output %}<span 
+{% ifequal code "1" %}class="warning"{% endifequal %}
+{% ifequal code "2" %}class="error"{% endifequal %}
+{% ifequal code "7" %}class="summary"{% endifequal %}
+{% ifequal code "8" %}class="summary"{% endifequal %}
+>{{ line }}</span>
+{% endfor %}</div>
+<script type="text/javascript">scrollLog();</script>

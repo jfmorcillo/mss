@@ -14,7 +14,7 @@ function addNetwork(module, fieldname, ip, mask) {
     mask_field = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_mask",
         'type':'text', 'size':'15', 'maxlength':'15', 'value': mask});
     network.appendChild(mask_field);
-    remove = new Element('a', {'title':'Remove network'}).update('<img class="field_remove" src="{{ MEDIA_URL }}img/remove.png" />');
+    remove = new Element('a', {'title':'Remove network'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
     remove.observe('click', function(){ this.parentNode.remove(); });
     network.appendChild(remove);
     container.appendChild(network);
@@ -26,7 +26,7 @@ function addField(module, fieldname, text) {
     input = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_field",
             'type':'text', 'value': text});
     field.appendChild(input);
-    remove = new Element('a', {'title':'Remove field'}).update('<img class="field_remove" src="{{ MEDIA_URL }}img/remove.png" />');
+    remove = new Element('a', {'title':'Remove field'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
     remove.observe('click', function(){ this.parentNode.remove(); });
     field.appendChild(remove);
     container.appendChild(field);
@@ -48,7 +48,7 @@ function addField(module, fieldname, text) {
             {% ifequal field.type "text" %}        
                 <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
                 {% if field.multi %}
-                <a title="{% trans "Add field"%}" onclick="addField('{{ field.id }}', '{{ field.name }}', '')" ><img src="{{ MEDIA_URL }}img/network_add.png" /></a>
+                <a title="{% trans "Add field"%}" onclick="addField('{{ field.id }}', '{{ field.name }}', '')"><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
                 <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
                 </span>
                 {% if field.default %}
@@ -95,7 +95,7 @@ function addField(module, fieldname, text) {
             {% endifequal %}
             {% ifequal field.type "network" %}
                 <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
-                <a title="{% trans "Add network"%}" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" ><img src="{{ MEDIA_URL }}img/network_add.png" /></a>
+                <a title="{% trans "Add network"%}" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" ><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
                 <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
                 </span>                
                 {% if field.default %}

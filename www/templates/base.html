@@ -15,16 +15,21 @@
                     });
                 }
             });
+            var show_log = false;
             toggleLog = function(button) {
                 var button = $(button);
                 var log = button.up().next(".log");
                 Effect.toggle(log, 'blind', { duration: 0.4 });
                 if(log.style.display == "none") {
                     button.value = "{% trans "Hide log" %}";
+                    show_log = true;
                 }
                 else {
                     button.value = "{% trans "Show log" %}";
+                    show_log = false;
                 }
+                if(updater)
+                    updater.options.parameters = {'show_log': show_log};
             }
         </script>
         <div id="head">

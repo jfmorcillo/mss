@@ -6,43 +6,43 @@
 <script type="text/javascript">
     var modules = new Array({% for m in modules %}{% if not m.skip_config %}'{{ m.id }}'{% if not forloop.last %},{% endif %}{% endif %}{% endfor %});
     var current_module = 0;
-    var current_log = "";
-    var current_task = "";
     var updater = "";
 
     scrollLog = function() {
-        $('log').scrollTop = $('log').scrollHeight;
+        $$('.log').each(function(i){ i.scrollTop = i.scrollHeight });
     }
-    
-    nextmodule = function() {   
-        current_module++;  
-        if(modules[current_module])
+
+    nextmodule = function() {
+        current_module++;
+        if(modules[current_module]) {
+            show_log = false;
             runconfig();
+        }
         else {
             $("next").value = "{% trans "Home page" %}";
-            $("sumary").update("{% trans "Configuration terminated, details are displayed below." %}");
+            $("summary").update("{% trans "Configuration terminated, details are displayed below." %}");
             $$("#mss input").each(function(i){ i.disabled = false; });
         }
     }
-    
+
     checkconfig = function() {
-        updater = new Ajax.PeriodicalUpdater(current_log, "{% url config_state %}", {
-            frequency: 1,
+        updater = new Ajax.PeriodicalUpdater(current_install, '/mss/config/state/'+modules[current_module]+'/', {
+            frequency: 2,
             decay: 1,
+            method: 'get',
+            parameters: { 'show_log': show_log },
             evalScripts: true,
         });
-    }    
-    
+    }
+
     runconfig = function() {
-        current_log = $$("#"+modules[current_module]+" .log")[0];
-        current_task = $$("#"+modules[current_module]+" .task")[0];
-        current_task.update('{% trans "Please wait..."%} <img src="/site_media/img/loader.gif" />');
+        current_install = $$("#"+modules[current_module]+" .install")[0];
         new Ajax.Request('/mss/config/run/'+modules[current_module]+'/', {
             method: 'get',
             onSuccess: checkconfig,
         });
     }
-        
+
     Event.observe(window, 'load', function() {
         runconfig();
     });
@@ -57,7 +57,7 @@
     {% endifequal %}
 
     {% ifequal mode "run" %}
-    <p id="sumary">{% trans "Configuration in progress..." %}</p>
+    <p id="summary">{% trans "Configuration in progress..." %}</p>
     {% endifequal %}
 
     {% for m in modules %}
@@ -71,7 +71,7 @@
                 {% else %}
                 <p class="task">{% trans "Waiting..." %}</p>
                 <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
-                <div id="log" class="log" style="display: none;"> </div>
+                <div class="log" style="display: none;"> </div>
                 {% endif %}
             </div>
             {% endifequal %}

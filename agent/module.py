@@ -10,6 +10,7 @@ import sys
 import logging
 import locale
 import platform
+import xmlrpclib
 import xml.etree.ElementTree as ET
 from IPy import IP
 from httplib import HTTPSConnection
@@ -352,10 +353,36 @@ class ModuleManager:
         self.EM.run_script(script, args, path)
 
     @expose
-    def get_state(self):
-        """ return execution state """
-        return self.EM.get_state()
-
+    def get_state(self, module="agent"):
+        """ return execution output """
+        code, output = self.EM.get_state()
+        # format output
+        tmp = output.data.splitlines()
+        output = []
+        for line in tmp:
+            try:
+                if int(line[0]) in range(9):
+                    text_code = line[0]
+                    text = u""
+                    # split by # for multiple translations
+                    tmp = line[1:].decode().split('#')
+                    for t in tmp:
+                        text += _(t, module)
+                else:
+                    text_code = 0
+                    text = line
+            # no code at line start
+            except ValueError:
+                text_code = 0
+                text = line
+                output.append((text_code, text))
+            # no char in line
+            except IndexError:
+                pass
+            else:
+                output.append((text_code, text))
+                
+        return (code, output)
 
 class Module:
     """
@@ -488,7 +515,7 @@ class Module:
                              'value': option.attrib.get('value')}
                         )
                 # get default value for multi fields
-                if ("multi", "default") in field_config:
+                if "multi" in field_config and "default" in field_config:
                     if type(field_config["default"]) == str:
                         default = field_config["default"].split(";")
                         field_config["default"] = default

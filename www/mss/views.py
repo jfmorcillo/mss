@@ -235,10 +235,13 @@ def install_state(request):
         return err
     else:
         code = result[0]
-        # get data from xmlrpclib.Binary object
-        output = result[1].data
+        output = result[1]
+        str_output = ""
+        for code, line in output:
+            str_output += line+"\n"
+        print str_output
     return render_to_response('mss/install_log.html',
-        {'code': code, 'output': output},
+        {'code': code, 'output': str_output},
         context_instance=RequestContext(request))
 
 def reload_packages(request):
@@ -328,14 +331,25 @@ def config_run(request, module):
     return HttpResponse("")
 
 @login_required          
-def config_state(request):
+def config_state(request, module):
     """ config output page """
-    err, result = xmlrpc.call('get_state')
+    err, result = xmlrpc.call('get_state', module)
     if err:
         return err
     else:
         code = result[0]
         output = result[1]
+        infos = {"errors": [], "warnings": [], "summary": []}
+        if code != 2000:
+            for text_code, line in output:
+                if text_code == "1":
+                    infos['warnings'].append(line)
+                elif text_code == "2":
+                    infos['errors'].append(line)
+                elif text_code == "7":
+                    infos['summary'].append(line)
+                elif text_code == "8":
+                    infos['summary'].append("<strong>"+line+"</strong>")
     return render_to_response('mss/config_log.html',
-        {'code': code, 'output': output},
-        context_instance=RequestContext(request))            
+        {'code': code, 'output': output, 'infos': infos},
+        context_instance=RequestContext(request))
