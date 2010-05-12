@@ -3,12 +3,11 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
-#, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-04-30 17:05+0200\n"
+"POT-Creation-Date: 2010-05-08 21:21+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,38 +15,46 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: module.py:156
+#: module.py:253
 msgid "Bad login/password."
 msgstr "Mauvais login/mot de passe."
 
-#: module.py:422
+#: module.py:651
 msgid "Incorrect FQDN."
 msgstr "Nom de domaine non valide."
 
-#: module.py:383
+#: module.py:658 module.py:667
+msgid "Incorrect IP address."
+msgstr "Adresse IP non valide."
+
+#: module.py:661
+msgid "Incorrect netmask address."
+msgstr "Masque de sous-réseau invalide"
+
+#: module.py:575
 msgid "Password mismatch."
 msgstr "Les mots de passe ne sont pas identiques."
 
-#: module.py:158
+#: module.py:255
 msgid "Service unavailable. Please try later."
 msgstr "Service indisponible. Re-essayez plus tard."
 
-#: module.py:152 module.py:445 module.py:447 module.py:449
+#: module.py:249
 msgid "The media seems to be down. Please try later."
 msgstr "Le média semble indisponible. Re-essayez plus tard."
 
-#: module.py:378
+#: module.py:570
 msgid "This field can't be empty."
 msgstr "Ce champ ne peut pas être vide."
 
-#: module.py:160
+#: module.py:257
 msgid "Unknow error."
 msgstr "Erreur inconnue."
 
-#: module.py:154
+#: module.py:251
 msgid "You don't have access to the media."
 msgstr "Vous n'avez pas accès à ce média."
 
-#: module.py:162
+#: module.py:259
 msgid "Your login does not look like an email address."
 msgstr "Votre login n'est pas une adresse mail."
