@@ -11,6 +11,8 @@ import logging
 import locale
 import platform
 import xmlrpclib
+import sqlite3
+from datetime import datetime
 import xml.etree.ElementTree as ET
 from IPy import IP
 from httplib import HTTPSConnection
@@ -22,6 +24,7 @@ from translation import TranslationManager
 from utils import formatExceptionInfo
 
 logging.basicConfig(level=logging.DEBUG)
+conn = sqlite3.connect('mss.db')
 
 def expose(f):
     "Decorator to set exposed flag on a function."
@@ -106,11 +109,21 @@ class ModuleManager:
                 packages = set(module.get_packages())                
                 # check if packages are installed
                 if len(packages) == len(packages.intersection(self.packages)):
-                    install = True
+                    installed = True
                 else:
-                    install = False
-                result.append({ 'id': module.id, 'name': module.name, 'desc': module.desc,
-                    'preinst': module.preinst, 'install': install})
+                    installed = False
+                # check if module is configured
+                c = conn.cursor()
+                c.execute('select * from module where name=?', (m,))
+                if c.fetchone():
+                    configured = True 
+                else:
+                    configured = False
+                c.close()
+                # return result
+                result.append({ 'id': module.id, 'name': module.name, 
+                    'desc': module.desc, 'preinst': module.preinst, 
+                    'installed': installed, 'configured': configured})
         return result
 
     @expose
@@ -119,22 +132,34 @@ class ModuleManager:
         get deps for modules to install
         return modules infos
         """
+        # force module re-installation
+        force_modules = []
+        for m in modules:
+            if m.startswith("force-"):
+                force_modules.append(m.replace("force-", ""))
+        modules = [ m.replace("force-","") for m in modules ]
         # store old modules list
         old = modules
         # get deps for modules
         modules = self.check_deps(modules, [])
         modules = self.order_deps(modules)
         # get difference for dep list
-        new = set(modules)
-        deps = list(new.difference(old))
-        # get modules info
+        deps = list(set(modules).difference(old))
+        # get modules info (modules + deps)
         modules = self.get_modules(modules)
+        # remove already configured modules unless force
+        modules = [ m for m in modules if not m['configured'] or m['id'] in force_modules ]
         # tell if the module is an dependency of selected modules
+        # or if we reinstall it
         for m in modules:
             if m['id'] in deps:
                 m['dep'] = True
             else:
                 m['dep'] = False
+            if m['id'] in force_modules:
+                m['force'] = True
+            else:
+                m['force'] = False
         self.logger.info("Pre-install modules : %s" % str(modules))
         return modules
 
@@ -352,6 +377,19 @@ class ModuleManager:
         path = os.path.join(os.getcwd(), path)
         self.EM.run_script(script, args, path)
 
+    @expose
+    def end_config(self, module):
+        self.logger.debug("Set %s as configured" % str(module))
+        c = conn.cursor()
+        c.execute('select * from module where name=?', (module,))
+        if not c.fetchone():
+            c.execute('insert into module values (?,?)', (module, datetime.now()))
+        else:
+            c.execute('update module set configured=? where name=?', (datetime.now(), module))
+        conn.commit()
+        c.close()
+        return 0
+        
     @expose
     def get_state(self, module="agent"):
         """ return execution output """

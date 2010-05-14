@@ -5,6 +5,11 @@
 {% ifnotequal code 2000 %}
     {% ifequal code 0 %}
         <p class="task">{% trans "Configuration succeded." %}</p>
+        <script type="text/javascript">
+            new Ajax.Request('/mss/config/end/'+modules[current_module]+'/', {
+                method: 'get',
+            });
+        </script>
     {% endifequal %}    
     {% ifnotequal code 0 %}
         <p class="task">{% trans "Configuration failed." %}</p>
@@ -13,7 +18,7 @@
     <div class="summary">
         <h3>{% trans "Configuration summary" %}</h3>
         {% for line in infos.summary %}
-        <p>{{ line }}</p>
+        <p>{{ line|safe }}</p>
         {% endfor %}
     </div>
     {% endif %}

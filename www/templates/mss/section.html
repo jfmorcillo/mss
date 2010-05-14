@@ -18,10 +18,22 @@
                     {% for m in modules %}
                         {% ifequal m.id module %}
                     <input type="checkbox" name="{{ m.id }}" id="{{ m.id }}" 
-                        {% comment %}{% if m.install %}checked="checked" 
-                        disabled="disabled"{% endif %}{% endcomment %}
-                    <label for="{{ m.id }}">{{ m.name }}</label>
-                    {% if m.install %}({% trans "Installed" %}){% endif %}
+                        {% if m.configured %}checked="checked" 
+                        disabled="disabled"{% endif %}
+                    <label {% if m.configured %}class="configured"{% endif %} for="{{ m.id }}">{{ m.name }}</label>
+                    {% if m.installed %}<img class="field" src="{{ MEDIA_URL }}img/installed.png" alt="({% trans "Installed" %})" title="{% trans "Packages for this module are already installed." %}" />{% endif %}
+                    {% if m.configured %}
+                    <img class="field" src="{{ MEDIA_URL }}img/configured.png" alt="({% trans "Configured" %})" title="{% trans "This module is already configured." %}" />
+                    {% endif %}
+                    {% if m.configured %}
+                    <span class="actions">Actions
+                        <div class="actions" style="display: none">
+                            <div class="action">
+                                <input type="checkbox" name="force-{{ m.id }}" id="force-{{ m.id }}" /><label for="force-{{ m.id }}">Reinstall and reconfigure <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
+                            </div>
+                        </div>
+                    </span>
+                    {% endif %}
                     <p class="desc">{{ m.desc|safe }}</p>
                         {% endifequal %}
                     {% endfor %}

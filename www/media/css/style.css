@@ -164,7 +164,15 @@ div.block div.head {
 }
 
 div.block div.detail p.desc {
-    margin-left: 21px;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+div.block div.detail input {
+    margin: 0;
+    vertical-align: bottom;
+    margin-bottom: 1px;
+    margin-right: 5px;
 }
 
 div.push {
@@ -287,6 +295,35 @@ div.errors { border-left: 2px dotted #E0000D; }
 
 .field_multi {
     margin-top: 2px;
+}
+
+.configured {
+    color: #21449C;
+}
+
+span.actions {
+   border: 1px solid #ddd;
+   background: #eee;
+   padding: 2px;
+   padding-left: 4px;
+   padding-right: 4px;
+   margin-left: 5px;
+}
+
+div.actions {
+    position: absolute;
+    margin-top: 2px;
+    border: 1px solid #ddd;
+    background: #eee;
+}
+
+div.action {
+    padding: 2px;
+}
+
+div.action input, div.action img {
+    margin: 0;
+    vertical-align: bottom;
 }
 
 /*label {

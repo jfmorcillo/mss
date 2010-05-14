@@ -1,6 +1,7 @@
 # -*- coding: UTF-8 -*-
 
 import xmlrpclib
+from datetime import datetime
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
@@ -133,6 +134,7 @@ def section(request, section):
             for module in section['modules']:
                 if module not in modules_list:
                     section['modules'].remove(module)
+
         return render_to_response('mss/section.html',
             {'section': section_info, 'modules': modules},
             context_instance=RequestContext(request))
@@ -353,3 +355,7 @@ def config_state(request, module):
     return render_to_response('mss/config_log.html',
         {'code': code, 'output': output, 'infos': infos},
         context_instance=RequestContext(request))
+
+def config_end(request, module):
+    err, result = xmlrpc.call('end_config', module)
+    return HttpResponse("")
