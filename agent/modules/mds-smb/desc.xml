@@ -33,4 +33,7 @@
             <help>Password for the Microsoft domain administrator.</help>
         </password>
     </config>
+    <configtext>
+        <text>Make sure you have enabled Samba services on your firewall.</text>
+    </configtext>
 </module>
