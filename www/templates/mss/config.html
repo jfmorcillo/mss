@@ -40,13 +40,13 @@ function addField(module, fieldname, text) {
         <fieldset>
             {% for m in modules %}
                 {% ifequal module.0.id m.id %}
-            <legend>{{ m.name }}</legend>
+            <legend><img class="legend" src="{{ MEDIA_URL }}img/configuration.png" />{{ m.name }}</legend>
                 {% endifequal %}
             {% endfor %}
             {% for field in module %}
             <p class="field">
-            {% ifequal field.type "text" %}        
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
+            {% ifequal field.type "text" %}
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 {% if field.multi %}
                 <a title="{% trans "Add field"%}" onclick="addField('{{ field.id }}', '{{ field.name }}', '')"><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
                 <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
@@ -67,13 +67,13 @@ function addField(module, fieldname, text) {
                 {% endif %}
             {% endifequal %}
             {% ifequal field.type "password" %}        
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 <input {% if field.error %}class="error"{% endif %} 
                        id="{{ field.id }}_{{ field.name }}" 
                        name="{{ field.id }}_{{ field.name }}" 
                        type="password" size="20" value="{{ field.default }}"
                 />
-                <label for="{{ field.id }}_{{ field.name }}2">{% trans "Re-enter password" %} : </label>
+                <label for="{{ field.id }}_{{ field.name }}2">{% trans "Re-enter password" %} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 <input {% if field.error %}class="error"{% endif %} 
                        id="{{ field.id }}_{{ field.name }}2" 
                        name="{{ field.id }}_{{ field.name }}2" 
@@ -81,7 +81,7 @@ function addField(module, fieldname, text) {
                 />
             {% endifequal %}
             {% ifequal field.type "options" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 <select {% if field.error %}class="error"{% endif %}
                         id="{{ field.id }}_{{ field.name }}" 
                         name="{{ field.id }}_{{ field.name }}">
@@ -94,10 +94,10 @@ function addField(module, fieldname, text) {
                 </select>
             {% endifequal %}
             {% ifequal field.type "network" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} : </label>
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 <a title="{% trans "Add network"%}" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" ><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
                 <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
-                </span>                
+                </span>
                 {% if field.default %}
                     <script type="text/javascript">
                     {% for network in field.default %}
@@ -124,6 +124,7 @@ function addField(module, fieldname, text) {
         </fieldset>
     {% endfor %}
         <div class="validation">
+            <p><span class="require">*</span> : {% trans "Required field" %}</p>
             <input type="submit" name="continue" value="{% trans "Continue" %}" />
             <input type="button" id="back" value="{% trans "Back" %}" />
         </div>
