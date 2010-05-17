@@ -50,7 +50,7 @@ class ModuleManager:
         return func(*params)
 
     def __init__(self, EM, TM):        
-        self.modulesDirectory = "modules"
+        self.modulesDirectory = os.path.join(os.path.dirname(__file__), "modules")
         self.modules = {}
         self.packages = []
         # translation manager
@@ -95,7 +95,7 @@ class ModuleManager:
         ret = []
         for item in glob.glob(os.path.join(self.modulesDirectory,
             "*", "__init__.py")):
-            ret.append(item.split("/")[1])
+            ret.append(item.split("/")[-2])
         return ret
 
     @expose
