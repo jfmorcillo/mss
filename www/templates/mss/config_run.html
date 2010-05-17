@@ -68,6 +68,11 @@
             <div class="install">
                 {% if m.skip_config %}
                 <p class="task">{% trans "No configuration for this module." %}</p>
+                <script type="text/javascript">
+                    new Ajax.Request('/mss/config/end/{{ m.id }}/', {
+                    method: 'get',
+                });
+                </script>
                 {% else %}
                 <p class="task">{% trans "Waiting..." %}</p>
                 <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>

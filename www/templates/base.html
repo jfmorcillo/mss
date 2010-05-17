@@ -28,7 +28,21 @@
                             menu.hide();
                         }
                     });
-                });                
+                });
+                $$('input.action').each(function(i) {
+                    Event.observe(i, 'click', function() {
+                        label = $(this).up().up().up().previous('label');
+                        input = $(this).up().up().up().previous('input');
+                        if (this.checked) {
+                            label.removeClassName("configured");
+                            input.disabled = false;
+                        }
+                        else {
+                            label.addClassName("configured");
+                            input.disabled = true;
+                        }
+                    });
+                });
             });
             var show_log = false;
             toggleLog = function(button) {

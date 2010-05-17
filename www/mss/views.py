@@ -255,7 +255,11 @@ def config(request):
 
         # all modules does'nt have a configuration script
         if skip_config:
-            return HttpResponseRedirect(reverse('sections'))
+            for module in modules_list:
+                config_end(request, module)
+            return render_to_response('mss/config_no.html',
+                {'modules': modules},
+                context_instance=RequestContext(request))            
         # some module have a configuration
         elif do_config:
             return render_to_response('mss/config.html',
