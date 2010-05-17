@@ -13,12 +13,20 @@
         {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
         {% if module.preinst %}
         <p class="desc">{{ module.preinst }}</p>
+        {% endif %}        
+        {% if module.force %}
+        <p class="error">{% trans "If other modules requires this module they may be broken after the reinstallation." %}</p>
         {% endif %}
         {% endfor %}
+        {% if not modules %}
+        <p class="error">{% trans "No module selected." %}</p>
+        {% endif %}
     </fieldset>
     <form name="mss" action="{% url medias %}" method="post">
         <div class="validation">
+            {% if modules %}
             <input type="submit" name="continue" value="{% trans "Continue" %}" />
+            {% endif %}
             <input type="button" id="back" value="{% trans "Back" %}" />
         </div>
     </form>
