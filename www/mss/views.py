@@ -30,9 +30,6 @@ def mylogin(request):
                 login(request, user)
                 # success
                 response = HttpResponseRedirect(reverse('sections'))
-                # set language
-                if hasattr(request, 'session'):
-                    request.session['django_language'] = lang
                 # set agent language
                 err, result = xmlrpc.call('set_lang', lang)
                 if err:
@@ -52,10 +49,10 @@ def mylogout(request):
     # reset language
     if hasattr(request, 'session'):
         request.session['django_language'] = settings.DEFAULT_LANGUAGE
-    return HttpResponseRedirect(reverse('login_form'))
+    return HttpResponseRedirect(reverse('first_time'))
 
 def first_time(request):
-    # check admin user
+    # check root user
     try:
         User.objects.get(username="root")
     except ObjectDoesNotExist:

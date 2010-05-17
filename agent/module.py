@@ -68,6 +68,7 @@ class ModuleManager:
     @expose
     def set_lang(self, lang):
         """ change lang during execution """
+        self.logger.info("Lang changed to %s" % lang)
         self.TM.set_lang(lang)
 
     @expose
