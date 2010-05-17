@@ -10,7 +10,6 @@ class MSSBackend:
         auth = conn.authenticate(username, password)
         # password ok
         if auth:
-            print auth
             try:
                 # user exists so, we update the password
                 user = User.objects.get(username=username)

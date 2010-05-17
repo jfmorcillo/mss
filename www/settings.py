@@ -3,16 +3,13 @@
 import os
 import locale
 
-ADMINS = (
-    # ('Your Name', 'your_email@domain.com'),
-)
+ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
 PROJECT_DIR = os.path.dirname(__file__)
-DEV = True
 
-if DEV:
-    DEBUG = True
-    TEMPLATE_DEBUG = DEBUG
+DEV = True
+DEBUG = True
+TEMPLATE_DEBUG = DEBUG
 
 DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = os.path.join(PROJECT_DIR, "mss.db")
@@ -23,12 +20,12 @@ SITE_ID = 1
 USE_I18N = True
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/site_media/'
-LOGIN_URL = "/mss/login/"
+LOGIN_URL = "/mss/account/login/"
 
 DEFAULT_LANGUAGE = locale.getdefaultlocale()[0]
 LANGUAGES = (
   ('en', 'English'),
-  ('fr_FR', 'Francais'),
+  ('fr_FR', 'Français'),
 )
 
 SECRET_KEY = 'eq*6patei-(m5jat5&s50f#0%(g$plt@q!_n4g!d(^w=f3kgfc'
