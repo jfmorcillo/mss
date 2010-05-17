@@ -2,7 +2,6 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('mss.views',
     url(r'^$', 'first_time', name="first_time"),
-    url(r'^account/create/$', 'create_admin', name="create_admin"),
     url(r'^account/authentication/$', 'login_form', name="login_form"),
     url(r'^account/login/$', 'mylogin', name="login"),
     url(r'^account/logout/$', 'mylogout', name="logout"),

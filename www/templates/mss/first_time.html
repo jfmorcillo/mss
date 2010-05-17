@@ -1,44 +1,17 @@
 {% extends 'base.html' %}
 {% load i18n %}
-{% get_available_languages as LANGUAGES %}
 {% block content %}
-<div class="block block-height">
+<div class="block block-height block-center">
     <h2>{% trans "Mandriva Server Setup" %}</h2>
     <p>{% blocktrans %}Welcome on the Mandriva Server Setup. MSS aims to help system
     administrators to setup quickly system services such as DNS and OpenLDAP.
     Moreother, MSS allows you to setup <a href="http://mds.mandriva.org">Mandriva 
     Directory Server</a> and <a href="http://pulse2.mandriva.org">Pulse 2</a>
      products easily.{% endblocktrans %}</p>
-    <p>{% blocktrans %}Before using Mandriva Server Setup, you have to create 
-    the user that will be used for further access to MSS.{% endblocktrans %}</p>
-    <p>{% blocktrans %}Fill in the form below to create the admin user.{% endblocktrans %}</p>
-    <form name="mss" action="{% url create_admin %}" method="post">
+    <p><strong>{% trans "You can login with your root password." %}</strong></p>
     <fieldset>
-        <legend>{% trans "First time setup" %}</legend>
-        <p>
-            <label for="password">{% trans "Password" %}: </label>
-            <input type="password" id="password" name="password" />
-        </p>
-        <p>
-            <label for="language">Language: </label>
-            <select id="language" name="language">
-            {% for lang in LANGUAGES %}
-                <option value="{{ lang.0 }}">{{ lang.1 }}</option>
-            {% endfor %}
-            </select>
-        </p>    
-        <p class="error">
-        {% ifequal err 1 %}
-            {% trans "Error: the password and the email fields can't be empty" %}
-        {% endifequal %}
-        {% ifequal err 2 %}
-            {% trans "Error: can't create the admin user" %}
-        {% endifequal %}    
-       </p>    
+        <legend>Login</legend>
+    {% include 'login_form.html' %}
     </fieldset>
-    <div class="validation">
-        <input type="submit" value="{% trans "Create admin user" %}"/>
-    </div>
-    </form>
 </div>
 {% endblock %}

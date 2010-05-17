@@ -66,3 +66,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'mss',
 )
+
+AUTHENTICATION_BACKENDS = (
+    'django.contrib.auth.backends.ModelBackend',
+    'backends.MSSBackend',
+)

@@ -1,7 +1,6 @@
 {% load i18n %}
-{% get_available_languages as LANGUAGES %}
 <form action="{% url login %}" method="post" accept-charset="utf-8">
-    <input type="hidden" name="username" value="admin" id="username" size="10" />
+    <input type="hidden" name="username" value="root" id="username" size="10" />
     <p>
         <label for="password">{% trans "Password" %}: </label>
         <input type="password" name="password" value="" id="password" size="10" />

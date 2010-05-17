@@ -2,6 +2,7 @@
 
 import xmlrpclib
 from datetime import datetime
+import re
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponse
@@ -56,36 +57,12 @@ def mylogout(request):
 def first_time(request):
     # check admin user
     try:
-        User.objects.get(username="admin")
+        User.objects.get(username="root")
     except ObjectDoesNotExist:
-        return direct_to_template(request, 'mss/first_time.html')
+        return direct_to_template(request, 'mss/first_time.html',
+            {'DEFAULT_LANGUAGE': settings.DEFAULT_LANGUAGE})
     else:
         return HttpResponseRedirect(reverse('login_form'))
-
-def create_admin(request):
-    if request.method == "POST":
-        password = request.POST.get("password")
-        lang = request.POST.get("language")
-        if password:
-            User.objects.create_superuser('admin', 'root@localhost', password)
-            user = authenticate(username='admin', password=password)
-            if user is not None:
-                if user.is_active:
-                    login(request, user)
-                    # success
-                    response = HttpResponseRedirect(reverse('login_form'))
-                    # set language
-                    if hasattr(request, 'session'):
-                        request.session['django_language'] = lang
-                    return response
-            else:
-                return direct_to_template(request, 'mss/first_time.html', 
-                    extra_context={'err': 2})
-        else:
-            return direct_to_template(request, 'mss/first_time.html', 
-                extra_context={'err': 1})
-    else:
-        return HttpResponseRedirect(reverse('first_time'))
 
 def login_form(request):
     if request.user.is_authenticated():
@@ -158,7 +135,7 @@ def preinst(request):
             request.session['modules_list'] = [m.get('id') for m in modules]
             return render_to_response('mss/preinst.html',
                 {'modules': modules},
-                context_instance=RequestContext(request))
+                context_instance=RequestContext(request))                
     else:
         return HttpResponseRedirect(reverse('sections'))
 
@@ -344,6 +321,7 @@ def config_state(request, module):
         infos = {"errors": [], "warnings": [], "summary": []}
         if code != 2000:
             for text_code, line in output:
+                line = toHtml(request, line)
                 if text_code == "1":
                     infos['warnings'].append(line)
                 elif text_code == "2":
@@ -359,3 +337,11 @@ def config_state(request, module):
 def config_end(request, module):
     err, result = xmlrpc.call('end_config', module)
     return HttpResponse("")
+
+
+def toHtml(request, text):
+    # replace hostname tag with server name
+    text = re.sub('@HOSTNAME@', request.META['HTTP_HOST'].replace(':8000', ''), text);
+    # make links
+    text = re.sub(r'(http:\/\/[^ <)]*)', r'<a href="\1"><strong>\1</strong></a>', text);
+    return text
