@@ -1,0 +1,23 @@
+<module id="mysql">
+    <name>Mysql database</name>
+    <desc>Mysql relational database</desc>
+    <packages>
+        <target name="all">
+            <rpm>mysql</rpm>
+            <rpm>mysql-client</rpm>
+        </target>
+    </packages>
+    <reconfig>
+
+    </reconfig>
+    <config>
+        <password name="current_mypasswd">
+            <label>Current password</label>
+            <help>Current Mysql root password. Leave blank for first installation.</help>
+        </password>
+        <password name="mypasswd" require="yes">
+            <label>New password</label>
+            <help>New Mysql root password. Set here the new password.</help>
+        </password>
+    </config>
+</module>

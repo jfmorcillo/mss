@@ -1,6 +1,6 @@
 <module id="mds-bulkimport">
     <name>Bulk import of accounts</name>
-    <desc>Load accounts in MDS from CSV files</desc>
+    <desc>Load/Modify accounts in MDS from CSV files</desc>
     <packages>
         <target name="all">
             <rpm>mmc-web-bulkimport</rpm>

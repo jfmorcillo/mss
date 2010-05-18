@@ -1,13 +1,18 @@
 <module id="mds-audit">
     <name>Audit module for MDS</name>
     <desc>Track any changes made on the MDS interface</desc>
-    <packages>
-        <target name="all">
-            <rpm>mmc-web-audit</rpm>
-            <rpm>python-mmc-audit</rpm>
-        </target>
-    </packages>
     <deps>
         <module>mds-mmc</module>
+        <module>mysql</module>
     </deps>
+    <config>
+        <password name="myrootpasswd" require="yes">
+            <label>Mysql root password</label>
+            <help>Used to create the audit database</help>
+        </password>
+        <password name="myauditpasswd" require="yes">
+            <label>Mysql audit password</label>
+            <help>Mysql user for the audit database</help>
+        </password>
+    </config>
 </module>
