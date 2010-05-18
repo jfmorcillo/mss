@@ -4,19 +4,46 @@
 
 userquota_tpl="templates/userquota.ini.tpl"
 
-filesystems=$1
+fss=$1
 
-for fs in $filesystems; do
-    tmp=$fs";"
+backup /etc/fstab
+for f in $fss; do
+    # get UUID
+    dev=`echo $f | cut -d: -f1`
+    uuid=`dumpe2fs $dev 2>/dev/null | grep UUID | awk '{ print $3 }'`
+    # add usrquota option
+    mountpoint=`grep UUID=${uuid} /etc/fstab | sed "s/^UUID=${uuid}[[:space:]]\+\([^ ]\+\).*$/\1/"`
+    fs=`grep UUID=${uuid} /etc/fstab | sed "s/^UUID=${uuid}[[:space:]]\+[^ ]\+[[:space:]]\+\([^ ]\+\).*$/\1/"`    
+    grep $uuid /etc/fstab | grep -q usrquota
+    if [ $? -ne 0 ]; then
+        echo "0Add usrquota option for# $mountpoint"
+        sed -i "s/^\(UUID=${uuid}[[:space:]]\+[^ ]\+[[:space:]]\+[^ ]\+[[:space:]]\+\)\([^ ]\+\)\(.*\)$/\1\2,usrquota\3/" /etc/fstab
+        if [ "$fs" == "ext3" ]; then
+            echo "0Reload# $mountpoint"
+            mount -o remount,usrquota $mountpoint
+            echo "0Create quota files for# $mountpoint"
+            quotacheck -cum $mountpoint
+            echo "7Quotas activated for the mountpoint# $mountpoint"
+        elif [ "$fs" == "xfs" ]; then
+            echo "7Quotas configured for the mountpoint# $mountpoint"
+            echo "7Restart the system to active quotas"
+        else
+            echo "2Quotas not supported on this filesystem : $fs"
+        fi
+    else
+        echo "0Quota option already present for# $mountpoint"
+    fi
+    tmp=`echo $f | sed "s/:/:1024:/"`
+    filesystems=${filesystems}${tmp}";"
 done
 
 # install template
 backup /etc/mmc/plugins/userquota.ini
 cat $userquota_tpl > /etc/mmc/plugins/userquota.ini
-sed -i "s/\@FILESYSTEMS\@/$tmp/" /etc/mmc/plugins/userquota.ini
+sed -i "s!\@FILESYSTEMS\@!${filesystems}!" /etc/mmc/plugins/userquota.ini
 
-# add user quota option
-# backup /etc/fstab
+echo 8Quota module is activated in the MDS interface.
+echo 7You can now configure user quotas from the MDS interface : http://@HOSTNAME@/mmc/
 
 sleep 1
 exit 0

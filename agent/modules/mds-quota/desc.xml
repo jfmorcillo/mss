@@ -12,9 +12,9 @@
         <module>mds-mmc</module>
     </deps>
     <config>
-        <text name="filesystems" require="yes" default="Home:/dev/sda6" multi="yes">
+        <text name="filesystems" require="yes" default="/dev/sda6:Home" multi="yes">
             <label>Filesystems</label>
-            <help>Specify the filesystems where you want to apply user quotas with the following format : Identifier string:Device path (eg: Root:/dev/sda1)</help>
+            <help>Specify the filesystems where you want to apply user quotas with the following format : "Device path":"Identifier string" (eg: /dev/sda1:Root)</help>
         </text>
     </config>
 </module>
