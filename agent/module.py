@@ -335,9 +335,13 @@ class ModuleManager:
         packages = []
         for module in modules:
             packages += self.modules[module].get_packages()
-        self.logger.debug("Install packages : %s" % str(packages))
-        self.EM.install_packages(packages)
-        return 0
+        if packages:
+            self.logger.debug("Install packages : %s" % str(packages))
+            self.EM.install_packages(packages)
+            return True
+        else:
+            self.logger.info("No packages to install")
+            return False
 
     @expose
     def get_config(self, modules):
