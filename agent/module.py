@@ -465,7 +465,7 @@ class Module:
         if self.root.findtext("preinst/text"):
             self._preinst = self.root.findtext("preinst/text")
         else:
-            self._preinst = " "            
+            self._preinst = " "
 
     def get_name(self):
         return _(self._name, self.id)
@@ -480,7 +480,7 @@ class Module:
     deps = property(get_deps)
 
     def get_preinst(self):
-        return _(self._preinst, self.id)
+        return _(self._preinst, self.id).strip()
     preinst = property(get_preinst)
 
     def get_packages(self):
@@ -567,7 +567,6 @@ class Module:
                     field_config['default'] = current_config.get(field_config['name'])
                 self.config.append(field_config)
 
-        print self.config
         return self.config
 
     def valid_config(self, user_config):
@@ -638,8 +637,6 @@ class Module:
         if not errors:
             self.config = validated_config
 
-        print self.config
-
         return (errors, validated_config)
 
     def info_config(self):
@@ -672,14 +669,11 @@ class Module:
                         for text in field.get('default'):
                             value += text+" "
                         value = value[:-1]
-                        print value
                         args_values.append(value)
                     # other fields
                     else:
                         args_values.append(field.get('default'))
 
-        print args_values
-                        
         return (self.path, script, args_values)
 
     def __str__(self):

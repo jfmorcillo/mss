@@ -27,13 +27,10 @@ class ExecManager:
 
     def install_packages(self, packages):
         """ launch installation of packages list """
-        #self.launch(['mss-test'])
         self.launch(["urpmi", "--auto"] + packages)
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
-        #self.launch(['mss-test'])
-        print cwd
         self.launch(["bash", script] + args, cwd=cwd)
         
     def add_media(self, name, proto, url, login=None, passwd=None):
@@ -41,11 +38,9 @@ class ExecManager:
         if login and passwd:
             self.launch(["urpmi.addmedia", "--distrib",
                 proto+"://"+login+":"+passwd+"@"+url], wait=True)
-            #self.launch(["ls", "-a"], wait=True)
         else:
             self.launch(["urpmi.addmedia", "--distrib",
                 proto+"://"+url], wait=True)
-            #self.launch(["ls", "-a"], wait=True)
         return (self.code, self.output)
 
     def launch(self, command, wait=False, cwd=None):

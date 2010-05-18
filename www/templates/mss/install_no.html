@@ -4,17 +4,14 @@
 <div class="block block-height">
     <h2>{% trans "Installation" %}</h2>
     <p>{% trans "No packages are needed for this module(s)." %}</p>
+    <p>{% trans "Click on the &laquo;Continue&raquo; button below to start the configuration." %}</p>
     <fieldset>
         <legend>{% trans "Modules" %}</legend>
         {% for module in modules %}
         <h3>{{ module.name }}</h3>
-        <p class="help">{{ module.desc }}
-        {% if module.preinst %}
-        <p class="desc">{{ module.preinst }}</p>
-        {% endif %}
+        <p class="help">{{ module.desc }}</p>
         {% endfor %}
     </fieldset>
-    <p>{% trans "Click continue to configure the selected module(s)." %}</p>
     <form id="mss" name="mss" action="{% url config %}" method="post">
         <div class="validation">
             <input id="next" type="submit" name="continue" value="{% trans "Continue" %}" />

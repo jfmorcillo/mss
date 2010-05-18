@@ -86,5 +86,7 @@ if [ $? -eq 0 ]; then echo "0Service MMC started succesfully."
 else echo "1Service MMC fails starting. Check /var/log/mmc/mmc-agent.log"; exit 1
 fi
 
+echo 8Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/
+
 sleep 1
 exit 0

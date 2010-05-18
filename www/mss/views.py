@@ -184,7 +184,6 @@ def add_medias(request):
             return render_to_response('mss/medias_add.html',
                 context_instance=RequestContext(request))
         else:
-            print fail
             return render_to_response('mss/medias.html',
                 {'auth': auths, 'types': types, 'done': done,
                 'fail': fail}, context_instance=RequestContext(request))
@@ -282,7 +281,6 @@ def config_valid(request):
     config = {}
     for name, value in request.POST.items():
         config[name] = value
-    print config
     # validate values
     err, result = xmlrpc.call('valid_config', modules_list, config)
     if err:
