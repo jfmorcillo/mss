@@ -47,7 +47,7 @@
     </script>
 {% endifnotequal %}
 <div class="log_button">
-    <input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/>
+    <input type="button" value="{% ifequal request.GET.show_log "false" %}{% trans "Show log" %}{% endifequal %}{% ifequal request.GET.show_log "true" %}{% trans "Hide log" %}{% endifequal %}" onclick="toggleLog(this)"/>
 </div>
 <div class="log" {% ifequal request.GET.show_log "false" %}style="display: none;"{% endifequal %}>{% for code, line in output %}<span 
 {% ifequal code "1" %}class="warning"{% endifequal %}

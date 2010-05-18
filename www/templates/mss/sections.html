@@ -10,9 +10,7 @@
         </div>
         <div class="block-content">
             <h2>{% trans section.name %}</h2>
-            <p class="desc">{% blocktrans with section.desc|safe as desc %}
-                {{ desc }}
-            {% endblocktrans %}</p>
+            <p class="desc">{% blocktrans with section.desc|safe as desc %}{{ desc }}{% endblocktrans %}</p>
         </div>
         <form name="mss" action="{% url section section.id %}" method="post">
             <div class="validation right">

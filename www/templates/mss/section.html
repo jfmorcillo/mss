@@ -26,10 +26,10 @@
                     <img class="field" src="{{ MEDIA_URL }}img/configured.png" alt="({% trans "Configured" %})" title="{% trans "This module is already configured." %}" />
                     {% endif %}
                     {% if m.configured %}
-                    <span class="actions">Actions
+                    <span class="actions">{% trans "Actions" %}
                         <div class="actions" style="display: none">
                             <div class="action">
-                                <input class="action" type="checkbox" name="force-{{ m.id }}" id="force-{{ m.id }}" /><label for="force-{{ m.id }}">Reinstall and reconfigure <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
+                                <input class="action" type="checkbox" name="force-{{ m.id }}" id="force-{{ m.id }}" /><label for="force-{{ m.id }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
                             </div>
                         </div>
                     </span>

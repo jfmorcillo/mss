@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MSS 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-12 16:40+0200\n"
+"POT-Creation-Date: 2010-05-14 23:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Braun Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,7 +18,7 @@ msgstr ""
 
 #: mss/config.py:7 mss/config.py:39
 msgid "Mandriva Directory Server"
-msgstr ""
+msgstr "Mandriva Directory Server"
 
 #: mss/config.py:10
 msgid ""
@@ -28,10 +28,15 @@ msgid ""
 "><br />For an overview of MDS, visit the <a href=\"http://mds.mandriva.org/"
 "\">project website</a>."
 msgstr ""
+"Mandriva Directory Server est un annuaire d'entreprise permettant de gérer "
+"les comptes et profils des utilisateurs d'un réseau, ainsi que différents "
+"services réseaux communément utilisés.<br/><br/>MDS se pilote par le biais "
+"d'une interface web moderne et conviviale. Pour plus d'informations visitez "
+"le <a href=\"http://mds.mandriva.org/\">site du projet</a>."
 
 #: mss/config.py:14
 msgid "Pulse 2"
-msgstr ""
+msgstr "Pulse 2"
 
 #: mss/config.py:17
 msgid ""
@@ -48,7 +53,7 @@ msgstr "Partenaires"
 
 #: mss/config.py:24 mss/config.py:31
 msgid "Install basic server stacks like DHCP, OpenLDAP or VPN software."
-msgstr ""
+msgstr "Installation de piles logicielles serveur comme DHCP, OpenLDAP."
 
 #: mss/config.py:28
 msgid "Advanced"
@@ -56,27 +61,27 @@ msgstr "Avancé"
 
 #: mss/config.py:41
 msgid "Required base components"
-msgstr ""
+msgstr "Composant de base requis"
 
 #: mss/config.py:46
 msgid "File server modules"
-msgstr ""
+msgstr "Modules pour serveur de fichiers"
 
 #: mss/config.py:48
 msgid "Samba, Cups and quota support"
-msgstr ""
+msgstr "Samba, Cups et support des quotas"
 
 #: mss/config.py:53
 msgid "Mail modules"
-msgstr ""
+msgstr "Modules pour serveur de mails"
 
 #: mss/config.py:55
 msgid "SMTP, IMAP server and other tools"
-msgstr ""
+msgstr "Serveur SMTP, IMAP et autres outils"
 
 #: mss/config.py:60
 msgid "Network modules"
-msgstr "Outils de gestion réseau"
+msgstr "Modules pour services réseaux"
 
 #: mss/config.py:62 mss/config.py:78
 msgid "Network managing tools"
@@ -84,56 +89,64 @@ msgstr "Outils de gestion réseau"
 
 #: mss/config.py:67
 msgid "Other modules"
-msgstr ""
+msgstr "Autres modules"
 
 #: mss/config.py:69
 msgid "Various MDS modules"
-msgstr ""
+msgstr "Divers modules MDS"
 
 #: mss/config.py:76
 msgid "Network"
 msgstr "Réseau"
 
-#: mss/config.py:82
+#: mss/config.py:83
 msgid "Authentication"
 msgstr "Authentification"
 
-#: mss/config.py:84
+#: mss/config.py:85
 msgid "Tools for managing identities"
 msgstr "Outils de gestion des identités"
 
-#: templates/base.html:24
+#: mss/config.py:90
+msgid "Databases"
+msgstr "Bases de données"
+
+#: mss/config.py:92
+msgid " "
+msgstr " "
+
+#: templates/base.html:53
 msgid "Hide log"
 msgstr "Cacher le détail"
 
-#: templates/base.html:28 templates/mss/config_log.html:45
-#: templates/mss/config_run.html:73 templates/mss/install.html:22
+#: templates/base.html:57 templates/mss/config_log.html:50
+#: templates/mss/config_run.html:78 templates/mss/install.html:22
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:42
+#: templates/base.html:71
 msgid "Logout"
 msgstr "Déconnexion"
 
 #: templates/inactive_account.html:7 templates/invalid_login.html:7
-#: templates/mss/login.html:7 templates/mss/medias.html:17
+#: templates/mss/first_time.html:9 templates/mss/login.html:7
+#: templates/mss/medias.html:17
 msgid "Login"
 msgstr "Identification"
 
 #: templates/inactive_account.html:9 templates/invalid_login.html:9
 msgid "Error : wrong password."
-msgstr "Erreur: Mauvais mot de passe."
+msgstr "Erreur : Mauvais mot de passe."
 
-#: templates/login_form.html:6 templates/mss/first_time.html:19
-#: templates/mss/medias.html:24
+#: templates/login_form.html:5 templates/mss/medias.html:24
 msgid "Password"
 msgstr "Mot de passe"
 
-#: templates/login_form.html:10
+#: templates/login_form.html:9
 msgid "Language"
 msgstr "Language"
 
-#: templates/login_form.html:17 templates/mss/sections.html:19
+#: templates/login_form.html:16 templates/mss/sections.html:17
 msgid "Enter"
 msgstr "Entrer"
 
@@ -161,19 +174,24 @@ msgstr "Ajouter un réseau"
 msgid "No configuration for this module."
 msgstr "Pas de configuration pour ce module."
 
-#: templates/mss/config.html:127 templates/mss/install_log.html:6
-#: templates/mss/medias_add.html:9 templates/mss/preinst.html:20
+#: templates/mss/config.html:127
+msgid "Required field"
+msgstr "Champ obligatoire"
+
+#: templates/mss/config.html:128 templates/mss/install_log.html:6
+#: templates/mss/install_no.html:17 templates/mss/medias_add.html:9
+#: templates/mss/preinst.html:28
 msgid "Continue"
 msgstr "Continuer"
 
-#: templates/mss/config.html:128 templates/mss/config_run.html:85
-#: templates/mss/install.html:28 templates/mss/medias.html:41
-#: templates/mss/medias_add.html:10 templates/mss/preinst.html:21
-#: templates/mss/section.html:35
+#: templates/mss/config.html:129 templates/mss/config_run.html:90
+#: templates/mss/install.html:28 templates/mss/install_no.html:18
+#: templates/mss/medias.html:40 templates/mss/medias_add.html:10
+#: templates/mss/preinst.html:30 templates/mss/section.html:47
 msgid "Back"
 msgstr "Retour"
 
-#: templates/mss/config_log.html:3 templates/mss/config_run.html:93
+#: templates/mss/config_log.html:3 templates/mss/config_run.html:98
 #: templates/mss/install.html:21 templates/mss/install.html.py:27
 msgid "Please wait..."
 msgstr "Patientez..."
@@ -182,23 +200,32 @@ msgstr "Patientez..."
 msgid "Configuration succeded."
 msgstr "Configuration réussie."
 
-#: templates/mss/config_log.html:10
+#: templates/mss/config_log.html:15
 msgid "Configuration failed."
 msgstr "Configuration échouée."
 
-#: templates/mss/config_log.html:14
+#: templates/mss/config_log.html:19
 msgid "Configuration summary"
 msgstr "Résumé de la configuration"
 
-#: templates/mss/config_log.html:22
+#: templates/mss/config_log.html:27
 msgid "Configuration warnings"
 msgstr "Avertissements de configuration"
 
-#: templates/mss/config_log.html:30
+#: templates/mss/config_log.html:35
 msgid "Configuration errors"
 msgstr "Erreurs de configuration"
 
-#: templates/mss/config_run.html:22
+#: templates/mss/config_no.html:6
+msgid "The selected modules doesn't have any configuration script."
+msgstr "Les modules selectionnés n'ont pas de script de configuration."
+
+#: templates/mss/config_no.html:7
+msgid "Installation was successful."
+msgstr "Installation réussie."
+
+#: templates/mss/config_no.html:10 templates/mss/config_run.html:22
+#: templates/mss/error.html:11
 msgid "Home page"
 msgstr "Page d'accueil"
 
@@ -226,11 +253,11 @@ msgstr ""
 msgid "Configuration in progress..."
 msgstr "Configuration en cours d'exécution..."
 
-#: templates/mss/config_run.html:72
+#: templates/mss/config_run.html:77
 msgid "Waiting..."
 msgstr "En attente..."
 
-#: templates/mss/config_run.html:84
+#: templates/mss/config_run.html:89
 msgid "Run configuration"
 msgstr "Lancer la configuration"
 
@@ -247,54 +274,32 @@ msgid ""
 "Check the service status with the <strong>service mss-rpc status</strong> "
 "command."
 msgstr ""
+"Vérifiez que le service fonctionne avec la commande <strong>service mss-rpc "
+"status</strong>"
 
-#: templates/mss/error.html:11
-msgid "Home"
-msgstr "Page d'accueil"
+#: templates/mss/first_time.html:5
+msgid "Mandriva Server Setup"
+msgstr "Mandriva Server Setup"
 
 #: templates/mss/first_time.html:6
-msgid "Mandriva Server Setup"
+msgid ""
+"Welcome on the Mandriva Server Setup. MSS aims to help system administrators "
+"to setup quickly system services such as DNS and OpenLDAP. Moreother, MSS "
+"allows you to setup <a href=\"http://mds.mandriva.org\">Mandriva Directory "
+"Server</a> and <a href=\"http://pulse2.mandriva.org\">Pulse 2</a> products "
+"easily."
 msgstr ""
+"Bienvenue sur Mandriva Server Setup. MSS a pour but d'aider les "
+"administrateurs système à configurer rapidement des services comme DNS ou "
+"OpenLDAP. De plus MSS vous permet d'installer et de configurer <a href="
+"\"http://mds.mandriva.org \">Mandriva Directory Server</a> et <a href="
+"\"http://pulse2.mandriva.org\"> Pulse 2</a> en quelques clicks."
 
 #: templates/mss/first_time.html:7
-msgid ""
-"Welcome on the Mandriva Server Setup. MSS aims to help system\n"
-"    administrators to setup quickly system services such as DNS and "
-"OpenLDAP.\n"
-"    Moreother, MSS allows you to setup <a href=\"http://mds.mandriva.org"
-"\">Mandriva \n"
-"    Directory Server</a> and <a href=\"http://pulse2.mandriva.org\">Pulse 2</"
-"a>\n"
-"     products easily."
-msgstr ""
+msgid "You can login with your root password."
+msgstr "Vous pouvez vous identifier avec le mot de passe root."
 
-#: templates/mss/first_time.html:12
-msgid ""
-"Before using Mandriva Server Setup, you have to create \n"
-"    the user that will be used for further access to MSS."
-msgstr ""
-
-#: templates/mss/first_time.html:14
-msgid "Fill in the form below to create the admin user."
-msgstr ""
-
-#: templates/mss/first_time.html:17
-msgid "First time setup"
-msgstr ""
-
-#: templates/mss/first_time.html:32
-msgid "Error: the password and the email fields can't be empty"
-msgstr ""
-
-#: templates/mss/first_time.html:35
-msgid "Error: can't create the admin user"
-msgstr ""
-
-#: templates/mss/first_time.html:40
-msgid "Create admin user"
-msgstr ""
-
-#: templates/mss/install.html:15
+#: templates/mss/install.html:15 templates/mss/install_no.html:5
 msgid "Installation"
 msgstr "Installation"
 
@@ -310,9 +315,29 @@ msgstr "Installation réussie."
 msgid "Installation failed."
 msgstr "Installation échouée."
 
-#: templates/mss/install_log.html:11
+#: templates/mss/install_log.html:12 templates/mss/install_log.html.py:15
+msgid "Installation failed. You should update your medias (urpmi.update -a)."
+msgstr ""
+"Installation échouée. Vous devriez mettre à jour vos médias (urpmi.update -"
+"a)."
+
+#: templates/mss/install_log.html:17
 msgid "Can't continue"
 msgstr "Impossible de continuer"
+
+#: templates/mss/install_no.html:6
+msgid "No packages are needed for this modules."
+msgstr "Aucun package n'est nécessaire pour ces modules."
+
+#: templates/mss/install_no.html:7
+msgid ""
+"Click on the &laquo;Continue&raquo; button below to start the configuration."
+msgstr ""
+"Cliquez sur le bouton &laquo;Continuer&raquo; pour démarrer la configuration."
+
+#: templates/mss/install_no.html:9 templates/mss/preinst.html:8
+msgid "Modules"
+msgstr "Modules"
 
 #: templates/mss/medias.html:5 templates/mss/medias_add.html:5
 msgid "Medias"
@@ -336,12 +361,10 @@ msgstr "Votre mot de passe my.mandriva.com."
 
 #: templates/mss/medias.html:32
 #, python-format
-msgid ""
-"\n"
-"            An error occured when adding the %(name)s media : %(err)s"
-msgstr ""
+msgid "An error occured when adding the %(name)s media : %(err)s"
+msgstr "Une erreur s'est produite lors de l'ajout du média %(name)s : %(err)s"
 
-#: templates/mss/medias.html:40
+#: templates/mss/medias.html:39
 msgid "Add medias"
 msgstr "Ajouter les médias"
 
@@ -357,29 +380,63 @@ msgstr "Pré-installation"
 msgid "You have selected the following modules."
 msgstr "Vous avez sélectionné les modules suivants."
 
-#: templates/mss/preinst.html:8
-msgid "Modules"
-msgstr ""
-
 #: templates/mss/preinst.html:12
 msgid "Added as a dependency"
 msgstr "Ajouté comme dépendance"
+
+#: templates/mss/preinst.html:13
+msgid "Reinstallation"
+msgstr "Ré-installation"
+
+#: templates/mss/preinst.html:18
+msgid ""
+"If other modules requires this module they may be broken after the "
+"reinstallation."
+msgstr ""
+"Si d'autres modules dépendent de ce module, ils risquent de ne plus "
+"fonctionner après la ré-installation."
+
+#: templates/mss/preinst.html:22
+msgid "No module selected."
+msgstr "Aucun module sélectionné."
 
 #: templates/mss/section.html:24
 msgid "Installed"
 msgstr "Installé"
 
-#: templates/mss/section.html:34
+#: templates/mss/section.html:24
+msgid "Packages for this module are already installed."
+msgstr "Les packages pour ce module sont déja installés."
+
+#: templates/mss/section.html:26
+msgid "Configured"
+msgstr "Configuré"
+
+#: templates/mss/section.html:26
+msgid "This module is already configured."
+msgstr "Ce module est déja configuré."
+
+#: templates/mss/section.html:29
+msgid "Actions"
+msgstr "Actions"
+
+#: templates/mss/section.html:32
+msgid "Reinstall and reconfigure"
+msgstr "Ré-installer et re-configurer"
+
+#: templates/mss/section.html:32
+msgid "Reconfigure"
+msgstr "Re-configurer"
+
+#: templates/mss/section.html:32
+msgid "Reconfigure this module."
+msgstr "Re-configurer ce module."
+
+#: templates/mss/section.html:46
 msgid "Install components"
 msgstr "Installer les composants"
 
 #: templates/mss/sections.html:13
 #, python-format
-msgid ""
-"\n"
-"                %(desc)s\n"
-"            "
-msgstr ""
-
-#~ msgid "The selected modules needs other modules to be installed"
-#~ msgstr "Les modules sélectionnés on besoin d'autres modules"
+msgid "%(desc)s"
+msgstr "%(desc)s"

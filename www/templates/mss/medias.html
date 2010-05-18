@@ -29,8 +29,7 @@
             </p>
             {% if fail %}
             {% for media in fail %}
-            <p class="error">{% blocktrans with media.name as name and media.err as err %}
-            An error occured when adding the {{ name }} media : {{ err }}{% endblocktrans %}</p>
+            <p class="error">{% blocktrans with media.name as name and media.err as err %}An error occured when adding the {{ name }} media : {{ err }}{% endblocktrans %}</p>
             {% endfor %}
             {% endif %}
         </fieldset>    
