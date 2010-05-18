@@ -27,8 +27,8 @@
 
     checkconfig = function() {
         updater = new Ajax.PeriodicalUpdater(current_install, '/mss/config/state/'+modules[current_module]+'/', {
-            frequency: 2,
-            decay: 1,
+            frequency: 1,
+            decay: 2,
             method: 'get',
             parameters: { 'show_log': show_log },
             evalScripts: true,

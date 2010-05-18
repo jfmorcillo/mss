@@ -199,9 +199,14 @@ def install(request):
     if err:
         return err
     else:
-        return render_to_response('mss/install.html',
-            {'modules': request.session['modules']},
-            context_instance=RequestContext(request))
+        if result:
+            return render_to_response('mss/install.html',
+                {'modules': request.session['modules']},
+                context_instance=RequestContext(request))
+        else:
+            return render_to_response('mss/install_no.html',
+                {'modules': request.session['modules']},
+                context_instance=RequestContext(request))
 
 @login_required
 def install_state(request):
@@ -213,16 +218,14 @@ def install_state(request):
         code = result[0]
         output = result[1]
         str_output = ""
-        for code, line in output:
-            str_output += line+"\n"
-        print str_output
+        for text_code, text in output:
+            str_output += text+"\n"
     return render_to_response('mss/install_log.html',
         {'code': code, 'output': str_output},
         context_instance=RequestContext(request))
 
 def reload_packages(request):
     err, result = xmlrpc.call('load_packages')
-    print result
     return HttpResponse("")
 
 @login_required

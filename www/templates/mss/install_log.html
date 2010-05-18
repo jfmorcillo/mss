@@ -8,6 +8,12 @@
     {% endifequal %}
     {% ifnotequal code 0 %}
         $("task").update("{% trans "Installation failed." %}");
+        {% ifequal code 13 %}
+            $("task").update("{% trans "Installation failed. You should update your medias (urpmi.update -a)." %}");
+        {% endifequal %}
+        {% ifequal code 14 %}
+            $("task").update("{% trans "Installation failed. You should update your medias (urpmi.update -a)." %}");
+        {% endifequal %}
         $("next").value = "{% trans "Can't continue" %}";
         $("back").disabled = false;
     {% endifnotequal %}

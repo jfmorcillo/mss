@@ -76,14 +76,23 @@ SECTIONS_MODULES = {
             'name': _('Network'), 
             'icon': 'bundle_network.png',            
             'desc': _('Network managing tools'), 
-            'modules': ["dns", "dhcp"] 
+            'modules': ["dns", "dhcp"],
+            'conf': {'class': 'block-2'},
         },
         { 
             'name': _('Authentication'),
             'icon': 'bundle_authentication.png',
             'desc': _('Tools for managing identities'), 
-            'modules': ["openldap"] 
+            'modules': ["openldap"],
+            'conf': {'class': 'block-2 block-last'},
         },
+        { 
+            'name': _('Databases'),
+            'icon': 'bundle_authentication.png',
+            'desc': _(' '), 
+            'modules': ["mysql"],
+            'conf': {'class': 'block-2'},
+        },        
     ],
 }
 
