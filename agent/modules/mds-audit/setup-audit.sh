@@ -69,7 +69,7 @@ cleanup
 # audit tables setup
 audittpl="templates/base-audit.ini.tpl"
 
-grep -q "[audit]" /etc/mmc/plugins/base.ini
+grep -q "\[audit\]" /etc/mmc/plugins/base.ini
 if [ $? -ne 0 ]; then
     # first audit install
     cat $audittpl >> /etc/mmc/plugins/base.ini

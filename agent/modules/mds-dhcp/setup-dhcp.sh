@@ -31,7 +31,7 @@ ln -sf /var/lib/named/var/named/ /var/named
 ###### now /etc/mmc/plugin/network.ini
 backup /etc/mmc/plugins/network.ini
 cat $base_reseau_template > /etc/mmc/plugins/network.ini
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/network.ini
+sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/network.ini
 if [ $? -eq 0 ]; then echo "0MDS configuration done. (/etc/mmc/plugins/network.ini updated)";
 else echo "2Error while configuring MDS. (/etc/mmc/plugins/network.ini)"; exit 1
 fi

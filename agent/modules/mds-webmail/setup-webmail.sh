@@ -16,6 +16,9 @@ backup /etc/roundcubemail/db.inc.php
 cat $roundcube_db_conf_template > /etc/roundcubemail/db.inc.php
 
 # setup the roundcube db
+if [ -f /var/lib/roundcubemail/sqlite.db ]; then
+    rm -f /var/lib/roundcubemail/sqlite.db
+fi
 mkdir -p /var/lib/roundcubemail
 chown apache /var/lib/roundcubemail
 sqlite /var/lib/roundcubemail/sqlite.db < /var/www/roundcubemail/SQL/sqlite.initial.sql

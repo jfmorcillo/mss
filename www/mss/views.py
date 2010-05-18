@@ -242,7 +242,7 @@ def config(request):
 
         # check if the modules needs configuration
         do_config = False
-        # check if the module has a configuration script
+        # check if the modules have configuration scripts
         skip_config = True
         for m1 in config:
             for m2 in modules:
@@ -253,7 +253,7 @@ def config(request):
                         skip_config = False
                     # store in the module list skip_config
                     # information for config_run view
-                    m2['skip_config'] = skip_config
+                    m2['skip_config'] = m1[0].get('skip_config')
         request.session['modules'] = modules
 
         # all modules does'nt have a configuration script
