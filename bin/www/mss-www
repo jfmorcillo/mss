@@ -1,0 +1,98 @@
+#!/bin/sh
+#
+# MSS - Mandriva Server Setup
+#
+# chkconfig: 345 40 60
+# description: Mandriva Server Setup Web interface
+
+### BEGIN INIT INFO
+# Provides: mss-web
+# Required-Start: $network
+# Required-Stop: $network
+# Default-Start: 3 4 5
+# Default-Stop: 0 1 6
+# Short-Description: Mandriva Server Setup Web interface
+# Description: Wizard for MDS/Pulse 2 setup and server stacks installation
+### END INIT INFO
+
+. /etc/rc.d/init.d/functions
+[ -r /etc/sysconfig/i18n ] && . /etc/sysconfig/i18n
+export LC_ALL
+export LANG
+
+prog=mss-www
+
+####################################
+# Configuration
+#
+# Your path.
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+# Location of the webserver.py file
+DAEMON=/usr/lib/python2.5/site-packages/mss/bin/www/webserver.py
+# PID file to be created. It must match with the PID file in the
+# configuration module.
+PIDFILE=/var/run/$prog.pid
+# Before running the daemon we change the current working directory to
+# this directory so to be able to include config files which are not
+# in the python path.
+BASEDIR=/usr/lib/python2.5/site-packages/mss/bin/www/
+# Config module for the webserver.
+CONFIG=/usr/lib/python2.5/site-packages/mss/bin/www/$prog
+#
+####################################
+
+CWD="`pwd`"
+
+test -f $DAEMON || exit 0
+
+set -e
+cd $BASEDIR
+
+function start () {
+    gprintf "Starting %s: " "$prog"
+    if [ -f /var/lock/subsys/$prog ]; then
+	    echo -n "mss-www is running"
+	    success
+    else
+        $DAEMON --conf $CONFIG
+	    # wait pid file to be created
+	    sleep 1
+	    touch /var/lock/subsys/$prog
+	    [ -f $PIDFILE ] && success || failure
+    fi
+    echo
+}
+
+function stop () {
+    gprintf "Stopping %s: " "$prog"
+    if [ -f /var/lock/subsys/$prog ]; then
+        kill `cat $PIDFILE` && success || failure
+        rm -f $PIDFILE
+	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog
+    else
+	    echo -n "mss-www not running ?"
+	    failure
+    fi
+    echo
+}
+
+case "$1" in
+    start)
+	start
+	;;
+    stop)
+	stop
+	;;
+    restart)
+	stop
+	start
+	;;
+    *)
+	gprintf "Usage: $0 {start|stop|restart}\n"
+	exit 1
+esac
+
+cd $CWD
+
+exit 0
+

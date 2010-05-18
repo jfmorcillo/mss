@@ -3,10 +3,11 @@
 
 import sys
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-from module import ModuleManager
-from process import ExecManager
-from translation import TranslationManager
-from daemon import Daemon
+from mss.agent.module import ModuleManager
+from mss.agent.process import ExecManager
+from mss.agent.translation import TranslationManager
+from mss.agent.daemon import Daemon
+from mss.agent.auth import authenticate
 
 class MSS(Daemon):
     def run(self):
@@ -16,10 +17,11 @@ class MSS(Daemon):
         server = SimpleXMLRPCServer(("localhost", 7000), allow_none=True,
             logRequests=False)
         server.register_instance(MM)
+        server.register_function(authenticate)
         server.serve_forever()
 
 if __name__ == "__main__":
-    daemon = MSS('/var/run/mss.pid')
+    daemon = MSS('/var/run/mss-agent.pid')
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
             daemon.start()
