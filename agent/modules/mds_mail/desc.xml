@@ -1,4 +1,4 @@
-<module id="mds-mail">
+<module id="mds_mail">
     <name>Mail server</name>
     <desc>Mail/POP/IMAP server with virtual domains, anti-virus and anti-spam toolkits</desc>
     <packages>

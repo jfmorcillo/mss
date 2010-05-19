@@ -1,4 +1,4 @@
-<module id="mds-cups">
+<module id="mds_cups">
     <name>Printing server</name>
     <desc>Install and configure network printers</desc>
     <packages>

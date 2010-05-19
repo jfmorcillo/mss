@@ -1,4 +1,4 @@
-<module id="mds-mmc">
+<module id="mds_mmc">
     <name>MDS main components</name>
     <desc>MMC web interface and OpenLDAP directory</desc>
     <packages>

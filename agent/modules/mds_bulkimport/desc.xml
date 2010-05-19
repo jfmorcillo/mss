@@ -1,4 +1,4 @@
-<module id="mds-bulkimport">
+<module id="mds_bulkimport">
     <name>Bulk import of accounts</name>
     <desc>Load/Modify accounts in MDS from CSV files</desc>
     <packages>

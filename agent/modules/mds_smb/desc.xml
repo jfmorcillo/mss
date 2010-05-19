@@ -1,4 +1,4 @@
-<module id="mds-smb">
+<module id="mds_smb">
     <name>Samba PDC and file server</name>
     <desc>Share files and printers and authenticate users on a Microsoft network</desc>
     <packages>

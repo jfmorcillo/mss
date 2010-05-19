@@ -1,4 +1,4 @@
-<module id="mds-webmail">
+<module id="mds_webmail">
     <name>Webmail server</name>
     <desc>Integrate roundcube for your MDS installation</desc>
     <packages>

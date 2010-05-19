@@ -1,4 +1,4 @@
-<module id="mds-audit">
+<module id="mds_audit">
     <name>Audit module for MDS</name>
     <desc>Track any changes made on the MDS interface</desc>
     <deps>

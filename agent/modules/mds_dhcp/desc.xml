@@ -1,4 +1,4 @@
-<module id="mds-dhcp">
+<module id="mds_dhcp">
     <name>DHCP server</name>
     <desc>Configure your client computers IP settings</desc>
     <packages>

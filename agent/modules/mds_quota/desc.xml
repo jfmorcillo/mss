@@ -1,4 +1,4 @@
-<module id="mds-quota">
+<module id="mds_quota">
     <name>User quota support</name>
     <desc>Set file quotas on the file server</desc>
     <packages>

@@ -1,4 +1,4 @@
-<module id="mds-dns">
+<module id="mds_dns">
     <name>DNS server</name>
     <desc>Resolve computer names on your network</desc>
     <packages>
