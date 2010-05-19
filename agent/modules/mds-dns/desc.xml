@@ -22,4 +22,16 @@
             <help>Forward external DNS queries to DNS of your choice</help>
         </text>
     </config>
+    <text>MDS configuration done. (/etc/mmc/plugins/network.ini updated)</text>
+    <text>Error while configuring MDS. (/etc/mmc/plugins/network.ini)</text>
+    <text>No networks are authorized to make external queries.</text>
+    <text>Service MMC reloaded succesfully.</text>
+    <text>Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log</text>
+    <text>Service named reloaded succesfully.</text>
+    <text>Service named fails restarting. Check /var/log/syslog</text>
+    <text>DNS module is activated in the MDS interface.</text>
+    <text>Your DNS will forward external queries to : </text>
+    <text>The following networks are able to query your DNS for external domains : </text>
+    <text>You can now add DNS zones from the MDS interface : http://@HOSTNAME@/mmc/</text>
+    <text>Make sure you have enabled the DNS service (port 53) on your firewall.</text>
 </module>

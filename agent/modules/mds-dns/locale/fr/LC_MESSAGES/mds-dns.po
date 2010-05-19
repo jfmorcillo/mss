@@ -1,0 +1,117 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-05-19 10:44+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/mds-dns/desc.xml:2(name)
+msgid "DNS server"
+msgstr "Serveur DNS"
+
+#: modules/mds-dns/desc.xml:3(desc)
+msgid "Resolve computer names on your network"
+msgstr "Résous les noms de machine sur votre réseau"
+
+#: modules/mds-dns/desc.xml:6(rpm)
+msgid "bind"
+msgstr ""
+
+#: modules/mds-dns/desc.xml:7(rpm)
+msgid "bind-utils"
+msgstr ""
+
+#: modules/mds-dns/desc.xml:8(rpm)
+msgid "mmc-web-network"
+msgstr ""
+
+#: modules/mds-dns/desc.xml:9(rpm)
+msgid "python-mmc-network"
+msgstr ""
+
+#: modules/mds-dns/desc.xml:13(module)
+msgid "mds-mmc"
+msgstr ""
+
+#: modules/mds-dns/desc.xml:17(label)
+msgid "My networks"
+msgstr "Mes réseaux"
+
+#: modules/mds-dns/desc.xml:18(help)
+msgid ""
+"Specify which networks are authorized to resolve external queries with your "
+"DNS server (recursion). eg: 192.168.0.0/255.255.255.0."
+msgstr ""
+"Spécifiez les réseaux qui sont autorisés à effectuer des requêtes externes "
+"sur votre serveur DNS (récursion). ex: 192.168.0.0/255.255.255.0"
+
+#: modules/mds-dns/desc.xml:21(label)
+msgid "Forwarders"
+msgstr "Relais"
+
+#: modules/mds-dns/desc.xml:22(help)
+msgid "Forward external DNS queries to DNS of your choice"
+msgstr "Relaie les requêtes externes vers les serveurs DNS de votre choix."
+
+#: modules/mds-dns/desc.xml:25(text)
+msgid "MDS configuration done. (/etc/mmc/plugins/network.ini updated)"
+msgstr "Configuration de MDS faite. (/etc/mmc/plugins/network.ini mis à jour)"
+
+#: modules/mds-dns/desc.xml:26(text)
+msgid "Error while configuring MDS. (/etc/mmc/plugins/network.ini)"
+msgstr "Erreur lors de la configuration de MDS. (/etc/mmc/plugins/network.ini)"
+
+#: modules/mds-dns/desc.xml:27(text)
+msgid "No networks are authorized to make external queries."
+msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
+
+#: modules/mds-dns/desc.xml:28(text)
+msgid "Service MMC reloaded succesfully."
+msgstr "Le service MMC a redémarré."
+
+#: modules/mds-dns/desc.xml:29(text)
+msgid "Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"
+msgstr "La service MMC n'a pas redémarré. Vérifiez /var/log/mmc/mmc-agent.log"
+
+#: modules/mds-dns/desc.xml:30(text)
+msgid "Service named reloaded succesfully."
+msgstr "Le service named a redémarré."
+
+#: modules/mds-dns/desc.xml:31(text)
+msgid "Service named fails restarting. Check /var/log/syslog"
+msgstr "Le service named n'a pas redémarré. Vérifiez /var/log/syslog"
+
+#: modules/mds-dns/desc.xml:32(text)
+msgid "DNS module is activated in the MDS interface."
+msgstr "Le module DNS est activé sur l'interface MDS."
+
+#: modules/mds-dns/desc.xml:33(text)
+msgid "Your DNS will forward external queries to :"
+msgstr "Votre DNS relaie les requêtes externes a :"
+
+#: modules/mds-dns/desc.xml:34(text)
+msgid ""
+"The following networks are able to query your DNS for external domains :"
+msgstr ""
+"Les réseaux suivants sont autorisés à effectuer des requêtes externes :"
+
+#: modules/mds-dns/desc.xml:35(text)
+msgid ""
+"You can now add DNS zones from the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr ""
+"Vous pouvez gérer vos zones DNS depuis l'interface MDS : http://@HOSTNAME@/"
+"mmc/"
+
+#: modules/mds-dns/desc.xml:36(text)
+msgid "Make sure you have enabled the DNS service (port 53) on your firewall."
+msgstr ""
+"Assurez vous d'avoir activé le service DNS (port 53) sur votre firewall."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds-dns/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

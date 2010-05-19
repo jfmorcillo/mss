@@ -12,4 +12,8 @@
             <rpm>hplip</rpm>
         </target>
     </packages>
+    <text>Service Cups reloaded succesfully.</text>
+    <text>Service Cups fails restarting. Check</text>
+    <text>Cups is running.</text>
+    <text>You can add new printers from local Cups web interface : http://localhost:631/</text>
 </module>

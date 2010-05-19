@@ -15,4 +15,11 @@
             <help>Mysql user for the audit database</help>
         </password>
     </config>
+    <text>Cleaning up...</text>
+    <text>The current Mysql password is not valid.</text>
+    <text>Create audit database</text>
+    <text>Grant privileges on database</text>
+    <text>Service MMC started succesfully.</text>
+    <text>Service MMC fails starting. Check</text>
+    <text>Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/</text>
 </module>

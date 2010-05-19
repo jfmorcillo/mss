@@ -7,5 +7,4 @@
       <rpm>bind-utils</rpm>
     </target>
   </packages>
-  <config>no</config>
 </module>

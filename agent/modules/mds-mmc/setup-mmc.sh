@@ -78,7 +78,7 @@ chgrp ldap $acl_file
 $SLAPTEST -u -f $myslapdconf > /dev/null 2>&1
 if [ $? -ne 0 ]; then
 	echo "2OpenLDAP configuration file was generated with errors."
-	echo "2Aborting. File used was $myslapdconf"
+	echo "2Aborting. File used was# $myslapdconf"
 	rm -f $myldapconf
 	exit 1
 else
@@ -97,8 +97,8 @@ cat $base_ldif_template | sed -e "\
 $SLAPADD -u -f $myslapdconf < $myldif
 if [ $? -ne 0 ]; then
 	echo "2Database loading failed during test run."
-	echo "2Ldif file used : $myldif"
-	echo "2slapd.conf file used: $myslapdconf"
+	echo "2Ldif file used:# $myldif"
+	echo "2slapd.conf file used:# $myslapdconf"
 	rm -f $myldapconf
 	exit 1
 else
@@ -107,18 +107,18 @@ fi
 
 # let's go for real now
 /sbin/service ldap stop > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service ldap stopped succesfully."
-else echo "2Service ldap fails stopping. Check /var/log/syslog"; exit 1
+if [ $? -eq 0 ]; then echo "0Service# ldap #stopped succesfully."
+else echo "2Service# ldap #fails stopping. Check# /var/log/syslog"; exit 1
 fi
 /sbin/service mmc-agent stop > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service mmc stopped succesfully."
-else echo "2Service mmc fails stopping. Check /var/log/mmc/mmc-agent"; exit 1
+if [ $? -eq 0 ]; then echo "0Service# mmc #stopped succesfully."
+else echo "2Service# mmc #fails stopping. Check# /var/log/mmc/mmc-agent"; exit 1
 fi
 
 backup_db=`clean_database /var/lib/ldap`
 backup_slapd_conf=`mybackup /etc/openldap/slapd.conf`
 backup_ldap_conf=`mybackup /etc/openldap/ldap.conf`
-echo "0Writing /etc/openldap/slapd.conf and /etc/openldap/ldap.conf..."
+echo "0Writing# /etc/openldap/slapd.conf #and# /etc/openldap/ldap.conf..."
 cat $myslapdconf > /etc/openldap/slapd.conf; rm -f $myslapdconf
 cat $myldapconf > /etc/openldap/ldap.conf; rm -f $myldapconf
 
@@ -126,29 +126,29 @@ echo "0Loading database..."
 $SLAPADD < $myldif
 if [ $? -ne 0 ]; then
 	echo "2Something went wrong while initializing the database"
-	echo "2Aborting. Your previous database is at $backup_db"
+	echo "2Aborting. Your previous database is at# $backup_db"
 	echo "2Your original /etc/openldap/{slapd,ldap}.conf files"
-	echo "2were backed up as $backup_slapd_conf and"
+	echo "2were backed up as# $backup_slapd_conf #and"
 	echo "2$backup_ldap_conf, respectively."
 	exit 1
 else
     echo "0Database loaded successfully."
-    echo "0Your previous database directory has been backed up as #$backup_db."
+    echo "0Your previous database directory has been backed up as# $backup_db."
 fi
 
 /sbin/service ldap restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service ldap started succesfully."
-else echo "1Service ldap fails starting. Check /var/log/syslog"; exit 1
+if [ $? -eq 0 ]; then echo "0Service# ldap #started succesfully."
+else echo "1Service# ldap #fails starting. Check# /var/log/syslog"; exit 1
 fi
 
 /sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service MMC started succesfully."
-else echo "1Service MMC fails starting. Check /var/log/mmc/mmc-agent.log"; exit 1
+if [ $? -eq 0 ]; then echo "0Service# MMC #started succesfully."
+else echo "1Service# MMC #fails starting. Check# /var/log/mmc/mmc-agent.log"; exit 1
 fi
 
 /sbin/service httpd restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service httpd started succesfully."
-else echo "1Service httpd fails starting. Check /var/log/syslog"; exit 1
+if [ $? -eq 0 ]; then echo "0Service# httpd #started succesfully."
+else echo "1Service# httpd #fails starting. Check# /var/log/syslog"; exit 1
 fi
 
 echo "8Mandriva Directory Server is running."

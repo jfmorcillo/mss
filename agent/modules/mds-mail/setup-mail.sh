@@ -122,7 +122,7 @@ if [ $? -eq 0 ]; then echo "0Razor configured successfully."
 else 
 	su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover' 2>&1 > /dev/null
 	if [ $? -eq 0 ]; then echo "0Razor configured successfully."
-	else echo "1Failed to register razor. Try to run as root : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
+	else echo "1Failed to register razor. Try to run as root# : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
 	fi
 fi
 # no pyzor on mandriva :(
@@ -133,28 +133,28 @@ backup /etc/mail/spamassassin/local.cf
 cat $spamassassin_template > /etc/mail/spamassassin/local.cf
 
 /sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service MMC reloaded succesfully."
-else echo "2Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service #MMC# reloaded succesfully."
+else echo "2Service #MMC# fails restarting. Check #/var/log/mmc/mmc-agent.log"; sleep 1; exit 1
 fi
 
 /sbin/service amavisd restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service amavis reloaded succesfully."
-else echo "2Service amavis fails restarting. Check /var/log/syslog"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service #amavis# reloaded succesfully."
+else echo "2Service #amavis# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
 fi
 
 /sbin/service clamd restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service clamd reloaded succesfully."
-else echo "2Service clamd fails restarting. Check /var/log/syslog"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service #clamd# reloaded succesfully."
+else echo "2Service #clamd# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
 fi
 
 /sbin/service postfix restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service postfix reloaded succesfully."
-else echo "2Service postfix fails restarting. Check /var/log/syslog"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service #postfix# reloaded succesfully."
+else echo "2Service #postfix# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
 fi
 
 /sbin/service dovecot restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service dovecot reloaded succesfully."
-else echo "2Service dovecot fails restarting. Check /var/log/syslog"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service #dovecot# reloaded succesfully."
+else echo "2Service #dovecot# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
 fi
 
 echo "8Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"

@@ -33,7 +33,37 @@
             <help>Password for the Microsoft domain administrator.</help>
         </password>
     </config>
-    <configtext>
-        <text>Make sure you have enabled Samba services on your firewall.</text>
-    </configtext>
+    <text>Samba configuration done. (/etc/samba/smb.conf updated)</text>
+    <text>Error while configuring Samba. (/etc/samba/smb.conf)</text>
+    <text>Samba password set.</text>
+    <text>Error while setting Samba password. (smbpasswd)</text>
+    <text>Service Samba reloaded succesfully.</text>
+    <text>Service Samba fails restarting.</text>
+    <text>lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)</text>
+    <text>Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)</text>
+    <text>smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf updated)</text>
+    <text>Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf)</text>
+    <text>Directory populated for Samba.</text>
+    <text>Error while populating directory.</text>
+    <text>Service Samba reloaded succesfully.</text>
+    <text>Service Samba fails restarting.</text>
+    <text>MDS Samba configuration done.</text>
+    <text>Error while configuring MDS Samba module.</text>
+    <text>Users are now created in the Domain Users group by default. If users were created, they still remains in the users group.</text>
+    <text>Service MMC reloaded succesfully.</text>
+    <text>Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log</text>
+    <text>Successfully granted rights for Domain Admins group.</text>
+    <text>Failed granted rigths for Domain Admins group</text>
+    <text>Your filesystem does not support ACL. You won't be able to set ACLs on Samba shares.</text>
+    <text>For ext3 filesystems you have to add the acl option in /etc/fstab.</text>
+    <text>Acls supported by filesystem.</text>
+    <text>Domain name :</text>
+    <text>Server name :</text>
+    <text>Domain administrator :</text>
+    <text>- a public share is created in /home/samba/shares/public</text>
+    <text>- you can create a logon.bat script in /home/samba/netlogon</text>
+    <text>Make sure you have enabled Samba services on your firewall.</text>
+    <text>You can now use the MDS interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).</text>
+    <text>Profiles are disabled by default.</text>
+    <text>- edit /etc/samba/smb.conf manually to activate them.</text>
 </module>

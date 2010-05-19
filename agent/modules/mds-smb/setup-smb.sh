@@ -86,7 +86,7 @@ fi
 
 echo -e "$smbpass\n$smbpass" | smbldap-populate -m 512 -k 512 -a "$smbadmin"
 if [ $? -eq 0 ]; then echo "0Directory populated for Samba.";
-else echo "2Error while populating directory. (smbldap-populate -m 512 -k 512 -a admin)"; exit 1
+else echo "2Error while populating directory.# (smbldap-populate -m 512 -k 512 -a $smbadmin)"; exit 1
 fi
 
 /sbin/service smb restart > /dev/null 2>&1
@@ -136,9 +136,9 @@ fi
 rm -f /home/samba/test
 
 # confirmation
-echo "8Domain name : #$smbdomain"
-echo "8Server name : #$smbnetbios"
-echo "8Domain administrator : #$smbadmin"
+echo "8Domain name :# $smbdomain"
+echo "8Server name :# $smbnetbios"
+echo "8Domain administrator :# $smbadmin"
 echo 7- a public share is created in /home/samba/shares/public
 echo 7- you can create a logon.bat script in /home/samba/netlogon
 echo 8Make sure you have enabled Samba services on your firewall.

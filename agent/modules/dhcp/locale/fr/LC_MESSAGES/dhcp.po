@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.0\n"
-"POT-Creation-Date: 2010-04-30 17:13+0200\n"
+"POT-Creation-Date: 2010-05-19 10:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -17,11 +17,7 @@ msgstr "Serveur DHCP"
 msgid "Configure your clients IP settings with dhcpd"
 msgstr "Configuration IP de vos clients avec le logiciel dhcpd"
 
-#: modules/dhcp/desc.xml:4(icon)
-msgid "dhcp.png"
-msgstr ""
-
-#: modules/dhcp/desc.xml:7(rpm)
+#: modules/dhcp/desc.xml:6(rpm)
 msgid "dhcp-server"
 msgstr ""
 

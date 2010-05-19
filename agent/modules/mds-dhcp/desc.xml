@@ -11,4 +11,14 @@
     <deps>
         <module>mds-mmc</module>
     </deps>
+    <text>MMC interface is not installed.</text>
+    <text>Can't continue.</text>
+    <text>MDS configuration done. (/etc/mmc/plugins/network.ini updated)</text>
+    <text>Error while configuring MDS. (/etc/mmc/plugins/network.ini)</text>
+    <text>Configuration of dhcp-server done. (/etc/dhcpd.conf updated)</text>
+    <text>Error while configuring dhcp-server. (/etc/dhcpd.conf)</text>
+    <text>Service MMC reloaded succesfully.</text>
+    <text>Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log</text>
+    <text>DHCP module is activated in the MDS interface.</text>
+    <text>You can now configure your DHCP settings from the MDS interface : http://@HOSTNAME@/mmc/</text>
 </module>

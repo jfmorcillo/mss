@@ -9,7 +9,7 @@ fi
 
 /sbin/service cups restart 2>&1 > /dev/null
 if [ $? -eq 0 ]; then echo "0Service Cups reloaded succesfully."
-else echo "2Service Cups fails restarting. Check /var/log/syslog"; sleep 1; exit 1
+else echo "2Service Cups fails restarting. Check# /var/log/syslog"; sleep 1; exit 1
 fi
 
 chkconfig cups on

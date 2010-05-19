@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-05-08 19:59+0200\n"
+"POT-Creation-Date: 2010-05-19 10:44+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,64 +9,153 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mds-mmc/desc.xml:2(name) 
+#: modules/mds-mmc/desc.xml:2(name)
 msgid "MDS main components"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:3(desc) 
+#: modules/mds-mmc/desc.xml:3(desc)
 msgid "MMC web interface and OpenLDAP directory"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:6(rpm) 
+#: modules/mds-mmc/desc.xml:6(rpm)
 msgid "mmc-web-base"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:7(rpm) 
+#: modules/mds-mmc/desc.xml:7(rpm)
 msgid "python-mmc-base"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:8(rpm) 
+#: modules/mds-mmc/desc.xml:8(rpm)
 msgid "mmc-agent"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:9(rpm) 
+#: modules/mds-mmc/desc.xml:9(rpm)
 msgid "openldap-servers"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:10(rpm) 
+#: modules/mds-mmc/desc.xml:10(rpm)
 msgid "nss_ldap"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:11(rpm) 
+#: modules/mds-mmc/desc.xml:11(rpm)
 msgid "openldap-clients"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:12(rpm) 
+#: modules/mds-mmc/desc.xml:12(rpm)
 msgid "pam_ldap"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:13(rpm) 
+#: modules/mds-mmc/desc.xml:13(rpm)
 msgid "openldap-mandriva-dit"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:18(label) 
+#: modules/mds-mmc/desc.xml:18(label)
 msgid "MDS domain name"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:19(help) 
-msgid "Usually the domain name (eg: domain.com) managed with MDS. This define the LDAP root."
+#: modules/mds-mmc/desc.xml:19(help)
+msgid ""
+"Usually the domain name (eg: domain.com) managed with MDS. This define the "
+"LDAP root."
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:22(label) 
+#: modules/mds-mmc/desc.xml:22(label)
 msgid "MDS password"
 msgstr ""
 
-#: modules/mds-mmc/desc.xml:23(help) 
+#: modules/mds-mmc/desc.xml:23(help)
 msgid "The MDS admin password."
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2.
-#: modules/mds-mmc/desc.xml:0(None) 
-msgid "translator-credits"
+#: modules/mds-mmc/desc.xml:26(text)
+msgid "Error at generating password"
 msgstr ""
 
+#: modules/mds-mmc/desc.xml:27(text)
+msgid "Password successfully generated"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:28(text)
+msgid "OpenLDAP configuration file was generated with errors."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:29(text)
+msgid "Aborting. File used was"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:30(text)
+msgid "OpenLDAP configuration file successfully generated."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:31(text)
+msgid "Database loading failed during test run."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:32(text)
+msgid "Ldif file used:"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:33(text)
+msgid "slapd.conf file used:"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:34(text)
+msgid "Database loading test successfull."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:35(text)
+msgid "Service"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:36(text)
+msgid "stopped succesfully."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:37(text)
+msgid "fails stopping. Check"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:38(text)
+msgid "Writing"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:39(text)
+msgid "and"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:40(text)
+msgid "Loading database..."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:41(text)
+msgid "Database loaded successfully."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:42(text)
+msgid "Your previous database directory has been backed up as"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:43(text)
+msgid "started succesfully."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:44(text)
+msgid "fails starting. Check"
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:45(text)
+msgid "Mandriva Directory Server is running."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:46(text)
+msgid "You can log in the MDS interface from http://@HOSTNAME@/mmc/."
+msgstr ""
+
+#: modules/mds-mmc/desc.xml:47(text)
+msgid "MDS administrator : root"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds-mmc/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

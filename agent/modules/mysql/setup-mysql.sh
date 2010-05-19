@@ -77,8 +77,12 @@ get_root_password() {
 	rootpass=$1
 	make_config
 	do_query ""
-	status=$?
-    echo "OK, successfully used password, moving on..."
+    if [ $? -eq 0 ]; then
+        echo "OK, successfully used password, moving on..."
+    else
+        echo "1Invalid current Mysql password."
+        interrupt
+    fi
 }
 
 set_root_password() {
@@ -94,9 +98,8 @@ set_root_password() {
 	rootpass=$1
 	make_config
     else
-	echo "Password update failed!"
-	echo "2The current Mysql password is not valid."
-	exit 1
+	echo "2Password update failed!"
+	interrupt
     fi
 
     return 0
@@ -109,7 +112,7 @@ remove_anonymous_users() {
 	echo " ... Success!"
     else
 	echo " ... Failed!"
-	exit 1
+	interrupt
     fi
 
     return 0

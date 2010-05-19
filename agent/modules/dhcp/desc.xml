@@ -6,5 +6,4 @@
       <rpm>dhcp-server</rpm>
     </target>
   </packages>
-  <config>no</config>
 </module>

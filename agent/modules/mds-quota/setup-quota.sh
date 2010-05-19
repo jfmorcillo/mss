@@ -19,16 +19,16 @@ for f in $fss; do
         echo "0Add usrquota option for# $mountpoint"
         sed -i "s/^\(UUID=${uuid}[[:space:]]\+[^ ]\+[[:space:]]\+[^ ]\+[[:space:]]\+\)\([^ ]\+\)\(.*\)$/\1\2,usrquota\3/" /etc/fstab
         if [ "$fs" == "ext3" ]; then
-            echo "0Reload# $mountpoint"
+            echo "0Remount# $mountpoint"
             mount -o remount,usrquota $mountpoint
             echo "0Create quota files for# $mountpoint"
             quotacheck -cum $mountpoint
-            echo "7Quotas activated for the mountpoint# $mountpoint"
+            echo "7Quotas activated on# $mountpoint"
         elif [ "$fs" == "xfs" ]; then
-            echo "7Quotas configured for the mountpoint# $mountpoint"
+            echo "7Quotas configured on# $mountpoint"
             echo "7Restart the system to active quotas"
         else
-            echo "2Quotas not supported on this filesystem : $fs"
+            echo "2Quotas not supported on this filesystem :# $fs"
         fi
     else
         echo "0Quota option already present for# $mountpoint"
