@@ -11,11 +11,11 @@ msgstr ""
 
 #: modules/mds-mmc/desc.xml:2(name)
 msgid "MDS main components"
-msgstr ""
+msgstr "Composants de base du MDS"
 
 #: modules/mds-mmc/desc.xml:3(desc)
 msgid "MMC web interface and OpenLDAP directory"
-msgstr ""
+msgstr "Interface web MMC et annuaire OpenLDAP"
 
 #: modules/mds-mmc/desc.xml:6(rpm)
 msgid "mmc-web-base"
@@ -51,21 +51,23 @@ msgstr ""
 
 #: modules/mds-mmc/desc.xml:18(label)
 msgid "MDS domain name"
-msgstr ""
+msgstr "Nom de domaine du MDS"
 
 #: modules/mds-mmc/desc.xml:19(help)
 msgid ""
 "Usually the domain name (eg: domain.com) managed with MDS. This define the "
 "LDAP root."
 msgstr ""
+"Généralement le nom de domaire géré par MDS (ex: domaine.com). Ceci définit "
+"la racine LDAP."
 
 #: modules/mds-mmc/desc.xml:22(label)
 msgid "MDS password"
-msgstr ""
+msgstr "Mot de passe MDS"
 
 #: modules/mds-mmc/desc.xml:23(help)
 msgid "The MDS admin password."
-msgstr ""
+msgstr "Le mot de passe de l'administrateur MDS."
 
 #: modules/mds-mmc/desc.xml:26(text)
 msgid "Error at generating password"
@@ -73,87 +75,87 @@ msgstr ""
 
 #: modules/mds-mmc/desc.xml:27(text)
 msgid "Password successfully generated"
-msgstr ""
+msgstr "Mot de passe généré"
 
 #: modules/mds-mmc/desc.xml:28(text)
 msgid "OpenLDAP configuration file was generated with errors."
-msgstr ""
+msgstr "Configuration d'OpenLDAP générée avec des erreurs."
 
 #: modules/mds-mmc/desc.xml:29(text)
 msgid "Aborting. File used was"
-msgstr ""
+msgstr "Arrêt. Le fichier utilisé était"
 
 #: modules/mds-mmc/desc.xml:30(text)
 msgid "OpenLDAP configuration file successfully generated."
-msgstr ""
+msgstr "Configuration d'OpenLDAP générée."
 
 #: modules/mds-mmc/desc.xml:31(text)
 msgid "Database loading failed during test run."
-msgstr ""
+msgstr "Chargement de la base de donnée échoué pendant la phase de test."
 
 #: modules/mds-mmc/desc.xml:32(text)
 msgid "Ldif file used:"
-msgstr ""
+msgstr "Fichier LDIF utilisé:"
 
 #: modules/mds-mmc/desc.xml:33(text)
 msgid "slapd.conf file used:"
-msgstr ""
+msgstr "Fichier slapd.conf utilisé:"
 
 #: modules/mds-mmc/desc.xml:34(text)
 msgid "Database loading test successfull."
-msgstr ""
+msgstr "Le chargement de test de la base a réussi."
 
 #: modules/mds-mmc/desc.xml:35(text)
 msgid "Service"
-msgstr ""
+msgstr "Le service"
 
 #: modules/mds-mmc/desc.xml:36(text)
 msgid "stopped succesfully."
-msgstr ""
+msgstr "est arrêté."
 
 #: modules/mds-mmc/desc.xml:37(text)
 msgid "fails stopping. Check"
-msgstr ""
+msgstr "ne s'est pas arrêté. Vérifiez"
 
 #: modules/mds-mmc/desc.xml:38(text)
 msgid "Writing"
-msgstr ""
+msgstr "Ecrit"
 
 #: modules/mds-mmc/desc.xml:39(text)
 msgid "and"
-msgstr ""
+msgstr "et"
 
 #: modules/mds-mmc/desc.xml:40(text)
 msgid "Loading database..."
-msgstr ""
+msgstr "Charge la base de donnée..."
 
 #: modules/mds-mmc/desc.xml:41(text)
 msgid "Database loaded successfully."
-msgstr ""
+msgstr "Chargement réussi."
 
 #: modules/mds-mmc/desc.xml:42(text)
 msgid "Your previous database directory has been backed up as"
-msgstr ""
+msgstr "Votre ancienne base de donnée à été sauvegarde sous"
 
 #: modules/mds-mmc/desc.xml:43(text)
 msgid "started succesfully."
-msgstr ""
+msgstr "a démarré."
 
 #: modules/mds-mmc/desc.xml:44(text)
 msgid "fails starting. Check"
-msgstr ""
+msgstr "n'a pas démarré. Vérifiez"
 
 #: modules/mds-mmc/desc.xml:45(text)
 msgid "Mandriva Directory Server is running."
-msgstr ""
+msgstr "Mandriva Directory Server est en exécution."
 
 #: modules/mds-mmc/desc.xml:46(text)
 msgid "You can log in the MDS interface from http://@HOSTNAME@/mmc/."
-msgstr ""
+msgstr "Vous pouvez accéder l'interface de MDS sur http://@HOSTNAME@/mmc/."
 
 #: modules/mds-mmc/desc.xml:47(text)
 msgid "MDS administrator : root"
-msgstr ""
+msgstr "Administrateur MDS : root"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds-mmc/desc.xml:0(None)

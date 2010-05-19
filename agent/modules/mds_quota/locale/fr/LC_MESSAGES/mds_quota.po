@@ -11,11 +11,11 @@ msgstr ""
 
 #: modules/mds-quota/desc.xml:2(name)
 msgid "User quota support"
-msgstr ""
+msgstr "Support des quotas utilisateur"
 
 #: modules/mds-quota/desc.xml:3(desc)
 msgid "Set file quotas on the file server"
-msgstr ""
+msgstr "Positionne des quotas sur le serveur de fichiers"
 
 #: modules/mds-quota/desc.xml:6(rpm)
 msgid "quota"
@@ -42,48 +42,53 @@ msgid ""
 "Specify the filesystems where you want to apply user quotas with the "
 "following format : \"Device path\":\"Identifier string\" (eg: /dev/sda1:Root)"
 msgstr ""
+"Spécifiez les systèmes de fichiers sur lesquels vous voulez appliquer des "
+"quotas utilisateur avec le format suivant : \"Fichier de périphérique\":\""
+"Description\" (ex: /dev/sda1:Root)"
 
 #: modules/mds-quota/desc.xml:20(text)
 msgid "Add usrquota option for"
-msgstr ""
+msgstr "Ajout de l'option usrquota sur"
 
 #: modules/mds-quota/desc.xml:21(text)
 msgid "Remount"
-msgstr ""
+msgstr "Re-montage de"
 
 #: modules/mds-quota/desc.xml:22(text)
 msgid "Create quota files for"
-msgstr ""
+msgstr "Création des fichiers de quota sur"
 
 #: modules/mds-quota/desc.xml:23(text)
 msgid "Quotas activated on"
-msgstr ""
+msgstr "Les quotas sont activés sur"
 
 #: modules/mds-quota/desc.xml:24(text)
 msgid "Quotas configured on"
-msgstr ""
+msgstr "Les quotas sont configurés sur"
 
 #: modules/mds-quota/desc.xml:25(text)
 msgid "Restart the system to active quotas"
-msgstr ""
+msgstr "Redémarrez le serveur pour activer la gestion des quotas"
 
 #: modules/mds-quota/desc.xml:26(text)
 msgid "Quotas not supported on this filesystem :"
-msgstr ""
+msgstr "Les quotas ne sont pas supportés sur les systèmes de fichiers :"
 
 #: modules/mds-quota/desc.xml:27(text)
 msgid "Quota option already present for"
-msgstr ""
+msgstr "Option de quota déjà présente sur"
 
 #: modules/mds-quota/desc.xml:28(text)
 msgid "Quota module is activated in the MDS interface."
-msgstr ""
+msgstr "Le module de quotas est activé sur l'interface MDS"
 
 #: modules/mds-quota/desc.xml:29(text)
 msgid ""
 "You can now configure user quotas from the MDS interface : http://@HOSTNAME@/"
 "mmc/"
 msgstr ""
+"Vous pouvez définir des quotas sur les utilisateurs et groupes depuis "
+"l'interface MDS : http://@HOSTNAME@/"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds-quota/desc.xml:0(None)
