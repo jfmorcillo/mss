@@ -160,7 +160,7 @@ msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created, they still remains in the users group."
 msgstr ""
-msgstr "Les utilisateurs auront désormais comme groupe principal le groupe "
+"Les utilisateurs auront désormais comme groupe principal le groupe "
 "\"Domain Users\" (Utilisateurs du domaine). Les anciens utilisateurs ne sont "
 "pas mis à jour. Ils appartiennent toujours au groupe \"users\"."
 
