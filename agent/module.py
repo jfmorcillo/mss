@@ -124,7 +124,15 @@ class ModuleManager:
                 # return result
                 result.append({ 'id': module.id, 'name': module.name, 
                     'desc': module.desc, 'preinst': module.preinst, 
-                    'installed': installed, 'configured': configured})
+                    'installed': installed, 'configured': configured,
+                    'conflict': [], 'conflicts': module.conflicts })
+        # check conflicts between modules
+        for m in result:
+            if m['conflicts']:
+                for m1 in m['conflicts']:
+                    for m2 in result:
+                        if m1 == m2['id'] and m2['installed']:
+                            m['conflict'].append(m2['id'])
         return result
 
     @expose
@@ -460,7 +468,9 @@ class Module:
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
         # get module deps
-        self._deps = [dep.text for dep in self.root.findall("deps/module")]
+        self._deps = [m.text for m in self.root.findall("deps/module")]
+        # get module conflicts
+        self._conflicts = [m.text for m in self.root.findall("conflicts/module")]        
         # get preinst text
         if self.root.findtext("preinst/text"):
             self._preinst = self.root.findtext("preinst/text")
@@ -478,6 +488,10 @@ class Module:
     def get_deps(self):
         return self._deps
     deps = property(get_deps)
+
+    def get_conflicts(self):
+        return self._conflicts
+    conflicts = property(get_conflicts)
 
     def get_preinst(self):
         return _(self._preinst, self.id).strip()
