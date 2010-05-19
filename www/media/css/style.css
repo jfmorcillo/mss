@@ -164,7 +164,7 @@ div.block div.head {
 }
 
 div.block div.detail p.desc {
-    margin-left: 20px;
+    margin-left: 22px;
     margin-bottom: 5px;
 }
 
@@ -299,6 +299,9 @@ div.errors { border-left: 2px dotted #E0000D; }
 
 .configured {
     color: #21449C;
+}
+.conflict {
+    color: #E0000D;
 }
 
 span.actions {

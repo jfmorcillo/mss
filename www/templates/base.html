@@ -14,35 +14,6 @@
                         history.back();
                     });
                 }
-                $$('span.actions').each(function(i) {
-                    Event.observe(i, 'mouseover', function() {
-                        var menu = $(this).firstDescendant();
-                        if (menu) {
-                            menu.setStyle({ left: this.offsetLeft+'px' });
-                            menu.show();
-                        }
-                    });
-                    Event.observe(i, 'mouseout', function() {
-                        var menu = $(this).firstDescendant();
-                        if (menu) {
-                            menu.hide();
-                        }
-                    });
-                });
-                $$('input.action').each(function(i) {
-                    Event.observe(i, 'click', function() {
-                        label = $(this).up().up().up().previous('label');
-                        input = $(this).up().up().up().previous('input');
-                        if (this.checked) {
-                            label.removeClassName("configured");
-                            input.disabled = false;
-                        }
-                        else {
-                            label.addClassName("configured");
-                            input.disabled = true;
-                        }
-                    });
-                });
             });
             var show_log = false;
             toggleLog = function(button) {

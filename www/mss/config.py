@@ -39,7 +39,7 @@ SECTIONS_MODULES = {
             'name': _('Mandriva Directory Server'),
             'icon': 'bundle_authentication.png',
             'desc': _('Required base components'),
-            'modules': ["mds-mmc"],
+            'modules': ["mds_mmc"],
             #'conf': {'required': True},
         },
         {
@@ -47,20 +47,20 @@ SECTIONS_MODULES = {
             'icon': 'bundle_fileserver.png',
             'desc': _('Samba, Cups and quota support'),
             'conf': {'class': 'block-2'},
-            'modules': ["mds-smb", "mds-quota", "mds-cups"],
+            'modules': ["mds_smb", "mds_quota", "mds_cups"],
         },
         {
             'name': _('Mail modules'),
             'icon': 'bundle_mail.png',
             'desc': _('SMTP, IMAP server and other tools'),
             'conf': {'class': 'block-2 block-last'},
-            'modules': ["mds-mail", "mds-webmail"],
+            'modules': ["mds_mail", "mds_webmail"],
         },
         {
             'name': _('Network modules'),
             'icon': 'bundle_network.png',
             'desc': _('Network managing tools'),
-            'modules': ["mds-dns", "mds-dhcp"],
+            'modules': ["mds_dns", "mds_dhcp"],
             'conf': {'class': 'block-2 block-clear'},
         },
         {
@@ -68,7 +68,7 @@ SECTIONS_MODULES = {
             'icon': 'section_advanced.png',
             'desc': _('Various MDS modules'),
             'conf': {'class': 'block-2 block-last'},
-            'modules': ["mds-audit", "mds-bulkimport"],
+            'modules': ["mds_audit", "mds_bulkimport"],
         }        
     ],
     'advanced': [
