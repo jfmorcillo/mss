@@ -5,6 +5,6 @@
 3) svn co svn+ssh://login@svn.mandriva.com/svn/private/corporate/soft/mmc-wizard mmc-wizard
 in two terms :
 4) cd mmc-wizard/branches/wizard-2/agent/; ./simple-agent.py (XML-RPC agent)
-6) ./mmc-wizard/branches/wizard-2/www/manage.py runserver 0.0.0.0:8000 (web server)
+6) cd mmc-wizard/branches/wizard-2/www/; ./manage.py runserver 0.0.0.0:8000 (web server)
 7) with your web browser go to http://SRV_IP:8000
-8) login password : test
+8) login password : root password
