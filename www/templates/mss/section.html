@@ -65,6 +65,7 @@
         });
     });
     </script>
+    <h1><a href="/" >{% trans "Home page" %}</a> &raquo; {{ name }}</h1>
     <form name="mss" action="{% url preinst %}" method="post">
     {% for bundle in section %}
         <div class="block block-border {{ bundle.conf.class }}">
@@ -80,7 +81,7 @@
                 {% for module in bundle.modules %}
                     {% for m in modules %}
                         {% ifequal m.id module %}
-
+                                            
                     <script type="text/javascript">
                     {% if m.conflicts %}
                         {% for conflict in m.conflicts %}
@@ -121,7 +122,18 @@
                     {% endif %}
                     
                     <p class="desc">{{ m.desc|safe }}</p>
-                    
+
+                    {% if m.url or m.buy %}
+                    <p class="desc more">
+                        {% if m.url %}
+                        <a href="{{ m.url }}" target="_blank">{% trans "More information" %}</a>
+                        {% endif %}
+                        {% if m.buy %}
+                        <a href="{{ m.buy }}" target="_blank">{% trans "Buy" %}</a>
+                        {% endif %}
+                    </p>
+                    {% endif %}
+                                        
                         {% endifequal %}
                     {% endfor %}
                 {% endfor %}
@@ -134,8 +146,4 @@
             <input type="button" id="back" value="{% trans "Back" %}" />
         </div>
     </form>
-    <script>
-        console.log(conflicts);
-        console.log(installs);        
-    </script>
 {% endblock %}

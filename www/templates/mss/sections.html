@@ -14,6 +14,8 @@
         </div>
         <form name="mss" action="{% url section section.id %}" method="post">
             <div class="validation right">
+                <input type="hidden" name="name" value="{{ section.name }}" />
+                <input type="hidden" name="icon" value="{{ section.icon }}" />
                 <input type="submit" name="continue" value="{% trans "Enter" %}" />
             </div>
         </form>

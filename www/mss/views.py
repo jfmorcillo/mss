@@ -110,7 +110,8 @@ def section(request, section):
                     section['modules'].remove(module)
 
         return render_to_response('mss/section.html',
-            {'section': section_info, 'modules': modules},
+            { 'name': request.POST.get('name'), 'icon': request.POST.get('icon'),
+            'section': section_info, 'modules': modules},
             context_instance=RequestContext(request))
 
 @login_required

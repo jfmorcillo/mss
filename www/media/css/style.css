@@ -11,9 +11,19 @@ p {
     margin-bottom: 5px;    
 }
 
-h1 { font-size: 22px; }
+h1 { font-size: 18px; }
 h2 { font-size: 18px; color: #21449C; }
 h3 { font-size: 14px; }
+
+div#content h1 {
+    color: white;
+    margin-top: -5px;
+    text-shadow:0 1px 2px #777;
+}
+div#content h1 a {
+    color: white;
+    font-size: 18px;
+}
 
 form {
     margin-bottom: 0;
@@ -166,6 +176,26 @@ div.block div.head {
 div.block div.detail p.desc {
     margin-left: 22px;
     margin-bottom: 5px;
+}
+
+div.block div.detail p.more {
+    margin-top: 10px;
+}
+
+div.block div.detail p.more a {
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    background: #E8EFFA;
+    border:1px solid #C1D5F1;
+    font-weight:bold;
+    margin-right:5px;
+    padding:3px;
+    text-decoration: none;
+}
+div.block div.detail p.more a:hover {
+    background: #57749F;
+    border:1px solid #415370;
+    color: white;
 }
 
 div.block div.detail input {
