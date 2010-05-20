@@ -87,6 +87,7 @@ class ModuleManager:
         modules = self.get_available_modules()
         self.logger.info("Get available mss modules : ")
         for module in modules:
+            self.logger.debug("Loading %s" % module)
             m = Module(os.path.join(self.modulesDirectory, module), self.TM)
             self.modules[m.id] = m
             self.logger.info(m)
@@ -123,9 +124,10 @@ class ModuleManager:
                 c.close()
                 # return result
                 result.append({ 'id': module.id, 'name': module.name, 
-                    'desc': module.desc, 'preinst': module.preinst, 
-                    'installed': installed, 'configured': configured,
-                    'conflict': [], 'conflicts': module.conflicts })
+                    'desc': module.desc, 'url': module.url, 'buy': module.buy,
+                    'preinst': module.preinst, 'installed': installed, 
+                    'configured': configured, 'conflict': [], 
+                    'conflicts': module.conflicts })
         # check conflicts between modules
         for m in result:
             if m['conflicts']:
@@ -467,6 +469,8 @@ class Module:
         self.TM.set_catalog(self.id, self.path)
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
+        self._url = self.root.findtext("more/url")
+        self._buy = self.root.findtext("more/buy")        
         # get module deps
         self._deps = [m.text for m in self.root.findall("deps/module")]
         # get module conflicts
@@ -484,6 +488,14 @@ class Module:
     def get_desc(self):
         return _(self._desc, self.id)
     desc = property(get_desc)
+
+    def get_url(self):
+        return self._url
+    url = property(get_url)
+
+    def get_buy(self):
+        return self._buy
+    buy = property(get_buy)
 
     def get_deps(self):
         return self._deps
