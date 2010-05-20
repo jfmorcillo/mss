@@ -1,0 +1,13 @@
+<module id="samba">
+  <name>Samba file server</name>
+  <desc>Share files and printers on a Microsoft network</desc>
+  <packages>
+    <target name="all">
+      <rpm>samba-server</rpm>
+      <rpm>samba-client</rpm>
+      <rpm>samba-common</rpm>
+      <rpm>samba-doc</rpm>
+      <rpm>smbldap-tools</rpm>
+    </target>
+  </packages>
+</module>

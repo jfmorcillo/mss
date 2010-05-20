@@ -1,0 +1,9 @@
+<module id="bacula_storage">
+  <name>Bacula Storage Daemon</name>
+  <desc>Background application which writes backup to disk, tape, CD, etc..</desc>
+  <packages>
+    <target name="all">
+      <rpm>bacula-sd</rpm>
+    </target>
+  </packages>
+</module>

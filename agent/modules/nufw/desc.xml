@@ -1,0 +1,21 @@
+<module id="nufw">
+    <name>NuFW</name>
+    <desc>Install Authentication Firewall Suite for Linux</desc>
+    <deps>
+        <module>mds_mmc</module>
+        <module>mysql</module>
+    </deps>
+    <more>
+	    <url>http://www.nufw.org/-English-.html</url>
+    </more>    
+    <packages>
+        <target name="all">
+            <rpm>nufw</rpm>
+            <rpm>nuface</rpm>
+	        <rpm>nufw-nuauth</rpm>
+    	    <rpm>nufw-nuauth-log-mysql</rpm>
+    	    <rpm>nufw-nuauth-auth-ldap</rpm>
+	        <rpm>nulog</rpm>
+        </target>
+    </packages>
+</module>

@@ -1,0 +1,29 @@
+<module id="egroupware">
+    <name>eGroupware (Include : Calendar, AdressBook, eMail, InfLog)</name>
+    <text>Select your type of database</text>
+    <desc>Install eGroupware base system</desc>
+    <medias name="eGroupware" auth="my" proto="https">
+        <media>dl.mandriva.com/mes5/egroupware</media>            
+    </medias>
+    <deps>
+        <module>mysql</module>
+    </deps>
+    <packages>
+        <target name="all">
+            <rpm>egroupware</rpm>
+            <rpm>egroupware-addressbook</rpm>
+            <rpm>egroupware-infolog</rpm>
+            <rpm>egroupware-felamimail</rpm>
+            <rpm>egroupware-syncml</rpm>
+            <rpm>egroupware-projectmanager</rpm>
+            <rpm>egroupware-importexport</rpm>
+            <rpm>egroupware-filemanager</rpm>
+            <rpm>egroupware-sitemgr</rpm>
+            <rpm>egroupware-timesheet</rpm>
+            <rpm>egroupware-tracker</rpm>
+            <rpm>egroupware-wiki</rpm>
+            <rpm>egroupware-phpbrain</rpm>
+            <rpm>egroupware-news_admin</rpm>
+        </target>
+    </packages>
+</module>

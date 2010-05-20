@@ -1,0 +1,10 @@
+<module id="roundcube">
+  <name>Webmail server</name>
+  <desc>Install roundcube webmail</desc>
+  <packages>
+    <target name="all">
+      <rpm>roundcubemail</rpm>
+      <rpm>sqlite-tools</rpm>
+    </target>
+  </packages>
+</module>

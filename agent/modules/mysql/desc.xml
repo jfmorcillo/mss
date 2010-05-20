@@ -7,9 +7,9 @@
             <rpm>mysql-client</rpm>
         </target>
     </packages>
-    <reconfig>
-
-    </reconfig>
+    <conflicts>
+        <module>mysqlmax</module>
+    </conflicts>
     <config>
         <password name="current_mypasswd">
             <label>Current password</label>

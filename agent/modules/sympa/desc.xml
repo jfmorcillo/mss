@@ -1,0 +1,9 @@
+<module id="sympa">
+  <name>Mailing list server</name>
+  <desc>Install Sympa</desc>
+  <packages>
+    <target name="all">
+      <rpm>sympa</rpm>
+    </target>
+  </packages>
+</module>

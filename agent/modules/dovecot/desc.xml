@@ -1,0 +1,14 @@
+<module id="dovecot">
+    <name>Dovecot POP/IMAP server</name>
+    <desc>Installation of Dovecot</desc>
+    <conflicts>
+        <module>cyrus</module>
+        <module>courierimap</module>
+    </conflicts>
+    <packages>
+        <target name="all">
+            <rpm>dovecot</rpm>
+            <rpm>dovecot-plugins-ldap</rpm>
+        </target>
+    </packages>
+</module>

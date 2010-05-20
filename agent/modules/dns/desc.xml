@@ -7,7 +7,4 @@
       <rpm>bind-utils</rpm>
     </target>
   </packages>
-  <conflicts>
-    <module>dhcp</module>
-  </conflicts>
 </module>

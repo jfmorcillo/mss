@@ -1,0 +1,11 @@
+<module id="postgresql">
+  <name>PostgreSQL server</name>
+  <desc>This will install a relational database</desc>
+  <packages>
+    <target name="all">
+      <rpm>postgresql8.3-server</rpm>
+      <rpm>postgresql8.3-pl</rpm>
+      <rpm>phppgadmin</rpm>
+    </target>
+  </packages>
+</module>

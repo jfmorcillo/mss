@@ -1,0 +1,12 @@
+<module id="spam">
+    <name>Anti-virus and anti-spam toolkits</name>
+    <desc>Installation of AMaVis, ClamAV and SpamAssassin</desc>
+    <packages>
+        <target name="all">
+            <rpm>amavisd-new</rpm>
+            <rpm>spamassassin</rpm>
+            <rpm>spamassassin-tools</rpm>
+            <rpm>clamd</rpm>
+        </target>
+    </packages>
+</module>

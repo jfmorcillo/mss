@@ -1,0 +1,13 @@
+<module id="lamp_server">
+    <name>Apache HTTP server</name>
+    <desc>Installation of Web server</desc>
+    <packages>
+        <target name="all">
+            <rpm>apache-base</rpm>
+            <rpm>apache-mpm-prefork</rpm>
+            <rpm>apache-conf</rpm>
+            <rpm>apache-modules</rpm>
+            <rpm>apache-mod_ssl</rpm>
+        </target>
+    </packages>
+</module>

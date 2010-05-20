@@ -1,0 +1,14 @@
+<module id="courierimap">
+  <name>CourierImap POP/IMAP server</name>
+  <desc>Installation of CourierImap</desc>
+  <conflicts>
+    <module>dovecot</module>
+    <module>cyrus</module>
+  </conflicts>
+  <packages>
+    <target name="all">
+      <rpm>courier-imap</rpm>
+      <rpm>courier-base</rpm>
+    </target>
+  </packages>
+</module>

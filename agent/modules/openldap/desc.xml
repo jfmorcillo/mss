@@ -1,6 +1,9 @@
 <module id="openldap">
   <name>OpenLDAP</name>
   <desc>Open Source LDAP directory</desc>
+  <conflicts>
+    <module>mds_mmc</module>
+  </conflicts>
   <packages>
     <target name="all">
       <rpm>openldap-servers</rpm>

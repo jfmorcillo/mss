@@ -1,0 +1,9 @@
+<module id="postfix">
+    <name>Postfix server</name>
+    <desc>Mail delivery agent</desc>
+    <packages>
+        <target name="all">
+            <rpm>postfix</rpm>
+        </target>
+    </packages>
+</module>

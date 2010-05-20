@@ -1,0 +1,10 @@
+<module id="kerberos">
+  <name>Kerberos authentication</name>
+  <desc>Kerberos authentication server</desc>
+  <packages>
+    <target name="all">
+      <rpm>krb5-server</rpm>
+      <rpm>krb5-workstation</rpm>
+    </target>
+  </packages>
+</module>

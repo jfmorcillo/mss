@@ -1,0 +1,23 @@
+<module id="cyrus">
+    <name>Cyrus POP/IMAP server</name>
+    <desc>Installation of Cyrus</desc>
+    <conflicts>
+        <module>dovecot</module>
+        <module>courierimap</module>
+    </conflicts>
+    <packages>
+        <target name="all">
+            <rpm>cyrus-imapd</rpm>
+            <rpm>cyrus-imapd-utils</rpm>
+            <rpm>cyrus-sasl</rpm>
+        </target>
+        <target name="i686">
+            <rpm>libsasl2-plug-plain</rpm>
+            <rpm>libsasl2-plug-login</rpm>
+        </target>
+        <target name="x86_64">
+            <rpm>lib64sasl2-plug-plain</rpm>
+            <rpm>lib64sasl2-plug-login</rpm>
+        </target>
+    </packages>
+</module>

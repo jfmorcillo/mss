@@ -1,0 +1,14 @@
+<module id="mysqlmax">
+  <name>MySQL-Max server</name>
+  <desc>Alternative MySQL server binary that supports features like transactional tables</desc>
+    <conflicts>
+        <module>mysql</module>
+    </conflicts>
+    <packages>
+        <target name="all">
+          <rpm>mysql-max</rpm>
+          <rpm>mysql-client</rpm>
+          <rpm>phpmyadmin</rpm>
+        </target>
+    </packages>
+</module>

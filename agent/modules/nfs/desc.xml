@@ -1,0 +1,10 @@
+<module id="nfs">
+  <name>NFS server</name>
+  <desc>Share files with NFS</desc>
+  <packages>
+    <target name="all">
+      <rpm>nfs-utils</rpm>
+      <rpm>nfs-utils-clients</rpm>
+    </target>
+  </packages>
+</module>
