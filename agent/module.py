@@ -23,6 +23,13 @@ from process import ExecManager
 from translation import TranslationManager
 from utils import formatExceptionInfo
 
+# create db first time
+if not os.path.exists('mss.db'):
+    conn = sqlite3.connect('mss.db')
+    c = conn.cursor()
+    c.execute('create table module(name varchar(50), configured varchar(50));')
+    c.close()
+    
 logging.basicConfig(level=logging.DEBUG)
 conn = sqlite3.connect('mss.db')
 
