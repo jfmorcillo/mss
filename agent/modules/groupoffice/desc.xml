@@ -6,8 +6,8 @@
         <buy>http://store.mandriva.com</buy>
     </more>     
     <medias name="GroupOffice" auth="my" proto="https">
-        <media>dl.mandriva.com/mes5/addons/groupoffice/release</media>
-        <media>dl.mandriva.com/mes5/addons/groupoffice/updates</media>
+        <url>dl.mandriva.com/mes5/addons/groupoffice/release</url>
+        <url>dl.mandriva.com/mes5/addons/groupoffice/updates</url>
     </medias>   
     <packages>
         <target name="all">

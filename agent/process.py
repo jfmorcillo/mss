@@ -40,10 +40,10 @@ class ExecManager:
     def add_media(self, name, proto, url, login=None, passwd=None):
         """ add media """
         if login and passwd:
-            self.launch(["urpmi.addmedia", "--distrib",
+            self.launch(["urpmi.addmedia", name,
                 proto+"://"+login+":"+passwd+"@"+url], wait=True)
         else:
-            self.launch(["urpmi.addmedia", "--distrib",
+            self.launch(["urpmi.addmedia", name,
                 proto+"://"+url], wait=True)
         return (self.code, self.output)
 

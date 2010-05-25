@@ -65,7 +65,7 @@
         });
     });
     </script>
-    <h1><a href="/" >{% trans "Home page" %}</a> &raquo; {{ name }}</h1>
+    <h1><span><a href="/" >{% trans "Home page" %}</a></span> &raquo; <span class="active">{{ name }}</span></h1>
     <form name="mss" action="{% url preinst %}" method="post">
     {% for bundle in section %}
         <div class="block block-border {{ bundle.conf.class }}">
