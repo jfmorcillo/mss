@@ -5,7 +5,7 @@ from datetime import datetime
 import re
 
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect, HttpResponse
+from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.views.generic.simple import direct_to_template
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
@@ -310,7 +310,10 @@ def config_start(request):
 def config_run(request, module):
     """ run configuration script for module """
     err, result = xmlrpc.call('run_config', module)
-    return HttpResponse("")
+    if result:
+        return HttpResponse("")
+    else:
+        raise Http404
 
 @login_required          
 def config_state(request, module):

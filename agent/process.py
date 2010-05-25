@@ -31,7 +31,11 @@ class ExecManager:
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
-        self.launch(["bash", script] + args, cwd=cwd)
+        if os.path.exists(script):
+            self.launch(["bash", script] + args, cwd=cwd)
+            return True
+        else:
+            return False
         
     def add_media(self, name, proto, url, login=None, passwd=None):
         """ add media """

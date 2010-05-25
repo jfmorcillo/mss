@@ -18,4 +18,14 @@
 	        <rpm>nulog</rpm>
         </target>
     </packages>
+    <config>
+        <password name="myrootpasswd" require="yes">
+            <label>Mysql root password</label>
+            <help>Used to create the nufw database</help>
+        </password>
+        <password name="mynufwpasswd" require="yes">
+            <label>Mysql nufw password</label>
+            <help>Mysql user for the nufw database</help>
+        </password>
+    </config>    
 </module>

@@ -397,7 +397,7 @@ class ModuleManager:
         path, script, args = self.modules[module].info_config()
         self.logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
         path = os.path.join(os.getcwd(), path)
-        self.EM.run_script(script, args, path)
+        return self.EM.run_script(script, args, path)
 
     @expose
     def end_config(self, module):
