@@ -12,7 +12,7 @@ DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = os.path.join(PROJECT_DIR, "mss.db")
+DATABASE_NAME = os.path.join(PROJECT_DIR, "mss-www.db")
 
 TIME_ZONE = 'Europe/Paris'
 LANGUAGE_CODE = 'en'

@@ -235,6 +235,7 @@ input[type=button], input[type=submit] {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     padding: 2px;
+    background: white url(../img/btn_bg.png) repeat-x;
 }
 
 input:disabled {

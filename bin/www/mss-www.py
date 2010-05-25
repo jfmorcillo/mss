@@ -5,9 +5,9 @@
 
 import sys
 
-sys.path.append("/home/eon/mandriva/svn/mmc-wizard-2/web/")
-sys.path.append("/home/eon/mandriva/svn/mmc-wizard-2/")
-DJANGO_SETTINGS = 'web.settings'
+sys.path.append("/usr/lib/python2.5/site-packages/mss/www/")
+sys.path.append("/usr/lib/python2.5/site-packages/mss/")
+DJANGO_SETTINGS = 'www.settings'
 DJANGO_SERVE_ADMIN = False # Serve admin files
 
 # Server settings
@@ -17,7 +17,7 @@ SERVER_NAME = 'localhost'
 SERVER_THREADS = 3
 # Change it to True if you want it to run as daemon, if you use a
 # daemon.sh file you should also change it to True
-RUN_AS_DAEMON = False
+RUN_AS_DAEMON = True
 DAEMON_RUN_DIR = '/' # The daemon will change directory to this one
                      # this is needed to prevent unmounting your
                      # disk.
