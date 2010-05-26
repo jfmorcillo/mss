@@ -21,17 +21,9 @@ from sets import Set
 
 from process import ExecManager
 from translation import TranslationManager
-from utils import formatExceptionInfo
-
-# create db first time
-if not os.path.exists('mss-agent.db'):
-    conn = sqlite3.connect('mss-agent.db')
-    c = conn.cursor()
-    c.execute('create table module(name varchar(50), configured varchar(50));')
-    c.close()
     
 logging.basicConfig(level=logging.DEBUG)
-conn = sqlite3.connect('mss-agent.db')
+conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
 
 def expose(f):
     "Decorator to set exposed flag on a function."
@@ -380,15 +372,6 @@ class ModuleManager:
             if module_errors:
                 errors = True
         return (errors, config)
-
-#    def info_config(self, modules):
-#        """ check if modules has a config script """
-#        result = []
-#        for module in modules:
-#            path, script, args = self.modules[module].info_config()
-#            if script:
-#                result.append(module)
-#        return resultg
 
     @expose
     def run_config(self, module):
@@ -740,29 +723,3 @@ class Validation:
             if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
                 return _("Incorrect IP address.", "agent")
         return None
-        
-if __name__ == '__main__':
-
-    EM = ExecManager()
-    TM = TranslationManager()
-    MM = ModuleManager(EM, TM)
-    #preinst = MM.preInstallModules(["openldap", "dns"])
-    #print preinst
-#    auths, types, done = MM.get_medias(["openldap"])
-#    print auths
-    #print types
-    #print done
-#    for auth in auths:
-#        done, fail = MM.add_media(auth, "jpbraun@mandriva.com", "proutt")
-#        print done
-#        print fail
-#    print MM.get_config(['mds-mmc'])
-#    MM.info_config(['openldap', 'dns'])
-#    MM.run_config('openldap')
-#    MM.install_modules(['openldap'])
-#    print _("The media seems to be down. Please try later.", "agent")
-#    MM.set_lang('')
-#    print _("The media seems to be down. Please try later.", "agent")
-#    MM.set_lang('fr_FR')
-#    print _("The media seems to be down. Please try later.", "agent")    
-#    print MM.get_modules(['openldap'])
