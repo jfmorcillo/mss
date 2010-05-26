@@ -23,13 +23,13 @@ DAEMON_RUN_DIR = '/' # The daemon will change directory to this one
                      # disk.
 
 # Log settings
-LOGFILE = '/tmp/mss-web.log'
+LOGFILE = '/tmp/mss-www.log'
 LOGLEVEL = 'INFO' # if DEBUG is True, overwritten to DEBUG
 DEBUG = True
 
 # It must match with the path given in your daemon.sh file if you are
 # using a daemon.sh file to control the server. 
-PIDFILE = '/tmp/mss-web.pid' 
+PIDFILE = '/var/run/mss-www.pid' 
 
 # Launch as root to dynamically chown
 SERVER_USER = 'nobody'

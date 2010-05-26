@@ -28,16 +28,16 @@ prog=mss-www
 # Your path.
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Location of the webserver.py file
-DAEMON=/usr/lib/python2.5/site-packages/mss/bin/www/webserver.py
+DAEMON=/usr/lib/mss/webserver.py
 # PID file to be created. It must match with the PID file in the
 # configuration module.
 PIDFILE=/var/run/$prog.pid
 # Before running the daemon we change the current working directory to
 # this directory so to be able to include config files which are not
 # in the python path.
-BASEDIR=/usr/lib/python2.5/site-packages/mss/bin/www/
+BASEDIR=/usr/lib/mss/
 # Config module for the webserver.
-CONFIG=/usr/lib/python2.5/site-packages/mss/bin/www/$prog
+CONFIG=$prog
 #
 ####################################
 

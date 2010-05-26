@@ -21,6 +21,14 @@ class MSS(Daemon):
         server.serve_forever()
 
 if __name__ == "__main__":
+
+    # create db first time
+    if not os.path.exists('/var/lib/mss/mss-agent.db'):
+        conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
+        c = conn.cursor()
+        c.execute('create table module(name varchar(50), configured varchar(50));')
+        c.close()
+
     daemon = MSS('/var/run/mss-agent.pid')
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:
