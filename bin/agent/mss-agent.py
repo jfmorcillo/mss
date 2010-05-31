@@ -2,6 +2,8 @@
 # -*- coding: UTF-8 -*-
 
 import sys
+import os
+import sqlite3
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from mss.agent.module import ModuleManager
 from mss.agent.process import ExecManager
@@ -27,6 +29,7 @@ if __name__ == "__main__":
         conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         c = conn.cursor()
         c.execute('create table module(name varchar(50), configured varchar(50));')
+        conn.commit()
         c.close()
 
     daemon = MSS('/var/run/mss-agent.pid')

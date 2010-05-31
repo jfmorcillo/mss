@@ -31,7 +31,7 @@ class ExecManager:
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
-        if os.path.exists(script):
+        if os.path.exists(os.path.join(cwd, script)):
             self.launch(["bash", script] + args, cwd=cwd)
             return True
         else:

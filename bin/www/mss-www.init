@@ -6,7 +6,7 @@
 # description: Mandriva Server Setup Web interface
 
 ### BEGIN INIT INFO
-# Provides: mss-web
+# Provides: mss-www
 # Required-Start: $network
 # Required-Stop: $network
 # Default-Start: 3 4 5
@@ -25,25 +25,24 @@ prog=mss-www
 ####################################
 # Configuration
 #
+HOST=0.0.0.0
+PORT=8080
+USER=mss
+GROUP=mss
 # Your path.
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Location of the webserver.py file
-DAEMON=/usr/lib/mss/webserver.py
+DAEMON=/usr/lib/python2.5/site-packages/mss/www/manage.py
 # PID file to be created. It must match with the PID file in the
 # configuration module.
 PIDFILE=/var/run/$prog.pid
-# Before running the daemon we change the current working directory to
-# this directory so to be able to include config files which are not
-# in the python path.
-BASEDIR=/usr/lib/mss/
-# Config module for the webserver.
-CONFIG=$prog
 #
 ####################################
 
 CWD="`pwd`"
 
 test -f $DAEMON || exit 0
+test -f /usr/bin/python || exit 0
 
 set -e
 cd $BASEDIR
@@ -51,14 +50,15 @@ cd $BASEDIR
 function start () {
     gprintf "Starting %s: " "$prog"
     if [ -f /var/lock/subsys/$prog ]; then
-	    echo -n "mss-www is running"
+	    gprintf "%s is running" "$prog"
 	    success
     else
-        $DAEMON --conf $CONFIG
-	    # wait pid file to be created
-	    sleep 1
-	    touch /var/lock/subsys/$prog
-	    [ -f $PIDFILE ] && success || failure
+        /usr/bin/python $DAEMON runcpserver host=$HOST port=$PORT server_group=$GROUP \
+            server_user=$USER pidfile=$PIDFILE daemonize=true
+        # wait pid file to be created
+        sleep 1
+        touch /var/lock/subsys/$prog
+        [ -f $PIDFILE ] && success || failure
     fi
     echo
 }
@@ -66,11 +66,14 @@ function start () {
 function stop () {
     gprintf "Stopping %s: " "$prog"
     if [ -f /var/lock/subsys/$prog ]; then
-        kill `cat $PIDFILE` && success || failure
-        rm -f $PIDFILE
-	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog
+        /usr/bin/python $DAEMON runcpserver pidfile=$PIDFILE stop
+        if [ "$?" == "0" ]; then
+            sleep 1
+    	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog
+    	fi
+        [ ! -f $PIDFILE ] && success || failure
     else
-	    echo -n "mss-www not running ?"
+	    gprintf "%s not running" "$prog"
 	    failure
     fi
     echo

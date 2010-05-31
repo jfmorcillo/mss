@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python
 #
 # Copyright 2006-2008, Loic d'Anterroches
 #
@@ -89,7 +89,7 @@ class Runner:
     def main(self):
         """Real main loop of the daemon."""
         global options
-        log = logging.getLogger("webserver.py")        
+        log = logging.getLogger("webserver.py")
         if options.RUN_AS_DAEMON:
             #ensure the that the daemon runs a normal user
             change_uid_gid(options.SERVER_USER, options.SERVER_GROUP)

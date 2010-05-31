@@ -2,12 +2,7 @@
 # Configuration
 #
 # Django settings
-
-import sys
-
-sys.path.append("/usr/lib/python2.5/site-packages/mss/www/")
-sys.path.append("/usr/lib/python2.5/site-packages/mss/")
-DJANGO_SETTINGS = 'www.settings'
+DJANGO_SETTINGS = 'mss.www.settings'
 DJANGO_SERVE_ADMIN = False # Serve admin files
 
 # Server settings
@@ -32,7 +27,7 @@ DEBUG = True
 PIDFILE = '/var/run/mss-www.pid' 
 
 # Launch as root to dynamically chown
-SERVER_USER = 'nobody'
+SERVER_USER = 'mss'
 SERVER_GROUP = 'nogroup'
 
 # Enable SSL, if enabled, the certificate and private key must 

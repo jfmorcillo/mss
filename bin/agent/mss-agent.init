@@ -25,7 +25,7 @@ prog=mss-agent
 function start () {
     gprintf "Starting %s: " "$prog"
     if [ -f /var/lock/subsys/$prog ]; then
-	    echo -n "$prog is running"
+        gprintf "%s is running\n" "$prog"
 	    success
     else
 	    /usr/sbin/mss-agent.py start
@@ -42,10 +42,10 @@ function stop () {
     if [ -f /var/lock/subsys/$prog ]; then
         /usr/sbin/mss-agent.py stop
         sleep 1
+	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog        
         [ -f /var/run/$prog.pid ] && failure || success
-	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog
     else
-	    echo -n "$prog not running ?"
+	    echo "$prog not running"
 	    failure
     fi
     echo

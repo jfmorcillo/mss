@@ -1,6 +1,6 @@
 from django.conf.urls.defaults import *
 
-urlpatterns = patterns('mss.views',
+urlpatterns = patterns('mss.www.wizard.views',
     url(r'^$', 'first_time', name="first_time"),
     url(r'^account/authentication/$', 'login_form', name="login_form"),
     url(r'^account/login/$', 'mylogin', name="login"),

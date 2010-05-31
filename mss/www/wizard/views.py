@@ -32,6 +32,9 @@ def mylogin(request):
                 response = HttpResponseRedirect(reverse('sections'))
                 # set agent language
                 err, result = xmlrpc.call('set_lang', lang)
+                # set language
+                if hasattr(request, 'session'):
+                    request.session['django_language'] = lang
                 if err:
                     return err
                 return response

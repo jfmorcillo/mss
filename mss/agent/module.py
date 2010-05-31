@@ -23,7 +23,6 @@ from process import ExecManager
 from translation import TranslationManager
     
 logging.basicConfig(level=logging.DEBUG)
-conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
 
 def expose(f):
     "Decorator to set exposed flag on a function."
@@ -52,6 +51,8 @@ class ModuleManager:
         self.modulesDirectory = os.path.join(os.path.dirname(__file__), "modules")
         self.modules = {}
         self.packages = []
+        # BDD access
+        self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # translation manager
         self.TM = TM
         self.TM.set_catalog('agent')
@@ -114,7 +115,7 @@ class ModuleManager:
                 else:
                     installed = False
                 # check if module is configured
-                c = conn.cursor()
+                c = self.conn.cursor()
                 c.execute('select * from module where name=?', (m,))
                 if c.fetchone():
                     configured = True 
@@ -379,19 +380,18 @@ class ModuleManager:
         self.logger.debug("Run configuration for %s" % str(module))
         path, script, args = self.modules[module].info_config()
         self.logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
-        path = os.path.join(os.getcwd(), path)
         return self.EM.run_script(script, args, path)
 
     @expose
     def end_config(self, module):
         self.logger.debug("Set %s as configured" % str(module))
-        c = conn.cursor()
+        c = self.conn.cursor()
         c.execute('select * from module where name=?', (module,))
         if not c.fetchone():
             c.execute('insert into module values (?,?)', (module, datetime.now()))
         else:
             c.execute('update module set configured=? where name=?', (datetime.now(), module))
-        conn.commit()
+        self.conn.commit()
         c.close()
         return 0
         

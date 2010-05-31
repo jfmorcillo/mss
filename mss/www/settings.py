@@ -2,12 +2,12 @@
 
 import os
 import locale
+import sys
 
 ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEV = True
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -51,7 +51,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
-ROOT_URLCONF = 'www.urls'
+ROOT_URLCONF = 'mss.www.urls'
 
 TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
@@ -61,9 +61,10 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'mss',
+    'mss.www.wizard',
+    'mss.www.cpserver',
 )
 
 AUTHENTICATION_BACKENDS = (
-    'backends.MSSBackend',
+    'mss.www.backends.MSSBackend',
 )
