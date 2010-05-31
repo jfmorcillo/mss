@@ -116,8 +116,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n mss-wizard
 %defattr(-,root,root,0755)
-%exclude %{py_puresitedir}/mss/www/wizard/config.py*
 %exclude %{py_puresitedir}/mss/www/media/img/modules/
+%exclude %{py_puresitedir}/mss/www/wizard/modules/mes5_config.py*
 %{_initrddir}/mss-www
 %{_initrddir}/mss-agent
 %{_sbindir}/mss-agent.py*
@@ -132,7 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,0755)
 %{py_puresitedir}/mss/agent/modules/
 %{py_puresitedir}/mss/www/media/img/modules/
-%{py_puresitedir}/mss/www/wizard/config.py*
+%{py_puresitedir}/mss/www/wizard/modules/mes5_config.py*
 
 %changelog 
 * Tue May 25 2010 Jean-Philippe Braun <jpbraun@mandriva.com> 2.0dev

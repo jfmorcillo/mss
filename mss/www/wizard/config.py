@@ -1,162 +1,45 @@
-# -*- coding: UTF-8 -*-
+import glob
+import imp
+import os
 
-from django.utils.translation import ugettext as _
+class ConfigManager:
 
-SECTIONS = [
-    { 
-        'name': _('Mandriva Directory Server'), 
-        'id': 'mds', 
-        'icon': 'section_mds.png',
-        'desc': _('MDS is an enterprise directory platform based on LDAP designed to manage identities, and various network services commonly used.<br/><br/>In addition, MDS is controlled through a modern and friendly web interface.<br /><br />For an overview of MDS, visit the <a href="http://mds.mandriva.org/">project website</a>.'),
-        'conf': {'class': 'block-2'},
-    },
-    { 
-        'name': _('Pulse 2'), 
-        'id': 'pulse2', 
-        'icon': 'section_pulse2.png',
-        'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br /><br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.'),
-        'conf': {'class': 'block-2 block-last'},
-    },
-    { 
-        'name': _('Partners'), 
-        'id': 'partners', 
-        'icon': 'section_partners.png',
-        'desc': _(' '),
-        'conf': {'class': 'block-2 block-clear'},
-    },    
-    { 
-        'name': _('Advanced'), 
-        'id': 'advanced', 
-        'icon': 'section_advanced.png',
-        'desc': _('Install basic server stacks like DHCP, OpenLDAP or VPN software.'),
-        'conf': {'class': 'block-2 block-last'},
-    },
-]
+    def __init__(self):
+        self.SECTIONS = []
+        self.SECTIONS_MODULES = {}
+        self.load_configs()
 
-SECTIONS_MODULES = {
-    'mds': [
-        {
-            'name': _('Mandriva Directory Server'),
-            'icon': 'bundle_authentication.png',
-            'desc': _('Required base components'),
-            'modules': ["mds_mmc"],
-            #'conf': {'required': True},
-        },
-        {
-            'name': _('File server modules'),
-            'icon': 'bundle_fileserver.png',
-            'desc': _('Samba, Cups and quota support'),
-            'conf': {'class': 'block-2'},
-            'modules': ["mds_smb", "mds_quota", "mds_cups"],
-        },
-        {
-            'name': _('Mail modules'),
-            'icon': 'bundle_mail.png',
-            'desc': _('SMTP, IMAP server and other tools'),
-            'conf': {'class': 'block-2 block-last'},
-            'modules': ["mds_mail", "mds_webmail"],
-        },
-        {
-            'name': _('Network modules'),
-            'icon': 'bundle_network.png',
-            'desc': _('Network managing tools'),
-            'modules': ["mds_dns", "mds_dhcp"],
-            'conf': {'class': 'block-2 block-clear'},
-        },
-        {
-            'name': _('Other modules'),
-            'icon': 'section_advanced.png',
-            'desc': _('Various MDS modules'),
-            'conf': {'class': 'block-2 block-last'},
-            'modules': ["mds_audit", "mds_bulkimport"],
-        }        
-    ],
-    'advanced': [
-        { 
-            'name': _('Network'), 
-            'icon': 'bundle_network.png',            
-            'desc': _('Network managing tools'), 
-            'modules': ["dns", "dhcp"],
-            'conf': {'class': 'block-2'},
-        },
-        { 
-            'name': _('LAMP server'),
-            'icon': 'bundle_lamp.png',
-            'desc': _('Toolkit for dynamic web site hosting'), 
-            'modules': ["lamp_server", "lamp_dev"],
-            'conf': {'class': 'block-2 block-last'},
-        },
-        { 
-            'name': _('Printing and file server'),
-            'icon': 'bundle_fileserver.png',
-            'desc': _('Samba, Cups and NFS servers.'), 
-            'modules': ["samba", "cups", "nfs", "proftpd"],
-            'conf': {'class': 'block-2'},
-        },
-        { 
-            'name': _('Databases'),
-            'icon': 'bundle_database.png',
-            'desc': _('Relational databases'), 
-            'modules': ["mysql", "mysqlmax", "postgresql", "sqlite"],
-            'conf': {'class': 'block-2 block-last'},
-        },
-        { 
-            'name': _('Authentication'),
-            'icon': 'bundle_authentication.png',
-            'desc': _('Tools for managing identities'), 
-            'modules': ["openldap", "kerberos", "openldap_kerberos"],
-            'conf': {'class': 'block-2'},
-        },
-        { 
-            'name': _('Backup Tools'),
-            'icon': 'bundle_backup.png',
-            'desc': _('Backup Server'), 
-            'modules': ["bacula_director", "bacula_storage", "bacula_file"],
-            'conf': {'class': 'block-2 block-last'},
-        },        
-        { 
-            'name': _('Mail server'),
-            'icon': 'bundle_mail.png',
-            'desc': _('Mail server with POP/IMAP and Webmail access'), 
-            'modules': ["postfix", "spam", "cyrus", "dovecot", "courierimap", "sympa", "roundcube"],
-            'conf': {'class': 'block-2'},
-        },       
-    ],
-    'partners': [
-        { 
-            'name': _('eGroupware Suite'),
-            'icon': 'bundle_egroupware.png',
-            'desc': _('eGroupware is a enterprise ready groupware software for your network. It enables you to manage contacts, appointments, todos and many more for your whole business. eGroupware is a groupware server. It comes with a native web-interface which allowes to access your data from any platform all over the planet. Moreover you also have the choice to access the EGroupware server with your favorite groupware client (Kontact, Evolution, Outlook) and also with your mobile or PDA via SyncML.'), 
-            'modules': ["egroupware"],
-            'conf': {'class': 'block-2'},
-        },
-        { 
-            'name': _('Group-Office'),
-            'icon': 'bundle_groupoffice.png',
-            'desc': _('Take your office online. Share projects, calendars, files and e-mail online with co-workers and clients. Easy to use and fully customizable, Group-Office takes online collaboration to the next level.'), 
-            'modules': ["groupoffice"],
-            'conf': {'class': 'block-2 block-last'},
-        },
-        { 
-            'name': _('Authentication Firewall Suite for Linux'),
-            'icon': '',
-            'desc': _('NuFW adds user-based filtering to Netfilter, the state of the art IP filtering layer from the Linux kernel. Its exclusive algorithm allows authenticated filtering even on multiuser computers'), 
-            'modules': ["nufw"],
-            'conf': {'class': 'block-2'},
-        },        
-    ],
-}
+    def load_configs(self):
+        for config in glob.glob(os.path.join(os.path.dirname(__file__), "modules", "*.py")):
+            name = config.split("/")[-1].rstrip('.py')
+            module = imp.load_source(name, config)
+            if hasattr(module, "config"):
+                self.SECTIONS += module.config.SECTIONS
+                self.SECTIONS_MODULES.update(module.config.SECTIONS_MODULES)
+            del module
 
-def get_sections():
-    return SECTIONS
-    
-def get_section(section):
-    return SECTIONS_MODULES[section]
-    
-def get_section_modules(section):
-    section = get_section(section)
-    modules = []
-    for bundle in section:
-        for module in bundle['modules']:
-            modules.append(module)
-    return modules
+    def get_sections(self):
+        return self.SECTIONS
+        
+    def get_section(self, section):
+        return self.SECTIONS_MODULES[section]
+        
+    def get_section_modules(self, section):
+        section = self.get_section(section)
+        modules = []
+        for bundle in section:
+            for module in bundle['modules']:
+                modules.append(module)
+        return modules
+
+class Config:
+
+    def __init__(self):
+        self.SECTIONS = []
+        self.SECTIONS_MODULES = {}
+
+    def add_section(self,  section):
+        self.SECTIONS.append(section)
+
+    def add_modules(self, section, modules):
+        self.SECTIONS_MODULES[section] = modules

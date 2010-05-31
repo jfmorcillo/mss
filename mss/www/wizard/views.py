@@ -15,10 +15,11 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 
-from config import get_sections, get_section, get_section_modules
+from config import ConfigManager
 from xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
+CM = ConfigManager()
 
 def mylogin(request):
     if request.method == "POST":
@@ -84,7 +85,7 @@ def error(request, code):
 def sections(request):
     """ sections list """
     return render_to_response('mss/sections.html',
-        {'sections': get_sections()}, 
+        {'sections': CM.get_sections()}, 
         context_instance=RequestContext(request))
 
 @login_required
@@ -96,9 +97,9 @@ def section(request, section):
             del request.session[key]
         except KeyError:
             pass
-    section_info = get_section(section)
+    section_info = CM.get_section(section)
     # get modules list for section
-    section_modules = get_section_modules(section)
+    section_modules = CM.get_section_modules(section)
     # get modules info for modules list
     err, result = xmlrpc.call('get_modules', section_modules)
     if err:
