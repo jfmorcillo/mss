@@ -1,6 +1,7 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
+{% if sections %}
     {% for section in sections %}
     <div class="block block-border {{ section.conf.class }}">
         <div class="block-logo">
@@ -20,5 +21,11 @@
         </form>
     </div>
     {% endfor %}
+{% else %}
+    <div class="block block-height">
+        <p class="error">{% trans "No modules for Mandriva Server Setup installed." %}</p>
+        <p>{% trans "Check for mss-modules-* packages." %}</p>
+    </div>
+{% endif %}
 {% endblock %}
 
