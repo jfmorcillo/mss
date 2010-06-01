@@ -87,9 +87,8 @@ msgstr "Installation"
 #: templates/mss/config_run.html:59 templates/mss/install.html:14
 #: templates/mss/install_no.html:4 templates/mss/medias.html:4
 #: templates/mss/medias_add.html:4 templates/mss/preinst.html:4
-#, fuzzy
 msgid "Configuration"
-msgstr "Lancer la configuration"
+msgstr "Configuration"
 
 #: templates/mss/config.html:52
 msgid "Add field"
@@ -168,7 +167,6 @@ msgid "Configuration terminated, details are displayed below."
 msgstr "La configuration est terminée. Les détails sont affichés ci-dessous."
 
 #: templates/mss/config_run.html:42
-#, fuzzy
 msgid "Could not find any configuration script to execute."
 msgstr "Les modules selectionnés n'ont pas de script de configuration."
 
@@ -329,11 +327,11 @@ msgstr "Aucun module sélectionné."
 
 #: templates/mss/section.html:15 templates/mss/section.html.py:107
 msgid "This module conflicts with : "
-msgstr ""
+msgstr "Ce module est en conflit avec : "
 
 #: templates/mss/section.html:107
 msgid "Conflict"
-msgstr ""
+msgstr "Conflit"
 
 #: templates/mss/section.html:109
 msgid "Installed"
@@ -369,11 +367,11 @@ msgstr "Re-configurer ce module."
 
 #: templates/mss/section.html:129
 msgid "More information"
-msgstr ""
+msgstr "Plus d'informations"
 
 #: templates/mss/section.html:132
 msgid "Buy"
-msgstr ""
+msgstr "Acheter"
 
 #: templates/mss/section.html:145
 msgid "Install components"
@@ -385,10 +383,9 @@ msgid "%(desc)s"
 msgstr "%(desc)s"
 
 #: templates/mss/sections.html:26
-#, fuzzy
 msgid "No modules for Mandriva Server Setup installed."
-msgstr "Mandriva Server Setup"
+msgstr "Aucun module installé pour Mandriva Server Setup"
 
 #: templates/mss/sections.html:27
 msgid "Check for mss-modules-* packages."
-msgstr ""
+msgstr "Cherchez des paquets du type mss-modules-*."

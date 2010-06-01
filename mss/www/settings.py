@@ -3,6 +3,7 @@
 import os
 import locale
 import sys
+import glob
 
 ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
@@ -57,13 +58,19 @@ TEMPLATE_DIRS = (
     os.path.join(PROJECT_DIR, 'templates'),
 )
 
-INSTALLED_APPS = (
+INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'mss.www.wizard',
     'mss.www.cpserver',
-)
+]
+
+for layout in glob.glob(os.path.join(PROJECT_DIR, "layout",
+    "*", "__init__.py")):
+    app = 'mss.www.layout.'+layout.split("/")[-2]
+    if not app in INSTALLED_APPS:
+        INSTALLED_APPS.append(app)
 
 AUTHENTICATION_BACKENDS = (
     'mss.www.backends.MSSBackend',

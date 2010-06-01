@@ -101,18 +101,17 @@ msgstr "Réseau"
 
 #: layout/mes5.py:92
 msgid "LAMP server"
-msgstr ""
+msgstr "Serveur LAMP"
 
 #: layout/mes5.py:94
 msgid "Toolkit for dynamic web site hosting"
-msgstr ""
+msgstr "Un ensemble d'outils libres pour héberger des sites web dynamiques"
 
 #: layout/mes5.py:99
 msgid "Printing and file server"
-msgstr ""
+msgstr "Serveur de fichier et d'impression"
 
 #: layout/mes5.py:101
-#, fuzzy
 msgid "Samba, Cups and NFS servers."
 msgstr "Samba, Cups et support des quotas"
 
@@ -122,7 +121,7 @@ msgstr "Bases de données"
 
 #: layout/mes5.py:108
 msgid "Relational databases"
-msgstr ""
+msgstr "Bases de données relationnelles"
 
 #: layout/mes5.py:113
 msgid "Authentication"
@@ -134,24 +133,23 @@ msgstr "Outils de gestion des identités"
 
 #: layout/mes5.py:120
 msgid "Backup Tools"
-msgstr ""
+msgstr "Outils de sauvegarde"
 
 #: layout/mes5.py:122
 msgid "Backup Server"
-msgstr ""
+msgstr "Serveur de sauvegarde"
 
 #: layout/mes5.py:127
-#, fuzzy
 msgid "Mail server"
-msgstr "Modules pour serveur de fichiers"
+msgstr "Serveur de mail"
 
 #: layout/mes5.py:129
 msgid "Mail server with POP/IMAP and Webmail access"
-msgstr ""
+msgstr "Serveurs SMTP, POP, IMAP et Webmail"
 
 #: layout/mes5.py:138
 msgid "eGroupware Suite"
-msgstr ""
+msgstr "Suite eGroupware"
 
 #: layout/mes5.py:140
 msgid ""
@@ -163,10 +161,18 @@ msgid ""
 "with your favorite groupware client (Kontact, Evolution, Outlook) and also "
 "with your mobile or PDA via SyncML."
 msgstr ""
+"eGroupware est un logiciel Collaboratif professionel et gratuit . Il vous "
+"permet de gérer vos contacts, vos rendez-vous, vos taches, et bien plus pour "
+"toute votre activité.eGroupware est un serveur Collaboratif (groupware). Il "
+"est conçu nativement avec une interface Web qui vous permet d'accéder à vos "
+"données de n'importe quel plate-forme sur la planète. Vous avez le choix "
+"d'accéder au serveur EGroupware avec votre client groupware préféré (Kontact, "
+"Evolution, Outlook) ainsi qu'avec votre téléphone portable ou votre PDA, "
+"par SyncML."
 
 #: layout/mes5.py:145
 msgid "Group-Office"
-msgstr ""
+msgstr "Group-Office"
 
 #: layout/mes5.py:147
 msgid ""
@@ -174,10 +180,13 @@ msgid ""
 "with co-workers and clients. Easy to use and fully customizable, Group-"
 "Office takes online collaboration to the next level."
 msgstr ""
+"Partagez vos projets, vos calendriers, vos fichiers et e-mail en ligne avec "
+"vos collègues et clients. Facile à utiliser et entièrement personnalisable, "
+"Group-Office propulse la collaboration online au niveau supérieur."
 
 #: layout/mes5.py:152
 msgid "Authentication Firewall Suite for Linux"
-msgstr ""
+msgstr "Solution de pare-feu authentifiant"
 
 #: layout/mes5.py:154
 msgid ""
@@ -185,3 +194,6 @@ msgid ""
 "filtering layer from the Linux kernel. Its exclusive algorithm allows "
 "authenticated filtering even on multiuser computers"
 msgstr ""
+"NuFW ajoute la notion d’utilisateurs aux règles de filtrage. Le projet "
+"s’appuie sur Netfilter, la couche pare-feu du noyau Linux, et constitue un "
+"système de gestion d’identité au niveau des couches réseaux."
