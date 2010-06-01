@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-24 03:57+0200\n"
+"POT-Creation-Date: 2010-05-23 23:48+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,11 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: config.py:9 config.py:46
-msgid "Mandriva Directory Server"
-msgstr ""
-
-#: config.py:12
+#: layout/mes5.py:12
 msgid ""
 "MDS is an enterprise directory platform based on LDAP designed to manage "
 "identities, and various network services commonly used.<br/><br/>In "
@@ -28,12 +24,17 @@ msgid ""
 "><br />For an overview of MDS, visit the <a href=\"http://mds.mandriva.org/"
 "\">project website</a>."
 msgstr ""
+"Mandriva Directory Server est un annuaire d'entreprise permettant de gérer "
+"les comptes et profils des utilisateurs d'un réseau, ainsi que différents "
+"services réseaux communément utilisés.<br/><br/>MDS se pilote par le biais "
+"d'une interface web moderne et conviviale. Pour plus d'informations visitez "
+"le <a href=\"http://mds.mandriva.org/\">site du projet</a>."
 
-#: config.py:18
+#: layout/mes5.py:18
 msgid "Pulse 2"
-msgstr ""
+msgstr "Pulse 2"
 
-#: config.py:21
+#: layout/mes5.py:21
 msgid ""
 "Pulse 2 is an Open Source tool that simplifies application deployment, "
 "inventory, and maintenance of an IT network.<br /><br />It has been designed "
@@ -42,115 +43,117 @@ msgid ""
 "\"http://pulse2.mandriva.org/\">project website</a>."
 msgstr ""
 
-#: config.py:27
+#: layout/mes5.py:27
 msgid "Partners"
-msgstr ""
+msgstr "Partenaires"
 
-#: config.py:30
+#: layout/mes5.py:30
 msgid " "
-msgstr ""
+msgstr " "
 
-#: config.py:36
+#: layout/mes5.py:36
 msgid "Advanced"
-msgstr ""
+msgstr "Avancé"
 
-#: config.py:39
+#: layout/mes5.py:39
 msgid "Install basic server stacks like DHCP, OpenLDAP or VPN software."
-msgstr ""
+msgstr "Installation de piles logicielles serveur comme DHCP, OpenLDAP."
 
-#: config.py:48
+#: layout/mes5.py:48
 msgid "Required base components"
-msgstr ""
+msgstr "Composant de base requis"
 
-#: config.py:53
+#: layout/mes5.py:53
 msgid "File server modules"
-msgstr ""
+msgstr "Modules pour serveur de fichiers"
 
-#: config.py:55
+#: layout/mes5.py:55
 msgid "Samba, Cups and quota support"
-msgstr ""
+msgstr "Samba, Cups et support des quotas"
 
-#: config.py:60
+#: layout/mes5.py:60
 msgid "Mail modules"
-msgstr ""
+msgstr "Modules pour serveur de mails"
 
-#: config.py:62
+#: layout/mes5.py:62
 msgid "SMTP, IMAP server and other tools"
-msgstr ""
+msgstr "Serveur SMTP, IMAP et autres outils"
 
-#: config.py:67
+#: layout/mes5.py:67
 msgid "Network modules"
-msgstr ""
+msgstr "Modules pour services réseaux"
 
-#: config.py:69 config.py:87
+#: layout/mes5.py:69 layout/mes5.py:87
 msgid "Network managing tools"
-msgstr ""
+msgstr "Outils de gestion réseau"
 
-#: config.py:74
+#: layout/mes5.py:74
 msgid "Other modules"
-msgstr ""
+msgstr "Autres modules"
 
-#: config.py:76
+#: layout/mes5.py:76
 msgid "Various MDS modules"
-msgstr ""
+msgstr "Divers modules MDS"
 
-#: config.py:85
+#: layout/mes5.py:85
 msgid "Network"
-msgstr ""
+msgstr "Réseau"
 
-#: config.py:92
+#: layout/mes5.py:92
 msgid "LAMP server"
 msgstr ""
 
-#: config.py:94
+#: layout/mes5.py:94
 msgid "Toolkit for dynamic web site hosting"
 msgstr ""
 
-#: config.py:99
+#: layout/mes5.py:99
 msgid "Printing and file server"
 msgstr ""
 
-#: config.py:101
+#: layout/mes5.py:101
+#, fuzzy
 msgid "Samba, Cups and NFS servers."
-msgstr ""
+msgstr "Samba, Cups et support des quotas"
 
-#: config.py:106
+#: layout/mes5.py:106
 msgid "Databases"
-msgstr ""
+msgstr "Bases de données"
 
-#: config.py:108
+#: layout/mes5.py:108
 msgid "Relational databases"
 msgstr ""
 
-#: config.py:113
+#: layout/mes5.py:113
 msgid "Authentication"
-msgstr ""
+msgstr "Authentification"
 
-#: config.py:115
+#: layout/mes5.py:115
 msgid "Tools for managing identities"
-msgstr ""
+msgstr "Outils de gestion des identités"
 
-#: config.py:120
+#: layout/mes5.py:120
 msgid "Backup Tools"
 msgstr ""
 
-#: config.py:122
+#: layout/mes5.py:122
 msgid "Backup Server"
 msgstr ""
 
-#: config.py:127
+#: layout/mes5.py:127
+#, fuzzy
 msgid "Mail server"
-msgstr ""
+msgstr "Modules pour serveur de fichiers"
 
-#: config.py:129
+#: layout/mes5.py:129
 msgid "Mail server with POP/IMAP and Webmail access"
 msgstr ""
 
-#: config.py:138
+#: layout/mes5.py:138
 msgid "eGroupware Suite"
 msgstr ""
 
-#: config.py:140
+#: layout/mes5.py:140
 msgid ""
 "eGroupware is a enterprise ready groupware software for your network. It "
 "enables you to manage contacts, appointments, todos and many more for your "
@@ -161,22 +164,22 @@ msgid ""
 "with your mobile or PDA via SyncML."
 msgstr ""
 
-#: config.py:145
+#: layout/mes5.py:145
 msgid "Group-Office"
 msgstr ""
 
-#: config.py:147
+#: layout/mes5.py:147
 msgid ""
 "Take your office online. Share projects, calendars, files and e-mail online "
 "with co-workers and clients. Easy to use and fully customizable, Group-"
 "Office takes online collaboration to the next level."
 msgstr ""
 
-#: config.py:152
+#: layout/mes5.py:152
 msgid "Authentication Firewall Suite for Linux"
 msgstr ""
 
-#: config.py:154
+#: layout/mes5.py:154
 msgid ""
 "NuFW adds user-based filtering to Netfilter, the state of the art IP "
 "filtering layer from the Linux kernel. Its exclusive algorithm allows "
