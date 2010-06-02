@@ -6,6 +6,7 @@ import select
 import threading
 import xmlrpclib
 from subprocess import Popen, PIPE, STDOUT
+import time
 
 
 class ExecManager:
@@ -85,21 +86,30 @@ class ExecThread(threading.Thread):
 
     def get_output(self):
         """ get command context """
-        while self.isAlive():
+        while self.isAlive():  
+            # get the file descriptor of the process stdout pipe
+            # for reading
+            try:
+                fd = select.select([self.process.stdout.fileno()],
+                    [], [], 5)[0][0]
+            # raise an exception when the process doesn't make output
+            # for long time
+            except IndexError:
+                pass
+              
             self.process.poll()
             if self.process.returncode == None:
-                try:
-                    fd = select.select([self.process.stdout.fileno()],
-                        [], [], 5)[0][0]
-                # raise an exception when the process doesn't make output
-                # for long time
-                except IndexError:
-                    pass
+                # get bytes one by one
                 if fd:
                     self.lock.acquire()
                     self.EM.output += os.read(fd, 1)
                     self.lock.release()
             else:
+                # get last bytes from output
+                if fd:
+                    self.lock.acquire()
+                    self.EM.output += os.read(fd, 4096)
+                    self.lock.release()
                 self.EM.code = self.process.returncode
                 break
 
