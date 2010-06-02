@@ -19,7 +19,7 @@
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>
     <div class="install">
-        <p id="task" class="task">{% trans "Please wait..." %} <img src="/site_media/img/loader.gif" /></p>
+        <p id="task" class="task"><img src="/site_media/img/load.gif" /> {% trans "Please wait..." %}</p>
         <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
         <div id="log" class="log" style="display: none;"> </div>
     </div>

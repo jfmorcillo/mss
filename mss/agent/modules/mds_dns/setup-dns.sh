@@ -82,4 +82,4 @@ fi
 echo "7You can now add DNS zones from the MDS interface : http://@HOSTNAME@/mmc/"
 echo "8Make sure you have enabled the DNS service (port 53) on your firewall."
 
-sleep 1; exit 0
+exit 0

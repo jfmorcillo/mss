@@ -81,6 +81,16 @@ def error(request, code):
     return render_to_response('mss/error.html', {'code': code},
         context_instance=RequestContext(request))
 
+def status(request):
+    """ get agent status """
+    err, result = xmlrpc.call('get_status')
+    if err:
+        return err
+    else:
+        return render_to_response('mss/raw_output.html',
+            {'output': result}, 
+            context_instance=RequestContext(request))
+
 @login_required
 def sections(request):
     """ sections list """
@@ -196,6 +206,11 @@ def add_medias(request):
         return HttpResponseRedirect(reverse('sections'))
 
 @login_required
+def update_medias(request):
+    err, result = xmlrpc.call('update_medias')
+    return HttpResponse("")
+
+@login_required
 def install(request):
     """ install page """
     # launch modules install
@@ -215,7 +230,7 @@ def install(request):
 @login_required
 def install_state(request):
     """ install output page """
-    err, result = xmlrpc.call('get_state')
+    err, result = xmlrpc.call('get_state', 'install')
     if err:
         return err
     else:
@@ -322,7 +337,7 @@ def config_run(request, module):
 @login_required          
 def config_state(request, module):
     """ config output page """
-    err, result = xmlrpc.call('get_state', module)
+    err, result = xmlrpc.call('get_state', 'config', module)
     if err:
         return err
     else:

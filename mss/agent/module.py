@@ -63,6 +63,7 @@ class ModuleManager:
         # logging
         self.logger = logging.getLogger()
         self.load_packages()
+        self.update_medias()
         self.load_modules()
 
     @expose
@@ -74,10 +75,22 @@ class ModuleManager:
     @expose
     def load_packages(self):
         self.logger.info("Load packages...")
-        self.packages = self.EM.load_packages()
-        self.logger.info("done.")
-        if not self.packages:
-            self.logger.info("Error: no packages found")
+        self.EM.load_packages(self.set_packages)
+
+    def set_packages(self, code, output):
+        if code == 0:
+            packages = output.split('#')
+            if not packages:
+                self.logger.error("No packages found.")
+            else:
+                self.packages = packages
+                self.logger.info("Loading packages done.")
+        else:
+            self.logger.error("Can't load packages.")
+
+    @expose
+    def update_medias(self):
+        self.EM.update_medias()
 
     def load_modules(self):
         """
@@ -396,9 +409,9 @@ class ModuleManager:
         return 0
         
     @expose
-    def get_state(self, module="agent"):
+    def get_state(self, name, module="agent"):
         """ return execution output """
-        code, output = self.EM.get_state()
+        code, output = self.EM.get_state(name)
         # format output
         tmp = output.data.splitlines()
         output = []
@@ -426,6 +439,11 @@ class ModuleManager:
                 output.append((text_code, text))
                 
         return (code, output)
+
+    @expose
+    def get_status(self):
+        """ return current agent status """
+        return self.EM.get_status()
 
 class Module:
     """

@@ -1,6 +1,6 @@
 {% load i18n %}
 {% ifequal code 2000 %}
-<p class="task">{% trans "Please wait..."%} <img src="/site_media/img/loader.gif" /></p>
+<p class="task"><img src="/site_media/img/load.gif" /> {% trans "Please wait..."%}</p>
 {% endifequal %}
 {% ifnotequal code 2000 %}
     {% ifequal code 0 %}
@@ -13,6 +13,10 @@
     {% endifequal %}    
     {% ifnotequal code 0 %}
         <p class="task">{% trans "Configuration failed." %}</p>
+        <script type="text/javascript">
+            $$("#mss input").each(function(i){ i.disabled = false; });
+            $('next').value = "{% trans "Home page" %}";
+        </script>
     {% endifnotequal %}
     {% if infos.summary %}
     <div class="summary">

@@ -105,6 +105,7 @@
     <form id="mss" name="mss" action="{% url sections %}" method="post">
         <div class="validation">
             <input id="next" type="submit" name="continue" value="{% trans "Please wait..." %}" disabled="disabled" />
+            <input id="back" type="button" name="back" value="{% trans "Back" %}" disabled="disabled" />
         </div>
     </form>
     {% endifequal %}

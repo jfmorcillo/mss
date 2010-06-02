@@ -165,4 +165,4 @@ echo "7- Non-SSL connexions on external interfaces are disabled by default on th
 echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks" 
 echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
 
-sleep 1; exit 0
+exit 0

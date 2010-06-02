@@ -56,5 +56,4 @@ chkconfig dhcpd on
 echo 8DHCP module is activated in the MDS interface.
 echo 7You can now configure your DHCP settings from the MDS interface : http://@HOSTNAME@/mmc/
 
-sleep 1
 exit 0

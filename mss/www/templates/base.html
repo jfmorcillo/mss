@@ -14,6 +14,18 @@
                         history.back();
                     });
                 }
+                new Ajax.PeriodicalUpdater('status', '{% url status %}', {
+                    frequency: 1,
+                    decay: 1,
+                    onSuccess: function(request) {
+                        if (request.responseText.startsWith('Ready')) {
+                            $('status').removeClassName("active");
+                        }
+                        else {
+                            $('status').addClassName("active");
+                        }
+                    }
+                });
             });
             var show_log = false;
             toggleLog = function(button) {
@@ -31,6 +43,9 @@
                 if(updater)
                     updater.options.parameters = {'show_log': show_log};
             }
+            updateMedias = function() {
+                new Ajax.Request('{% url update_medias %}', { method: 'get' });
+            }
         </script>
         <div id="head">
             <div id="logo">
@@ -39,13 +54,18 @@
             <div id="quickbar">
                 <div id="quick-personal">
                 {% if user.is_authenticated %}
-                    {% block head %}<a href="{% url logout %}">{% trans "Logout" %}</a>{% endblock %}
+                    {% block head %}
+                        <a href="#" onclick="updateMedias();">{% trans "Update medias" %}</a> | 
+                        <a href="{% url logout %}">{% trans "Logout" %}</a>
+                    {% endblock %}
                 {% endif %}
                 </div>
             </div>
         </div>
         <div id="content">
             {% block content %}{% endblock %}
+        </div>
+        <div id="status">
         </div>
     </body>
 </html>

@@ -155,5 +155,5 @@ echo "8Mandriva Directory Server is running."
 echo "8You can log in the MDS interface from http://@HOSTNAME@/mmc/."
 echo "8MDS administrator : root"
 # echo "7MDS administrator password : $mypass"
-sleep 1
+
 exit 0

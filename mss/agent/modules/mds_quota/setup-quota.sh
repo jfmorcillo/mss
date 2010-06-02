@@ -45,5 +45,4 @@ sed -i "s!\@FILESYSTEMS\@!${filesystems}!" /etc/mmc/plugins/userquota.ini
 echo 8Quota module is activated in the MDS interface.
 echo 7You can now configure user quotas from the MDS interface : http://@HOSTNAME@/mmc/
 
-sleep 1
 exit 0

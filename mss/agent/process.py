@@ -13,67 +13,91 @@ class ExecManager:
     """ Class managing running tasks """
 
     def __init__(self):
-        self.thread = None
-        self.code = None
-        self.output = ""
+        # thread pool
+        self.threads = {}
 
-    def load_packages(self):
+    def load_packages(self, callback):
         """ get all installed packages """
-        self.launch(["rpm", "-qa", "--queryformat", "%{NAME}#"], wait=True)
-        if self.code == 0:
-            packages = self.output.split('#')
-        else:
-            packages = []
-        return packages
+        self.launch("load", ["rpm", "-qa", "--queryformat", "%{NAME}#"], 
+            callback=callback)
 
     def install_packages(self, packages):
         """ launch installation of packages list """
-        self.launch(["urpmi", "--auto"] + packages)
+        self.launch("install", ["urpmi", "--auto"] + packages)
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
         if os.path.exists(os.path.join(cwd, script)):
-            self.launch(["bash", script] + args, cwd=cwd)
+            self.launch("config", ["bash", script] + args, cwd=cwd)
             return True
         else:
             return False
+
+    def update_medias(self):
+        """ update medias lists """
+        self.launch("update", ["urpmi.update", "-a"])
         
     def add_media(self, name, proto, url, login=None, passwd=None):
         """ add media """
         if login and passwd:
-            self.launch(["urpmi.addmedia", name,
+            self.launch("media", ["urpmi.addmedia", name,
                 proto+"://"+login+":"+passwd+"@"+url], wait=True)
         else:
-            self.launch(["urpmi.addmedia", name,
+            self.launch("media", ["urpmi.addmedia", name,
                 proto+"://"+url], wait=True)
         return (self.code, self.output)
 
-    def launch(self, command, wait=False, cwd=None):
+    def launch(self, name, command, wait=False, cwd=None, callback=None):
         """ launch wrapper """    
         # accept only one thread
-        if threading.activeCount() == 1:
-            self.output = ""
-            self.code = 2000
-            self.thread = ExecThread(self, command, cwd)
-            self.thread.start()
+        if not name in self.threads or not self.threads[name].isAlive():
+            self.threads[name] = ExecThread(command, cwd, callback)
+            self.threads[name].start()
             if wait:
-                self.thread.join()
+                self.threads[name].join()
         else:
             raise ExecManagerBusyError, "ExecManager is busy"
 
-    def get_state(self):
-        """ get current/last execution context """
-        return (self.code, xmlrpclib.Binary(self.output))
+    def get_state(self, name):
+        """ get thread execution state """
+        return (self.threads[name].code, 
+            xmlrpclib.Binary(self.threads[name].output))
+
+    def get_status(self):
+        """ get execution manager status """
+        print self.threads
+        self.status = ""
+        for name, thread in self.threads.items():
+            if thread.isAlive():
+                if name == "load":
+                    self.status += "Loading packages list, "
+                if name == "install":
+                    self.status += "Installing packages, "
+                if name == "update":
+                    self.status += "Updating medias, "
+                if name == "media":
+                    self.status += "Adding media, "
+                if name == "config":
+                    self.status += "Running configuration, "
+        if not self.status:
+            self.status = "Ready"
+        else:
+            self.status = self.status[:-2]
+            
+        return self.status
 
 
 class ExecThread(threading.Thread):
     """ Base class for running tasks """
 
-    def __init__(self, EM, command, cwd):
-        self.EM = EM
+    def __init__(self, command, cwd, callback):
+        #threading.Thread.__init__(self, **kwds)
         self.process = None
         self.command = command
         self.cwd = cwd
+        self.callback = callback
+        self.code = 2000
+        self.output = ""
         self.lock = threading.RLock()
         threading.Thread.__init__(self)
 
@@ -95,6 +119,7 @@ class ExecThread(threading.Thread):
             # raise an exception when the process doesn't make output
             # for long time
             except IndexError:
+                fd = None
                 pass
               
             self.process.poll()
@@ -102,15 +127,18 @@ class ExecThread(threading.Thread):
                 # get bytes one by one
                 if fd:
                     self.lock.acquire()
-                    self.EM.output += os.read(fd, 1)
+                    self.output += os.read(fd, 1)
                     self.lock.release()
             else:
                 # get last bytes from output
                 if fd:
                     self.lock.acquire()
-                    self.EM.output += os.read(fd, 4096)
+                    self.output += os.read(fd, 4096)
                     self.lock.release()
-                self.EM.code = self.process.returncode
+                self.code = self.process.returncode
+                print self.output
+                if self.callback:
+                    self.callback(self.code, self.output)
                 break
 
 

@@ -146,5 +146,4 @@ echo '8You can now use the MDS interface to manage your Windows users and shares
 echo 1Profiles are disabled by default.
 echo 1- edit /etc/samba/smb.conf manually to activate them.
 
-sleep 1
 exit 0
