@@ -11,8 +11,7 @@ from auth import authenticate
 EM = ExecManager()
 TM = TranslationManager()
 MM = ModuleManager(EM, TM)
-server = SimpleXMLRPCServer(("localhost", 7000), allow_none=True,
-    logRequests=False)
+server = SimpleXMLRPCServer(("localhost", 7000), allow_none=True)
 server.register_instance(MM)
 server.register_function(authenticate)
 server.serve_forever()

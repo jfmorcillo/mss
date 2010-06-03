@@ -288,7 +288,9 @@ class ModuleManager:
                     'url': url, 'code': code})
             # check authentication backend.                    
             else:
-                if media["auth"] == "my":
+                if not login or not passwd:
+                    code = 2
+                elif media["auth"] == "my":
                     self.logger.debug("Check my authentication")
                     code = self.my_auth(login, passwd, media["name"])
                 else:
@@ -443,7 +445,11 @@ class ModuleManager:
     @expose
     def get_status(self):
         """ return current agent status """
-        return self.EM.get_status()
+        status = ""
+        statuses = self.EM.get_status()
+        for sts in statuses:
+            status += _(sts, "agent")+', '
+        return status[:-2]
 
 class Module:
     """

@@ -14,18 +14,7 @@
                         history.back();
                     });
                 }
-                new Ajax.PeriodicalUpdater('status', '{% url status %}', {
-                    frequency: 1,
-                    decay: 1,
-                    onSuccess: function(request) {
-                        if (request.responseText.startsWith('Ready')) {
-                            $('status').removeClassName("active");
-                        }
-                        else {
-                            $('status').addClassName("active");
-                        }
-                    }
-                });
+                updateStatus(true);
             });
             var show_log = false;
             toggleLog = function(button) {
@@ -45,6 +34,34 @@
             }
             updateMedias = function() {
                 new Ajax.Request('{% url update_medias %}', { method: 'get' });
+            }
+            updateStatus = function(force) {
+                new Ajax.Updater($('status'), '{% url status %}', {
+                    'method': 'get',
+                    'parameters': {'force': force},
+                    on200: function(transport) {
+                        if (transport.responseText.startsWith('Ready')) {
+                            if ($('status').hasClassName("active")) {
+                                $('status').removeClassName("active");
+                                new Effect.Morph('status', {
+                                    duration: 0.3,
+                                    style: 'height: 0px;'
+                                });
+                            }
+                        }
+                        else {
+                            $('status').addClassName("active");
+                            new Effect.Morph('status', {
+                                duration: 0.3,
+                                style: 'height: 22px;'
+                            });
+                        }
+                        updateStatus(false);
+                    },
+                    onFailure: function(transport) {
+                        setTimeout('updateStatus(false)', '3000');
+                    }
+                });
             }
         </script>
         <div id="head">

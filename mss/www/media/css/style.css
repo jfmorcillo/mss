@@ -113,22 +113,21 @@ div#head div#quick-personal {
 
 div#status {
     position: fixed;
-    bottom: 0;
+    bottom: -1px;
     left: 0;
-    background: #F5F5F5;
-    border-top: 1px solid #aaa;
+    background: white;
+    height: 0px;
+    border-top: 1px solid #2854B0;
     width: 100%;
-    padding: 3px;
-    line-height: 15px;
-    height: 15px;
-    color: #888;
+    padding-left: 3px;
+    line-height: 22px;
+    color: #2854B0;
 }
 
 div#status.active {
     background: white url('../img/load.gif') no-repeat 5px;
     padding-left: 40px;
-    border-top: 1px solid #2854B0;
-    color: #2854B0;
+    padding-bottom: 2px;
 }
 
 /* Blocks */

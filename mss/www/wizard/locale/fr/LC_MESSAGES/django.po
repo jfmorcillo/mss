@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MSS 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-23 23:22+0200\n"
+"POT-Creation-Date: 2010-06-03 18:12+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Braun Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,16 +16,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: templates/base.html:24 templates/mss/config_log.html:50
+#: views.py:106
+msgid "The XML-RPC server is not responding"
+msgstr "Le serveur XML-RPC ne répond pas"
+
+#: templates/base.html:25 templates/mss/config_log.html:54
 msgid "Hide log"
 msgstr "Cacher le détail"
 
-#: templates/base.html:28 templates/mss/config_log.html:50
+#: templates/base.html:29 templates/mss/config_log.html:54
 #: templates/mss/config_run.html:87 templates/mss/install.html:23
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:42
+#: templates/base.html:75
+msgid "Update medias"
+msgstr "Mettre à jour les médias"
+
+#: templates/base.html:76
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -117,9 +125,10 @@ msgid "Continue"
 msgstr "Continuer"
 
 #: templates/mss/config.html:130 templates/mss/config_run.html:99
-#: templates/mss/install.html:29 templates/mss/install_no.html:19
-#: templates/mss/medias.html:41 templates/mss/medias_add.html:11
-#: templates/mss/preinst.html:31 templates/mss/section.html:146
+#: templates/mss/config_run.html.py:108 templates/mss/install.html:29
+#: templates/mss/install_no.html:19 templates/mss/medias.html:41
+#: templates/mss/medias_add.html:11 templates/mss/preinst.html:31
+#: templates/mss/section.html:146
 msgid "Back"
 msgstr "Retour"
 
@@ -136,15 +145,21 @@ msgstr "Configuration réussie."
 msgid "Configuration failed."
 msgstr "Configuration échouée."
 
-#: templates/mss/config_log.html:19
+#: templates/mss/config_log.html:18 templates/mss/config_no.html:11
+#: templates/mss/config_run.html:22 templates/mss/config_run.html.py:39
+#: templates/mss/error.html:11 templates/mss/section.html:68
+msgid "Home page"
+msgstr "Page d'accueil"
+
+#: templates/mss/config_log.html:23
 msgid "Configuration summary"
 msgstr "Résumé de la configuration"
 
-#: templates/mss/config_log.html:27
+#: templates/mss/config_log.html:31
 msgid "Configuration warnings"
 msgstr "Avertissements de configuration"
 
-#: templates/mss/config_log.html:35
+#: templates/mss/config_log.html:39
 msgid "Configuration errors"
 msgstr "Erreurs de configuration"
 
@@ -155,12 +170,6 @@ msgstr "Les modules selectionnés n'ont pas de script de configuration."
 #: templates/mss/config_no.html:8
 msgid "Installation was successful."
 msgstr "Installation réussie."
-
-#: templates/mss/config_no.html:11 templates/mss/config_run.html:22
-#: templates/mss/config_run.html.py:39 templates/mss/error.html:11
-#: templates/mss/section.html:68
-msgid "Home page"
-msgstr "Page d'accueil"
 
 #: templates/mss/config_run.html:23 templates/mss/config_run.html.py:41
 msgid "Configuration terminated, details are displayed below."
@@ -204,7 +213,7 @@ msgstr "Une erreur s'est produite."
 
 #: templates/mss/error.html:7
 msgid "XML-RPC server is unreacheable."
-msgstr "Le serveur XML-RPC est injoingnable"
+msgstr "Le serveur XML-RPC est injoignable"
 
 #: templates/mss/error.html:7
 msgid ""

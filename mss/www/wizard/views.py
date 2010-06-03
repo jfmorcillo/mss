@@ -3,9 +3,10 @@
 import xmlrpclib
 from datetime import datetime
 import re
+import time
 
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect, HttpResponse, Http404
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse, Http404
 from django.views.generic.simple import direct_to_template
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
@@ -14,12 +15,14 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
+from django.utils.translation import ugettext as _
 
 from config import ConfigManager
 from xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
 CM = ConfigManager()
+output = {"status": "", "install": "", "config": ""}
 
 def mylogin(request):
     if request.method == "POST":
@@ -81,15 +84,26 @@ def error(request, code):
     return render_to_response('mss/error.html', {'code': code},
         context_instance=RequestContext(request))
 
-def status(request):
+def get_status(request):
     """ get agent status """
-    err, result = xmlrpc.call('get_status')
-    if err:
-        return err
-    else:
-        return render_to_response('mss/raw_output.html',
-            {'output': result}, 
-            context_instance=RequestContext(request))
+    global output
+    TIMEOUT = 0
+    MAX_TIME = 10
+    while 1:
+        err, sts = xmlrpc.call('get_status')
+        if sts:
+            if sts != output["status"] or \
+               request.GET['force'] == 'true' or \
+               TIMEOUT >= MAX_TIME:
+                output["status"] = sts
+                return render_to_response('mss/raw_output.html',
+                    {'output': sts}, 
+                    context_instance=RequestContext(request))
+            else:
+                TIMEOUT += 1
+                time.sleep(1)
+        else:
+            return HttpResponseBadRequest('<span class="error">'+_("The XML-RPC server is not responding")+'</span>')
 
 @login_required
 def sections(request):
@@ -243,6 +257,7 @@ def install_state(request):
         {'code': code, 'output': str_output},
         context_instance=RequestContext(request))
 
+@login_required
 def reload_packages(request):
     err, result = xmlrpc.call('load_packages')
     return HttpResponse("")
@@ -258,7 +273,6 @@ def config(request):
             return err
         else:
             config = result
-
         # check if the modules needs configuration
         do_config = False
         # check if the modules have configuration scripts

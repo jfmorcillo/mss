@@ -7,6 +7,7 @@ import threading
 import xmlrpclib
 from subprocess import Popen, PIPE, STDOUT
 import time
+from gettext import gettext as _
 
 
 class ExecManager:
@@ -45,7 +46,7 @@ class ExecManager:
         else:
             self.launch("media", ["urpmi.addmedia", name,
                 proto+"://"+url], wait=True)
-        return (self.code, self.output)
+        return (self.threads['media'].code, self.threads['media'].output)
 
     def launch(self, name, command, wait=False, cwd=None, callback=None):
         """ launch wrapper """    
@@ -65,26 +66,22 @@ class ExecManager:
 
     def get_status(self):
         """ get execution manager status """
-        print self.threads
-        self.status = ""
+        status = []
         for name, thread in self.threads.items():
             if thread.isAlive():
                 if name == "load":
-                    self.status += "Loading packages list, "
+                    status.append(_("Loading packages list"))
                 if name == "install":
-                    self.status += "Installing packages, "
+                    status.append(_("Installing packages"))
                 if name == "update":
-                    self.status += "Updating medias, "
+                    status.append(_("Updating medias"))
                 if name == "media":
-                    self.status += "Adding media, "
+                    status.append(_("Adding media"))
                 if name == "config":
-                    self.status += "Running configuration, "
-        if not self.status:
-            self.status = "Ready"
-        else:
-            self.status = self.status[:-2]
-            
-        return self.status
+                    status.append(_("Running configuration"))
+        if not status:
+            status.append("Ready")
+        return status
 
 
 class ExecThread(threading.Thread):
@@ -136,7 +133,6 @@ class ExecThread(threading.Thread):
                     self.output += os.read(fd, 4096)
                     self.lock.release()
                 self.code = self.process.returncode
-                print self.output
                 if self.callback:
                     self.callback(self.code, self.output)
                 break
