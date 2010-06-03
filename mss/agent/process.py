@@ -80,7 +80,7 @@ class ExecManager:
                 if name == "config":
                     status.append(_("Running configuration"))
         if not status:
-            status.append("Ready")
+            status.append(_("Ready"))
         return status
 
 

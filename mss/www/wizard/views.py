@@ -103,7 +103,7 @@ def get_status(request):
                 TIMEOUT += 1
                 time.sleep(1)
         else:
-            return HttpResponseBadRequest('<span class="error">'+_("The XML-RPC server is not responding")+'</span>')
+            return HttpResponseBadRequest(_("The XML-RPC server is not responding"))
 
 @login_required
 def sections(request):
@@ -373,6 +373,7 @@ def config_state(request, module):
         {'code': code, 'output': output, 'infos': infos},
         context_instance=RequestContext(request))
 
+@login_required
 def config_end(request, module):
     err, result = xmlrpc.call('end_config', module)
     return HttpResponse("")

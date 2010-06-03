@@ -14,7 +14,7 @@
                         history.back();
                     });
                 }
-                updateStatus(true);
+                setTimeout('updateStatus(true)', '500');
             });
             var show_log = false;
             toggleLog = function(button) {
@@ -39,12 +39,13 @@
                 new Ajax.Updater($('status'), '{% url status %}', {
                     'method': 'get',
                     'parameters': {'force': force},
-                    on200: function(transport) {
-                        if (transport.responseText.startsWith('Ready')) {
+                    onComplete: function(transport) {
+                        if (transport.responseText.startsWith('{% trans "Ready" %}')) {
                             if ($('status').hasClassName("active")) {
                                 $('status').removeClassName("active");
                                 new Effect.Morph('status', {
                                     duration: 0.3,
+                                    delay: 1,
                                     style: 'height: 0px;'
                                 });
                             }
@@ -56,10 +57,14 @@
                                 style: 'height: 22px;'
                             });
                         }
-                        updateStatus(false);
-                    },
-                    onFailure: function(transport) {
-                        setTimeout('updateStatus(false)', '3000');
+                        if (transport.status == 400) {
+                            $('status').addClassName("error");
+                            setTimeout('updateStatus(false)', '2000');
+                        }
+                        else {
+                            $('status').removeClassName("error");
+                            updateStatus(false);
+                        }
                     }
                 });
             }

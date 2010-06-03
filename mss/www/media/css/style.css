@@ -130,6 +130,11 @@ div#status.active {
     padding-bottom: 2px;
 }
 
+div#status.error {
+    background: white url('../img/loaderr.gif') no-repeat 5px;
+    border-top: 1px solid #D72828;
+}
+
 /* Blocks */
 
 div.block {
