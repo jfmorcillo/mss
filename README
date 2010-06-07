@@ -25,20 +25,26 @@ agent/                          # all files related to the XML-RPC server
 == Web interface ==
 
 www/				# all files related to the web interface
-	locale/			# gettext translation files for web interface strings
 	media/			# CSS, images, JS...
-	mss/			# web appliance
-		config.py	# layout configuration
+        backends/               # XML-RPC authentification backend
+	wizard/			# web appliance
+		locale/         # gettext translation files for web interface strings
+	layout/                 # layout configuration
+	cpserver/               # interface for running the webserver
+        cherrpy/                # the python web server
 	templates/		# HTML templates for page rendering
+        settings.py             # web interface settings
 	manage.py		# used to start the webserver (and more) :
-                                # ./manage.py runserver 0.0.0.0:8000 (start server)
+                                # ./manage.py runcpserver host=0.0.0.0 port=8000 (start cherrypy server)
                                 # ./manage.py makemessages -l fr (update po files for lang)
                                 # ./manage.py compilemessages -l fr (build mo files)
 
 bin/                            # files for production environnement
     agent/                      # init script, python agent
-        mss
-        mss-agent.py
+        mss-agent.init
+        mss-agent.py            # daemonized XML-RPC agent
+    www/
+        mss-www.init            # init script for web server
     build_pot.sh                # create po files for the agent and all modules
     build_mo.sh                 # update mo files for the agent and all modules
 
