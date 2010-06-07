@@ -8,6 +8,7 @@ import imp
 import glob
 import sys
 import logging
+import logging.handlers
 import locale
 import platform
 import xmlrpclib
@@ -21,8 +22,13 @@ from sets import Set
 
 from process import ExecManager
 from translation import TranslationManager
-    
-logging.basicConfig(level=logging.DEBUG)
+
+LOG_FILENAME = '/var/log/mss/mss-agent.log'
+logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
+logger = logging.getLogger('MyLogger')
+handler = logging.handlers.RotatingFileHandler(
+              LOG_FILENAME, maxBytes=10485760, backupCount=5)
+logger.addHandler(handler)
 
 def expose(f):
     "Decorator to set exposed flag on a function."

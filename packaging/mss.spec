@@ -39,13 +39,13 @@ Requires: python-IPy >= 0.62
 %description -n	mss-wizard
 XML-RPC server and web interface
 
-%package -n	mss-mes5-modules
+%package -n	mss-modules-mes5
 Summary: Mandriva Server Setup modules for MES5
 Group: System/Servers
 Requires: python
 Requires: mss-wizard
 
-%description -n	mss-mes5-modules
+%description -n	mss-modules-mes5
 MES5 Modules for MSS
 
 
@@ -78,6 +78,7 @@ python setup.py install --single-version-externally-managed --root=%{buildroot}
 install -d %{buildroot}%{_initrddir}
 install -d %{buildroot}%{_sbindir}
 install -d %{buildroot}%{_sharedstatedir}/mss/
+install -d %{buildroot}%{_localstatedir}/log/mss
 
 install -m0755 bin/agent/mss-agent.init %{buildroot}%{_initrddir}/mss-agent
 install -m0755 bin/agent/mss-agent.py %{buildroot}%{_sbindir}/mss-agent.py
@@ -95,7 +96,7 @@ if [ $1 -ge 1 ]; then
 fi
 exit 0
 
-%post -n mss-mes5-modules
+%post -n mss-modules-mes5
 # install/upgrade
 if [ $1 -ge 1 ]; then
     /sbin/service mss-agent restart
@@ -103,7 +104,7 @@ if [ $1 -ge 1 ]; then
 fi
 exit 0
 
-%postun -n mss-mes5-modules
+%postun -n mss-modules-mes5
 # uninstallation
 if [ $1 -eq 0 ]; then
     /sbin/service mss-agent restart
@@ -117,7 +118,7 @@ rm -rf $RPM_BUILD_ROOT
 %files -n mss-wizard
 %defattr(-,root,root,0755)
 %exclude %{py_puresitedir}/mss/www/media/img/modules/
-%exclude %{py_puresitedir}/mss/www/wizard/modules/mes5_config.py*
+%exclude %{py_puresitedir}/mss/www/layout/mes5/
 %{_initrddir}/mss-www
 %{_initrddir}/mss-agent
 %{_sbindir}/mss-agent.py*
@@ -127,12 +128,13 @@ rm -rf $RPM_BUILD_ROOT
 %{py_puresitedir}/mss/www/
 %{py_puresitedir}/mss/__init__.py*
 %attr(0750,mss,root) %{_sharedstatedir}/mss
+%{_localstatedir}/log/mss
 
-%files -n mss-mes5-modules
+%files -n mss-modules-mes5
 %defattr(-,root,root,0755)
 %{py_puresitedir}/mss/agent/modules/
 %{py_puresitedir}/mss/www/media/img/modules/
-%{py_puresitedir}/mss/www/wizard/modules/mes5_config.py*
+%{py_puresitedir}/mss/www/layout/mes5/
 
 %changelog 
 * Tue May 25 2010 Jean-Philippe Braun <jpbraun@mandriva.com> 2.0dev
