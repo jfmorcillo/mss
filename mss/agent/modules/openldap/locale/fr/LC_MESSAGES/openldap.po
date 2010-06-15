@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-05-19 10:44+0200\n"
+"POT-Creation-Date: 2010-06-15 15:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,40 +17,44 @@ msgstr "OpenLDAP"
 msgid "Open Source LDAP directory"
 msgstr "Annuaire LDAP Open Source"
 
-#: modules/openldap/desc.xml:6(rpm)
-msgid "openldap-servers"
-msgstr ""
-
-#: modules/openldap/desc.xml:7(rpm)
-msgid "nss_ldap"
-msgstr ""
-
-#: modules/openldap/desc.xml:8(rpm)
-msgid "openldap-clients"
+#: modules/openldap/desc.xml:5(module)
+msgid "mds_mmc"
 msgstr ""
 
 #: modules/openldap/desc.xml:9(rpm)
-msgid "pam_ldap"
+msgid "openldap-servers"
 msgstr ""
 
 #: modules/openldap/desc.xml:10(rpm)
+msgid "nss_ldap"
+msgstr ""
+
+#: modules/openldap/desc.xml:11(rpm)
+msgid "openldap-clients"
+msgstr ""
+
+#: modules/openldap/desc.xml:12(rpm)
+msgid "pam_ldap"
+msgstr ""
+
+#: modules/openldap/desc.xml:13(rpm)
 msgid "openldap-mandriva-dit"
 msgstr ""
 
-#: modules/openldap/desc.xml:15(label)
+#: modules/openldap/desc.xml:18(label)
 msgid "LDAP root"
 msgstr "Racine LDAP"
 
-#: modules/openldap/desc.xml:16(help)
+#: modules/openldap/desc.xml:19(help)
 msgid "Usually the domain name (eg: domain.com). This define the LDAP root."
 msgstr ""
 "En général votre nom de domaine (ex: domaine.com). Ceci défini la racine LDAP"
 
-#: modules/openldap/desc.xml:19(label)
+#: modules/openldap/desc.xml:22(label)
 msgid "LDAP password"
 msgstr "Mot de passe LDAP"
 
-#: modules/openldap/desc.xml:20(help)
+#: modules/openldap/desc.xml:23(help)
 msgid "The LDAP admin password."
 msgstr "Le mot de passe de l'administrateur LDAP"
 

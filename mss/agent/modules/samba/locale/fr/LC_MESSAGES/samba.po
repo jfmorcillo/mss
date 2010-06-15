@@ -1,0 +1,44 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/samba/desc.xml:2(name)
+msgid "Samba file server"
+msgstr "Serveur de fichiers Samba"
+
+#: modules/samba/desc.xml:3(desc)
+msgid "Share files and printers on a Microsoft network"
+msgstr "Partagez des fichiers et des imprimantes sur un réseau Microsoft"
+
+#: modules/samba/desc.xml:6(rpm)
+msgid "samba-server"
+msgstr ""
+
+#: modules/samba/desc.xml:7(rpm)
+msgid "samba-client"
+msgstr ""
+
+#: modules/samba/desc.xml:8(rpm)
+msgid "samba-common"
+msgstr ""
+
+#: modules/samba/desc.xml:9(rpm)
+msgid "samba-doc"
+msgstr ""
+
+#: modules/samba/desc.xml:10(rpm)
+msgid "smbldap-tools"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/samba/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+

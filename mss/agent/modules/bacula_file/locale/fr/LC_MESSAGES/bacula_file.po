@@ -1,0 +1,31 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/bacula_file/desc.xml:2(name)
+msgid "Bacula File Daemon"
+msgstr "Bacula File Daemon"
+
+#: modules/bacula_file/desc.xml:3(desc)
+msgid "Background application which reads files from data source"
+msgstr ""
+"Application à installer sur les machines clientes à sauvegarder. Elle est "
+"chargée de fournir les attributs des fichiers et les données requis par le "
+"Director"
+
+#: modules/bacula_file/desc.xml:6(rpm)
+msgid "bacula-fd"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/bacula_file/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+
