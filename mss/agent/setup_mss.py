@@ -12,7 +12,7 @@ conf = '/var/lib/mmc-wizard/mds_config.ini'
 bdd = '/var/lib/mss/mss-agent.db'
 mapper = {
     'mds': 'mds_mmc',
-    'samba': 'mds_samba',
+    'samba': 'mds_smb',
     'mail': 'mds_mail',
     'webmail': 'mds_webmail',
     'dns': 'mds_dns',
