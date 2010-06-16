@@ -3,7 +3,6 @@
 
 import sys
 import os
-import sqlite3
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from mss.agent.module import ModuleManager
 from mss.agent.process import ExecManager
@@ -16,22 +15,13 @@ class MSS(Daemon):
         EM = ExecManager()
         TM = TranslationManager()
         MM = ModuleManager(EM, TM)
-        server = SimpleXMLRPCServer(("localhost", 7000), allow_none=True,
+        server = SimpleXMLRPCServer(("localhost", 7001), allow_none=True,
             logRequests=False)
         server.register_instance(MM)
         server.register_function(authenticate)
         server.serve_forever()
 
 if __name__ == "__main__":
-
-    # create db first time
-    if not os.path.exists('/var/lib/mss/mss-agent.db'):
-        conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
-        c = conn.cursor()
-        c.execute('create table module(name varchar(50), configured varchar(50));')
-        conn.commit()
-        c.close()
-
     daemon = MSS('/var/run/mss-agent.pid')
     if len(sys.argv) == 2:
         if 'start' == sys.argv[1]:

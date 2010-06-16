@@ -63,6 +63,9 @@ def first_time(request):
     try:
         User.objects.get(username="root")
     except ObjectDoesNotExist:
+        # set language
+        if hasattr(request, 'session'):
+            request.session['django_language'] = settings.DEFAULT_LANGUAGE
         return direct_to_template(request, 'mss/first_time.html',
             {'DEFAULT_LANGUAGE': settings.DEFAULT_LANGUAGE})
     else:
@@ -381,7 +384,7 @@ def config_end(request, module):
 
 def toHtml(request, text):
     # replace hostname tag with server name
-    text = re.sub('@HOSTNAME@', request.META['HTTP_HOST'].replace(':8000', ''), text);
+    text = re.sub('@HOSTNAME@', request.META['HTTP_HOST'].replace(':7002', ''), text);
     # make links
     text = re.sub(r'(http:\/\/[^ <)]*)', r'<a href="\1"><strong>\1</strong></a>', text);
     return text

@@ -6,7 +6,7 @@ import xmlrpclib
 class MSSBackend:
 
     def authenticate(self, username=None, password=None):
-        conn = xmlrpclib.ServerProxy('http://localhost:7000')
+        conn = xmlrpclib.ServerProxy('http://localhost:7001')
         auth = conn.authenticate(username, password)
         # password ok
         if auth:

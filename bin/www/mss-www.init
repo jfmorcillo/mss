@@ -26,35 +26,44 @@ prog=mss-www
 # Configuration
 #
 HOST=0.0.0.0
-PORT=8080
+PORT=7002
 USER=mss
 GROUP=mss
+SSL=1
+SSL_CRT=/etc/mss/ssl/localhost.crt
+SSL_KEY=/etc/mss/ssl/localhost.key
 # Your path.
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
 # Location of the webserver.py file
-DAEMON=/usr/lib/python2.5/site-packages/mss/www/manage.py
+BASEDIR=/usr/lib/python2.5/site-packages/mss/www/
+DAEMON=manage.py
 # PID file to be created. It must match with the PID file in the
 # configuration module.
 PIDFILE=/var/run/$prog.pid
 #
 ####################################
 
-CWD="`pwd`"
-
-test -f $DAEMON || exit 0
+test -f $BASEDIR$DAEMON || exit 0
 test -f /usr/bin/python || exit 0
 
 set -e
-cd $BASEDIR
+CWD=`pwd`
 
 function start () {
     gprintf "Starting %s: " "$prog"
     if [ -f /var/lock/subsys/$prog ]; then
-	    gprintf "%s is running" "$prog"
-	    success
+	    gprintf "%s is running" "$prog" && success
     else
+        if [ $SSL == 1 ]; then
+            [ ! -f $SSL_CRT ] && echo "SSL certificate not found" && failure
+            [ ! -f $SSL_KEY ] && echo "SSL private key not found" && failure            
+            SSL_OPTIONS="ssl_certificate=$SSL_CRT ssl_private_key=$SSL_KEY"
+        else
+            SSL_OPTIONS=""
+        fi
+        cd $BASEDIR
         /usr/bin/python $DAEMON runcpserver host=$HOST port=$PORT server_group=$GROUP \
-            server_user=$USER pidfile=$PIDFILE daemonize=true
+            server_user=$USER pidfile=$PIDFILE daemonize=true $SSL_OPTIONS
         # wait pid file to be created
         sleep 1
         touch /var/lock/subsys/$prog
@@ -66,6 +75,7 @@ function start () {
 function stop () {
     gprintf "Stopping %s: " "$prog"
     if [ -f /var/lock/subsys/$prog ]; then
+        cd $BASEDIR
         /usr/bin/python $DAEMON runcpserver pidfile=$PIDFILE stop
         if [ "$?" == "0" ]; then
             sleep 1
@@ -98,4 +108,3 @@ esac
 cd $CWD
 
 exit 0
-

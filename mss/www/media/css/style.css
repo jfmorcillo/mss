@@ -250,6 +250,11 @@ div.block div.detail input {
     margin-right: 5px;
 }
 
+div.disabled { background: #eee; }
+div.disabled p.desc, div.disabled a { color: #999; }
+div.disabled h2 { color: #888; }
+div.disabled img { opacity: 0.5; }
+
 div.push {
     margin-left: 10px;
 }

@@ -18,8 +18,8 @@ pulse2 = {
     'name': _('Pulse 2'), 
     'id': 'pulse2', 
     'icon': 'section_pulse2.png',
-    'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br /><br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.'),
-    'conf': {'class': 'block-2 block-last'},
+    'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.'),
+    'conf': {'class': 'block-2 block-last disabled'},
 }
 config.add_section(pulse2)
 
@@ -27,7 +27,7 @@ partners = {
     'name': _('Partners'), 
     'id': 'partners', 
     'icon': 'section_partners.png',
-    'desc': _(' '),
+    'desc': _('Several appliances from our partners.'),
     'conf': {'class': 'block-2 block-clear'},
 }
 config.add_section(partners)
@@ -110,26 +110,26 @@ advanced = [
         'conf': {'class': 'block-2 block-last'},
     },
     { 
-        'name': _('Authentication'),
-        'icon': 'bundle_authentication.png',
-        'desc': _('Tools for managing identities'), 
-        'modules': ["openldap", "kerberos", "openldap_kerberos"],
-        'conf': {'class': 'block-2'},
-    },
-    { 
         'name': _('Backup Tools'),
         'icon': 'bundle_backup.png',
         'desc': _('Backup Server'), 
         'modules': ["bacula_director", "bacula_storage", "bacula_file"],
-        'conf': {'class': 'block-2 block-last'},
+        'conf': {'class': 'block-2'},
     },        
     { 
         'name': _('Mail server'),
         'icon': 'bundle_mail.png',
         'desc': _('Mail server with POP/IMAP and Webmail access'), 
         'modules': ["postfix", "spam", "cyrus", "dovecot", "courierimap", "sympa", "roundcube"],
+        'conf': {'class': 'block-2 block-last'},
+    }, 
+    { 
+        'name': _('Authentication'),
+        'icon': 'bundle_authentication.png',
+        'desc': _('Tools for managing identities'), 
+        'modules': ["openldap", "kerberos", "openldap_kerberos"],
         'conf': {'class': 'block-2'},
-    },       
+    },          
 ]
 config.add_modules("advanced", advanced)
 
