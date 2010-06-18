@@ -4,7 +4,12 @@
 
 {% ifequal mode "run" %}
 <script type="text/javascript">
-    var modules = new Array({% for m in modules %}{% if not m.skip_config %}'{{ m.id }}'{% if not forloop.last %},{% endif %}{% endif %}{% endfor %});
+    var modules = new Array();
+    {% for m in modules %}
+        {% if not m.skip_config %}
+            modules.push('{{ m.id }}');
+        {% endif %}
+    {% endfor %}
     var current_module = 0;
     var updater = "";
 
@@ -39,7 +44,7 @@
         $("next").value = "{% trans "Home page" %}";
         $("next").disabled = false;
         $("summary").update("{% trans "Configuration terminated, details are displayed below." %}");
-        $(modules[current_module]).down().next('div.install').down().update("{% trans "Could not find any configuration script to execute." %}");
+        $(modules[current_module]).down().next('div.install').down().update("{% trans "Error : Could not find any configuration script to execute." %}");
     }
 
     runconfig = function() {

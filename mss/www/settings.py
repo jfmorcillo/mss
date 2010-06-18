@@ -16,7 +16,6 @@ DATABASE_ENGINE = 'sqlite3'
 DATABASE_NAME = "/var/lib/mss/mss-www.db"
 
 TIME_ZONE = 'Europe/Paris'
-LANGUAGE_CODE = 'en'
 SITE_ID = 1
 USE_I18N = True
 MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
@@ -24,6 +23,7 @@ MEDIA_URL = '/site_media/'
 LOGIN_URL = "/mss/account/login/"
 
 DEFAULT_LANGUAGE = locale.getdefaultlocale()[0]
+LANGUAGE_CODE = 'en'
 LANGUAGES = (
   ('en', 'English'),
   ('fr_FR', 'Français'),
@@ -66,8 +66,7 @@ INSTALLED_APPS = [
     'mss.www.cpserver',
 ]
 
-for layout in glob.glob(os.path.join(PROJECT_DIR, "layout",
-    "*", "__init__.py")):
+for layout in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "__init__.py")):
     app = 'mss.www.layout.'+layout.split("/")[-2]
     if not app in INSTALLED_APPS:
         INSTALLED_APPS.append(app)

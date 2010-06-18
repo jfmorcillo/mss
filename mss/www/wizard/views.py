@@ -15,7 +15,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
-from django.utils.translation import ugettext as _
+from django.utils.translation import ugettext as _, activate
 
 from config import ConfigManager
 from xmlrpc import XmlRpc
@@ -36,9 +36,10 @@ def mylogin(request):
                 response = HttpResponseRedirect(reverse('sections'))
                 # set agent language
                 err, result = xmlrpc.call('set_lang', lang)
-                # set language
+                # set www language
                 if hasattr(request, 'session'):
                     request.session['django_language'] = lang
+                    activate(lang)
                 if err:
                     return err
                 return response
@@ -50,7 +51,7 @@ def mylogin(request):
         # invalid login
         return direct_to_template(request, 'invalid_login.html',
             extra_context = {'DEFAULT_LANGUAGE': settings.DEFAULT_LANGUAGE})
-      
+
 def mylogout(request):
     logout(request)
     # reset language
@@ -59,13 +60,15 @@ def mylogout(request):
     return HttpResponseRedirect(reverse('first_time'))
 
 def first_time(request):
+    # set language
+    if hasattr(request, 'session'):
+        request.session['django_language'] = settings.DEFAULT_LANGUAGE
+        # dynamically activate language
+        activate(settings.DEFAULT_LANGUAGE)
     # check root user
     try:
         User.objects.get(username="root")
     except ObjectDoesNotExist:
-        # set language
-        if hasattr(request, 'session'):
-            request.session['django_language'] = settings.DEFAULT_LANGUAGE
         return direct_to_template(request, 'mss/first_time.html',
             {'DEFAULT_LANGUAGE': settings.DEFAULT_LANGUAGE})
     else:
@@ -75,9 +78,6 @@ def login_form(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse('sections'))
     else:
-        # set language
-        if hasattr(request, 'session'):
-            request.session['django_language'] = settings.DEFAULT_LANGUAGE
         return render_to_response('mss/login.html', 
             {'DEFAULT_LANGUAGE': settings.DEFAULT_LANGUAGE},
             context_instance=RequestContext(request))

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-05-23 23:48+0200\n"
+"POT-Creation-Date: 2010-06-09 21:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,7 +16,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: layout/mes5.py:12
+#: config.py:9 config.py:46
+msgid "Mandriva Directory Server"
+msgstr ""
+
+#: config.py:12
 msgid ""
 "MDS is an enterprise directory platform based on LDAP designed to manage "
 "identities, and various network services commonly used.<br/><br/>In "
@@ -30,128 +34,134 @@ msgstr ""
 "d'une interface web moderne et conviviale. Pour plus d'informations visitez "
 "le <a href=\"http://mds.mandriva.org/\">site du projet</a>."
 
-#: layout/mes5.py:18
-msgid "Pulse 2"
-msgstr "Pulse 2"
+#: config.py:18
+msgid "Pulse 2 - Coming soon"
+msgstr "Pulse 2 - Bientôt disponible"
 
-#: layout/mes5.py:21
+#: config.py:21
 msgid ""
 "Pulse 2 is an Open Source tool that simplifies application deployment, "
-"inventory, and maintenance of an IT network.<br /><br />It has been designed "
-"to handle from a few computers on a single site to 100 000+ computers spread "
-"on many sites.<br /><br />For more information on Pulse 2, visit the <a href="
+"inventory, and maintenance of an IT network.<br />It has been designed to "
+"handle from a few computers on a single site to 100 000+ computers spread on "
+"many sites.<br /><br />For more information on Pulse 2, visit the <a href="
 "\"http://pulse2.mandriva.org/\">project website</a>."
 msgstr ""
+"Pulse 2 offre des fonctionnalités d'inventaire, de maintenance, de mise à "
+"jour et de prise de contrôle sur des parcs d'une dizaine à plusieurs "
+"milliers de machines. Pulse 2 est conçu pour gérer des parcs de plus de 100 "
+"000 machines réparties sur plusieurs sites.<br /><br /> Pour plus "
+"d'information sur Pulse 2, visitez le <a href=\"http://pulse2.mandriva.org/"
+"\">site du projet</a>."
 
-#: layout/mes5.py:27
+#: config.py:27
 msgid "Partners"
 msgstr "Partenaires"
 
-#: layout/mes5.py:30
-msgid " "
-msgstr " "
+#: config.py:30
+msgid "Several appliances from our partners."
+msgstr "Différentes applications de nos partenaires packagées par nos soins."
 
-#: layout/mes5.py:36
-msgid "Advanced"
-msgstr "Avancé"
+#: config.py:36
+msgid "Server services and tools"
+msgstr "Services et outils pour un serveur"
 
-#: layout/mes5.py:39
+#: config.py:39
 msgid "Install basic server stacks like DHCP, OpenLDAP or VPN software."
 msgstr "Installation de piles logicielles serveur comme DHCP, OpenLDAP."
 
-#: layout/mes5.py:48
+#: config.py:48
 msgid "Required base components"
 msgstr "Composant de base requis"
 
-#: layout/mes5.py:53
+#: config.py:53
 msgid "File server modules"
 msgstr "Modules pour serveur de fichiers"
 
-#: layout/mes5.py:55
+#: config.py:55
 msgid "Samba, Cups and quota support"
 msgstr "Samba, Cups et support des quotas"
 
-#: layout/mes5.py:60
+#: config.py:60
 msgid "Mail modules"
 msgstr "Modules pour serveur de mails"
 
-#: layout/mes5.py:62
+#: config.py:62
 msgid "SMTP, IMAP server and other tools"
 msgstr "Serveur SMTP, IMAP et autres outils"
 
-#: layout/mes5.py:67
+#: config.py:67
 msgid "Network modules"
 msgstr "Modules pour services réseaux"
 
-#: layout/mes5.py:69 layout/mes5.py:87
+#: config.py:69 config.py:87
 msgid "Network managing tools"
 msgstr "Outils de gestion réseau"
 
-#: layout/mes5.py:74
+#: config.py:74
 msgid "Other modules"
 msgstr "Autres modules"
 
-#: layout/mes5.py:76
+#: config.py:76
 msgid "Various MDS modules"
 msgstr "Divers modules MDS"
 
-#: layout/mes5.py:85
+#: config.py:85
 msgid "Network"
 msgstr "Réseau"
 
-#: layout/mes5.py:92
+#: config.py:92
 msgid "LAMP server"
 msgstr "Serveur LAMP"
 
-#: layout/mes5.py:94
+#: config.py:94
 msgid "Toolkit for dynamic web site hosting"
 msgstr "Un ensemble d'outils libres pour héberger des sites web dynamiques"
 
-#: layout/mes5.py:99
+#: config.py:99
 msgid "Printing and file server"
 msgstr "Serveur de fichier et d'impression"
 
-#: layout/mes5.py:101
+#: config.py:101
 msgid "Samba, Cups and NFS servers."
 msgstr "Samba, Cups et support des quotas"
 
-#: layout/mes5.py:106
+#: config.py:106
 msgid "Databases"
 msgstr "Bases de données"
 
-#: layout/mes5.py:108
+#: config.py:108
 msgid "Relational databases"
 msgstr "Bases de données relationnelles"
 
-#: layout/mes5.py:113
-msgid "Authentication"
-msgstr "Authentification"
-
-#: layout/mes5.py:115
-msgid "Tools for managing identities"
-msgstr "Outils de gestion des identités"
-
-#: layout/mes5.py:120
+#: config.py:113
 msgid "Backup Tools"
 msgstr "Outils de sauvegarde"
 
-#: layout/mes5.py:122
+#: config.py:115
 msgid "Backup Server"
 msgstr "Serveur de sauvegarde"
 
-#: layout/mes5.py:127
+#: config.py:120
 msgid "Mail server"
 msgstr "Serveur de mail"
 
-#: layout/mes5.py:129
+#: config.py:122
 msgid "Mail server with POP/IMAP and Webmail access"
 msgstr "Serveurs SMTP, POP, IMAP et Webmail"
 
-#: layout/mes5.py:138
+#: config.py:127
+msgid "Authentication"
+msgstr "Authentification"
+
+#: config.py:129
+msgid "Tools for managing identities"
+msgstr "Outils de gestion des identités"
+
+#: config.py:138
 msgid "eGroupware Suite"
 msgstr "Suite eGroupware"
 
-#: layout/mes5.py:140
+#: config.py:140
 msgid ""
 "eGroupware is a enterprise ready groupware software for your network. It "
 "enables you to manage contacts, appointments, todos and many more for your "
@@ -166,15 +176,15 @@ msgstr ""
 "toute votre activité.eGroupware est un serveur Collaboratif (groupware). Il "
 "est conçu nativement avec une interface Web qui vous permet d'accéder à vos "
 "données de n'importe quel plate-forme sur la planète. Vous avez le choix "
-"d'accéder au serveur EGroupware avec votre client groupware préféré (Kontact, "
-"Evolution, Outlook) ainsi qu'avec votre téléphone portable ou votre PDA, "
-"par SyncML."
+"d'accéder au serveur EGroupware avec votre client groupware préféré "
+"(Kontact, Evolution, Outlook) ainsi qu'avec votre téléphone portable ou "
+"votre PDA, par SyncML."
 
-#: layout/mes5.py:145
+#: config.py:145
 msgid "Group-Office"
 msgstr "Group-Office"
 
-#: layout/mes5.py:147
+#: config.py:147
 msgid ""
 "Take your office online. Share projects, calendars, files and e-mail online "
 "with co-workers and clients. Easy to use and fully customizable, Group-"
@@ -184,11 +194,11 @@ msgstr ""
 "vos collègues et clients. Facile à utiliser et entièrement personnalisable, "
 "Group-Office propulse la collaboration online au niveau supérieur."
 
-#: layout/mes5.py:152
+#: config.py:152
 msgid "Authentication Firewall Suite for Linux"
 msgstr "Solution de pare-feu authentifiant"
 
-#: layout/mes5.py:154
+#: config.py:154
 msgid ""
 "NuFW adds user-based filtering to Netfilter, the state of the art IP "
 "filtering layer from the Linux kernel. Its exclusive algorithm allows "
@@ -197,3 +207,12 @@ msgstr ""
 "NuFW ajoute la notion d’utilisateurs aux règles de filtrage. Le projet "
 "s’appuie sur Netfilter, la couche pare-feu du noyau Linux, et constitue un "
 "système de gestion d’identité au niveau des couches réseaux."
+
+#~ msgid "Advanced"
+#~ msgstr "Avancé"
+
+#~ msgid "Pulse 2"
+#~ msgstr "Pulse 2"
+
+#~ msgid " "
+#~ msgstr " "

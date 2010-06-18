@@ -11,7 +11,7 @@ def get_current_config():
     if os.path.exists(ini):
         mdsdomain = getINIoption('ldap', 'baseDN', ini)
         mdsdomain = re.sub('^dc=', '', mdsdomain)
-        mdsdomain = re.sub(',dc=', '.', mdsdomain)
+        mdsdomain = re.sub(',[\s]*dc=', '.', mdsdomain)
         mdspasswd = getINIoption('ldap', 'password', ini)    
         return {'mdsdomain': mdsdomain, 'mdspasswd': mdspasswd}
     else:

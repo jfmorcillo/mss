@@ -53,6 +53,7 @@
                         }
                         else if (transport.status == 200) {
                             $('status').addClassName("active");
+                            $('status').removeClassName("error");
                             new Effect.Morph('status', {
                                 duration: 0.3,
                                 style: 'height: 22px;'
@@ -62,9 +63,12 @@
                         if (transport.status == 400) {
                             $('status').addClassName("error");
                             setTimeout('updateStatus(false)', '2000');
+                            new Effect.Morph('status', {
+                                duration: 0.3,
+                                style: 'height: 22px;'
+                            });                            
                         }
                         else {
-                            $('status').removeClassName("error");
                             updateStatus(false);
                         }
                     }

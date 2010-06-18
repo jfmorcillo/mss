@@ -11,11 +11,11 @@
         </div>
         <div class="block-content">
             <h2>{% trans section.name %}</h2>
-            <p class="desc">{% blocktrans with section.desc|safe as desc %}{{ desc }}{% endblocktrans %}</p>
+            <p class="desc">{% autoescape off %}{% trans section.desc %}{% endautoescape %}</p>
         </div>
         <form name="mss" action="{% url section section.id %}" method="post">
             <div class="validation right">
-                <input type="hidden" name="name" value="{{ section.name }}" />
+                <input type="hidden" name="name" value="{% trans section.name %}" />
                 <input type="submit" name="continue" value="{% trans "Enter" %}" />
             </div>
         </form>

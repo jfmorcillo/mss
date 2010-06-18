@@ -117,11 +117,11 @@ div#status {
     left: 0;
     background: white;
     height: 0px;
-    border-top: 1px solid #2854B0;
     width: 100%;
-    padding-left: 3px;
     line-height: 22px;
-    color: #2854B0;
+    padding-left: 5px;
+    border-top: 1px solid #2854B0;ls
+    color: #2854B0;    
 }
 
 div#status.active {
@@ -132,7 +132,10 @@ div#status.active {
 
 div#status.error {
     background: white url('../img/loaderr.gif') no-repeat 5px;
+    padding-left: 40px;
+    padding-bottom: 2px;
     border-top: 1px solid #D72828;
+    color: #D72828;
 }
 
 /* Blocks */

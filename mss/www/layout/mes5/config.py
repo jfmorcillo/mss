@@ -15,7 +15,7 @@ mds = {
 config.add_section(mds)
     
 pulse2 = { 
-    'name': _('Pulse 2'), 
+    'name': _('Pulse 2 - Coming soon'), 
     'id': 'pulse2', 
     'icon': 'section_pulse2.png',
     'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.'),
@@ -33,7 +33,7 @@ partners = {
 config.add_section(partners)
 
 advanced = { 
-    'name': _('Advanced'), 
+    'name': _('Server services and tools'), 
     'id': 'advanced', 
     'icon': 'section_advanced.png',
     'desc': _('Install basic server stacks like DHCP, OpenLDAP or VPN software.'),

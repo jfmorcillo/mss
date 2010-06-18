@@ -177,7 +177,7 @@ msgstr "La configuration est terminée. Les détails sont affichés ci-dessous."
 
 #: templates/mss/config_run.html:42
 msgid "Could not find any configuration script to execute."
-msgstr "Les modules selectionnés n'ont pas de script de configuration."
+msgstr "Erreur : Le module selectionné n'a pas de script de configuration."
 
 #: templates/mss/config_run.html:64
 msgid ""
