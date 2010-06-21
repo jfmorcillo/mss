@@ -120,14 +120,16 @@ div#status {
     width: 100%;
     line-height: 22px;
     padding-left: 5px;
-    border-top: 1px solid #2854B0;ls
-    color: #2854B0;    
+    border-top: 1px solid #2854B0;
+    color: #2854B0;
 }
 
 div#status.active {
     background: white url('../img/load.gif') no-repeat 5px;
     padding-left: 40px;
     padding-bottom: 2px;
+    border-top: 1px solid #2854B0;
+    color: #2854B0;    
 }
 
 div#status.error {
@@ -268,21 +270,33 @@ input {
     padding-left: 2px;
 }
 
-input[type=button], input[type=submit] {
+input[type="button"], input[type="submit"] {
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     padding: 4px;
     background: white url(../img/btn_bg.png) repeat-x bottom;
-}
-
-input:disabled {
-    background: #AAA;
-    color: #666;
+    text-shadow: 0 1px 1px #fff;
 }
 
 input:hover {
     background: #4B62AB;
     color: white;
+}
+
+input[type="button"]:hover, input[type="submit"]:hover {
+    background: white url(../img/btn_bg_o.png) repeat-x bottom;
+    color: #222;
+}
+
+input[type="button"]:active, input[type="submit"]:active {
+    background: white url(../img/btn_bg_a.png) repeat-x top;
+    color: #222;
+}
+
+input:disabled, input:disabled:hover {
+    background: #AAA;
+    color: #666;
+    border: 1px solid #888;
 }
 
 input.error {

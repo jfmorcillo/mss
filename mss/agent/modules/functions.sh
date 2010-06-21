@@ -64,7 +64,7 @@ function backup() {
 	if [ ! -f "$1" ]; then
         echo "1No file to backup"
     else
-        newname="$1-mmc-wizard-$now"
+        newname="$1-mss-wizard-$now"
         cp -a "$1" "$newname"
         if [ $? -eq 0 ]; then 
             echo "0Backed up #$1# to #$newname"
