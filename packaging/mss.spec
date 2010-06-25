@@ -35,9 +35,11 @@ Requires(pre): shadow-utils
 Requires(pre): initscripts
 Requires(preun): initscripts
 Requires: python
-Requires: python-django >= 1.0.4
-Requires: python-IPy >= 0.62
+Requires: python-django
+Requires: python-IPy
+Requires: python-OpenSSL
 Requires: openssl
+Requires: binutils
 
 %description -n	mss-agents
 XML-RPC server and web interface
@@ -81,7 +83,7 @@ python setup.py install --single-version-externally-managed --root=%{buildroot}
 
 install -d %{buildroot}%{_initrddir}
 install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_sharedstatedir}/mss/
+install -d %{buildroot}%{_var}/lib/mss/
 install -d %{buildroot}%{_logdir}/mss/
 install -d %{buildroot}%{_sysconfdir}/mss/ssl/
 
@@ -120,13 +122,18 @@ if [ "$1" = "1" ]; then
 --
 SomeState
 SomeCity
-SomeOrganization
-SomeOrganizationalUnit
+Mandriva
+MandrivaLinux
 ${FQDN}
 root@${FQDN}
 EOF
         chown mss.mss %{_sysconfdir}/mss/ssl/localhost.crt
     fi
+    
+    # create BDD
+    %{__python} %{py_puresitedir}/mss/www/manage.py syncdb --noinput
+    chown mss /var/lib/mss/mss-www.db
+    
 fi
 # run setup script for mss-agent (handle bdd creation, upgrade)
 %{__python} %{py_puresitedir}/mss/agent/setup_mss.py
@@ -134,9 +141,6 @@ fi
 if [ $1 -ge 1 ]; then
     %_post_service mss-agent
     %_post_service mss-www
-    # create BDD
-    %{__python} %{py_puresitedir}/mss/www/manage.py syncdb --noinput
-    chown mss /var/lib/mss/mss-www.db
     /sbin/service mss-agent start
     /sbin/service mss-www start
 fi
@@ -172,7 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %{py_puresitedir}/mss/agent/locale/
 %{py_puresitedir}/mss/www/
 %{py_puresitedir}/mss/__init__.py*
-%attr(0750,mss,root) %{_sharedstatedir}/mss
+%attr(0750,mss,root) %{_var}/lib/mss
 %{_localstatedir}/log/mss
 %{_sysconfdir}/mss/ssl/
 %{_datadir}/mdk/desktop/server/*
