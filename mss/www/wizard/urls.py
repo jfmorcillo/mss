@@ -2,6 +2,7 @@ from django.conf.urls.defaults import *
 
 urlpatterns = patterns('mss.www.wizard.views',
     url(r'^$', 'first_time', name="first_time"),
+    url(r'^lang/(?P<lang>[\w_]+)/$', 'set_lang', name="set_lang"),
     url(r'^account/authentication/$', 'login_form', name="login_form"),
     url(r'^account/login/$', 'mylogin', name="login"),
     url(r'^account/logout/$', 'mylogout', name="logout"),

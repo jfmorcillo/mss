@@ -14,7 +14,7 @@
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span class="active">3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
 <div class="block block-height">
     <h2>{% trans "Installation" %}</h2>
-    <p>{% trans "The following modules are beeing install" %} :
+    <p>{% trans "The following modules are beeing installed" %} :
     {% for m in modules %}
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>

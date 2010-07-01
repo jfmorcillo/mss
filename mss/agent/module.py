@@ -24,11 +24,12 @@ from process import ExecManager
 from translation import TranslationManager
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
-logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
+logging.basicConfig(level=logging.INFO, filename=LOG_FILENAME)
 logger = logging.getLogger('MyLogger')
 handler = logging.handlers.RotatingFileHandler(
               LOG_FILENAME, maxBytes=10485760, backupCount=5)
 logger.addHandler(handler)
+os.chmod(LOG_FILENAME, 0600)
 
 def expose(f):
     "Decorator to set exposed flag on a function."

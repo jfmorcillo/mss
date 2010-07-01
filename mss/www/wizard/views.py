@@ -58,13 +58,21 @@ def mylogout(request):
     if hasattr(request, 'session'):
         request.session['django_language'] = settings.DEFAULT_LANGUAGE
     return HttpResponseRedirect(reverse('first_time'))
+    
+def set_lang(request, lang):
+    if "url" in request.GET:
+        url = request.GET["url"]
+    else:
+        url = "/"
+    if hasattr(request, 'session'):
+        request.session['django_language'] = lang
+        settings.DEFAULT_LANGUAGE = lang
+        activate(lang)
+        # set agent language
+        err, result = xmlrpc.call('set_lang', lang)        
+    return HttpResponseRedirect(url)
 
 def first_time(request):
-    # set language
-    if hasattr(request, 'session'):
-        request.session['django_language'] = settings.DEFAULT_LANGUAGE
-        # dynamically activate language
-        activate(settings.DEFAULT_LANGUAGE)
     # check root user
     try:
         User.objects.get(username="root")

@@ -1,5 +1,5 @@
 <module id="samba">
-  <name>Samba file server</name>
+  <name>SAMBA file server</name>
   <desc>Share files and printers on a Microsoft network</desc>
   <packages>
     <target name="all">

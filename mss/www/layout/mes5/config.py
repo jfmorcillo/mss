@@ -52,7 +52,7 @@ mds = [
     {
         'name': _('File server modules'),
         'icon': 'bundle_fileserver.png',
-        'desc': _('Samba, Cups and quota support'),
+        'desc': _('SAMBA, Cups and quota support'),
         'conf': {'class': 'block-2'},
         'modules': ["mds_smb", "mds_quota", "mds_cups"],
     },
@@ -98,7 +98,7 @@ advanced = [
     { 
         'name': _('Printing and file server'),
         'icon': 'bundle_fileserver.png',
-        'desc': _('Samba, Cups and NFS servers.'), 
+        'desc': _('SAMBA, Cups and NFS servers.'), 
         'modules': ["samba", "cups", "nfs", "proftpd"],
         'conf': {'class': 'block-2'},
     },

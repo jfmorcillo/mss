@@ -53,10 +53,10 @@ msgstr "Mot de passe"
 
 #: templates/login_form.html:9
 msgid "Language"
-msgstr "Language"
+msgstr "Langue"
 
 #: templates/login_form.html:16 templates/mss/sections.html:19
-msgid "Enter"
+msgid "Enter"b
 msgstr "Entrer"
 
 #: templates/mss/config.html:17

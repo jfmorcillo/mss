@@ -7,7 +7,12 @@
     </p>
     <p>
         <label for="language">{% trans "Language" %}: </label>
-        <select id="language" name="language">
+        <script type="text/javascript">
+            setLang = function(lang) {
+                window.location = "/mss/lang/"+lang+"/";
+            }
+        </script>
+        <select id="language" name="language" onchange="setLang(this.value);">
         {% for lang in LANGUAGES %}
             <option value="{{ lang.0 }}" {% ifequal DEFAULT_LANGUAGE lang.0 %}selected="selected"{% endifequal %}>{{ lang.1 }}</option>
         {% endfor %}

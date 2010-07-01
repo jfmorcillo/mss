@@ -1,7 +1,24 @@
 /* GENERAL */
 
+@font-face {
+	font-family: 'DroidSansRegular';
+	src: url('../fonts/DroidSans-webfont.eot');
+	src: local('☺'), url('../fonts/DroidSans-webfont.woff') format('woff'), url('../fonts/DroidSans-webfont.ttf') format('truetype'), url('../fonts/DroidSans-webfont.svg#webfontbC7tRKrq') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'DroidSansBold';
+	src: url('../fonts/DroidSans-Bold-webfont.eot');
+	src: local('☺'), url('../fonts/DroidSans-Bold-webfont.woff') format('woff'), url('../fonts/DroidSans-Bold-webfont.ttf') format('truetype'), url('../fonts/DroidSans-Bold-webfont.svg#webfont5dL3IGk2') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+
 * {
-    font-family: "Droid Sans", Arial, sans-serif;
+    font-family: 'DroidSansRegular', 'Arial', 'sans-serif';
     font-size: 12px;
     color: #222;
 }
@@ -11,9 +28,10 @@ p {
     margin-bottom: 5px;    
 }
 
-h1 { font-size: 16px; }
-h2 { font-size: 18px; color: #21449C; }
-h3 { font-size: 14px; }
+h1, h1 * { font-size: 16px; font-family: 'Arial', 'sans-serif'; }
+h2, h2 * { font-size: 18px; color: #21449C; font-family: 'Arial', 'sans-serif'; }
+h3, h3 * { font-size: 14px; font-family: 'Arial', 'sans-serif'; }
+#logo a { font-family: 'Arial', 'sans-serif'; }
 
 form {
     margin-bottom: 0;
@@ -216,7 +234,7 @@ div.block p.desc {
     color: #555;
     margin: 0;
     margin-top: 5px;
-    font-size: 12px;
+    /*font-size: 12px;*/
 }
 
 div.block div.head {

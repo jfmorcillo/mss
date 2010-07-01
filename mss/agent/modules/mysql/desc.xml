@@ -1,6 +1,6 @@
 <module id="mysql">
-    <name>Mysql database</name>
-    <desc>Mysql relational database</desc>
+    <name>MySQL database</name>
+    <desc>MySQL relational database</desc>
     <packages>
         <target name="all">
             <rpm>mysql</rpm>
@@ -13,15 +13,15 @@
     <config>
         <password name="current_mypasswd">
             <label>Current password</label>
-            <help>Current Mysql root password. Leave blank for first installation.</help>
+            <help>Current MySQL root password. Leave blank for first installation.</help>
         </password>
         <password name="mypasswd" require="yes">
             <label>New password</label>
-            <help>New Mysql root password. Set here the new password.</help>
+            <help>New MySQL root password. Set here the new password.</help>
         </password>
     </config>
     <text>OK, successfully used password, moving on...</text>
-    <text>Invalid current Mysql password.</text>
+    <text>Invalid current MySQL password.</text>
     <text>Setting the root password ensures that nobody can log into the MySQL</text>
     <text>root user without the proper authorisation.</text>
     <text>Password updated successfully!</text>
@@ -38,4 +38,9 @@
     <text>Reloading the privilege tables</text>
     <text>Aborting!</text>
     <text>Cleaning up...</text>
+    <text>MySQL is running</text>
+    <text>- A password has been set for the root user</text>
+    <text>- Anonymous users were removed</text>
+    <text>- Test database has been removed</text>
+    <text>- Remote login for root has been disabled</text>
 </module>
