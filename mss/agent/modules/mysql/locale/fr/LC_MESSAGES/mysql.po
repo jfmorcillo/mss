@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,11 +10,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mysql/desc.xml:2(name)
-msgid "Mysql database"
+#, fuzzy
+msgid "MySQL database"
 msgstr "Base de donnée Mysql"
 
 #: modules/mysql/desc.xml:3(desc)
-msgid "Mysql relational database"
+#, fuzzy
+msgid "MySQL relational database"
 msgstr "Base de donnée relationnelle Mysql"
 
 #: modules/mysql/desc.xml:6(rpm)
@@ -34,15 +36,18 @@ msgid "Current password"
 msgstr "Mot de passe actuel"
 
 #: modules/mysql/desc.xml:16(help)
-msgid "Current Mysql root password. Leave blank for first installation."
-msgstr "Mot de passe Mysql root actuel. Laissez vide pour une première installation."
+#, fuzzy
+msgid "Current MySQL root password. Leave blank for first installation."
+msgstr ""
+"Mot de passe Mysql root actuel. Laissez vide pour une première installation."
 
 #: modules/mysql/desc.xml:19(label)
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
 #: modules/mysql/desc.xml:20(help)
-msgid "New Mysql root password. Set here the new password."
+#, fuzzy
+msgid "New MySQL root password. Set here the new password."
 msgstr "Nouveau mot de passe root mysql."
 
 #: modules/mysql/desc.xml:23(text)
@@ -50,7 +55,8 @@ msgid "OK, successfully used password, moving on..."
 msgstr ""
 
 #: modules/mysql/desc.xml:24(text)
-msgid "Invalid current Mysql password."
+#, fuzzy
+msgid "Invalid current MySQL password."
 msgstr "Mot de passe actuel incorrect."
 
 #: modules/mysql/desc.xml:25(text)
@@ -115,6 +121,26 @@ msgstr ""
 
 #: modules/mysql/desc.xml:40(text)
 msgid "Cleaning up..."
+msgstr ""
+
+#: modules/mysql/desc.xml:41(text)
+msgid "MySQL is running"
+msgstr ""
+
+#: modules/mysql/desc.xml:42(text)
+msgid "- A password has been set for the root user"
+msgstr ""
+
+#: modules/mysql/desc.xml:43(text)
+msgid "- Anonymous users were removed"
+msgstr ""
+
+#: modules/mysql/desc.xml:44(text)
+msgid "- Test database has been removed"
+msgstr ""
+
+#: modules/mysql/desc.xml:45(text)
+msgid "- Remote login for root has been disabled"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

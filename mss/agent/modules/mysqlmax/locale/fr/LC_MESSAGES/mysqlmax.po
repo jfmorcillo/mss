@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,10 +14,12 @@ msgid "MySQL-Max server"
 msgstr "Serveur Mysql-Max"
 
 #: modules/mysqlmax/desc.xml:3(desc)
-msgid "Alternative MySQL server binary that supports features like transactional tables"
+msgid ""
+"Alternative MySQL server binary that supports features like transactional "
+"tables"
 msgstr ""
-"Serveur MySQL alternatif, compilé avec le support de fonctionnalités avancées "
-"(tables transactionnelles, etc.)"
+"Serveur MySQL alternatif, compilé avec le support de fonctionnalités "
+"avancées (tables transactionnelles, etc.)"
 
 #: modules/mysqlmax/desc.xml:5(module)
 msgid "mysql"
@@ -39,4 +41,3 @@ msgstr ""
 #: modules/mysqlmax/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
-

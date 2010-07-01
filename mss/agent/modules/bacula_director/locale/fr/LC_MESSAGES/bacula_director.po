@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,8 +14,12 @@ msgid "Bacula Director"
 msgstr "Bacula Director"
 
 #: modules/bacula_director/desc.xml:3(desc)
-msgid "Background application which runs schedules, authenticates connections and controls backup operations"
-msgstr "Le service Bacula Director est le programme qui supervise toutes les opérations de sauvegarde, restauration, vérification et archivage"
+msgid ""
+"Background application which runs schedules, authenticates connections and "
+"controls backup operations"
+msgstr ""
+"Le service Bacula Director est le programme qui supervise toutes les "
+"opérations de sauvegarde, restauration, vérification et archivage"
 
 #: modules/bacula_director/desc.xml:6(rpm)
 msgid "bacula-common"
@@ -33,4 +37,3 @@ msgstr ""
 #: modules/bacula_director/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
-

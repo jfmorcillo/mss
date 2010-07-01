@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,7 +14,9 @@ msgid "LAMP developpement packages (PHP, Perl/CGI)"
 msgstr "Paquets de développement LAMP (PHP, Perl/CGI)"
 
 #: modules/lamp_dev/desc.xml:3(desc)
-msgid "A set of open source tools to run dynamic web sites (scripting, php, modules, ...)"
+msgid ""
+"A set of open source tools to run dynamic web sites (scripting, php, "
+"modules, ...)"
 msgstr ""
 "Un ensemble d'outils libres pour héberger des sites web dynamiques (langages "
 "de script, modules php, ...)"
@@ -59,4 +61,3 @@ msgstr ""
 #: modules/lamp_dev/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
-

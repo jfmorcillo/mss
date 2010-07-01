@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -135,7 +135,7 @@ msgstr "Chargement réussi."
 
 #: modules/mds_mmc/desc.xml:42(text)
 msgid "Your previous database directory has been backed up as"
-msgstr "Votre ancienne base de donnée à été sauvegarde sous"
+msgstr "Votre ancienne base de donnée à été sauvegardée sous"
 
 #: modules/mds_mmc/desc.xml:43(text)
 msgid "started succesfully."
@@ -151,7 +151,7 @@ msgstr "Mandriva Directory Server est en exécution."
 
 #: modules/mds_mmc/desc.xml:46(text)
 msgid "You can log in the MDS interface from http://@HOSTNAME@/mmc/."
-msgstr "Vous pouvez accéder l'interface de MDS sur http://@HOSTNAME@/mmc/."
+msgstr "Vous pouvez accéder à l'interface de MDS sur http://@HOSTNAME@/mmc/."
 
 #: modules/mds_mmc/desc.xml:47(text)
 msgid "MDS administrator : root"

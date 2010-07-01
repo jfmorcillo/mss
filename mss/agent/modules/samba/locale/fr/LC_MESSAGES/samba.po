@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,8 +10,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/samba/desc.xml:2(name)
-msgid "Samba file server"
-msgstr "Serveur de fichiers Samba"
+msgid "SAMBA file server"
+msgstr "Serveur de fichiers SAMBA"
 
 #: modules/samba/desc.xml:3(desc)
 msgid "Share files and printers on a Microsoft network"
@@ -41,4 +41,3 @@ msgstr ""
 #: modules/samba/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
-

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -40,46 +40,46 @@ msgstr ""
 msgid "Ready"
 msgstr ""
 
-#: module.py:306
+#: module.py:308
 msgid "The media seems to be down. Please try later."
 msgstr ""
 
-#: module.py:308
+#: module.py:310
 msgid "You don't have access to the media."
 msgstr ""
 
-#: module.py:310
+#: module.py:312
 msgid "Bad login/password."
 msgstr ""
 
-#: module.py:312
+#: module.py:314
 msgid "Service unavailable. Please try later."
 msgstr ""
 
-#: module.py:314
+#: module.py:316
 msgid "Unknow error."
 msgstr ""
 
-#: module.py:316
+#: module.py:318
 msgid "Your login does not look like an email address."
 msgstr ""
 
-#: module.py:662
+#: module.py:664
 msgid "This field can't be empty."
 msgstr ""
 
-#: module.py:667
+#: module.py:669
 msgid "Password mismatch."
 msgstr ""
 
-#: module.py:738
+#: module.py:740
 msgid "Incorrect FQDN."
 msgstr ""
 
-#: module.py:745 module.py:754
+#: module.py:747 module.py:756
 msgid "Incorrect IP address."
 msgstr ""
 
-#: module.py:748
+#: module.py:750
 msgid "Incorrect netmask address."
 msgstr ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-06-15 15:33+0200\n"
+"POT-Creation-Date: 2010-07-01 17:22+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,8 +10,8 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mds_smb/desc.xml:2(name)
-msgid "Samba PDC and file server"
-msgstr "Contrôlleur de domaine et serveur de fichier Samba"
+msgid "SAMBA PDC and file server"
+msgstr "Contrôleur de domaine et serveur de fichiers SAMBA"
 
 #: modules/mds_smb/desc.xml:3(desc)
 msgid "Share files and printers and authenticate users on a Microsoft network"
@@ -52,8 +52,8 @@ msgid "mds-mmc"
 msgstr ""
 
 #: modules/mds_smb/desc.xml:20(label)
-msgid "Samba domain name"
-msgstr "Nom de domaine Samba"
+msgid "SAMBA domain name"
+msgstr "Nom de domaine SAMBA"
 
 #: modules/mds_smb/desc.xml:21(help)
 msgid "The name of your Microsoft domain."
@@ -64,8 +64,8 @@ msgid "Netbios name"
 msgstr "Nom netbios"
 
 #: modules/mds_smb/desc.xml:25(help)
-msgid "The name of your Samba server in the Microsoft domain."
-msgstr "Le nom de votre serveur Samba sur le domaine Microsoft."
+msgid "The name of your SAMBA server in the Microsoft domain."
+msgstr "Le nom de votre serveur SAMBA sur le domaine Microsoft."
 
 #: modules/mds_smb/desc.xml:28(label)
 msgid "Administrator name"
@@ -84,28 +84,28 @@ msgid "Password for the Microsoft domain administrator."
 msgstr "Mot de passe pour l'administrateur du domaine"
 
 #: modules/mds_smb/desc.xml:36(text)
-msgid "Samba configuration done. (/etc/samba/smb.conf updated)"
-msgstr "Configuration Samba faite. (/etc/samba/smb.conf mis à jour)"
+msgid "SAMBA configuration done. (/etc/samba/smb.conf updated)"
+msgstr "Configuration SAMBA faite. (/etc/samba/smb.conf mis à jour)"
 
 #: modules/mds_smb/desc.xml:37(text)
-msgid "Error while configuring Samba. (/etc/samba/smb.conf)"
-msgstr "Erreur lors de la configuration Samba. (/etc/samba/smb.conf)"
+msgid "Error while configuring SAMBA. (/etc/samba/smb.conf)"
+msgstr "Erreur lors de la configuration SAMBA. (/etc/samba/smb.conf)"
 
 #: modules/mds_smb/desc.xml:38(text)
-msgid "Samba password set."
-msgstr "Mot de passe Samba enregistré."
+msgid "SAMBA password set."
+msgstr "Mot de passe SAMBA enregistré."
 
 #: modules/mds_smb/desc.xml:39(text)
-msgid "Error while setting Samba password. (smbpasswd)"
-msgstr "Erreur lors de l'enregistrement du mot de passe Samba. (smbpasswd)"
+msgid "Error while setting SAMBA password. (smbpasswd)"
+msgstr "Erreur lors de l'enregistrement du mot de passe SAMBA. (smbpasswd)"
 
 #: modules/mds_smb/desc.xml:40(text) modules/mds_smb/desc.xml:48(text)
-msgid "Service Samba reloaded succesfully."
-msgstr "Le service Samba a redémarré."
+msgid "Service SAMBA reloaded succesfully."
+msgstr "Le service SAMBA a re-démarré avec succès."
 
 #: modules/mds_smb/desc.xml:41(text) modules/mds_smb/desc.xml:49(text)
-msgid "Service Samba fails restarting."
-msgstr "Le service Samba n'a pas redémarré."
+msgid "Service SAMBA fails restarting."
+msgstr "Le service SAMBA n'a pas redémarré."
 
 #: modules/mds_smb/desc.xml:42(text)
 msgid ""
@@ -139,20 +139,20 @@ msgstr ""
 "conf et /etc/smbldap-tools/smbldap_bind.conf)"
 
 #: modules/mds_smb/desc.xml:46(text)
-msgid "Directory populated for Samba."
-msgstr "Annuaire renseigné pour Samba."
+msgid "Directory populated for SAMBA."
+msgstr "Annuaire renseigné pour SAMBA."
 
 #: modules/mds_smb/desc.xml:47(text)
 msgid "Error while populating directory."
 msgstr "Erreur lors du renseignement de l'annuaire pour Samba."
 
 #: modules/mds_smb/desc.xml:50(text)
-msgid "MDS Samba configuration done."
-msgstr "Configuration du module samba de MDS réussie."
+msgid "MDS SAMBA configuration done."
+msgstr "Configuration du module SAMBA de MDS réussie."
 
 #: modules/mds_smb/desc.xml:51(text)
-msgid "Error while configuring MDS Samba module."
-msgstr "Erreur lors de la configuration du module Samba."
+msgid "Error while configuring MDS SAMBA module."
+msgstr "Erreur lors de la configuration du module SAMBA."
 
 #: modules/mds_smb/desc.xml:52(text)
 msgid ""
@@ -185,11 +185,11 @@ msgstr "Echec lors du changement de droits sur le groupe \"Domain Admins\"."
 
 #: modules/mds_smb/desc.xml:57(text)
 msgid ""
-"Your filesystem does not support ACL. You won't be able to set ACLs on Samba "
+"Your filesystem does not support ACL. You won't be able to set ACLs on SAMBA "
 "shares."
 msgstr ""
 "Votre système de fichiers ne supporte pas les ACLs. Vous ne pourrez "
-"positionner des ACLs sur les partages Samba."
+"positionner des ACLs sur les partages SAMBA."
 
 #: modules/mds_smb/desc.xml:58(text)
 msgid "For ext3 filesystems you have to add the acl option in /etc/fstab."
@@ -224,8 +224,8 @@ msgstr ""
 "netlogon"
 
 #: modules/mds_smb/desc.xml:65(text)
-msgid "Make sure you have enabled Samba services on your firewall."
-msgstr "Assurez vous que votre pare-feu accepte les services Samba en entrée."
+msgid "Make sure you have enabled SAMBA services on your firewall."
+msgstr "Assurez vous que votre pare-feu accepte les services SAMBA en entrée."
 
 #: modules/mds_smb/desc.xml:66(text)
 msgid ""
@@ -237,7 +237,7 @@ msgstr ""
 
 #: modules/mds_smb/desc.xml:67(text)
 msgid "Profiles are disabled by default."
-msgstr "Les profiles itinérants sont désactivés par défaut."
+msgstr "Les profils itinérants sont désactivés par défaut."
 
 #: modules/mds_smb/desc.xml:68(text)
 msgid "- edit /etc/samba/smb.conf manually to activate them."
