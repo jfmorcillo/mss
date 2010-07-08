@@ -232,10 +232,12 @@ def medias(request):
                 return render_to_response('medias_modules.html',
                     {'auths': auths, 'done': done},
                     context_instance=RequestContext(request))
-            else:
+            elif len(done) > 0:
                 return render_to_response('medias_modules_add.html',
                     {'done': done},
                     context_instance=RequestContext(request))
+            else:
+                return HttpResponseRedirect(reverse('install'))
     else:
         return HttpResponseRedirect(reverse('sections'))
 
