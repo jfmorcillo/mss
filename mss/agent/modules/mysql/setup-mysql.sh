@@ -189,7 +189,7 @@ reload_privilege_tables
 
 cleanup
 
-echo 8Mysql is running
+echo 8MySQL is running
 echo 7- A password has been set for the root user
 echo 7- Anonymous users were removed
 echo 7- Test database has been removed

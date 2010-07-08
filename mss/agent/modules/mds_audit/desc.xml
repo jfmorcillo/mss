@@ -7,16 +7,16 @@
     </deps>
     <config>
         <password name="myrootpasswd" require="yes">
-            <label>Mysql root password</label>
+            <label>MySQL root password</label>
             <help>Used to create the audit database</help>
         </password>
         <password name="myauditpasswd" require="yes">
-            <label>Mysql audit password</label>
-            <help>Mysql user for the audit database</help>
+            <label>MySQL audit password</label>
+            <help>MySQL user for the audit database</help>
         </password>
     </config>
     <text>Cleaning up...</text>
-    <text>The current Mysql password is not valid.</text>
+    <text>The current MySQL password is not valid.</text>
     <text>Create audit database</text>
     <text>Grant privileges on database</text>
     <text>Service MMC started succesfully.</text>

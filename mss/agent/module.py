@@ -22,9 +22,11 @@ from sets import Set
 
 from process import ExecManager
 from translation import TranslationManager
+from utils import grep
+from media import Media
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
-logging.basicConfig(level=logging.INFO, filename=LOG_FILENAME)
+logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
 logger = logging.getLogger('MyLogger')
 handler = logging.handlers.RotatingFileHandler(
               LOG_FILENAME, maxBytes=10485760, backupCount=5)
@@ -99,6 +101,11 @@ class ModuleManager:
     def update_medias(self):
         self.logger.info("Updating medias")
         self.EM.update_medias()
+        
+    @expose
+    def check_media(self, search):
+        """ check if media exist """
+        return grep(search, '/etc/urpmi/urpmi.cfg')
 
     def load_modules(self):
         """
@@ -251,8 +258,7 @@ class ModuleManager:
                     if self.modules[dep]:
                         deps.append(dep)
                 except KeyError:
-                    self.logger.error("Module %s doesn't exists !"
-                        % dep)
+                    self.logger.error("Module %s doesn't exists !" % dep)
             return deps
         return None
 
@@ -260,47 +266,62 @@ class ModuleManager:
     def get_medias(self, modules):
         """ get medias for modules """
         self.logger.info("Get medias for modules : %s" % str(modules))
-        medias_auth_types = Set([])
-        medias_auth = []
-        medias_done = []
-        # get medias for each module
-        for module in modules:
-            mmedias = self.modules[module].get_medias()
-            if len(mmedias) > 0:
-                # media need auth
-                if mmedias.get("auth"):
-                    medias_auth.append(mmedias)
-                    medias_auth_types.add(mmedias["auth"])
-                # media doesn't need auth, add them
-                else:
-                    for url in mmedias["urls"]:
-                        state, code, output = self.EM.addMedia(mmedias["name"],
-                            mmedias["proto"], url)
-                        medias_done.append({'name': mmedias["name"],
-                            'url': url, 'code': code})
-
-        return (medias_auth, list(medias_auth_types), medias_done)
-
-    @expose
-    def add_media(self, media, login, passwd):
-        """ add media with authentication """
-        self.logger.info("Add media : %s" % str(media))
+        auth = {}
         done = []
         fail = []
-        old_name = None
-        for url in media["urls"]:            
-            code, output = self.EM.add_media(media["name"], media["proto"],
-                url, login=login, passwd=passwd)
-            if code == 0:
-                done.append({'type': media["auth"], 'name': media["name"],
-                    'url': url, 'code': code})
-            # check authentication backend.                    
+        add = True
+        # get medias for each module
+        for module in modules:
+            media = self.modules[module].get_medias()
+            if media:
+                # media need auth
+                if media.need_auth():
+                    auth[media.auth] = media
+                # media doesn't need auth, add them
+                else:
+                    commands = media.get_commands()
+                    for command in commands:
+                        code, output = self.EM.add_media(command)
+                        # 0 == media added
+                        # 5 == media exists
+                        if code == 0 or code == 5:
+                            if media.verbose_name not in done:
+                                done.append(media.verbose_name)
+                        else:                
+                            # don't add the same fail error (multiple urls)         
+                            if add:
+                                fail.append({'name': media.verbose_name, 
+                                    'output': output})
+                                add = False
+        return (auth, done)
+
+    @expose
+    def add_media(self, m, login, passwd):
+        """ add media with authentication """
+        done = []
+        fail = []
+        add = True
+        # reconstruct media object
+        media = Media(m['name'], m['verbose_name'], m['urls'], m['auth'], 
+            m['proto'], m['mode'])
+        self.logger.info("Add media : %s" % media.name)            
+        # get add commands for media        
+        commands = media.get_commands(login, passwd)
+        for command in commands:
+            # execute each add media command
+            code, output = self.EM.add_media(command)
+            # 0 == media added
+            # 5 == media exists            
+            if code == 0 or code == 5:
+                if media.verbose_name not in done:
+                    done.append(media.verbose_name)
+            # check authentication backend.
             else:
                 if not login or not passwd:
                     code = 2
-                elif media["auth"] == "my":
+                elif media.auth == "my":
                     self.logger.debug("Check my authentication")
-                    code = self.my_auth(login, passwd, media["name"])
+                    code = self.my_auth(login, passwd, media.name)
                 else:
                     code = 3
                 # check error code
@@ -316,11 +337,15 @@ class ModuleManager:
                     err = _("Unknow error.", "agent")
                 elif code == 5:
                     err = _("Your login does not look like an email address.", "agent")
-                self.logger.debug("My authentication returns %s : %s" % (code, err))
-                if old_name != media["name"]:
-                    fail.append({'type': media["auth"], 'name': media["name"],
-                        'url': url, 'code': code, 'err': err})
-            old_name = media["name"]
+                self.logger.debug("Media authentication returns %s : %s" % (code, err))
+
+                # don't add the same fail error (multiple urls)
+                if add:
+                    fail.append({'name': media.verbose_name, 'err': err})
+                    add = False
+
+        print fail
+
         return (done, fail)
 
     def my_auth(self, username, password, media):
@@ -545,17 +570,18 @@ class Module:
 
     def get_medias(self):
         """ get medias for module """
-        medias = self.root.find("medias")
-        if medias:
-            media_auth_backend = medias.attrib.get("auth", None)
-            media_proto = medias.attrib.get("proto", "http")
-            media_name = medias.attrib.get("name", None)
-            urls = medias.findall("url")
-            urls = [url.text for url in urls]
-            return {'name': media_name, 'auth': media_auth_backend,
-                'proto': media_proto, 'urls': urls}
+        media = self.root.find("medias")
+        if media:
+            name = media.attrib.get("name", None)
+            verbose_name = media.attrib.get("verbose_name", name)
+            auth = media.attrib.get("auth", None)
+            urls = media.findall("url")
+            urls = [url.text for url in urls]            
+            proto = media.attrib.get("proto", "http")
+            mode = media.attrib.get("mode", "default")
+            return Media(name, verbose_name, urls, auth, proto, mode)
         else:
-            return {}
+            return None
 
     def get_config(self):
         """ get module current config """
@@ -618,6 +644,7 @@ class Module:
         return self.config
 
     def valid_config(self, user_config):
+        
         """ valid user configuration for module """
         if not getattr(self, "config", None):
             self.config = self.get_config()
@@ -650,6 +677,10 @@ class Module:
                             nb = f.group(1)
                             value = user_config.get(self.id+"_"+field_name+"_"+nb+"_field")
                             field_value.append(value)
+                # handle checkboxes
+                elif field_type == "check":
+                    # if box uncheck, set default to off otherwise value is None
+                    field_value = user_config.get(self.id+"_"+field_name, "off")
                 # set values for text,password,options fields
                 else:
                     field_value = user_config.get(self.id+"_"+field_name)
@@ -658,7 +689,7 @@ class Module:
                 field["default"] = field_value
 
                 # check if field is not empty
-                if field.get("require"):                         
+                if field.get("require"):
                     if not field_value:
                         errors = True
                         field["error"] = _("This field can't be empty.", "agent")

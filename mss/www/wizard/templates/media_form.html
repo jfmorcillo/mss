@@ -1,16 +1,13 @@
-{% extends 'base.html' %}
 {% load i18n %}
-{% block content %}
-<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span class="active">2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
 <div class="block">
     <h2>{% trans "Medias" %}</h2>
-    <p>{% trans "Some medias needs your authentication in order to install" %} :
-    {% for media in auth %}
-        {{ media.name }}{% if not forloop.last %},{% endif %}
+    <p>{% blocktrans count auths|length as counter %}Some media needs your authentication in order to install{% plural %}Some medias need your authentication in order to install{% endblocktrans %} :
+    {% for auth, media in auths.items %}
+        <strong>{{ media.verbose_name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}
     </p>
     <form name="mss" action="{% url add_medias %}" method="post">
-    {% for auth in types %}
+    {% for auth, media in auths.items %}
         {% ifequal auth "my" %}
         <fieldset>
             <legend>{% trans "My authentication" %}</legend>
@@ -30,16 +27,20 @@
             </p>
             {% if fail %}
             {% for media in fail %}
-            <p class="error">{% blocktrans with media.name as name and media.err as err %}An error occured when adding the {{ name }} media : {{ err }}{% endblocktrans %}</p>
+            <br />
+            <p class="warning error">{% blocktrans with media.name as name and media.err as err %}An error occured when adding the {{ name }} media : {{ err }}{% endblocktrans %}</p>
             {% endfor %}
             {% endif %}
-        </fieldset>    
+        </fieldset>
+        <p id="task" style="display: none"><br />
+            <img src="/site_media/img/load.gif" />
+            {% trans "Please wait..."%}
+        </p>
         {% endifequal %}
     {% endfor %}
         <div class="validation">
-            <input type="submit" value="{% trans "Add medias" %}" />
+            <input type="submit" value="{% trans "Add medias" %}" onclick="$('task').show();" />
             <input type="button" id="back" value="{% trans "Back" %}" />
         </div>
     </form>
-</div>    
-{% endblock %}
+</div>

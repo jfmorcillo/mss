@@ -8,7 +8,7 @@ class XmlRpc:
     """ Class to handle the xmlrpc calls """
     
     def __init__(self):
-        self.conn = xmlrpclib.ServerProxy('http://localhost:7001')
+        self.conn = xmlrpclib.ServerProxy('http://localhost:8001')
 
     def call(self, method, *args):
         method = getattr(self.conn, method)

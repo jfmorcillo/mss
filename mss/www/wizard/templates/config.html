@@ -4,7 +4,7 @@
 {% block content %}
 <script type="text/javascript">
 var field_cnt = 0;
-function addNetwork(module, fieldname, ip, mask) {
+function addNetwork(module, fieldname, ip, mask, error) {
     container = $(module+"_"+fieldname);
     network = new Element('div', {'class': 'field_multi'});
     ip_field = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_ip",
@@ -14,18 +14,25 @@ function addNetwork(module, fieldname, ip, mask) {
     mask_field = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_mask",
         'type':'text', 'size':'15', 'maxlength':'15', 'value': mask});
     network.appendChild(mask_field);
+    if(error) {
+        ip_field.addClassName("error");
+        mask_field.addClassName("error");
+    }
     remove = new Element('a', {'title':'{% trans "Remove network" %}'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
     remove.observe('click', function(){ this.parentNode.remove(); });
     network.appendChild(remove);
     container.appendChild(network);
     field_cnt++;
 }
-function addField(module, fieldname, text) {
+function addField(module, fieldname, text, error) {
     container = $(module+"_"+fieldname);
     field = new Element('div', {'class': 'field_multi'});
     input = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_field",
             'type':'text', 'value': text});
     field.appendChild(input);
+    if(error) {
+        input.addClassName("error");
+    }
     remove = new Element('a', {'title':'{% trans "Remove field" %}'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
     remove.observe('click', function(){ this.parentNode.remove(); });
     field.appendChild(remove);
@@ -55,7 +62,7 @@ function addField(module, fieldname, text) {
                 {% if field.default %}
                 <script type="text/javascript">
                 {% for text in field.default %}
-                    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
+                    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}', {% if field.error %}true{% else %}false{% endif %});
                 {% endfor %}
                 </script>
                 {% endif %}
@@ -94,6 +101,17 @@ function addField(module, fieldname, text) {
                     {% endfor %}
                 </select>
             {% endifequal %}
+            {% ifequal field.type "check" %}
+                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
+                <input {% if field.error %}class="error"{% endif %} 
+                       id="{{ field.id }}_{{ field.name }}"
+                       name="{{ field.id }}_{{ field.name }}" 
+                       type="checkbox"
+                       {% ifequal field.default "on" %}
+                       checked="checked"
+                       {% endifequal %}
+                />
+            {% endifequal %}
             {% ifequal field.type "network" %}
                 <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 <a title="{% trans "Add network"%}" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" ><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
@@ -102,7 +120,7 @@ function addField(module, fieldname, text) {
                 {% if field.default %}
                     <script type="text/javascript">
                     {% for network in field.default %}
-                        addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
+                        addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}', {% if field.error %}true{% else %}false{% endif %});
                     {% endfor %}
                     </script>
                 {% endif %}
@@ -111,7 +129,7 @@ function addField(module, fieldname, text) {
                 {% trans "No configuration for this module." %}
             {% endif %}
             {% if field.error %}
-            <span class="error">
+            <span class="error warning">
                 {{ field.error }}
             </span>
             {% endif %}        

@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span class="active">2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
+{% include 'media_form.html' %}   
+{% endblock %}

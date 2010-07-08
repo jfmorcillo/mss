@@ -8,13 +8,13 @@
     <p>
         <label for="language">{% trans "Language" %}: </label>
         <script type="text/javascript">
-            setLang = function(lang) {
-                window.location = "/mss/lang/"+lang+"/";
-            }
+            Event.observe(window, 'load', function() {
+                $('password').focus();
+            });
         </script>
-        <select id="language" name="language" onchange="setLang(this.value);">
+        <select id="language" name="language" onchange="setLang(this.value, '/');">
         {% for lang in LANGUAGES %}
-            <option value="{{ lang.0 }}" {% ifequal DEFAULT_LANGUAGE lang.0 %}selected="selected"{% endifequal %}>{{ lang.1 }}</option>
+            <option class="{{ lang.0 }}" value="{{ lang.0 }}" {% ifequal current_lang lang.0 %}selected="selected"{% endifequal %}>{{ lang.1 }}</option>
         {% endfor %}
         </select>
     </p>

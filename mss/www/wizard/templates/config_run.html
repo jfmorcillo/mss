@@ -64,9 +64,9 @@
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span class="active">4. {% trans "Configuration" %}</span></h1>
 <div class="block block-height">
     <h2>Configuration</h2>
-    
     {% ifequal mode "start" %}
-    <p>{% trans "The following modules will be configured. Please wait during the configuration process." %}</p>
+    <p>{% blocktrans count modules|length as counter %}The following module will be configured.{% plural %}The following modules will be configured.{% endblocktrans %} 
+    {% trans "Please wait during the configuration process." %}</p>
     <p>{% trans "To run the configuration, click on the &laquo;Run configuration&raquo; button below." %}</p>
     {% endifequal %}
 

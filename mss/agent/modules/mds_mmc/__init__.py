@@ -3,7 +3,7 @@ import os
 from mss.agent.utils import getINIoption
 
 def get_config_info():
-    return ("setup-mmc.sh", ['mdsdomain', 'mdspasswd'])
+    return ("setup-mmc.sh", ['mdsdomain', 'mdspasswd', 'mdsppolicy'])
 
 def get_current_config():
 
@@ -12,7 +12,10 @@ def get_current_config():
         mdsdomain = getINIoption('ldap', 'baseDN', ini)
         mdsdomain = re.sub('^dc=', '', mdsdomain)
         mdsdomain = re.sub(',[\s]*dc=', '.', mdsdomain)
-        mdspasswd = getINIoption('ldap', 'password', ini)    
-        return {'mdsdomain': mdsdomain, 'mdspasswd': mdspasswd}
+        if getINIoption('main', 'disable', '/etc/mmc/plugins/ppolicy.ini') == "0":
+            mdsppolicy = "on"
+        else:
+            mdsppolicy = "off"
+        return {'mdsdomain': mdsdomain, "mdsppolicy": mdsppolicy}
     else:
         return {}

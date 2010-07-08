@@ -19,6 +19,7 @@ else
 fi	
 
 base_mds_template="templates/base.ini.tpl"
+ppolicy_template="templates/ppolicy.ini.tpl"
 base_ldif_template="templates/init.ldif.tpl"
 acl_template="templates/mandriva-dit-access.conf.tpl"
 acl_file="/etc/openldap/mandriva-dit-access.conf"
@@ -29,13 +30,13 @@ if [ -z "$myfqdn" ]; then
 fi
 mydomain="$1"
 mypass="$2"
+ppolicy="$3"
 
 # MDS schemas
 cp /usr/share/doc/python-mmc-base*/contrib/ldap/dhcp.schema /etc/openldap/schema/
 cp /usr/share/doc/python-mmc-base*/contrib/ldap/dnszone.schema /etc/openldap/schema/
 cp /usr/share/doc/python-mmc-base*/contrib/ldap/mail.schema /etc/openldap/schema/
 cp /usr/share/doc/python-mmc-base*/contrib/ldap/mmc.schema /etc/openldap/schema/
-
 
 mysuffix=`calc_suffix $mydomain`
 pass=`$SLAPPASSWD -h {SSHA} -s "$mypass"`
@@ -49,11 +50,23 @@ sed -i "s/\@SUFFIX\@/$mysuffix/" $myslapdconf
 chmod 0640 $myslapdconf
 chgrp ldap $myslapdconf
 
+backup /etc/mmc/plugins/base.ini
+
 #### Now /etc/mmc/plugins/base.ini
 cat $base_mds_template > /etc/mmc/plugins/base.ini
 sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/base.ini
 sed -i "s/\@PASSWORD\@/$mypass/" /etc/mmc/plugins/base.ini
 mkdir /home/archives > /dev/null 2>&1
+
+## ppolicy
+backup /etc/mmc/plugins/ppolicy.ini
+cat $ppolicy_template > /etc/mmc/plugins/ppolicy.ini
+sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/ppolicy.ini
+if [ "$ppolicy" == "on" ]; then
+    sed -i "s/\@DISABLE\@/0/" /etc/mmc/plugins/ppolicy.ini
+else
+    sed -i "s/\@DISABLE\@/1/" /etc/mmc/plugins/ppolicy.ini
+fi
 
 # now, /etc/openldap/ldap.conf
 myldapconf=`make_temp`

@@ -1,6 +1,8 @@
 import traceback
 import sys
 import ConfigParser
+import re
+import os
 
 def formatExceptionInfo(maxTBlevel=5):
     cla, exc, trbk = sys.exc_info()
@@ -16,3 +18,16 @@ def getINIoption(section, option, ini):
     config = ConfigParser.SafeConfigParser()
     config.read(ini)
     return config.get(section, option)
+
+def grep(search, file):
+    if os.path.exists(file):
+        h = open(file)
+        string = h.read()
+        h.close()
+        expr = re.compile(search, re.M)
+        if expr.search(string):
+            return True
+        else:
+            return False
+    else:
+        return False

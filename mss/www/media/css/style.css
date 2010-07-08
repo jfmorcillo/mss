@@ -45,6 +45,35 @@ a:hover {
     font-weight: bold;
 }
 
+div.poperr {
+    background: #D72828;
+}
+
+div.pop {
+    background: #21449C;
+}
+
+#popup {
+    position: absolute;
+    margin: 10px;
+    margin-top: 15px;
+    padding: 5px;
+    color: white;
+    -moz-box-shadow: 2px 2px 3px #aaa;
+}
+
+.warning {
+    background: url('../img/warning.png') no-repeat top left;
+    padding-left: 15px;
+}
+
+span.error, p.error, span.require, a.error {
+    color: #D72828 !important;
+    font-size: 12px;
+    font-weight: bold;
+    margin: 0;
+}
+
 /* LAYOUT */
 
 body {
@@ -53,13 +82,15 @@ body {
 }
 
 div#content {
-    margin: 10px;
-    padding: 10px;
+    width: 990px;
+    margin: auto;
+    margin-top: 30px;
+    padding-bottom: 20px;
 }
 
 div#content h1 {
     color: white;
-    margin-top: -5px;
+    margin-left: 5px;
     text-shadow:0 1px 2px #777;
     margin-bottom: 20px;
 }
@@ -72,7 +103,7 @@ div#content h1 span {
     font-size: 16px;
     color: #777;
     background: white;
-    padding: 3px;
+    padding: 4px;
     padding-left: 5px;
     padding-right: 5px;
     text-shadow:0 1px 2px #ddd;
@@ -86,11 +117,12 @@ div#content h1 span.active {
 
 div#head {
     font-size: 0.9em;
-    color: #2854B0;
+    color: #21449C;
     text-shadow:0 1px 2px #FFFFFF;
 }
-div#head a { 
-    color: #2854B0;
+div#head a {
+    font-weight: bold;
+    color: #21449C;
     text-shadow:0 1px 2px #FFFFFF;
 }
 
@@ -166,6 +198,8 @@ div.block {
     -webkit-border-radius: 10px;
     background: white;
     margin-bottom: 10px;
+    margin-left: 5px;
+    margin-right: 5px;   
 }
 
 div.block-height {
@@ -176,15 +210,13 @@ div.block-border {
     border: 1px solid #ccc;
 }
 
-div.block-3 {
-    float: left;
-    width: 30%;
+div.block-1 {
+    
 }
 
 div.block-2 {
     float: left;
-    width: 47%;
-    margin-right: 1%;
+    width: 463px;
 }
 
 div.block-clear {
@@ -204,7 +236,6 @@ div.block-logo {
     float: left;
     width: 50px;
     text-align: center;
-    margin-top: 5px;
     margin-left: -5px;
 }
 
@@ -286,6 +317,9 @@ input {
     border: 1px solid #7683BC;
     background: white;
     padding-left: 2px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    background: white url(../img/input_bg.png) repeat-x bottom;
 }
 
 input[type="button"], input[type="submit"] {
@@ -321,16 +355,10 @@ input.error {
     border: 1px solid #D72828;    
 }
 
-span.error, p.error, span.require {
-    color: #D72828;
-    font-size: 12px;
-    font-weight: bold;
-    margin: 0;
-}
-
 div.validation {
     clear: both;
     margin-top: 10px;
+    /*margin-left: 5px;*/
     /*border-top: 1px dotted #999;*/
     padding-top: 10px;
 }
@@ -347,6 +375,7 @@ fieldset {
 }
 
 fieldset legend {
+    font-family: 'Arial', 'sans-serif';
     font-weight: bold;
     font-size: 14px;
     line-height: 15px;
@@ -446,18 +475,14 @@ div.action input, div.action img {
     vertical-align: bottom;
 }
 
-/*label {
-    float: left;
-    width: 170px;
-    text-align: right;
-    padding-right: 7px;
+#language option {
+    padding-left: 20px;
 }
-.field_multi {
-    clear: left;
-    float: left;
-    margin-left: 177px;
-    margin-top: 5px;
+
+#language option.fr_FR {
+    background: white url('../img/lang/fr_FR.png') no-repeat 2px;
 }
-.spacer {
-    clear: left;
-}*/
+
+#language option.en {
+    background: white url('../img/lang/en.png') no-repeat 2px;
+}

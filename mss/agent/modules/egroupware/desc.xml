@@ -2,8 +2,8 @@
     <name>eGroupware (Include : Calendar, AdressBook, eMail, InfLog)</name>
     <text>Select your type of database</text>
     <desc>Install eGroupware base system</desc>
-    <medias name="eGroupware" auth="my" proto="https">
-        <media>dl.mandriva.com/mes5/egroupware</media>            
+    <medias verbose_name="eGroupware" name="egroupware" auth="my" proto="https">
+        <url>dl.mandriva.com/mes5/egroupware</url>            
     </medias>
     <deps>
         <module>mysql</module>

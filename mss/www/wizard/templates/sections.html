@@ -3,7 +3,7 @@
 {% block content %}
 {% if sections %}
     {% for section in sections %}
-    <div class="block block-border {{ section.conf.class }}">
+    <div class="block block-border {{ section.conf.class }}" id="{{ section.id }}">
         <div class="block-logo">
             {% if section.icon %}
             <img src="{{ MEDIA_URL }}img/modules/{{ section.icon }}" />
@@ -15,10 +15,24 @@
         </div>
         <form name="mss" action="{% url section section.id %}" method="post">
             <div class="validation right">
-                <input type="hidden" name="name" value="{% trans section.name %}" />
-                <input type="submit" name="continue" value="{% trans "Enter" %}" />
+                <input type="submit" name="continue" value="{% trans "Enter" %} →" />
             </div>
         </form>
+        <script type="text/javascript">
+            // set section height
+            Event.observe(window, 'load', function() {
+                cur = $('{{ section.id }}');
+                prev = $('{{ section.id }}').previous();
+                if( cur.hasClassName("block-2") && !cur.hasClassName("block-clear") && prev.hasClassName("block-2")) {
+                    if (prev.clientHeight > cur.clientHeight) {
+                        cur.style.height = (prev.clientHeight-20)+"px";
+                    }
+                    else if (prev.clientHeight < cur.clientHeight) {
+                        prev.style.height = (cur.clientHeight-20)+"px";
+                    }
+                }
+            });
+        </script>
     </div>
     {% endfor %}
 {% else %}

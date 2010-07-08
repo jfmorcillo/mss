@@ -1,15 +1,18 @@
 # -*- coding: utf-8 -*-
 
 from django.contrib.auth.models import User
-import xmlrpclib
+from mss.www.wizard.xmlrpc import XmlRpc
+
+xmlrpc = XmlRpc()
 
 class MSSBackend:
 
     def authenticate(self, username=None, password=None):
-        conn = xmlrpclib.ServerProxy('http://localhost:7001')
-        auth = conn.authenticate(username, password)
+        err, result = xmlrpc.call('authenticate', username, password)
         # password ok
-        if auth:
+        if err:
+            return None
+        if result:
             try:
                 # user exists so, we update the password
                 user = User.objects.get(username=username)

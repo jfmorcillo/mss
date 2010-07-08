@@ -4,7 +4,7 @@
 {% endifequal %}
 {% ifnotequal code 2000 %}
     {% ifequal code 0 %}
-        <p class="task">{% trans "Configuration succeded." %}</p>
+        <p class="task ok">{% trans "Configuration succeded." %}</p>
         <script type="text/javascript">
             new Ajax.Request('/mss/config/end/'+modules[current_module]+'/', {
                 method: 'get',

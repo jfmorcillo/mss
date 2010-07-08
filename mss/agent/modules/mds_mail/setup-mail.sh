@@ -30,11 +30,11 @@ fi
 mail_ini_template="templates/mail.ini.tpl"
 dovecot_ldap_template="templates/dovecot-ldap.conf.tpl"
 dovecot_template="templates/dovecot.conf.tpl"
-ldap_accounts_cf_template="templates/ldap-accounts.cf.tpl"
-ldap_aliases_cf="templates/ldap-aliases.cf.tpl"
-ldap_domains_cf="templates/ldap-domains.cf.tpl"
-ldap_maildrop_cf="templates/ldap-maildrop.cf.tpl"
-ldap_transport_cf="templates/ldap-transport.cf.tpl"
+ldap_accounts_cf="templates/ldap-accounts.cf"
+ldap_aliases_cf="templates/ldap-aliases.cf"
+ldap_domains_cf="templates/ldap-domains.cf"
+ldap_maildrop_cf="templates/ldap-maildrop.cf"
+ldap_transport_cf="templates/ldap-transport.cf"
 openssl_cnf_template="templates/openssl.cnf.tpl"
 amavis_template="templates/amavisd.conf.tpl"
 spamassassin_template="templates/local.cf.tpl"
@@ -61,7 +61,7 @@ sed -i "s!\@MYNETWORKS\@!$smtpd_mynetworks!" /etc/postfix/main.cf
 backup /etc/postfix/master.cf
 cat $master_cf_template > /etc/postfix/master.cf
 
-for template in $ldap_accounts_cf_template $ldap_aliases_cf $ldap_domains_cf $ldap_maildrop_cf $ldap_transport_cf
+for template in $ldap_accounts_cf $ldap_aliases_cf $ldap_domains_cf $ldap_maildrop_cf $ldap_transport_cf
 do
     newfile="/etc/postfix/`basename $template`"
     cat $template > $newfile

@@ -26,28 +26,28 @@ msgid "mysql"
 msgstr ""
 
 #: modules/mds_audit/desc.xml:10(label)
-msgid "Mysql root password"
-msgstr "Mot de passe root Mysql"
+msgid "MySQL root password"
+msgstr "Mot de passe root MySQL"
 
 #: modules/mds_audit/desc.xml:11(help)
 msgid "Used to create the audit database"
 msgstr "Utilisé pour créer la base de données d'audit"
 
 #: modules/mds_audit/desc.xml:14(label)
-msgid "Mysql audit password"
-msgstr "Mot de passe audit Mysql"
+msgid "MySQL audit password"
+msgstr "Mot de passe audit MySQL"
 
 #: modules/mds_audit/desc.xml:15(help)
-msgid "Mysql user for the audit database"
-msgstr "Utilisateur mysql pour la base de données d'audit"
+msgid "MySQL user for the audit database"
+msgstr "Utilisateur MySQL pour la base de données d'audit"
 
 #: modules/mds_audit/desc.xml:18(text)
 msgid "Cleaning up..."
 msgstr "Netoyage..."
 
 #: modules/mds_audit/desc.xml:19(text)
-msgid "The current Mysql password is not valid."
-msgstr "Le mot de passe root Mysql est incorrect."
+msgid "The current MySQL password is not valid."
+msgstr "Le mot de passe root MySQL est incorrect."
 
 #: modules/mds_audit/desc.xml:20(text)
 msgid "Create audit database"

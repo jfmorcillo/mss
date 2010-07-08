@@ -46,13 +46,13 @@ else echo "2Error while configuring Samba. (/etc/samba/smb.conf)"; exit 1
 fi
 
 smbpasswd -w $mdspass
-if [ $? -eq 0 ]; then echo "0Samba password set.";
-else echo "2Error while setting Samba password. (smbpasswd)"; exit 1
+if [ $? -eq 0 ]; then echo "0SAMBA password set.";
+else echo "2Error while setting SAMBA password. (smbpasswd)"; exit 1
 fi
 
 /sbin/service smb restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service Samba reloaded succesfully."
-else echo "2Service Samba fails restarting."; exit 1
+if [ $? -eq 0 ]; then echo "0Service SAMBA reloaded succesfully."
+else echo "2Service SAMBA fails restarting."; exit 1
 fi
 
 sid=`net getlocalsid $smbdomain | cut -d ':' -f2 | cut -d ' ' -f2`
@@ -85,21 +85,21 @@ else echo "2Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.c
 fi
 
 echo -e "$smbpass\n$smbpass" | smbldap-populate -m 512 -k 512 -a "$smbadmin"
-if [ $? -eq 0 ]; then echo "0Directory populated for Samba.";
+if [ $? -eq 0 ]; then echo "0Directory populated for SAMBA.";
 else echo "2Error while populating directory.# (smbldap-populate -m 512 -k 512 -a $smbadmin)"; exit 1
 fi
 
 /sbin/service smb restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service Samba reloaded succesfully."
-else echo "2Service Samba fails restarting."; exit 1
+if [ $? -eq 0 ]; then echo "0Service SAMBA reloaded succesfully."
+else echo "2Service SAMBA fails restarting."; exit 1
 fi
 
 ###### now /etc/mmc/plugins/samba.ini
 backup /etc/mmc/plugins/samba.ini
 cat $mds_smb_template > /etc/mmc/plugins/samba.ini
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/samba.ini
-if [ $? -eq 0 ]; then echo "0MDS Samba configuration done.";
-else echo "2Error while configuring MDS Samba module."; exit 1
+if [ $? -eq 0 ]; then echo "0MDS SAMBA configuration done.";
+else echo "2Error while configuring MDS SAMBA module."; exit 1
 fi
 
 sed -i "s/^defaultUserGroup = users$/defaultUserGroup = Domain Users/" /etc/mmc/plugins/base.ini
@@ -128,7 +128,7 @@ chmod 770 /home/samba/profiles
 touch /home/samba/test
 setfacl -m g:"Domain Users":rx /home/samba/test > /dev/null 2>&1
 if [ $? -ne 0 ]; then 
-    echo "1Your filesystem does not support ACL. You won't be able to set ACLs on Samba shares."
+    echo "1Your filesystem does not support ACL. You won't be able to set ACLs on SAMBA shares."
     echo "1For ext3 filesystems you have to add the acl option in /etc/fstab."
 else 
     echo "0Acls supported by filesystem."
@@ -141,7 +141,7 @@ echo "8Server name :# $smbnetbios"
 echo "8Domain administrator :# $smbadmin"
 echo 7- a public share is created in /home/samba/shares/public
 echo 7- you can create a logon.bat script in /home/samba/netlogon
-echo 8Make sure you have enabled Samba services on your firewall.
+echo 8Make sure you have enabled SAMBA services on your firewall.
 echo '8You can now use the MDS interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).'
 echo 1Profiles are disabled by default.
 echo 1- edit /etc/samba/smb.conf manually to activate them.

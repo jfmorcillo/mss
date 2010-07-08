@@ -31,6 +31,7 @@
         }
     }
     Event.observe(window, 'load', function() {
+        // show/hide action menu
         $$('span.actions').each(function(i) {
             Event.observe(i, 'mouseover', function() {
                 var menu = $(this).firstDescendant();
@@ -46,6 +47,7 @@
                 }
             });
         });
+        // check/uncheck install input on re-install/re-configure
         $$('input.action').each(function(i) {
             Event.observe(i, 'click', function() {
                 label = $(this).up().up().up().previous('label');
@@ -60,15 +62,16 @@
                 }
             });
         });
+        // check conflicts when selecting module
         $$('input.module').each(function(i) {
             Event.observe(i, "click", check_conflict);
         });
     });
     </script>
-    <h1><span><a href="/" >{% trans "Home page" %}</a></span> &raquo; <span class="active">{{ name }}</span></h1>
+    <h1><span><a href="/" >{% trans "Home page" %}</a></span> &raquo; <span class="active">{% trans section_name %}</span></h1>
     <form name="mss" action="{% url preinst %}" method="post">
     {% for bundle in section %}
-        <div class="block block-border {{ bundle.conf.class }}">
+        <div class="block block-border {{ bundle.conf.class }}" id="{{ bundle.id }}">
             <div class="block-logo">
                 <img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" />
             </div>
@@ -98,17 +101,17 @@
                     </script>
                         
                     <input type="checkbox" name="{{ m.id }}" id="{{ m.id }}" class="module"
-                        {% if m.configured %}checked="checked" disabled="disabled"{% endif %}
+                        {% if m.configured %}checked="checked" disabled="disabled" %}"{% endif %}
                         {% if m.conflict %}disabled="disabled"{% endif %}
                     />
                                         
                     <label for="{{ m.id }}" class="{% if m.configured %}configured{% endif %} {% if m.conflict %}conflict{% endif %}">{{ m.name }}</label>
 
-                    <img class="field" src="{{ MEDIA_URL }}img/conflict.png" alt="({% trans "Conflict" %})" title="{% trans "This module conflicts with : " %}{% for m in m.conflict %}{{ m }} {% endfor %}" style="{% if not m.conflict %}display:none;{% endif %}"/>
+                    <img class="field pop" src="{{ MEDIA_URL }}img/conflict.png" alt="{% trans "This module conflicts with : " %}{% for m in m.conflict %}{{ m }} {% endfor %}" style="{% if not m.conflict %}display:none;{% endif %}"/>
                     
-                    {% if m.installed %}<img class="field" src="{{ MEDIA_URL }}img/installed.png" alt="({% trans "Installed" %})" title="{% trans "Packages for this module are already installed." %}" />{% endif %}
+                    {% if m.installed %}<img class="field pop" src="{{ MEDIA_URL }}img/installed.png" alt="{% trans "Packages for this module are already installed." %}" />{% endif %}
                     {% if m.configured %}
-                    <img class="field" src="{{ MEDIA_URL }}img/configured.png" alt="({% trans "Configured" %})" title="{% trans "This module is already configured." %}" />
+                    <img class="field pop" src="{{ MEDIA_URL }}img/configured.png" alt="{% trans "This module was configured by MSS." %}" />
                     {% endif %}
                     
                     {% if m.configured %}
@@ -139,6 +142,21 @@
                 {% endfor %}
                 </div>
             </div>
+            <script type="text/javascript">
+                // set bundle height
+                Event.observe(window, 'load', function() {
+                    cur = $('{{ bundle.id }}');
+                    prev = $('{{ bundle.id }}').previous();
+                    if( cur.hasClassName("block-2") && !cur.hasClassName("block-clear") && prev.hasClassName("block-2")) {
+                        if (prev.clientHeight > cur.clientHeight) {
+                            cur.style.height = (prev.clientHeight-20)+"px";
+                        }
+                        else if (prev.clientHeight < cur.clientHeight) {
+                            prev.style.height = (cur.clientHeight-20)+"px";
+                        }
+                    }
+                });
+            </script>    
         </div>
     {% endfor %}
         <div class="validation">

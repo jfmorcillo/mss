@@ -4,6 +4,7 @@
 import os
 import select
 import threading
+import urllib
 import xmlrpclib
 from subprocess import Popen, PIPE, STDOUT
 import time
@@ -38,20 +39,17 @@ class ExecManager:
         """ update medias lists """
         self.launch("update", ["urpmi.update", "-a"])
         
-    def add_media(self, name, proto, url, login=None, passwd=None):
+    def add_media(self, command):
         """ add media """
-        if login and passwd:
-            self.launch("media", ["urpmi.addmedia", name,
-                proto+"://"+login+":"+passwd+"@"+url], wait=True)
-        else:
-            self.launch("media", ["urpmi.addmedia", name,
-                proto+"://"+url], wait=True)
+        self.launch("media", command, wait=True)
+        print (self.threads['media'].code, self.threads['media'].output)
         return (self.threads['media'].code, self.threads['media'].output)
 
     def launch(self, name, command, wait=False, cwd=None, callback=None):
         """ launch wrapper """    
         # accept only one thread
         if not name in self.threads or not self.threads[name].isAlive():
+            print command
             self.threads[name] = ExecThread(command, cwd, callback)
             self.threads[name].start()
             if wait:

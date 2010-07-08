@@ -4,7 +4,7 @@
 <h1><span class="active">1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
 <div class="block block-height">
     <h2>{% trans "Preinstallation" %}</h2>
-    <p>{% trans "You have selected the following modules." %}</p>
+    <p>{% blocktrans count modules|length as counter %}You have selected the following module.{% plural %}You have selected the following modules.{% endblocktrans %}</p>
     <fieldset>
         <legend>{% trans "Modules" %}</legend>
         {% for module in modules %}
@@ -16,11 +16,11 @@
         <p class="desc">{{ module.preinst }}</p>
         {% endif %}        
         {% if module.force %}
-        <p class="error">{% trans "If other modules requires this module they may be broken after the reinstallation." %}</p>
+        <p class="warning error">{% trans "If other modules requires this module they may be broken after the reinstallation." %}</p>
         {% endif %}
         {% endfor %}
         {% if not modules %}
-        <p class="error">{% trans "No module selected." %}</p>
+        <p class="warning error">{% trans "No module selected." %}</p>
         {% endif %}
     </fieldset>
     <form name="mss" action="{% url medias %}" method="post">

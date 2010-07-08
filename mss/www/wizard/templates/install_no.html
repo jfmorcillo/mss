@@ -4,7 +4,7 @@
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span class="active">3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
 <div class="block block-height">
     <h2>{% trans "Installation" %}</h2>
-    <p>{% trans "No packages are needed for this modules." %}</p>
+    <p>{% blocktrans count modules|length as counter %}No packages needed for this module.{% plural %}No packages needed for this modules.{% endblocktrans %}</p>
     <p>{% trans "Click on the &laquo;Continue&raquo; button below to start the configuration." %}</p>
     <fieldset>
         <legend>{% trans "Modules" %}</legend>

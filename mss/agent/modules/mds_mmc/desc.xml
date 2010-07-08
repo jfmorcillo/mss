@@ -4,7 +4,9 @@
     <packages>
         <target name="all">
             <rpm>mmc-web-base</rpm>
+            <rpm>mmc-web-ppolicy</rpm>
             <rpm>python-mmc-base</rpm>
+            <rpm>python-mmc-ppolicy</rpm>
             <rpm>mmc-agent</rpm>
             <rpm>openldap-servers</rpm>
             <rpm>nss_ldap</rpm>
@@ -22,6 +24,10 @@
             <label>MDS password</label>
             <help>The MDS admin password.</help>
         </password>
+        <check name="mdsppolicy" default="on">
+            <label>Password policy</label>
+            <help>Enable password policy on MDS (password age, expiration, history, lock-out...)</help>
+        </check>
     </config>
     <text>Error at generating password</text>
     <text>Password successfully generated</text>
