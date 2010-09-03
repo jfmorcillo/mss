@@ -8,6 +8,6 @@
         </target>
     </packages>
     <deps>
-        <module>mds-mmc</module>
+        <module>mds_mmc</module>
     </deps>    
 </module>

@@ -10,7 +10,7 @@
         </target>
     </packages>
     <deps>
-        <module>mds-mmc</module>
+        <module>mds_mmc</module>
     </deps>
     <config>
         <network name="bind_networks" format="short" validation="network">

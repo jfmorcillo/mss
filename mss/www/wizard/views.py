@@ -1,9 +1,32 @@
 # -*- coding: UTF-8 -*-
+#
+# (c) 2010 Mandriva, http://www.mandriva.com/
+#
+# $Id$
+#
+# This file is part of Mandriva Server Setup
+#
+# MSS is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# MSS is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MSS; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA 02110-1301, USA.
 
 import xmlrpclib
 from datetime import datetime
 import re
 import time
+import rdflib
+from xml.sax import SAXParseException
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse, Http404
@@ -92,7 +115,7 @@ def get_status(request):
     global output
     TIMEOUT = 0
     # max request time
-    MAX_TIME = 10
+    MAX_TIME = 20
     while 1:
         err, sts = xmlrpc.call('get_status')
         if sts:
@@ -118,7 +141,8 @@ def sections(request):
     """ sections list """
     # render the main page with all sections
     return render_to_response('sections.html',
-        {'sections': CM.get_sections()}, 
+        {'sections': CM.get_sections(),
+         'language_form': True },
         context_instance=RequestContext(request))
 
 @login_required
@@ -153,8 +177,41 @@ def section(request, section):
 
         return render_to_response('section.html',
             {'section_name': section_name, 'section': section_info, 
-            'modules': modules},
+            'modules': modules, 'language_form': True },
             context_instance=RequestContext(request))
+
+@login_required
+def get_info(request, module):
+    """ used to retrieve package list from a module
+    and get some info via doc4 """
+    # get packages list for module
+    err, result = xmlrpc.call('get_packages', module)
+    if err:
+        return err
+    else:
+        packages = result
+
+    output = ""
+
+    for package in packages:
+        # get info for package via doc4 REST interface
+        subject_uri = "http://doc4.mandriva.org:8086/project/"+package
+        try:
+            g = rdflib.Graph()
+            g.parse(subject_uri, format="xml")
+            # get package name
+            name = g.value(rdflib.term.URIRef(subject_uri), rdflib.term.URIRef('http://usefulinc.com/ns/doap#name'))
+            homepage = g.value(rdflib.term.URIRef(subject_uri), rdflib.term.URIRef('http://usefulinc.com/ns/doap#homepage'))
+            desc = g.value(rdflib.term.URIRef(subject_uri), rdflib.term.URIRef('http://usefulinc.com/ns/doap#shortdesc'))
+            desc = re.sub("\n", '<br />', desc);
+
+            output += '<h2>%s</h2><p>%s : <a href="%s">%s</a><br />%s : %s</p>' % (name, _('Homepage'), homepage, homepage, _('Description'), desc)
+        except SAXParseException:
+            pass
+
+    return render_to_response('raw_output.html',
+        {'output': output},
+        context_instance=RequestContext(request))
 
 @login_required
 def preinst(request):
@@ -175,14 +232,14 @@ def preinst(request):
             request.session['modules_list'] = [m.get('id') for m in modules]
             return render_to_response('preinst.html',
                 {'modules': modules},
-                context_instance=RequestContext(request))                
+                context_instance=RequestContext(request))    
     else:
         return HttpResponseRedirect(reverse('sections'))
 
 """
+Media list 
 [
-    [{'auth': 'my', 'name': 'GroupOffice', 'urls': ['dl.mandriva.com/mes5/addons/groupoffice/release', 'dl.mandriva.com/mes5/addons/groupoffice/updates'], 'proto': 'https'}],
-    ['my'], 
+    ['my': {'auth': 'my', 'verbose_name': "GroupOffice", 'name': 'groupoffice', 'urls': ['dl.mandriva.com/mes5/addons/groupoffice/release', 'dl.mandriva.com/mes5/addons/groupoffice/updates'], 'proto': 'https'}],
     []
 ]
 """
@@ -200,14 +257,15 @@ def medias(request):
             proto = request.POST.get('media_proto')
             mode = request.POST.get('media_mode')
                         
-            if verbose_name and name and url and proto and mode:
-            
+            if verbose_name and name and url and proto and mode:            
                 # create dict for media authentication form
                 if auth:
                     auths = { auth: {'verbose_name': verbose_name, 'name': name, 
                         'urls': [ url ], 'proto': proto, 'mode': mode, 
                         'auth': auth}}
                 # TODO
+                # if we want to add media that doesn't need
+                # auth
                 else:
                     pass
                 done = []
@@ -251,12 +309,10 @@ def add_medias(request):
         for auth, media in auths.items():
             login = request.POST.get(auth + "_login", "")
             passwd = request.POST.get(auth + "_passwd", "")
-            print media
             err, result = xmlrpc.call("add_media", media, login, passwd)
             if err:
                 return err
             else:
-                print result
                 done = result[0]
                 fail = result[1]
             if len(fail) > 0:
@@ -348,7 +404,7 @@ def config(request):
                 config_end(request, module)
             return render_to_response('config_no.html',
                 {'modules': modules},
-                context_instance=RequestContext(request))            
+                context_instance=RequestContext(request));
         # some module have a configuration
         elif do_config:
             return render_to_response('config.html',
@@ -428,6 +484,7 @@ def config_state(request, module):
 
 @login_required
 def config_end(request, module):
+    """ tells the agent the module has been configured """
     err, result = xmlrpc.call('end_config', module)
     return HttpResponse("")
 
@@ -435,6 +492,10 @@ def config_end(request, module):
 def toHtml(request, text):
     # replace hostname tag with server name
     text = re.sub('@HOSTNAME@', request.META['HTTP_HOST'].replace(':8000', ''), text);
+    # new line replacement
+    text = re.sub('@BR@', '<br/>', text);
+    # bold support
+    text = re.sub(r'@B@(.*)@B@', r'<strong>\1</strong>', text);    
     # make links
     text = re.sub(r'(http:\/\/[^ <)]*)', r'<a href="\1"><strong>\1</strong></a>', text);
     return text

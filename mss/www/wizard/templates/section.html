@@ -107,12 +107,14 @@
                                         
                     <label for="{{ m.id }}" class="{% if m.configured %}configured{% endif %} {% if m.conflict %}conflict{% endif %}">{{ m.name }}</label>
 
+                    <img class="field popx popw" src="{{ MEDIA_URL }}img/about.png" alt="getInfo('{{ m.id }}')" title="{% trans "Packages list" %}" />
+
                     <img class="field pop" src="{{ MEDIA_URL }}img/conflict.png" alt="{% trans "This module conflicts with : " %}{% for m in m.conflict %}{{ m }} {% endfor %}" style="{% if not m.conflict %}display:none;{% endif %}"/>
                     
                     {% if m.installed %}<img class="field pop" src="{{ MEDIA_URL }}img/installed.png" alt="{% trans "Packages for this module are already installed." %}" />{% endif %}
+                    
                     {% if m.configured %}
-                    <img class="field pop" src="{{ MEDIA_URL }}img/configured.png" alt="{% trans "This module was configured by MSS." %}" />
-                    {% endif %}
+                    <img class="field pop" src="{{ MEDIA_URL }}img/configured.png" alt="{% trans "This module was configured by MSS." %}" />{% endif %}
                     
                     {% if m.configured %}
                     <span class="actions">{% trans "Actions" %}

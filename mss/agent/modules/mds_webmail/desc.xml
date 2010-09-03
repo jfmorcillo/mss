@@ -11,7 +11,7 @@
         </target>
     </packages>
     <deps>
-        <module>mds-mail</module>
+        <module>mds_mail</module>
     </deps>
     <text>Webmail RoundCube is activated on your server.</text>
     <text>You can access the webmail interface at http://@HOSTNAME@/roundcubemail/</text>

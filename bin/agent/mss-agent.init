@@ -21,6 +21,7 @@ export LC_ALL
 export LANG
 
 prog=mss-agent
+PIDFILE=/var/run/$prog.pid
 
 function start () {
     gprintf "Starting %s: " "$prog"
@@ -43,7 +44,7 @@ function stop () {
         /usr/sbin/mss-agent.py stop
         sleep 1
 	    [ -f /var/lock/subsys/$prog ] && rm -f /var/lock/subsys/$prog        
-        [ -f /var/run/$prog.pid ] && failure || success
+        [ -f $PIDFILE ] && failure || success
     else
 	    echo "$prog not running"
 	    failure
@@ -65,6 +66,13 @@ case "$1" in
 	stop
 	start
 	;;
+	reload)
+	stop
+	start
+	;;
+	status)
+    status -p $PIDFILE
+    ;;
     *)
 	gprintf "Usage: $0 {start|stop|status|restart}\n"
 	exit 1

@@ -1,5 +1,25 @@
-#!/usr/bin/python 
 # -*- coding: UTF-8 -*-
+#
+# (c) 2010 Mandriva, http://www.mandriva.com/
+#
+# $Id$
+#
+# This file is part of Mandriva Server Setup
+#
+# MSS is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# MSS is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MSS; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA 02110-1301, USA.
 
 import os
 import re
@@ -26,7 +46,7 @@ from utils import grep
 from media import Media
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
-logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
+logging.basicConfig(level=logging.INFO, filename=LOG_FILENAME)
 logger = logging.getLogger('MyLogger')
 handler = logging.handlers.RotatingFileHandler(
               LOG_FILENAME, maxBytes=10485760, backupCount=5)
@@ -136,7 +156,7 @@ class ModuleManager:
             if m in self.modules:
                 module = self.modules[m]
                 # get module packages
-                packages = set(module.get_packages())                
+                packages = set(module.get_packages())
                 # check if packages are installed
                 if len(packages) == len(packages.intersection(self.packages)):
                     installed = True
@@ -164,6 +184,11 @@ class ModuleManager:
                         if m1 == m2['id'] and m2['installed']:
                             m['conflict'].append(m2['id'])
         return result
+        
+    @expose
+    def get_packages(self, module):
+        """ returns package list for module """
+        return self.modules[module].get_packages()
 
     @expose
     def preinstall_modules(self, modules):

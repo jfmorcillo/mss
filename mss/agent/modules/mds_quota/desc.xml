@@ -9,7 +9,7 @@
         </target>
     </packages>
     <deps>
-        <module>mds-mmc</module>
+        <module>mds_mmc</module>
     </deps>
     <config>
         <text name="filesystems" require="yes" default="/dev/sda6:Home" multi="yes">

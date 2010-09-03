@@ -2,7 +2,7 @@
     <name>Audit module for MDS</name>
     <desc>Track any changes made on the MDS interface</desc>
     <deps>
-        <module>mds-mmc</module>
+        <module>mds_mmc</module>
         <module>mysql</module>
     </deps>
     <config>

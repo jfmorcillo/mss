@@ -1,5 +1,25 @@
-#!/usr/bin/python
 # -*- coding: UTF-8 -*-
+#
+# (c) 2010 Mandriva, http://www.mandriva.com/
+#
+# $Id$
+#
+# This file is part of Mandriva Server Setup
+#
+# MSS is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# MSS is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MSS; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA 02110-1301, USA.
 
 import os
 import select
@@ -42,14 +62,12 @@ class ExecManager:
     def add_media(self, command):
         """ add media """
         self.launch("media", command, wait=True)
-        print (self.threads['media'].code, self.threads['media'].output)
         return (self.threads['media'].code, self.threads['media'].output)
 
     def launch(self, name, command, wait=False, cwd=None, callback=None):
         """ launch wrapper """    
         # accept only one thread
         if not name in self.threads or not self.threads[name].isAlive():
-            print command
             self.threads[name] = ExecThread(command, cwd, callback)
             self.threads[name].start()
             if wait:

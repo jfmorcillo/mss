@@ -2,12 +2,12 @@
 #
 # MSS - Mandriva Server Setup
 #
-# chkconfig: 345 40 60
+# chkconfig: 345 41 59
 # description: Mandriva Server Setup Web interface
 
 ### BEGIN INIT INFO
 # Provides: mss-www
-# Required-Start: $network
+# Required-Start: $network $mss-agent
 # Required-Stop: $network
 # Default-Start: 3 4 5
 # Default-Stop: 0 1 6
@@ -26,7 +26,7 @@ prog=mss-www
 # Configuration
 #
 HOST=0.0.0.0
-PORT=7002
+PORT=8000
 USER=mss
 GROUP=mss
 SSL=1
@@ -100,6 +100,13 @@ case "$1" in
 	stop
 	start
 	;;
+	reload)
+	stop
+	start
+	;;
+	status)
+    status -p $PIDFILE
+    ;;
     *)
 	gprintf "Usage: $0 {start|stop|restart}\n"
 	exit 1

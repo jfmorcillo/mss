@@ -9,7 +9,7 @@
         </target>
     </packages>
     <deps>
-        <module>mds-mmc</module>
+        <module>mds_mmc</module>
     </deps>
     <text>MMC interface is not installed.</text>
     <text>Can't continue.</text>

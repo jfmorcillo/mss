@@ -15,7 +15,7 @@ class MSS(Daemon):
         EM = ExecManager()
         TM = TranslationManager()
         MM = ModuleManager(EM, TM)
-        server = SimpleXMLRPCServer(("localhost", 7001), allow_none=True,
+        server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True,
             logRequests=False)
         server.register_instance(MM)
         server.register_function(authenticate)
