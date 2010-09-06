@@ -100,5 +100,6 @@ AUTHENTICATION_BACKENDS = (
     'mss.www.backends.MSSBackend',
 )
 
-import sys
-sys.path.append(os.path.join(PROJECT_DIR, 'lib'))
+# add local python libs in path
+if not os.path.abspath(os.path.join(PROJECT_DIR, 'lib')) in sys.path:
+    sys.path.append(os.path.abspath(os.path.join(PROJECT_DIR, 'lib')))

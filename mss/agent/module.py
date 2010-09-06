@@ -84,7 +84,7 @@ class ModuleManager:
         self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # translation manager
         self.TM = TM
-        self.TM.set_catalog('agent')
+        self.TM.set_catalog('agent', os.path.dirname(__file__))
         global _
         _ = self.TM.translate
         # exec manager

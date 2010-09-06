@@ -111,7 +111,7 @@ if [ $? -eq 0 ]; then echo "0Service MMC reloaded succesfully."
 else echo "2Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"; exit 1
 fi
 
-net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $mdsserver -U admin%$smbpass > /dev/null 2>&1
+net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $mdsserver -U $smbadmin%$smbpass > /dev/null 2>&1
 if [ $? -eq 0 ]; then echo "0Successfully granted rights for Domain Admins group."
 else echo "2Failed granted rigths for Domain Admins group"; exit 1
 fi

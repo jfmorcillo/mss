@@ -25,6 +25,9 @@ Vendor: Mandriva
 Packager: Jean-Philippe Braun <jpbraun@mandriva.com>
 BuildRequires: python-devel
 
+
+
+
 %description
 MSS aims to help system administrators to setup software quickly. (srpm)
 
