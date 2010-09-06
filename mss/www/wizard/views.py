@@ -115,7 +115,7 @@ def get_status(request):
     global output
     TIMEOUT = 0
     # max request time
-    MAX_TIME = 20
+    MAX_TIME = 5
     while 1:
         err, sts = xmlrpc.call('get_status')
         if sts:

@@ -39,7 +39,7 @@
                 new Ajax.Updater($('status'), '{% url status %}', {
                     'method': 'get',
                     'parameters': {'force': force},
-                    onComplete: function(transport) {
+                    onSuccess: function(transport) {
                         // hide status on Ready state
                         if (transport.responseText.startsWith('{% trans "Ready" %}')) {
                             if ($('status').hasClassName("active")) {
@@ -52,7 +52,7 @@
                             }
                         }
                         // show status bar on activity
-                        else if (transport.status == 200) {
+                        else {
                             $('status').addClassName("active");
                             $('status').removeClassName("error");
                             new Effect.Morph('status', {
@@ -61,20 +61,18 @@
                             });
                         }
                         
+                        // immediately refresh when no error
+                        updateStatus(false);
+                    },
+                    onFailure: function(transport) {                        
                         // set error style if error
-                        if (transport.status == 400) {
-                            $('status').addClassName("error");
-                            // refresh every 2s on error
-                            setTimeout('updateStatus(false)', '2000');
-                            new Effect.Morph('status', {
-                                duration: 0.3,
-                                style: 'height: 22px;'
-                            });                            
-                        }
-                        else {
-                            // immediately refresh when no error
-                            updateStatus(false);
-                        }
+                        $('status').addClassName("error");
+                        // refresh every 2s on error
+                        setTimeout('updateStatus(false)', '2000');
+                        new Effect.Morph('status', {
+                            duration: 0.3,
+                            style: 'height: 22px;'
+                        });                            
                     }
                 });
             }        
