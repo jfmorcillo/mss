@@ -207,7 +207,10 @@ def get_info(request, module):
 
             output += '<h2>%s</h2><p>%s : <a href="%s">%s</a><br />%s : %s</p>' % (name, _('Homepage'), homepage, homepage, _('Description'), desc)
         except SAXParseException:
-            pass
+            output += '<h2>%s</h2>' % package
+            
+    if output == "":
+        output = "<p>%s</p>" % _('No information available')
 
     return render_to_response('raw_output.html',
         {'output': output},

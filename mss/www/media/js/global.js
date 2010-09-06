@@ -139,21 +139,3 @@ Event.observe(window, 'load', function() {
 setLang = function(lang, url) {
     window.location = "/mss/lang/"+lang+"/?url="+url;
 }
-
-// Ajax popup definition
-// get packages list for module
-// with some information
-getInfo = function(module) {
-    popupRequest = new Ajax.Request('/mss/info/'+module+"/", { 
-            method: 'get',
-            onCreate: function(transport) {
-                $("popcontent").update('<img src="/site_media/img/load_blue.gif" style="vertical-align: bottom;" /> Loading packages info from doc4.mandriva.com');
-            },
-            onSuccess: function(transport) {
-                $("popcontent").update(transport.responseText);
-            },
-            onFailure: function(transport) {
-                $("popcontent").update('Error while contacting doc4.mandriva.com');
-            }
-    });
-}

@@ -67,6 +67,24 @@
             Event.observe(i, "click", check_conflict);
         });
     });
+    
+    // Ajax popup definition
+    // get packages list for module
+    // with some information
+    getInfo = function(module) {
+        popupRequest = new Ajax.Request('/mss/info/'+module+"/", { 
+                method: 'get',
+                onCreate: function(transport) {
+                    $("popcontent").update('<img src="{{ MEDIA_URL }}img/load_blue.gif" style="vertical-align: bottom;" /> {% trans "Loading packages info from doc4.mandriva.com" %}');
+                },
+                onSuccess: function(transport) {
+                    $("popcontent").update(transport.responseText);
+                },
+                onFailure: function(transport) {
+                    $("popcontent").update('{% trans "Error while contacting doc4.mandriva.com" %}');
+                }
+        });
+    }
     </script>
     <h1><span><a href="/" >{% trans "Home page" %}</a></span> &raquo; <span class="active">{% trans section_name %}</span></h1>
     <form name="mss" action="{% url preinst %}" method="post">

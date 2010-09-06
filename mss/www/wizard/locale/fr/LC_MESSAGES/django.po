@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MSS 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-27 04:58+0200\n"
+"POT-Creation-Date: 2010-07-30 09:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Braun Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,32 +15,36 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: views.py:116
+#: views.py:137
 msgid "The XML-RPC server is not responding"
 msgstr "Le serveur XML-RPC ne répond pas"
 
-#: views.py:185
+#: views.py:208
 msgid "Homepage"
 msgstr "Page d'accueil"
 
-#: views.py:185
+#: views.py:208
 msgid "Description"
 msgstr "Description"
 
-#: templates/base.html:20 templates/config_log.html:54
+#: views.py:213
+msgid "No information available"
+msgstr "Aucune information disponible"
+
+#: templates/base.html:21 templates/config_log.html:54
 msgid "Hide log"
 msgstr "Cacher le détail"
 
-#: templates/base.html:24 templates/config_log.html:54
+#: templates/base.html:25 templates/config_log.html:54
 #: templates/config_run.html:92 templates/install.html:23
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:43
+#: templates/base.html:44
 msgid "Ready"
-msgstr ""
+msgstr "Prêt"
 
-#: templates/base.html:97
+#: templates/base.html:98
 msgid ""
 "You don't have the Mandriva Enterprise Server medias. Please add the medias "
 "before using Mandriva Server Setup."
@@ -48,19 +52,19 @@ msgstr ""
 "Les médias Mandriva Enterprise Server ne sont pas installés. Ajoutez-les "
 "avant d'utiliser Mandriva Server Setup."
 
-#: templates/base.html:97 templates/media_form.html:42
+#: templates/base.html:98 templates/media_form.html:42
 msgid "Add medias"
 msgstr "Ajouter les médias"
 
-#: templates/base.html:99
+#: templates/base.html:100
 msgid "Update packages list on your server."
 msgstr "Met à jour les listes de packages sur votre serveur."
 
-#: templates/base.html:99
+#: templates/base.html:100
 msgid "Update medias"
 msgstr "Mettre à jour les médias"
 
-#: templates/base.html:101
+#: templates/base.html:104
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -134,7 +138,7 @@ msgstr "Continuer"
 #: templates/config_run.html.py:113 templates/install.html:29
 #: templates/install_no.html:19 templates/media_form.html:43
 #: templates/medias_modules_add.html:11 templates/preinst.html:31
-#: templates/section.html:166
+#: templates/section.html:184
 msgid "Back"
 msgstr "Retour"
 
@@ -155,7 +159,7 @@ msgstr "Configuration échouée."
 #: templates/config_log.html:18 templates/config_no.html:11
 #: templates/config_run.html:27 templates/config_run.html.py:44
 #: templates/error.html:11 templates/medias_single_add.html:9
-#: templates/section.html:71
+#: templates/section.html:89
 msgid "Home page"
 msgstr "Page d'accueil"
 
@@ -372,47 +376,55 @@ msgstr ""
 msgid "No module selected."
 msgstr "Aucun module sélectionné."
 
-#: templates/section.html:15 templates/section.html.py:112
+#: templates/section.html:15 templates/section.html.py:130
 msgid "This module conflicts with : "
 msgstr "Ce module est en conflit avec : "
 
-#: templates/section.html:110
+#: templates/section.html:78
+msgid "Loading packages info from doc4.mandriva.com"
+msgstr "Chargement des informations de paquets depuis doc4.mandriva.com"
+
+#: templates/section.html:84
+msgid "Error while contacting doc4.mandriva.com"
+msgstr "Erreur : doc4.mandriva.com ne répond pas"
+
+#: templates/section.html:128
 msgid "Packages list"
 msgstr "Liste des paquets"
 
-#: templates/section.html:114
+#: templates/section.html:132
 msgid "Packages for this module are already installed."
 msgstr "Les packages pour ce module sont déja installés."
 
-#: templates/section.html:117
+#: templates/section.html:135
 msgid "This module was configured by MSS."
 msgstr "Ce module a été configuré par MSS."
 
-#: templates/section.html:120
+#: templates/section.html:138
 msgid "Actions"
 msgstr "Actions"
 
-#: templates/section.html:123
+#: templates/section.html:141
 msgid "Reinstall and reconfigure"
 msgstr "Ré-installer et re-configurer"
 
-#: templates/section.html:123
+#: templates/section.html:141
 msgid "Reconfigure"
 msgstr "Re-configurer"
 
-#: templates/section.html:123
+#: templates/section.html:141
 msgid "Reconfigure this module."
 msgstr "Re-configurer ce module."
 
-#: templates/section.html:134
+#: templates/section.html:152
 msgid "More information"
 msgstr "Plus d'informations"
 
-#: templates/section.html:137
+#: templates/section.html:155
 msgid "Buy"
 msgstr "Acheter"
 
-#: templates/section.html:165
+#: templates/section.html:183
 msgid "Install components"
 msgstr "Installer les composants"
 
