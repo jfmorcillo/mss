@@ -25,7 +25,6 @@ import xmlrpclib
 from datetime import datetime
 import re
 import time
-import rdflib
 from xml.sax import SAXParseException
 
 from django.shortcuts import render_to_response
@@ -42,10 +41,11 @@ from django.utils.translation import ugettext as _, activate
 
 from config import ConfigManager
 from xmlrpc import XmlRpc
+import rdflib
 
 xmlrpc = XmlRpc()
 CM = ConfigManager()
-output = {"status": "", "install": "", "config": ""}
+output = {"status": ""}
 
 # used to change interface + agent lang
 def set_lang(request, lang):
@@ -200,9 +200,9 @@ def get_info(request, module):
             g = rdflib.Graph()
             g.parse(subject_uri, format="xml")
             # get package name
-            name = g.value(rdflib.term.URIRef(subject_uri), rdflib.term.URIRef('http://usefulinc.com/ns/doap#name'))
-            homepage = g.value(rdflib.term.URIRef(subject_uri), rdflib.term.URIRef('http://usefulinc.com/ns/doap#homepage'))
-            desc = g.value(rdflib.term.URIRef(subject_uri), rdflib.term.URIRef('http://usefulinc.com/ns/doap#shortdesc'))
+            name = g.value(rdflib.URIRef(subject_uri), rdflib.URIRef('http://usefulinc.com/ns/doap#name'))
+            homepage = g.value(rdflib.URIRef(subject_uri), rdflib.URIRef('http://usefulinc.com/ns/doap#homepage'))
+            desc = g.value(rdflib.URIRef(subject_uri), rdflib.URIRef('http://usefulinc.com/ns/doap#shortdesc'))
             desc = re.sub("\n", '<br />', desc);
 
             output += '<h2>%s</h2><p>%s : <a href="%s">%s</a><br />%s : %s</p>' % (name, _('Homepage'), homepage, homepage, _('Description'), desc)

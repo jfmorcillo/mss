@@ -99,3 +99,6 @@ for layout in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "__init__.py"))
 AUTHENTICATION_BACKENDS = (
     'mss.www.backends.MSSBackend',
 )
+
+import sys
+sys.path.append(os.path.join(PROJECT_DIR, 'lib'))

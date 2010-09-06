@@ -34,7 +34,7 @@ Event.observe(window, 'load', function() {
     $$(".disabled input").each(function(i){ i.disabled = true; });
     
     // start the status bar
-    //setTimeout('updateStatus(true)', '500');
+    setTimeout('updateStatus(true)', '500');
     
     // show popup for elem
     // elem should have the "pop" or "popx" class
