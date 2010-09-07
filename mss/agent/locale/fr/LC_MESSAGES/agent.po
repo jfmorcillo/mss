@@ -49,11 +49,11 @@ msgstr "Les mots de passe ne sont pas identiques."
 
 #: process.py:83
 msgid "Ready"
-msgstr ""
+msgstr "Prêt"
 
 #: process.py:81
 msgid "Running configuration"
-msgstr "Execution de la configuration"
+msgstr "Exécution de la configuration"
 
 #: module.py:314
 msgid "Service unavailable. Please try later."

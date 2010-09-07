@@ -1,7 +1,0 @@
-# dev setup on MES5
-
-1) install MES5 + mirrors + updates
-2) urpmi subversion python-django python-IPy
-3) install the packages from packaging/*.rpm
-4) with your web browser go to http://SRV_IP:8000
-5) login password : root password

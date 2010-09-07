@@ -9,7 +9,7 @@ ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 DATABASE_ENGINE = 'sqlite3'

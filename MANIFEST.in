@@ -1,0 +1,7 @@
+include README LICENCE
+recursive-exclude mss/www/cpserver-dev/ *
+recursive-exclude mss/www/cpserver-prod/ *
+recursive-exclude packaging/ *
+recursive-exclude doc/build/ *
+recursive-exclude mss.egg-info/ *
+recursive-exclude dist/ *

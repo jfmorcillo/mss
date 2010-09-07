@@ -213,10 +213,10 @@ div#head div#quick-personal {
 
 div#status {
     position: fixed;
-    bottom: -1px;
+    bottom: -21px;
     left: 0;
     background: white;
-    height: 0px;
+    height: 20px;
     width: 100%;
     line-height: 22px;
     padding-left: 5px;

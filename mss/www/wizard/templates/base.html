@@ -47,17 +47,17 @@
                                 new Effect.Morph('status', {
                                     duration: 0.3,
                                     delay: 1,
-                                    style: 'height: 0px;'
+                                    style: 'bottom: -21px;'
                                 });
                             }
                         }
                         // show status bar on activity
-                        else {
+                        else if (transport.responseText != "") {
                             $('status').addClassName("active");
                             $('status').removeClassName("error");
                             new Effect.Morph('status', {
                                 duration: 0.3,
-                                style: 'height: 22px;'
+                                style: 'bottom: 0px;'
                             });
                         }
                         
@@ -71,7 +71,7 @@
                         setTimeout('updateStatus(false)', '2000');
                         new Effect.Morph('status', {
                             duration: 0.3,
-                            style: 'height: 22px;'
+                            style: 'bottom: 0px;'
                         });                            
                     }
                 });

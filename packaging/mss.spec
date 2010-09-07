@@ -1,6 +1,7 @@
 %define name mss
 %define version 2.0dev
 %define release 1
+%define subrel 1
 %global username mss
 %global groupname mss
 
@@ -11,12 +12,13 @@
 Summary: Mandriva Server Setup
 Name: %{name}
 Version: %{version}
-%define subrel 1
 Release: %mkrel %{release}
 Source0: %{name}-%{version}.tar.gz
 Source1: %{name}.desktop
 Source2: %{name}.png
-License: GPL
+Source3: first_time.html
+Source4: logrotate.conf
+License: GPLv3 and MIT and ASL 2.0
 Group: System/Servers
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
 Prefix: %{_prefix}
@@ -25,15 +27,13 @@ Vendor: Mandriva
 Packager: Jean-Philippe Braun <jpbraun@mandriva.com>
 BuildRequires: python-devel
 
-
-
-
 %description
 MSS aims to help system administrators to setup software quickly. (srpm)
 
 %package -n	mss-agents
 Summary: Mandriva Server Setup
 Group: System/Servers
+URL: http://www.mandriva.com/
 Requires(pre): shadow-utils
 Requires(pre): initscripts
 Requires(preun): initscripts
@@ -43,6 +43,7 @@ Requires: python-IPy
 Requires: python-OpenSSL
 Requires: openssl
 Requires: binutils
+Obsoletes: mmc-wizard
 
 %description -n	mss-agents
 XML-RPC server and web interface
@@ -50,8 +51,10 @@ XML-RPC server and web interface
 %package -n	mss-modules-mes5
 Summary: Mandriva Server Setup modules for MES5
 Group: System/Servers
+URL: http://www.mandriva.com/
 Requires: python
 Requires: mss-agents
+Obsoletes: mmc-wizard
 
 %description -n	mss-modules-mes5
 MES5 Modules for MSS
@@ -62,6 +65,7 @@ MES5 Modules for MSS
 
 %build
 python setup.py build
+cd doc; make html
 
 %pre -n mss-agents
 # Add mss user
@@ -84,26 +88,56 @@ exit 0
 %install
 python setup.py install --single-version-externally-managed --root=%{buildroot}
 
+# init scripts
 install -d %{buildroot}%{_initrddir}
-install -d %{buildroot}%{_sbindir}
-install -d %{buildroot}%{_var}/lib/mss/
-install -d %{buildroot}%{_logdir}/mss/
-install -d %{buildroot}%{_sysconfdir}/mss/ssl/
-
-install -d %{buildroot}%{_datadir}/mdk/desktop/server/
-install -d %{buildroot}%{_datadir}/applications/
-install -d %{buildroot}%{_datadir}/pixmaps/
-
 install -m0755 bin/agent/mss-agent.init %{buildroot}%{_initrddir}/mss-agent
-install -m0755 bin/agent/mss-agent.py %{buildroot}%{_sbindir}/mss-agent.py
 install -m0755 bin/www/mss-www.init %{buildroot}%{_initrddir}/mss-www
 
+# XML-RPC daemon
+install -d %{buildroot}%{_sbindir}
+install -m0755 bin/agent/mss-agent.py %{buildroot}%{_sbindir}/mss-agent.py
+
+# logrotate configuration
+install -d %{buildroot}%{_sysconfdir}/logrotate.d/
+install -m0644 %{SOURCE4} %{buildroot}%{_sysconfdir}/logrotate.d/mss-agent
+
+# databases directory
+install -d %{buildroot}%{_var}/lib/mss/
+
+# log directory for mss-agent
+install -d %{buildroot}%{_logdir}/mss/
+
+# Directory for SSL certificates
+install -d %{buildroot}%{_sysconfdir}/mss/ssl/
+
+# Documentation
+install -d %{buildroot}%{_datadir}/doc/mss/html/
+install -d %{buildroot}%{_datadir}/doc/mss/html/_images/
+install -d %{buildroot}%{_datadir}/doc/mss/html/_sources/
+install -d %{buildroot}%{_datadir}/doc/mss/html/_static/
+install -m0644 README %{buildroot}%{_datadir}/doc/mss/
+install -m0644 LICENCE %{buildroot}%{_datadir}/doc/mss/
+install -m0644 doc/build/html/*.html %{buildroot}%{_datadir}/doc/mss/html/
+install -m0755 doc/build/html/_images/* %{buildroot}%{_datadir}/doc/mss/html/_images/
+install -m0755 doc/build/html/_sources/* %{buildroot}%{_datadir}/doc/mss/html/_sources/
+install -m0755 doc/build/html/_static/* %{buildroot}%{_datadir}/doc/mss/html/_static/
+
+# .desktop files
+install -d %{buildroot}%{_datadir}/mdk/desktop/server/
 install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/mdk/desktop/server/%{name}.desktop
+install -d %{buildroot}%{_datadir}/applications/
 install -m0644 %{SOURCE1} %{buildroot}%{_datadir}/applications/%{name}.desktop
+
+# mss icon
+install -d %{buildroot}%{_datadir}/pixmaps/
 install -m0644 %{SOURCE2} %{buildroot}%{_datadir}/pixmaps/%{name}.png
 
+# share data 
+install -d %{buildroot}%{_datadir}/mss/html/
+install -m0644 %{SOURCE3} %{buildroot}%{_datadir}/mss/html/first_time.html
+
 cat > README.urpmi <<EOF
-You can access Mandriva Server Setup at https://127.0.0.1:8000/
+You can access Mandriva Server Setup at https://localhost:8000/
 EOF
 
 %post -n mss-agents
@@ -169,7 +203,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n mss-agents
 %defattr(-,root,root,0755)
-%exclude %{py_puresitedir}/mss/www/media/img/modules/
+%exclude %{py_puresitedir}/mss/www/media/img/modules/mes5/
 %exclude %{py_puresitedir}/mss/www/layout/mes5/
 %{_initrddir}/mss-www
 %{_initrddir}/mss-agent
@@ -177,19 +211,23 @@ rm -rf $RPM_BUILD_ROOT
 %{py_puresitedir}/mss*egg-info/
 %{py_puresitedir}/mss/agent/*.py*
 %{py_puresitedir}/mss/agent/locale/
+%dir %{py_puresitedir}/mss/agent/modules/
 %{py_puresitedir}/mss/www/
 %{py_puresitedir}/mss/__init__.py*
 %attr(0750,mss,root) %{_var}/lib/mss
 %{_localstatedir}/log/mss
 %{_sysconfdir}/mss/ssl/
-%{_datadir}/mdk/desktop/server/*
-%{_datadir}/applications/*
-%{_datadir}/pixmaps/*
+%config %{_sysconfdir}/logrotate.d/mss-agent
+%{_datadir}/mdk/desktop/server/
+%{_datadir}/applications/
+%{_datadir}/pixmaps/
+%{_datadir}/doc/mss/
+%{_datadir}/mss/
 
 %files -n mss-modules-mes5
 %defattr(-,root,root,0755)
 %{py_puresitedir}/mss/agent/modules/
-%{py_puresitedir}/mss/www/media/img/modules/
+%{py_puresitedir}/mss/www/media/img/modules/mes5/
 %{py_puresitedir}/mss/www/layout/mes5/
 
 %changelog 

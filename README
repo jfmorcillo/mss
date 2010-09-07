@@ -1,50 +1,10 @@
-MSS files organization
+Mandriva Server Setup aims to help system administrators to setup quickly 
+system services such as DNS and OpenLDAP through a web interface.
 
-== XML-RPC server ==
+In order to run MSS you have to start mss-agent (XML-RPC service) and 
+mss-www (Web server) daemons.
 
-agent/                          # all files related to the XML-RPC server
-	modules/                # available modules for MSS
-		openldap/       # some module
-	simple-agent.py         # foreground XML-RPC server
-	locale/                 # gettext translation files for agent strings
+MSS web interface is available from your web browser at https://localhost:8000.
 
-* module directory example :
-
-	openldap/
-		locale/         # gettext translation files for module strings
-		desc.xml        # description of the module
-                                # name, desc, pre-installation text (opt)
-	     			# packages to install
-                                # definition of medias w/o authentication (opt)
-                                # configuration definition (opt)
-		__init__.py	# python functions:
-                                # get_current_config : return current config values
-                                #                      for module
-                                # get_config_info : return script name and args
-
-== Web interface ==
-
-www/				# all files related to the web interface
-	media/			# CSS, images, JS...
-        backends/               # XML-RPC authentification backend
-	wizard/			# web appliance
-		locale/         # gettext translation files for web interface strings
-	layout/                 # layout configuration
-	cpserver/               # interface for running the webserver
-        cherrpy/                # the python web server
-	templates/		# HTML templates for page rendering
-        settings.py             # web interface settings
-	manage.py		# used to start the webserver (and more) :
-                                # ./manage.py runcpserver host=0.0.0.0 port=8000 (start cherrypy server)
-                                # ./manage.py makemessages -l fr (update po files for lang)
-                                # ./manage.py compilemessages -l fr (build mo files)
-
-bin/                            # files for production environnement
-    agent/                      # init script, python agent
-        mss-agent.init
-        mss-agent.py            # daemonized XML-RPC agent
-    www/
-        mss-www.init            # init script for web server
-    build_pot.sh                # create po files for the agent and all modules
-    build_mo.sh                 # update mo files for the agent and all modules
+If you want to develop your own modules for MSS have a look in /usr/share/doc/mss/.
 
