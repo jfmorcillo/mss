@@ -1,7 +1,6 @@
 %define name mss
 %define version 2.0dev
-%define release 1
-%define subrel 1
+%define release 2
 %global username mss
 %global groupname mss
 
