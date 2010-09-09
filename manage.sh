@@ -1,4 +1,3 @@
-# -*- coding: UTF-8 -*-
 #
 # (c) 2010 Mandriva, http://www.mandriva.com/
 #
@@ -21,26 +20,42 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from setuptools import setup
-import sys, os
+todev() {
+	echo -n "Swithing to dev environement..."
+	rm mss/www/cpserver
+	ln -s cpserver-dev mss/www/cpserver
+	sed -i "s!^DEBUG.*!DEBUG = True!" mss/www/settings.py
+	echo "dev"
+}
 
-if os.path.exists('version'):
-    f = open('version')
-    ver = f.read()
-    f.close()
-else:
-    print "You are not at the svn root"
-    exit(1)
+isprod() {
+	grep -q "DEBUG = False" mss/www/settings.py
+	if [ $? -eq 0 ]; then
+		return 0
+	else
+		return 1
+	fi
+}
 
-setup(
-    name='mss',
-    version = ver,
-    description = "Mandriva Server Setup",    
-    author = "Jean-Philippe Braun",
-    author_email = "jpbraun@mandriva.com",
-    maintainer = "Jean-Philippe Braun",
-    maintainer_email = "jpbraun@mandriva.com",
-    url = "http://www.mandriva.com",
-    packages = ['mss'],
-    include_package_data = True,
-)
+toprod() {
+	echo -n "Swithing to prod environement..."
+	rm mss/www/cpserver
+	ln -s cpserver-prod mss/www/cpserver
+	sed -i "s!^DEBUG.*!DEBUG = False!" mss/www/settings.py
+	echo "done"
+}
+
+case "$1" in
+	todev)
+		todev
+		;;
+	toprod)
+		toprod
+		;;
+	isprod)
+		isprod
+		;;
+	*)
+		echo "Usage: $0 [toprod | todev | isprod]"
+		;;
+esac
