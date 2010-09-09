@@ -1,6 +1,7 @@
 %define name mss
-%define version 2.0dev
-%define release 2
+%define version 2.0
+%define release 14
+%define svnrev 2230
 %global username mss
 %global groupname mss
 
@@ -12,7 +13,7 @@ Summary: Mandriva Server Setup
 Name: %{name}
 Version: %{version}
 Release: %mkrel %{release}
-Source0: %{name}-%{version}.tar.gz
+Source0: %{name}-%{version}-r%{svnrev}.tar.gz
 Source1: %{name}.desktop
 Source2: %{name}.png
 Source3: first_time.html
@@ -60,7 +61,7 @@ MES5 Modules for MSS
 
 
 %prep
-%setup -q -n %{name}-%{version}
+%setup -q -n %{name}-%{version}-r%{svnrev}
 
 %build
 python setup.py build

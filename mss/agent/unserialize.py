@@ -7,7 +7,7 @@ Unserialize class for the PHP serialization format.
 @author Scott Hurring; scott at hurring dot com
 @copyright Copyright (c) 2005 Scott Hurring
 @license http://opensource.org/licenses/gpl-license.php GNU Public License
-$Id: PHPUnserialize.py,v 1.1 2006/01/08 21:53:19 shurring Exp $
+$Id$
 
 Most recent version can be found at:
 http://hurring.com/code/python/phpserialize/

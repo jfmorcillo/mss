@@ -1,4 +1,4 @@
-include README LICENCE
+include README LICENCE version release
 recursive-exclude mss/www/cpserver-dev/ *
 recursive-exclude mss/www/cpserver-prod/ *
 recursive-exclude packaging/ *
