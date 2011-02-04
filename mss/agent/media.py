@@ -56,7 +56,7 @@ class Media:
             
         for url in self.urls:
             if login and password:
-                command = ['urpmi.addmedia'] + self.options + [ self.proto+"://"+urllib.quote(login)+":"+password+"@"+url ]
+                command = ['urpmi.addmedia'] + self.options + [ self.proto+"://"+urllib.quote(login)+":"+urllib.quote(password)+"@"+url ]
             else:
                 command = ['urpmi.addmedia'] + self.options + [ self.proto+"://"+url ]
             commands.append(command)
