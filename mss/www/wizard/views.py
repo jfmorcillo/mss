@@ -232,11 +232,11 @@ def medias(request):
         medias = result
         if medias:
             # check if we need authentication
-	    auth = False
-	    for media in medias:
+            auths = Set()
+            for media in medias:
                 if 'auth' in media and media['auth']:
-			auth = True
-            if auth:
+                    auths.add(media['auth'])
+            if auths:
                 return render_to_response('media_auth.html',
                     {'auths': auths}, context_instance=RequestContext(request))
             else:
