@@ -1,7 +1,7 @@
 %define name mss
 %define version 2.0
-%define release %mkrel 33
-%define svnrev 2344
+%define release %mkrel 38
+%define svnrev 2352
 %global username mss
 %global groupname mss
 
@@ -28,7 +28,6 @@ Packager: Jean-Philippe Braun <jpbraun@mandriva.com>
 BuildRequires: python-devel
 BuildRequires: python-docutils
 BuildRequires: python-setuptools
-BuildRequires: python-sphinx
 
 %description
 MSS aims to help system administrators to setup software quickly. (srpm)
@@ -79,7 +78,7 @@ MES5 commercial modules for MSS
 
 %build
 python setup.py build
-cd doc; make html
+#cd doc; make html
 
 %pre -n mss-agents
 # Add mss user
@@ -125,16 +124,16 @@ install -d %{buildroot}%{_logdir}/mss/
 install -d %{buildroot}%{_sysconfdir}/mss/ssl/
 
 # Documentation
-install -d %{buildroot}%{_datadir}/doc/mss/html/
-install -d %{buildroot}%{_datadir}/doc/mss/html/_images/
-install -d %{buildroot}%{_datadir}/doc/mss/html/_sources/
-install -d %{buildroot}%{_datadir}/doc/mss/html/_static/
-install -m0644 README %{buildroot}%{_datadir}/doc/mss/
-install -m0644 LICENCE %{buildroot}%{_datadir}/doc/mss/
-install -m0644 doc/build/html/*.html %{buildroot}%{_datadir}/doc/mss/html/
-install -m0755 doc/build/html/_images/* %{buildroot}%{_datadir}/doc/mss/html/_images/
-install -m0755 doc/build/html/_sources/* %{buildroot}%{_datadir}/doc/mss/html/_sources/
-install -m0755 doc/build/html/_static/* %{buildroot}%{_datadir}/doc/mss/html/_static/
+#install -d %{buildroot}%{_datadir}/doc/mss/html/
+#install -d %{buildroot}%{_datadir}/doc/mss/html/_images/
+#install -d %{buildroot}%{_datadir}/doc/mss/html/_sources/
+#install -d %{buildroot}%{_datadir}/doc/mss/html/_static/
+#install -m0644 README %{buildroot}%{_datadir}/doc/mss/
+#install -m0644 LICENCE %{buildroot}%{_datadir}/doc/mss/
+#install -m0644 doc/build/html/*.html %{buildroot}%{_datadir}/doc/mss/html/
+#install -m0755 doc/build/html/_images/* %{buildroot}%{_datadir}/doc/mss/html/_images/
+#install -m0755 doc/build/html/_sources/* %{buildroot}%{_datadir}/doc/mss/html/_sources/
+#install -m0755 doc/build/html/_static/* %{buildroot}%{_datadir}/doc/mss/html/_static/
 
 # .desktop files
 install -d %{buildroot}%{_datadir}/mdk/desktop/server/
@@ -253,7 +252,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/mdk/desktop/server/
 %{_datadir}/applications/
 %{_datadir}/pixmaps/
-%{_datadir}/doc/mss/
+#%{_datadir}/doc/mss/
 %{_datadir}/mss/
 
 %files -n mss-modules-base
