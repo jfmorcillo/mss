@@ -1,10 +1,11 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2010-07-01 17:22+0200\n"
+"POT-Creation-Date: 2011-03-31 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -13,75 +14,71 @@ msgstr ""
 msgid "eGroupware (Include : Calendar, AdressBook, eMail, InfLog)"
 msgstr "eGroupware (Inclus : Calendrier, Carnet d'adresses, Email, InfLog)"
 
-#: modules/egroupware/desc.xml:3(text)
-msgid "Select your type of database"
-msgstr ""
-
-#: modules/egroupware/desc.xml:4(desc)
+#: modules/egroupware/desc.xml:3(desc)
 msgid "Install eGroupware base system"
 msgstr "Installe eGroupware"
 
-#: modules/egroupware/desc.xml:6(media)
+#: modules/egroupware/desc.xml:5(url)
 msgid "dl.mandriva.com/mes5/egroupware"
 msgstr ""
 
-#: modules/egroupware/desc.xml:9(module)
+#: modules/egroupware/desc.xml:8(module)
 msgid "mysql"
 msgstr ""
 
-#: modules/egroupware/desc.xml:13(rpm)
+#: modules/egroupware/desc.xml:12(rpm)
 msgid "egroupware"
 msgstr ""
 
-#: modules/egroupware/desc.xml:14(rpm)
+#: modules/egroupware/desc.xml:13(rpm)
 msgid "egroupware-addressbook"
 msgstr ""
 
-#: modules/egroupware/desc.xml:15(rpm)
+#: modules/egroupware/desc.xml:14(rpm)
 msgid "egroupware-infolog"
 msgstr ""
 
-#: modules/egroupware/desc.xml:16(rpm)
+#: modules/egroupware/desc.xml:15(rpm)
 msgid "egroupware-felamimail"
 msgstr ""
 
-#: modules/egroupware/desc.xml:17(rpm)
+#: modules/egroupware/desc.xml:16(rpm)
 msgid "egroupware-syncml"
 msgstr ""
 
-#: modules/egroupware/desc.xml:18(rpm)
+#: modules/egroupware/desc.xml:17(rpm)
 msgid "egroupware-projectmanager"
 msgstr ""
 
-#: modules/egroupware/desc.xml:19(rpm)
+#: modules/egroupware/desc.xml:18(rpm)
 msgid "egroupware-importexport"
 msgstr ""
 
-#: modules/egroupware/desc.xml:20(rpm)
+#: modules/egroupware/desc.xml:19(rpm)
 msgid "egroupware-filemanager"
 msgstr ""
 
-#: modules/egroupware/desc.xml:21(rpm)
+#: modules/egroupware/desc.xml:20(rpm)
 msgid "egroupware-sitemgr"
 msgstr ""
 
-#: modules/egroupware/desc.xml:22(rpm)
+#: modules/egroupware/desc.xml:21(rpm)
 msgid "egroupware-timesheet"
 msgstr ""
 
-#: modules/egroupware/desc.xml:23(rpm)
+#: modules/egroupware/desc.xml:22(rpm)
 msgid "egroupware-tracker"
 msgstr ""
 
-#: modules/egroupware/desc.xml:24(rpm)
+#: modules/egroupware/desc.xml:23(rpm)
 msgid "egroupware-wiki"
 msgstr ""
 
-#: modules/egroupware/desc.xml:25(rpm)
+#: modules/egroupware/desc.xml:24(rpm)
 msgid "egroupware-phpbrain"
 msgstr ""
 
-#: modules/egroupware/desc.xml:26(rpm)
+#: modules/egroupware/desc.xml:25(rpm)
 msgid "egroupware-news_admin"
 msgstr ""
 

@@ -1,0 +1,164 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-03-31 14:47+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/zarafa/desc.xml:2(name)
+msgid "Zarafa"
+msgstr ""
+
+#: modules/zarafa/desc.xml:3(desc)
+msgid "Install Zarafa suite with MDS backend"
+msgstr "Installer Zarafa avec support MDS"
+
+#: modules/zarafa/desc.xml:5(module)
+msgid "mds_mmc"
+msgstr ""
+
+#: modules/zarafa/desc.xml:6(module)
+msgid "mysql"
+msgstr ""
+
+#: modules/zarafa/desc.xml:9(module)
+msgid "mds_mail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:10(module)
+msgid "mds_webmail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:13(url)
+msgid "http://www.zarafa.com/"
+msgstr ""
+
+#: modules/zarafa/desc.xml:14(buy)
+msgid "http://store.mandriva.com"
+msgstr ""
+
+#: modules/zarafa/desc.xml:17(url)
+msgid "download.mandriva.com/EnterpriseServer5.2/rpms/i586/media/main/testing/"
+msgstr ""
+
+#: modules/zarafa/desc.xml:21(rpm)
+msgid "zarafa"
+msgstr ""
+
+#: modules/zarafa/desc.xml:22(rpm)
+msgid "zarafa-webaccess"
+msgstr ""
+
+#: modules/zarafa/desc.xml:23(rpm)
+msgid "python-mmc-mail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:24(rpm)
+msgid "mmc-web-mail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:29(label)
+msgid "MySQL root password"
+msgstr "Mot de pass root MySQL"
+
+#: modules/zarafa/desc.xml:30(help)
+msgid "Used to create the zarafa database"
+msgstr "Utilisé pour créer la base de donnée Zarafa"
+
+#: modules/zarafa/desc.xml:33(label)
+msgid "MySQL zarafa password"
+msgstr "Mot de passe MySQL pour l'accès à la base de données Zarafa"
+
+#: modules/zarafa/desc.xml:34(help)
+msgid "MySQL user for the zarafa database"
+msgstr "Utilisateur MySQL pour l'accès à la base de données Zarafa"
+
+#: modules/zarafa/desc.xml:37(label)
+msgid "Attachments directory"
+msgstr "Répertoire des pièces jointes"
+
+#: modules/zarafa/desc.xml:38(help)
+msgid "Where do you want to store mail attachments ?"
+msgstr "Où voulez-vous stocker les pièces jointes ?"
+
+#: modules/zarafa/desc.xml:41(label)
+msgid "Default language for Zarafa folders"
+msgstr "Langage par défaut des boites mail"
+
+#: modules/zarafa/desc.xml:42(help)
+msgid "This create default folders for users in the selected language"
+msgstr "Créé les boites mail utilisateur dans le langage sélectionné"
+
+#: modules/zarafa/desc.xml:43(option)
+msgid "English"
+msgstr ""
+
+#: modules/zarafa/desc.xml:44(option)
+msgid "Français"
+msgstr ""
+
+#: modules/zarafa/desc.xml:45(option)
+msgid "Deutsch"
+msgstr ""
+
+#: modules/zarafa/desc.xml:48(label)
+msgid "My hostname"
+msgstr "Mon nom d'hôte"
+
+#: modules/zarafa/desc.xml:49(help)
+msgid "The host FQDN (eg: smtp.domain.com)"
+msgstr "Le FQDN de la machine (ex: smtp.domaine.com)"
+
+#: modules/zarafa/desc.xml:52(label)
+msgid "My networks"
+msgstr "Mes réseaux"
+
+#: modules/zarafa/desc.xml:53(help)
+msgid "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
+msgstr ""
+"spécifiez les réseaux autorisés à envoyer des mails par votre serveur. si "
+"votre adresse réseau est 192.168.0.0, spécifiez : 192.168.0.0/255.255.255.0"
+
+#: modules/zarafa/desc.xml:56(text)
+msgid "Zarafa web interface is available at : http://@HOSTNAME@/webaccesss/"
+msgstr "L'interface web de Zarafa est disponible sur : http://@HOSTNAME@/webaccesss/"
+
+#: modules/zarafa/desc.xml:57(text)
+msgid "Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr ""
+"Le module de mail est activé sur l'interface MDS : http://@HOSTNAME@/mmc/"
+
+#: modules/zarafa/desc.xml:58(text)
+msgid "You can create mail domains in the MDS interface and specify mail adresses to users and groups."
+msgstr ""
+"Vous pouvez créer des domaines de mail dans l'interface MDS et spécifier des "
+"adresses mails pour les utilisateurs et groupes."
+
+#: modules/zarafa/desc.xml:59(text)
+msgid "You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa."
+msgstr ""
+"Vous devez activer les attributs zarafa sur les utilisateurs et groupes afin qu'ils soient disponibles dans Zarafa."
+
+#: modules/zarafa/desc.xml:60(text)
+msgid "- SSL is enabled on the smtp server"
+msgstr "- SSL est activé sur le serveur SMTP"
+
+#: modules/zarafa/desc.xml:61(text)
+msgid "- Networks authorized to send mail without authentication :"
+msgstr "- Réseaux autorisés à envoyer des mails sans authentification : "
+
+#: modules/zarafa/desc.xml:62(text)
+msgid "Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
+msgstr ""
+"Assurez vous d'avoir activé les services mail (SMTP 25, SMTPS 465, POPS 995, "
+"IMAPS 993) sur votre firewall."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/zarafa/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+

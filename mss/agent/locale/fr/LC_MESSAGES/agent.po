@@ -7,78 +7,59 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-01 17:22+0200\n"
+"POT-Creation-Date: 2011-03-31 14:45+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: process.py:79
+#: process.py:102
 msgid "Adding media"
 msgstr "Ajout des médias"
 
-#: module.py:312
-msgid "Bad login/password."
-msgstr "Mauvais login/mot de passe."
+#: process.py:106
+msgid "Checking network"
+msgstr ""
 
-#: module.py:740
+#: module.py:818
 msgid "Incorrect FQDN."
 msgstr "Nom de domaine non valide."
 
-#: module.py:747 module.py:756
+#: module.py:825 module.py:834
 msgid "Incorrect IP address."
 msgstr "Adresse IP non valide."
 
-#: module.py:750
+#: module.py:828
 msgid "Incorrect netmask address."
 msgstr "Masque de sous-réseau invalide"
 
-#: process.py:75
+#: process.py:98
 msgid "Installing packages"
 msgstr "Installation des packages"
 
-#: process.py:73
+#: process.py:96
 msgid "Loading packages list"
 msgstr "Chargement de la liste de packages"
 
-#: module.py:669
+#: module.py:747
 msgid "Password mismatch."
 msgstr "Les mots de passe ne sont pas identiques."
 
-#: process.py:83
+#: process.py:108
 msgid "Ready"
 msgstr "Prêt"
 
-#: process.py:81
+#: process.py:104
 msgid "Running configuration"
 msgstr "Exécution de la configuration"
 
-#: module.py:314
-msgid "Service unavailable. Please try later."
-msgstr "Service indisponible. Re-essayez plus tard."
-
-#: module.py:308
-msgid "The media seems to be down. Please try later."
-msgstr "Le média semble indisponible. Re-essayez plus tard."
-
-#: module.py:664
+#: module.py:742
 msgid "This field can't be empty."
 msgstr "Ce champ ne peut pas être vide."
 
-#: module.py:316
-msgid "Unknow error."
-msgstr "Erreur inconnue."
-
-#: process.py:77
+#: process.py:100
 msgid "Updating medias"
 msgstr "Mise à jour des médias"
-
-#: module.py:310
-msgid "You don't have access to the media."
-msgstr "Vous n'avez pas accès à ce média."
-
-#: module.py:318
-msgid "Your login does not look like an email address."
-msgstr "Votre login n'est pas une adresse mail."
