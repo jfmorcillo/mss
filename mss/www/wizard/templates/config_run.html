@@ -4,6 +4,36 @@
 
 {% ifequal mode "run" %}
 <script type="text/javascript">
+    collectLog = Class.create();
+    collectLog.prototype = {
+        initialize: function() {
+            this.logs = {};
+            // get summary
+            this.logs['infos'] = $(current_log).select('.info');
+            // get warnings
+            this.logs['warnings'] = $(current_log).select('.warning');
+            // get errors
+            this.logs['errors'] = $(current_log).select('.error');
+        },
+        toString: function() {
+            output = "";
+            output += this.format('infos', '{% trans "Configuration summary" %}');
+            output += this.format('warnings', '{% trans "Configuration warnings" %}');
+            output += this.format('errors', '{% trans "Configuration errors" %}');
+            return output;
+        },
+        format: function(type, title) {
+            output = "";
+            if(this.logs[type].length > 0) {
+                output += '<div class="'+type+'"><h3>'+title+'</h3>';
+                for(i=0; i<this.logs[type].length; i++) {
+                    output += "<p>"+this.logs[type][i].innerHTML+"</p>";
+                }
+                output += '</div>';
+            }
+            return output;
+        }
+    }
     var current = 0;
     var updater = "";
     var modules = new Array();
@@ -44,6 +74,8 @@
                         new Ajax.Request('/mss/config/end/'+modules[current]+'/', {
                             method: 'get',
                         });
+                        task_summary = current_task.next();
+                        task_summary.update(new collectLog());
                         next();
                     }
                     else {
@@ -52,40 +84,10 @@
                         $('next').value = "{% trans "Home page" %}";
                         $('next').disabled = false;
                         $('back').disabled = false;
+                        task_summary = current_task.next();
+                        task_summary.update(new collectLog());
                         toggleLog(current_log.previous().down());
                     }
-                    collectLog = Class.create();
-                    collectLog.prototype = {
-                        initialize: function() {
-                            this.logs = {};
-                            // get summary
-                            this.logs['infos'] = $(current_log).select('.info');
-                            // get warnings
-                            this.logs['warnings'] = $(current_log).select('.warning');
-                            // get errors
-                            this.logs['errors'] = $(current_log).select('.error');
-                        },
-                        toString: function() {
-                            output = "";
-                            output += this.format('infos', '{% trans "Configuration summary" %}');
-                            output += this.format('warnings', '{% trans "Configuration warnings" %}');
-                            output += this.format('errors', '{% trans "Configuration errors" %}');
-                            return output;
-                        },
-                        format: function(type, title) {
-                            output = "";
-                            if(this.logs[type].length > 0) {
-                                output += '<div class="'+type+'"><h3>'+title+'</h3>';
-                                for(i=0; i<this.logs[type].length; i++) {
-                                    output += "<p>"+this.logs[type][i].innerHTML+"</p>";
-                                }
-                                output += '</div>';
-                            }
-                            return output;
-                        }
-                    }
-                    task_summary = current_task.next();
-                    task_summary.update(new collectLog());
                 }
             }
         });
