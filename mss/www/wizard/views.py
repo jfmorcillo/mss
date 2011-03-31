@@ -232,13 +232,11 @@ def medias(request):
         medias = result
         if medias:
             # check if we need authentication
-            auths = Set()
-            for media in medias:
-                print media
+	    auth = False
+	    for media in medias:
                 if 'auth' in media and media['auth']:
-                    auths.add(media['auth'])
-            if auths:
-                request.session['auths_list'] = auths
+			auth = True
+            if auth:
                 return render_to_response('media_auth.html',
                     {'auths': auths}, context_instance=RequestContext(request))
             else:
@@ -251,7 +249,6 @@ def medias(request):
 def medias_add(request):
     """ media add page """
     modules_list = request.session['modules_list']
-    auths_list = request.session['auths_list']
     err, result = xmlrpc.call('get_medias', modules_list)
     if err:
         return err
