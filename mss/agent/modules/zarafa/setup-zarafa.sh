@@ -55,6 +55,7 @@ ldap_tpl="templates/ldap.cfg.tpl"
 ldap_cfg="/etc/zarafa/ldap.cfg"
 userscripts="templates/userscripts"
 zarafa_schema="templates/zarafa.schema"
+webaccess_tpl="templates/zarafa-webaccess.conf.tpl"
 # mmc config
 mail_ini_template="templates/mail.ini.tpl"
 # postfix config
@@ -89,7 +90,6 @@ sed -i 's!^max_allowed_packet.*$!max_allowed_packet=16M!' /etc/my.cnf
 
 # create zarafa configuration
 backup ${server_cfg}
-backup ${ldap_cfg}
 backup ${spooler_cfg}
 backup /etc/sysconfig/zarafa
 
@@ -119,6 +119,9 @@ sed -i "s/\@LDAPBINDPASSWORD\@/${mdspass}/" $ldap_cfg
 sed -i "s/\@LDAPSEARCHBASE\@/${mdssuffix}/" $ldap_cfg
 
 cp -rf $userscripts /etc/zarafa
+
+#FIXME
+cp -f $webaccess_tpl /etc/httpd/conf.d/zarafa-webaccess.conf
 
 # create postfix configuration
 # postfix
@@ -218,12 +221,12 @@ restart_service zarafa-dagent /var/log/zarafa/dagent.cfg
 restart_service zarafa-ical /var/log/zarafa/ical.cfg
 restart_service httpd /var/log/httpd/error.log
 
-echo "8Zarafa web interface is available at : http://@HOSTNAME@/webaccesss/"
+echo "8Zarafa web interface is available at : http://@HOSTNAME@/webaccess/"
 echo "8Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
 echo "7You can create mail domains in the MDS interface and specify mail adresses to users and groups."
 echo "7You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa."
 echo "7- SSL is enabled on the smtp server"
 echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks"
-echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
+echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465) on your firewall."
 
 exit 0
