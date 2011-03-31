@@ -41,6 +41,8 @@ if [ $? -ne 0 ]; then
 	./manage.sh toprod
 fi
 
+./bin/build_mo.sh
+
 python setup.py sdist
 
 if [ $? -ne 0 ]; then
