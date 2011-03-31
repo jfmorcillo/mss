@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# Zarafa script that is executed whenever a new group is deleted from
+# the external user source, such as an Active Directory tree or
+# /etc/passwd.
+
+# This script executes all scripts in /etc/zarafa/userscripts/deletegroup.d
+# using find.  The environment variable ZARAFA_GROUP is set, but
+# beware that this string can contain any characters, so take heed to
+# correct quoting.
+
+if [ -f /etc/sysconfig/zarafa ]; then
+  . /etc/sysconfig/zarafa
+fi
+
+ZARAFA_GROUP_SCRIPTS=/etc/zarafa/userscripts/deletegroup.d
+. /etc/zarafa/userscripts/groups_common.sh

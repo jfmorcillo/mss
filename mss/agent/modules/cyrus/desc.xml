@@ -4,6 +4,8 @@
     <conflicts>
         <module>dovecot</module>
         <module>courierimap</module>
+        <module>mds_mail</module>
+        <module>zarafa</module>
     </conflicts>
     <packages>
         <target name="all">

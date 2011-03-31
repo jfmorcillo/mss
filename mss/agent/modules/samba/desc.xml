@@ -1,6 +1,9 @@
 <module id="samba">
   <name>SAMBA file server</name>
   <desc>Share files and printers on a Microsoft network</desc>
+  <conflicts>
+    <module>mds_smb</module>
+  </conflicts>
   <packages>
     <target name="all">
       <rpm>samba-server</rpm>

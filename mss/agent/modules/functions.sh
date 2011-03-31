@@ -66,9 +66,9 @@ function backup() {
     else
         newname="$1-mss-wizard-$now"
         cp -a "$1" "$newname"
-        if [ $? -eq 0 ]; then 
+        if [ $? -eq 0 ]; then
             echo "0Backed up #$1# to #$newname"
-        else 
+        else
             echo "1Cannot make backup for $1"
             exit 1
         fi
@@ -92,4 +92,68 @@ function clean_database() {
 	rm -f "$1"/{*.bdb,log.*,__*,alock}
 	echo "$backupdir"
 	return 0
+}
+
+# mysql functions vars
+config=".my.cnf.$$"
+command=".mysql.$$"
+
+function mysql_prepare() {
+    touch $config $command
+    chmod 600 $config $command
+}
+
+function mysql_do_query() {
+    echo "$1" >$command
+    #sed 's,^,> ,' < $command  # Debugging
+    mysql --defaults-file=$config <$command
+    return $?
+}
+
+# This simple escape works correctly in both places.
+function mysql_basic_single_escape () {
+    # The quoting on this sed command is a bit complex.  Single-quoted strings
+    # don't allow *any* escape mechanism, so they cannot contain a single
+    # quote.  The string sed gets (as argv[1]) is:  s/\(['\]\)/\\\1/g
+    #
+    # Inside a character class, \ and ' are not special, so the ['\] character
+    # class is balanced and contains two characters.
+    echo "$1" | sed 's/\(['"'"'\]\)/\\\1/g'
+}
+
+function mysql_make_config() {
+    echo "# mysql_secure_installation config file" >$config
+    echo "[mysql]" >>$config
+    echo "user=root" >>$config
+    esc_pass=`mysql_basic_single_escape "$rootpass"`
+    echo "password='$esc_pass'" >>$config
+    #sed 's,^,> ,' < $config  # Debugging
+}
+
+function mysql_get_root_password() {
+	rootpass=$1
+	mysql_make_config
+	mysql_do_query ""
+    return $?
+}
+
+function mysql_cleanup() {
+    echo "Cleaning up..."
+    rm -f $config $command
+}
+
+function restart_service() {
+    /sbin/service $1 restart > /dev/null 2>&1
+    if [ $? -eq 0 ]; then
+        echo "0Service #${1}# reloaded succesfully."
+    else
+        if [ ! -z $2 ]; then
+            log=$2
+        else
+            log="/var/log/syslog"
+        fi
+        echo "2Service #${1}# fails restarting. Check #${2}#."
+        sleep 1
+        exit 1
+    fi
 }

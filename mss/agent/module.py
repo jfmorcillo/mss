@@ -46,7 +46,7 @@ from utils import grep
 from media import Media
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
-logging.basicConfig(level=logging.INFO, filename=LOG_FILENAME)
+logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
 logger = logging.getLogger('MyLogger')
 handler = logging.handlers.RotatingFileHandler(
               LOG_FILENAME, maxBytes=10485760, backupCount=5)
@@ -70,13 +70,13 @@ class ModuleManager:
     """
 
     def _dispatch(self, method, params):
-        func = getattr(self, method)            
+        func = getattr(self, method)
         if not is_exposed(func):
             raise Exception('Method "%s" is not supported' % method)
-        
+
         return func(*params)
 
-    def __init__(self, EM, TM):        
+    def __init__(self, EM, TM):
         self.modulesDirectory = os.path.join(os.path.dirname(__file__), "modules")
         self.modules = {}
         self.packages = []
@@ -121,7 +121,7 @@ class ModuleManager:
     def update_medias(self):
         self.logger.info("Updating medias")
         self.EM.update_medias()
-        
+
     @expose
     def check_media(self, search):
         """ check if media exist """
@@ -147,6 +147,51 @@ class ModuleManager:
             ret.append(item.split("/")[-2])
         return ret
 
+    def is_installed(self, module):
+        """ check if module is installed """
+        packages = set(module.get_packages())
+        # check if packages are installed
+        if len(packages) == len(packages.intersection(self.packages)):
+            module.installed = True
+            return True
+        else:
+            module.installed = False
+            return False
+
+    def get_conflicts(self, conflicts, module):
+        """ return a module list of current conflicts
+            with module """
+        for m in module.conflicts:
+            m = self.modules[m]
+            if not m in conflicts and m.configured:
+                conflicts.append(m)
+                self.logger.debug("Conflict with : %s" % str(m.id))
+                conflicts = self.get_conflicts(conflicts, m)
+        for m in module.deps:
+            m = self.modules[m]
+            for m1 in m.conflicts:
+                m1 = self.modules[m1]
+                if not m1 in conflicts and m1.configured:
+                    conflicts.append(m1)
+                    self.logger.debug("Conflict with : %s" % str(m1.id))
+        return conflicts
+
+    def get_module(self, m):
+        """ return basic info for one module """
+        module = self.modules[m]
+        self.is_installed(module)
+        # get current conflicts for module
+        conflicts = self.get_conflicts([], module)
+        conflicts = [conflict.name for conflict in conflicts]
+        # return result
+        result = {'id': module.id, 'name': module.name,
+            'desc': module.desc, 'url': module.url, 'buy': module.buy,
+            'preinst': module.preinst, 'installed': module.installed,
+            'configured': module.configured, 'conflict': conflicts,
+            'conflicts': module.conflicts, 'deps': module.deps}
+        self.logger.debug("Module info : %s" % str(result))
+        return result
+
     @expose
     def get_modules(self, modules):
         """ return basic info for modules """
@@ -154,37 +199,10 @@ class ModuleManager:
         result = []
         for m in modules:
             if m in self.modules:
-                module = self.modules[m]
-                # get module packages
-                packages = set(module.get_packages())
-                # check if packages are installed
-                if len(packages) == len(packages.intersection(self.packages)):
-                    installed = True
-                else:
-                    installed = False
-                # check if module is configured
-                c = self.conn.cursor()
-                c.execute('select * from module where name=?', (m,))
-                if c.fetchone():
-                    configured = True 
-                else:
-                    configured = False
-                c.close()
-                # return result
-                result.append({ 'id': module.id, 'name': module.name, 
-                    'desc': module.desc, 'url': module.url, 'buy': module.buy,
-                    'preinst': module.preinst, 'installed': installed, 
-                    'configured': configured, 'conflict': [], 
-                    'conflicts': module.conflicts })
-        # check conflicts between modules
-        for m in result:
-            if m['conflicts']:
-                for m1 in m['conflicts']:
-                    for m2 in result:
-                        if m1 == m2['id'] and m2['installed']:
-                            m['conflict'].append(m2['id'])
+                self.logger.debug("Get module info : %s" % str(m))
+                result.append(self.get_module(m))
         return result
-        
+
     @expose
     def get_packages(self, module):
         """ returns package list for module """
@@ -291,52 +309,23 @@ class ModuleManager:
     def get_medias(self, modules):
         """ get medias for modules """
         self.logger.info("Get medias for modules : %s" % str(modules))
-        auth = {}
-        done = []
-        fail = []
-        add = True
-        # get medias for each module
-        for module in modules:
-            media = self.modules[module].get_medias()
-            if media:
-                # media need auth
-                if media.need_auth():
-                    auth[media.auth] = media
-                # media doesn't need auth, add them
-                else:
-                    commands = media.get_commands()
-                    for command in commands:
-                        code, output = self.EM.add_media(command)
-                        # 0 == media added
-                        # 5 == media exists
-                        if code == 0 or code == 5:
-                            if media.verbose_name not in done:
-                                done.append(media.verbose_name)
-                        else:                
-                            # don't add the same fail error (multiple urls)         
-                            if add:
-                                fail.append({'name': media.verbose_name, 
-                                    'output': output})
-                                add = False
-        return (auth, done)
+        medias = [ self.modules[module].get_medias() for module in modules if not self.check_media(module) and self.modules[module].get_medias() ]
+        self.logger.debug("Media list : %s" % str(medias))
+        return medias
 
     @expose
-    def add_media(self, m, login, passwd):
-        """ add media with authentication """
-        done = []
-        fail = []
-        add = True
-        # reconstruct media object
-        media = Media(m['name'], m['verbose_name'], m['urls'], m['auth'], 
-            m['proto'], m['mode'])
-        self.logger.info("Add media : %s" % media.name)            
-        # get add commands for media        
-        commands = media.get_commands(login, passwd)
-        for command in commands:
-            # execute each add media command
-            code, output = self.EM.add_media(command)
+    def add_media(self, module, login=None, passwd=None):
+        """ add all medias for module """
+        media = self.modules[module].get_medias()
+        self.logger.info("Add media : %s" % media.name)
+        # get add commands for media
+        command = media.get_command(login, passwd)
+        self.logger.debug("Execute: %s" % str(command))
+        self.EM.add_media(command)
+
+        """
             # 0 == media added
-            # 5 == media exists            
+            # 5 == media exists
             if code == 0 or code == 5:
                 if media.verbose_name not in done:
                     done.append(media.verbose_name)
@@ -368,9 +357,7 @@ class ModuleManager:
                 if add:
                     fail.append({'name': media.verbose_name, 'err': err})
                     add = False
-
         print fail
-
         return (done, fail)
 
     def my_auth(self, username, password, media):
@@ -381,7 +368,7 @@ class ModuleManager:
         # 3 : service unavailable
         # 4 : unknow error
         # 5 : login is not an email
-    
+
         # my authentication
         host = "my.mandriva.com"
         url  = "/rest/authenticate.php?username=%s&password=%s&_f=php&return=userData" % (username, re.escape(password))
@@ -409,7 +396,7 @@ class ModuleManager:
                     code = 0
             return code
         elif user_data['code'] == 8:
-            return 5
+            return 5"""
 
     @expose
     def install_modules(self, modules):
@@ -458,16 +445,13 @@ class ModuleManager:
     @expose
     def end_config(self, module):
         self.logger.debug("Set %s as configured" % str(module))
-        c = self.conn.cursor()
-        c.execute('select * from module where name=?', (module,))
-        if not c.fetchone():
-            c.execute('insert into module values (?,?)', (module, datetime.now()))
-        else:
-            c.execute('update module set configured=? where name=?', (datetime.now(), module))
-        self.conn.commit()
-        c.close()
+        self.modules[module].configured = True
         return 0
-        
+
+    @expose
+    def check_net(self):
+        self.EM.check_net()
+
     @expose
     def get_state(self, name, module="agent"):
         """ return execution output """
@@ -491,13 +475,13 @@ class ModuleManager:
             except ValueError:
                 text_code = 0
                 text = line
-                output.append((text_code, text))
+                output.append({'code': text_code, 'text': text})
             # no char in line
             except IndexError:
                 pass
             else:
-                output.append((text_code, text))
-                
+                output.append({'code': text_code, 'text': text})
+
         return (code, output)
 
     @expose
@@ -521,6 +505,8 @@ class Module:
         self.path = path
         tree = ET.parse(os.path.join(self.path, "desc.xml"))
         self.root = tree.getroot()
+        # BDD access
+        self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # load module info
         self.load()
         # get module config object
@@ -542,16 +528,18 @@ class Module:
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
         self._url = self.root.findtext("more/url")
-        self._buy = self.root.findtext("more/buy")        
+        self._buy = self.root.findtext("more/buy")
         # get module deps
         self._deps = [m.text for m in self.root.findall("deps/module")]
         # get module conflicts
-        self._conflicts = [m.text for m in self.root.findall("conflicts/module")]        
+        self._conflicts = [m.text for m in self.root.findall("conflicts/module")]
         # get preinst text
         if self.root.findtext("preinst/text"):
             self._preinst = self.root.findtext("preinst/text")
         else:
             self._preinst = " "
+        self.installed = False
+        self.check_configured()
 
     def get_name(self):
         return _(self._name, self.id)
@@ -581,6 +569,40 @@ class Module:
         return _(self._preinst, self.id).strip()
     preinst = property(get_preinst)
 
+    def check_configured(self):
+        # check if module is configured
+        c = self.conn.cursor()
+        c.execute('select * from module where name=?', (self.id,))
+        if c.fetchone():
+            self.configured = True
+        else:
+            self.configured = False
+        c.close()
+
+    def get_configured(self):
+        return self._configured
+
+    def set_configured(self, value):
+        self._configured = value
+        c = self.conn.cursor()
+        c.execute('select * from module where name=?', (self.id,))
+        if not c.fetchone():
+            c.execute('insert into module values (?,?)', (self.id, datetime.now()))
+        else:
+            c.execute('update module set configured=? where name=?', (datetime.now(), self.id))
+        self.conn.commit()
+        c.close()
+
+    configured = property(get_configured, set_configured)
+
+    def get_installed(self):
+        return self._installed
+
+    def set_installed(self, value):
+        self._installed = value
+
+    installed = property(get_installed, set_installed)
+
     def get_packages(self):
         """ get packages for module """
         if not getattr(self, "packages", None):
@@ -597,11 +619,11 @@ class Module:
         """ get medias for module """
         media = self.root.find("medias")
         if media:
-            name = media.attrib.get("name", None)
+            name = self.id
             verbose_name = media.attrib.get("verbose_name", name)
             auth = media.attrib.get("auth", None)
             urls = media.findall("url")
-            urls = [url.text for url in urls]            
+            urls = [url.text for url in urls]
             proto = media.attrib.get("proto", "http")
             mode = media.attrib.get("mode", "default")
             return Media(name, verbose_name, urls, auth, proto, mode)
@@ -653,7 +675,7 @@ class Module:
                     field_config["options"] = []
                     for option in options:
                         field_config["options"].append(
-                            {'name': option.text, 
+                            {'name': option.text,
                              'value': option.attrib.get('value')}
                         )
                 # get default value for multi fields
@@ -669,7 +691,7 @@ class Module:
         return self.config
 
     def valid_config(self, user_config):
-        
+
         """ valid user configuration for module """
         if not getattr(self, "config", None):
             self.config = self.get_config()
@@ -725,7 +747,7 @@ class Module:
                             field["error"] = _("Password mismatch.", "agent")
                     else:
                         if field.get("error"):
-                            del field["error"]                        
+                            del field["error"]
 
                 # validate field data
                 if field.get("validation"):

@@ -1,5 +1,5 @@
 <module id="mds_dhcp">
-    <name>DHCP server</name>
+    <name>DHCP server with MDS backend</name>
     <desc>Configure your client computers IP settings</desc>
     <packages>
         <target name="all">

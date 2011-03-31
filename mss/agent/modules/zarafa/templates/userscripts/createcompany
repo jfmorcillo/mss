@@ -1,0 +1,17 @@
+#! /bin/sh
+
+# Zarafa script that is executed whenever a new company is created in the
+# external user source, such as an Active Directory tree or
+# /etc/passwd.
+
+# This script executes all scripts in /etc/zarafa/userscripts/createcompany.d
+# using find.  The environment variable ZARAFA_COMPANY is set, but
+# beware that this string can contain any characters, so take heed to
+# correct quoting.
+
+if [ -f /etc/sysconfig/zarafa ]; then
+  . /etc/sysconfig/zarafa
+fi
+
+ZARAFA_COMPANY_SCRIPTS=/etc/zarafa/userscripts/createcompany.d
+. /etc/zarafa/userscripts/companies_common.sh

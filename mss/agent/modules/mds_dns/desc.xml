@@ -1,5 +1,5 @@
 <module id="mds_dns">
-    <name>DNS server</name>
+    <name>DNS server with MDS backend</name>
     <desc>Resolve computer names on your network</desc>
     <packages>
         <target name="all">

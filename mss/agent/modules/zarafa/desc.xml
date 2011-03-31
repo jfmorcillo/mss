@@ -1,0 +1,56 @@
+<module id="zarafa">
+    <name>Zarafa</name>
+    <desc>Install Zarafa suite with MDS backend</desc>
+    <deps>
+        <module>mds_mmc</module>
+        <module>mysql</module>
+    </deps>
+    <conflicts>
+        <module>mds_mail</module>
+        <module>mds_webmail</module>
+    </conflicts>
+    <more>
+        <url>http://www.zarafa.com/</url>
+        <buy>http://store.mandriva.com</buy>
+    </more>
+    <medias verbose_name="Zarafa" name="zarafa" auth="my" proto="https">
+        <url>download.mandriva.com/EnterpriseServer5.2/rpms/i586/media/main/testing/</url>
+    </medias>
+    <packages>
+        <target name="all">
+            <rpm>zarafa</rpm>
+            <rpm>zarafa-webaccess</rpm>
+            <rpm>python-mmc-mail</rpm>
+            <rpm>mmc-web-mail</rpm>
+        </target>
+    </packages>
+    <config>
+        <password name="myrootpasswd" require="yes">
+            <label>MySQL root password</label>
+            <help>Used to create the zarafa database</help>
+        </password>
+        <password name="myzarafapasswd" require="yes">
+            <label>MySQL zarafa password</label>
+            <help>MySQL user for the zarafa database</help>
+        </password>
+        <text name="attachmentsdir" require="yes" default="/home/zarafa/attachments">
+            <label>Attachments directory</label>
+            <help>Where do you want to store mail attachments ?</help>
+        </text>
+        <options name="defaultlang" require="yes">
+            <label>Default language for Zarafa folders</label>
+            <help>This create default folders for users in the selected language</help>
+            <option value="C">English</option>
+            <option value="fr_FR.UTF-8">Français</option>
+            <option value="de_DE.UTF-8">Deutsch</option>
+        </options>
+        <text name="smtpd_myhostname" require="yes" validation="fqdn">
+            <label>My hostname</label>
+            <help>The host FQDN (eg: smtp.domain.com)</help>
+        </text>
+        <network name="smtpd_mynetworks" format="short" validation="network">
+            <label>My networks</label>
+            <help>Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0</help>
+        </network>
+    </config>
+</module>

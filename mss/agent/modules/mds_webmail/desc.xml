@@ -1,5 +1,5 @@
 <module id="mds_webmail">
-    <name>Webmail server</name>
+    <name>Webmail with MDS backend</name>
     <desc>Integrate roundcube for your MDS installation</desc>
     <packages>
         <target name="all">
@@ -13,6 +13,9 @@
     <deps>
         <module>mds_mail</module>
     </deps>
+    <conflicts>
+        <module>zarafa</module>
+    </conflicts>
     <text>Webmail RoundCube is activated on your server.</text>
     <text>You can access the webmail interface at http://@HOSTNAME@/roundcubemail/</text>
 </module>

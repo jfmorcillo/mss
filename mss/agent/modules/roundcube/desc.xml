@@ -1,6 +1,9 @@
 <module id="roundcube">
   <name>Webmail server</name>
   <desc>Install roundcube webmail</desc>
+  <conflicts>
+    <module>mds_webmail</module>
+  </conflicts>
   <packages>
     <target name="all">
       <rpm>roundcubemail</rpm>

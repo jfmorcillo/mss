@@ -1,5 +1,5 @@
 <module id="mds_mail">
-    <name>Mail server</name>
+    <name>Mail server with MDS backend</name>
     <desc>Mail/POP/IMAP server with virtual domains, anti-virus and anti-spam toolkits</desc>
     <packages>
         <target name="all">
@@ -14,6 +14,9 @@
             <rpm>dovecot-plugins-ldap</rpm>
         </target>
     </packages>
+    <conflicts>
+        <module>zarafa</module>
+    </conflicts>
     <deps>
         <module>mds_mmc</module>
     </deps>

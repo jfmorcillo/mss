@@ -39,9 +39,9 @@ class Media:
         else:
             return False
             
-    def get_commands(self, login=None, password=None):
+    def get_command(self, login=None, password=None):
     
-        commands = []    
+        command = []    
         self.options = []
         
         if self.mode == "distrib":
@@ -56,9 +56,8 @@ class Media:
             
         for url in self.urls:
             if login and password:
-                command = ['urpmi.addmedia'] + self.options + [ self.proto+"://"+urllib.quote(login)+":"+urllib.quote(password)+"@"+url ]
+                command += ['urpmi.addmedia'] + self.options + [ self.proto+"://"+urllib.quote(login)+":"+password+"@"+url, ';']
             else:
-                command = ['urpmi.addmedia'] + self.options + [ self.proto+"://"+url ]
-            commands.append(command)
+                command += ['urpmi.addmedia'] + self.options + [ self.proto+"://"+url, ';']
             
-        return commands
+        return " ".join(command)

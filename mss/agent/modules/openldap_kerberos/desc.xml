@@ -3,9 +3,9 @@
   <desc>LDAP + Kerberos authentication server</desc>
   <conflicts>
     <module>mds_mmc</module>
-  </conflicts>  
+  </conflicts>
   <deps>
-    <module>opendlap</module>
+    <module>openldap</module>
     <module>kerberos</module>
   </deps>
   <packages>

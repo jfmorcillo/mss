@@ -1,0 +1,40 @@
+# Database file containing a map of mime-types and extensions together
+# with the corresponding command to parse the attachment into plain-text.
+#
+# The layout of each line is as followed:
+#
+#		<mime-type>;<extension>		`<command>`
+#
+# Each line can have as many mime-types and extensions as needed.
+#
+# The command must assume the attachment data is coming through /dev/stdin
+# and should return the parsed data through /dev/stdout. When utilities
+# require the attachment data to be stored on the harddisk the command
+# `zmktemp` can be used. That script will write all attachment data in a
+# temporary file and print the location of the file to /dev/stdout again.
+#
+# To supress logmessages from the indexer regarding file types which should
+# not be indexed (like images) the command `echo -n` can be used.
+#
+# The command will be detected and executed by the attachments_parser script,
+# to test the command the following can be done to check the result:
+#
+#		cat <attachment> | <command>
+#
+text/plain;txt	`cat /dev/stdin`
+text/html;html;htm	`lynx -stdin -dump -nolist`
+application/xml;text/xml;xml	`xsltproc ${SCRIPTPATH}/xmltotext.xslt - | iconv -f utf-8 -t windows-1252//translit`
+application/pdf;pdf	`pdftotext -enc Latin1 -q -nopgbrk $(zmktemp) /dev/stdout`
+application/msword;doc `catdoc -s cp1252 -d cp1252 -f ascii -w /dev/stdin`
+application/mspowerpoint;application/powerpoint;application/x-mspowerpoint;application/vnd.ms-powerpoint;ppt	`catppt -s cp1252 -d cp1252 /dev/stdin`
+application/excel;application/x-excel;application/x-msexcel;application/vnd.ms-excel;xls	`xls2csv -s cp1252 -d cp1252 -c ' ' /dev/stdin`
+application/vnd.openxmlformats-officedocument.wordprocessingml.document;docx	`zmktemp | unzip -p $(cat /dev/stdin) word/document.xml | xsltproc ${SCRIPTPATH}/xmltotext.xslt - | iconv -f utf-8 -t windows-1252//translit`
+application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;xlsx	`zmktemp | unzip -o -qq $(cat /dev/stdin) -d $TMPDIR; for i in $(find $TMPDIR -name \*.xml); do xsltproc ${SCRIPTPATH}/xmltotext.xslt $i | iconv -f utf-8 -t windows-1252//translit; done`
+application/vnd.openxmlformats-officedocument.presentationml.presentation;pptx	`zmktemp | unzip -o -qq $(cat /dev/stdin) -d $TMPDIR; for i in $(find $TMPDIR -name \*.xml); do xsltproc ${SCRIPTPATH}/xmltotext.xslt $i | iconv -f utf-8 -t windows-1252; done`
+application/vnd.oasis.opendocument.text;odt `zmktemp | unzip -p $(cat /dev/stdin) content.xml | xsltproc ${SCRIPTPATH}/xmltotext.xslt - | iconv -f utf-8 -t windows-1252//translit`
+application/vnd.oasis.opendocument.spreadsheet;ods	`zmktemp | unzip -p $(cat /dev/stdin) content.xml | xsltproc ${SCRIPTPATH}/xmltotext.xslt - | iconv -f utf-8 -t windows-1252//translit`
+application/vnd.oasis.opendocument.presentation;odp	`zmktemp | unzip -p $(cat /dev/stdin) content.xml | xsltproc ${SCRIPTPATH}/xmltotext.xslt - | iconv -f utf-8 -t windows-1252//translit`
+image/gif;image/jpeg;image/png;image/tiff;gif;jpg;jpeg;png;tif;tiff	`echo -n`
+
+# fallback if the mimetype was not specified
+application/octet-stream `FILE=$(zmktemp); attachments_parser $(file --mime-type $FILE | awk '{print $2}' | sed -e 's%application/octet-stream%stop_loop%') $FILE`

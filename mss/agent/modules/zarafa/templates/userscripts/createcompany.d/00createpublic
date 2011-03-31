@@ -1,0 +1,7 @@
+#! /bin/sh
+
+# Create a Zarafa Public store for the new company.
+
+PATH=$PATH:/sbin:/usr/local/sbin:/usr/sbin
+
+zarafa-admin -s -I "${ZARAFA_COMPANY}"

@@ -1,6 +1,10 @@
 <module id="postfix">
     <name>Postfix server</name>
     <desc>Mail delivery agent</desc>
+    <conflicts>
+      <module>mds_mail</module>
+      <module>zarafa</module>
+    </conflicts>
     <packages>
         <target name="all">
             <rpm>postfix</rpm>

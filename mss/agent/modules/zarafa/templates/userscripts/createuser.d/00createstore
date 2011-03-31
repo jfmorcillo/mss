@@ -1,0 +1,8 @@
+#! /bin/sh
+
+# Create a Zarafa user for an already existing external user.  Create
+# and initialize the user's stores.
+
+PATH=$PATH:/sbin:/usr/local/sbin:/usr/sbin
+
+zarafa-admin --create-store "${ZARAFA_USER}" --lang "${ZARAFA_LANG}"

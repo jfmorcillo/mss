@@ -1,6 +1,9 @@
 <module id="cups">
   <name>Printing server</name>
   <desc>Install, configure and share network printers with cups</desc>
+  <conflicts>
+    <module>mds_cups</module>
+  </conflicts>
   <packages>
     <target name="all">
       <rpm>cups</rpm>

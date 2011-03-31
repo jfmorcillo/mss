@@ -40,12 +40,12 @@ class ExecManager:
 
     def load_packages(self, callback):
         """ get all installed packages """
-        self.launch("load", ["rpm", "-qa", "--queryformat", "%{NAME}#"], 
+        self.launch("load", ["rpm", "-qa", "--queryformat", "%{NAME}#"],
             callback=callback)
 
     def install_packages(self, packages):
         """ launch installation of packages list """
-        self.launch("install", ["urpmi", "--auto"] + packages)
+        self.launch("install", ["urpmi", "--downloader", "wget", "--auto", "--force"] + packages)
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
@@ -58,17 +58,21 @@ class ExecManager:
     def update_medias(self):
         """ update medias lists """
         self.launch("update", ["urpmi.update", "-a"])
-        
+
+    def check_net(self):
+        """ check if net is available """
+        self.launch("net", ["ping", "-c", "2", "my.mandriva.com"])
+
     def add_media(self, command):
         """ add media """
-        self.launch("media", command, wait=True)
-        return (self.threads['media'].code, self.threads['media'].output)
+        self.launch("media", command, shell=True)
+        #return (self.threads['media'].code, self.threads['media'].output)
 
-    def launch(self, name, command, wait=False, cwd=None, callback=None):
-        """ launch wrapper """    
+    def launch(self, name, command, wait=False, cwd=None, callback=None, shell=False):
+        """ launch wrapper """
         # accept only one thread
         if not name in self.threads or not self.threads[name].isAlive():
-            self.threads[name] = ExecThread(command, cwd, callback)
+            self.threads[name] = ExecThread(command, cwd, callback, shell)
             self.threads[name].start()
             if wait:
                 self.threads[name].join()
@@ -77,8 +81,11 @@ class ExecManager:
 
     def get_state(self, name):
         """ get thread execution state """
-        return (self.threads[name].code, 
-            xmlrpclib.Binary(self.threads[name].output))
+        if name in self.threads:
+            return (self.threads[name].code,
+                xmlrpclib.Binary(self.threads[name].output))
+        else:
+            return (2000, xmlrpclib.Binary(""))
 
     def get_status(self):
         """ get execution manager status """
@@ -95,6 +102,8 @@ class ExecManager:
                     status.append(_("Adding media"))
                 if name == "config":
                     status.append(_("Running configuration"))
+                if name == "net":
+                    status.append(_("Checking network"))
         if not status:
             status.append(_("Ready"))
         return status
@@ -103,7 +112,7 @@ class ExecManager:
 class ExecThread(threading.Thread):
     """ Base class for running tasks """
 
-    def __init__(self, command, cwd, callback):
+    def __init__(self, command, cwd, callback, shell):
         #threading.Thread.__init__(self, **kwds)
         self.process = None
         self.command = command
@@ -112,18 +121,19 @@ class ExecThread(threading.Thread):
         self.code = 2000
         self.output = ""
         self.lock = threading.RLock()
+        self.shell = shell
         threading.Thread.__init__(self)
 
     def run(self):
         """ run command """
         self.process = Popen(self.command, stdout=PIPE, stderr=STDOUT,
-            bufsize=1, shell=False, cwd=self.cwd)
+            bufsize=1, cwd=self.cwd, shell=self.shell)
         self.get_output()
         return 0
 
     def get_output(self):
         """ get command context """
-        while self.isAlive():  
+        while self.isAlive():
             # get the file descriptor of the process stdout pipe
             # for reading
             try:
@@ -134,7 +144,7 @@ class ExecThread(threading.Thread):
             except IndexError:
                 fd = None
                 pass
-              
+
             self.process.poll()
             if self.process.returncode == None:
                 # get bytes one by one
