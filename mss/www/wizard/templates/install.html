@@ -45,7 +45,7 @@
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span class="active">3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
 <div class="block">
     <h2>{% trans "Installation" %}</h2>
-    <p>{% blocktrans count modules|length as counter %}The following module is being installed{% plural %}The following modules are being installed{% endblocktrans %} :
+    <p>{% blocktrans count modules|length as counter %}The following component is being installed{% plural %}The following components are being installed{% endblocktrans %} :
     {% for m in modules %}
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>

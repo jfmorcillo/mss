@@ -118,7 +118,7 @@
 <div class="block">
     <h2>Configuration</h2>
     {% ifequal mode "start" %}
-    <p>{% blocktrans count modules|length as counter %}The following module will be configured.{% plural %}The following modules will be configured.{% endblocktrans %}
+    <p>{% blocktrans count modules|length as counter %}The following component will be configured.{% plural %}The following components will be configured.{% endblocktrans %}
     {% trans "Please wait during the configuration process." %}</p>
     <p>{% trans "To run the configuration, click on the &laquo;Run configuration&raquo; button below." %}</p>
     {% endifequal %}
