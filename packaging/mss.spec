@@ -1,7 +1,7 @@
 %define name mss
 %define version 2.0
-%define release 25
-%define svnrev 2235
+%define release %mkrel 31
+%define svnrev 2335
 %global username mss
 %global groupname mss
 
@@ -12,7 +12,7 @@
 Summary: Mandriva Server Setup
 Name: %{name}
 Version: %{version}
-Release: %mkrel %{release}
+Release: %{release}
 Source0: %{name}-%{version}-r%{svnrev}.tar.gz
 Source1: %{name}.desktop
 Source2: %{name}.png
@@ -26,11 +26,12 @@ BuildArch: noarch
 Vendor: Mandriva
 Packager: Jean-Philippe Braun <jpbraun@mandriva.com>
 BuildRequires: python-devel
+BuildRequires: python-docutils
 
 %description
 MSS aims to help system administrators to setup software quickly. (srpm)
 
-%package -n	mss-agents
+%package -n mss-agents
 Summary: Mandriva Server Setup
 Group: System/Servers
 URL: http://www.mandriva.com/
@@ -46,19 +47,30 @@ Requires: binutils
 Obsoletes: mmc-wizard
 
 %description -n	mss-agents
-XML-RPC server and web interface
+XML-RPC server and web interface for Mandriva Server Setup
 
-%package -n	mss-modules-mes5
-Summary: Mandriva Server Setup modules for MES5
+%package -n mss-modules-base
+Summary: Mandriva Server Setup base modules for MES5
 Group: System/Servers
 URL: http://www.mandriva.com/
 Requires: python
 Requires: mss-agents
 Obsoletes: mmc-wizard
 
-%description -n	mss-modules-mes5
-MES5 Modules for MSS
+%description -n	mss-modules-base
+MES5 base modules for MSS
 
+%package -n mss-modules-commercial
+Summary: Mandriva Server Setup commercial modules for MES5
+Group: System/Servers
+URL: http://www.mandriva.com/
+Requires: python
+Requires: mss-agents
+Requires: mss-modules-base
+Obsoletes: mmc-wizard
+
+%description -n	mss-modules-commercial
+MES5 commercial modules for MSS
 
 %prep
 %setup -q -n %{name}-%{version}-r%{svnrev}
@@ -182,7 +194,7 @@ if [ $1 -ge 1 ]; then
     /sbin/service mss-www start
 fi
 
-%post -n mss-modules-mes5
+%post -n mss-modules-base
 # install/upgrade
 if [ $1 -ge 1 ]; then
     /sbin/service mss-agent restart
@@ -190,7 +202,23 @@ if [ $1 -ge 1 ]; then
 fi
 exit 0
 
-%postun -n mss-modules-mes5
+%postun -n mss-modules-base
+# uninstallation
+if [ $1 -eq 0 ]; then
+    [ -x /etc/init.d/mss-agent ] && /sbin/service mss-agent restart
+    [ -x /etc/init.d/mss-www ] && /sbin/service mss-www restart
+fi
+exit 0
+
+%post -n mss-modules-commercial
+# install/upgrade
+if [ $1 -ge 1 ]; then
+    /sbin/service mss-agent restart
+    /sbin/service mss-www restart
+fi
+exit 0
+
+%postun -n mss-modules-commercial
 # uninstallation
 if [ $1 -eq 0 ]; then
     [ -x /etc/init.d/mss-agent ] && /sbin/service mss-agent restart
@@ -204,7 +232,9 @@ rm -rf $RPM_BUILD_ROOT
 %files -n mss-agents
 %defattr(-,root,root,0755)
 %exclude %{py_puresitedir}/mss/www/media/img/modules/mes5/
-%exclude %{py_puresitedir}/mss/www/layout/mes5/
+%exclude %{py_puresitedir}/mss/www/media/img/modules/partners/
+%exclude %{py_puresitedir}/mss/www/layout/01_mes5/
+%exclude %{py_puresitedir}/mss/www/layout/02_partners/
 %{_initrddir}/mss-www
 %{_initrddir}/mss-agent
 %{_sbindir}/mss-agent.py*
@@ -224,11 +254,18 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/doc/mss/
 %{_datadir}/mss/
 
-%files -n mss-modules-mes5
+%files -n mss-modules-base
 %defattr(-,root,root,0755)
+%exclude %{py_puresitedir}/mss/agent/modules/zarafa/
 %{py_puresitedir}/mss/agent/modules/
 %{py_puresitedir}/mss/www/media/img/modules/mes5/
-%{py_puresitedir}/mss/www/layout/mes5/
+%{py_puresitedir}/mss/www/layout/01_mes5/
+
+%files -n mss-modules-commercial
+%defattr(-,root,root,0755)
+%{py_puresitedir}/mss/agent/modules/zarafa/
+%{py_puresitedir}/mss/www/media/img/modules/partners/
+%{py_puresitedir}/mss/www/layout/02_partners/
 
 %changelog 
 * Tue May 25 2010 Jean-Philippe Braun <jpbraun@mandriva.com> 2.0dev

@@ -27,6 +27,7 @@ todev() {
 		mv mss/www/cpserver-dev mss/www/cpserver
 	fi
 	sed -i "s!^DEBUG.*!DEBUG = True!" mss/www/settings.py
+	sed -i 's!^\(.*logging\.\)INFO\(.*\)$!\1DEBUG\2!' mss/agent/module.py
 	echo "dev"
 }
 
@@ -46,6 +47,7 @@ toprod() {
 		mv mss/www/cpserver-prod mss/www/cpserver
 	fi
 	sed -i "s!^DEBUG.*!DEBUG = False!" mss/www/settings.py
+	sed -i 's!^\(.*logging\.\)DEBUG\(.*\)$!\1INFO\2!' mss/agent/module.py
 	echo "done"
 }
 

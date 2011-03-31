@@ -1,0 +1,7 @@
+*.pyc
+*~
+mss.db
+mss.egg-info
+dist
+doc/build
+*.mo

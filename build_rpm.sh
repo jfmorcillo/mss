@@ -21,6 +21,8 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+svn up
+
 name=mss
 version=`cat version`
 # bump release number
@@ -52,7 +54,7 @@ fi
 
 sed -i 's!^\%define svnrev .*$!\%define svnrev '$svnrev'!' packaging/mss.spec
 sed -i 's!^\%define version .*$!\%define version '$version'!' packaging/mss.spec
-sed -i 's!^\%define release .*$!\%define release '$release'!' packaging/mss.spec
+sed -i 's!^\%define release .*$!\%define release %mkrel '$release'!' packaging/mss.spec
 
 cp -f packaging/$name.spec $rpmtopdir/SPECS
 mv -f dist/$name-$version-r$svnrev.tar.gz $rpmtopdir/SOURCES
