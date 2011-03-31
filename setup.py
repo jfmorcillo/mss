@@ -24,17 +24,23 @@
 from setuptools import setup, find_packages
 import sys, os
 
-version = '2.0'
+if os.path.exists('version'):
+    f = open('version')
+    ver = f.read()
+    f.close()
+else:
+    print "You are not at the svn root"
+    exit(1)
 
 setup(
     name='mss',
+    version = ver,
+    description = "Mandriva Server Setup",    
     author = "Jean-Philippe Braun",
     author_email = "jpbraun@mandriva.com",
     maintainer = "Jean-Philippe Braun",
     maintainer_email = "jpbraun@mandriva.com",
-    version = version,
-    description = "Mandriva Server Setup",
+    url = "http://www.mandriva.com",
     packages = find_packages(),
-    include_package_data = False,
-    zip_safe = False,
+    include_package_data = True,
 )
