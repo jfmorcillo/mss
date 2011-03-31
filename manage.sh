@@ -22,8 +22,10 @@
 
 todev() {
 	echo -n "Swithing to dev environement..."
-	rm mss/www/cpserver
-	ln -s cpserver-dev mss/www/cpserver
+	if [ -d mss/www/cpserver-dev ]; then
+		mv mss/www/cpserver mss/www/cpserver-prod
+		mv mss/www/cpserver-dev mss/www/cpserver
+	fi
 	sed -i "s!^DEBUG.*!DEBUG = True!" mss/www/settings.py
 	echo "dev"
 }
@@ -39,8 +41,10 @@ isprod() {
 
 toprod() {
 	echo -n "Swithing to prod environement..."
-	rm mss/www/cpserver
-	ln -s cpserver-prod mss/www/cpserver
+	if [ -d mss/www/cpserver-prod ]; then
+		mv mss/www/cpserver mss/www/cpserver-dev
+		mv mss/www/cpserver-prod mss/www/cpserver
+	fi
 	sed -i "s!^DEBUG.*!DEBUG = False!" mss/www/settings.py
 	echo "done"
 }

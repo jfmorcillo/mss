@@ -21,7 +21,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from setuptools import setup
+from setuptools import setup, find_packages
 import sys, os
 
 if os.path.exists('version'):
@@ -41,6 +41,6 @@ setup(
     maintainer = "Jean-Philippe Braun",
     maintainer_email = "jpbraun@mandriva.com",
     url = "http://www.mandriva.com",
-    packages = ['mss'],
+    packages = find_packages(),
     include_package_data = True,
 )

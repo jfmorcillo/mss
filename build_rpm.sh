@@ -25,7 +25,7 @@ name=mss
 version=`cat version`
 # bump release number
 release=$(( `cat release` + 1))
-svnrev=`head -n4 .svn/entries | tail -n 1`
+svnrev=`head -n11 .svn/entries | tail -n 1`
 echo $release > release
 rpmtopdir=`rpm --eval %_topdir`
 
