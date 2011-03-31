@@ -22,7 +22,7 @@ msgstr "Ajout des médias"
 
 #: process.py:106
 msgid "Checking network"
-msgstr ""
+msgstr "Vérification du réseau"
 
 #: module.py:818
 msgid "Incorrect FQDN."
