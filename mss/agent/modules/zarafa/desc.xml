@@ -53,4 +53,11 @@
             <help>Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0</help>
         </network>
     </config>
+    <text>Zarafa web interface is available at : http://@HOSTNAME@/webaccesss/</text>
+    <text>Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/</text>
+    <text>You can create mail domains in the MDS interface and specify mail adresses to users and groups.</text>
+    <text>You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa.</text>
+    <text>- SSL is enabled on the smtp server</text>
+    <text>- Networks authorized to send mail without authentication : </text>
+    <text>Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall.</text>
 </module>
