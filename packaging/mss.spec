@@ -1,7 +1,7 @@
 %define name mss
 %define version 2.0
-%define release %mkrel 31
-%define svnrev 2335
+%define release %mkrel 33
+%define svnrev 2344
 %global username mss
 %global groupname mss
 
@@ -27,6 +27,8 @@ Vendor: Mandriva
 Packager: Jean-Philippe Braun <jpbraun@mandriva.com>
 BuildRequires: python-devel
 BuildRequires: python-docutils
+BuildRequires: python-setuptools
+BuildRequires: python-sphinx
 
 %description
 MSS aims to help system administrators to setup software quickly. (srpm)
@@ -231,10 +233,10 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n mss-agents
 %defattr(-,root,root,0755)
-%exclude %{py_puresitedir}/mss/www/media/img/modules/mes5/
-%exclude %{py_puresitedir}/mss/www/media/img/modules/partners/
-%exclude %{py_puresitedir}/mss/www/layout/01_mes5/
-%exclude %{py_puresitedir}/mss/www/layout/02_partners/
+%exclude %{py_puresitedir}/mss/www/media/img/modules/base/
+%exclude %{py_puresitedir}/mss/www/media/img/modules/commercial/
+%exclude %{py_puresitedir}/mss/www/layout/base/
+%exclude %{py_puresitedir}/mss/www/layout/commercial/
 %{_initrddir}/mss-www
 %{_initrddir}/mss-agent
 %{_sbindir}/mss-agent.py*
@@ -258,14 +260,14 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(-,root,root,0755)
 %exclude %{py_puresitedir}/mss/agent/modules/zarafa/
 %{py_puresitedir}/mss/agent/modules/
-%{py_puresitedir}/mss/www/media/img/modules/mes5/
-%{py_puresitedir}/mss/www/layout/01_mes5/
+%{py_puresitedir}/mss/www/media/img/modules/base/
+%{py_puresitedir}/mss/www/layout/base/
 
 %files -n mss-modules-commercial
 %defattr(-,root,root,0755)
 %{py_puresitedir}/mss/agent/modules/zarafa/
-%{py_puresitedir}/mss/www/media/img/modules/partners/
-%{py_puresitedir}/mss/www/layout/02_partners/
+%{py_puresitedir}/mss/www/media/img/modules/commercial/
+%{py_puresitedir}/mss/www/layout/commercial/
 
 %changelog 
 * Tue May 25 2010 Jean-Philippe Braun <jpbraun@mandriva.com> 2.0dev
