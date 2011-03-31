@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MSS 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-30 14:01+0200\n"
+"POT-Creation-Date: 2011-03-31 16:26+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Braun Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -15,28 +15,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: views.py:137
+#: views.py:139
 msgid "The XML-RPC server is not responding"
 msgstr "Le serveur XML-RPC ne répond pas"
 
-#: views.py:225
-msgid "No information available"
-msgstr "Aucune information disponible"
-
-#: templates/base.html:21 templates/config_log.html:54
+#: templates/base.html:21
 msgid "Hide log"
 msgstr "Cacher le détail"
 
-#: templates/base.html:25 templates/config_log.html:54
-#: templates/config_run.html:92 templates/install.html:23
+#: templates/base.html:24 templates/config_run.html:146
+#: templates/install.html:54 templates/media_add.html:80
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:44
+#: templates/base.html:40
 msgid "Ready"
 msgstr "Prêt"
 
-#: templates/base.html:96
+#: templates/base.html:92
 msgid ""
 "You don't have the Mandriva Enterprise Server medias. Please add the medias "
 "before using Mandriva Server Setup."
@@ -44,19 +40,19 @@ msgstr ""
 "Les médias Mandriva Enterprise Server ne sont pas installés. Ajoutez-les "
 "avant d'utiliser Mandriva Server Setup."
 
-#: templates/base.html:96 templates/media_form.html:42
+#: templates/base.html:92 templates/media_add.html:7
 msgid "Add medias"
 msgstr "Ajouter les médias"
 
-#: templates/base.html:98
+#: templates/base.html:94
 msgid "Update packages list on your server."
 msgstr "Met à jour les listes de packages sur votre serveur."
 
-#: templates/base.html:98
+#: templates/base.html:94
 msgid "Update medias"
 msgstr "Mettre à jour les médias"
 
-#: templates/base.html:102
+#: templates/base.html:98
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -69,34 +65,33 @@ msgid "Remove field"
 msgstr "Supprimer le champ"
 
 #: templates/config.html:43 templates/config_no.html:4
-#: templates/config_run.html:64 templates/install.html:14
-#: templates/install_no.html:4 templates/medias_modules.html:4
-#: templates/medias_modules_add.html:4 templates/preinst.html:4
+#: templates/config_run.html:117 templates/install.html:45
+#: templates/install_no.html:4 templates/media_add.html:5
+#: templates/media_auth.html:5 templates/preinst.html:4
 #: templates/preinst.html.py:6
 msgid "Preinstallation"
 msgstr "Pré-installation"
 
 #: templates/config.html:43 templates/config_no.html:4
-#: templates/config_run.html:64 templates/install.html:14
-#: templates/install_no.html:4 templates/media_form.html:3
-#: templates/medias_modules.html:4 templates/medias_modules_add.html:4
-#: templates/medias_modules_add.html:6 templates/medias_single_add.html:5
+#: templates/config_run.html:117 templates/install.html:45
+#: templates/install_no.html:4 templates/media_add.html:5
+#: templates/media_auth.html:5 templates/medias_single_add.html:5
 #: templates/preinst.html:4
 msgid "Medias"
 msgstr "Médias"
 
 #: templates/config.html:43 templates/config_no.html:4
-#: templates/config_run.html:64 templates/install.html:14
-#: templates/install.html.py:16 templates/install_no.html:4
-#: templates/install_no.html.py:6 templates/medias_modules.html:4
-#: templates/medias_modules_add.html:4 templates/preinst.html:4
+#: templates/config_run.html:117 templates/install.html:45
+#: templates/install.html.py:47 templates/install_no.html:4
+#: templates/install_no.html.py:6 templates/media_add.html:5
+#: templates/media_auth.html:5 templates/preinst.html:4
 msgid "Installation"
 msgstr "Installation"
 
 #: templates/config.html:43 templates/config_no.html:4
-#: templates/config_run.html:64 templates/install.html:14
-#: templates/install_no.html:4 templates/medias_modules.html:4
-#: templates/medias_modules_add.html:4 templates/preinst.html:4
+#: templates/config_run.html:117 templates/install.html:45
+#: templates/install_no.html:4 templates/media_add.html:5
+#: templates/media_auth.html:5 templates/preinst.html:4
 msgid "Configuration"
 msgstr "Configuration"
 
@@ -112,7 +107,7 @@ msgstr "Ré-entrez le mot de passe"
 msgid "Add network"
 msgstr "Ajouter un réseau"
 
-#: templates/config.html:129 templates/config_run.html:84
+#: templates/config.html:129 templates/config_run.html:137
 msgid "No configuration for this module."
 msgstr "Pas de configuration pour ce module."
 
@@ -120,80 +115,78 @@ msgstr "Pas de configuration pour ce module."
 msgid "Required field"
 msgstr "Champ obligatoire"
 
-#: templates/config.html:147 templates/install_log.html:6
-#: templates/install_no.html:18 templates/medias_modules_add.html:10
-#: templates/preinst.html:29
+#: templates/config.html:147 templates/install.html:20
+#: templates/install_no.html:18 templates/media_add.html:23
+#: templates/media_auth.html:32 templates/preinst.html:29
 msgid "Continue"
 msgstr "Continuer"
 
-#: templates/config.html:148 templates/config_run.html:104
-#: templates/config_run.html.py:113 templates/install.html:29
-#: templates/install_no.html:19 templates/media_form.html:43
-#: templates/medias_modules_add.html:11 templates/preinst.html:31
-#: templates/section.html:194
+#: templates/config.html:148 templates/config_run.html:158
+#: templates/config_run.html.py:167 templates/install.html:60
+#: templates/install_no.html:19 templates/media_add.html:88
+#: templates/media_auth.html:33 templates/preinst.html:31
+#: templates/section.html:174
 msgid "Back"
 msgstr "Retour"
 
-#: templates/config_log.html:3 templates/config_run.html:112
-#: templates/install.html:22 templates/install.html.py:28
-#: templates/media_form.html:37
-msgid "Please wait..."
-msgstr "Patientez..."
-
-#: templates/config_log.html:7
-msgid "Configuration succeded."
-msgstr "Configuration réussie."
-
-#: templates/config_log.html:15
-msgid "Configuration failed."
-msgstr "Configuration échouée."
-
-#: templates/config_log.html:18 templates/config_no.html:11
-#: templates/config_run.html:27 templates/config_run.html.py:44
-#: templates/error.html:11 templates/medias_single_add.html:9
-#: templates/section.html:89
-msgid "Home page"
-msgstr "Page d'accueil"
-
-#: templates/config_log.html:23
-msgid "Configuration summary"
-msgstr "Résumé de la configuration"
-
-#: templates/config_log.html:31
-msgid "Configuration warnings"
-msgstr "Avertissements de configuration"
-
-#: templates/config_log.html:39
-msgid "Configuration errors"
-msgstr "Erreurs de configuration"
-
 #: templates/config_no.html:7
-msgid "The selected modules doesn't have any configuration script."
-msgstr "Les modules selectionnés n'ont pas de script de configuration."
+msgid "The selected components doesn't have any configuration script."
+msgstr "Les composants selectionnés n'ont pas de script de configuration."
 
 #: templates/config_no.html:8
 msgid "Installation was successful."
 msgstr "Installation réussie."
 
-#: templates/config_run.html:28 templates/config_run.html.py:46
+#: templates/config_no.html:11 templates/config_run.html:23
+#: templates/config_run.html.py:52 templates/config_run.html:95
+#: templates/error.html:11 templates/medias_single_add.html:9
+#: templates/section.html:71
+msgid "Home page"
+msgstr "Page d'accueil"
+
+#: templates/config_run.html:22 templates/config_run.html.py:97
 msgid "Configuration terminated, details are displayed below."
 msgstr "La configuration est terminée. Les détails sont affichés ci-dessous."
 
-#: templates/config_run.html:47
+#: templates/config_run.html:43
+msgid "Configuration succeded."
+msgstr "Configuration réussie."
+
+#: templates/config_run.html:51
+msgid "Configuration failed."
+msgstr "Configuration échouée."
+
+#: templates/config_run.html:70
+msgid "Configuration summary"
+msgstr "Résumé de la configuration"
+
+#: templates/config_run.html:71
+msgid "Configuration warnings"
+msgstr "Avertissements de configuration"
+
+#: templates/config_run.html:72
+msgid "Configuration errors"
+msgstr "Erreurs de configuration"
+
+#: templates/config_run.html:98
 msgid "Error : Could not find any configuration script to execute."
 msgstr "Erreur : Le module selectionné n'a pas de script de configuration."
 
-#: templates/config_run.html:68
-msgid "The following module will be configured."
-msgid_plural "The following modules will be configured."
-msgstr[0] "Le module suivant sera configuré."
-msgstr[1] "Les modules suivants seront configurés."
+#: templates/config_run.html:104
+msgid "Running configuration..."
+msgstr "Configuration en cours..."
 
-#: templates/config_run.html:69
+#: templates/config_run.html:121
+msgid "The following component will be configured."
+msgid_plural "The following components will be configured."
+msgstr[0] "Le composant suivant sera configuré."
+msgstr[1] "Les composants suivants seront configurés."
+
+#: templates/config_run.html:122
 msgid "Please wait during the configuration process."
 msgstr "Patientez pendant le processus de configuration."
 
-#: templates/config_run.html:70
+#: templates/config_run.html:123
 msgid ""
 "To run the configuration, click on the &laquo;Run configuration&raquo; "
 "button below."
@@ -201,17 +194,22 @@ msgstr ""
 "Pour lancer la confguration, cliquez sur le button &laquo;Lancer la "
 "configuration&raquo; ci-dessous."
 
-#: templates/config_run.html:74
+#: templates/config_run.html:127
 msgid "Configuration in progress..."
 msgstr "Configuration en cours d'exécution..."
 
-#: templates/config_run.html:91
+#: templates/config_run.html:144 templates/media_add.html:79
 msgid "Waiting..."
 msgstr "En attente..."
 
-#: templates/config_run.html:103
+#: templates/config_run.html:157
 msgid "Run configuration"
 msgstr "Lancer la configuration"
+
+#: templates/config_run.html:166 templates/install.html:53
+#: templates/install.html.py:59 templates/media_add.html:87
+msgid "Please wait..."
+msgstr "Patientez..."
 
 #: templates/error.html:5
 msgid "An error has occured."
@@ -258,39 +256,39 @@ msgstr ""
 "première connexion."
 
 #: templates/first_time.html:11 templates/invalid_login.html:7
-#: templates/login.html:7 templates/media_form.html:15
+#: templates/login.html:7
 msgid "Login"
 msgstr "Identification"
 
-#: templates/install.html:17
-msgid "The following module is being installed"
-msgid_plural "The following modules are being installed"
-msgstr[0] "Le module suivant est en cours d'installation"
-msgstr[1] "Les modules suivants sont en cours d'installation"
-
-#: templates/install_log.html:5
+#: templates/install.html:19
 msgid "Installation succeded."
 msgstr "Installation réussie."
 
-#: templates/install_log.html:10
-msgid "Installation failed."
-msgstr "Installation échouée."
-
-#: templates/install_log.html:12 templates/install_log.html.py:15
+#: templates/install.html:27
 msgid "Installation failed. You should update your medias (urpmi.update -a)."
 msgstr ""
 "Installation échouée. Vous devriez mettre à jour vos médias (urpmi.update -"
 "a)."
 
-#: templates/install_log.html:17
+#: templates/install.html:30
+msgid "Installation failed."
+msgstr "Installation échouée."
+
+#: templates/install.html:32
 msgid "Can't continue"
 msgstr "Impossible de continuer"
 
+#: templates/install.html:48
+msgid "The following component is being installed"
+msgid_plural "The following components are being installed"
+msgstr[0] "Le composant suivant est en cours d'installation"
+msgstr[1] "Les composants suivants sont en cours d'installation"
+
 #: templates/install_no.html:7
-msgid "No packages needed for this module."
-msgid_plural "No packages needed for this modules."
-msgstr[0] "Aucun package n'est nécessaire pour ce module."
-msgstr[1] "Aucun package n'est nécessaire pour ces modules."
+msgid "No packages needed for this component."
+msgid_plural "No packages needed for this component."
+msgstr[0] "Aucun package n'est nécessaire pour ce composant."
+msgstr[1] "Aucun package n'est nécessaire pour ces composants."
 
 #: templates/install_no.html:8
 msgid ""
@@ -306,56 +304,69 @@ msgstr "Modules"
 msgid "Error : wrong username or password."
 msgstr "Erreur : Mauvais utilisateur ou mot de passe."
 
-#: templates/login_form.html:17
+#: templates/login_form.html:18
 msgid "Use your Mandriva account to login."
 msgstr "Utilisez votre compte Mandriva pour vous connecter."
 
-#: templates/login_form.html:24
+#: templates/login_form.html:25
 msgid "No internet connection.<br/>Use the root password to login."
 msgstr ""
 "Pas de connexion internet disponible.<br/>Utilisez le mot de passe root pour "
 "vous connecter."
 
-#: templates/login_form.html:38
+#: templates/login_form.html:39 templates/media_auth.html:15
 msgid "Username"
 msgstr "Utilisateur"
 
-#: templates/login_form.html:41 templates/media_form.html:22
+#: templates/login_form.html:42 templates/media_auth.html:22
 msgid "Password"
 msgstr "Mot de passe"
 
-#: templates/login_form.html:45
+#: templates/login_form.html:46
 msgid "Language"
 msgstr "Langue"
 
-#: templates/login_form.html:48 templates/sections.html:18
+#: templates/login_form.html:49 templates/sections.html:18
 msgid "Enter"
 msgstr "Entrer"
 
-#: templates/media_form.html:4
-msgid "Some media needs your authentication in order to install"
-msgid_plural "Some medias need your authentication in order to install"
-msgstr[0] "Une authentification est nécessaire pour installer le média"
-msgstr[1] "Une authentification est nécessaire pour installer les médias"
+#: templates/media_add.html:31
+msgid "Adding media..."
+msgstr "Ajout des médias..."
 
-#: templates/media_form.html:13
+#: templates/media_add.html:52
+msgid "Media added."
+msgstr "Le média a été ajouté."
+
+#: templates/media_add.html:57
+msgid "Media already added."
+msgstr "Le média est déja présent."
+
+#: templates/media_add.html:62
+msgid "Failed to add media."
+msgstr "Échec lors de l'ajout du média."
+
+#: templates/media_auth.html:7
+msgid "Media authentication"
+msgstr "Authentification des médias"
+
+#: templates/media_auth.html:8
+msgid "One or more medias need authentication"
+msgstr "Une authentification est nécessaire pour installer un des médias"
+
+#: templates/media_auth.html:13
 msgid "My authentication"
 msgstr "Authentification My"
 
-#: templates/media_form.html:19
+#: templates/media_auth.html:19
 msgid "Your my.mandriva.com email address."
 msgstr "Votre adresse mail my.mandriva.com."
 
-#: templates/media_form.html:26
+#: templates/media_auth.html:26
 msgid "Your my.mandriva.com password."
 msgstr "Votre mot de passe my.mandriva.com."
 
-#: templates/media_form.html:31
-#, python-format
-msgid "An error occured when adding the %(name)s media : %(err)s"
-msgstr "Une erreur s'est produite lors de l'ajout du média %(name)s : %(err)s"
-
-#: templates/medias_modules_add.html:7 templates/medias_single_add.html:6
+#: templates/medias_single_add.html:6
 msgid "Media successfully added"
 msgid_plural "Medias successfully added"
 msgstr[0] "Le média a été ajouté"
@@ -377,73 +388,61 @@ msgstr "Ré-installation"
 
 #: templates/preinst.html:19
 msgid ""
-"If other modules requires this module they may be broken after the "
+"If other components requires this component they may be broken after the "
 "reinstallation."
 msgstr ""
-"Si d'autres modules dépendent de ce module, ils risquent de ne plus "
+"Si d'autres composants dépendent de ce module, ils risquent de ne plus "
 "fonctionner après la ré-installation."
 
 #: templates/preinst.html:23
-msgid "No module selected."
-msgstr "Aucun module sélectionné."
+msgid "No component selected."
+msgstr "Aucun composant sélectionné."
 
-#: templates/section.html:15 templates/section.html.py:128
+#: templates/section.html:15 templates/section.html.py:110
 msgid "This module conflicts with : "
 msgstr "Ce module est en conflit avec : "
 
-#: templates/section.html:78
-msgid "Loading packages info from doc4.mandriva.com"
-msgstr "Chargement des informations de paquets depuis doc4.mandriva.com"
-
-#: templates/section.html:84
-msgid "Error while contacting doc4.mandriva.com"
-msgstr "Erreur : doc4.mandriva.com ne répond pas"
-
-#: templates/section.html:130
-msgid "Packages list"
-msgstr "Liste des paquets"
-
-#: templates/section.html:134
+#: templates/section.html:114
 msgid "You have bought this module."
 msgstr "Vous avez acheté ce module."
 
-#: templates/section.html:136
+#: templates/section.html:116
 msgid "This is a commercial module."
 msgstr "Ceci est un module payant."
 
-#: templates/section.html:140
+#: templates/section.html:120
 msgid "Packages for this module are installed."
 msgstr "Les packages pour ce module sont installés."
 
-#: templates/section.html:143
+#: templates/section.html:123
 msgid "This module was configured by MSS."
 msgstr "Ce module a été configuré par MSS."
 
-#: templates/section.html:146
+#: templates/section.html:126
 msgid "Actions"
 msgstr "Actions"
 
-#: templates/section.html:149
+#: templates/section.html:129
 msgid "Reinstall and reconfigure"
 msgstr "Ré-installer et re-configurer"
 
-#: templates/section.html:149
+#: templates/section.html:129
 msgid "Reconfigure"
 msgstr "Re-configurer"
 
-#: templates/section.html:149
+#: templates/section.html:129
 msgid "Reconfigure this module."
 msgstr "Re-configurer ce module."
 
-#: templates/section.html:161
+#: templates/section.html:141
 msgid "More information"
 msgstr "Plus d'informations"
 
-#: templates/section.html:164
+#: templates/section.html:144
 msgid "Buy"
 msgstr "Acheter"
 
-#: templates/section.html:193
+#: templates/section.html:173
 msgid "Install components"
 msgstr "Installer les composants"
 
