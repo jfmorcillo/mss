@@ -22,10 +22,8 @@
 
 todev() {
 	echo -n "Swithing to dev environement..."
-	if [ -d mss/www/cpserver-dev ]; then
-		mv mss/www/cpserver mss/www/cpserver-prod
-		mv mss/www/cpserver-dev mss/www/cpserver
-	fi
+	rm -rf mss/www/cpserver
+	cp -r mss/www/cpserver-dev mss/www/cpserver
 	sed -i "s!^DEBUG.*!DEBUG = True!" mss/www/settings.py
 	sed -i 's!^\(.*logging\.\)INFO\(.*\)$!\1DEBUG\2!' mss/agent/module.py
 	echo "dev"
@@ -42,10 +40,8 @@ isprod() {
 
 toprod() {
 	echo -n "Swithing to prod environement..."
-	if [ -d mss/www/cpserver-prod ]; then
-		mv mss/www/cpserver mss/www/cpserver-dev
-		mv mss/www/cpserver-prod mss/www/cpserver
-	fi
+	rm -rf mss/www/cpserver
+	cp -r mss/www/cpserver-prod mss/www/cpserver
 	sed -i "s!^DEBUG.*!DEBUG = False!" mss/www/settings.py
 	sed -i 's!^\(.*logging\.\)DEBUG\(.*\)$!\1INFO\2!' mss/agent/module.py
 	echo "done"
