@@ -27,20 +27,19 @@ from mss.www.wizard.config import ConfigManager
 
 config = ConfigManager()
 
-config.add_section({'id': 'partners', 'name': _('Partners'), 'icon': 'mes5/section_partners.png',
+config.add_section({'id': 'commercial', 'name': _('Partners'), 'icon': 'commercial/section_commertial.png',
     'desc': _('Several appliances from our partners.'), 'conf': {'class': 'block-2'}})
 
-zarafa = {'id': 'zarafa', 'name': _('Zarafa'), 'icon': 'partners/bundle_zarafa.gif',
-    'desc': _('Zarafa desc...'), 'modules': ["zarafa"], 'conf': {'class': 'block-2 block-clear'}}
+config.add_bundle("commercial", {'id': 'zarafa', 'name': _('Zarafa'), 'icon': 'commercial/bundle_zarafa.gif',
+    'desc': _('Zarafa desc...'), 'modules': ["zarafa"], 'conf': {'class': 'block-2 block-clear'}})
 
-config.add_bundle("partners", zarafa)
 config.add_module("mds", "mail", "zarafa")
 
 
 #    {
 #        'id': '1',
 #        'name': _('eGroupware Suite'),
-#        'icon': 'mes5/bundle_egroupware.png',
+#        'icon': 'commercial/bundle_egroupware.png',
 #        'desc': _('eGroupware is a enterprise ready groupware software for your network. It enables you to manage contacts, appointments, todos and many more for your whole business. eGroupware is a groupware server. It comes with a native web-interface which allowes to access your data from any platform all over the planet. Moreover you also have the choice to access the EGroupware server with your favorite groupware client (Kontact, Evolution, Outlook) and also with your mobile or PDA via SyncML.'),
 #        'modules': ["egroupware"],
 #        'conf': {'class': 'block-2 block-clear'},
@@ -48,7 +47,7 @@ config.add_module("mds", "mail", "zarafa")
 #    {
 #        'id': '2',
 #        'name': _('Group-Office'),
-#        'icon': 'mes5/bundle_groupoffice.png',
+#        'icon': 'commercial/bundle_groupoffice.png',
 #        'desc': _('Take your office online. Share projects, calendars, files and e-mail online with co-workers and clients. Easy to use and fully customizable, Group-Office takes online collaboration to the next level.'),
 #        'modules': ["groupoffice"],
 #        'conf': {'class': 'block-2'},
@@ -56,7 +55,7 @@ config.add_module("mds", "mail", "zarafa")
 #    {
 #        'id': '3',
 #        'name': _('Authentication Firewall Suite for Linux'),
-#        'icon': 'mes5/bundle_nufw.png',
+#        'icon': 'commercial/bundle_nufw.png',
 #        'desc': _('NuFW adds user-based filtering to Netfilter, the state of the art IP filtering layer from the Linux kernel. Its exclusive algorithm allows authenticated filtering even on multiuser computers'),
 #        'modules': ["nufw"],
 #        'conf': {'class': 'block-2 block-clear'},
