@@ -22,6 +22,11 @@
             <rpm>zarafa-webaccess</rpm>
             <rpm>python-mmc-mail</rpm>
             <rpm>mmc-web-mail</rpm>
+            <rpm>postfix</rpm>
+            <rpm>amavisd-new</rpm>
+            <rpm>spamassassin</rpm>
+            <rpm>spamassassin-tools</rpm>
+            <rpm>clamd</rpm>
         </target>
     </packages>
     <config>
