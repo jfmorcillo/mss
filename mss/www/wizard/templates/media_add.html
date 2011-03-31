@@ -82,7 +82,7 @@
         </div>
     </fieldset>
     {% endfor %}
-    <form id="mss" name="mss" action="{% url config %}" method="post">
+    <form id="mss" name="mss" action="{% url install %}" method="post">
         <div class="validation">
             <input id="next" type="submit" name="continue" value="{% trans "Please wait..." %}" disabled="disabled" />
             <input id="back" type="button" value="{% trans "Back" %}" disabled="disabled" />
