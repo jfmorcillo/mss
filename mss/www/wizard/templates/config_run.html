@@ -4,68 +4,121 @@
 
 {% ifequal mode "run" %}
 <script type="text/javascript">
+    var current = 0;
+    var updater = "";
     var modules = new Array();
     {% for m in modules %}
         {% if not m.skip_config %}
             modules.push('{{ m.id }}');
         {% endif %}
     {% endfor %}
-    var current_module = 0;
-    var updater = "";
 
-    scrollLog = function() {
-        $$('.log').each(function(i){ i.scrollTop = i.scrollHeight });
-    }
-
-    nextmodule = function() {
-        current_module++;
-        if(modules[current_module]) {
-            show_log = false;
-            runconfig();
+    next = function() {
+        current++;
+        if(modules[current]) {
+            run();
         }
         else {
-            $("next").value = "{% trans "Home page" %}";
             $("summary").update("{% trans "Configuration terminated, details are displayed below." %}");
-            $$("#mss input").each(function(i){ i.disabled = false; });
+            $("next").value = "{% trans "Home page" %}";
+            $('next').disabled = false;
+            $('back').disabled = false;
         }
     }
 
-    checkconfig = function() {
-        updater = new Ajax.PeriodicalUpdater(current_install, '/mss/config/state/'+modules[current_module]+'/', {
+    check = function() {
+        tmp = "";
+        updater = new Ajax.PeriodicalUpdater(tmp, '/mss/state/config/'+modules[current]+'/', {
             frequency: 1,
             decay: 2,
             method: 'get',
-            parameters: { 'show_log': show_log },
-            evalScripts: true,
+            onSuccess: function(t) {
+                o = t.responseJSON;
+                current_log.update(formatLog(o.output));
+                scrollLog();
+                if (o.code != 2000) {
+                    updater.stop();
+                    if (o.code == 0) {
+                        current_task.addClassName("success info");
+                        current_task.update("{% trans "Configuration succeded." %}");
+                        new Ajax.Request('/mss/config/end/'+modules[current]+'/', {
+                            method: 'get',
+                        });
+                        next();
+                    }
+                    else {
+                        current_task.addClassName("warning error");
+                        current_task.update("{% trans "Configuration failed." %}");
+                        $('next').value = "{% trans "Home page" %}";
+                        $('next').disabled = false;
+                        $('back').disabled = false;
+                        toggleLog(current_log.previous().down());
+                    }
+                    collectLog = Class.create();
+                    collectLog.prototype = {
+                        initialize: function() {
+                            this.logs = {};
+                            // get summary
+                            this.logs['infos'] = $(current_log).select('.info');
+                            // get warnings
+                            this.logs['warnings'] = $(current_log).select('.warning');
+                            // get errors
+                            this.logs['errors'] = $(current_log).select('.error');
+                        },
+                        toString: function() {
+                            output = "";
+                            output += this.format('infos', '{% trans "Configuration summary" %}');
+                            output += this.format('warnings', '{% trans "Configuration warnings" %}');
+                            output += this.format('errors', '{% trans "Configuration errors" %}');
+                            return output;
+                        },
+                        format: function(type, title) {
+                            output = "";
+                            if(this.logs[type].length > 0) {
+                                output += '<div class="'+type+'"><h3>'+title+'</h3>';
+                                for(i=0; i<this.logs[type].length; i++) {
+                                    output += "<p>"+this.logs[type][i].innerHTML+"</p>";
+                                }
+                                output += '</div>';
+                            }
+                            return output;
+                        }
+                    }
+                    task_summary = current_task.next();
+                    task_summary.update(new collectLog());
+                }
+            }
         });
     }
 
-    stopconfig = function() {
+    stop = function() {
         $("next").value = "{% trans "Home page" %}";
         $("next").disabled = false;
         $("summary").update("{% trans "Configuration terminated, details are displayed below." %}");
-        $(modules[current_module]).down().next('div.install').down().update("{% trans "Error : Could not find any configuration script to execute." %}");
+        $(modules[current]).down().next('div.install').down().update("{% trans "Error : Could not find any configuration script to execute." %}");
     }
 
-    runconfig = function() {
-        current_install = $$("#"+modules[current_module]+" .install")[0];
-        new Ajax.Request('/mss/config/run/'+modules[current_module]+'/', {
+    run = function() {
+        current_log = $$("#"+modules[current]+" .log")[0];
+        current_task = $$("#"+modules[current]+" .task")[0];
+        current_task.update('<img src="/site_media/img/load.gif" /> {% trans "Running configuration..." %}');
+        new Ajax.Request('/mss/config/run/'+modules[current]+'/', {
             method: 'get',
-            onSuccess: checkconfig,
-            on404: stopconfig,
+            onSuccess: check,
+            on404: stop,
         });
     }
 
     Event.observe(window, 'load', function() {
-        runconfig();
+        run();
     });
 </script>
 {% endifequal %}
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span class="active">4. {% trans "Configuration" %}</span></h1>
-<div class="block block-height">
+<div class="block">
     <h2>Configuration</h2>
     {% ifequal mode "start" %}
-    <p>{% blocktrans count modules|length as counter %}The following module will be configured.{% plural %}The following modules will be configured.{% endblocktrans %} 
+    <p>{% blocktrans count modules|length as counter %}The following module will be configured.{% plural %}The following modules will be configured.{% endblocktrans %}
     {% trans "Please wait during the configuration process." %}</p>
     <p>{% trans "To run the configuration, click on the &laquo;Run configuration&raquo; button below." %}</p>
     {% endifequal %}
@@ -89,6 +142,7 @@
                 </script>
                 {% else %}
                 <p class="task">{% trans "Waiting..." %}</p>
+                <div class="task_summary"> </div>
                 <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
                 <div class="log" style="display: none;"> </div>
                 {% endif %}

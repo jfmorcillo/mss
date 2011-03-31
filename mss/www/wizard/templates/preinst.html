@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block content %}
 <h1><span class="active">1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
-<div class="block block-height">
+<div class="block">
     <h2>{% trans "Preinstallation" %}</h2>
     <p>{% blocktrans count modules|length as counter %}You have selected the following module.{% plural %}You have selected the following modules.{% endblocktrans %}</p>
     <fieldset>
@@ -14,7 +14,7 @@
         {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
         {% if module.preinst %}
         <p class="desc">{{ module.preinst }}</p>
-        {% endif %}        
+        {% endif %}
         {% if module.force %}
         <p class="warning error">{% trans "If other modules requires this module they may be broken after the reinstallation." %}</p>
         {% endif %}

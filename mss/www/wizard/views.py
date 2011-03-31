@@ -26,6 +26,7 @@ from datetime import datetime
 import re
 import time
 from xml.sax import SAXParseException
+from sets import Set
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse, Http404
@@ -39,9 +40,10 @@ from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.utils.translation import ugettext as _, activate
 
+from lib.jsonui.response import JSONResponse
 from config import ConfigManager
 from xmlrpc import XmlRpc
-import rdflib
+#import rdflib
 
 xmlrpc = XmlRpc()
 CM = ConfigManager()
@@ -67,7 +69,7 @@ def set_lang(request, lang):
 def mylogin(request):
     if request.method == "POST":
         lang = request.POST.get('language', None)
-        user = authenticate(username=request.POST['username'], 
+        user = authenticate(username=request.POST['username'],
             password=request.POST['password'])
         if user is not None:
             if user.is_active:
@@ -89,10 +91,9 @@ def mylogout(request):
 
 def first_time(request):
     set_lang(request, settings.DEFAULT_LANGUAGE)
-    # check root user
-    try:
-        User.objects.get(username="root")
-    except ObjectDoesNotExist:
+    # first time check
+    if len(User.objects.all()) == 0:
+        xmlrpc.call('check_net')
         return direct_to_template(request, 'first_time.html')
     else:
         return HttpResponseRedirect(reverse('login_form'))
@@ -101,7 +102,8 @@ def login_form(request):
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse('sections'))
     else:
-        return render_to_response('login.html', 
+        xmlrpc.call('check_net')
+        return render_to_response('login.html',
             context_instance=RequestContext(request))
 
 def error(request, code):
@@ -127,7 +129,7 @@ def get_status(request):
                TIMEOUT >= MAX_TIME:
                 output["status"] = sts
                 return render_to_response('raw_output.html',
-                    {'output': sts}, 
+                    {'output': sts},
                     context_instance=RequestContext(request))
             # wait for new status
             else:
@@ -135,6 +137,19 @@ def get_status(request):
                 time.sleep(1)
         else:
             return HttpResponseBadRequest(_("The XML-RPC server is not responding"))
+
+def get_state(request, thread, module):
+    """ used to get any thread result code and output """
+    err, result = xmlrpc.call('get_state', thread, module)
+    if err:
+        return err
+    else:
+        code = result[0]
+        output = result[1]
+        for line in output:
+            if "text" in line:
+                line["text"] = toHtml(request, line["text"])
+    return JSONResponse({'code': code, 'output': output})
 
 @login_required
 def sections(request):
@@ -154,67 +169,34 @@ def section(request, section):
             del request.session[key]
         except KeyError:
             pass
-    # get section name
-    section_name = CM.get_section_name(section)
-    # get detailled section info
+    # get section
     section_info = CM.get_section(section)
-    # get modules list for section
-    section_modules = CM.get_section_modules(section)
     # get modules info for modules list
-    err, result = xmlrpc.call('get_modules', section_modules)
+    err, result = xmlrpc.call('get_modules', CM.get_section_modules(section))
     if err:
         return err
     else:
         # detailed modules list
         modules = result
+        # check module access
+        for module in modules:
+            module['access'] = True
+            if module['buy'] and \
+            not request.user.profile.has_family('mes5-get-%s' % module['id']):
+                module['access'] = False
+            print module
         # create simple modules list
         modules_list = [m.get('id') for m in modules]
         # remove modules not present server side
-        for section in section_info:
-            for module in section['modules']:
+        for bundle in section_info["bundles"]:
+            for module in bundle["modules"]:
                 if module not in modules_list:
                     section['modules'].remove(module)
 
         return render_to_response('section.html',
-            {'section_name': section_name, 'section': section_info, 
+            {'section': section_info,
             'modules': modules, 'language_form': True },
             context_instance=RequestContext(request))
-
-@login_required
-def get_info(request, module):
-    """ used to retrieve package list from a module
-    and get some info via doc4 """
-    # get packages list for module
-    err, result = xmlrpc.call('get_packages', module)
-    if err:
-        return err
-    else:
-        packages = result
-
-    output = ""
-
-    for package in packages:
-        # get info for package via doc4 REST interface
-        subject_uri = "http://doc4.mandriva.org:8086/project/"+package
-        try:
-            g = rdflib.Graph()
-            g.parse(subject_uri, format="xml")
-            # get package name
-            name = g.value(rdflib.URIRef(subject_uri), rdflib.URIRef('http://usefulinc.com/ns/doap#name'))
-            homepage = g.value(rdflib.URIRef(subject_uri), rdflib.URIRef('http://usefulinc.com/ns/doap#homepage'))
-            desc = g.value(rdflib.URIRef(subject_uri), rdflib.URIRef('http://usefulinc.com/ns/doap#shortdesc'))
-            desc = re.sub("\n", '<br />', desc);
-
-            output += '<h2>%s</h2><p>%s : <a href="%s">%s</a><br />%s : %s</p>' % (name, _('Homepage'), homepage, homepage, _('Description'), desc)
-        except SAXParseException:
-            output += '<h2>%s</h2>' % package
-            
-    if output == "":
-        output = "<p>%s</p>" % _('No information available')
-
-    return render_to_response('raw_output.html',
-        {'output': output},
-        context_instance=RequestContext(request))
 
 @login_required
 def preinst(request):
@@ -235,105 +217,70 @@ def preinst(request):
             request.session['modules_list'] = [m.get('id') for m in modules]
             return render_to_response('preinst.html',
                 {'modules': modules},
-                context_instance=RequestContext(request))    
+                context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('sections'))
 
-"""
-Media list 
-[
-    ['my': {'auth': 'my', 'verbose_name': "GroupOffice", 'name': 'groupoffice', 'urls': ['dl.mandriva.com/mes5/addons/groupoffice/release', 'dl.mandriva.com/mes5/addons/groupoffice/updates'], 'proto': 'https'}],
-    []
-]
-"""
 @login_required
 def medias(request):
     """ media page """
-    if request.method == "POST":
-        # single media add from form
-        if request.POST.get('media_name'):
-            # get media details from POST
-            verbose_name = request.POST.get('media_verbose_name')
-            name = request.POST.get('media_name')
-            auth = request.POST.get('media_auth')
-            url = request.POST.get('media_url')
-            proto = request.POST.get('media_proto')
-            mode = request.POST.get('media_mode')
-                        
-            if verbose_name and name and url and proto and mode:            
-                # create dict for media authentication form
-                if auth:
-                    auths = { auth: {'verbose_name': verbose_name, 'name': name, 
-                        'urls': [ url ], 'proto': proto, 'mode': mode, 
-                        'auth': auth}}
-                # TODO
-                # if we want to add media that doesn't need
-                # auth
-                else:
-                    pass
-                done = []
-                request.session['medias_auths'] = auths
-                # use single template (no head)
-                request.session['medias_tpl'] = 'single'
-                return render_to_response('medias_single.html',
-                        {'auths': auths, 'done': done},
-                        context_instance=RequestContext(request))
-        # media add for modules list
-        else:
-            modules_list = request.session['modules_list']
-            err, result = xmlrpc.call('get_medias', modules_list)
-            if err:
-                return err
-            else:
-                auths = result[0]
-                done = result[1]
-            request.session['medias_auths'] = auths
-            request.session['medias_tpl'] = 'modules'
-            if len(auths) > 0:
-                return render_to_response('medias_modules.html',
-                    {'auths': auths, 'done': done},
-                    context_instance=RequestContext(request))
-            elif len(done) > 0:
-                return render_to_response('medias_modules_add.html',
-                    {'done': done},
-                    context_instance=RequestContext(request))
-            else:
-                return HttpResponseRedirect(reverse('install'))
+    modules_list = request.session['modules_list']
+    err, result = xmlrpc.call('get_medias', modules_list)
+    if err:
+        return err
     else:
-        return HttpResponseRedirect(reverse('sections'))
+        medias = result
+        if medias:
+            # check if we need authentication
+            auths = Set()
+            for media in medias:
+                print media
+                if 'auth' in media and media['auth']:
+                    auths.add(media['auth'])
+            if auths:
+                request.session['auths_list'] = auths
+                return render_to_response('media_auth.html',
+                    {'auths': auths}, context_instance=RequestContext(request))
+            else:
+                return render_to_response('media_add.html',
+                    {'medias': medias}, context_instance=RequestContext(request))
+        else:
+            return HttpResponseRedirect(reverse('install'))
 
 @login_required
-def add_medias(request):
-    """ media auth page """
-    if request.method == "POST":
-        auths = request.session['medias_auths']
-        tpl = request.session['medias_tpl']
-        errors = False
-        for auth, media in auths.items():
-            login = request.POST.get(auth + "_login", "")
-            passwd = request.POST.get(auth + "_passwd", "")
-            err, result = xmlrpc.call("add_media", media, login, passwd)
-            if err:
-                return err
-            else:
-                done = result[0]
-                fail = result[1]
-            if len(fail) > 0:
-                errors = True
-        if not errors:
-            return render_to_response('medias_'+tpl+'_add.html',
-                {'done': done},
-                context_instance=RequestContext(request))
-        else:
-            return render_to_response('medias_'+tpl+'.html',
-                {'auths': auths, 'done': done, 'fail': fail}, 
-                context_instance=RequestContext(request))
+def medias_add(request):
+    """ media add page """
+    modules_list = request.session['modules_list']
+    auths_list = request.session['auths_list']
+    err, result = xmlrpc.call('get_medias', modules_list)
+    if err:
+        return err
     else:
-        return HttpResponseRedirect(reverse('sections'))
+        medias = result
+        if request.method == "POST":
+            for media in medias:
+                if media["auth"]:
+                    media['username'] = request.POST[media['auth']+'_username']
+                    media['password'] = request.POST[media['auth']+'_password']
+
+        return render_to_response('media_add.html',
+            {'medias': medias}, context_instance=RequestContext(request))
 
 @login_required
-def update_medias(request):
-    err, result = xmlrpc.call('update_medias')
+def add_media(request, module):
+    if request.method == "POST":
+        if 'username' in request.POST:
+            username = request.POST["username"]
+            password = request.POST["password"]
+        else:
+            username = None
+            password = None
+        xmlrpc.call("add_media", module, username, password)
+    return HttpResponse("")
+
+@login_required
+def medias_update(request):
+    xmlrpc.call('update_medias')
     return HttpResponse("")
 
 @login_required
@@ -352,22 +299,6 @@ def install(request):
             return render_to_response('install_no.html',
                 {'modules': request.session['modules']},
                 context_instance=RequestContext(request))
-
-@login_required
-def install_state(request):
-    """ install output page """
-    err, result = xmlrpc.call('get_state', 'install')
-    if err:
-        return err
-    else:
-        code = result[0]
-        output = result[1]
-        str_output = ""
-        for text_code, text in output:
-            str_output += text+"\n"
-    return render_to_response('install_log.html',
-        {'code': code, 'output': str_output},
-        context_instance=RequestContext(request))
 
 @login_required
 def reload_packages(request):
@@ -443,7 +374,7 @@ def config_valid(request):
             {'config': config, 'modules': modules, 'mode': 'start'},
             context_instance=RequestContext(request))
 
-@login_required  
+@login_required
 def config_start(request):
     """ contiguration start page """
     modules = request.session['modules']
@@ -460,31 +391,6 @@ def config_run(request, module):
     else:
         raise Http404
 
-@login_required          
-def config_state(request, module):
-    """ config output page """
-    err, result = xmlrpc.call('get_state', 'config', module)
-    if err:
-        return err
-    else:
-        code = result[0]
-        output = result[1]
-        infos = {"errors": [], "warnings": [], "summary": []}
-        if code != 2000:
-            for text_code, line in output:
-                line = toHtml(request, line)
-                if text_code == "1":
-                    infos['warnings'].append(line)
-                elif text_code == "2":
-                    infos['errors'].append(line)
-                elif text_code == "7":
-                    infos['summary'].append(line)
-                elif text_code == "8":
-                    infos['summary'].append("<strong>"+line+"</strong>")
-    return render_to_response('config_log.html',
-        {'code': code, 'output': output, 'infos': infos},
-        context_instance=RequestContext(request))
-
 @login_required
 def config_end(request, module):
     """ tells the agent the module has been configured """
@@ -498,7 +404,7 @@ def toHtml(request, text):
     # new line replacement
     text = re.sub('@BR@', '<br/>', text);
     # bold support
-    text = re.sub(r'@B@(.*)@B@', r'<strong>\1</strong>', text);    
+    text = re.sub(r'@B@(.*)@B@', r'<strong>\1</strong>', text);
     # make links
-    text = re.sub(r'(http:\/\/[^ <)]*)', r'<a href="\1"><strong>\1</strong></a>', text);
+    text = re.sub(r'(https?:\/\/[^ <)]*)', r'<a href="\1">\1</a>', text);
     return text

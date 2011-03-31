@@ -12,7 +12,7 @@
                 for (i=0; i<modules.length; i++) {
                     $(modules[i]).disabled = true;
                     $(modules[i]).next('label').addClassName("conflict");
-                    $(modules[i]).next('img').title = '{% trans "This module conflicts with : " %}'+this.id;
+                    $(modules[i]).next('img').alt = '{% trans "This module conflicts with : " %}'+$(this).next('label').innerHTML;
                     $(modules[i]).next('img').show();
                 }
             }
@@ -22,7 +22,7 @@
                 var modules = conflicts[this.id]
                 for (i=0; i<modules.length; i++) {
                     if (! installs[this.id]) {
-                        $(modules[i]).disabled = false;                    
+                        $(modules[i]).disabled = false;
                         $(modules[i]).next('label').removeClassName("conflict");
                         $(modules[i]).next('img').hide();
                     }
@@ -67,28 +67,10 @@
             Event.observe(i, "click", check_conflict);
         });
     });
-    
-    // Ajax popup definition
-    // get packages list for module
-    // with some information
-    getInfo = function(module) {
-        popupRequest = new Ajax.Request('/mss/info/'+module+"/", { 
-                method: 'get',
-                onCreate: function(transport) {
-                    $("popcontent").update('<img src="{{ MEDIA_URL }}img/load_blue.gif" style="vertical-align: bottom;" /> {% trans "Loading packages info from doc4.mandriva.com" %}');
-                },
-                onSuccess: function(transport) {
-                    $("popcontent").update(transport.responseText);
-                },
-                onFailure: function(transport) {
-                    $("popcontent").update('{% trans "Error while contacting doc4.mandriva.com" %}');
-                }
-        });
-    }
     </script>
-    <h1><span><a href="/" >{% trans "Home page" %}</a></span> &raquo; <span class="active">{% trans section_name %}</span></h1>
+    <h1><span><a href="/" >{% trans "Home page" %}</a></span> &raquo; <span class="active">{% trans section.name %}</span></h1>
     <form name="mss" action="{% url preinst %}" method="post">
-    {% for bundle in section %}
+    {% for bundle in section.bundles %}
         <div class="block block-border {{ bundle.conf.class }}" id="{{ bundle.id }}">
             <div class="block-logo">
                 <img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" />
@@ -102,7 +84,7 @@
                 {% for module in bundle.modules %}
                     {% for m in modules %}
                         {% ifequal m.id module %}
-                                            
+
                     <script type="text/javascript">
                     {% if m.conflicts %}
                         {% for conflict in m.conflicts %}
@@ -114,26 +96,32 @@
                     {% if m.installed %}
                         installs.{{ m.id }} = true;
                     {% else %}
-                        installs.{{ m.id }} = false;                    
+                        installs.{{ m.id }} = false;
                     {% endif %}
                     </script>
-                        
+
                     <input type="checkbox" name="{{ m.id }}" id="{{ m.id }}" class="module"
                         {% if m.configured %}checked="checked" disabled="disabled" %}"{% endif %}
                         {% if m.conflict %}disabled="disabled"{% endif %}
                     />
-                                        
+
                     <label for="{{ m.id }}" class="{% if m.configured %}configured{% endif %} {% if m.conflict %}conflict{% endif %}">{{ m.name }}</label>
 
-                    <img class="field popx popw" src="{{ MEDIA_URL }}img/about.png" alt="getInfo('{{ m.id }}')" title="{% trans "Packages list" %}" />
+                    <img class="field pop" src="{{ MEDIA_URL }}img/conflict.png" alt="{% trans "This module conflicts with : " %}{% for m in m.conflict %}{{ m }}{% if not forloop.last %}, {% endif %}{% endfor %}" style="{% if not m.conflict %}display:none;{% endif %}"/>
 
-                    <img class="field pop" src="{{ MEDIA_URL }}img/conflict.png" alt="{% trans "This module conflicts with : " %}{% for m in m.conflict %}{{ m }} {% endfor %}" style="{% if not m.conflict %}display:none;{% endif %}"/>
-                    
-                    {% if m.installed %}<img class="field pop" src="{{ MEDIA_URL }}img/installed.png" alt="{% trans "Packages for this module are already installed." %}" />{% endif %}
-                    
+                    {% if m.buy %}
+                        {% if m.access %}
+                    <img class="field pop" src="{{ MEDIA_URL }}img/access.png" alt="{% trans "You have bought this module." %}" /></a>
+                        {% else %}
+                    <a href="{{ m.buy }}"><img class="field pop" src="{{ MEDIA_URL }}img/cart.png" alt="{% trans "This is a commercial module." %}" /></a>
+                        {% endif %}
+                    {% endif %}
+
+                    {% if m.installed %}<img class="field pop" src="{{ MEDIA_URL }}img/installed.png" alt="{% trans "Packages for this module are installed." %}" />{% endif %}
+
                     {% if m.configured %}
                     <img class="field pop" src="{{ MEDIA_URL }}img/configured.png" alt="{% trans "This module was configured by MSS." %}" />{% endif %}
-                    
+
                     {% if m.configured %}
                     <span class="actions">{% trans "Actions" %}
                         <div class="actions" style="display: none">
@@ -143,20 +131,22 @@
                         </div>
                     </span>
                     {% endif %}
-                    
+
                     <p class="desc">{{ m.desc|safe }}</p>
 
-                    {% if m.url or m.buy %}
-                    <p class="desc more">
-                        {% if m.url %}
-                        <a href="{{ m.url }}" target="_blank">{% trans "More information" %}</a>
+                    {% if not m.installed %}
+                        {% if m.url or m.buy %}
+                        <p class="desc more">
+                            {% if m.url %}
+                            <a href="{{ m.url }}" target="_blank">{% trans "More information" %}</a>
+                            {% endif %}
+                            {% if m.buy %}
+                            <a href="{{ m.buy }}" target="_blank">{% trans "Buy" %}</a>
+                            {% endif %}
+                        </p>
                         {% endif %}
-                        {% if m.buy %}
-                        <a href="{{ m.buy }}" target="_blank">{% trans "Buy" %}</a>
-                        {% endif %}
-                    </p>
                     {% endif %}
-                                        
+
                         {% endifequal %}
                     {% endfor %}
                 {% endfor %}
@@ -176,7 +166,7 @@
                         }
                     }
                 });
-            </script>    
+            </script>
         </div>
     {% endfor %}
         <div class="validation">

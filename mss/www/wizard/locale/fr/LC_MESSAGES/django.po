@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: MSS 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2010-07-30 09:34+0200\n"
+"POT-Creation-Date: 2011-03-30 14:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Braun Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,15 +19,7 @@ msgstr ""
 msgid "The XML-RPC server is not responding"
 msgstr "Le serveur XML-RPC ne répond pas"
 
-#: views.py:208
-msgid "Homepage"
-msgstr "Page d'accueil"
-
-#: views.py:208
-msgid "Description"
-msgstr "Description"
-
-#: views.py:213
+#: views.py:225
 msgid "No information available"
 msgstr "Aucune information disponible"
 
@@ -44,7 +36,7 @@ msgstr "Afficher le détail"
 msgid "Ready"
 msgstr "Prêt"
 
-#: templates/base.html:98
+#: templates/base.html:96
 msgid ""
 "You don't have the Mandriva Enterprise Server medias. Please add the medias "
 "before using Mandriva Server Setup."
@@ -52,19 +44,19 @@ msgstr ""
 "Les médias Mandriva Enterprise Server ne sont pas installés. Ajoutez-les "
 "avant d'utiliser Mandriva Server Setup."
 
-#: templates/base.html:98 templates/media_form.html:42
+#: templates/base.html:96 templates/media_form.html:42
 msgid "Add medias"
 msgstr "Ajouter les médias"
 
-#: templates/base.html:100
+#: templates/base.html:98
 msgid "Update packages list on your server."
 msgstr "Met à jour les listes de packages sur votre serveur."
 
-#: templates/base.html:100
+#: templates/base.html:98
 msgid "Update medias"
 msgstr "Mettre à jour les médias"
 
-#: templates/base.html:104
+#: templates/base.html:102
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -138,7 +130,7 @@ msgstr "Continuer"
 #: templates/config_run.html.py:113 templates/install.html:29
 #: templates/install_no.html:19 templates/media_form.html:43
 #: templates/medias_modules_add.html:11 templates/preinst.html:31
-#: templates/section.html:184
+#: templates/section.html:194
 msgid "Back"
 msgstr "Retour"
 
@@ -255,19 +247,20 @@ msgstr ""
 "\"http://mds.mandriva.org \">Mandriva Directory Server</a> et <a href="
 "\"http://pulse2.mandriva.org\"> Pulse 2</a> en quelques clicks."
 
-#: templates/first_time.html:7
-msgid "You can login with your root password."
-msgstr "Vous pouvez vous identifier avec le mot de passe root."
+#: templates/first_time.html:8
+msgid ""
+"You have to use your Mandriva account to log in unless there is no network "
+"connectivity. Only your Mandriva account will be able to log in after your "
+"first connection."
+msgstr ""
+"Utilisez votre compte Mandriva pour vous connecter, sauf si le réseau n'est "
+"pas actif. Seul votre compte Mandriva pourra être utilisé après votre "
+"première connexion."
 
-#: templates/first_time.html:9 templates/inactive_account.html:7
-#: templates/invalid_login.html:7 templates/login.html:7
-#: templates/media_form.html:15
+#: templates/first_time.html:11 templates/invalid_login.html:7
+#: templates/login.html:7 templates/media_form.html:15
 msgid "Login"
 msgstr "Identification"
-
-#: templates/inactive_account.html:9 templates/invalid_login.html:9
-msgid "Error : wrong password."
-msgstr "Erreur : Mauvais mot de passe."
 
 #: templates/install.html:17
 msgid "The following module is being installed"
@@ -309,15 +302,33 @@ msgstr ""
 msgid "Modules"
 msgstr "Modules"
 
-#: templates/login_form.html:5 templates/media_form.html:22
+#: templates/invalid_login.html:9
+msgid "Error : wrong username or password."
+msgstr "Erreur : Mauvais utilisateur ou mot de passe."
+
+#: templates/login_form.html:17
+msgid "Use your Mandriva account to login."
+msgstr "Utilisez votre compte Mandriva pour vous connecter."
+
+#: templates/login_form.html:24
+msgid "No internet connection.<br/>Use the root password to login."
+msgstr ""
+"Pas de connexion internet disponible.<br/>Utilisez le mot de passe root pour "
+"vous connecter."
+
+#: templates/login_form.html:38
+msgid "Username"
+msgstr "Utilisateur"
+
+#: templates/login_form.html:41 templates/media_form.html:22
 msgid "Password"
 msgstr "Mot de passe"
 
-#: templates/login_form.html:9
+#: templates/login_form.html:45
 msgid "Language"
 msgstr "Langue"
 
-#: templates/login_form.html:17 templates/sections.html:18
+#: templates/login_form.html:48 templates/sections.html:18
 msgid "Enter"
 msgstr "Entrer"
 
@@ -376,7 +387,7 @@ msgstr ""
 msgid "No module selected."
 msgstr "Aucun module sélectionné."
 
-#: templates/section.html:15 templates/section.html.py:130
+#: templates/section.html:15 templates/section.html.py:128
 msgid "This module conflicts with : "
 msgstr "Ce module est en conflit avec : "
 
@@ -388,43 +399,51 @@ msgstr "Chargement des informations de paquets depuis doc4.mandriva.com"
 msgid "Error while contacting doc4.mandriva.com"
 msgstr "Erreur : doc4.mandriva.com ne répond pas"
 
-#: templates/section.html:128
+#: templates/section.html:130
 msgid "Packages list"
 msgstr "Liste des paquets"
 
-#: templates/section.html:132
-msgid "Packages for this module are already installed."
-msgstr "Les packages pour ce module sont déja installés."
+#: templates/section.html:134
+msgid "You have bought this module."
+msgstr "Vous avez acheté ce module."
 
-#: templates/section.html:135
+#: templates/section.html:136
+msgid "This is a commercial module."
+msgstr "Ceci est un module payant."
+
+#: templates/section.html:140
+msgid "Packages for this module are installed."
+msgstr "Les packages pour ce module sont installés."
+
+#: templates/section.html:143
 msgid "This module was configured by MSS."
 msgstr "Ce module a été configuré par MSS."
 
-#: templates/section.html:138
+#: templates/section.html:146
 msgid "Actions"
 msgstr "Actions"
 
-#: templates/section.html:141
+#: templates/section.html:149
 msgid "Reinstall and reconfigure"
 msgstr "Ré-installer et re-configurer"
 
-#: templates/section.html:141
+#: templates/section.html:149
 msgid "Reconfigure"
 msgstr "Re-configurer"
 
-#: templates/section.html:141
+#: templates/section.html:149
 msgid "Reconfigure this module."
 msgstr "Re-configurer ce module."
 
-#: templates/section.html:152
+#: templates/section.html:161
 msgid "More information"
 msgstr "Plus d'informations"
 
-#: templates/section.html:155
+#: templates/section.html:164
 msgid "Buy"
 msgstr "Acheter"
 
-#: templates/section.html:183
+#: templates/section.html:193
 msgid "Install components"
 msgstr "Installer les composants"
 

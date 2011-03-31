@@ -1,37 +1,33 @@
 {% load i18n %}
 <html>
     <head>
-        <title>Mandriva Server Setup</title>  
+        <title>Mandriva Server Setup</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <script src="{{ MEDIA_URL }}js/prototype.js" type="text/javascript"></script>
-        <script src="{{ MEDIA_URL }}js/prototype.ext.js" type="text/javascript"></script>        
+        <script src="{{ MEDIA_URL }}js/prototype.ext.js" type="text/javascript"></script>
         <script src="{{ MEDIA_URL }}js/scriptaculous/scriptaculous.js?load=effects,dragdrop" type="text/javascript"></script>
         <script src="{{ MEDIA_URL }}js/global.js" type="text/javascript"></script>
         <link type="text/css" title="mss" media="screen" href="{{ MEDIA_URL }}css/style.css" rel="stylesheet"/>
     </head>
     <body>
+        <div id="wrapper">
         <script type="text/javascript">
             // show/hide log function for install/config pages
-            var show_log = false;
             toggleLog = function(button) {
                 var button = $(button);
                 var log = button.up().next(".log");
                 Effect.toggle(log, 'blind', { duration: 0.4 });
                 if(log.style.display == "none") {
                     button.value = "{% trans "Hide log" %}";
-                    show_log = true;
                 }
                 else {
                     button.value = "{% trans "Show log" %}";
-                    show_log = false;
                 }
-                if(updater)
-                    updater.options.parameters = {'show_log': show_log};
             }
 
             // launch medias update
             updateMedias = function() {
-                new Ajax.Request('{% url update_medias %}', { method: 'get' });
+                new Ajax.Request('{% url medias_update %}', { method: 'get' });
             }
 
             // long polling for status bar
@@ -60,11 +56,11 @@
                                 style: 'bottom: 0px;'
                             });
                         }
-                        
+
                         // immediately refresh when no error
                         updateStatus(false);
                     },
-                    onFailure: function(transport) {                        
+                    onFailure: function(transport) {
                         // set error style if error
                         $('status').addClassName("error");
                         // refresh every 2s on error
@@ -72,16 +68,16 @@
                         new Effect.Morph('status', {
                             duration: 0.3,
                             style: 'bottom: 0px;'
-                        });                            
+                        });
                     }
                 });
-            }        
+            }
         </script>
         <div id="head">
             <div id="logo">
                 <a href="/" class="logo"><img src="{{ MEDIA_URL}}img/mandriva-logo-opt.png" height="32px" /> Mandriva Server Setup 2.0</a>
             </div>
-            <div id="quickbar"> 
+            <div id="quickbar">
                 {% if user.is_authenticated %}
                 <div id="quick-personal">
                     {% if not mes_media %}
@@ -96,8 +92,8 @@
                     <a href="#" onclick="$('media_mes').submit()" class="pop error warning" alt="{% trans "You don't have the Mandriva Enterprise Server medias. Please add the medias before using Mandriva Server Setup." %}">{% trans "Add medias" %}</a> |
                     {% endif %}
                     <a href="#" class="pop" alt="{% trans "Update packages list on your server." %}" onclick="updateMedias();">{% trans "Update medias" %}</a> |
-                    {% if language_form %} 
-                    {% include 'language_form.html' %} | 
+                    {% if language_form %}
+                    {% include 'language_form.html' %} |
                     {% endif %}
                     <a href="{% url logout %}">{% trans "Logout" %}</a>
                 </div>
@@ -110,6 +106,8 @@
         <div id="status">
         </div>
         <div id="popup" style="display: none">
+        </div>
+        <div style="clear: both"></div>
         </div>
     </body>
 </html>

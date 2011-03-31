@@ -32,10 +32,11 @@ Event.observe(window, 'load', function() {
     }
     // disable all input field for elem with class "disabled"
     $$(".disabled input").each(function(i){ i.disabled = true; });
-    
+
     // start the status bar
     setTimeout('updateStatus(true)', '500');
-    
+
+
     // show popup for elem
     // elem should have the "pop" or "popx" class
     // class popw make the popup dragable
@@ -44,14 +45,14 @@ Event.observe(window, 'load', function() {
     $$(".pop", ".popx").each(function(elem){
         if(elem.readAttribute('alt')) {
             $(elem).observe('mouseover', function(evt) {
-            
+
                 // reset the popup contents
                 $("popup").update("");
                 // abort on-going ajax call for popup
                 if (popupRequest) {
                     popupRequest.abort();
                 }
-            
+
                 // apply some popup magic style
                 if ($(elem).hasClassName("error")) {
                     $("popup").addClassName("poperr");
@@ -59,12 +60,12 @@ Event.observe(window, 'load', function() {
                 else {
                     $("popup").addClassName("pop");
                 }
-                
+
                 // add close button to popup
                 // if we want a window popup
                 if(elem.hasClassName("popw")) {
-                    var a = new Element('img', 
-                        { src: '/site_media/img/close.png', class: 'close', 
+                    var a = new Element('img',
+                        { src: '/site_media/img/close.png', class: 'close',
                           title: 'Close' });
                     a.observe('click', function(evt) {
                         $('popup').hide();
@@ -73,13 +74,13 @@ Event.observe(window, 'load', function() {
                     });
                     $("popup").appendChild(a)
                 }
-                
+
                 // set up the popup contents
                 var title = new Element('h1', { 'id': 'poptitle' });
-                $("popup").appendChild(title)                
+                $("popup").appendChild(title)
                 var content = new Element('div', { 'id': 'popcontent' });
-                $("popup").appendChild(content)   
-                
+                $("popup").appendChild(content)
+
                 // simple text popup in alt
                 if(elem.hasClassName("pop")) {
                     content.update(elem.readAttribute('alt'));
@@ -88,7 +89,7 @@ Event.observe(window, 'load', function() {
                 else if(elem.hasClassName("popx")) {
                     eval(elem.readAttribute('alt').toString());
                 }
-                
+
                 // setup the popup title
                 if (elem.readAttribute('title')) {
                     title.update(elem.readAttribute('title'));
@@ -100,9 +101,9 @@ Event.observe(window, 'load', function() {
                 else {
                     title.hide();
                 }
-                
+
                 // first popup placement
-                $("popup").style.top = evt.clientY+window.scrollY+"px";                
+                $("popup").style.top = evt.clientY+window.scrollY+"px";
                 rightOffset = $("popup").getOffsetParent().getWidth() - evt.clientX;
                 if(rightOffset < 180) {
                     $("popup").style.left = evt.clientX - 180;
@@ -122,7 +123,7 @@ Event.observe(window, 'load', function() {
                     $("popup").removeClassName("pop");
                 });
                 $(elem).observe('mousemove', function(evt) {
-                    $("popup").style.top = evt.clientY+window.scrollY+"px";                
+                    $("popup").style.top = evt.clientY+window.scrollY+"px";
                     rightOffset = $("popup").getOffsetParent().getWidth() - evt.clientX;
                     if(rightOffset < 180) {
                         $("popup").style.left = evt.clientX - 180;
@@ -134,8 +135,33 @@ Event.observe(window, 'load', function() {
             }
         }
     });
+
+
 });
 
 setLang = function(lang, url) {
     window.location = "/mss/lang/"+lang+"/?url="+url;
+}
+
+scrollLog = function() {
+    $$('.log').each(function(i){ i.scrollTop = i.scrollHeight });
+}
+
+formatLog = function(JSONoutput) {
+    output = "";
+    for (i=0; i<JSONoutput.length; i++) {
+        code = JSONoutput[i].code;
+        text = JSONoutput[i].text;
+        css="";
+        if (code == 1)
+            css="warning";
+        else if(code == 2)
+            css="error";
+        else if(code == 7)
+            css="info";
+        else if(code == 8)
+            css="info";
+        output += '<span class="'+css+'">'+text+'</span>';
+    }
+    return output;
 }

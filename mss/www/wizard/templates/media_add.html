@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span class="active">2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
+<div class="block">
+    <h2>{% trans "Add medias" %}</h2>
+    <script type="text/javascript">
+        var updater = "";
+        var current = 0;
+        var medias = new Array();
+        {% for media in medias %}
+            medias.push({"name": "{{ media.name }}", "auth": "{{ media.auth }}", "username": "{{ media.username }}", "password": "{{ media.password }}"});
+        {% endfor %}
+
+        next = function() {
+            current++;
+            if(medias[current]) {
+                show_log = false;
+                run();
+            }
+            else {
+                $("next").value = "{% trans "Continue" %}";
+                $$("#mss input").each(function(i){ i.disabled = false; });
+            }
+        }
+
+        run = function() {
+            current_log = $$("#"+medias[current].name+" .log")[0];
+            current_task = $$("#"+medias[current].name+" .task")[0];
+            current_task.update('<img src="/site_media/img/load.gif" /> {% trans "Adding media..." %}');
+            new Ajax.Request('/mss/media/add/'+medias[current].name+'/', {
+                method: 'post',
+                parameters: {'username': medias[current].username, 'password': medias[current].password},
+                onSuccess: check
+            });
+        }
+
+        check = function() {
+            tmp = "";
+            updater = new Ajax.PeriodicalUpdater(tmp, "{% url state "media" %}", {
+                frequency: 1,
+                decay: 2,
+                onSuccess: function(t) {
+                    o = t.responseJSON;
+                    current_log.update(formatLog(o.output));
+                    scrollLog();
+                    if (o.code != 2000) {
+                        updater.stop();
+                        if (o.code == 0) {
+                            current_task.addClassName("success info");
+                            current_task.update("{% trans "Media added." %}");
+                            next();
+                        }
+                        else if (o.code == 5) {
+                            current_task.addClassName("success info");
+                            current_task.update("{% trans "Media already added." %}");
+                            next();
+                        }
+                        else {
+                            current_task.addClassName("warning error");
+                            current_task.update("{% trans "Failed to add media." %}");
+                            toggleLog(current_log.previous().down());
+                            $('back').disabled = false;
+                        }
+                    }
+                }
+            });
+        }
+
+        Event.observe(window, 'load', function() {
+            run();
+        });
+    </script>
+    {% for media in medias %}
+    <fieldset id="{{ media.name }}">
+        <legend>{{ media.verbose_name}}</legend>
+        <div class="install">
+            <p class="task">{% trans "Waiting..." %}</p>
+            <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
+            <div class="log" style="display: none;"> </div>
+        </div>
+    </fieldset>
+    {% endfor %}
+    <form id="mss" name="mss" action="{% url config %}" method="post">
+        <div class="validation">
+            <input id="next" type="submit" name="continue" value="{% trans "Please wait..." %}" disabled="disabled" />
+            <input id="back" type="button" value="{% trans "Back" %}" disabled="disabled" />
+        </div>
+    </form>
+</div>
+{% endblock %}

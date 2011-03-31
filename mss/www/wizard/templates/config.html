@@ -41,7 +41,7 @@ function addField(module, fieldname, text, error) {
 }
 </script>
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span class="active">4. {% trans "Configuration" %}</span></h1>
-<div class="block block-height">
+<div class="block">
     <h2>Configuration</h2>
     <form action="{% url config_valid %}" method="post">
     {% for module in config %}
@@ -67,34 +67,34 @@ function addField(module, fieldname, text, error) {
                 </script>
                 {% endif %}
                 {% else %}
-                <input {% if field.error %}class="error"{% endif %} 
-                       id="{{ field.id }}_{{ field.name }}" 
-                       name="{{ field.id }}_{{ field.name }}" 
-                       type="text" size="20" value="{{ field.default }}" 
+                <input {% if field.error %}class="error"{% endif %}
+                       id="{{ field.id }}_{{ field.name }}"
+                       name="{{ field.id }}_{{ field.name }}"
+                       type="text" size="20" value="{{ field.default }}"
                 />
                 {% endif %}
             {% endifequal %}
-            {% ifequal field.type "password" %}        
+            {% ifequal field.type "password" %}
                 <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <input {% if field.error %}class="error"{% endif %} 
-                       id="{{ field.id }}_{{ field.name }}" 
-                       name="{{ field.id }}_{{ field.name }}" 
+                <input {% if field.error %}class="error"{% endif %}
+                       id="{{ field.id }}_{{ field.name }}"
+                       name="{{ field.id }}_{{ field.name }}"
                        type="password" size="20" value="{{ field.default }}"
                 />
                 <label for="{{ field.id }}_{{ field.name }}2">{% trans "Re-enter password" %} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <input {% if field.error %}class="error"{% endif %} 
-                       id="{{ field.id }}_{{ field.name }}2" 
-                       name="{{ field.id }}_{{ field.name }}2" 
+                <input {% if field.error %}class="error"{% endif %}
+                       id="{{ field.id }}_{{ field.name }}2"
+                       name="{{ field.id }}_{{ field.name }}2"
                        type="password" size="20"
                 />
             {% endifequal %}
             {% ifequal field.type "options" %}
                 <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
                 <select {% if field.error %}class="error"{% endif %}
-                        id="{{ field.id }}_{{ field.name }}" 
+                        id="{{ field.id }}_{{ field.name }}"
                         name="{{ field.id }}_{{ field.name }}">
                     {% for option in field.options %}
-                    <option value="{{ option.value }}" 
+                    <option value="{{ option.value }}"
                             {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
                         {{ option.name }}
                     </option>
@@ -103,9 +103,9 @@ function addField(module, fieldname, text, error) {
             {% endifequal %}
             {% ifequal field.type "check" %}
                 <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <input {% if field.error %}class="error"{% endif %} 
+                <input {% if field.error %}class="error"{% endif %}
                        id="{{ field.id }}_{{ field.name }}"
-                       name="{{ field.id }}_{{ field.name }}" 
+                       name="{{ field.id }}_{{ field.name }}"
                        type="checkbox"
                        {% ifequal field.default "on" %}
                        checked="checked"
@@ -132,7 +132,7 @@ function addField(module, fieldname, text, error) {
             <span class="error warning">
                 {{ field.error }}
             </span>
-            {% endif %}        
+            {% endif %}
             </p>
             {% if field.help %}
             <p class="help">

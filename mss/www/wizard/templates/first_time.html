@@ -4,7 +4,9 @@
 <div class="block block-height block-center">
     <h2>{% trans "Mandriva Server Setup" %}</h2>
     <p>{% blocktrans %}Welcome on the Mandriva Server Setup. MSS aims to help system administrators to setup quickly system services such as DNS and OpenLDAP. Moreother, MSS allows you to setup <a href="http://mds.mandriva.org">Mandriva Directory Server</a> and <a href="http://pulse2.mandriva.org">Pulse 2</a> products easily.{% endblocktrans %}</p>
-    <p><strong>{% trans "You can login with your root password." %}</strong></p>
+    <br />
+    <p class="warning"><strong>{% trans "You have to use your Mandriva account to log in unless there is no network connectivity. Only your Mandriva account will be able to log in after your first connection." %}</strong></p>
+    <br />
     <fieldset>
         <legend>{% trans "Login" %}</legend>
     {% include 'login_form.html' %}

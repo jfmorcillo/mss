@@ -9,7 +9,7 @@ ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEBUG = False
+DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
 DATABASE_ENGINE = 'sqlite3'
@@ -73,7 +73,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    'django.middleware.common.CommonMiddleware',    
+    'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
 )
 
@@ -98,6 +98,7 @@ for layout in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "__init__.py"))
 
 AUTHENTICATION_BACKENDS = (
     'mss.www.backends.MSSBackend',
+    'mss.www.backends.MyBackend',
 )
 
 # add local python libs in path

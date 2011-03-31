@@ -2,17 +2,48 @@
 {% load i18n %}
 {% block content %}
 <script type="text/javascript">
-    scrollLog = function() {
-        $('log').scrollTop = $('log').scrollHeight;
+    run = function() {
+        tmp = "";
+        current_log = $('log');
+        updater = new Ajax.PeriodicalUpdater(tmp, "{% url state "install" %}", {
+            frequency: 2,
+            decay: 3,
+            onSuccess: function(t) {
+                o = t.responseJSON;
+                current_log.update(formatLog(o.output));
+                scrollLog();
+                if (o.code != 2000) {
+                    updater.stop();
+                    if (o.code == 0) {
+                        $("task").addClassName("success info");
+                        $("task").update("{% trans "Installation succeded." %}");
+                        $("next").value = "{% trans "Continue" %}";
+                        $$("#mss input").each(function(i){ i.disabled = false; });
+                        new Ajax.Request("{% url reload_packages %}");
+                    }
+                    else {
+                        $("task").addClassName("warning error");
+                        if (o.code == 13 || o.code == 14) {
+                            $("task").update("{% trans "Installation failed. You should update your medias (urpmi.update -a)." %}");
+                        }
+                        else {
+                            $("task").update("{% trans "Installation failed." %}");
+                        }
+                        $("next").value = "{% trans "Can't continue" %}";
+                        $("back").disabled = false;
+                        toggleLog(current_log.previous().down());
+                    }
+                }
+            }
+        });
     }
-    updater = new Ajax.PeriodicalUpdater("log", "{% url install_state %}", {
-        frequency: 2,
-        decay: 3,
-        evalScripts: true,
+
+    Event.observe(window, 'load', function() {
+        run();
     });
 </script>
 <h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span class="active">3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
-<div class="block block-height">
+<div class="block">
     <h2>{% trans "Installation" %}</h2>
     <p>{% blocktrans count modules|length as counter %}The following module is being installed{% plural %}The following modules are being installed{% endblocktrans %} :
     {% for m in modules %}

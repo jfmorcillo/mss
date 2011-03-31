@@ -1,18 +1,50 @@
 {% load i18n %}
+<script type="text/javascript">
+    checknet = function() {
+        tmp = ""
+        updater = new Ajax.PeriodicalUpdater(tmp, '{% url state "net" %}', {
+            frequency: 1,
+            decay: 2,
+            method: 'get',
+            onSuccess: function(t) {
+                o = t.responseJSON;
+                if (o.code != 2000) {
+                    updater.stop();
+                    if (o.code == 0) {
+                        $('password').disabled = false;
+                        $('username').disabled = false;
+                        $('username').focus();
+                        $('netinfo').addClassName("success info");
+                        $('netinfo').innerHTML = "{% trans "Use your Mandriva account to login." %}";
+                    }
+                    else {
+                        $('password').disabled = false;
+                        $('username').value = "root";
+                        $('password').focus();
+                        $('netinfo').addClassName("warning info");
+                        $('netinfo').innerHTML = "{% trans "No internet connection.<br/>Use the root password to login." %}";
+                    }
+                    $('submit').disabled = false;
+                }
+            }
+        });
+    }
+    Event.observe(window, 'load', function() {
+        checknet();
+    });
+</script>
 <form action="{% url login %}" method="post" accept-charset="utf-8">
-    <input type="hidden" name="username" value="root" id="username" size="10" />
+    <p id="netinfo"></p>
     <p>
+        <label for="username">{% trans "Username" %}: </label>
+        <input type="text" name="username" value="" id="username" size="20" disabled="disabled" />
+    </p>
         <label for="password">{% trans "Password" %}: </label>
-        <input type="password" name="password" value="" id="password" size="10" />
+        <input type="password" name="password" value="" id="password" size="20" disabled="disabled" />
     </p>
     <p>
         <label for="language">{% trans "Language" %}: </label>
-        <script type="text/javascript">
-            Event.observe(window, 'load', function() {
-                $('password').focus();
-            });
-        </script>
         {% include 'language_form.html' %}
     </p>
-    <div class="right"><input type="submit" value="{% trans "Enter" %} →"></div>
+    <div class="right"><input type="submit" id="submit" value="{% trans "Enter" %} →" disabled="disabled"></div>
 </form>

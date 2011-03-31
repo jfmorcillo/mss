@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block content %}
+<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span class="active">2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
+<div class="block">
+    <h2>{% trans "Media authentication" %}</h2>
+    <p>{% trans "One or more medias need authentication" %}</p>
+    <form name="mss" action="{% url medias_add %}" method="post">
+    {% for auth in auths %}
+        {% ifequal auth "my" %}
+        <fieldset>
+            <legend>{% trans "My authentication" %}</legend>
+            <p>
+                <label for="{{ auth }}_username">{% trans "Username" %} : </label>
+                <input name="{{ auth }}_username" id="{{ auth }}_username" type="text" value="{% if user.profile %}{{ user.username }}{% endif %}" />
+            </p>
+            <p class="help">
+            {% trans "Your my.mandriva.com email address." %}
+            </p>
+            <p>
+                <label for="{{ auth}}_password">{% trans "Password" %} : </label>
+                <input name="{{ auth}}_password" id="{{ auth}}_password" type="password" />
+            </p>
+            <p class="help">
+            {% trans "Your my.mandriva.com password." %}
+            </p>
+        </fieldset>
+        {% endifequal %}
+    {% endfor %}
+        <div class="validation">
+            <input type="submit" value="{% trans "Continue" %}" />
+            <input type="button" id="back" value="{% trans "Back" %}" />
+        </div>
+    </form>
+</div>
+{% endblock %}
