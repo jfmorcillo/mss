@@ -12,7 +12,7 @@
         </password>
         <password name="myauditpasswd" require="yes">
             <label>MySQL audit password</label>
-            <help>MySQL user for the audit database</help>
+            <help>MySQL user password for the audit database</help>
         </password>
     </config>
     <text>Cleaning up...</text>

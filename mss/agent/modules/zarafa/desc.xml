@@ -36,7 +36,7 @@
         </password>
         <password name="myzarafapasswd" require="yes">
             <label>MySQL zarafa password</label>
-            <help>MySQL user for the zarafa database</help>
+            <help>MySQL user password for the zarafa database</help>
         </password>
         <text name="attachmentsdir" require="yes" default="/home/zarafa/attachments">
             <label>Attachments directory</label>
