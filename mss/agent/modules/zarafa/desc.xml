@@ -1,6 +1,6 @@
 <module id="zarafa">
     <name>Zarafa</name>
-    <desc>Install Zarafa suite with MDS backend</desc>
+    <desc>Zarafa suite with MDS backend</desc>
     <deps>
         <module>mds_mmc</module>
         <module>mysql</module>
