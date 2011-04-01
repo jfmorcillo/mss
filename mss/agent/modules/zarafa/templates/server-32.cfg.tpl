@@ -56,7 +56,7 @@ allow_local_users	= yes
 
 # eg: local_admin_users = root vmail
 
-local_admin_users	= root mail
+local_admin_users	= root vmail
 
 
 

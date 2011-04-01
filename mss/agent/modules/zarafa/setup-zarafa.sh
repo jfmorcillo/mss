@@ -53,6 +53,10 @@ spooler_tpl="templates/spooler.cfg.tpl"
 spooler_cfg="/etc/zarafa/spooler.cfg"
 ldap_tpl="templates/ldap.cfg.tpl"
 ldap_cfg="/etc/zarafa/ldap.cfg"
+gateway_tpl="templates/gateway.cfg.tpl"
+gateway_cfg="/etc/zarafa/gateway.cfg"
+ical_tpl="templates/ical.cfg.tpl"
+ical_cfg="/etc/zarafa/ical.cfg"
 userscripts="templates/userscripts"
 zarafa_schema="templates/zarafa.schema"
 webaccess_tpl="templates/zarafa-webaccess.conf.tpl"
@@ -91,6 +95,8 @@ sed -i 's!^max_allowed_packet.*$!max_allowed_packet=16M!' /etc/my.cnf
 # create zarafa configuration
 backup ${server_cfg}
 backup ${spooler_cfg}
+backup ${gateway_cfg}
+backup ${ical_cfg}
 backup /etc/sysconfig/zarafa
 
 # install locales for default lang
@@ -101,13 +107,17 @@ fi
 # set default lang for zarafa
 sed -i "s|^ZARAFA_USERSCRIPT_LOCALE=.*$|ZARAFA_USERSCRIPT_LOCALE=\"${defaultlang}\"|" /etc/sysconfig/zarafa
 
+# attachments dir
 if [ ! -d ${attachmentsdir} ]; then
     mkdir -p ${attachmentsdir}
 fi
 chown root.root ${attachmentsdir}
 chmod 750 ${attachmentsdir}
 
+# configurations
 cp -f $spooler_tpl $spooler_cfg
+cp -f $gateway_tpl $gateway_cfg
+cp -f $ical_tpl $ical_cfg
 
 cp -f $server_tpl $server_cfg
 sed -i "s/\@MYSQLPASSWORD\@/${myzarafapasswd}/" $server_cfg
@@ -120,11 +130,25 @@ sed -i "s/\@LDAPSEARCHBASE\@/${mdssuffix}/" $ldap_cfg
 
 cp -rf $userscripts /etc/zarafa
 
-#FIXME
+# FIXME (packaging)
 cp -f $webaccess_tpl /etc/httpd/conf.d/zarafa-webaccess.conf
 
+# run services at boot
+chkconfig zarafa-server on
+chkconfig zarafa-gateway on
+chkconfig zarafa-spooler on
+chkconfig zarafa-monitor on
+chkconfig zarafa-dagent on
+chkconfig zarafa-ical on
+
+# add unpriviliged user for zarafa services
+adduser -r -g mail --uid 499 vmail > /dev/null 2>&1
+
+# fix logs rights
+touch /var/log/zarafa/gateway.log /var/log/zarafa/ical.log
+chown vmail.mail /var/log/zarafa/gateway.log /var/log/zarafa/ical.log
+
 # create postfix configuration
-# postfix
 backup /etc/postfix/main.cf
 cp -f $main_cf_template /etc/postfix/main.cf
 sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/postfix/main.cf
@@ -142,7 +166,7 @@ do
     sed -i "s/\@SUFFIX\@/$mdssuffix/" $newfile
 done
 
-# certifs gen
+# certifs gen for postfix
 cat $openssl_cnf_template > /tmp/openssl.cnf
 sed -i "s/\@COMMONNAME\@/$smtpd_myhostname/" /tmp/openssl.cnf
 sed -i "s/\@DOMAIN\@/$smtpd_myorigin/" /tmp/openssl.cnf
@@ -157,8 +181,6 @@ openssl req -x509 -new \
 rm -f /tmp/openssl.cnf
 
 chmod 600 /etc/ssl/mmc-wizard/private/smtpd.key
-
-adduser -r -g mail --uid 499 vmail > /dev/null 2>&1
 
 # add zarafa schema in LDAP
 grep 'zarafa' /etc/openldap/schema/local.schema
