@@ -127,7 +127,7 @@ cp -f $dagent_tpl $dagent_cfg
 
 cp -f $ical_tpl $ical_cfg
 timezone=`grep ^ZONE /etc/sysconfig/clock | sed s'!^ZONE=\(.*\)$!\1!'`
-sed -i "s!\@TIMEZONE\@${timezone}" $ical_cfg
+sed -i "s!\@TIMEZONE\@!${timezone}!" $ical_cfg
 
 cp -f $server_tpl $server_cfg
 sed -i "s/\@MYSQLPASSWORD\@/${mysql_zarafapasswd}/" $server_cfg
