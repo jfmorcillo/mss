@@ -23,7 +23,7 @@ ical_enable = yes
 ical_port = 8080
 
 # wether ssl connections can be made to the ical server
-icals_enable = no
+icals_enable = yes
 
 # port which the ical server listens on for ssl connections
 icals_port = 8443
@@ -54,23 +54,23 @@ log_timestamp = 1
 # ICAL SSL SETTINGS FOR INCOMING CONNECTIONS
 
 # File with RSA key for SSL
-ssl_private_key_file = /etc/zarafa/ical/privkey.pem
+ssl_private_key_file = /etc/mss/ssl/smtpd.key
 
 # File with certificate for SSL
-ssl_certificate_file = /etc/zarafa/ical/cert.pem
+ssl_certificate_file = /etc/mss/ssl/smtpd.pem
 
 # Verify client certificate
 ssl_verify_client = no
 
 # Client verify file and/or path
-ssl_verify_file = 
+ssl_verify_file =
 ssl_verify_path =
 
 ##############################################################
 # OTHER ICAL SETTINGS
 
 # The timezone of the system clock
-server_timezone = Europe/Amsterdam
+server_timezone = @TIMEZONE@
 
 # The charset of data to expect when the client doesn't specify any
 default_charset = utf-8

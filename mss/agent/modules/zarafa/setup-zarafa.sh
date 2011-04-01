@@ -13,20 +13,23 @@ if [ ! -f $mds_base_ini ]; then
     exit 1
 fi
 
-myrootpasswd=$1
-myzarafapasswd=$2
-attachmentsdir=$3
-defaultlang=$4
-smtpd_myhostname="$5"
+mysql_rootpasswd=$1
+mysql_zarafapasswd=$2
+zarafa_attachments=$3
+zarafa_lang=$4
+zarafa_imap=$5
+zarafa_ical=$6
+smtpd_myhostname="$7"
 # always authorize localhost
 smtpd_mynetworks="127.0.0.1/32"
 # add networks specified in wizard
-for network in $6
+for network in $8
 do
     smtpd_mynetworks=$smtpd_mynetworks,$network
 done
 hostname=`echo $smtpd_myhostname | sed 's/\..*//g'`
 
+# get ldap configuration
 mdssuffix=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
 mdsadmin=`grep '^rootName' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
 mdspass=`grep '^password' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
@@ -78,7 +81,7 @@ spamassassin_template="templates/local.cf.tpl"
 
 # mysql setup
 mysql_prepare
-mysql_get_root_password ${myrootpasswd}
+mysql_get_root_password ${mysql_rootpasswd}
 if [ $? -ne 0 ]; then
     echo "2The current Mysql password is not valid."
     mysql_cleanup
@@ -88,7 +91,7 @@ echo "Create zarafa database"
 mysql_do_query "DROP DATABASE zarafa;"
 mysql_do_query "CREATE DATABASE zarafa;"
 echo "Grant privileges on database"
-mysql_do_query "GRANT ALL PRIVILEGES ON zarafa.* TO 'zarafa'@'localhost' IDENTIFIED BY '${myzarafapasswd}' WITH GRANT OPTION; FLUSH PRIVILEGES;"
+mysql_do_query "GRANT ALL PRIVILEGES ON zarafa.* TO 'zarafa'@'localhost' IDENTIFIED BY '${mysql_zarafapasswd}' WITH GRANT OPTION; FLUSH PRIVILEGES;"
 mysql_cleanup
 
 # tune mysql
@@ -103,29 +106,32 @@ backup ${dagent_cfg}
 backup /etc/sysconfig/zarafa
 
 # install locales for default lang
-lang=`echo $defaultlang | sed 's!\([^_]*\).*$!\\1!'`
+lang=`echo $zarafa_lang | sed 's!\([^_]*\).*$!\\1!'`
 if [ "$lang" != "C" ]; then
     urpmi --auto locales-${lang}
+    # set default lang for zarafa
+    sed -i "s|^ZARAFA_USERSCRIPT_LOCALE=.*$|ZARAFA_USERSCRIPT_LOCALE=\"${zarafa_lang}\"|" /etc/sysconfig/zarafa
 fi
-# set default lang for zarafa
-sed -i "s|^ZARAFA_USERSCRIPT_LOCALE=.*$|ZARAFA_USERSCRIPT_LOCALE=\"${defaultlang}\"|" /etc/sysconfig/zarafa
 
 # attachments dir
-if [ ! -d ${attachmentsdir} ]; then
-    mkdir -p ${attachmentsdir}
+if [ ! -d ${zarafa_attachments} ]; then
+    mkdir -p ${zarafa_attachments}
 fi
-chown root.root ${attachmentsdir}
-chmod 750 ${attachmentsdir}
+chown root.root ${zarafa_attachments}
+chmod 750 ${zarafa_attachments}
 
 # configurations
 cp -f $spooler_tpl $spooler_cfg
 cp -f $gateway_tpl $gateway_cfg
-cp -f $ical_tpl $ical_cfg
 cp -f $dagent_tpl $dagent_cfg
 
+cp -f $ical_tpl $ical_cfg
+timezone=`grep ^ZONE /etc/sysconfig/clock | sed s'!^ZONE=\(.*\)$!\1!'`
+sed -i "s!\@TIMEZONE\@${timezone}" $ical_cfg
+
 cp -f $server_tpl $server_cfg
-sed -i "s/\@MYSQLPASSWORD\@/${myzarafapasswd}/" $server_cfg
-sed -i "s!\@ATTACHMENTSPATH\@!${attachmentsdir}!" $server_cfg
+sed -i "s/\@MYSQLPASSWORD\@/${mysql_zarafapasswd}/" $server_cfg
+sed -i "s!\@ATTACHMENTSPATH\@!${zarafa_attachments}!" $server_cfg
 
 cp -f $ldap_tpl $ldap_cfg
 sed -i "s/\@LDAPBINDDN\@/${mdsadmin}/" $ldap_cfg
@@ -139,14 +145,21 @@ cp -f $webaccess_tpl /etc/httpd/conf.d/zarafa-webaccess.conf
 
 # run services at boot
 chkconfig zarafa-server on
-chkconfig zarafa-gateway on
+if [ "$zarafa_imap" == "on" ]; then
+    chkconfig zarafa-gateway on
+else
+    chkconfig zarafa-gateway off
+fi
 chkconfig zarafa-spooler on
 chkconfig zarafa-monitor on
 chkconfig zarafa-dagent on
-chkconfig zarafa-ical on
+if [ "$zarafa_ical" == "on" ]; then
+    chkconfig zarafa-ical on
+else
+    chkconfig zarafa-ical off
+fi
 
 # create postfix configuration
-
 adduser -r -g mail --uid 499 vmail > /dev/null 2>&1
 
 backup /etc/postfix/main.cf
@@ -171,14 +184,12 @@ done
 cat $openssl_cnf_template > /tmp/openssl.cnf
 sed -i "s/\@COMMONNAME\@/$smtpd_myhostname/" /tmp/openssl.cnf
 sed -i "s/\@DOMAIN\@/$smtpd_myorigin/" /tmp/openssl.cnf
-
 openssl req -x509 -new \
     -config /tmp/openssl.cnf \
     -out /etc/mss/ssl/smtpd.pem \
     -keyout /etc/mss/ssl/smtpd.key \
     -days 730 -nodes -batch > /dev/null 2>&1
 rm -f /tmp/openssl.cnf
-
 chmod 600 /etc/mss/ssl/smtpd.key
 
 # add zarafa schema in LDAP
@@ -207,7 +218,6 @@ backup /etc/amavisd/amavisd.conf
 cp -f $amavis_template /etc/amavisd/amavisd.conf
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/amavisd/amavisd.conf
 sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/amavisd/amavisd.conf
-
 chmod 640 /etc/amavisd/amavisd.conf
 
 # amavis / clamav
@@ -233,21 +243,32 @@ restart_service mysqld
 restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service clamd
+restart_service amavisd
 restart_service postfix
 restart_service zarafa-server /var/log/zarafa/server.cfg
-restart_service zarafa-gateway /var/log/zarafa/gateway.cfg
+if [ "$zarafa_imap" == "on" ]; then
+    restart_service zarafa-gateway /var/log/zarafa/gateway.cfg
+fi
 restart_service zarafa-spooler /var/log/zarafa/spooler.cfg
 restart_service zarafa-monitor /var/log/zarafa/monitor.cfg
 restart_service zarafa-dagent /var/log/zarafa/dagent.cfg
-restart_service zarafa-ical /var/log/zarafa/ical.cfg
+if [ "$zarafa_ical" == "on" ]; then
+    restart_service zarafa-ical /var/log/zarafa/ical.cfg
+fi
 restart_service httpd /var/log/httpd/error.log
 
 echo "8Zarafa web interface is available at : http://@HOSTNAME@/webaccess/"
-echo "8Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
-echo "7You can create mail domains in the MDS interface and specify mail adresses to users and groups."
-echo "7You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa."
+echo "8Mail module with Zarafa support is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+echo "7You can create mail domains in the MDS interface and specify mail adresses to users and groups"
+echo "7You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa"
 echo "7- SSL is enabled on the smtp server"
+if [ "$zarafa_imap" == "on" ]; then
+    echo "7- IMAP and IMAPS protocols are enabled"
+fi
+if [ "$zarafa_ical" == "on" ]; then
+    echo "7- - iCal and CalDAV protocols are enabled. You can access calendars on http://@HOSTNAME@:8080/caldav and http://@HOSTNAME@:8080/ical with your mail client, or on port 8443 over https"
+fi
 echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks"
-echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, IMAPS 993) on your firewall."
+echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, IMAPS 993, CalDAV/iCal 8080 and 8443 (SSL)) on your firewall"
 
 exit 0
