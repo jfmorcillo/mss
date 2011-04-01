@@ -167,21 +167,19 @@ do
     sed -i "s/\@SUFFIX\@/$mdssuffix/" $newfile
 done
 
-# certifs gen for postfix
+# certifs gen for postfix/zarafa
 cat $openssl_cnf_template > /tmp/openssl.cnf
 sed -i "s/\@COMMONNAME\@/$smtpd_myhostname/" /tmp/openssl.cnf
 sed -i "s/\@DOMAIN\@/$smtpd_myorigin/" /tmp/openssl.cnf
 
-mkdir -p /etc/ssl/mmc-wizard/certs
-mkdir -p /etc/ssl/mmc-wizard/private
 openssl req -x509 -new \
     -config /tmp/openssl.cnf \
-    -out /etc/ssl/mmc-wizard/certs/smtpd.pem \
-    -keyout /etc/ssl/mmc-wizard/private/smtpd.key \
+    -out /etc/mss/ssl/smtpd.pem \
+    -keyout /etc/mss/ssl/smtpd.key \
     -days 730 -nodes -batch > /dev/null 2>&1
 rm -f /tmp/openssl.cnf
 
-chmod 600 /etc/ssl/mmc-wizard/private/smtpd.key
+chmod 600 /etc/mss/ssl/smtpd.key
 
 # add zarafa schema in LDAP
 grep 'zarafa' /etc/openldap/schema/local.schema

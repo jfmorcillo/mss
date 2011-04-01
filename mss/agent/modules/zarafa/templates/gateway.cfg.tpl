@@ -51,10 +51,10 @@ imap_always_generate = no
 imap_max_messagesize = 134217728
 
 # File with RSA key for SSL
-ssl_private_key_file	= /etc/ssl/mmc-wizard/certs/smtpd.key
+ssl_private_key_file	= /etc/mss/ssl/smtpd.key
 
 #File with certificate for SSL
-ssl_certificate_file	= /etc/ssl/mmc-wizard/certs/smtpd.pem
+ssl_certificate_file	= /etc/mss/ssl/smtpd.pem
 
 # Verify client certificate
 ssl_verify_client	= no
