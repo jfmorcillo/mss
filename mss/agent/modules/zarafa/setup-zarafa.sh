@@ -173,6 +173,10 @@ cp -f $main_cf_template /etc/postfix/main.cf
 sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/postfix/main.cf
 sed -i "s/\@HOSTNAME\@/$hostname/" /etc/postfix/main.cf
 sed -i "s!\@MYNETWORKS\@!$smtpd_mynetworks!" /etc/postfix/main.cf
+# handle 64bit arch
+if [ "`uname -m`" == "x86_64" ]; then
+    postconf -e 'daemon_directory = /usr/lib64/postfix'
+fi
 
 backup /etc/postfix/master.cf
 cp -f $master_cf_template /etc/postfix/master.cf
