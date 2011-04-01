@@ -58,6 +58,10 @@
     	    <label>CalDAV/iCal support</label>
             <help>Export calendars in CalDAV/iCal format for mail clients (thunderbird, evolution...)</help>
         </check>
+        <check name="zarafa_zpush" default="on">
+    	    <label>ActiveSync support</label>
+            <help>Enable ActiveSync for mobile phones synchronisation (mail, contacts, calendars)</help>
+        </check>
         <text name="smtpd_myhostname" require="yes" validation="fqdn">
             <label>My hostname</label>
             <help>The host FQDN (eg: smtp.domain.com)</help>
@@ -74,6 +78,7 @@
     <text>- SSL is enabled on the smtp server</text>
     <text>- IMAP and IMAPS protocols are enabled</text>
     <text>- iCal and CalDAV protocols are enabled. You can access calendars on http://@HOSTNAME@:8080/caldav and http://@HOSTNAME@:8080/ical with your mail client, or on port 8443 over https</text>
+    <text>- ActiveSync support is enabled</text>
     <text>- Networks authorized to send mail without authentication : </text>
     <text>Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, IMAPS 993, CalDAV/iCal 8080 and 8443 (SSL)) on your firewall</text>
 </module>

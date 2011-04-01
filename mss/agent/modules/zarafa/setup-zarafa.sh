@@ -19,11 +19,12 @@ zarafa_attachments=$3
 zarafa_lang=$4
 zarafa_imap=$5
 zarafa_ical=$6
-smtpd_myhostname="$7"
+zarafa_zpush=$7
+smtpd_myhostname="$8"
 # always authorize localhost
 smtpd_mynetworks="127.0.0.1/32"
 # add networks specified in wizard
-for network in $8
+for network in $9
 do
     smtpd_mynetworks=$smtpd_mynetworks,$network
 done
@@ -65,6 +66,7 @@ dagent_cfg="/etc/zarafa/dagent.cfg"
 userscripts="templates/userscripts"
 zarafa_schema="templates/zarafa.schema"
 webaccess_tpl="templates/zarafa-webaccess.conf.tpl"
+zpush_tpl="templates/z-push.conf.tpl"
 # mmc config
 mail_ini_template="templates/mail.ini.tpl"
 # postfix config
@@ -143,6 +145,12 @@ cp -rf $userscripts /etc/zarafa
 # FIXME (packaging)
 cp -f $webaccess_tpl /etc/httpd/conf.d/zarafa-webaccess.conf
 
+# z-push support
+if [ "$zarafa_zpush" == "on" ]; then
+    tar xzvf data/z-push-1.5.1.tar.gz -C /var/www
+    chown apache.apache /var/www/z-push/state
+    cp -f ${zpush_tpl} /etc/httpd/conf/webapps.d/z-push.conf
+fi
 # run services at boot
 chkconfig zarafa-server on
 if [ "$zarafa_imap" == "on" ]; then
@@ -266,7 +274,10 @@ if [ "$zarafa_imap" == "on" ]; then
     echo "7- IMAP and IMAPS protocols are enabled"
 fi
 if [ "$zarafa_ical" == "on" ]; then
-    echo "7- - iCal and CalDAV protocols are enabled. You can access calendars on http://@HOSTNAME@:8080/caldav and http://@HOSTNAME@:8080/ical with your mail client, or on port 8443 over https"
+    echo "7- iCal and CalDAV protocols are enabled. You can access calendars on http://@HOSTNAME@:8080/caldav and http://@HOSTNAME@:8080/ical with your mail client, or on port 8443 over https"
+fi
+if [ "$zarafa_zpush" == "on" ]; then
+    echo "7- ActiveSync support is enabled"
 fi
 echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks"
 echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, IMAPS 993, CalDAV/iCal 8080 and 8443 (SSL)) on your firewall"

@@ -26,4 +26,4 @@ def get_config_info():
 
     return ("setup-zarafa.sh", ['mysql_rootpasswd', 'mysql_zarafapasswd',
         'zarafa_attachments', 'zarafa_lang', 'zarafa_imap', 'zarafa_ical',
-        'smtpd_myhostname', 'smtpd_mynetworks'])
+        'zarafa_zpush', 'smtpd_myhostname', 'smtpd_mynetworks'])
