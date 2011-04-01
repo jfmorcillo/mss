@@ -72,9 +72,6 @@ scalemail-backend unix	-	n	n	-	2	pipe
 mailman   unix  -       n       n       -       -       pipe
   flags=FR user=list argv=/usr/lib/mailman/bin/postfix-to-mailman.py
   ${nexthop} ${user}
-# Dovecot LDA 
-dovecot    unix  -       n       n       -       -       pipe 
-    flags=DRhu user=vmail:mail argv=/usr/lib/dovecot/deliver -d $recipient
 # Amavis filter
 amavis unix    -       -       -       -       2     smtp
      -o smtp_data_done_timeout=1200

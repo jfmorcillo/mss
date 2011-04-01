@@ -41,16 +41,13 @@ mdsserver=127.0.0.1
 if [ "`uname -m`" != "x86_64" ]; then
     # zarafa confg
     server_tpl="templates/server-32.cfg.tpl"
-    # postfix config
-    main_cf_template="templates/main-32.cf.tpl"
-    master_cf_template="templates/master-32.cf.tpl"
 else
     # zarafa config
     server_tpl="templates/server-64.cfg.tpl"
-    # postfix config
-    main_cf_template="templates/main-64.cf.tpl"
-    master_cf_template="templates/master-64.cf.tpl"
 fi
+# postfix config
+main_cf_template="templates/main.cf.tpl"
+master_cf_template="templates/master.cf.tpl"
 # zarafa config
 server_cfg="/etc/zarafa/server.cfg"
 spooler_tpl="templates/spooler.cfg.tpl"

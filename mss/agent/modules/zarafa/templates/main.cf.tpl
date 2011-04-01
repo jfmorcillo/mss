@@ -8,7 +8,6 @@ append_dot_mydomain = no
 myhostname = @FQDN@
 alias_maps = hash:/etc/postfix/aliases
 alias_database = hash:/etc/postfix/aliases
-mydomain = @FQDN@
 myorigin = @FQDN@
 mydestination = @FQDN@, @HOSTNAME@, localhost.localdomain, localhost
 relayhost = 
@@ -57,7 +56,6 @@ content_filter = amavis:[127.0.0.1]:10025
 
 smtpd_recipient_restrictions =
     permit_mynetworks,
-    permit_sasl_authenticated,
     reject_non_fqdn_recipient,
     reject_unknown_recipient_domain,
     reject_unauth_destination,
@@ -65,7 +63,6 @@ smtpd_recipient_restrictions =
 
 smtpd_helo_restrictions =
     permit_mynetworks,
-    permit_sasl_authenticated,
     # outlook clients limits
     # reject_non_fqdn_hostname,
     # reject_invalid_hostname,
@@ -73,14 +70,12 @@ smtpd_helo_restrictions =
 
 smtpd_sender_restrictions =
     permit_mynetworks,
-    permit_sasl_authenticated,
     reject_non_fqdn_sender,
     reject_unknown_sender_domain,
     permit
 
 smtpd_client_restrictions =
     permit_mynetworks,
-    permit_sasl_authenticated,
     reject_rbl_client bl.spamcop.net, 
     reject_rbl_client dnsbl.njabl.org, 
     reject_rbl_client cbl.abuseat.org, 
