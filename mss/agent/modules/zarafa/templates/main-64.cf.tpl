@@ -46,8 +46,8 @@ dovecot_destination_recipient_limit = 1
 # TLS parameters
 smtpd_use_tls = yes
 smtpd_tls_loglevel = 1
-smtpd_tls_cert_file = /etc/ssl/mmc-wizard/certs/smtpd.pem 
-smtpd_tls_key_file = /etc/ssl/mmc-wizard/private/smtpd.key
+smtpd_tls_cert_file = /etc/mss/ssl/smtpd.pem 
+smtpd_tls_key_file = /etc/mss/ssl/smtpd.key
 
 # Enable SASL authentication for the smtpd daemon
 smtpd_sasl_auth_enable = yes

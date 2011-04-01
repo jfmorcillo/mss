@@ -2,10 +2,10 @@
 # ICAL SETTINGS
 
 # drop privileges and run the process as this user
-run_as_user = vmail
+run_as_user = zarafa
 
 # drop privileges and run the process as this group
-run_as_group = mail
+run_as_group = zarafa
 
 # create a pid file for stopping the service via the init.d scripts
 pid_file = /var/run/zarafa-ical.pid

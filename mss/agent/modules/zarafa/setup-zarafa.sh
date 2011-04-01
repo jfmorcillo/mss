@@ -57,6 +57,8 @@ gateway_tpl="templates/gateway.cfg.tpl"
 gateway_cfg="/etc/zarafa/gateway.cfg"
 ical_tpl="templates/ical.cfg.tpl"
 ical_cfg="/etc/zarafa/ical.cfg"
+dagent_tpl="templates/dagent.cfg.tpl"
+dagent_cfg="/etc/zarafa/dagent.cfg"
 userscripts="templates/userscripts"
 zarafa_schema="templates/zarafa.schema"
 webaccess_tpl="templates/zarafa-webaccess.conf.tpl"
@@ -97,6 +99,7 @@ backup ${server_cfg}
 backup ${spooler_cfg}
 backup ${gateway_cfg}
 backup ${ical_cfg}
+backup ${dagent_cfg}
 backup /etc/sysconfig/zarafa
 
 # install locales for default lang
@@ -118,6 +121,7 @@ chmod 750 ${attachmentsdir}
 cp -f $spooler_tpl $spooler_cfg
 cp -f $gateway_tpl $gateway_cfg
 cp -f $ical_tpl $ical_cfg
+cp -f $dagent_tpl $dagent_cfg
 
 cp -f $server_tpl $server_cfg
 sed -i "s/\@MYSQLPASSWORD\@/${myzarafapasswd}/" $server_cfg
@@ -141,15 +145,12 @@ chkconfig zarafa-monitor on
 chkconfig zarafa-dagent on
 chkconfig zarafa-ical on
 
-# add unpriviliged user for zarafa services
+# create postfix configuration
+
 adduser -r -g mail --uid 499 vmail > /dev/null 2>&1
 
-# fix logs rights
-touch /var/log/zarafa/gateway.log /var/log/zarafa/ical.log
-chown vmail.mail /var/log/zarafa/gateway.log /var/log/zarafa/ical.log
-
-# create postfix configuration
 backup /etc/postfix/main.cf
+
 cp -f $main_cf_template /etc/postfix/main.cf
 sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/postfix/main.cf
 sed -i "s/\@HOSTNAME\@/$hostname/" /etc/postfix/main.cf
