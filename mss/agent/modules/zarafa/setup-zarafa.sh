@@ -249,6 +249,6 @@ echo "7You can create mail domains in the MDS interface and specify mail adresse
 echo "7You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa."
 echo "7- SSL is enabled on the smtp server"
 echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks"
-echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465) on your firewall."
+echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, IMAPS 993) on your firewall."
 
 exit 0
