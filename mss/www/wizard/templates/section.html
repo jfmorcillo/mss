@@ -136,6 +136,7 @@
 
                     {% if not m.installed %}
                         {% if m.url or m.buy %}
+                        {% if not m.access %}
                         <p class="desc more">
                             {% if m.url %}
                             <a href="{{ m.url }}" target="_blank">{% trans "More information" %}</a>
@@ -143,7 +144,8 @@
                             {% if m.buy %}
                             <a href="{{ m.buy }}" target="_blank">{% trans "Buy" %}</a>
                             {% endif %}
-                        </p>
+			</p>
+			{% endif %}
                         {% endif %}
                     {% endif %}
 
