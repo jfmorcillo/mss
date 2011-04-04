@@ -7,7 +7,6 @@
         current_log = $('log');
         updater = new Ajax.PeriodicalUpdater(tmp, "{% url state "install" %}", {
             frequency: 2,
-            decay: 3,
             onSuccess: function(t) {
                 o = t.responseJSON;
                 current_log.update(formatLog(o.output));
