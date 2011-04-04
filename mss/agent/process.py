@@ -45,7 +45,7 @@ class ExecManager:
 
     def install_packages(self, packages):
         """ launch installation of packages list """
-        self.launch("install", ["urpmi", "--downloader", "wget", "--auto", "--force"] + packages)
+        self.launch("install", ["urpmi", "--auto", "--force"] + packages)
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
