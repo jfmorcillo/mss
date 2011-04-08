@@ -452,14 +452,19 @@ class ModuleManager:
     def check_net(self):
         self.EM.check_net()
 
+    def clean_output(self, string):
+        # remove ANSI codes
+        string = re.sub('\x1b[^m]*m', '', string)
+        return string
+
     @expose
     def get_state(self, name, module="agent"):
         """ return execution output """
         code, output = self.EM.get_state(name)
         # format output
         tmp = output.splitlines()
-	output = []
-	if tmp:
+        output = []
+    	if tmp:
             for line in tmp:
                 try:
                     if int(line[0]) in range(9):
@@ -471,17 +476,17 @@ class ModuleManager:
                             text += _(t, module)
                     else:
                         text_code = 0
-                        text = line
+                        text = self.clean_output(line)
                 # no code at line start
                 except ValueError:
                     text_code = 0
                     text = line
-                    output.append({'code': text_code, 'text': text})
+                    output.append({'code': text_code, 'text': self.clean_output(text)})
                 # no char in line
                 except IndexError:
                     pass
                 else:
-                    output.append({'code': text_code, 'text': text})
+                    output.append({'code': text_code, 'text': self.clean_output(text)})
         else:
             code = 2000
             output = [{'code': 0, 'text': u''}]
