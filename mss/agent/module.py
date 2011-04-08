@@ -457,30 +457,34 @@ class ModuleManager:
         """ return execution output """
         code, output = self.EM.get_state(name)
         # format output
-        tmp = output.data.splitlines()
-        output = []
-        for line in tmp:
-            try:
-                if int(line[0]) in range(9):
-                    text_code = line[0]
-                    text = u""
-                    # split by # for multiple translations
-                    tmp = line[1:].decode().split('#')
-                    for t in tmp:
-                        text += _(t, module)
-                else:
+        tmp = output.splitlines()
+	output = []
+	if tmp:
+            for line in tmp:
+                try:
+                    if int(line[0]) in range(9):
+                        text_code = line[0]
+                        text = u""
+                        # split by # for multiple translations
+                        tmp = line[1:].decode().split('#')
+                        for t in tmp:
+                            text += _(t, module)
+                    else:
+                        text_code = 0
+                        text = line
+                # no code at line start
+                except ValueError:
                     text_code = 0
                     text = line
-            # no code at line start
-            except ValueError:
-                text_code = 0
-                text = line
-                output.append({'code': text_code, 'text': text})
-            # no char in line
-            except IndexError:
-                pass
-            else:
-                output.append({'code': text_code, 'text': text})
+                    output.append({'code': text_code, 'text': text})
+                # no char in line
+                except IndexError:
+                    pass
+                else:
+                    output.append({'code': text_code, 'text': text})
+        else:
+            code = 2000
+            output = [{'code': 0, 'text': u''}]
 
         return (code, output)
 

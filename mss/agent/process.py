@@ -82,10 +82,7 @@ class ExecManager:
     def get_state(self, name):
         """ get thread execution state """
         if name in self.threads:
-            return (self.threads[name].code,
-                xmlrpclib.Binary(self.threads[name].output))
-        else:
-            return (2000, xmlrpclib.Binary(""))
+            return (self.threads[name].code, unicode(self.threads[name].output))
 
     def get_status(self):
         """ get execution manager status """
