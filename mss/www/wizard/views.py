@@ -260,13 +260,11 @@ def medias(request, module=None):
 def medias_add(request):
     """ media add page """
     modules_list = request.session['modules_list']
-    print modules_list
     err, result = xmlrpc.call('get_medias', modules_list)
     if err:
         return err
     else:
         medias = result
-        print medias
         if request.method == "POST":
             for media in medias:
                 if media["auth"]:
@@ -328,9 +326,7 @@ def config(request):
     # check if the modules have configuration scripts
     skip_config = True
     for m1 in config:
-        print m1
         for m2 in modules:
-            print m2
             if m1[0]['id'] == m2['id']:
                 if m1[0].get('do_config'):
                     do_config = True
