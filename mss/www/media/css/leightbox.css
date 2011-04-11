@@ -6,7 +6,6 @@
 	width: 900px;
 	height: 80%;
 	z-index:1001;
-	overflow: auto;
 	-moz-border-radius: 5px;
 	-webkit-border-radius: 5px;
     -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
@@ -35,13 +34,27 @@
     max-width: 880px;
 }
 
-.lbHeader {
-    padding: 10px;
+.lbContent {
+    margin-top: 30px;
+    margin-bottom: 10px;
 }
 
-.lbContent {
-    margin-top: 10px;
-    padding: 10px;
+.lbWrapper {
+    float: left;
+	overflow: auto;
+	height: 100%;
+	padding-left: 10px;
+	padding-right: 10px;
+}
+
+.lbHeader {
+    width: 900px;
+    position: fixed;
+    text-align: right;
+}
+
+.lbAction {
+    margin: 5px;
 }
 
 #overlay{
@@ -56,10 +69,6 @@
 	-moz-opacity: 0.8;
 	opacity:.80;
 	filter: alpha(opacity=80);
-}
-
-.lbHeader {
-    float: right;
 }
 
 .lightbox[id]{ /* IE6 and below Can't See This */    position:fixed;    }#overlay[id]{ /* IE6 and below Can't See This */    position:fixed;    }
