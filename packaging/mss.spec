@@ -1,7 +1,7 @@
 %define name mss
 %define version 2.0
-%define release %mkrel 38
-%define svnrev 2352
+%define release %mkrel 50
+%define svnrev 2378
 %global username mss
 %global groupname mss
 

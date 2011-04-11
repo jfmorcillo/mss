@@ -77,6 +77,10 @@ class ModuleManager:
         return func(*params)
 
     def __init__(self, EM, TM):
+        if platform.machine() == 'x86_64':
+            self.arch = 'x86_64'
+        else:
+            self.arch = 'i586'
         self.modulesDirectory = os.path.join(os.path.dirname(__file__), "modules")
         self.modules = {}
         self.packages = []
@@ -136,7 +140,7 @@ class ModuleManager:
         self.logger.info("Get available mss modules : ")
         for module in modules:
             self.logger.debug("Loading %s" % module)
-            m = Module(os.path.join(self.modulesDirectory, module), self.TM)
+            m = Module(os.path.join(self.modulesDirectory, module), self.TM, self.arch)
             self.modules[m.id] = m
             self.logger.info(m)
 
@@ -508,10 +512,11 @@ class Module:
 
     """
 
-    def __init__(self, path, TM):
+    def __init__(self, path, TM, arch):
         self.TM = TM
         self.logger = logging.getLogger()
         self.path = path
+        self.arch = arch
         tree = ET.parse(os.path.join(self.path, "desc.xml"))
         self.root = tree.getroot()
         # BDD access
@@ -618,7 +623,7 @@ class Module:
             targets = self.root.findall("packages/target")
             for target in targets:
                 if target.attrib['name'] == "all" or \
-                   target.attrib['name'] == platform.machine():
+                   target.attrib['name'] == self.arch:
                     self.packages += [rpm.text for rpm in target.findall("rpm")]
         return self.packages
 
@@ -629,8 +634,10 @@ class Module:
             name = self.id
             verbose_name = media.attrib.get("verbose_name", name)
             auth = media.attrib.get("auth", None)
-            urls = media.findall("url")
-            urls = [url.text for url in urls]
+            urls = []
+            # format media URL with correct arch
+            for url in media.findall("url"):
+                urls.append(re.sub('@ARCH@', self.arch, url.text))
             proto = media.attrib.get("proto", "http")
             mode = media.attrib.get("mode", "default")
             return Media(name, verbose_name, urls, auth, proto, mode)

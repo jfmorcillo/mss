@@ -1,14 +1,14 @@
 <module id="groupoffice">
     <name>Group-Office</name>
     <desc>Install Group-Office suite</desc>
-    <more>
+    <info>
         <url>http://www.group-office.com/</url>
         <buy>http://store.mandriva.com</buy>
-    </more>     
+    </info>
     <medias verbose_name="Group-Office" name="groupoffice" auth="my" proto="https">
         <url>dl.mandriva.com/mes5/addons/groupoffice/release</url>
         <url>dl.mandriva.com/mes5/addons/groupoffice/updates</url>
-    </medias>   
+    </medias>
     <packages>
         <target name="all">
             <rpm>groupoffice</rpm>

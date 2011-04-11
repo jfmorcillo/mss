@@ -15,7 +15,7 @@
         <file>zarafa.html</file>
     </info>
     <medias verbose_name="Zarafa" name="zarafa" auth="my" proto="https">
-        <url>download.mandriva.com/EnterpriseServer5.2/rpms/i586/media/main/testing/</url>
+        <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/</url>
     </medias>
     <packages>
         <target name="all">
