@@ -5,11 +5,10 @@
 	top: 10%;
 	width: 900px;
 	height: 80%;
-	padding: 10px;
-	text-align: left;
 	z-index:1001;
 	overflow: auto;
 	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
     -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
     background: white;
@@ -28,12 +27,21 @@
 }
 
 .leightbox img {
-    margin: 10px auto;
+    display: block;
+    margin: 20px auto;
     border: 1px solid #444;
+    -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    max-width: 880px;
+}
+
+.lbHeader {
+    padding: 10px;
 }
 
 .lbContent {
     margin-top: 10px;
+    padding: 10px;
 }
 
 #overlay{
