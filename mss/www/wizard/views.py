@@ -181,7 +181,7 @@ def section(request, section):
         # check module access
         for module in modules:
             module['access'] = True
-            if module['buy'] and \
+            if module['infos']['buy'] and \
             not request.user.profile.has_family('mes5-get-%s' % module['id']):
                 module['access'] = False
             print module

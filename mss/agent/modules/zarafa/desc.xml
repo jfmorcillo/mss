@@ -9,10 +9,11 @@
         <module>mds_mail</module>
         <module>mds_webmail</module>
     </conflicts>
-    <more>
+    <info>
         <url>http://www.zarafa.com/</url>
         <buy>http://store.mandriva.com</buy>
-    </more>
+        <file>zarafa.html</file>
+    </info>
     <medias verbose_name="Zarafa" name="zarafa" auth="my" proto="https">
         <url>download.mandriva.com/EnterpriseServer5.2/rpms/i586/media/main/testing/</url>
     </medias>

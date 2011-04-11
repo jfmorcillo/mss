@@ -1,0 +1,57 @@
+.leightbox {
+	color: #333;
+	display: none;
+	position: absolute;
+	top: 10%;
+	width: 900px;
+	height: 80%;
+	padding: 10px;
+	text-align: left;
+	z-index:1001;
+	overflow: auto;
+	-moz-border-radius: 5px;
+    -moz-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    -webkit-box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+    background: white;
+    background: -moz-linear-gradient(
+        -45deg,
+        white 0%,
+        #E6E6E6 100%
+    );
+    background: -webkit-gradient(
+        linear,
+        left bottom,
+        left top,
+        color-stop(1, #fff),
+        color-stop(0, #eee)
+    );
+}
+
+.leightbox img {
+    margin: 10px auto;
+    border: 1px solid #444;
+}
+
+.lbContent {
+    margin-top: 10px;
+}
+
+#overlay{
+	display:none;
+	position:absolute;
+	top:0;
+	left:0;
+	width:100%;
+	height:100%;
+	z-index:1000;
+	background-color:#333;
+	-moz-opacity: 0.8;
+	opacity:.80;
+	filter: alpha(opacity=80);
+}
+
+.lbHeader {
+    float: right;
+}
+
+.lightbox[id]{ /* IE6 and below Can't See This */    position:fixed;    }#overlay[id]{ /* IE6 and below Can't See This */    position:fixed;    }

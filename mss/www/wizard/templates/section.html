@@ -109,11 +109,11 @@
 
                     <img class="field pop" src="{{ MEDIA_URL }}img/conflict.png" alt="{% trans "This module conflicts with : " %}{% for m in m.conflict %}{{ m }}{% if not forloop.last %}, {% endif %}{% endfor %}" style="{% if not m.conflict %}display:none;{% endif %}"/>
 
-                    {% if m.buy %}
+                    {% if m.infos.buy %}
                         {% if m.access %}
                     <img class="field pop" src="{{ MEDIA_URL }}img/access.png" alt="{% trans "You have bought this module." %}" /></a>
                         {% else %}
-                    <a href="{{ m.buy }}"><img class="field pop" src="{{ MEDIA_URL }}img/cart.png" alt="{% trans "This is a commercial module." %}" /></a>
+                    <a href="{{ m.infos.buy }}"><img class="field pop" src="{{ MEDIA_URL }}img/cart.png" alt="{% trans "This is a commercial module." %}" /></a>
                         {% endif %}
                     {% endif %}
 
@@ -134,20 +134,25 @@
 
                     <p class="desc">{{ m.desc|safe }}</p>
 
-                    {% if not m.installed %}
-                        {% if m.url or m.buy %}
-                        {% if not m.access %}
-                        <p class="desc more">
-                            {% if m.url %}
-                            <a href="{{ m.url }}" target="_blank">{% trans "More information" %}</a>
-                            {% endif %}
-                            {% if m.buy %}
-                            <a href="{{ m.buy }}" target="_blank">{% trans "Buy" %}</a>
-                            {% endif %}
-			</p>
-			{% endif %}
+                    <p class="desc more">
+                        {% if not m.access and m.infos.buy %}
+                            <a href="{{ m.infos.buy }}" target="_blank">{% trans "Buy" %}</a>
                         {% endif %}
-                    {% endif %}
+                        {% if m.infos.file %}
+                            <a href="#{{ m.id }}_leightbox" rel="{{ m.id }}_leightbox" class="lbOn">{% trans "More information" %}</a>
+                            <div id="{{ m.id}}_leightbox" class="leightbox">
+                                <div class="lbHeader">
+                                    <a class="lbAction button" rel="deactivate" href="#">Close</a>
+                                </div>
+                                <div class="lbContent">
+                                    {% include m.infos.file %}
+                                </div>
+                            </div>
+                        {% endif %}
+                        {% if m.infos.url and not m.infos.file %}
+                            <a href="{{ m.infos.url }}" target="_blank">{% trans "More information" %}</a>
+                        {% endif %}
+                    </p>
 
                         {% endifequal %}
                     {% endfor %}

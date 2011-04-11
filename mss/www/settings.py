@@ -79,9 +79,13 @@ MIDDLEWARE_CLASSES = (
 
 ROOT_URLCONF = 'mss.www.urls'
 
-TEMPLATE_DIRS = (
+TEMPLATE_DIRS = [
     os.path.join(PROJECT_DIR, 'wizard', 'templates'),
-)
+]
+
+for templates in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "templates")):
+    if os.path.exists(templates):
+        TEMPLATE_DIRS.append(templates)
 
 INSTALLED_APPS = [
     'django.contrib.auth',

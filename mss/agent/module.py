@@ -185,7 +185,7 @@ class ModuleManager:
         conflicts = [conflict.name for conflict in conflicts]
         # return result
         result = {'id': module.id, 'name': module.name,
-            'desc': module.desc, 'url': module.url, 'buy': module.buy,
+            'desc': module.desc, 'infos': module.infos,
             'preinst': module.preinst, 'installed': module.installed,
             'configured': module.configured, 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps}
@@ -536,8 +536,11 @@ class Module:
         self.TM.set_catalog(self.id, self.path)
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
-        self._url = self.root.findtext("more/url")
-        self._buy = self.root.findtext("more/buy")
+        self._infos = {}
+        self._infos['url'] = self.root.findtext("info/url")
+        self._infos['buy'] = self.root.findtext("info/buy")
+        self._infos['file'] = self.root.findtext("info/file")
+        print self._infos
         # get module deps
         self._deps = [m.text for m in self.root.findall("deps/module")]
         # get module conflicts
@@ -558,13 +561,9 @@ class Module:
         return _(self._desc, self.id)
     desc = property(get_desc)
 
-    def get_url(self):
-        return self._url
-    url = property(get_url)
-
-    def get_buy(self):
-        return self._buy
-    buy = property(get_buy)
+    def get_infos(self):
+        return self._infos
+    infos = property(get_infos)
 
     def get_deps(self):
         return self._deps
