@@ -540,7 +540,6 @@ class Module:
         self._infos['url'] = self.root.findtext("info/url")
         self._infos['buy'] = self.root.findtext("info/buy")
         self._infos['file'] = self.root.findtext("info/file")
-        print self._infos
         # get module deps
         self._deps = [m.text for m in self.root.findall("deps/module")]
         # get module conflicts

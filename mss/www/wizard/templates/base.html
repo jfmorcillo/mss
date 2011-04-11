@@ -83,15 +83,10 @@
                 {% if user.is_authenticated %}
                 <div id="quick-personal">
                     {% if not mes_media %}
-                    <form id="media_mes" method="post" action="{% url medias %}">
-                        <input type="hidden" name="media_name" value="mes5" />
-                        <input type="hidden" name="media_verbose_name" value="Mandriva Enterprise Server" />
-                        <input type="hidden" name="media_proto" value="https" />
-                        <input type="hidden" name="media_url" value="download.mandriva.com/EnterpriseServer5/rpms/i586" />
-                        <input type="hidden" name="media_mode" value="distrib" />
-                        <input type="hidden" name="media_auth" value="my" />
+                    <form id="mes5" method="post" action="{% url medias_module "mes5" %}">
+                        <input type="hidden" name="mes5" value="mes5" />
                     </form>
-                    <a href="#" onclick="$('media_mes').submit()" class="pop error warning" alt="{% trans "You don't have the Mandriva Enterprise Server medias. Please add the medias before using Mandriva Server Setup." %}">{% trans "Add medias" %}</a> |
+                    <a href="#" onclick="$('mes5').submit()" class="pop error warning" alt="{% trans "You don't have the Mandriva Enterprise Server medias. Please add the medias before using Mandriva Server Setup." %}">{% trans "Add medias" %}</a> |
                     {% endif %}
                     <a href="#" class="pop" alt="{% trans "Update packages list on your server." %}" onclick="updateMedias();">{% trans "Update medias" %}</a> |
                     {% if language_form %}

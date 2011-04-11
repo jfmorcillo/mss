@@ -164,7 +164,7 @@ def sections(request):
 def section(request, section):
     """ render section page """
     # flush some user session data
-    for key in ('modules', 'modules_list', 'medias_auths', 'media_tpl'):
+    for key in ('modules', 'modules_list'):
         try:
             del request.session[key]
         except KeyError:
@@ -184,7 +184,6 @@ def section(request, section):
             if module['infos']['buy'] and \
             not request.user.profile.has_family('mes5-get-%s' % module['id']):
                 module['access'] = False
-            print module
         # create simple modules list
         modules_list = [m.get('id') for m in modules]
         # remove modules not present server side
@@ -222,8 +221,20 @@ def preinst(request):
         return HttpResponseRedirect(reverse('sections'))
 
 @login_required
-def medias(request):
+def medias(request, module=None):
     """ media page """
+    # direct call with module
+    # mainly for MES5 media add
+    if module:
+        request.session['modules_list'] = [module]
+        # get preinstall info for modules
+        err, result = xmlrpc.call('preinstall_modules', [module])
+        if err:
+            return err
+        else:
+            modules = result
+        request.session['modules'] = modules
+
     modules_list = request.session['modules_list']
     err, result = xmlrpc.call('get_medias', modules_list)
     if err:
@@ -249,11 +260,13 @@ def medias(request):
 def medias_add(request):
     """ media add page """
     modules_list = request.session['modules_list']
+    print modules_list
     err, result = xmlrpc.call('get_medias', modules_list)
     if err:
         return err
     else:
         medias = result
+        print medias
         if request.method == "POST":
             for media in medias:
                 if media["auth"]:
@@ -293,9 +306,7 @@ def install(request):
                 {'modules': request.session['modules']},
                 context_instance=RequestContext(request))
         else:
-            return render_to_response('install_no.html',
-                {'modules': request.session['modules']},
-                context_instance=RequestContext(request))
+            return HttpResponseRedirect(reverse('config'))
 
 @login_required
 def reload_packages(request):
@@ -305,46 +316,45 @@ def reload_packages(request):
 @login_required
 def config(request):
     """ configuration page """
-    if request.method == "POST":
-        modules = request.session['modules']
-        modules_list = request.session['modules_list']
-        err, result = xmlrpc.call('get_config', modules_list)
-        if err:
-            return err
-        else:
-            config = result
-        # check if the modules needs configuration
-        do_config = False
-        # check if the modules have configuration scripts
-        skip_config = True
-        for m1 in config:
-            for m2 in modules:
-                if m1[0]['id'] == m2['id']:
-                    if m1[0].get('do_config'):
-                        do_config = True
-                    if not m1[0].get('skip_config'):
-                        skip_config = False
-                    # store in the module list skip_config
-                    # information for config_run view
-                    m2['skip_config'] = m1[0].get('skip_config')
-        request.session['modules'] = modules
-
-        # all modules does'nt have a configuration script
-        if skip_config:
-            for module in modules_list:
-                config_end(request, module)
-            return render_to_response('config_no.html',
-                {'modules': modules},
-                context_instance=RequestContext(request));
-        # some module have a configuration
-        elif do_config:
-            return render_to_response('config.html',
-                {'config': config, 'modules': modules},
-                context_instance=RequestContext(request))
-        else:
-            return HttpResponseRedirect(reverse('config_valid'))
+    modules = request.session['modules']
+    modules_list = request.session['modules_list']
+    err, result = xmlrpc.call('get_config', modules_list)
+    if err:
+        return err
     else:
-        return HttpResponseRedirect(reverse('sections'))
+        config = result
+    # check if the modules needs configuration
+    do_config = False
+    # check if the modules have configuration scripts
+    skip_config = True
+    for m1 in config:
+        print m1
+        for m2 in modules:
+            print m2
+            if m1[0]['id'] == m2['id']:
+                if m1[0].get('do_config'):
+                    do_config = True
+                if not m1[0].get('skip_config'):
+                    skip_config = False
+                # store in the module list skip_config
+                # information for config_run view
+                m2['skip_config'] = m1[0].get('skip_config')
+    request.session['modules'] = modules
+
+    # all modules does'nt have a configuration script
+    if skip_config:
+        for module in modules_list:
+            config_end(request, module)
+        return render_to_response('config_no.html',
+            {'modules': modules},
+            context_instance=RequestContext(request));
+    # some module have a configuration
+    elif do_config:
+        return render_to_response('config.html',
+            {'config': config, 'modules': modules},
+            context_instance=RequestContext(request))
+    else:
+        return HttpResponseRedirect(reverse('config_valid'))
 
 @login_required
 def config_valid(request):
