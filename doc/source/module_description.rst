@@ -30,7 +30,7 @@ same name as the module name
  <module id="module">
     <name>My module</name>
     <desc>A great module</desc>
- 
+
 Medias
 ^^^^^^
 
@@ -38,14 +38,16 @@ MSS allows you to add medias on the system to install packages.
 
 * @verbose_name : name displayed in the web interface when adding the media
 * @name : name used in the urmpi.cfg file
-* @auth : my (optional)
-* @proto : http | https 
+* @auth (optional) : None (default) | my
+* @proto : http (default) | https
+* @mode (optional) : None (default) | distrib | updates
+
+@ARCH@ will be replaced by the machine arch (x86_64 or i586).
 
 ::
 
     <medias verbose_name="My module" name="module" auth="my" proto="https">
-        <url>dl.mandriva.com/module/release</url>
-        <url>dl.mandriva.com/module/updates</url>                    
+        <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
     </medias>
 
 
@@ -54,7 +56,7 @@ Packages
 
 Your module may install some packages. The packages can be arch dependant.
 
-* @name : i586 | x86_64 | all 
+* @name : i586 | x86_64 | all
 
 ::
 
@@ -82,12 +84,12 @@ If the module conflicts with other modules in MSS.
     <conflicts>
         <module>some_module</module>
     </conflicts>
-    
+
 
 Dependencies
 ^^^^^^^^^^^^
 
-You can add dependencies with other modules. If some module is added as a 
+You can add dependencies with other modules. If some module is added as a
 dependency it will be installed and configured before the current module.
 
 ::
@@ -103,12 +105,12 @@ Module configuration
 The module configuration may need some information provided by the user. Several
 field can be used to gather the information needed to run a configuration script.
 
-Configuration definition starts with : 
+Configuration definition starts with :
 
 ::
 
     <config>
- 
+
 Then add some form fields.
 
 Simple text field
@@ -117,7 +119,7 @@ Simple text field
 * @name : field name
 * @require : the field is mandatory (optional)
 * @default : default value for the field (optional)
-* @validation : fqdn | ip (validate the field data - optional) 
+* @validation : fqdn | ip (validate the field data - optional)
 
 ::
 
@@ -129,7 +131,7 @@ Simple text field
 Password field
 """"""""""""""
 
-The generated form will add automatically a second password field to validate 
+The generated form will add automatically a second password field to validate
 the password
 
 * @name : field name
@@ -151,14 +153,14 @@ Multi text field
 * @require : yes | no (the field is mandatory - optional)
 * @default : default values for the field (optional)
 * @validation : fqdn | ip (validate the field data - optional)
- 
+
 ::
 
     <text name="param2" multi="yes" default="text1;text2;text3">
         <label>Param 2</label>
         <help>Some help on param 2</help>
     </text>
-        
+
 Network field
 """""""""""""
 
@@ -167,14 +169,14 @@ This special field let the user input a network description (ip/netmask)
 * @name : field name
 * @format : long | short (/24 or /255.255.255.0 - format used in the config script)
 * @validation : network (optional)
- 
+
 ::
 
     <network name="param3" format="short" validation="network">
         <label>Param 3</label>
         <help>Some help on param 3</help>
     </network>
-        
+
 Select list field
 """""""""""""""""
 
@@ -190,7 +192,7 @@ Select list field
         <option value="option2">Option 2</option>
         <option value="option3">Option 3</option>
     </options>
-        
+
 Checkbox field
 """"""""""""""
 
@@ -203,14 +205,14 @@ Checkbox field
         <label>Param 5</label>
         <help>Some help on param 5</help>
     </check>
-        
 
-For full examples of the ``desc.xml`` file check-out the :doc:`module_desc_example` page.        
+
+For full examples of the ``desc.xml`` file check-out the :doc:`module_desc_example` page.
 
 The __init__.py file
 -------------------------------------------------
 
-Because a MSS module is also a python module, a ``__init__.py`` must be created. This 
+Because a MSS module is also a python module, a ``__init__.py`` must be created. This
 file may contain two python functions related to the module configuration.
 
 If the module has a configuration script, the function :py:func:`get_config_info` has
@@ -224,8 +226,8 @@ to be declared.
 
 
 MSS use this function to get the name of the configuration script and the order
-of the parameters used to call the script. The script name is relative to the 
-module directory. The names of the parameters are the field names used in the 
+of the parameters used to call the script. The script name is relative to the
+module directory. The names of the parameters are the field names used in the
 configuration description in ``desc.xml``.
 
 If you want to retrieve the current configuration of the module when re-configuring
@@ -234,11 +236,11 @@ the module in MSS you have to write a :py:func:`get_current_config` function.
 .. py:function:: get_current_config()
 
     Returns current configuration of the module
-    
-    :rtype: dict { "param1": value, "param2": value, ... }
-    
 
-The values returned by this function replaces the default values set in in the 
+    :rtype: dict { "param1": value, "param2": value, ... }
+
+
+The values returned by this function replaces the default values set in in the
 configuration description in ``desc.xml``. Have a look in ``mds_*`` modules for some examples.
 
 Example of ``mds_mmc`` module
@@ -251,7 +253,7 @@ Configuration definition in ``desc.xml`` :
     <config>
         <text name="mdsdomain" require="yes" default="example.com" validation="fqdn">
             <label>MDS domain name</label>
-            <help>Usually the domain name (eg: domain.com) managed with MDS. 
+            <help>Usually the domain name (eg: domain.com) managed with MDS.
             This define the LDAP root.</help>
         </text>
         <password name="mdspasswd" require="yes">
@@ -260,7 +262,7 @@ Configuration definition in ``desc.xml`` :
         </password>
         <check name="mdsppolicy" default="on">
             <label>Password policy</label>
-            <help>Enable password policy on MDS (password age, expiration, 
+            <help>Enable password policy on MDS (password age, expiration,
             history, lock-out...)</help>
         </check>
     </config>
@@ -282,19 +284,19 @@ background. The script name and its parameters launch by MSS have to be declared
 .. literalinclude:: ../../mss/agent/modules/mds_webmail/setup-webmail.sh
     :linenos:
     :language: sh
-    
+
 Script templates
 ^^^^^^^^^^^^^^^^
 
 The setup script may use some configuration file templates which are located in
 a ``templates`` directory in the module's directory.
-    
+
 Script output
 ^^^^^^^^^^^^^
 
 MSS agent will capture all messages from stdout and stderr to display them in
-the web interface in real time when the script runs. When the script ends a 
-configuration summary with warnings and errors can be displayed to the user. 
+the web interface in real time when the script runs. When the script ends a
+configuration summary with warnings and errors can be displayed to the user.
 
 MSS checks every line in the script output to get a code corresponding to a message level. For
 example ``echo "8Webmail RoundCube is activated on your server."`` is a info level

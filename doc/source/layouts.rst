@@ -4,7 +4,7 @@ MSS layouts
 To organize the modules in the web interface MSS uses a layout system to display
 the modules to the users.
 
-A layout is composed of one or more sections which contains one or more bundle. All 
+A layout is composed of one or more sections which contains one or more bundle. All
 sections are displayed on the front page. A bundle contains one or more modules.
 
 The layouts are python modules located in the :py:mod:`mss.www.layout` module.
@@ -21,7 +21,7 @@ Directory structure :
             locale/
             config.py
             __init__.py
-            
+
 As the layout is a python module we need an ``__init__.py`` file. The configuration
 of the layout is done in the ``config.py`` file.
 
@@ -42,9 +42,9 @@ reference the section
 ::
 
     from django.utils.translation import ugettext as _
-    from mss.www.wizard.config import Config
+    from mss.www.wizard.config import ConfigManager
 
-    config = Config()
+    config = ConfigManager()
 
     # example of section defenition
     my_section = {
@@ -54,10 +54,10 @@ reference the section
         'desc' : _('This is a new section !'),
         'conf' : { 'class': 'block-1' },
     }
-    
+
     # add the section to the layout config
     config.add_section(my_section)
-    
+
 The name and the description can be translated. We use the ``_`` shortcut for
 gettext translations.
 
@@ -79,34 +79,41 @@ A bundle is defined by :
 
 ::
 
-    my_bundles = [
+    my_bundle =
         {
-            'id': '1',
+            'id': 'mybundle',
             'name': _('My Bundle'),
             'icon': 'bundle_1.png',
             'desc': _('Foo'),
             'conf': {'class': 'block-1'},
             'modules': ["module1", "module2", "module3"],
-        },
-        {
-            'id': '2',
-            'name': _('My second Bundle'),
-            'icon': 'bundle_2.png',
-            'desc': _('Foo'),
-            'conf': {'class': 'block-1'},
-            'modules': ["module4", "module5"],
-        },        
-    ]
+        }
 
-    config.add_modules("my_section", my_bundles)
-    
+    config.add_bundle("my_section", my_bundle)
+
+
 This will output something like this in the section page :
 
 .. image:: media/bundle_example.png
 
-In this example, the bundle is composed of 4 modules related to databases. 
-The first module is already installed on the system and was configured by MSS. 
+In this example, the bundle is composed of 4 modules related to databases.
+The first module is already installed on the system and was configured by MSS.
 The second module conflicts with some module installed.
+
+Modules
+^^^^^^^
+
+A module is defined by :
+
+* a unique id
+
+::
+
+    config.add_module("my_section", "my_bundle", "module_id")
+
+
+This method allows you to add a specific module in any bundle of any section.
+
 
 Presentation
 ------------
@@ -170,7 +177,7 @@ When using a 2 column layout the first block of each "row" must use the ``block-
             'conf': {'class': 'block-clear block-2'},
             'modules': ["module10", "module11"],
         },
-        
+
 This configuration will render something like that :
 
 .. image:: media/layout_sketch.png
