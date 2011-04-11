@@ -32,32 +32,29 @@ class Media:
         self.urls = urls
         self.proto = proto
         self.mode = mode
-        
+
     def need_auth(self):
         if self.auth:
             return True
         else:
             return False
-            
+
     def get_command(self, login=None, password=None):
-    
-        command = []    
+
+        command = []
         self.options = []
-        
+
         if self.mode == "distrib":
             self.options.append('--distrib')
         elif self.mode == "updates":
             self.options.append('--updates')
-        elif self.mode == "distrib_updates":
-            self.options.append('--updates')            
-            self.options.append('--distrib')
         else:
             self.options.append(self.name)
-            
+
         for url in self.urls:
             if login and password:
                 command += ['urpmi.addmedia'] + self.options + [ self.proto+"://"+urllib.quote(login)+":"+password+"@"+url, ';']
             else:
                 command += ['urpmi.addmedia'] + self.options + [ self.proto+"://"+url, ';']
-            
+
         return " ".join(command)

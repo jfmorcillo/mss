@@ -639,7 +639,7 @@ class Module:
             for url in media.findall("url"):
                 urls.append(re.sub('@ARCH@', self.arch, url.text))
             proto = media.attrib.get("proto", "http")
-            mode = media.attrib.get("mode", "default")
+            mode = media.attrib.get("mode", None)
             return Media(name, verbose_name, urls, auth, proto, mode)
         else:
             return None
