@@ -21,25 +21,36 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+import traceback
+import sys
+import ConfigParser
 import re
 import os
-from lib.utils import getINIoption
 
-def get_config_info():
+def formatExceptionInfo(maxTBlevel=5):
+    cla, exc, trbk = sys.exc_info()
+    excName = cla.__name__
+    try:
+        excArgs = exc.__dict__["args"]
+    except KeyError:
+        excArgs = "<no args>"
+    excTb = traceback.format_tb(trbk, maxTBlevel)
+    return str(excName+" "+excArgs+" : \n"+excTb[0])
 
-    return ("setup-mmc.sh", ['mdsdomain', 'mdspasswd', 'mdsppolicy'])
+def getINIoption(section, option, ini):
+    config = ConfigParser.SafeConfigParser()
+    config.read(ini)
+    return config.get(section, option)
 
-def get_current_config():
-
-    ini='/etc/mmc/plugins/base.ini'
-    if os.path.exists(ini):
-        mdsdomain = getINIoption('ldap', 'baseDN', ini)
-        mdsdomain = re.sub('^dc=', '', mdsdomain)
-        mdsdomain = re.sub(',[\s]*dc=', '.', mdsdomain)
-        if getINIoption('main', 'disable', '/etc/mmc/plugins/ppolicy.ini') == "0":
-            mdsppolicy = "on"
+def grep(search, file):
+    if os.path.exists(file):
+        h = open(file)
+        string = h.read()
+        h.close()
+        expr = re.compile(search, re.M)
+        if expr.search(string):
+            return True
         else:
-            mdsppolicy = "off"
-        return {'mdsdomain': mdsdomain, "mdsppolicy": mdsppolicy}
+            return False
     else:
-        return {}
+        return False

@@ -24,15 +24,23 @@
 
 import sys
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-from module import ModuleManager
-from process import ExecManager
-from translation import TranslationManager
-from auth import authenticate
+from managers.module import ModuleManager
+from managers.process import ProcessManager
+from managers.translation import TranslationManager
+from lib.auth import authenticate
 
-EM = ExecManager()
+PM = ProcessManager()
 TM = TranslationManager()
-MM = ModuleManager(EM, TM)
+MM = ModuleManager(PM, TM)
+
 server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True)
+server.register_instance(PM)
 server.register_instance(MM)
 server.register_function(authenticate)
-server.serve_forever()
+
+try:
+    print 'This is MSS XML-RPC agent'
+    print 'Use Control-C to exit'
+    server.serve_forever()
+except KeyboardInterrupt:
+    print 'Exiting'
