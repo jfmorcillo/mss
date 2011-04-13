@@ -2,3 +2,6 @@ python
 python-django  
 python-IPy  
 python-OpenSSL
+binutils
+gettext
+locales-fr
