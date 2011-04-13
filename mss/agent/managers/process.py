@@ -22,17 +22,28 @@
 # MA 02110-1301, USA.
 
 import os
-import select
-import threading
-import urllib
-import xmlrpclib
-from subprocess import Popen, PIPE, STDOUT
-import time
 from gettext import gettext as _
 
+from classes.process import ProcessThread
 
-class ExecManager:
+def expose(f):
+    "Decorator to set exposed flag on a function."
+    f.exposed = True
+    return f
+
+def is_exposed(f):
+    "Test whether another function should be publicly exposed."
+    return getattr(f, 'exposed', False)
+
+class ProcessManager:
     """ Class managing running tasks """
+
+    def _dispatch(self, method, params):
+        func = getattr(self, method)
+        if not is_exposed(func):
+            raise Exception('Method "%s" is not supported' % method)
+
+        return func(*params)
 
     def __init__(self):
         # thread pool
@@ -55,10 +66,12 @@ class ExecManager:
         else:
             return False
 
+    @expose
     def update_medias(self):
         """ update medias lists """
         self.launch("update", ["urpmi.update", "-a"])
 
+    @expose
     def check_net(self):
         """ check if net is available """
         self.launch("net", ["ping", "-c", "2", "my.mandriva.com"])
@@ -72,19 +85,19 @@ class ExecManager:
         """ launch wrapper """
         # accept only one thread
         if not name in self.threads or not self.threads[name].isAlive():
-            self.threads[name] = ExecThread(command, cwd, callback, shell)
+            self.threads[name] = ProcessThread(command, cwd, callback, shell)
             self.threads[name].start()
             if wait:
                 self.threads[name].join()
         else:
-            raise ExecManagerBusyError, "ExecManager is busy"
+            raise ProcessManagerBusyError, "ProcessManager is busy"
 
-    def get_state(self, name):
+    def p_state(self, name):
         """ get thread execution state """
         if name in self.threads:
-            return (self.threads[name].code, unicode(self.threads[name].output))
+            return (self.threads[name].code, self.threads[name].output)
 
-    def get_status(self):
+    def pm_state(self):
         """ get execution manager status """
         status = []
         for name, thread in self.threads.items():
@@ -106,62 +119,7 @@ class ExecManager:
         return status
 
 
-class ExecThread(threading.Thread):
-    """ Base class for running tasks """
-
-    def __init__(self, command, cwd, callback, shell):
-        #threading.Thread.__init__(self, **kwds)
-        self.process = None
-        self.command = command
-        self.cwd = cwd
-        self.callback = callback
-        self.code = 2000
-        self.output = ""
-        self.lock = threading.RLock()
-        self.shell = shell
-        threading.Thread.__init__(self)
-
-    def run(self):
-        """ run command """
-        self.process = Popen(self.command, stdout=PIPE, stderr=STDOUT,
-            bufsize=1, cwd=self.cwd, shell=self.shell)
-        self.get_output()
-        return 0
-
-    def get_output(self):
-        """ get command context """
-        while self.isAlive():
-            # get the file descriptor of the process stdout pipe
-            # for reading
-            try:
-                fd = select.select([self.process.stdout.fileno()],
-                    [], [], 5)[0][0]
-            # raise an exception when the process doesn't make output
-            # for long time
-            except IndexError:
-                fd = None
-                pass
-
-            self.process.poll()
-            if self.process.returncode == None:
-                # get bytes one by one
-                if fd:
-                    self.lock.acquire()
-                    self.output += os.read(fd, 1)
-                    self.lock.release()
-            else:
-                # get last bytes from output
-                if fd:
-                    self.lock.acquire()
-                    self.output += os.read(fd, 4096)
-                    self.lock.release()
-                self.code = self.process.returncode
-                if self.callback:
-                    self.callback(self.code, self.output)
-                break
-
-
-class ExecManagerError(Exception):
+class ProcessManagerError(Exception):
     """Base class for exceptions in ExecManager."""
 
     def __init__(self, msg):
@@ -170,5 +128,5 @@ class ExecManagerError(Exception):
     def __str__(self):
         return self.msg
 
-class ExecManagerBusyError(ExecManagerError):
+class ProcessManagerBusyError(ProcessManagerError):
     pass
