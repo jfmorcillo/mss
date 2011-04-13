@@ -1,7 +1,8 @@
 *.pyc
+*.mo
 *~
-mss.db
 mss.egg-info
 dist
 doc/build
-*.mo
+mss/www/cpserver
+mss/mss
