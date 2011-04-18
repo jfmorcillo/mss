@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,10 +9,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: modules/lamp_dev/desc.xml:2(name)
-msgid "LAMP developpement packages (PHP, Perl/CGI)"
-msgstr "Paquets de développement LAMP (PHP, Perl/CGI)"
 
 #: modules/lamp_dev/desc.xml:3(desc)
 msgid ""
@@ -22,6 +18,10 @@ msgstr ""
 "Un ensemble d'outils libres pour héberger des sites web dynamiques (langages "
 "de script, modules php, ...)"
 
+#: modules/lamp_dev/desc.xml:2(name)
+msgid "LAMP developpement packages (PHP, Perl/CGI)"
+msgstr "Paquets de développement LAMP (PHP, Perl/CGI)"
+
 #: modules/lamp_dev/desc.xml:6(rpm)
 msgid "apache-mod_perl"
 msgstr ""
@@ -30,20 +30,12 @@ msgstr ""
 msgid "apache-mod_php"
 msgstr ""
 
-#: modules/lamp_dev/desc.xml:8(rpm)
-msgid "php-dom"
-msgstr ""
-
-#: modules/lamp_dev/desc.xml:9(rpm)
-msgid "php-xml"
-msgstr ""
-
-#: modules/lamp_dev/desc.xml:10(rpm)
-msgid "php-xmlrpc"
-msgstr ""
-
 #: modules/lamp_dev/desc.xml:11(rpm)
 msgid "php-cli"
+msgstr ""
+
+#: modules/lamp_dev/desc.xml:8(rpm)
+msgid "php-dom"
 msgstr ""
 
 #: modules/lamp_dev/desc.xml:12(rpm)
@@ -56,6 +48,14 @@ msgstr ""
 
 #: modules/lamp_dev/desc.xml:14(rpm)
 msgid "php-sqlite"
+msgstr ""
+
+#: modules/lamp_dev/desc.xml:9(rpm)
+msgid "php-xml"
+msgstr ""
+
+#: modules/lamp_dev/desc.xml:10(rpm)
+msgid "php-xmlrpc"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

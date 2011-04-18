@@ -30,23 +30,25 @@ done
 # Modules translation
 for module in modules/*; do
     mod=`basename $module`
+    xml=modules/${mod}/desc.xml
+    pot=modules/${mod}/locale/${mod}.pot
     if [ -d modules/${mod} ]; then        
-        xml=`find modules/${mod} -iname "desc.xml"`
-        if [ -f $xml ]; then
-            for lang in modules/${mod}/locale/*; do
-                if [ -d ${lang} ]; then
-                    po=${lang}/LC_MESSAGES/${mod}.po
-                    if [ ! -f $po ]; then
-                        echo "creating ${po}"
-                        xml2po -o ${po} ${xml}
-                        echo ".... done."
-                    else
-                        echo "updating ${po}"
-                        xml2po -u ${po} ${xml}
-                        echo ".... done."
-                    fi
+        if [ -d modules/${mod}/locale ]; then
+            rm -f ${pot}
+            touch ${pot}
+            if [ -f $xml ]; then
+                echo -n "creating ${pot}"
+                xml2po -o ${pot} ${xml}
+                echo "....done."
+            fi
+            for po in `find modules/${mod}/locale -type f -name *.po`; do
+                if [ -f $po ]; then
+                    echo -n "updating ${po}..."
+                    msgmerge --update --add-location --sort-output ${po} ${pot}
                 fi
             done
+        else
+            echo "locale dir not found for module ${mod}"
         fi
     fi
 done

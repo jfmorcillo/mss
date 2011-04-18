@@ -16,50 +16,38 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: process.py:102
-msgid "Adding media"
-msgstr "Ajout des médias"
+#~ msgid "Adding media"
+#~ msgstr "Ajout des médias"
 
-#: process.py:106
-msgid "Checking network"
-msgstr "Vérification du réseau"
+#~ msgid "Checking network"
+#~ msgstr "Vérification du réseau"
 
-#: module.py:818
-msgid "Incorrect FQDN."
-msgstr "Nom de domaine non valide."
+#~ msgid "Incorrect FQDN."
+#~ msgstr "Nom de domaine non valide."
 
-#: module.py:825 module.py:834
-msgid "Incorrect IP address."
-msgstr "Adresse IP non valide."
+#~ msgid "Incorrect IP address."
+#~ msgstr "Adresse IP non valide."
 
-#: module.py:828
-msgid "Incorrect netmask address."
-msgstr "Masque de sous-réseau invalide"
+#~ msgid "Incorrect netmask address."
+#~ msgstr "Masque de sous-réseau invalide"
 
-#: process.py:98
-msgid "Installing packages"
-msgstr "Installation des packages"
+#~ msgid "Installing packages"
+#~ msgstr "Installation des packages"
 
-#: process.py:96
-msgid "Loading packages list"
-msgstr "Chargement de la liste de packages"
+#~ msgid "Loading packages list"
+#~ msgstr "Chargement de la liste de packages"
 
-#: module.py:747
-msgid "Password mismatch."
-msgstr "Les mots de passe ne sont pas identiques."
+#~ msgid "Password mismatch."
+#~ msgstr "Les mots de passe ne sont pas identiques."
 
-#: process.py:108
-msgid "Ready"
-msgstr "Prêt"
+#~ msgid "Ready"
+#~ msgstr "Prêt"
 
-#: process.py:104
-msgid "Running configuration"
-msgstr "Exécution de la configuration"
+#~ msgid "Running configuration"
+#~ msgstr "Exécution de la configuration"
 
-#: module.py:742
-msgid "This field can't be empty."
-msgstr "Ce champ ne peut pas être vide."
+#~ msgid "This field can't be empty."
+#~ msgstr "Ce champ ne peut pas être vide."
 
-#: process.py:100
-msgid "Updating medias"
-msgstr "Mise à jour des médias"
+#~ msgid "Updating medias"
+#~ msgstr "Mise à jour des médias"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,13 +10,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/sympa/desc.xml:2(name)
-msgid "Mailing list server"
-msgstr "Serveur de mailing list"
-
 #: modules/sympa/desc.xml:3(desc)
 msgid "Install Sympa"
 msgstr "Installe Sympa"
+
+#: modules/sympa/desc.xml:2(name)
+msgid "Mailing list server"
+msgstr "Serveur de mailing list"
 
 #: modules/sympa/desc.xml:6(rpm)
 msgid "sympa"

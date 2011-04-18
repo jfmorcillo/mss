@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,17 +10,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/cups/desc.xml:2(name)
-msgid "Printing server"
-msgstr "Serveur d'impression"
-
 #: modules/cups/desc.xml:3(desc)
 msgid "Install, configure and share network printers with cups"
 msgstr "Installez, configurez et partagez des imprimantes réseaux avec cups"
 
-#: modules/cups/desc.xml:5(module)
-msgid "mds_cups"
-msgstr ""
+#: modules/cups/desc.xml:2(name)
+msgid "Printing server"
+msgstr "Serveur d'impression"
 
 #: modules/cups/desc.xml:9(rpm)
 msgid "cups"
@@ -38,16 +34,20 @@ msgstr ""
 msgid "foomatic-filters"
 msgstr ""
 
+#: modules/cups/desc.xml:15(rpm)
+msgid "hplip"
+msgstr ""
+
 #: modules/cups/desc.xml:13(rpm)
 msgid "hplip-hpijs-ppds"
 msgstr ""
 
-#: modules/cups/desc.xml:14(rpm)
-msgid "postscript-ppds"
+#: modules/cups/desc.xml:5(module)
+msgid "mds_cups"
 msgstr ""
 
-#: modules/cups/desc.xml:15(rpm)
-msgid "hplip"
+#: modules/cups/desc.xml:14(rpm)
+msgid "postscript-ppds"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

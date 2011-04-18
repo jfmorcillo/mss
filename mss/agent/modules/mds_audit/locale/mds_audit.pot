@@ -1,0 +1,76 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-04-18 15:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/mds_audit/desc.xml:2(name)
+msgid "Audit module for MDS"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:3(desc)
+msgid "Track any changes made on the MDS interface"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:5(module)
+msgid "mds_mmc"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:6(module)
+msgid "mysql"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:10(label)
+msgid "MySQL root password"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:11(help)
+msgid "Used to create the audit database"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:14(label)
+msgid "MySQL audit password"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:15(help)
+msgid "MySQL user password for the audit database"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:18(text)
+msgid "Cleaning up..."
+msgstr ""
+
+#: modules/mds_audit/desc.xml:19(text)
+msgid "The current MySQL password is not valid."
+msgstr ""
+
+#: modules/mds_audit/desc.xml:20(text)
+msgid "Create audit database"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:21(text)
+msgid "Grant privileges on database"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:22(text)
+msgid "Service MMC started succesfully."
+msgstr ""
+
+#: modules/mds_audit/desc.xml:23(text)
+msgid "Service MMC fails starting. Check"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:24(text)
+msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_audit/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+

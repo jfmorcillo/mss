@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,17 +18,18 @@ msgstr "Serveur PostgreSQL"
 msgid "This will install a relational database"
 msgstr "Installe une base de donnée relationnelle"
 
-#: modules/postgresql/desc.xml:6(rpm)
-msgid "postgresql8.3-server"
+#: modules/postgresql/desc.xml:8(rpm)
+msgid "phppgadmin"
 msgstr ""
 
 #: modules/postgresql/desc.xml:7(rpm)
 msgid "postgresql8.3-pl"
 msgstr ""
 
-#: modules/postgresql/desc.xml:8(rpm)
-msgid "phppgadmin"
-msgstr ""
+#: modules/postgresql/desc.xml:6(rpm)
+#, fuzzy
+msgid "postgresql8.3-server"
+msgstr "Serveur PostgreSQL"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/postgresql/desc.xml:0(None)

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,21 +10,22 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/roundcube/desc.xml:2(name)
-msgid "Webmail server"
-msgstr "Serveur Webmail"
-
 #: modules/roundcube/desc.xml:3(desc)
 msgid "Install roundcube webmail"
 msgstr "Installe le webmail Roundcube"
+
+#: modules/roundcube/desc.xml:2(name)
+msgid "Webmail server"
+msgstr "Serveur Webmail"
 
 #: modules/roundcube/desc.xml:5(module)
 msgid "mds_webmail"
 msgstr ""
 
 #: modules/roundcube/desc.xml:9(rpm)
+#, fuzzy
 msgid "roundcubemail"
-msgstr ""
+msgstr "Installe le webmail Roundcube"
 
 #: modules/roundcube/desc.xml:10(rpm)
 msgid "sqlite-tools"

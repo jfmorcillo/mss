@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,20 +22,20 @@ msgstr "Installe le serveur web Apache"
 msgid "apache-base"
 msgstr ""
 
-#: modules/lamp_server/desc.xml:7(rpm)
-msgid "apache-mpm-prefork"
-msgstr ""
-
 #: modules/lamp_server/desc.xml:8(rpm)
 msgid "apache-conf"
+msgstr ""
+
+#: modules/lamp_server/desc.xml:10(rpm)
+msgid "apache-mod_ssl"
 msgstr ""
 
 #: modules/lamp_server/desc.xml:9(rpm)
 msgid "apache-modules"
 msgstr ""
 
-#: modules/lamp_server/desc.xml:10(rpm)
-msgid "apache-mod_ssl"
+#: modules/lamp_server/desc.xml:7(rpm)
+msgid "apache-mpm-prefork"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
