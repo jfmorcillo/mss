@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,16 +18,16 @@ msgstr "Outils anti-virus et anti-spam"
 msgid "Installation of AMaVis, ClamAV and SpamAssassin"
 msgstr "Installe AMaVis, ClamAV et SpamAssassin"
 
-#: modules/spam/desc.xml:5(module)
-msgid "mds_mail"
-msgstr ""
-
-#: modules/spam/desc.xml:6(module)
-msgid "zarafa"
-msgstr ""
-
 #: modules/spam/desc.xml:10(rpm)
 msgid "amavisd-new"
+msgstr ""
+
+#: modules/spam/desc.xml:13(rpm)
+msgid "clamd"
+msgstr ""
+
+#: modules/spam/desc.xml:5(module)
+msgid "mds_mail"
 msgstr ""
 
 #: modules/spam/desc.xml:11(rpm)
@@ -38,11 +38,11 @@ msgstr ""
 msgid "spamassassin-tools"
 msgstr ""
 
-#: modules/spam/desc.xml:13(rpm)
-msgid "clamd"
-msgstr ""
-
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/spam/desc.xml:0(None)
 msgid "translator-credits"
+msgstr ""
+
+#: modules/spam/desc.xml:6(module)
+msgid "zarafa"
 msgstr ""

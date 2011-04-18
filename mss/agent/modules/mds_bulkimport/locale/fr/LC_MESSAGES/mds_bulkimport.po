@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,16 +19,16 @@ msgid "Load/Modify accounts in MDS from CSV files"
 msgstr ""
 "Charge/Modifie des comptes utilisateurs dans MDS à partir de fichiers CSV"
 
+#: modules/mds_bulkimport/desc.xml:11(module)
+msgid "mds_mmc"
+msgstr ""
+
 #: modules/mds_bulkimport/desc.xml:6(rpm)
 msgid "mmc-web-bulkimport"
 msgstr ""
 
 #: modules/mds_bulkimport/desc.xml:7(rpm)
 msgid "python-mmc-bulkimport"
-msgstr ""
-
-#: modules/mds_bulkimport/desc.xml:11(module)
-msgid "mds_mmc"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

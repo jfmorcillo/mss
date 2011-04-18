@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,8 @@ msgstr "Serveur POP/IMAP Cyrus"
 msgid "Installation of Cyrus"
 msgstr "Installe Cyrus"
 
-#: modules/cyrus/desc.xml:5(module)
-msgid "dovecot"
-msgstr ""
-
 #: modules/cyrus/desc.xml:6(module)
 msgid "courierimap"
-msgstr ""
-
-#: modules/cyrus/desc.xml:7(module)
-msgid "mds_mail"
-msgstr ""
-
-#: modules/cyrus/desc.xml:8(module)
-msgid "zarafa"
 msgstr ""
 
 #: modules/cyrus/desc.xml:12(rpm)
@@ -46,23 +34,35 @@ msgstr ""
 msgid "cyrus-sasl"
 msgstr ""
 
-#: modules/cyrus/desc.xml:17(rpm)
-msgid "libsasl2-plug-plain"
-msgstr ""
-
-#: modules/cyrus/desc.xml:18(rpm)
-msgid "libsasl2-plug-login"
-msgstr ""
-
-#: modules/cyrus/desc.xml:21(rpm)
-msgid "lib64sasl2-plug-plain"
+#: modules/cyrus/desc.xml:5(module)
+msgid "dovecot"
 msgstr ""
 
 #: modules/cyrus/desc.xml:22(rpm)
 msgid "lib64sasl2-plug-login"
 msgstr ""
 
+#: modules/cyrus/desc.xml:21(rpm)
+msgid "lib64sasl2-plug-plain"
+msgstr ""
+
+#: modules/cyrus/desc.xml:18(rpm)
+msgid "libsasl2-plug-login"
+msgstr ""
+
+#: modules/cyrus/desc.xml:17(rpm)
+msgid "libsasl2-plug-plain"
+msgstr ""
+
+#: modules/cyrus/desc.xml:7(module)
+msgid "mds_mail"
+msgstr ""
+
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/cyrus/desc.xml:0(None)
 msgid "translator-credits"
+msgstr ""
+
+#: modules/cyrus/desc.xml:8(module)
+msgid "zarafa"
 msgstr ""

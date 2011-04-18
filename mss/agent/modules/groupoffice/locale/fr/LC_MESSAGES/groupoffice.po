@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,14 +18,6 @@ msgstr "Group-Office"
 msgid "Install Group-Office suite"
 msgstr "Installe la suite Group-Office"
 
-#: modules/groupoffice/desc.xml:5(url)
-msgid "http://www.group-office.com/"
-msgstr ""
-
-#: modules/groupoffice/desc.xml:6(buy)
-msgid "http://store.mandriva.com"
-msgstr ""
-
 #: modules/groupoffice/desc.xml:9(url)
 msgid "dl.mandriva.com/mes5/addons/groupoffice/release"
 msgstr ""
@@ -35,7 +27,16 @@ msgid "dl.mandriva.com/mes5/addons/groupoffice/updates"
 msgstr ""
 
 #: modules/groupoffice/desc.xml:14(rpm)
+#, fuzzy
 msgid "groupoffice"
+msgstr "Group-Office"
+
+#: modules/groupoffice/desc.xml:6(buy)
+msgid "http://store.mandriva.com"
+msgstr ""
+
+#: modules/groupoffice/desc.xml:5(url)
+msgid "http://www.group-office.com/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

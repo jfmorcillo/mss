@@ -1,0 +1,48 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-04-18 15:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/courierimap/desc.xml:2(name)
+msgid "CourierImap POP/IMAP server"
+msgstr ""
+
+#: modules/courierimap/desc.xml:3(desc)
+msgid "Installation of CourierImap"
+msgstr ""
+
+#: modules/courierimap/desc.xml:5(module)
+msgid "dovecot"
+msgstr ""
+
+#: modules/courierimap/desc.xml:6(module)
+msgid "cyrus"
+msgstr ""
+
+#: modules/courierimap/desc.xml:7(module)
+msgid "mds_mail"
+msgstr ""
+
+#: modules/courierimap/desc.xml:8(module)
+msgid "zarafa"
+msgstr ""
+
+#: modules/courierimap/desc.xml:12(rpm)
+msgid "courier-imap"
+msgstr ""
+
+#: modules/courierimap/desc.xml:13(rpm)
+msgid "courier-base"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/courierimap/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+

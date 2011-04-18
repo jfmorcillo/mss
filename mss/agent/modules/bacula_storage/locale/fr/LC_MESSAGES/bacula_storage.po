@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:53+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,17 +10,19 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/bacula_storage/desc.xml:2(name)
-msgid "Bacula Storage Daemon"
-msgstr "Bacula Storage Daemon"
-
 #: modules/bacula_storage/desc.xml:3(desc)
+#, fuzzy
 msgid "Background application which writes backup to disk, tape, CD, etc.."
 msgstr ""
 "Transfère les données et les attributs de fichiers aux média physiques ou "
 "aux volumes et les restitue lors de restaurations. Le storage Daemon est "
 "responsable des opérations de lecture et d'écriture sur vos cartouches (ou "
 "autres média de stockage)"
+
+#: modules/bacula_storage/desc.xml:2(name)
+#, fuzzy
+msgid "Bacula Storage Daemon"
+msgstr "Bacula Storage Daemon"
 
 #: modules/bacula_storage/desc.xml:6(rpm)
 msgid "bacula-sd"

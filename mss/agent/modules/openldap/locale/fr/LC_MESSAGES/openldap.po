@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,20 +10,33 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/openldap/desc.xml:2(name)
-msgid "OpenLDAP"
-msgstr "OpenLDAP"
+#: modules/openldap/desc.xml:22(label)
+msgid "LDAP password"
+msgstr "Mot de passe LDAP"
+
+#: modules/openldap/desc.xml:18(label)
+msgid "LDAP root"
+msgstr "Racine LDAP"
 
 #: modules/openldap/desc.xml:3(desc)
 msgid "Open Source LDAP directory"
 msgstr "Annuaire LDAP Open Source"
 
+#: modules/openldap/desc.xml:2(name)
+msgid "OpenLDAP"
+msgstr "OpenLDAP"
+
+#: modules/openldap/desc.xml:23(help)
+msgid "The LDAP admin password."
+msgstr "Le mot de passe de l'administrateur LDAP"
+
+#: modules/openldap/desc.xml:19(help)
+msgid "Usually the domain name (eg: domain.com). This define the LDAP root."
+msgstr ""
+"En général votre nom de domaine (ex: domaine.com). Ceci défini la racine LDAP"
+
 #: modules/openldap/desc.xml:5(module)
 msgid "mds_mmc"
-msgstr ""
-
-#: modules/openldap/desc.xml:9(rpm)
-msgid "openldap-servers"
 msgstr ""
 
 #: modules/openldap/desc.xml:10(rpm)
@@ -34,30 +47,17 @@ msgstr ""
 msgid "openldap-clients"
 msgstr ""
 
-#: modules/openldap/desc.xml:12(rpm)
-msgid "pam_ldap"
-msgstr ""
-
 #: modules/openldap/desc.xml:13(rpm)
 msgid "openldap-mandriva-dit"
 msgstr ""
 
-#: modules/openldap/desc.xml:18(label)
-msgid "LDAP root"
-msgstr "Racine LDAP"
-
-#: modules/openldap/desc.xml:19(help)
-msgid "Usually the domain name (eg: domain.com). This define the LDAP root."
+#: modules/openldap/desc.xml:9(rpm)
+msgid "openldap-servers"
 msgstr ""
-"En général votre nom de domaine (ex: domaine.com). Ceci défini la racine LDAP"
 
-#: modules/openldap/desc.xml:22(label)
-msgid "LDAP password"
-msgstr "Mot de passe LDAP"
-
-#: modules/openldap/desc.xml:23(help)
-msgid "The LDAP admin password."
-msgstr "Le mot de passe de l'administrateur LDAP"
+#: modules/openldap/desc.xml:12(rpm)
+msgid "pam_ldap"
+msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/openldap/desc.xml:0(None)

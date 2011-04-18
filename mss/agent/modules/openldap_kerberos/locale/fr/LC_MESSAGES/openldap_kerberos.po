@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,24 +18,24 @@ msgstr "Authentification LDAP avec Kerberos"
 msgid "LDAP + Kerberos authentication server"
 msgstr "Serveur d'authentification LDAP avec Kerberos"
 
-#: modules/openldap_kerberos/desc.xml:5(module)
-msgid "mds_mmc"
-msgstr ""
-
-#: modules/openldap_kerberos/desc.xml:8(module)
-msgid "openldap"
-msgstr ""
-
 #: modules/openldap_kerberos/desc.xml:9(module)
 msgid "kerberos"
+msgstr ""
+
+#: modules/openldap_kerberos/desc.xml:16(rpm)
+msgid "lib64sasl2-plug-gssapi"
 msgstr ""
 
 #: modules/openldap_kerberos/desc.xml:13(rpm)
 msgid "libsasl2-plug-gssapi"
 msgstr ""
 
-#: modules/openldap_kerberos/desc.xml:16(rpm)
-msgid "lib64sasl2-plug-gssapi"
+#: modules/openldap_kerberos/desc.xml:5(module)
+msgid "mds_mmc"
+msgstr ""
+
+#: modules/openldap_kerberos/desc.xml:8(module)
+msgid "openldap"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

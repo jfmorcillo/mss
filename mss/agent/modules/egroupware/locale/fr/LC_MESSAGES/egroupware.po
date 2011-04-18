@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,10 +9,6 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-
-#: modules/egroupware/desc.xml:2(name)
-msgid "eGroupware (Include : Calendar, AdressBook, eMail, InfLog)"
-msgstr "eGroupware (Inclus : Calendrier, Carnet d'adresses, Email, InfLog)"
 
 #: modules/egroupware/desc.xml:3(desc)
 msgid "Install eGroupware base system"
@@ -22,9 +18,9 @@ msgstr "Installe eGroupware"
 msgid "dl.mandriva.com/mes5/egroupware"
 msgstr ""
 
-#: modules/egroupware/desc.xml:8(module)
-msgid "mysql"
-msgstr ""
+#: modules/egroupware/desc.xml:2(name)
+msgid "eGroupware (Include : Calendar, AdressBook, eMail, InfLog)"
+msgstr "eGroupware (Inclus : Calendrier, Carnet d'adresses, Email, InfLog)"
 
 #: modules/egroupware/desc.xml:12(rpm)
 msgid "egroupware"
@@ -34,32 +30,40 @@ msgstr ""
 msgid "egroupware-addressbook"
 msgstr ""
 
-#: modules/egroupware/desc.xml:14(rpm)
-msgid "egroupware-infolog"
-msgstr ""
-
 #: modules/egroupware/desc.xml:15(rpm)
 msgid "egroupware-felamimail"
-msgstr ""
-
-#: modules/egroupware/desc.xml:16(rpm)
-msgid "egroupware-syncml"
-msgstr ""
-
-#: modules/egroupware/desc.xml:17(rpm)
-msgid "egroupware-projectmanager"
-msgstr ""
-
-#: modules/egroupware/desc.xml:18(rpm)
-msgid "egroupware-importexport"
 msgstr ""
 
 #: modules/egroupware/desc.xml:19(rpm)
 msgid "egroupware-filemanager"
 msgstr ""
 
+#: modules/egroupware/desc.xml:18(rpm)
+msgid "egroupware-importexport"
+msgstr ""
+
+#: modules/egroupware/desc.xml:14(rpm)
+msgid "egroupware-infolog"
+msgstr ""
+
+#: modules/egroupware/desc.xml:25(rpm)
+msgid "egroupware-news_admin"
+msgstr ""
+
+#: modules/egroupware/desc.xml:24(rpm)
+msgid "egroupware-phpbrain"
+msgstr ""
+
+#: modules/egroupware/desc.xml:17(rpm)
+msgid "egroupware-projectmanager"
+msgstr ""
+
 #: modules/egroupware/desc.xml:20(rpm)
 msgid "egroupware-sitemgr"
+msgstr ""
+
+#: modules/egroupware/desc.xml:16(rpm)
+msgid "egroupware-syncml"
 msgstr ""
 
 #: modules/egroupware/desc.xml:21(rpm)
@@ -74,12 +78,8 @@ msgstr ""
 msgid "egroupware-wiki"
 msgstr ""
 
-#: modules/egroupware/desc.xml:24(rpm)
-msgid "egroupware-phpbrain"
-msgstr ""
-
-#: modules/egroupware/desc.xml:25(rpm)
-msgid "egroupware-news_admin"
+#: modules/egroupware/desc.xml:8(module)
+msgid "mysql"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

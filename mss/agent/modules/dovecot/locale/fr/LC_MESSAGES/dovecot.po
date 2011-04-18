@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-01 14:33+0200\n"
+"POT-Creation-Date: 2011-04-18 14:47+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,20 +18,12 @@ msgstr "Serveur POP/IMAP Dovecot"
 msgid "Installation of Dovecot"
 msgstr "Installe Dovecot"
 
-#: modules/dovecot/desc.xml:5(module)
-msgid "cyrus"
-msgstr ""
-
 #: modules/dovecot/desc.xml:6(module)
 msgid "courierimap"
 msgstr ""
 
-#: modules/dovecot/desc.xml:7(module)
-msgid "mds_mail"
-msgstr ""
-
-#: modules/dovecot/desc.xml:8(module)
-msgid "zarafa"
+#: modules/dovecot/desc.xml:5(module)
+msgid "cyrus"
 msgstr ""
 
 #: modules/dovecot/desc.xml:12(rpm)
@@ -42,7 +34,15 @@ msgstr ""
 msgid "dovecot-plugins-ldap"
 msgstr ""
 
+#: modules/dovecot/desc.xml:7(module)
+msgid "mds_mail"
+msgstr ""
+
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/dovecot/desc.xml:0(None)
 msgid "translator-credits"
+msgstr ""
+
+#: modules/dovecot/desc.xml:8(module)
+msgid "zarafa"
 msgstr ""

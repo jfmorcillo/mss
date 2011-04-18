@@ -1,0 +1,80 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2011-04-18 15:02+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/mds_dhcp/desc.xml:2(name)
+msgid "DHCP server with MDS backend"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:3(desc)
+msgid "Configure your client computers IP settings"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:6(rpm)
+msgid "dhcp-server"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:7(rpm)
+msgid "mmc-web-network"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:8(rpm)
+msgid "python-mmc-network"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:12(module)
+msgid "mds_mmc"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:14(text)
+msgid "MMC interface is not installed."
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:15(text)
+msgid "Can't continue."
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:16(text)
+msgid "MDS configuration done. (/etc/mmc/plugins/network.ini updated)"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:17(text)
+msgid "Error while configuring MDS. (/etc/mmc/plugins/network.ini)"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:18(text)
+msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:19(text)
+msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:20(text)
+msgid "Service MMC reloaded succesfully."
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:21(text)
+msgid "Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:22(text)
+msgid "DHCP module is activated in the MDS interface."
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:23(text)
+msgid "You can now configure your DHCP settings from the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_dhcp/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+
