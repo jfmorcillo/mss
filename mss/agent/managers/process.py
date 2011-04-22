@@ -24,16 +24,8 @@
 import os
 from gettext import gettext as _
 
-from classes.process import ProcessThread
+from mss.agent.classes.process import ProcessThread
 
-def expose(f):
-    "Decorator to set exposed flag on a function."
-    f.exposed = True
-    return f
-
-def is_exposed(f):
-    "Test whether another function should be publicly exposed."
-    return getattr(f, 'exposed', False)
 
 class ProcessManager:
     """ Class managing running tasks """
@@ -66,12 +58,10 @@ class ProcessManager:
         else:
             return False
 
-    @expose
     def update_medias(self):
         """ update medias lists """
         self.launch("update", ["urpmi.update", "-a"])
 
-    @expose
     def check_net(self):
         """ check if net is available """
         self.launch("net", ["ping", "-c", "2", "my.mandriva.com"])

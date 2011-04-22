@@ -28,8 +28,8 @@ import logging
 import sqlite3
 import xml.etree.ElementTree as ET
 
-from classes.media import Media
-from classes.validation import Validation
+from mss.agent.classes.media import Media
+from mss.agent.classes.validation import Validation
 
 class Module:
     """
