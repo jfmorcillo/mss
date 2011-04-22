@@ -43,7 +43,7 @@ toprod() {
 	rm -rf mss/www/cpserver
 	cp -r mss/www/cpserver-prod mss/www/cpserver
 	sed -i "s!^DEBUG.*!DEBUG = False!" mss/www/settings.py
-	sed -i 's!^\(.*logging\.\)DEBUG\(.*\)$!\1INFO\2!' mss/agent/module.py
+	sed -i 's!^\(.*logging\.\)DEBUG\(.*\)$!\1INFO\2!' mss/agent/managers/module.py
 	echo "done"
 }
 
