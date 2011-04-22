@@ -30,8 +30,8 @@ import sqlite3
 from datetime import datetime
 from sets import Set
 
-from lib.utils import grep
-from classes.module import Module
+from mss.agent.lib.utils import grep
+from mss.agent.classes.module import Module
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
 logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
@@ -97,6 +97,14 @@ class ModuleManager:
     def load_packages(self):
         self.logger.info("Load packages...")
         self.PM.load_packages(self.set_packages)
+
+    @expose
+    def check_net(self):
+        self.PM.check_net()
+
+    @expose
+    def update_medias(self):
+        self.PM.update_medias()
 
     def set_packages(self, code, output):
         if code == 0:

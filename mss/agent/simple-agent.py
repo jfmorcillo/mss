@@ -34,7 +34,6 @@ TM = TranslationManager()
 MM = ModuleManager(PM, TM)
 
 server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True)
-server.register_instance(PM)
 server.register_instance(MM)
 server.register_function(authenticate)
 
