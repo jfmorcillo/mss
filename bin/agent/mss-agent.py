@@ -5,16 +5,16 @@ import sys
 import os
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from mss.agent.managers.module import ModuleManager
-from mss.agent.managers.process import ExecManager
+from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
 from mss.agent.daemon import Daemon
 from mss.agent.lib.auth import authenticate
 
 class MSS(Daemon):
     def run(self):
-        EM = ExecManager()
+        PM = ProcessManager()
         TM = TranslationManager()
-        MM = ModuleManager(EM, TM)
+        MM = ModuleManager(PM, TM)
         server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True,
             logRequests=False)
         server.register_instance(MM)
