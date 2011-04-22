@@ -33,15 +33,8 @@ if [ ! -d mss ]; then
     exit 1
 fi
 
-todev=0
-./manage.sh isprod
-if [ $? -ne 0 ]; then
-	todev=1
-	./manage.sh toprod
-fi
-
-./bin/build_mo.sh
-
+./manage.sh toprod
+./build_mo.sh
 python setup.py sdist
 
 if [ $? -ne 0 ]; then
@@ -49,13 +42,8 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-
 cp -f packaging/$name.spec $rpmtopdir/SPECS
 mv -f dist/$name-${version}${release}.tar.gz $rpmtopdir/SOURCES
 cp -f packaging/first_time.html packaging/logrotate.conf packaging/mss.desktop packaging/mss.png  $rpmtopdir/SOURCES
 
 rpmbuild -bs --clean --rmsource $rpmtopdir/SPECS/$name.spec
-
-if [ $todev -eq 1 ]; then
-	./manage.sh todev
-fi
