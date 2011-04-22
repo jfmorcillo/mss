@@ -21,14 +21,11 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-svn up
+git pull
 
 name=mss
-version=`cat version`
-# bump release number
-release=$(( `cat release` + 1))
-svnrev=`head -n11 .svn/entries | tail -n 1`
-echo $release > release
+version=2.0
+release=`grep tag_build setup.cfg | cut -d' ' -f3`
 rpmtopdir=`rpm --eval %_topdir`
 
 if [ ! -d mss ]; then
@@ -52,15 +49,12 @@ if [ $? -ne 0 ]; then
 	exit 1
 fi
 
-sed -i 's!^\%define svnrev .*$!\%define svnrev '$svnrev'!' packaging/mss.spec
-sed -i 's!^\%define version .*$!\%define version '$version'!' packaging/mss.spec
-sed -i 's!^\%define release .*$!\%define release %mkrel '$release'!' packaging/mss.spec
 
 cp -f packaging/$name.spec $rpmtopdir/SPECS
-mv -f dist/$name-$version-r$svnrev.tar.gz $rpmtopdir/SOURCES
+mv -f dist/$name-${version}${release}.tar.gz $rpmtopdir/SOURCES
 cp -f packaging/first_time.html packaging/logrotate.conf packaging/mss.desktop packaging/mss.png  $rpmtopdir/SOURCES
 
-rpmbuild -ba --clean --rmsource $rpmtopdir/SPECS/$name.spec
+rpmbuild -bs --clean --rmsource $rpmtopdir/SPECS/$name.spec
 
 if [ $todev -eq 1 ]; then
 	./manage.sh todev

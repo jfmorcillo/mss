@@ -4,11 +4,11 @@
 import sys
 import os
 from SimpleXMLRPCServer import SimpleXMLRPCServer
-from mss.agent.module import ModuleManager
-from mss.agent.process import ExecManager
-from mss.agent.translation import TranslationManager
+from mss.agent.managers.module import ModuleManager
+from mss.agent.managers.process import ExecManager
+from mss.agent.managers.translation import TranslationManager
 from mss.agent.daemon import Daemon
-from mss.agent.auth import authenticate
+from mss.agent.lib.auth import authenticate
 
 class MSS(Daemon):
     def run(self):

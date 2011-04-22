@@ -1,7 +1,7 @@
 %define name mss
 %define version 2.0
-%define release %mkrel 50
-%define svnrev 2378
+%define pkgrelease 1
+%define release %mkrel 48
 %global username mss
 %global groupname mss
 
@@ -13,14 +13,14 @@ Summary: Mandriva Server Setup
 Name: %{name}
 Version: %{version}
 Release: %{release}
-Source0: %{name}-%{version}-r%{svnrev}.tar.gz
+Source0: %{name}-%{version}-%{pkgrelease}.tar.gz
 Source1: %{name}.desktop
 Source2: %{name}.png
 Source3: first_time.html
 Source4: logrotate.conf
 License: GPLv3 and MIT and ASL 2.0
 Group: System/Servers
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-buildroot
+BuildRoot: %{_tmppath}/%{name}-%{version}-%{pkgrelease}-buildroot
 Prefix: %{_prefix}
 BuildArch: noarch
 Vendor: Mandriva
@@ -74,7 +74,7 @@ Obsoletes: mmc-wizard
 MES5 commercial modules for MSS
 
 %prep
-%setup -q -n %{name}-%{version}-r%{svnrev}
+%setup -q -n %{name}-%{version}-%{pkgrelease}
 
 %build
 python setup.py build
@@ -242,6 +242,9 @@ rm -rf $RPM_BUILD_ROOT
 %{py_puresitedir}/mss*egg-info/
 %{py_puresitedir}/mss/agent/*.py*
 %{py_puresitedir}/mss/agent/locale/
+%{py_puresitedir}/mss/agent/classes/
+%{py_puresitedir}/mss/agent/managers/
+%{py_puresitedir}/mss/agent/lib/
 %dir %{py_puresitedir}/mss/agent/modules/
 %{py_puresitedir}/mss/www/
 %{py_puresitedir}/mss/__init__.py*
