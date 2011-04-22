@@ -1,5 +1,7 @@
-include README LICENCE version release
-recursive-include mss/ *.mo
+include README LICENCE
+recursive-include bin/ *
+recursive-include mss/ *
+recursive-exclude mss/ *.po
 recursive-exclude mss/www/cpserver-dev/ *
 recursive-exclude mss/www/cpserver-prod/ *
 recursive-exclude packaging/ *
