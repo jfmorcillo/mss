@@ -20,9 +20,3 @@
 # along with MSS; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
-
-def get_config_info():
-    return ("ldap.sh", ['dc', 'passwd'])
-
-def get_current_config():
-    return {'dc': 'toto.com', 'passwd': 'tutu'}

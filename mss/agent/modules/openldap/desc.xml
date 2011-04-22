@@ -13,14 +13,4 @@
       <rpm>openldap-mandriva-dit</rpm>
     </target>
   </packages>
-  <config>
-    <text name="dc" require="yes" default="example.com" validation="fqdn">
-        <label>LDAP root</label>
-        <help>Usually the domain name (eg: domain.com). This define the LDAP root.</help>
-    </text>
-    <password name="passwd" require="yes">
-        <label>LDAP password</label>
-        <help>The LDAP admin password.</help>
-    </password>
-  </config>
 </module>
