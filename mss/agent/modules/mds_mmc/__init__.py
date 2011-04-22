@@ -23,7 +23,7 @@
 
 import re
 import os
-from lib.utils import getINIoption
+from mss.agent.lib.utils import getINIoption
 
 def get_config_info():
 

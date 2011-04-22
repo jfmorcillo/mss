@@ -22,7 +22,7 @@
 # MA 02110-1301, USA.
 
 import os
-from lib.utils import getINIoption
+from mss.agent.lib.utils import getINIoption
 
 def get_config_info():
     return ("setup-smb.sh", ["smbdomain", "smbnetbios", "smbadmin", "smbpasswd"])
