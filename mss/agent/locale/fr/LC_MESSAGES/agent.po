@@ -1,53 +1,66 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# MSS XML-RPC agent
+# Copyright (C) 2011
+# This file is distributed under the same license as the mss-agents package.
+# Jean-Philippe Braun <jpbraun@mandriva.com> - 2010
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-31 14:45+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-04-18 15:53+0000\n"
+"Last-Translator: eon <eon@patapon.info>\n"
+"Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#~ msgid "Adding media"
-#~ msgstr "Ajout des médias"
+#: managers/process.py:102
+msgid "Adding media"
+msgstr "Ajout des médias"
 
-#~ msgid "Checking network"
-#~ msgstr "Vérification du réseau"
+#: managers/process.py:106
+msgid "Checking network"
+msgstr "Vérification du réseau"
 
-#~ msgid "Incorrect FQDN."
-#~ msgstr "Nom de domaine non valide."
+#: classes/validation.py:34
+msgid "Incorrect FQDN."
+msgstr "Nom de domaine non valide."
 
-#~ msgid "Incorrect IP address."
-#~ msgstr "Adresse IP non valide."
+#: classes/validation.py:41 classes/validation.py:50
+msgid "Incorrect IP address."
+msgstr "Adresse IP non valide."
 
-#~ msgid "Incorrect netmask address."
-#~ msgstr "Masque de sous-réseau invalide"
+#: classes/validation.py:44
+msgid "Incorrect netmask address."
+msgstr "Masque de sous-réseau invalide"
 
-#~ msgid "Installing packages"
-#~ msgstr "Installation des packages"
+#: managers/process.py:98
+msgid "Installing packages"
+msgstr "Installation des packages"
 
-#~ msgid "Loading packages list"
-#~ msgstr "Chargement de la liste de packages"
+#: managers/process.py:96
+msgid "Loading packages list"
+msgstr "Chargement de la liste de packages"
 
-#~ msgid "Password mismatch."
-#~ msgstr "Les mots de passe ne sont pas identiques."
+#: classes/module.py:288
+msgid "Password mismatch."
+msgstr "Les mots de passe ne sont pas identiques."
 
-#~ msgid "Ready"
-#~ msgstr "Prêt"
+#: managers/process.py:108
+msgid "Ready"
+msgstr "Prêt"
 
-#~ msgid "Running configuration"
-#~ msgstr "Exécution de la configuration"
+#: managers/process.py:104
+msgid "Running configuration"
+msgstr "Exécution de la configuration"
 
-#~ msgid "This field can't be empty."
-#~ msgstr "Ce champ ne peut pas être vide."
+#: classes/module.py:283
+msgid "This field can't be empty."
+msgstr "Ce champ ne peut pas être vide."
 
-#~ msgid "Updating medias"
-#~ msgstr "Mise à jour des médias"
+#: managers/process.py:100
+msgid "Updating medias"
+msgstr "Mise à jour des médias"

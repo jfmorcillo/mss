@@ -17,14 +17,17 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+cd mss/agent
+[ $? -ne 0 ] && exit 1
+
 # Agent translation
-POT="locale/agent.pot"
-rm -f ${POT}
-touch ${POT}
-find . -maxdepth 1 -iname "*.py" -exec xgettext -j -o ${POT} --language=Python --keyword=_ {} \;
+pot="locale/agent.pot"
+rm -f ${pot}
+touch ${pot}
+find . -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
 for name in `find locale -type f -name *.po`; do
 	echo -n "updating ${name}..."
-	msgmerge --update --add-location --sort-output ${name} ${POT}
+	msgmerge --update --add-location --sort-output ${name} ${pot}
 done
 
 # Modules translation
