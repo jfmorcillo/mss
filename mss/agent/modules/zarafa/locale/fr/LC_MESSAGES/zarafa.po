@@ -1,18 +1,20 @@
+#
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-04-18 14:47+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-04-18 13:57+0000\n"
+"Last-Translator: eon <eon@patapon.info>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: \n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: modules/zarafa/desc.xml:83(text)
 msgid "- ActiveSync support is enabled"
-msgstr ""
+msgstr "- Le support ActiveSync est activé"
 
 #: modules/zarafa/desc.xml:81(text)
 msgid "- IMAP and IMAPS protocols are enabled"
@@ -116,7 +118,7 @@ msgstr "Mes réseaux"
 
 #: modules/zarafa/desc.xml:37(label)
 msgid "MySQL root password"
-msgstr "Mot de pass root MySQL"
+msgstr "Mot de passe root MySQL"
 
 #: modules/zarafa/desc.xml:42(help)
 msgid "MySQL user password for the zarafa database"
@@ -131,7 +133,7 @@ msgid ""
 "Specify which clients are authorized to send mails through the mail server. "
 "If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
 msgstr ""
-"spécifiez les réseaux autorisés à envoyer des mails par votre serveur. si "
+"Spécifiez les réseaux autorisés à envoyer des mails par votre serveur. si "
 "votre adresse réseau est 192.168.0.0, spécifiez : 192.168.0.0/255.255.255.0"
 
 #: modules/zarafa/desc.xml:69(help)
@@ -255,6 +257,3 @@ msgstr ""
 #: modules/zarafa/desc.xml:15(file)
 msgid "zarafa.html"
 msgstr ""
-
-#~ msgid "Install Zarafa suite with MDS backend"
-#~ msgstr "Installer Zarafa avec support MDS"

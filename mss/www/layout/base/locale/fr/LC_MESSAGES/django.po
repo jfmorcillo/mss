@@ -2,37 +2,28 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
-#, fuzzy
+# 
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
+"Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-03-31 16:28+0200\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2011-04-18 16:11+0200\n"
+"PO-Revision-Date: 2011-04-18 14:13+0000\n"
+"Last-Translator: eon <eon@patapon.info>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: config.py:29 config.py:33
 msgid "Mandriva Directory Server"
 msgstr ""
 
 #: config.py:30
-msgid ""
-"MDS is an enterprise directory platform based on LDAP designed to manage "
-"identities, and various network services commonly used.<br/><br/>In "
-"addition, MDS is controlled through a modern and friendly web interface.<br /"
-"><br />For an overview of MDS, visit the <a href=\"http://mds.mandriva.org/"
-"\">project website</a>."
-msgstr ""
-"Mandriva Directory Server est un annuaire d'entreprise permettant de gérer "
-"les comptes et profils des utilisateurs d'un réseau, ainsi que différents "
-"services réseaux communément utilisés.<br/><br/>MDS se pilote par le biais "
-"d'une interface web moderne et conviviale. Pour plus d'informations visitez "
-"le <a href=\"http://mds.mandriva.org/\">site du projet</a>."
+msgid "MDS is an enterprise directory platform based on LDAP designed to manage identities, and various network services commonly used.<br/><br/>In addition, MDS is controlled through a modern and friendly web interface.<br /><br />For an overview of MDS, visit the <a href=\"http://mds.mandriva.org/\">project website</a>."
+msgstr "Mandriva Directory Server est un annuaire d'entreprise permettant de gérer les comptes et profils des utilisateurs d'un réseau, ainsi que différents services réseaux communément utilisés.<br/><br/>MDS se pilote par le biais d'une interface web moderne et conviviale. Pour plus d'informations visitez le <a href=\"http://mds.mandriva.org/\">site du projet</a>."
 
 #: config.py:34
 msgid "Required base components"
@@ -75,19 +66,8 @@ msgid "Pulse 2 - Coming soon"
 msgstr "Pulse 2 - Bientôt disponible"
 
 #: config.py:54
-msgid ""
-"Pulse 2 is an Open Source tool that simplifies application deployment, "
-"inventory, and maintenance of an IT network.<br />It has been designed to "
-"handle from a few computers on a single site to 100 000+ computers spread on "
-"many sites.<br /><br />For more information on Pulse 2, visit the <a href="
-"\"http://pulse2.mandriva.org/\">project website</a>."
-msgstr ""
-"Pulse 2 offre des fonctionnalités d'inventaire, de maintenance, de mise à "
-"jour et de prise de contrôle sur des parcs d'une dizaine à plusieurs "
-"milliers de machines. Pulse 2 est conçu pour gérer des parcs de plus de 100 "
-"000 machines réparties sur plusieurs sites.<br /><br /> Pour plus "
-"d'information sur Pulse 2, visitez le <a href=\"http://pulse2.mandriva.org/"
-"\">site du projet</a>."
+msgid "Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href=\"http://pulse2.mandriva.org/\">project website</a>."
+msgstr "Pulse 2 offre des fonctionnalités d'inventaire, de maintenance, de mise à jour et de prise de contrôle sur des parcs d'une dizaine à plusieurs milliers de machines. Pulse 2 est conçu pour gérer des parcs de plus de 100 000 machines réparties sur plusieurs sites.<br /><br /> Pour plus d'information sur Pulse 2, visitez le <a href=\"http://pulse2.mandriva.org/\">site du projet</a>."
 
 #: config.py:57
 msgid "Server services and tools"
