@@ -25,6 +25,7 @@ fi
 
 mdssuffix=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
 mdspass=`grep '^password' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+mdspass_e=`escape_sed $mdspass`
 mdsserver=127.0.0.1
 
 smbdomain="$1"
@@ -79,7 +80,7 @@ sed -i "s/\@SERVER\@/$mdsserver/" /etc/smbldap-tools/smbldap.conf
 backup /etc/smbldap-tools/smbldap_bind.conf
 cat $smbldap_bind_template > /etc/smbldap-tools/smbldap_bind.conf 
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/smbldap-tools/smbldap_bind.conf
-sed -i "s/\@PASSWORD\@/$mdspass/" /etc/smbldap-tools/smbldap_bind.conf
+sed -i "s/\@PASSWORD\@/$mdspass_e/" /etc/smbldap-tools/smbldap_bind.conf
 if [ $? -eq 0 ]; then echo "0smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf updated)";
 else echo "2Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf)"; exit 1
 fi
