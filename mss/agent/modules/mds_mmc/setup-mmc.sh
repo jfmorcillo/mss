@@ -28,9 +28,10 @@ myfqdn=`hostname -f`
 if [ -z "$myfqdn" ]; then
 	myfqdn="localhost"
 fi
-mydomain="$1"
-mypass="$2"
-ppolicy="$3"
+mydomain=$1
+mypass_e=`escape_sed $2`
+mypass=$2
+ppolicy=$3
 
 # MDS schemas
 cp /usr/share/doc/python-mmc-base*/contrib/ldap/dhcp.schema /etc/openldap/schema/
@@ -55,7 +56,7 @@ backup /etc/mmc/plugins/base.ini
 #### Now /etc/mmc/plugins/base.ini
 cat $base_mds_template > /etc/mmc/plugins/base.ini
 sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/base.ini
-sed -i "s/\@PASSWORD\@/$mypass/" /etc/mmc/plugins/base.ini
+sed -i "s/\@PASSWORD\@/$mypass_e/" /etc/mmc/plugins/base.ini
 mkdir /home/archives > /dev/null 2>&1
 
 ## ppolicy
