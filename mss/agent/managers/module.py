@@ -157,18 +157,24 @@ class ModuleManager:
         """ return a module list of current conflicts
             with module """
         for m in module.conflicts:
-            m = self.modules[m]
-            if not m in conflicts and m.configured:
-                conflicts.append(m)
-                self.logger.debug("Conflict with : %s" % str(m.id))
-                conflicts = self.get_conflicts(conflicts, m)
+            try:
+                m = self.modules[m]
+                if not m in conflicts and m.configured:
+                    conflicts.append(m)
+                    self.logger.debug("Conflict with : %s" % str(m.id))
+                    conflicts = self.get_conflicts(conflicts, m)
+            except KeyError:
+                pass
         for m in module.deps:
-            m = self.modules[m]
-            for m1 in m.conflicts:
-                m1 = self.modules[m1]
-                if not m1 in conflicts and m1.configured:
-                    conflicts.append(m1)
-                    self.logger.debug("Conflict with : %s" % str(m1.id))
+            try:
+                m = self.modules[m]
+                for m1 in m.conflicts:
+                    m1 = self.modules[m1]
+                    if not m1 in conflicts and m1.configured:
+                        conflicts.append(m1)
+                        self.logger.debug("Conflict with : %s" % str(m1.id))
+            except KeyError:
+                pass
         return conflicts
 
     def get_module(self, m):
