@@ -5,6 +5,12 @@
         <module>mds_mmc</module>
         <module>mysql</module>
     </deps>
+    <packages>
+        <target name="all">
+            <rpm>python-sqlalchemy</rpm>
+            <rpm>python-mysql</rpm>
+        </target>
+    </packages>
     <config>
         <password name="myrootpasswd" require="yes">
             <label>MySQL root password</label>
