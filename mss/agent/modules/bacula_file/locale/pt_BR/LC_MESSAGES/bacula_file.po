@@ -1,0 +1,33 @@
+# 
+#   <andre@mandriva.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-06-21 18:34+0000\n"
+"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/bacula_file/desc.xml2(name)
+msgid "Bacula File Daemon"
+msgstr "Bacula File Daemon"
+
+#: modules/bacula_file/desc.xml3(desc)
+msgid "Background application which reads files from data source"
+msgstr "Aplicação de fundo que lê arquivos a partir de uma fonte de dados"
+
+#: modules/bacula_file/desc.xml6(rpm)
+msgid "bacula-fd"
+msgstr "bacula-fd"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/bacula_file/desc.xml0(None)
+msgid "translator-credits"
+msgstr "tradutores"
+
+

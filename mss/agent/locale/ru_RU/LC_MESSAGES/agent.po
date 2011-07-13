@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-13 09:42+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: classes/validation.py:34
+msgid "Incorrect FQDN."
+msgstr ""
+
+#: classes/validation.py:41 classes/validation.py:50
+msgid "Incorrect IP address."
+msgstr ""
+
+#: classes/validation.py:44
+msgid "Incorrect netmask address."
+msgstr ""
+
+#: classes/module.py:283
+msgid "This field can't be empty."
+msgstr ""
+
+#: classes/module.py:288
+msgid "Password mismatch."
+msgstr ""
+
+#: managers/process.py:96
+msgid "Loading packages list"
+msgstr ""
+
+#: managers/process.py:98
+msgid "Installing packages"
+msgstr ""
+
+#: managers/process.py:100
+msgid "Updating medias"
+msgstr ""
+
+#: managers/process.py:102
+msgid "Adding media"
+msgstr ""
+
+#: managers/process.py:104
+msgid "Running configuration"
+msgstr ""
+
+#: managers/process.py:106
+msgid "Checking network"
+msgstr ""
+
+#: managers/process.py:108
+msgid "Ready"
+msgstr ""
+
+

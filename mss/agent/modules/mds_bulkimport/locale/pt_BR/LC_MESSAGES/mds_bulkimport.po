@@ -1,0 +1,41 @@
+# 
+#   <andre@mandriva.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-06-21 18:12+0000\n"
+"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/mds_bulkimport/desc.xml2(name)
+msgid "Bulk import of accounts"
+msgstr "Importação de contas em massa"
+
+#: modules/mds_bulkimport/desc.xml3(desc)
+msgid "Load/Modify accounts in MDS from CSV files"
+msgstr "Carregar/Modificar contas em MDS a partir de arquivos CSV"
+
+#: modules/mds_bulkimport/desc.xml6(rpm)
+msgid "mmc-web-bulkimport"
+msgstr "mmc-web-bulkimport"
+
+#: modules/mds_bulkimport/desc.xml7(rpm)
+msgid "python-mmc-bulkimport"
+msgstr "python-mmc-bulkimport"
+
+#: modules/mds_bulkimport/desc.xml11(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_bulkimport/desc.xml0(None)
+msgid "translator-credits"
+msgstr "tradutores"
+
+

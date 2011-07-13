@@ -1,0 +1,113 @@
+# 
+#   <andre@mandriva.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-12 18:10+0000\n"
+"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/mds_dns/desc.xml2(name)
+msgid "DNS server with MDS backend"
+msgstr "Servidor DNS com backend MDS"
+
+#: modules/mds_dns/desc.xml3(desc)
+msgid "Resolve computer names on your network"
+msgstr "Resolver nomes de computador em sua rede"
+
+#: modules/mds_dns/desc.xml6(rpm)
+msgid "bind"
+msgstr "bind"
+
+#: modules/mds_dns/desc.xml7(rpm)
+msgid "bind-utils"
+msgstr "bind-utils"
+
+#: modules/mds_dns/desc.xml8(rpm)
+msgid "mmc-web-network"
+msgstr "mmc-web-network"
+
+#: modules/mds_dns/desc.xml9(rpm)
+msgid "python-mmc-network"
+msgstr "python-mmc-network"
+
+#: modules/mds_dns/desc.xml13(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_dns/desc.xml17(label)
+msgid "My networks"
+msgstr "Minhas redes"
+
+#: modules/mds_dns/desc.xml18(help)
+msgid "Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0."
+msgstr "Especificar quais redes estão autorizadas a resolver consultas externas com o seu servidor DNS (recursão). por exemplo: 192.168.0.0/255.255.255.0."
+
+#: modules/mds_dns/desc.xml21(label)
+msgid "Forwarders"
+msgstr "Encaminhadores"
+
+#: modules/mds_dns/desc.xml22(help)
+msgid "Forward external DNS queries to DNS of your choice"
+msgstr "Encaminhar consultas de DNS externo para o DNS de sua escolha"
+
+#: modules/mds_dns/desc.xml25(text)
+msgid "MDS configuration done. (/etc/mmc/plugins/network.ini updated)"
+msgstr "Configuração MDS concluída. (/etc/mmc/plugins/network.ini atualizado)"
+
+#: modules/mds_dns/desc.xml26(text)
+msgid "Error while configuring MDS. (/etc/mmc/plugins/network.ini)"
+msgstr "Erro ao configurar o MDS. (/etc/mmc/plugins/network.ini)"
+
+#: modules/mds_dns/desc.xml27(text)
+msgid "No networks are authorized to make external queries."
+msgstr "Nenhuma rede está autorizada a fazer consultas externas."
+
+#: modules/mds_dns/desc.xml28(text)
+msgid "Service MMC reloaded succesfully."
+msgstr "O serviço MMC foi recarregado com sucesso."
+
+#: modules/mds_dns/desc.xml29(text)
+msgid "Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"
+msgstr "O Serviço MMC falhou ao reiniciar. Verifique /var/log/mmc/mmc-agent.log"
+
+#: modules/mds_dns/desc.xml30(text)
+msgid "Service named reloaded succesfully."
+msgstr "O serviço chamado foi recarregado com sucesso."
+
+#: modules/mds_dns/desc.xml31(text)
+msgid "Service named fails restarting. Check /var/log/syslog"
+msgstr "O serviço chamado falhou ao reiniciar. Verifique /var/log/syslog"
+
+#: modules/mds_dns/desc.xml32(text)
+msgid "DNS module is activated in the MDS interface."
+msgstr "O módulo DNS está ativado na interface do MDS."
+
+#: modules/mds_dns/desc.xml33(text)
+msgid "Your DNS will forward external queries to :"
+msgstr "Seu DNS irá encaminhar consultas externas para:"
+
+#: modules/mds_dns/desc.xml34(text)
+msgid "The following networks are able to query your DNS for external domains :"
+msgstr "As seguintes redes são capazes de consultar o seu DNS para domínios externos:"
+
+#: modules/mds_dns/desc.xml35(text)
+msgid "You can now add DNS zones from the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr "Agora você pode adicionar zonas DNS a partir da interface MDS em http://@HOSTNAME@/mmc/"
+
+#: modules/mds_dns/desc.xml36(text)
+msgid "Make sure you have enabled the DNS service (port 53) on your firewall."
+msgstr "Certifique-se que você habilitou o serviço de DNS (porta 53) em seu firewall."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_dns/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+

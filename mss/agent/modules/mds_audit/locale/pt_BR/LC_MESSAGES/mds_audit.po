@@ -1,0 +1,81 @@
+# 
+#   <andre@mandriva.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-12 17:20+0000\n"
+"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/mds_audit/desc.xml2(name)
+msgid "Audit module for MDS"
+msgstr "Módulo de auditoria para o MDS"
+
+#: modules/mds_audit/desc.xml3(desc)
+msgid "Track any changes made on the MDS interface"
+msgstr "Acompanhar todas as mudanças feitas na interface do MDS"
+
+#: modules/mds_audit/desc.xml5(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_audit/desc.xml6(module)
+msgid "mysql"
+msgstr "mysql"
+
+#: modules/mds_audit/desc.xml10(label)
+msgid "MySQL root password"
+msgstr "Senha de root do MySQL"
+
+#: modules/mds_audit/desc.xml11(help)
+msgid "Used to create the audit database"
+msgstr "Usado para criar o banco de dados de auditoria"
+
+#: modules/mds_audit/desc.xml14(label)
+msgid "MySQL audit password"
+msgstr "Senha da auditoria MySQL"
+
+#: modules/mds_audit/desc.xml15(help)
+msgid "MySQL user password for the audit database"
+msgstr "Senha do usuário MySQL para o banco de dados de auditoria"
+
+#: modules/mds_audit/desc.xml18(text)
+msgid "Cleaning up..."
+msgstr "Limpando..."
+
+#: modules/mds_audit/desc.xml19(text)
+msgid "The current MySQL password is not valid."
+msgstr "A senha atual do MySQL não é válida."
+
+#: modules/mds_audit/desc.xml20(text)
+msgid "Create audit database"
+msgstr "Criar banco de dados de auditoria"
+
+#: modules/mds_audit/desc.xml21(text)
+msgid "Grant privileges on database"
+msgstr "Conceder privilégios no banco de dados"
+
+#: modules/mds_audit/desc.xml22(text)
+msgid "Service MMC started succesfully."
+msgstr "Serviço MMC iniciado com êxito."
+
+#: modules/mds_audit/desc.xml23(text)
+msgid "Service MMC fails starting. Check"
+msgstr "Serviço MMC falhou na inicialização. Verifique"
+
+#: modules/mds_audit/desc.xml24(text)
+msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr "Módulo de auditoria está ativado na interface do MDS: http://@HOSTNAME@/mmc/"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_audit/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+

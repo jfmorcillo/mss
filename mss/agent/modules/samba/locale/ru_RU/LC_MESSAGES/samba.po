@@ -1,0 +1,53 @@
+# 
+#   <i.sence.i@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-07 08:43+0000\n"
+"Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: modules/samba/desc.xml2(name)
+msgid "SAMBA file server"
+msgstr "Файловый сервер SAMBA"
+
+#: modules/samba/desc.xml3(desc)
+msgid "Share files and printers on a Microsoft network"
+msgstr "Предоставить общий доступ к файлам и принтерам в сети Microsoft"
+
+#: modules/samba/desc.xml5(module)
+msgid "mds_smb"
+msgstr "mds_smb"
+
+#: modules/samba/desc.xml9(rpm)
+msgid "samba-server"
+msgstr "samba-server"
+
+#: modules/samba/desc.xml10(rpm)
+msgid "samba-client"
+msgstr "samba-client"
+
+#: modules/samba/desc.xml11(rpm)
+msgid "samba-common"
+msgstr "samba-common"
+
+#: modules/samba/desc.xml12(rpm)
+msgid "samba-doc"
+msgstr "samba-doc"
+
+#: modules/samba/desc.xml13(rpm)
+msgid "smbldap-tools"
+msgstr "smbldap-tools"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/samba/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+
