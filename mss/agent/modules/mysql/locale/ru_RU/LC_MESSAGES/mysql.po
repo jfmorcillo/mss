@@ -1,0 +1,149 @@
+# 
+#   <i.sence.i@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-07 07:42+0000\n"
+"Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: modules/mysql/desc.xml2(name)
+msgid "MySQL database"
+msgstr "База данных MySQL"
+
+#: modules/mysql/desc.xml3(desc)
+msgid "MySQL relational database"
+msgstr "Реляционная база данных MySQL"
+
+#: modules/mysql/desc.xml6(rpm)
+msgid "mysql"
+msgstr "mysql"
+
+#: modules/mysql/desc.xml7(rpm)
+msgid "mysql-client"
+msgstr "mysql-client"
+
+#: modules/mysql/desc.xml11(module)
+msgid "mysqlmax"
+msgstr "mysqlmax"
+
+#: modules/mysql/desc.xml15(label)
+msgid "Current password"
+msgstr "Текущий пароль"
+
+#: modules/mysql/desc.xml16(help)
+msgid "Current MySQL root password. Leave blank for first installation."
+msgstr "Текущий пароль root в MySQL. Оставьте пустым при первой установке."
+
+#: modules/mysql/desc.xml19(label)
+msgid "New password"
+msgstr "Новый пароль"
+
+#: modules/mysql/desc.xml20(help)
+msgid "New MySQL root password. Set here the new password."
+msgstr "Новый пароль root в MySQL. Установить здесь новый пароль."
+
+#: modules/mysql/desc.xml23(text)
+msgid "OK, successfully used password, moving on..."
+msgstr "Хорошо, успешно используется пароль, перейти..."
+
+#: modules/mysql/desc.xml24(text)
+msgid "Invalid current MySQL password."
+msgstr "Недопустимый текущий MySQL пароль ."
+
+#: modules/mysql/desc.xml25(text)
+msgid "Setting the root password ensures that nobody can log into the MySQL"
+msgstr "Установка пароля гарантирует, что никто не может войти в MySQL"
+
+#: modules/mysql/desc.xml26(text)
+msgid "root user without the proper authorisation."
+msgstr "root-пользователь без соответствующей ауторизации."
+
+#: modules/mysql/desc.xml27(text)
+msgid "Password updated successfully!"
+msgstr "Пароль успешно обновлен!"
+
+#: modules/mysql/desc.xml28(text)
+msgid "Reloading privilege tables.."
+msgstr "Перезагрузка таблиц привилегий.."
+
+#: modules/mysql/desc.xml29(text)
+msgid "Password update failed!"
+msgstr "Не удалось обновить пароль!"
+
+#: modules/mysql/desc.xml30(text)
+msgid "Removing anonymous users"
+msgstr "Удаление скрытых пользователей"
+
+#: modules/mysql/desc.xml31(text)
+msgid "... Success!"
+msgstr "... Успешно!"
+
+#: modules/mysql/desc.xml32(text)
+msgid "... Failed!"
+msgstr "... Сбой!"
+
+#: modules/mysql/desc.xml33(text)
+msgid "Disallowing root login remotely"
+msgstr "Запрет удаленного входа под root"
+
+#: modules/mysql/desc.xml34(text)
+msgid "Remove test database and access to it"
+msgstr "Удаление тестовой базы данных и доступа к ней"
+
+#: modules/mysql/desc.xml35(text)
+msgid "- Dropping test database..."
+msgstr "Удаление тестовой базы данных "
+
+#: modules/mysql/desc.xml36(text)
+msgid "... Failed! Not critical, keep moving..."
+msgstr "... Сбой! Не критически, продолжать..."
+
+#: modules/mysql/desc.xml37(text)
+msgid "- Removing privileges on test database..."
+msgstr "- Удаление привилегий на тестовой базе данных..."
+
+#: modules/mysql/desc.xml38(text)
+msgid "Reloading the privilege tables"
+msgstr "Перезагрузка таблиц привилегий"
+
+#: modules/mysql/desc.xml39(text)
+msgid "Aborting!"
+msgstr "Прерывание!"
+
+#: modules/mysql/desc.xml40(text)
+msgid "Cleaning up..."
+msgstr "Очистка..."
+
+#: modules/mysql/desc.xml41(text)
+msgid "MySQL is running"
+msgstr "MySQL работает"
+
+#: modules/mysql/desc.xml42(text)
+msgid "- A password has been set for the root user"
+msgstr "- Был установлен пароль для root пользователя"
+
+#: modules/mysql/desc.xml43(text)
+msgid "- Anonymous users were removed"
+msgstr "- Скрытые пользователи были удалены"
+
+#: modules/mysql/desc.xml44(text)
+msgid "- Test database has been removed"
+msgstr "- Тестовая база данных была удалена"
+
+#: modules/mysql/desc.xml45(text)
+msgid "- Remote login for root has been disabled"
+msgstr "- Удаленный вход под root был отключен"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mysql/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+

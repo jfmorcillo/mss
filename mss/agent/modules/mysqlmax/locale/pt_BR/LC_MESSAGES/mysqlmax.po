@@ -1,0 +1,45 @@
+# 
+#   <andre@mandriva.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-06-21 18:10+0000\n"
+"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/mysqlmax/desc.xml2(name)
+msgid "MySQL-Max server"
+msgstr "Servidor MySQL-Max"
+
+#: modules/mysqlmax/desc.xml3(desc)
+msgid "Alternative MySQL server binary that supports features like transactional tables"
+msgstr "Servidor MySQL binário alternativo que suporta recursos como tabelas transacionais"
+
+#: modules/mysqlmax/desc.xml5(module)
+msgid "mysql"
+msgstr "mysql"
+
+#: modules/mysqlmax/desc.xml9(rpm)
+msgid "mysql-max"
+msgstr "mysql-max"
+
+#: modules/mysqlmax/desc.xml10(rpm)
+msgid "mysql-client"
+msgstr "mysql-client"
+
+#: modules/mysqlmax/desc.xml11(rpm)
+msgid "phpmyadmin"
+msgstr "phpmyadmin"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mysqlmax/desc.xml0(None)
+msgid "translator-credits"
+msgstr "tradutores"
+
+

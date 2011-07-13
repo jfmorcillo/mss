@@ -1,0 +1,165 @@
+# 
+#   <i.sence.i@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-06 15:48+0000\n"
+"Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: modules/mds_mail/desc.xml2(name)
+msgid "Mail server with MDS backend"
+msgstr "Почтовый сервер с MDS backend"
+
+#: modules/mds_mail/desc.xml3(desc)
+msgid "Mail/POP/IMAP server with virtual domains, anti-virus and anti-spam toolkits"
+msgstr "Mail/POP/IMAP сервер с виртуальными доменами, антивирусными и антиспам-инструментариями"
+
+#: modules/mds_mail/desc.xml6(rpm)
+msgid "postfix"
+msgstr "postfix"
+
+#: modules/mds_mail/desc.xml7(rpm)
+msgid "mmc-web-mail"
+msgstr "mmc-web-mail"
+
+#: modules/mds_mail/desc.xml8(rpm)
+msgid "python-mmc-mail"
+msgstr "python-mmc-mail"
+
+#: modules/mds_mail/desc.xml9(rpm)
+msgid "amavisd-new"
+msgstr "amavisd-new"
+
+#: modules/mds_mail/desc.xml10(rpm)
+msgid "spamassassin"
+msgstr "spamassassin"
+
+#: modules/mds_mail/desc.xml11(rpm)
+msgid "spamassassin-tools"
+msgstr "spamassassin-tools"
+
+#: modules/mds_mail/desc.xml12(rpm)
+msgid "clamd"
+msgstr "clamd"
+
+#: modules/mds_mail/desc.xml13(rpm)
+msgid "dovecot"
+msgstr "dovecot"
+
+#: modules/mds_mail/desc.xml14(rpm)
+msgid "dovecot-plugins-ldap"
+msgstr "dovecot-plugins-ldap"
+
+#: modules/mds_mail/desc.xml18(module)
+msgid "zarafa"
+msgstr "zarafa"
+
+#: modules/mds_mail/desc.xml21(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_mail/desc.xml25(label)
+msgid "My hostname"
+msgstr "Мое имя хоста"
+
+#: modules/mds_mail/desc.xml26(help)
+msgid "The host FQDN (eg: smtp.domain.com)"
+msgstr "FQDN хоста (eg: smtp.domain.com)"
+
+#: modules/mds_mail/desc.xml29(label)
+msgid "My networks"
+msgstr "Мои сети"
+
+#: modules/mds_mail/desc.xml30(help)
+msgid "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
+msgstr "Укажите, какие клиенты упол номочены отправлять почту через почтовый сервер. Если адрес вашей сети - 192.168.0.0, укажите - 192.168.0.0/255.255.255.0"
+
+#: modules/mds_mail/desc.xml33(label)
+msgid "Protocols supported"
+msgstr "Поддерживаемые протоколы"
+
+#: modules/mds_mail/desc.xml34(help)
+msgid "Protocols that the dovecot server will provide."
+msgstr "Протоколы, которые обеспечивает сервер dovecot."
+
+#: modules/mds_mail/desc.xml35(option)
+msgid "IMAPS and POP3S"
+msgstr "IMAPS и POP3S"
+
+#: modules/mds_mail/desc.xml36(option)
+msgid "IMAPS"
+msgstr "IMAPS"
+
+#: modules/mds_mail/desc.xml37(option)
+msgid "POP3S"
+msgstr "POP3S"
+
+#: modules/mds_mail/desc.xml40(text)
+msgid "MMC interface is not installed."
+msgstr "MMC-интерфейс не установлен."
+
+#: modules/mds_mail/desc.xml41(text)
+msgid "Can't continue."
+msgstr "Невозможно продолжить."
+
+#: modules/mds_mail/desc.xml42(text)
+msgid "Razor configured successfully."
+msgstr "Razor сконфигурирован успешно."
+
+#: modules/mds_mail/desc.xml43(text)
+msgid "Failed to register razor. Try to run as root"
+msgstr "Не удалось зарегистрировать razor. Попробуйте запустить с правами администратора"
+
+#: modules/mds_mail/desc.xml44(text)
+msgid "Service"
+msgstr "Служба"
+
+#: modules/mds_mail/desc.xml45(text)
+msgid "reloaded succesfully."
+msgstr "перезагружено успешно."
+
+#: modules/mds_mail/desc.xml46(text)
+msgid "fails restarting. Check"
+msgstr "сбой перезапуска. Выполнить проверку"
+
+#: modules/mds_mail/desc.xml47(text)
+msgid "Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr "почтовый модуль активирован в MDS-интерфейсе: http://@HOSTNAME@/mmc/"
+
+#: modules/mds_mail/desc.xml48(text)
+msgid "You can create mail domains in the MDS interface and specify mail adresses to users and groups."
+msgstr "Вы можете создать почтовые домены в интерфейсе MDS и указать почтовый адрес для пользователей и групп."
+
+#: modules/mds_mail/desc.xml49(text)
+msgid "- mails are stored in /home/vmail/user/Maildir"
+msgstr "- почта хранится в /home/vmail/user/Maildir"
+
+#: modules/mds_mail/desc.xml50(text)
+msgid "- SSL is enabled on the smtp server"
+msgstr "- SSL включен на smtp-сервере "
+
+#: modules/mds_mail/desc.xml51(text)
+msgid "- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"
+msgstr "- Non-SSL соединения на внешних интерфейсах отключены по умолчанию на сервере IMAP"
+
+#: modules/mds_mail/desc.xml52(text)
+msgid "- Networks authorized to send mail without authentication :"
+msgstr "- Сети, имеющие право отправлять почту без аутентификации:"
+
+#: modules/mds_mail/desc.xml53(text)
+msgid "Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
+msgstr "Убедитесь, что вы включили почтовые службы (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) на брандмауэре."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_mail/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+

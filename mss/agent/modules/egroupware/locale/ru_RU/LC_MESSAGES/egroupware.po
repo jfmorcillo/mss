@@ -1,0 +1,93 @@
+# 
+#   <i.sence.i@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-01 12:20+0000\n"
+"Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: modules/egroupware/desc.xml2(name)
+msgid "eGroupware (Include : Calendar, AdressBook, eMail, InfLog)"
+msgstr "eGroupware (Содержит календарь, контакты, веб-почту, ИнфоЖурнал)"
+
+#: modules/egroupware/desc.xml3(desc)
+msgid "Install eGroupware base system"
+msgstr "Установить базовую систему eGroupware"
+
+#: modules/egroupware/desc.xml5(url)
+msgid "dl.mandriva.com/mes5/egroupware"
+msgstr "dl.mandriva.com/mes5/egroupware"
+
+#: modules/egroupware/desc.xml8(module)
+msgid "mysql"
+msgstr "mysql"
+
+#: modules/egroupware/desc.xml12(rpm)
+msgid "egroupware"
+msgstr "egroupware"
+
+#: modules/egroupware/desc.xml13(rpm)
+msgid "egroupware-addressbook"
+msgstr "egroupware-addressbook"
+
+#: modules/egroupware/desc.xml14(rpm)
+msgid "egroupware-infolog"
+msgstr "egroupware-infolog"
+
+#: modules/egroupware/desc.xml15(rpm)
+msgid "egroupware-felamimail"
+msgstr "egroupware-felamimail"
+
+#: modules/egroupware/desc.xml16(rpm)
+msgid "egroupware-syncml"
+msgstr "egroupware-syncml"
+
+#: modules/egroupware/desc.xml17(rpm)
+msgid "egroupware-projectmanager"
+msgstr "egroupware-projectmanager"
+
+#: modules/egroupware/desc.xml18(rpm)
+msgid "egroupware-importexport"
+msgstr "egroupware-importexport"
+
+#: modules/egroupware/desc.xml19(rpm)
+msgid "egroupware-filemanager"
+msgstr "egroupware-filemanager"
+
+#: modules/egroupware/desc.xml20(rpm)
+msgid "egroupware-sitemgr"
+msgstr "egroupware-sitemgr"
+
+#: modules/egroupware/desc.xml21(rpm)
+msgid "egroupware-timesheet"
+msgstr "egroupware-timesheet"
+
+#: modules/egroupware/desc.xml22(rpm)
+msgid "egroupware-tracker"
+msgstr "egroupware-tracker"
+
+#: modules/egroupware/desc.xml23(rpm)
+msgid "egroupware-wiki"
+msgstr "egroupware-wiki"
+
+#: modules/egroupware/desc.xml24(rpm)
+msgid "egroupware-phpbrain"
+msgstr "egroupware-phpbrain"
+
+#: modules/egroupware/desc.xml25(rpm)
+msgid "egroupware-news_admin"
+msgstr "egroupware-news_admin"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/egroupware/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+

@@ -1,0 +1,37 @@
+# 
+#   <i.sence.i@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"PO-Revision-Date: 2011-07-07 07:59+0000\n"
+"Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: modules/nfs/desc.xml2(name)
+msgid "NFS server"
+msgstr "сервер NFS"
+
+#: modules/nfs/desc.xml3(desc)
+msgid "Share files with NFS"
+msgstr "Предоставить общий доступ к файлам с помощью NFS"
+
+#: modules/nfs/desc.xml6(rpm)
+msgid "nfs-utils"
+msgstr "nfs-utils"
+
+#: modules/nfs/desc.xml7(rpm)
+msgid "nfs-utils-clients"
+msgstr "nfs-utils-clients"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/nfs/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+

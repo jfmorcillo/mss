@@ -1,38 +1,40 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "POT-Creation-Date: 2011-06-10 12:21+0200\n"
-"PO-Revision-Date: 2011-04-18 13:44+0000\n"
-"Last-Translator: eon <eon@patapon.info>\n"
+"PO-Revision-Date: 2011-06-17 07:00+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/dns/desc.xml:2(name)
+#: modules/dns/desc.xml2(name)
 msgid "DNS server"
 msgstr "Serveur DNS"
 
-#: modules/dns/desc.xml:3(desc)
+#: modules/dns/desc.xml3(desc)
 msgid "Resolve hostname with bind"
 msgstr "Résous les noms de machine avec le logiciel bind"
 
-#: modules/dns/desc.xml:9(rpm)
-msgid "bind"
-msgstr ""
-
-#: modules/dns/desc.xml:10(rpm)
-msgid "bind-utils"
-msgstr ""
-
-#: modules/dns/desc.xml:5(module)
+#: modules/dns/desc.xml5(module)
 msgid "mds_dns"
 msgstr ""
 
+#: modules/dns/desc.xml9(rpm)
+msgid "bind"
+msgstr ""
+
+#: modules/dns/desc.xml10(rpm)
+msgid "bind-utils"
+msgstr ""
+
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/dns/desc.xml:0(None)
+#: modules/dns/desc.xml0(None)
 msgid "translator-credits"
 msgstr ""
+
+

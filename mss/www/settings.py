@@ -49,6 +49,8 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = (
   ('en', 'English'),
   ('fr_FR', 'Français'),
+  ('ru_RU', 'Russian'),
+  ('pt_BR', 'Português do Brasil'),
 )
 
 SECRET_KEY = 'eq*6patei-(m5jat5&s50f#0%(g$plt@q!_n4g!d(^w=f3kgfc'

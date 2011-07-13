@@ -1,0 +1,403 @@
+# MSS.
+# Copyright (C) 2011
+# This file is distributed under the same license as the mss package.
+# 
+#   <i.sence.i@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-04-18 16:12+0200\n"
+"PO-Revision-Date: 2011-07-07 10:39+0000\n"
+"Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
+"Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru_RU\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: views.py:139
+msgid "The XML-RPC server is not responding"
+msgstr "XML-RPC сервер не отвечает"
+
+#: templates/base.html:23
+msgid "Hide log"
+msgstr "Скрыть журнал"
+
+#: templates/base.html:26 templates/config_run.html:148
+#: templates/install.html:53 templates/media_add.html:80
+msgid "Show log"
+msgstr "Посмотреть журнал"
+
+#: templates/base.html:42
+msgid "Ready"
+msgstr "Готово"
+
+#: templates/base.html:89
+msgid "You don't have the Mandriva Enterprise Server medias. Please add the medias before using Mandriva Server Setup."
+msgstr "У вас нету источников Mandriva Enterprise Server. Пожалуйста, добавьте источники перед использованием Mandriva Server Setup."
+
+#: templates/base.html:89 templates/media_add.html:7
+msgid "Add medias"
+msgstr "Добавить источники"
+
+#: templates/base.html:91
+msgid "Update packages list on your server."
+msgstr "Обновление списка пакетов на вашем сервере."
+
+#: templates/base.html:91
+msgid "Update medias"
+msgstr "Обновление источников"
+
+#: templates/base.html:95
+msgid "Logout"
+msgstr "Выход"
+
+#: templates/config.html:20
+msgid "Remove network"
+msgstr "Удалить сеть"
+
+#: templates/config.html:35
+msgid "Remove field"
+msgstr "Удалить поле"
+
+#: templates/config.html:42 templates/config_no.html:4
+#: templates/config_run.html:119 templates/install.html:44
+#: templates/media_add.html:5 templates/media_auth.html:5
+#: templates/preinst.html:4 templates/preinst.html.py:6
+msgid "Preinstallation"
+msgstr "Предустановка"
+
+#: templates/config.html:42 templates/config_no.html:4
+#: templates/config_run.html:119 templates/install.html:44
+#: templates/media_add.html:5 templates/media_auth.html:5
+#: templates/preinst.html:4
+msgid "Medias"
+msgstr "Источники"
+
+#: templates/config.html:42 templates/config_no.html:4
+#: templates/config_run.html:119 templates/install.html:44
+#: templates/install.html.py:46 templates/media_add.html:5
+#: templates/media_auth.html:5 templates/preinst.html:4
+msgid "Installation"
+msgstr "Установка"
+
+#: templates/config.html:42 templates/config_no.html:4
+#: templates/config_run.html:119 templates/install.html:44
+#: templates/media_add.html:5 templates/media_auth.html:5
+#: templates/preinst.html:4
+msgid "Configuration"
+msgstr "Настройка"
+
+#: templates/config.html:58
+msgid "Add field"
+msgstr "Добавить поле"
+
+#: templates/config.html:83
+msgid "Re-enter password"
+msgstr "Повторно введите пароль"
+
+#: templates/config.html:116
+msgid "Add network"
+msgstr "Добавить сеть"
+
+#: templates/config.html:128 templates/config_run.html:139
+msgid "No configuration for this module."
+msgstr "Нет настроек для этого модуля."
+
+#: templates/config.html:145
+msgid "Required field"
+msgstr "Обязательное поле"
+
+#: templates/config.html:146 templates/install.html:19
+#: templates/media_add.html:23 templates/media_auth.html:32
+#: templates/preinst.html:29
+msgid "Continue"
+msgstr "Продолжить"
+
+#: templates/config.html:147 templates/config_run.html:160
+#: templates/config_run.html.py:169 templates/install.html:59
+#: templates/media_add.html:88 templates/media_auth.html:33
+#: templates/preinst.html:31 templates/section.html:182
+msgid "Back"
+msgstr "Назад"
+
+#: templates/config_no.html:7
+msgid "The selected components doesn't have any configuration script."
+msgstr "Выбранные компоненты не имеют скрипта конфигурации."
+
+#: templates/config_no.html:8
+msgid "Installation was successful."
+msgstr "Установка прошла успешно."
+
+#: templates/config_no.html:11 templates/config_run.html:53
+#: templates/config_run.html.py:84 templates/config_run.html:97
+#: templates/error.html:11 templates/section.html:70
+msgid "Home page"
+msgstr "Домашняя страница"
+
+#: templates/config_run.html:20
+msgid "Configuration summary"
+msgstr "Итоговая конфигурация"
+
+#: templates/config_run.html:21
+msgid "Configuration warnings"
+msgstr "Предупреждение конфигурации"
+
+#: templates/config_run.html:22
+msgid "Configuration errors"
+msgstr "Ошибка конфигурации"
+
+#: templates/config_run.html:52 templates/config_run.html.py:99
+msgid "Configuration terminated, details are displayed below."
+msgstr "Конфигурация прекращена, отображаются сведения ниже."
+
+#: templates/config_run.html:73
+msgid "Configuration succeded."
+msgstr "Удалось выполнить конфигурацию."
+
+#: templates/config_run.html:83
+msgid "Configuration failed."
+msgstr "Не удалось выполнить конфигурацию."
+
+#: templates/config_run.html:100
+msgid "Error : Could not find any configuration script to execute."
+msgstr "Ошибка: Не удалось найти сценарий для выполнения конфигурации."
+
+#: templates/config_run.html:106
+msgid "Running configuration..."
+msgstr "Выполняется конфигурация..."
+
+#: templates/config_run.html:123
+msgid "The following component will be configured."
+msgid_plural "The following components will be configured."
+msgstr[0] "Будет настроен следующий компонент."
+msgstr[1] "Будут настроены следующие компоненты."
+msgstr[2] "Будут настроены следующие компоненты."
+
+#: templates/config_run.html:124
+msgid "Please wait during the configuration process."
+msgstr "Пожалуйста, подождите, пока идет конфигурация."
+
+#: templates/config_run.html:125
+msgid "To run the configuration, click on the &laquo;Run configuration&raquo; button below."
+msgstr "Чтобы запустить конфигурацию, щелкните по кнопке &laquo;Выполнить конфигурацию&raquo; ниже."
+
+#: templates/config_run.html:129
+msgid "Configuration in progress..."
+msgstr "Конфигурация продолжается..."
+
+#: templates/config_run.html:146 templates/media_add.html:79
+msgid "Waiting..."
+msgstr "Ожидание..."
+
+#: templates/config_run.html:159
+msgid "Run configuration"
+msgstr "Выполните конфигурацию"
+
+#: templates/config_run.html:168 templates/install.html:52
+#: templates/install.html.py:58 templates/media_add.html:87
+msgid "Please wait..."
+msgstr "Пожалуйста, подождите..."
+
+#: templates/error.html:5
+msgid "An error has occured."
+msgstr "Произошла ошибка."
+
+#: templates/error.html:7
+msgid "XML-RPC server is unreacheable."
+msgstr "Сервер XML-RPC недоступен."
+
+#: templates/error.html:7
+msgid "Check the service status with the <strong>service mss-rpc status</strong> command."
+msgstr "Проверьте состояние службы с помощью команды <strong>service mss-rpc status</strong>."
+
+#: templates/first_time.html:5
+msgid "Mandriva Server Setup"
+msgstr "Mandriva Server Setup"
+
+#: templates/first_time.html:6
+msgid "Welcome on the Mandriva Server Setup. MSS aims to help system administrators to setup quickly system services such as DNS and OpenLDAP. Moreother, MSS allows you to setup <a href=\"http://mds.mandriva.org\">Mandriva Directory Server</a> and <a href=\"http://pulse2.mandriva.org\">Pulse 2</a> products easily."
+msgstr "Добро пожаловать в Mandriva Server Setup. MSS призвана помочь системным администраторам быстро настроить системные службы, такие как DNS и OpenLDAP. Кроме того, RSS позволяет вам настроить <a href=\"http://mds.mandriva.org\">Mandriva Directory Server</a> и <a href=\"http://pulse2.mandriva.org\">Pulse 2</a> продукты легко."
+
+#: templates/first_time.html:8
+msgid "You have to use your Mandriva account to log in unless there is no network connectivity. Only your Mandriva account will be able to log in after your first connection."
+msgstr "Вам необходимо использовать вашу учетную запись Mandriva для входа, если нет подключения к сети. Только ваша учетная запись Mandriva сможет войти после первого подключения."
+
+#: templates/first_time.html:11 templates/invalid_login.html:7
+#: templates/login.html:7
+msgid "Login"
+msgstr "Вход"
+
+#: templates/install.html:18
+msgid "Installation succeded."
+msgstr "Удалось выполнить установку."
+
+#: templates/install.html:26
+msgid "Installation failed. You should update your medias (urpmi.update -a)."
+msgstr "Не удалось выполнить установку. Вам необходимо обновить источники (urpmi.update -a)."
+
+#: templates/install.html:29
+msgid "Installation failed."
+msgstr "Не удалось выполнить установку."
+
+#: templates/install.html:31
+msgid "Can't continue"
+msgstr "Невозможно продолжить"
+
+#: templates/install.html:47
+msgid "The following component is being installed"
+msgid_plural "The following components are being installed"
+msgstr[0] "Устанавливается следующий компонент"
+msgstr[1] "Устанавливаются следующие компоненты"
+msgstr[2] "Устанавливаются следующие компоненты"
+
+#: templates/invalid_login.html:9
+msgid "Error : wrong username or password."
+msgstr "Ошибка: неверное имя пользователя или пароль."
+
+#: templates/login_form.html:18
+msgid "Use your Mandriva account to login."
+msgstr "Используйте вашу учетную запись Mandriva для входа."
+
+#: templates/login_form.html:25
+msgid "No internet connection.<br/>Use the root password to login."
+msgstr "Нет Интернет-соединения."
+
+#: templates/login_form.html:39 templates/media_auth.html:15
+msgid "Username"
+msgstr "Имя пользователя"
+
+#: templates/login_form.html:42 templates/media_auth.html:22
+msgid "Password"
+msgstr "Пароль"
+
+#: templates/login_form.html:46
+msgid "Language"
+msgstr "Язык"
+
+#: templates/login_form.html:49 templates/sections.html:18
+msgid "Enter"
+msgstr "Ввод"
+
+#: templates/media_add.html:31
+msgid "Adding media..."
+msgstr "Добавления источника..."
+
+#: templates/media_add.html:52
+msgid "Media added."
+msgstr "Источник добавлен."
+
+#: templates/media_add.html:57
+msgid "Media already added."
+msgstr "Источник уже добавлен."
+
+#: templates/media_add.html:62
+msgid "Failed to add media."
+msgstr "Не удалось добавить источник."
+
+#: templates/media_auth.html:7
+msgid "Media authentication"
+msgstr "Аутентификация источника"
+
+#: templates/media_auth.html:8
+msgid "One or more medias need authentication"
+msgstr "Необходимо аутентифицировать один или более источников"
+
+#: templates/media_auth.html:13
+msgid "My authentication"
+msgstr "Моя аутентификация"
+
+#: templates/media_auth.html:19
+msgid "Your my.mandriva.com email address."
+msgstr "Ваш почтовый адрес на my.mandriva.com."
+
+#: templates/media_auth.html:26
+msgid "Your my.mandriva.com password."
+msgstr "Ваш пароль на my.mandriva.com."
+
+#: templates/preinst.html:7
+msgid "You have selected the following module."
+msgid_plural "You have selected the following modules."
+msgstr[0] "Вы выбрали следующий модуль."
+msgstr[1] "Вы выбрали следующие модули."
+msgstr[2] "Вы выбрали следующие модули."
+
+#: templates/preinst.html:9
+msgid "Modules"
+msgstr "Модули"
+
+#: templates/preinst.html:13
+msgid "Added as a dependency"
+msgstr "Добавлено в качестве зависимости"
+
+#: templates/preinst.html:14
+msgid "Reinstallation"
+msgstr "Переустановка"
+
+#: templates/preinst.html:19
+msgid "If other components requires this component they may be broken after the reinstallation."
+msgstr "Если другие компоненты требуют этого компонента они могут быть нарушены после переустановки."
+
+#: templates/preinst.html:23
+msgid "No component selected."
+msgstr "Ни один из компонентов не выбран."
+
+#: templates/section.html:14 templates/section.html.py:109
+msgid "This module conflicts with : "
+msgstr "Этот модуль конфликтует с: "
+
+#: templates/section.html:113
+msgid "You have bought this module."
+msgstr "Вы приобрели этот модуль."
+
+#: templates/section.html:115
+msgid "This is a commercial module."
+msgstr "Это коммерческий модуль."
+
+#: templates/section.html:119
+msgid "Packages for this module are installed."
+msgstr "Установлены пакеты для этого модуля."
+
+#: templates/section.html:122
+msgid "This module was configured by MSS."
+msgstr "Этот модуль был настроен с помощью MSS."
+
+#: templates/section.html:125
+msgid "Actions"
+msgstr "Действие"
+
+#: templates/section.html:128
+msgid "Reinstall and reconfigure"
+msgstr "Установить и перенастроить"
+
+#: templates/section.html:128
+msgid "Reconfigure"
+msgstr "Перенастроить"
+
+#: templates/section.html:128
+msgid "Reconfigure this module."
+msgstr "Перенастроить этот модуль."
+
+#: templates/section.html:138
+msgid "Buy"
+msgstr "Купить"
+
+#: templates/section.html:141 templates/section.html.py:154
+msgid "More information"
+msgstr "Подробнее"
+
+#: templates/section.html:181
+msgid "Install components"
+msgstr "Установить компоненты"
+
+#: templates/sections.html:40
+msgid "No modules for Mandriva Server Setup installed."
+msgstr "Нету установленных модулей для Mandriva Server Setup."
+
+#: templates/sections.html:41
+msgid "Check for mss-modules-* packages."
+msgstr "Выполнить проверку для пакетов mss-modules-*."
+
+

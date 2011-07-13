@@ -1,78 +1,80 @@
-#
+# 
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "POT-Creation-Date: 2011-06-10 12:21+0200\n"
-"PO-Revision-Date: 2011-04-18 13:46+0000\n"
-"Last-Translator: eon <eon@patapon.info>\n"
+"PO-Revision-Date: 2011-06-17 07:01+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/nufw/desc.xml:3(desc)
-msgid "Install Authentication Firewall Suite for Linux"
-msgstr "Installe et configure une solution de pare-feu authentifiant"
-
-#: modules/nufw/desc.xml:27(label)
-msgid "Mysql nufw password"
-msgstr "Mot de passe nufw mysql"
-
-#: modules/nufw/desc.xml:23(label)
-msgid "Mysql root password"
-msgstr "Mot de passe root Mysql"
-
-#: modules/nufw/desc.xml:28(help)
-msgid "Mysql user for the nufw database"
-msgstr "Le mot de passe de l'utilisateur mysql pour la base nufw"
-
-#: modules/nufw/desc.xml:2(name)
+#: modules/nufw/desc.xml2(name)
 msgid "NuFW"
 msgstr "NuFW"
 
-#: modules/nufw/desc.xml:24(help)
-msgid "Used to create the nufw database"
-msgstr "Utilisé pour créer la base de donnée nufw"
+#: modules/nufw/desc.xml3(desc)
+msgid "Install Authentication Firewall Suite for Linux"
+msgstr "Installe et configure une solution de pare-feu authentifiant"
 
-#: modules/nufw/desc.xml:9(url)
-msgid "http://www.nufw.org/-English-.html"
-msgstr ""
-
-#: modules/nufw/desc.xml:5(module)
+#: modules/nufw/desc.xml5(module)
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/nufw/desc.xml:6(module)
+#: modules/nufw/desc.xml6(module)
 msgid "mysql"
 msgstr ""
 
-#: modules/nufw/desc.xml:14(rpm)
+#: modules/nufw/desc.xml9(url)
+msgid "http://www.nufw.org/-English-.html"
+msgstr ""
+
+#: modules/nufw/desc.xml13(rpm)
+msgid "nufw"
+msgstr "3b1b1c8506ef5df4985680298834c8d4_tr"
+
+#: modules/nufw/desc.xml14(rpm)
 msgid "nuface"
 msgstr ""
 
-#: modules/nufw/desc.xml:13(rpm)
-msgid "nufw"
-msgstr ""
-
-#: modules/nufw/desc.xml:15(rpm)
+#: modules/nufw/desc.xml15(rpm)
 msgid "nufw-nuauth"
 msgstr ""
 
-#: modules/nufw/desc.xml:17(rpm)
-msgid "nufw-nuauth-auth-ldap"
-msgstr ""
-
-#: modules/nufw/desc.xml:16(rpm)
+#: modules/nufw/desc.xml16(rpm)
 msgid "nufw-nuauth-log-mysql"
 msgstr ""
 
-#: modules/nufw/desc.xml:18(rpm)
+#: modules/nufw/desc.xml17(rpm)
+msgid "nufw-nuauth-auth-ldap"
+msgstr ""
+
+#: modules/nufw/desc.xml18(rpm)
 msgid "nulog"
 msgstr ""
 
+#: modules/nufw/desc.xml23(label)
+msgid "Mysql root password"
+msgstr "Mot de passe root Mysql"
+
+#: modules/nufw/desc.xml24(help)
+msgid "Used to create the nufw database"
+msgstr "Utilisé pour créer la base de donnée nufw"
+
+#: modules/nufw/desc.xml27(label)
+msgid "Mysql nufw password"
+msgstr "Mot de passe nufw mysql"
+
+#: modules/nufw/desc.xml28(help)
+msgid "Mysql user for the nufw database"
+msgstr "Le mot de passe de l'utilisateur mysql pour la base nufw"
+
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/nufw/desc.xml:0(None)
+#: modules/nufw/desc.xml0(None)
 msgid "translator-credits"
 msgstr ""
+
+
