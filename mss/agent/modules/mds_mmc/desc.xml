@@ -7,6 +7,7 @@
             <rpm>mmc-web-ppolicy</rpm>
             <rpm>python-mmc-base</rpm>
             <rpm>python-mmc-ppolicy</rpm>
+            <rpm>mmc-check-password</rpm>
             <rpm>mmc-agent</rpm>
             <rpm>openldap-servers</rpm>
             <rpm>nss_ldap</rpm>
