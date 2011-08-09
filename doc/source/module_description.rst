@@ -118,8 +118,10 @@ Simple text field
 
 * @name : field name
 * @require : the field is mandatory (optional)
-* @default : default value for the field (optional)
-* @validation : fqdn | ip (validate the field data - optional)
+* @default : default value for the field - can be a string or a custom method (optional)
+* @validation : fqdn | ip | custom method (validate the field data - optional)
+* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
+* @edit_if_unconfigured : the field won't be editable on reconfiguration (optional)
 
 ::
 
@@ -127,6 +129,9 @@ Simple text field
         <label>Param 1</label>
         <help>Some help on param 1</help>
     </text>
+
+The custom method for validation or default value must be declared in the
+module's __init__.py file.
 
 Password field
 """"""""""""""
@@ -136,7 +141,8 @@ the password
 
 * @name : field name
 * @require : the field is mandatory (optional)
-* @default : default value for the field (optional)
+* @default : default value for the field - can be a string or a custom method (optional)
+* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
 
 ::
 
@@ -151,8 +157,9 @@ Multi text field
 * @name : field name
 * @multi : yes | no (add/remove fields buttons)
 * @require : yes | no (the field is mandatory - optional)
-* @default : default values for the field (optional)
-* @validation : fqdn | ip (validate the field data - optional)
+* @default : default value for the field - can be a string or a custom method (optional)
+* @validation : fqdn | ip | custom method (validate the field data - optional)
+* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
 
 ::
 
@@ -168,7 +175,9 @@ This special field let the user input a network description (ip/netmask)
 
 * @name : field name
 * @format : long | short (/24 or /255.255.255.0 - format used in the config script)
+* @default : default value for the field - can be a string or a custom method (optional)
 * @validation : network (optional)
+* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
 
 ::
 
@@ -182,6 +191,8 @@ Select list field
 
 * @name : field name
 * @require : yes | no (mandatory field - optional)
+* @default : default selected value - can be a string or a custom method (optional)
+* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
 
 ::
 
@@ -198,6 +209,7 @@ Checkbox field
 
 * @name : field name
 * @default : on | off
+* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
 
 ::
 

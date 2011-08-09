@@ -51,93 +51,130 @@ function addField(module, fieldname, text, error) {
                 {% endifequal %}
             {% endfor %}
             {% for field in module %}
-            <p class="field">
-            {% ifequal field.type "text" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                {% if field.multi %}
-                <a title="{% trans "Add field"%}" onclick="addField('{{ field.id }}', '{{ field.name }}', '')"><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
-                <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
-                </span>
-                {% if field.default %}
-                <script type="text/javascript">
-                {% for text in field.default %}
-                    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}', {% if field.error %}true{% else %}false{% endif %});
-                {% endfor %}
-                </script>
-                {% endif %}
-                {% else %}
-                <input {% if field.error %}class="error"{% endif %}
-                       id="{{ field.id }}_{{ field.name }}"
-                       name="{{ field.id }}_{{ field.name }}"
-                       type="text" size="20" value="{{ field.default }}"
-                />
-                {% endif %}
-            {% endifequal %}
-            {% ifequal field.type "password" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <input {% if field.error %}class="error"{% endif %}
-                       id="{{ field.id }}_{{ field.name }}"
-                       name="{{ field.id }}_{{ field.name }}"
-                       type="password" size="20" value="{{ field.default }}"
-                />
-                <label for="{{ field.id }}_{{ field.name }}2">{% trans "Re-enter password" %} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <input {% if field.error %}class="error"{% endif %}
-                       id="{{ field.id }}_{{ field.name }}2"
-                       name="{{ field.id }}_{{ field.name }}2"
-                       type="password" size="20"
-                />
-            {% endifequal %}
-            {% ifequal field.type "options" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <select {% if field.error %}class="error"{% endif %}
+            {% if module.0.configured and field.show_if_unconfigured %}
+	    	    <input {% if field.error %}class="error"{% endif %}
+            		id="{{ field.id }}_{{ field.name }}"
+                    name="{{ field.id }}_{{ field.name }}"
+                    value="{{ field.default }}"
+                    type="hidden"
+            	/>
+        	{% else %}
+        	    <p class="field">
+        	    {% ifequal field.type "text" %}
+            		<label for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		</label>
+            		{% if field.multi %}
+            		    <a title="{% trans "Add field"%}" 
+            			onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
+            			<img class="field" src="{{ MEDIA_URL }}img/add.png" />
+            		    </a>
+            		    <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
+            		    </span>
+            		    {% if field.default %}
+            			<script type="text/javascript">
+            			{% for text in field.default %}
+                		    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}', {% if field.error %}true{% else %}false{% endif %});
+            			{% endfor %}
+            			</script>
+            		    {% endif %}
+            		{% else %}
+            		    {% if module.0.configured and field.edit_if_unconfigured %}
+            			<input {% if field.error %}class="error"{% endif %}
+                		    id="{{ field.id }}_{{ field.name }}"
+                		    name="{{ field.id }}_{{ field.name }}"
+                		    value="{{ field.default }}"
+                		    type="hidden"
+            			/>
+            			{{ field.default }}
+                	    {% else %}
+            			<input {% if field.error %}class="error"{% endif %}
+                		    id="{{ field.id }}_{{ field.name }}"
+                		    name="{{ field.id }}_{{ field.name }}"
+                		    type="text" 
+                		    size={% if field.size %}"{{field.size}}"{% else %}"20"{% endif %} 
+                		    value="{{ field.default }}"
+            			/>
+            		    {% endif %}
+            		{% endif %}
+        	    {% endifequal %}
+        	    {% ifequal field.type "password" %}
+            		<label for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }} {% if field.require %} <span class="require">*</span> {% endif %}: 
+            		</label>
+            		<input {% if field.error %}class="error"{% endif %}
+                	    id="{{ field.id }}_{{ field.name }}"
+                	    name="{{ field.id }}_{{ field.name }}"
+                	    type="password" size="20" value="{{ field.default }}"
+            		/>
+            		<label for="{{ field.id }}_{{ field.name }}2">
+            		    {% trans "Re-enter password" %} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		</label>
+            		<input {% if field.error %}class="error"{% endif %}
+                	    id="{{ field.id }}_{{ field.name }}2"
+                	    name="{{ field.id }}_{{ field.name }}2"
+                	    type="password" size="20"
+            		/>
+        	    {% endifequal %}
+        	    {% ifequal field.type "options" %}
+            		<label for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		</label>
+            		<select {% if field.error %}class="error"{% endif %}
                         id="{{ field.id }}_{{ field.name }}"
                         name="{{ field.id }}_{{ field.name }}">
-                    {% for option in field.options %}
-                    <option value="{{ option.value }}"
+                	{% for option in field.options %}
+                	    <option value="{{ option.value }}"
                             {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
-                        {{ option.name }}
-                    </option>
-                    {% endfor %}
-                </select>
-            {% endifequal %}
-            {% ifequal field.type "check" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <input {% if field.error %}class="error"{% endif %}
-                       id="{{ field.id }}_{{ field.name }}"
-                       name="{{ field.id }}_{{ field.name }}"
-                       type="checkbox"
-                       {% ifequal field.default "on" %}
-                       checked="checked"
-                       {% endifequal %}
-                />
-            {% endifequal %}
-            {% ifequal field.type "network" %}
-                <label for="{{ field.id }}_{{ field.name }}">{{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: </label>
-                <a title="{% trans "Add network"%}" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" ><img class="field" src="{{ MEDIA_URL }}img/add.png" /></a>
-                <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
-                </span>
-                {% if field.default %}
-                    <script type="text/javascript">
-                    {% for network in field.default %}
-                        addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}', {% if field.error %}true{% else %}false{% endif %});
-                    {% endfor %}
-                    </script>
-                {% endif %}
-            {% endifequal %}
-            {% if not module.0.do_config %}
-                {% trans "No configuration for this module." %}
-            {% endif %}
-            {% if field.error %}
-            <span class="error warning">
-                {{ field.error }}
-            </span>
-            {% endif %}
-            </p>
-            {% if field.help %}
-            <p class="help">
-                {{ field.help }}
-            </p>
-            {% endif %}
+                    	    {{ option.name }}
+                	    </option>
+                	{% endfor %}
+            		</select>
+        	    {% endifequal %}
+        	    {% ifequal field.type "check" %}
+            		<label for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		</label>
+            		<input {% if field.error %}class="error"{% endif %}
+                	    id="{{ field.id }}_{{ field.name }}"
+                	    name="{{ field.id }}_{{ field.name }}"
+                	    type="checkbox"
+                	    {% ifequal field.default "on" %} checked="checked" {% endifequal %}
+            		/>
+        	    {% endifequal %}
+        	    {% ifequal field.type "network" %}
+            		<label for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		</label>
+            		<a title="{% trans "Add network"%}" 
+            		    onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" >
+            		    <img class="field" src="{{ MEDIA_URL }}img/add.png" />
+            		</a>
+            		<span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
+            		</span>
+            		{% if field.default %}
+                	    <script type="text/javascript">
+                	    {% for network in field.default %}
+                    		addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}', {% if field.error %}true{% else %}false{% endif %});
+                	    {% endfor %}
+                	    </script>
+            		{% endif %}
+        	    {% endifequal %}
+        	    {% if not module.0.do_config %}
+            		{% trans "No configuration for this module." %}
+        	    {% endif %}
+        	    {% if field.error %}
+        		<span class="error warning">
+            		{{ field.error }}
+        		</span>
+        	    {% endif %}
+        	    </p>
+        	    {% if field.help %}
+        		<p class="help">
+            		{{ field.help }}
+        		</p>
+        	    {% endif %}
+        	{% endif %}
             {% endfor %}
         </fieldset>
     {% endfor %}
