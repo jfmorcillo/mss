@@ -60,6 +60,8 @@ class Module:
         except Exception, err:
             self.logger.error("Can't load module %s __init__.py :" % self.id)
             self.logger.error("%s" % err)
+        self.check_configured()
+
 
     def load(self):
         """ load module basic infos """
@@ -82,7 +84,6 @@ class Module:
         else:
             self._preinst = " "
         self.installed = False
-        self.check_configured()
 
     def get_name(self):
         return _(self._name, self.id)
@@ -109,7 +110,16 @@ class Module:
     preinst = property(get_preinst)
 
     def check_configured(self):
-        # check if module is configured
+        # check if module is configured by calling module method
+        if self.module:
+            method = getattr(self.module, "check_configured", None)
+            if method:
+                try:
+                    self.configured = method()
+                    return
+                except:
+                    pass
+    	# check if module is configured from database
         c = self.conn.cursor()
         c.execute('select * from module where name=?', (self.id,))
         if c.fetchone():
@@ -192,6 +202,7 @@ class Module:
 
         # reset config
         self.config = []
+
         # no config script we skip the configuration
         if not script:
             self.config.append({'id': self.id, 'skip_config': True, 'do_config': False})
@@ -203,6 +214,7 @@ class Module:
             if fields:
                 # if we have fields, show the configuration page
                 self.config[0]['do_config'] = True
+                self.config[0]['configured'] = self.configured 
             for field in fields:
                 field_config = field.attrib
                 field_help = field.findtext("help")
@@ -225,8 +237,25 @@ class Module:
                         default = field_config["default"].split(";")
                         field_config["default"] = default
                 # add current value if module is configured
-                if current_config.get(field_config['name']):
+                if self.configured and current_config.get(field_config['name']):
                     field_config['default'] = current_config.get(field_config['name'])
+                # calculate default value if not configured
+                if not self.configured and "default" in field_config:
+                    # check if the default value is a module's method
+                    try:
+                        field_config["default"] = getattr(self.module, field_config["default"])()
+                    except AttributeError:
+                        # not a method
+                        pass
+                    except Exception, err:
+                        self.logger.error("Error in %s() in %s module : " % (field_config["default"], self.id))
+                        self.logger.error(str(err))
+                        self.logger.error("Can't calculate default field value")
+                        field_config["default"] = ""
+                # reset require attribute if field is hidden for reconfiguration
+                if self.configured and "show_if_unconfigured" in field_config and "require" in field_config:
+                    del field_config["require"]
+
                 self.config.append(field_config)
 
         return self.config
@@ -244,7 +273,6 @@ class Module:
 
             field_name = field.get("name")
             field_type = field.get("type")
-
             if field_name:
                 # set value for networks fields
                 if field_type == "network":
@@ -292,13 +320,21 @@ class Module:
 
                 # validate field data
                 if field.get("validation"):
-                    method = getattr(Validation(), field.get("validation"))
-                    result = method(field_value)
-                    if result:
-                        errors = True
-                        field["error"] = _(result, "agent")
-                    elif field.get("error"):
-                        del field["error"]
+                    # get global validation method
+                    method = getattr(Validation(), field.get("validation"), None)
+                    module = "agent"
+                    if not method:
+                        # get module validation method
+                        method = getattr(self.module, field.get("validation"), None)
+                        module = self.id
+                    # run the validation method
+                    if method and field_value:
+                        result = method(field_value)
+                        if result:
+                            errors = True
+                            field["error"] = _(result, module)
+                        elif field.get("error"):
+                            del field["error"]
 
         # store config if no errors
         if not errors:
