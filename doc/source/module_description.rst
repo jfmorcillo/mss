@@ -255,6 +255,18 @@ the module in MSS you have to write a :py:func:`get_current_config` function.
 The values returned by this function replaces the default values set in in the
 configuration description in ``desc.xml``. Have a look in ``mds_*`` modules for some examples.
 
+After a module is configured on MSS, the module is automatically tagged as 
+configured in the MSS database. You can also write a :py:func:`check_configured` 
+function that tells MSS if the module is configured or not. This will override
+the database value.
+
+.. py:function:: check_configured()
+
+    Returns module's configuration state
+
+    :rtype: bool
+
+
 Example of ``mds_mmc`` module
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
