@@ -621,3 +621,11 @@ div.action input, div.action img {
 #language option.en {
     background: white url('../img/lang/en.png') no-repeat 2px;
 }
+
+#language option.pt_BR {
+    background: white url('../img/lang/pt_BR.png') no-repeat 2px;
+}
+
+#language option.ru_RU {
+    background: white url('../img/lang/ru_RU.png') no-repeat 2px;
+}
