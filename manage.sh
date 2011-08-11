@@ -25,7 +25,7 @@ todev() {
 	rm -rf mss/www/cpserver
 	cp -r mss/www/cpserver-dev mss/www/cpserver
 	sed -i "s!^DEBUG.*!DEBUG = True!" mss/www/settings.py
-	sed -i 's!^\(.*logging\.\)INFO\(.*\)$!\1DEBUG\2!' mss/agent/module.py
+	sed -i 's!^\(.*logging\.\)INFO\(.*\)$!\1DEBUG\2!' mss/agent/managers/module.py
 	echo "dev"
 }
 
