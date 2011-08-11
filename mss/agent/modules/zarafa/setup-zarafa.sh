@@ -213,15 +213,6 @@ backup /etc/mmc/plugins/mail.ini
 cp -f $mail_ini_template /etc/mmc/plugins/mail.ini
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/mail.ini
 
-# FIXME
-# get svn mail plugin for zarafa support
-urpmi --auto subversion
-svn co http://mds.mandriva.org/svn/mmc-projects/mds/trunk/agent/mmc/plugins/mail /tmp/mail-agent
-svn co http://mds.mandriva.org/svn/mmc-projects/mds/trunk/web/modules/mail/ /tmp/mail-web
-cp -rf /tmp/mail-agent/* /usr/lib/python2.5/site-packages/mmc/plugins/mail/
-cp -rf /tmp/mail-web/* /usr/share/mmc/modules/mail/
-rm -rf /tmp/mail-agent/ /tmp/mail-web/
-
 # amavis configuration
 backup /etc/amavisd/amavisd.conf
 cp -f $amavis_template /etc/amavisd/amavisd.conf
