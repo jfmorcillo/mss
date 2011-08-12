@@ -27,6 +27,7 @@ import copy
 import logging
 import sqlite3
 import xml.etree.ElementTree as ET
+from datetime import datetime
 
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
@@ -62,7 +63,6 @@ class Module:
             self.logger.error("%s" % err)
         self.check_configured()
 
-
     def load(self):
         """ load module basic infos """
         # get common info
@@ -83,7 +83,7 @@ class Module:
             self._preinst = self.root.findtext("preinst/text")
         else:
             self._preinst = " "
-        self.installed = False
+
 
     def get_name(self):
         return _(self._name, self.id)
@@ -115,7 +115,7 @@ class Module:
             method = getattr(self.module, "check_configured", None)
             if method:
                 try:
-                    self.configured = method()
+                    self._configured = method()
                     return
                 except:
                     pass
@@ -123,9 +123,9 @@ class Module:
         c = self.conn.cursor()
         c.execute('select * from module where name=?', (self.id,))
         if c.fetchone():
-            self.configured = True
+            self._configured = True
         else:
-            self.configured = False
+            self._configured = False
         c.close()
 
     def get_configured(self):
@@ -133,24 +133,21 @@ class Module:
 
     def set_configured(self, value):
         self._configured = value
-        c = self.conn.cursor()
-        c.execute('select * from module where name=?', (self.id,))
-        if not c.fetchone():
-            c.execute('insert into module values (?,?)', (self.id, datetime.now()))
-        else:
-            c.execute('update module set configured=? where name=?', (datetime.now(), self.id))
-        self.conn.commit()
-        c.close()
-
-    configured = property(get_configured, set_configured)
+        if value:
+            c = self.conn.cursor()
+            c.execute('select * from module where name=?', (self.id,))
+            if c.fetchone():
+                c.execute('update module set configured=? where name=?', (datetime.now(), self.id))
+            else:
+                c.execute('insert into module values (?,?)', (self.id, datetime.now()))
+            self.conn.commit()
+            c.close()
 
     def get_installed(self):
         return self._installed
 
     def set_installed(self, value):
         self._installed = value
-
-    installed = property(get_installed, set_installed)
 
     def get_packages(self):
         """ get packages for module """
@@ -214,7 +211,7 @@ class Module:
             if fields:
                 # if we have fields, show the configuration page
                 self.config[0]['do_config'] = True
-                self.config[0]['configured'] = self.configured 
+                self.config[0]['configured'] = self.get_configured()
             for field in fields:
                 field_config = field.attrib
                 field_help = field.findtext("help")
@@ -237,10 +234,10 @@ class Module:
                         default = field_config["default"].split(";")
                         field_config["default"] = default
                 # add current value if module is configured
-                if self.configured and current_config.get(field_config['name']):
+                if self.get_configured() and current_config.get(field_config['name']):
                     field_config['default'] = current_config.get(field_config['name'])
                 # calculate default value if not configured
-                if not self.configured and "default" in field_config:
+                if not self.get_configured() and "default" in field_config:
                     # check if the default value is a module's method
                     try:
                         field_config["default"] = getattr(self.module, field_config["default"])()
@@ -253,7 +250,7 @@ class Module:
                         self.logger.error("Can't calculate default field value")
                         field_config["default"] = ""
                 # reset require attribute if field is hidden for reconfiguration
-                if self.configured and "show_if_unconfigured" in field_config and "require" in field_config:
+                if self.get_configured() and "show_if_unconfigured" in field_config and "require" in field_config:
                     del field_config["require"]
 
                 self.config.append(field_config)

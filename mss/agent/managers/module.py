@@ -27,7 +27,6 @@ import logging
 import logging.handlers
 import platform
 import sqlite3
-from datetime import datetime
 from sets import Set
 
 from mss.agent.lib.utils import grep
@@ -72,8 +71,6 @@ class ModuleManager:
         self.modulesDirectory = os.path.join(os.path.dirname(__file__), "..", "modules")
         self.modules = {}
         self.packages = []
-        # BDD access
-        self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # translation manager
         self.TM = TM
         self.TM.set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
@@ -142,15 +139,15 @@ class ModuleManager:
             ret.append(item.split("/")[-2])
         return ret
 
-    def is_installed(self, module):
+    def check_installed(self, module):
         """ check if module is installed """
         packages = set(module.get_packages())
         # check if packages are installed
         if len(packages) == len(packages.intersection(self.packages)):
-            module.installed = True
+            module.set_installed(True)
             return True
         else:
-            module.installed = False
+            module.set_installed(False)
             return False
 
     def get_conflicts(self, conflicts, module):
@@ -159,7 +156,7 @@ class ModuleManager:
         for m in module.conflicts:
             try:
                 m = self.modules[m]
-                if not m in conflicts and m.configured:
+                if not m in conflicts and m.get_configured():
                     conflicts.append(m)
                     self.logger.debug("Conflict with : %s" % str(m.id))
                     conflicts = self.get_conflicts(conflicts, m)
@@ -170,7 +167,7 @@ class ModuleManager:
                 m = self.modules[m]
                 for m1 in m.conflicts:
                     m1 = self.modules[m1]
-                    if not m1 in conflicts and m1.configured:
+                    if not m1 in conflicts and m1.get_configured():
                         conflicts.append(m1)
                         self.logger.debug("Conflict with : %s" % str(m1.id))
             except KeyError:
@@ -180,15 +177,15 @@ class ModuleManager:
     def get_module(self, m):
         """ return basic info for one module """
         module = self.modules[m]
-        self.is_installed(module)
+        self.check_installed(module)
         # get current conflicts for module
         conflicts = self.get_conflicts([], module)
         conflicts = [conflict.name for conflict in conflicts]
         # return result
         result = {'id': module.id, 'name': module.name,
             'desc': module.desc, 'infos': module.infos,
-            'preinst': module.preinst, 'installed': module.installed,
-            'configured': module.configured, 'conflict': conflicts,
+            'preinst': module.preinst, 'installed': module.get_installed(),
+            'configured': module.get_configured(), 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps}
         self.logger.debug("Module info : %s" % str(result))
         return result
@@ -371,7 +368,7 @@ class ModuleManager:
     @expose
     def end_config(self, module):
         self.logger.debug("Set %s as configured" % str(module))
-        self.modules[module].configured = True
+        self.modules[module].set_configured(True)
         return 0
 
     def clean_output(self, string):
@@ -424,4 +421,3 @@ class ModuleManager:
         for sts in statuses:
             status += _(sts, "agent")+', '
         return status[:-2]
-
