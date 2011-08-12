@@ -29,15 +29,15 @@ from django.core.urlresolvers import reverse
 
 class XmlRpc:
     """ Class to handle the xmlrpc calls """
-    
+
     def __init__(self):
         self.conn = xmlrpclib.ServerProxy('http://localhost:8001')
 
-    def call(self, method, *args):
-        method = getattr(self.conn, method)
+    def call(self, method_name, *args):
+        method = getattr(self.conn, method_name)
         try:
             return [False, method(*args)]
         except socket_error, err:
             return [HttpResponseRedirect(reverse('error', args=[err[0]])), False]
-            
-#         xmlrpclib.Fault, xmlrpclib.ProtocolError, xmlrpclib.ResponseError)
+
+# xmlrpclib.Fault, xmlrpclib.ProtocolError, xmlrpclib.ResponseError)

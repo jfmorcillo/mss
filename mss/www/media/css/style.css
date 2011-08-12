@@ -78,6 +78,13 @@ div.pop {
     opacity: 0.9;
 }
 
+div.poptb {
+    top: 20%;
+    left: 20%;
+    width: 60%;
+    background: white;
+}
+
 #popup {
     position: absolute;
     margin: 10px;
@@ -526,7 +533,7 @@ img.legend {
 
 /* Log display */
 
-div.install .log {
+div.log {
     height: 200px;
     border: 1px solid #aaa;
     overflow: auto;

@@ -76,6 +76,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'mss.www.middleware.CatchAjaxException',
 )
 
 ROOT_URLCONF = 'mss.www.urls'

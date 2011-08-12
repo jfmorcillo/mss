@@ -48,6 +48,9 @@ Event.observe(window, 'load', function() {
 
                 // reset the popup contents
                 $("popup").update("");
+                // remove CSS classes
+                resetPopupStyle();
+
                 // abort on-going ajax call for popup
                 if (popupRequest) {
                     popupRequest.abort();
@@ -69,8 +72,7 @@ Event.observe(window, 'load', function() {
                           title: 'Close' });
                     a.observe('click', function(evt) {
                         $('popup').hide();
-                        $("popup").removeClassName("poperr");
-                        $("popup").removeClassName("pop");
+                        resetPopupStyle();
                     });
                     $("popup").appendChild(a)
                 }
@@ -119,8 +121,7 @@ Event.observe(window, 'load', function() {
             if(!elem.hasClassName("popw")) {
                 $(elem).observe('mouseout', function() {
                     $("popup").hide();
-                    $("popup").removeClassName("poperr");
-                    $("popup").removeClassName("pop");
+                    resetPopupStyle();
                 });
                 $(elem).observe('mousemove', function(evt) {
                     $("popup").style.top = evt.clientY+window.scrollY+"px";
@@ -138,6 +139,13 @@ Event.observe(window, 'load', function() {
 
 
 });
+
+resetPopupStyle = function() {
+    // remove CSS classes
+    $("popup").classNames().each(function(cls) {
+        $("popup").removeClassName(cls);
+    });
+}
 
 setLang = function(lang, url) {
     window.location = "/mss/lang/"+lang+"/?url="+url;

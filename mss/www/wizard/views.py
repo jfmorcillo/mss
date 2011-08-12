@@ -308,7 +308,7 @@ def install(request):
 
 @login_required
 def reload_packages(request):
-    err, result = xmlrpc.call('load_packages')
+    xmlrpc.call('load_packages')
     return HttpResponse("")
 
 @login_required
@@ -388,16 +388,14 @@ def config_start(request):
 @login_required
 def config_run(request, module):
     """ run configuration script for module """
-    err, result = xmlrpc.call('run_config', module)
-    if result:
-        return HttpResponse("")
-    else:
-        raise Http404
+    xmlrpc.call('run_config', module)
+    return HttpResponse("")
+
 
 @login_required
 def config_end(request, module):
     """ tells the agent the module has been configured """
-    err, result = xmlrpc.call('end_config', module)
+    xmlrpc.call('end_config', module)
     return HttpResponse("")
 
 
