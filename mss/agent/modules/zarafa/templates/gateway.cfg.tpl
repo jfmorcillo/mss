@@ -6,6 +6,13 @@ server_bind	=	0.0.0.0
 # Please refer to the administrator manual or manpage why HTTP is used rather than the UNIX socket.
 server_socket	=	http://localhost:236/zarafa
 
+# Set this value to a name to show in the logon greeting to clients.
+# Leave empty to use DNS to find this name.
+server_hostname =
+
+# Whether to show the hostname in the logon greeting to clients.
+server_hostname_greeting = no
+
 # drop privileges and run the process as this user
 run_as_user = zarafa
 
@@ -23,7 +30,7 @@ pop3_enable	=	no
 pop3_port	=	110
 
 # enable/disable Secure POP3, and Secure POP3 listen port
-pop3s_enable	=	no
+pop3s_enable    =  no
 pop3s_port	=	995
 
 # enable/disable IMAP, and IMAP listen port
@@ -31,7 +38,7 @@ imap_enable	=	yes
 imap_port	=	143
 
 # enable/disable Secure IMAP, and Secure IMAP listen port
-imaps_enable	=	yes
+imaps_enable    =  yes
 imaps_port	=	993
 
 # Only mail folder for IMAP or all subfolders (calendar, contacts, tasks, etc. too)
@@ -43,12 +50,14 @@ imap_public_folders	= yes
 # IMAP clients may use IDLE command
 imap_capability_idle = yes
 
-# Enable if you have problems reading mail (mostly happens in Mac Mail clients).
-# However, this will make the gateway much slower.
-imap_always_generate = no
-
 # The maximum size of an email that can be uploaded to the gateway
 imap_max_messagesize = 134217728
+
+# Override the e-mail charset and generate using utf-8 (when imap data is not present on the item)
+imap_generate_utf8 = no
+
+# Internally issue the expunge command to directly delete e-mail marked for deletion in IMAP.
+imap_expunge_on_delete = no
 
 # File with RSA key for SSL
 ssl_private_key_file	= /etc/mss/ssl/smtpd.key
@@ -60,7 +69,7 @@ ssl_certificate_file	= /etc/mss/ssl/smtpd.pem
 ssl_verify_client	= no
 
 # Client verify file and/or path
-ssl_verify_file		=	
+ssl_verify_file		=
 ssl_verify_path		=
 
 # Process model, using pthreads (thread) or processes (fork)

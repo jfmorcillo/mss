@@ -61,7 +61,6 @@ ical_cfg="/etc/zarafa/ical.cfg"
 dagent_tpl="templates/dagent.cfg.tpl"
 dagent_cfg="/etc/zarafa/dagent.cfg"
 userscripts="templates/userscripts"
-zarafa_schema="templates/zarafa.schema"
 webaccess_tpl="templates/zarafa-webaccess.conf.tpl"
 zpush_tpl="templates/z-push.conf.tpl"
 # mmc config
@@ -140,7 +139,8 @@ sed -i "s/\@LDAPSEARCHBASE\@/${mdssuffix}/" $ldap_cfg
 cp -rf $userscripts /etc/zarafa
 
 # FIXME (packaging)
-cp -f $webaccess_tpl /etc/httpd/conf.d/zarafa-webaccess.conf
+backup /etc/httpd/conf/webapps.d/zarafa-webaccess.conf
+cp -f $webaccess_tpl /etc/httpd/conf/webapps.d/zarafa-webaccess.conf
 
 # z-push support
 if [ "$zarafa_zpush" == "on" ]; then
@@ -202,11 +202,7 @@ rm -f /tmp/openssl.cnf
 chmod 600 /etc/mss/ssl/smtpd.key
 
 # add zarafa schema in LDAP
-grep 'zarafa' /etc/openldap/schema/local.schema
-if [ $? -ne 0 ]; then
-    echo "include /etc/openldap/schema/zarafa.schema" >> /etc/openldap/schema/local.schema
-fi
-cp -f $zarafa_schema /etc/openldap/schema/
+add_schema /usr/share/doc/python-mmc-base/contrib/ldap/zarafa.schema
 
 # mmc conf
 backup /etc/mmc/plugins/mail.ini
