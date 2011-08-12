@@ -95,8 +95,8 @@ function clean_database() {
 }
 
 # mysql functions vars
-config=".my.cnf.$$"
-command=".mysql.$$"
+config="/tmp/.my.cnf.$$"
+command="/tmp/.mysql.$$"
 
 function mysql_prepare() {
     touch $config $command
@@ -166,4 +166,16 @@ escape_sed() {
  sed \
   -e 's/\//\\\//g' \
   -e 's/\&/\\\&/g'
+}
+
+#
+function add_schema() {
+    schema=`basename $1`
+    # add schema in LDAP
+    grep -q ${schema} /etc/openldap/schema/local.schema
+    if [ $? -ne 0 ]; then
+        echo "include /etc/openldap/schema/${schema}" >> /etc/openldap/schema/local.schema
+    fi
+    cp -f $1 /etc/openldap/schema/
+    echo Schema ${schema} added to OpenLDAP.
 }

@@ -16,7 +16,7 @@ if [ "`uname -m`" != "x86_64" ]; then
 	slapd_conf_template="templates/slapd-32.conf.tpl"
 else
 	slapd_conf_template="templates/slapd-64.conf.tpl"
-fi	
+fi
 
 base_mds_template="templates/base.ini.tpl"
 ppolicy_template="templates/ppolicy.ini.tpl"
@@ -34,10 +34,10 @@ mypass=$2
 ppolicy=$3
 
 # MDS schemas
-cp /usr/share/doc/python-mmc-base*/contrib/ldap/dhcp.schema /etc/openldap/schema/
-cp /usr/share/doc/python-mmc-base*/contrib/ldap/dnszone.schema /etc/openldap/schema/
-cp /usr/share/doc/python-mmc-base*/contrib/ldap/mail.schema /etc/openldap/schema/
-cp /usr/share/doc/python-mmc-base*/contrib/ldap/mmc.schema /etc/openldap/schema/
+add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dhcp.schema
+add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dnszone.schema
+add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mail.schema
+add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mmc.schema
 
 mysuffix=`calc_suffix $mydomain`
 pass=`$SLAPPASSWD -h {SSHA} -s "$mypass"`

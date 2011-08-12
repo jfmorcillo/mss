@@ -1,33 +1,22 @@
 # slapd.conf template
 include	/usr/share/openldap/schema/core.schema
 include	/usr/share/openldap/schema/cosine.schema
-include	/usr/share/openldap/schema/corba.schema 
+include	/usr/share/openldap/schema/corba.schema
 include	/usr/share/openldap/schema/inetorgperson.schema
-include	/usr/share/openldap/schema/java.schema 
+include	/usr/share/openldap/schema/java.schema
 include	/usr/share/openldap/schema/krb5-kdc.schema
 include /usr/share/openldap/schema/kerberosobject.schema
-## include	/usr/share/openldap/schema/misc.schema
 include	/usr/share/openldap/schema/nis.schema
-include	/usr/share/openldap/schema/openldap.schema 
+include	/usr/share/openldap/schema/openldap.schema
 include /usr/share/openldap/schema/autofs.schema
 include /usr/share/openldap/schema/samba.schema
-## include /usr/share/openldap/schema/kolab.schema
 include /usr/share/openldap/schema/evolutionperson.schema
 include /usr/share/openldap/schema/calendar.schema
 include /usr/share/openldap/schema/sudo.schema
-## include /usr/share/openldap/schema/dnszone.schema
-## include /usr/share/openldap/schema/dhcp.schema
 include /usr/share/openldap/schema/dyngroup.schema
 include /usr/share/openldap/schema/ppolicy.schema
 
 include	/etc/openldap/schema/local.schema
-
-### Add for MDS 
-include /etc/openldap/schema/mmc.schema
-include /etc/openldap/schema/mail.schema
-include /etc/openldap/schema/dnszone.schema
-include /etc/openldap/schema/dhcp.schema
-
 
 pidfile		/var/run/ldap/slapd.pid
 argsfile	/var/run/ldap/slapd.args
@@ -93,4 +82,3 @@ access to dn.subtree="cn=Monitor"
 	by group.exact="cn=LDAP Monitors,ou=System Groups,@SUFFIX@" read
 	by group.exact="cn=LDAP Admins,ou=System Groups,@SUFFIX@" read
 	by * none
-
