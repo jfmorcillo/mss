@@ -48,7 +48,7 @@ config.add_bundle("mds", {'id': 'net', 'name': _('Network modules'),
 
 config.add_bundle("mds", {'id': 'other', 'name': _('Other modules'),
     'icon': 'base/section_advanced.png', 'desc': _('Various MDS modules'),
-    'conf': {'class': 'block-2'}, 'modules': ["mds_audit", "mds_bulkimport"]})
+    'conf': {'class': 'block-2'}, 'modules': ["mds_audit", "mds_bulkimport", "mds_kerberos"]})
 
 config.add_section({'id': 'pulse2', 'name': _('Pulse 2 - Coming soon'),
     'icon': 'base/section_pulse2.png', 'desc': _('Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href="http://pulse2.mandriva.org/">project website</a>.'),

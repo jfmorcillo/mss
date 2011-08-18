@@ -1,0 +1,163 @@
+<module id="mds_kerberos">
+    <name>Kerberos authentication with MDS backend</name>
+    <desc>Install and configure Kerberos authentication</desc>
+    <packages>
+        <target name="all">
+    	    <rpm>krb5-server</rpm>
+    	    <rpm>krb5-workstation</rpm>
+    	    <rpm>openldap-servers</rpm>
+    	    <rpm>nss_ldap</rpm>
+    	    <rpm>openldap-clients</rpm>
+    	    <rpm>pam_ldap</rpm>
+    	    <rpm>openldap-mandriva-dit</rpm>
+    	    <rpm>python-mmc-kerberos</rpm>
+    	    <rpm>mmc-web-kerberos</rpm>
+        </target>
+        <target name="i686">
+            <rpm>libsasl2-plug-gssapi</rpm>
+        </target>
+        <target name="x86_64">
+            <rpm>lib64sasl2-plug-gssapi</rpm>
+        </target>
+    </packages>
+    <deps>
+        <module>mds_mmc</module>
+        <module>mds_dns</module>
+    </deps>
+    <config>
+        <text name="realm" require="yes" edit_if_unconfigured = "Yes" default = "get_default_realm" validation = "check_realm" >
+            <label>Realm</label>
+            <help>Kerberos realm (e.g., REALM.COM). Attention! It can be set only when the module is unconfigured)</help>
+        </text>
+        <text name="kdc_host_name" require="yes" default = "get_default_host_name" validation = "check_kdc_host_name">
+            <label>KDC host name</label>
+            <help>Host name of the KDC server without DNS domain name (e.g., server)</help>
+        </text>
+        <text name="dns_domain_name" require="yes" default = "get_default_domain_name" validation = "fqdn">
+            <label>DNS domain name</label>
+            <help>DNS Domain name (e.g., example.com)</help>
+        </text>
+        <text name="kdc_port" require="yes" default="88" validation = "check_port">
+            <label>KDC port</label>
+            <help>Default port of the KDC server (e.g., 88)</help>
+        </text>
+        <text name="kadmin_port" require="yes" default="749" validation = "check_port">
+            <label>Administrator server port</label>
+            <help>Default port of the administrator server (e.g., 749)</help>
+        </text>
+	<password name="kdc_key_passwd" require="yes" show_if_unconfigured="yes">
+            <label>KDC database master key</label>
+            <help>Master key for the KDC server. Attention! It can be set only when the module is unconfigured</help>
+	</password>
+	<check name="dns_lookup_kdc" default="on">
+	    <label>DNS lookup for KDC</label>
+            <help>Indicates whether DNS SRV records should be used to locate the KDCs and other servers for a realm, if they are not listed in the information for the realm</help>
+	</check>
+	<check name="dns_lookup_realm">
+	    <label>DNS lookup for realm</label>
+	    <help>Indicates whether DNS TXT records should be used to determine the Kerberos realm of a host</help>
+	</check>
+        <text name="clock_skew" default="300">
+            <label>Clock skew</label>
+            <help>Maximum allowable amount of clockskew in seconds that the library will tolerate before assuming that a Kerberos message is invalid (e.g., 300)</help>
+        </text>
+        <text name="tgs_enctypes" default="des3-cbc-sha1-kd des-cbc-crc" size="50">
+            <label>TGS encryption types</label>
+            <help>Supported list of session key encryption types that should be returned by the KDC (Values of list devided by whitespace or comma from each other, e.g., des3-cbc-sha1-kd des-cbc-crc)</help>
+        </text>
+        <text name="tkt_enctypes" default="des3-cbc-sha1-kd des-cbc-crc" size="50">
+            <label>TKT encryption types</label>
+            <help>Supported list of session key encryption types that should be requested by the client (Values of list devided by whitespace or comma from each other, e.g., des3-cbc-sha1-kd des-cbc-crc)</help>
+        </text>
+        <text name="permitted_enctypes" default="des3-cbc-sha1-kd des-cbc-crc" size="50">
+            <label>Permitted encryption types</label>
+            <help>All encryption types that are permitted for use in session key encryption (Values of list devided by whitespace or comma from each other, e.g., des3-cbc-sha1-kd des-cbc-crc)</help>
+        </text>
+	<check name="allow_weak_enctypes" default="on">
+	    <label>Allow weak encryption types</label>
+            <help>Indicates whether weak encryption types should be filtered out</help>
+	</check>
+    </config>
+    <text>Incorrect realm.</text>
+    <text>Incorrect host name.</text>
+    <text>Incorrect port number.</text>
+    <text>MMC interface is not installed</text>
+    <text>Aborting</text>
+    <text>Realm name is empty</text>
+    <text>DNS domain name is empty</text>
+    <text>KDC host name is empty</text>
+    <text>KDC port number is empty. Default port, 88, is used</text>
+    <text>Administration server port number is empty. Default port, 749, is used</text>
+    <text>KDC database master key is empty</text>
+    <text>Configuring kerberos...</text>
+    <text>Reconfiguring kerberos...</text>
+    <text>Error while copying kerberos.schema in</text>
+    <text>Error generating OpenLDAP configuration file</text>
+    <text>Aborting. File used was</text>
+    <text>OpenLDAP configuration file is generated successfully</text>
+    <text>Loading kdc and kadmin data into database</text>
+    <text>Error loading kdc and kadmin data into database</text>
+    <text>Ldif file used:</text>
+    <text>slapd.conf file used:</text>
+    <text>kdc and kadmin data is loaded into database</text>
+    <text>Searching DNS zone in database...</text>
+    <text>DNS zone is not found in database</text>
+    <text>Zone searched:</text>
+    <text>DNS zone is found in database</text>
+    <text>Searching KDC host record in DNS zone...</text>
+    <text>KDC host is not found in DNS zone in database</text>
+    <text>Host checked:</text>
+    <text>Zone containing the host:</text>
+    <text>KDC host is found in DNS zone in database</text>
+    <text>KDC host name cannot be resolved in IP address</text>
+    <text>KDC host IP address cannot be resolved to host name</text>
+    <text>Loading kerberos DNS data into database</text>
+    <text>Error loading kerberos DNS data into database</text>
+    <text>Kerberos DNS data is loaded into database</text>
+    <text>Updating kerberos DNS data in database</text>
+    <text>Error updating kerberos DNS data in database</text>
+    <text>Kerberos DNS data is updated in database</text>
+    <text>Service ldap stopped successfully</text>
+    <text>Service ldap fails stopping. Check</text>
+    <text>Service mmc-agent stopped successfully</text>
+    <text>Service mmc-agent fails stopping. Check</text>
+    <text>Loading kdc and kadmin data into database...</text>
+    <text>Your previous database is at</text>
+    <text>Your original /etc/openldap/slapd.conf file was backed up as</text>
+    <text>Your original /etc/sysconfig/ldap file was backed up as</text>
+    <text>Your previous database directory was backed up as</text>
+    <text>Adding kerberos LDAP ACLs in</text>
+    <text>Kerberos LDAP ACLs are added in</text>
+    <text>Loading kerberos DNS data into database...</text>
+    <text>Service ldap started successfully</text>
+    <text>Service ldap fails starting. Check</text>
+    <text>Updating kerberos DNS data in database...</text>
+    <text>Service named restarted successfully</text>
+    <text>Service named fails restarting. Check</text>
+    <text>Creating realm...</text>
+    <text>Error creating realm</text>
+    <text>Realm is created</text>
+    <text>Error stashing password for kdc</text>
+    <text>Error stashing password for kadmin</text>
+    <text>Passwords for kdc and kadmin are stashed</text>
+    <text>Error stashing password for system principals kadmin/admin and kadmin/changepw</text>
+    <text>Passwords for system principals kadmin/admin and kadmin/changepw are stashed</text>
+    <text>Creating principal for KDC host</text>
+    <text>Error creating principal for KDC host</text>
+    <text>Error stashing password for KDC host principal</text>
+    <text>Principal for KDC host is created</text>
+    <text>Service krb5kdc started successfully</text>
+    <text>Service krb5kdc fails starting. Check</text>
+    <text>Service kadmin started successfully</text>
+    <text>Service kadmin fails starting. Check</text>
+    <text>Service krb5kdc restarted successfully</text>
+    <text>Service krb5kdc fails restarting. Check</text>
+    <text>Service kadmin restarted successfully</text>
+    <text>Service kadmin fails restarting. Check</text>
+    <text>MDS configuring done</text>
+    <text>Error while configuring MDS</text>
+    <text>Service mmc-agent started successfully</text>
+    <text>Service mmc-agent fails starting. Check</text>
+    <text>Kerberos module is activated in the MDS interface</text>
+    <text>You can add Kerberos principals from the MDS interface: http://@HOSTNAME@/mmc/</text>
+</module>
