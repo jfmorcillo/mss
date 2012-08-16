@@ -159,19 +159,14 @@ html, body {
 }
 
 #wrapper {
-    background: #87A3E5;
-    background: -moz-linear-gradient(
-        -60deg,
-        #87A3E5 0%,
-        #EEF1F8 100%
-    );
-    background: -webkit-gradient(
-        linear,
-        left top,
-        right bottom,
-        color-stop(0, #87A3E5),
-        color-stop(1, #EEF1F8)
-    );
+    background: #87a3e5; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #87a3e5 0%, #eef1f8 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#87a3e5), color-stop(100%,#eef1f8)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg, #87a3e5 0%,#eef1f8 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg, #87a3e5 0%,#eef1f8 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg, #87a3e5 0%,#eef1f8 100%); /* IE10+ */
+    background: linear-gradient(135deg, #87a3e5 0%,#eef1f8 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87a3e5', endColorstr='#eef1f8',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     min-height: 100%;
 }
 
@@ -205,6 +200,7 @@ div#content h1 span {
     text-shadow:0 1px 2px #ddd;
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
+    border-radius: 5px;
 }
 
 div#content h1 span:hover {
@@ -253,10 +249,12 @@ div#head div#quick-personal {
     float: right;
     padding: 7px;
     background: white;
+    -webkit-border-bottom-left-radius: 10px;
     -moz-border-radius-bottomleft: 10px;
-    /*-webkit-border-bottom-left-radius: 10px;*/
+    border-bottom-left-radius: 10px;
     -moz-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.50);
     -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.50);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.50);
 }
 
 div#status {
@@ -294,24 +292,21 @@ div.block {
     padding: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
-    background: white;
-    background: -moz-linear-gradient(
-        -45deg,
-        white 0%,
-        #E6E6E6 100%
-    );
-    background: -webkit-gradient(
-        linear,
-        left bottom,
-        left top,
-        color-stop(1, #fff),
-        color-stop(0, #eee)
-    );
+    border-radius: 10px;
+    background: #ffffff; /* Old browsers */
+    background: -moz-linear-gradient(-45deg, #ffffff 0%, #e6e6e6 100%); /* FF3.6+ */
+    background: -webkit-gradient(linear, left top, right bottom, color-stop(0%,#ffffff), color-stop(100%,#e6e6e6)); /* Chrome,Safari4+ */
+    background: -webkit-linear-gradient(-45deg, #ffffff 0%,#e6e6e6 100%); /* Chrome10+,Safari5.1+ */
+    background: -o-linear-gradient(-45deg, #ffffff 0%,#e6e6e6 100%); /* Opera 11.10+ */
+    background: -ms-linear-gradient(-45deg, #ffffff 0%,#e6e6e6 100%); /* IE10+ */
+    background: linear-gradient(135deg, #ffffff 0%,#e6e6e6 100%); /* W3C */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#e6e6e6',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
     -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
     -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.25);
 }
 
 div.block-height {
@@ -394,8 +389,9 @@ div.block div.detail p.more {
 }
 
 div.block div.detail p.more a {
-    -moz-border-radius:5px;
-    -webkit-border-radius:5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
     background: #E8EFFA;
     border:1px solid #C1D5F1;
     font-weight:bold;
@@ -431,8 +427,10 @@ input {
     padding-left: 2px;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
+    border-radius: 3px;
     -moz-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.30);
     -webkit-box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.30);
+    box-shadow: inset 1px 1px 3px rgba(0, 0, 0, 0.30);
 }
 
 input:hover {
@@ -444,10 +442,12 @@ input:hover {
     border-style: none;
     padding: none;
     margin: none;
-    -webkit-border-radius: 5px 5px 5px 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
     -webkit-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
-    -moz-border-radius: 5px 5px 5px 5px;
     -moz-box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.25);
     background: url(../img/overlay-button.png) repeat-x scroll 0 0 #21449C;
     border-bottom: 1px solid rgba(0, 0, 0, 0.25);
     color: white !important;
@@ -501,8 +501,11 @@ fieldset {
     margin-top: 10px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
+    border-radius: 10px;
     border: 1px solid #bbb;
     -moz-box-shadow: inset 1px 1px 4px #888;
+    -webkit-box-shadow: inset 1px 1px 4px #888;
+    box-shadow: inset 1px 1px 4px #888;
     background: white;
 }
 
@@ -516,6 +519,7 @@ fieldset legend {
     background: white;
     -moz-border-radius: 3px;
     -webkit-border-radius: 3px;
+    border-radius: 3px;
 }
 
 img.field {
