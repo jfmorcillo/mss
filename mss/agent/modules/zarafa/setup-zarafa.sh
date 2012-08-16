@@ -112,7 +112,9 @@ if [ "$lang" != "C" ]; then
 fi
 
 # add system user zarafa for running the services
-useradd -r zarafa
+useradd -r -m zarafa
+
+chown zarafa.zarafa /var/log/zarafa
 
 # attachments dir
 if [ ! -d ${zarafa_attachments} ]; then
