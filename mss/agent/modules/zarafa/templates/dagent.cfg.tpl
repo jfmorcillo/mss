@@ -29,7 +29,13 @@ log_level	=	2
 log_file = /var/log/zarafa/dagent.log
 
 # Log timestamp - prefix each log line with timestamp in 'file' logging mode
-log_timestamp	=	0
+log_timestamp	=	1
+
+# Log raw message to a file
+log_raw_message = no
+
+# Log raw messages path
+log_raw_message_path = /tmp
 
 ##############################################################
 # DAGENT LMTP SETTINGS
@@ -73,3 +79,19 @@ spam_header_name = X-Spam-Status
 #  - Leading and trailing spaces are stripped.
 #  - The word 'bayes' also contains the word 'yes'.
 spam_header_value = Yes,
+
+##############################################################
+# DAGENT ARCHIVING SETTINGS
+
+# Enable archive_on_delivery to automatically archive all incoming
+# messages on delivery.
+# This will do nothing if no archive is attached to the target mailbox.
+archive_on_delivery = no
+
+##############################################################
+# DAGENT RULE SETTINGS
+
+# Enable the addition of X-Zarafa-Rule-Action headers on messages
+# that have been forwarded or replied by a rule.
+# Default: yes
+set_rule_headers = yes

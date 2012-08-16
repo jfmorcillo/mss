@@ -111,6 +111,9 @@ if [ "$lang" != "C" ]; then
     sed -i "s|^ZARAFA_USERSCRIPT_LOCALE=.*$|ZARAFA_USERSCRIPT_LOCALE=\"${zarafa_lang}\"|" /etc/sysconfig/zarafa
 fi
 
+# add system user zarafa for running the services
+useradd -r zarafa
+
 # attachments dir
 if [ ! -d ${zarafa_attachments} ]; then
     mkdir -p ${zarafa_attachments}
