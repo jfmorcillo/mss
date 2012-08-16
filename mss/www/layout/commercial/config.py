@@ -33,7 +33,7 @@ config.add_section({'id': 'commercial', 'name': _('Commercial components'), 'ico
 config.add_bundle("commercial", {'id': 'zarafa', 'name': _('Zarafa'), 'icon': 'commercial/bundle_zarafa.gif',
     'desc': _('Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. On MES5 Zarafa is integrated with MDS. MDS provides an easy way to manage Zarafa users and groups and much more...'), 'modules': ["zarafa"], 'conf': {'class': 'block-2 block-clear'}})
 
-config.add_module("mds", "mail", "zarafa")
+# config.add_module("mds", "mail", "zarafa")
 
 
 #    {
