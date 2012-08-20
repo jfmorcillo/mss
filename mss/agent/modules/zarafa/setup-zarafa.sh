@@ -114,8 +114,6 @@ fi
 # add system user zarafa for running the services
 useradd -r -m zarafa
 
-chown zarafa.zarafa /var/log/zarafa
-
 # attachments dir
 if [ ! -d ${zarafa_attachments} ]; then
     mkdir -p ${zarafa_attachments}
@@ -144,8 +142,9 @@ sed -i "s/\@LDAPSEARCHBASE\@/${mdssuffix}/" $ldap_cfg
 cp -rf $userscripts /etc/zarafa
 
 # FIXME (packaging)
-backup /etc/httpd/conf/webapps.d/zarafa-webaccess.conf
-cp -f $webaccess_tpl /etc/httpd/conf/webapps.d/zarafa-webaccess.conf
+if [ -f "/etc/httpd/conf/zarafa-webaccess.conf" ]; then
+    mv /etc/httpd/conf/zarafa-webaccess.conf /etc/httpd/conf/webapps.d/zarafa-webaccess.conf
+fi
 
 # z-push support
 if [ "$zarafa_zpush" == "on" ]; then
@@ -238,6 +237,8 @@ fi
 # spamassassin
 backup /etc/mail/spamassassin/local.cf
 cat $spamassassin_template > /etc/mail/spamassassin/local.cf
+
+chown zarafa.zarafa /var/log/zarafa
 
 # restart services
 restart_service mysqld
