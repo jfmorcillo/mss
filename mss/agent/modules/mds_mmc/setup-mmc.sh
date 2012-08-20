@@ -14,11 +14,12 @@ SLAPPASSWD="/usr/sbin/slappasswd"
 
 if [ "`uname -m`" != "x86_64" ]; then
 	slapd_conf_template="templates/slapd-32.conf.tpl"
+    base_mds_template="templates/base-32.ini.tpl"
 else
 	slapd_conf_template="templates/slapd-64.conf.tpl"
+    base_mds_template="templates/base-64.ini.tpl"
 fi
 
-base_mds_template="templates/base.ini.tpl"
 ppolicy_template="templates/ppolicy.ini.tpl"
 base_ldif_template="templates/init.ldif.tpl"
 acl_template="templates/mandriva-dit-access.conf.tpl"
