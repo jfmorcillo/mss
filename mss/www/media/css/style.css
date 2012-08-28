@@ -480,6 +480,8 @@ input:disabled, input:disabled:hover {
 
 input.error {
     border: 1px solid #D72828;
+    background: none;
+    padding-left: 2px;
 }
 
 div.block div.validation {
