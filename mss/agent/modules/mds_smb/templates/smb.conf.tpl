@@ -1,6 +1,6 @@
 [global]
 workgroup = @WORKGROUP@
-netbiosname = @NETBIOSNAME@
+netbios name = @NETBIOSNAME@
 server string = Mandriva Directory Server - SAMBA %v
 null passwords = yes
 name resolve order = bcast host
