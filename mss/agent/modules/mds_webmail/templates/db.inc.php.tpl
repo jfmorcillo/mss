@@ -4,8 +4,8 @@
  +-----------------------------------------------------------------------+
  | Configuration file for database access                                |
  |                                                                       |
- | This file is part of the RoundCube Webmail client                     |
- | Copyright (C) 2005-2008, RoundCube Dev. - Switzerland                 |
+ | This file is part of the Roundcube Webmail client                     |
+ | Copyright (C) 2005-2009, The Roundcube Dev Team                       |
  | Licensed under the GNU GPL                                            |
  |                                                                       |
  +-----------------------------------------------------------------------+
@@ -16,10 +16,12 @@ $rcmail_config = array();
 
 // PEAR database DSN for read/write operations
 // format is db_provider://user:password@host/database 
-// currently supported db_providers: mysql, mysqli, pgsql, sqlite, mssql
+// For examples see http://pear.php.net/manual/en/package.database.mdb2.intro-dsn.php
+// currently supported db_providers: mysql, mysqli, pgsql, sqlite, mssql or sqlsrv
 
 // $rcmail_config['db_dsnw'] = 'mysql://roundcube:pass@localhost/roundcubemail';
 // postgres example: 'pgsql://roundcube:pass@localhost/roundcubemail';
+// Warning: for SQLite use absolute path in DSN:
 $rcmail_config['db_dsnw'] = 'sqlite:////var/lib/roundcubemail/sqlite.db?mode=0600';
 
 // PEAR database DSN for read only operations (if empty write database will be used)
@@ -37,29 +39,25 @@ $rcmail_config['db_persistent'] = FALSE;
 
 // you can define specific table names used to store webmail data
 $rcmail_config['db_table_users'] = 'users';
-
 $rcmail_config['db_table_identities'] = 'identities';
-
 $rcmail_config['db_table_contacts'] = 'contacts';
-
+$rcmail_config['db_table_contactgroups'] = 'contactgroups';
+$rcmail_config['db_table_contactgroupmembers'] = 'contactgroupmembers';
 $rcmail_config['db_table_session'] = 'session';
-
 $rcmail_config['db_table_cache'] = 'cache';
-
-$rcmail_config['db_table_messages'] = 'messages';
+$rcmail_config['db_table_cache_index'] = 'cache_index';
+$rcmail_config['db_table_cache_thread'] = 'cache_thread';
+$rcmail_config['db_table_cache_messages'] = 'cache_messages';
 
 
 // you can define specific sequence names used in PostgreSQL
 $rcmail_config['db_sequence_users'] = 'user_ids';
-
 $rcmail_config['db_sequence_identities'] = 'identity_ids';
-
 $rcmail_config['db_sequence_contacts'] = 'contact_ids';
-
+$rcmail_config['db_sequence_contactgroups'] = 'contactgroups_ids';
 $rcmail_config['db_sequence_cache'] = 'cache_ids';
-
-$rcmail_config['db_sequence_messages'] = 'message_ids';
+$rcmail_config['db_sequence_searches'] = 'search_ids';
 
 
 // end db config file
-?>
+
