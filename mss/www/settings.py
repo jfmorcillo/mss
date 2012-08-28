@@ -33,8 +33,12 @@ PROJECT_DIR = os.path.dirname(__file__)
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
-DATABASE_ENGINE = 'sqlite3'
-DATABASE_NAME = "/var/lib/mss/mss-www.db"
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': '/var/lib/mss/mss-www.db'
+    }
+}
 
 TIME_ZONE = 'Europe/Paris'
 SITE_ID = 1
