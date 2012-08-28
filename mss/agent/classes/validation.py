@@ -31,21 +31,21 @@ class Validation:
     def fqdn(self, string):
         """ validate hostname """
         if not re.match('^[a-z0-9-\.]+\.[a-z]{2,}$', string):
-            return _("Incorrect FQDN.", "agent")
+            return "Incorrect FQDN."
         else:
             return None
 
     def network(self, networks):
         for ip, mask in networks:
             if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
-                return _("Incorrect IP address.", "agent")
+                return "Incorrect IP address."
             if not mask == "false":
                 if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', mask):
-                    return _("Incorrect netmask address.", "agent")
+                    return "Incorrect netmask address."
         return None
 
     def ip(self, ips):
         for ip in ips:
             if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
-                return _("Incorrect IP address.", "agent")
+                return "Incorrect IP address."
         return None
