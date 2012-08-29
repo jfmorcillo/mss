@@ -2,6 +2,8 @@ python
 python-django  
 python-IPy  
 python-OpenSSL
+python-setuptools
+python-docutils
 binutils
 gettext
 locales-fr
