@@ -27,7 +27,7 @@ gidStart = 10000
 logfile = /var/log/ldap/ldap.log
 # FDS log file path
 # logfile = /opt/fedora-ds/slapd-hostname/logs/access 
-
+passwordscheme = passmod
 # you can specify here where you can authorized creation of your homedir
 # default is your defaultHomeDir
 # example:

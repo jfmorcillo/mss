@@ -1,7 +1,7 @@
 %define name mss
 %define version 2.0
 %define pkgrelease 1
-%define release %mkrel 48
+%define release %mkrel 56
 %global username mss
 %global groupname mss
 
