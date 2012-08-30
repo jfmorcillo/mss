@@ -20,7 +20,6 @@
 # MA 02110-1301, USA.
 
 import re
-from IPy import IP
 
 class Validation:
     """
