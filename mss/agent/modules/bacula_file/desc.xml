@@ -1,9 +1,0 @@
-<module id="bacula_file">
-  <name>Bacula File Daemon</name>
-  <desc>Background application which reads files from data source</desc>
-  <packages>
-    <target name="all">
-      <rpm>bacula-fd</rpm>
-    </target>
-  </packages>
-</module>

@@ -1,9 +1,0 @@
-<module id="proftpd">
-  <name>FTP server</name>
-  <desc>Install FTP server</desc>
-  <packages>
-    <target name="all">
-      <rpm>proftpd</rpm>
-    </target>
-  </packages>
-</module>
