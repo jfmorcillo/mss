@@ -1,188 +1,247 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
 {% block content %}
 <script type="text/javascript">
-var field_cnt = 0;
-function addNetwork(module, fieldname, ip, mask, error) {
-    container = $(module+"_"+fieldname);
-    network = new Element('div', {'class': 'field_multi'});
-    ip_field = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_ip",
-            'type':'text', 'size':'15', 'maxlength':'15', 'value': ip});
-    network.appendChild(ip_field);
-    network.appendChild(document.createTextNode(" / "));
-    mask_field = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_mask",
-        'type':'text', 'size':'15', 'maxlength':'15', 'value': mask});
-    network.appendChild(mask_field);
-    if(error) {
-        ip_field.addClassName("error");
-        mask_field.addClassName("error");
+    var field_cnt = 0;
+
+    function addNetwork(module, fieldname, ip, mask) {
+        container = $("#" + module + "_" + fieldname);
+        field = $('<div>', {'class': 'input-append field-multi'});
+        input_ip = $('<input>', { 'name': module+"_"+fieldname+"_"+field_cnt+"_ip",
+                     'type':'text', 'value': ip});
+        separator = $('<span>').html(" / ");
+        input_mask = $('<input>', { 'name': module+"_"+fieldname+"_"+field_cnt+"_mask",
+                       'type':'text', 'value': mask});
+        remove = $('<button>', { 'class': 'btn', 'type': 'button' });
+        remove.append('<i class="icon-remove"></i>');
+        remove.click(function(){ 
+            $(this).parent().next().remove(); 
+            $(this).parent().remove();
+            // Be sure to destroy the tooltip
+            $('.tooltip').remove();
+        });
+
+        field.append(input_ip);
+        field.append(separator);
+        field.append(input_mask);
+        field.append(remove);
+        container.append(field);
+        container.append($('<br>'));
+
+        field_cnt++;
     }
-    remove = new Element('a', {'title':'{% trans "Remove network" %}'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
-    remove.observe('click', function(){ this.parentNode.remove(); });
-    network.appendChild(remove);
-    container.appendChild(network);
-    field_cnt++;
-}
-function addField(module, fieldname, text, error) {
-    container = $(module+"_"+fieldname);
-    field = new Element('div', {'class': 'field_multi'});
-    input = new Element('input', { 'name': module+"_"+fieldname+"_"+field_cnt+"_field",
-            'type':'text', 'value': text});
-    field.appendChild(input);
-    if(error) {
-        input.addClassName("error");
+
+    function addField(module, fieldname, text) {
+        container = $("#" + module + "_" + fieldname);
+        field = $('<div>', {'class': 'input-append'});
+        input = $('<input>', {'name': module+"_"+fieldname+"_"+field_cnt+"_field",
+                'type':'text', 'value': text});
+        remove = $('<button>', {'class': 'btn', 'type': 'button'});
+        remove.append('<i class="icon-remove"></i>');
+        remove.click(function(){ 
+            $(this).parent().next().remove(); 
+            $(this).parent().remove();
+            // Be sure to destroy the tooltip
+            $('.tooltip').remove();
+        });
+        
+        field.append(input);
+        field.append(remove);
+        container.append(field);
+        container.append($('<br>'));
+
+        field_cnt++;
     }
-    remove = new Element('a', {'title':'{% trans "Remove field" %}'}).update('<img class="field" src="{{ MEDIA_URL }}img/remove.png" />');
-    remove.observe('click', function(){ this.parentNode.remove(); });
-    field.appendChild(remove);
-    container.appendChild(field);
-    field_cnt++;
-}
+
+    $(document).ready(function() {
+        // Focus the first input in the form
+        // Put the cursor at the end if there is a default text
+        var firstInput = $($('#configuration-form input')[0]);
+        var value = firstInput.val();
+        firstInput.focus().val('');
+        firstInput.val(value);
+    });
 </script>
-<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span class="active">4. {% trans "Configuration" %}</span></h1>
-<div class="block">
-    <h2>Configuration</h2>
-    <form action="{% url config_valid %}" method="post">
+<section id="configuration">
+    <div class="page-header">
+        <h1>{{ transaction.current_step.title }}</h1>
+    </div>
+    <form id="configuration-form" class="form-horizontal" action="{% url config_valid %}" method="post">
     {% for module in config %}
         <fieldset>
             {% for m in modules %}
                 {% ifequal module.0.id m.id %}
-            <legend><img class="legend" src="{{ MEDIA_URL }}img/configuration.png" />{{ m.name }}</legend>
+            <legend>{{ m.name }}</legend>
                 {% endifequal %}
             {% endfor %}
             {% for field in module %}
             {% if module.0.configured and field.show_if_unconfigured %}
-	    	    <input {% if field.error %}class="error"{% endif %}
-            		id="{{ field.id }}_{{ field.name }}"
+                <input 
+                    id="{{ field.id }}_{{ field.name }}"
                     name="{{ field.id }}_{{ field.name }}"
                     value="{{ field.default }}"
                     type="hidden"
             	/>
         	{% else %}
-        	    <p class="field">
+                {% if field.type %}
+                <div class="control-group {% if field.error %}error{% endif %}">
         	    {% ifequal field.type "text" %}
-            		<label for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		<label for="{{ field.id }}_{{ field.name }}" class="control-label">
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
             		</label>
+                    <div class="controls">
             		{% if field.multi %}
-            		    <a title="{% trans "Add field"%}" 
-            			onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
-            			<img class="field" src="{{ MEDIA_URL }}img/add.png" />
-            		    </a>
-            		    <span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
-            		    </span>
+                        <span id="{{ field.id }}_{{ field.name }}" 
+                              name="{{ field.id }}_{{ field.name }}"
+                              data-placement="right" rel="tooltip" 
+                              data-original-title="{{ field.help }}"></span>
+                        <p><a class="btn btn-small" onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
+                            <i class="icon-plus-sign"></i> {% trans "Add" %}
+                        </a></p>
             		    {% if field.default %}
             			<script type="text/javascript">
             			{% for text in field.default %}
-                		    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}', {% if field.error %}true{% else %}false{% endif %});
+                		    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
             			{% endfor %}
             			</script>
             		    {% endif %}
             		{% else %}
             		    {% if module.0.configured and field.edit_if_unconfigured %}
-            			<input {% if field.error %}class="error"{% endif %}
-                		    id="{{ field.id }}_{{ field.name }}"
-                		    name="{{ field.id }}_{{ field.name }}"
-                		    value="{{ field.default }}"
-                		    type="hidden"
-            			/>
-            			{{ field.default }}
+                            <input
+                                id="{{ field.id }}_{{ field.name }}"
+                                name="{{ field.id }}_{{ field.name }}"
+                                value="{{ field.default }}"
+                                type="hidden"
+                            />
+                            {{ field.default }}
                 	    {% else %}
-            			<input {% if field.error %}class="error"{% endif %}
-                		    id="{{ field.id }}_{{ field.name }}"
-                		    name="{{ field.id }}_{{ field.name }}"
-                		    type="text" 
-                		    size={% if field.size %}"{{field.size}}"{% else %}"20"{% endif %} 
-                		    value="{{ field.default }}"
-            			/>
+                            <input
+                                id="{{ field.id }}_{{ field.name }}"
+                                name="{{ field.id }}_{{ field.name }}"
+                                value="{{ field.default }}"
+                                type="text" 
+                                data-placement="right" rel="tooltip" 
+                                data-original-title="{{ field.help }}" 
+                            />
             		    {% endif %}
-            		{% endif %}
+                    {% endif %}
+                    {% if field.error %}
+                        <span class="help-block">{{ field.error }}</span>
+                    {% endif %}
+                    </div>
         	    {% endifequal %}
         	    {% ifequal field.type "password" %}
-            		<label for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }} {% if field.require %} <span class="require">*</span> {% endif %}: 
+            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
             		</label>
-            		<input {% if field.error %}class="error"{% endif %}
-                	    id="{{ field.id }}_{{ field.name }}"
-                	    name="{{ field.id }}_{{ field.name }}"
-                	    type="password" size="20" value="{{ field.default }}"
-            		/>
-            		<label for="{{ field.id }}_{{ field.name }}2">
-            		    {% trans "Re-enter password" %} {% if field.require %}<span class="require">*</span> {% endif %}: 
-            		</label>
-            		<input {% if field.error %}class="error"{% endif %}
-                	    id="{{ field.id }}_{{ field.name }}2"
-                	    name="{{ field.id }}_{{ field.name }}2"
-                	    type="password" size="20"
-            		/>
+                    <div class="controls">
+                        <input
+                            id="{{ field.id }}_{{ field.name }}"
+                            name="{{ field.id }}_{{ field.name }}"
+                            type="password"
+                            value="{{ field.default }}"
+                            data-placement="right" rel="tooltip" 
+                            data-original-title="{{ field.help }}" 
+                        />
+                    </div>
+                </div>
+                <div class="control-group {% if field.error %}error{% endif %}">
+                    <label class="control-label" for="{{ field.id }}_{{ field.name }}2">
+                        {% trans "Re-enter password" %}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+                    </label>
+                    <div class="controls">
+                        <input
+                            id="{{ field.id }}_{{ field.name }}2"
+                            name="{{ field.id }}_{{ field.name }}2"
+                            type="password"
+                            data-placement="right" rel="tooltip" 
+                            data-original-title="{{ field.help }}" 
+                        />
+                        {% if field.error %}
+                            <span class="help-block">{{ field.error }}</span>
+                        {% endif %}
+                    </div>
         	    {% endifequal %}
         	    {% ifequal field.type "options" %}
-            		<label for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
-            		</label>
-            		<select {% if field.error %}class="error"{% endif %}
-                        id="{{ field.id }}_{{ field.name }}"
-                        name="{{ field.id }}_{{ field.name }}">
-                	{% for option in field.options %}
-                	    <option value="{{ option.value }}"
-                            {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
-                    	    {{ option.name }}
-                	    </option>
-                	{% endfor %}
-            		</select>
+            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+                    </label>
+                    <div class="controls">
+                        <select {% if field.error %}class="error"{% endif %}
+                            id="{{ field.id }}_{{ field.name }}"
+                            name="{{ field.id }}_{{ field.name }}"
+                            data-placement="right" rel="tooltip" 
+                            data-original-title="{{ field.help }}">
+                        {% for option in field.options %}
+                            <option value="{{ option.value }}"
+                                {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
+                                {{ option.name }}
+                            </option>
+                        {% endfor %}
+                        </select>
+                        {% if field.error %}
+                            <span class="help-block">{{ field.error }}</span>
+                        {% endif %}
+                    </div>
         	    {% endifequal %}
         	    {% ifequal field.type "check" %}
-            		<label for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
+            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
             		</label>
-            		<input {% if field.error %}class="error"{% endif %}
-                	    id="{{ field.id }}_{{ field.name }}"
-                	    name="{{ field.id }}_{{ field.name }}"
-                	    type="checkbox"
-                	    {% ifequal field.default "on" %} checked="checked" {% endifequal %}
-            		/>
+                    <div class="controls">
+                        <input
+                            id="{{ field.id }}_{{ field.name }}"
+                            name="{{ field.id }}_{{ field.name }}"
+                            type="checkbox"
+                            {% ifequal field.default "on" %} checked="checked" {% endifequal %}
+                            data-placement="right" rel="tooltip" 
+                            data-original-title="{{ field.help }}"
+                        />
+                    </div>
         	    {% endifequal %}
         	    {% ifequal field.type "network" %}
-            		<label for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }} {% if field.require %}<span class="require">*</span> {% endif %}: 
-            		</label>
-            		<a title="{% trans "Add network"%}" 
-            		    onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" >
-            		    <img class="field" src="{{ MEDIA_URL }}img/add.png" />
-            		</a>
-            		<span id="{{ field.id }}_{{ field.name }}" name="{{ field.id }}_{{ field.name }}">
-            		</span>
+            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+                    </label>
+                    <div class="controls">
+                        <span id="{{ field.id }}_{{ field.name }}" 
+                              name="{{ field.id }}_{{ field.name }}"
+                              data-placement="right" rel="tooltip" 
+                              data-original-title="{{ field.help }}"></span>
+                        <p><a class="btn btn-small" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" >
+                            <i class="icon-plus-sign"></i> {% trans "Add" %}
+                        </a></p>
+                        {% if field.error %}
+                            <span class="help-block">{{ field.error }}</span>
+                        {% endif %}
+                    </div>
             		{% if field.default %}
-                	    <script type="text/javascript">
-                	    {% for network in field.default %}
-                    		addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}', {% if field.error %}true{% else %}false{% endif %});
-                	    {% endfor %}
-                	    </script>
+                    <script type="text/javascript">
+                    {% for network in field.default %}
+                        addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
+                    {% endfor %}
+                    </script>
             		{% endif %}
-        	    {% endifequal %}
+        	    {% endifequal %}                
+                </div>
+                {% endif %}
         	    {% if not module.0.do_config %}
-            		{% trans "No configuration for this module." %}
-        	    {% endif %}
-        	    {% if field.error %}
-        		<span class="error warning">
-            		{{ field.error }}
-        		</span>
-        	    {% endif %}
-        	    </p>
-        	    {% if field.help %}
-        		<p class="help">
-            		{{ field.help }}
-        		</p>
+                    <p class="alert">{% trans "No configuration for this module." %}</p>
         	    {% endif %}
         	{% endif %}
             {% endfor %}
         </fieldset>
     {% endfor %}
-        <div class="validation">
-            <p><span class="require">*</span> : {% trans "Required field" %}</p>
-            <input type="submit" name="continue" value="{% trans "Continue" %}" />
-            <input type="button" id="back" value="{% trans "Back" %}" />
+        <p><small><span class="require">*</span> : {% trans "Required field" %}</small></p>
+        <div class="form-actions">
+            <div class="pull-right">
+                <button type="submit" name="continue">{% trans "Continue" %} →</button>
+            </div>
+            <a href="{% url preinst %}">Retour</a>
         </div>
     </form>
-</div>
+</section>
 {% endblock %}

@@ -1,6 +1,6 @@
 <module id="zarafa">
-    <name>Zarafa</name>
-    <desc>Zarafa suite with MDS backend, anti-virus and anti-spam toolkits</desc>
+    <name>Zarafa Collaboration Platform</name>
+    <desc>Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface</desc>
     <deps>
         <module>mds_mmc</module>
         <module>mysql</module>
@@ -9,11 +9,10 @@
         <module>mds_mail</module>
         <module>mds_webmail</module>
     </conflicts>
-    <info>
-        <url>http://www.zarafa.com/</url>
-        <buy>http://store.mandriva.com</buy>
-        <file>zarafa.html</file>
-    </info>
+    <market>
+        <info_file title="Zarafa on MBS">zarafa.html</info_file>
+        <buy_url>http://store.mandriva.com</buy_url>
+    </market>
     <medias verbose_name="Zarafa" name="zarafa" auth="my" proto="https">
         <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/</url>
     </medias>

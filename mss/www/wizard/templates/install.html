@@ -1,63 +1,68 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
 {% block content %}
 <script type="text/javascript">
-    run = function() {
-        tmp = "";
-        current_log = $('log');
-        updater = new Ajax.PeriodicalUpdater(tmp, "{% url state "install" %}", {
-            frequency: 2,
-            onSuccess: function(t) {
-                o = t.responseJSON;
-                current_log.update(formatLog(o.output));
-                scrollLog();
-                if (o.code != 2000) {
-                    updater.stop();
-                    if (o.code == 0) {
-                        $("task").addClassName("success info");
-                        $("task").update("{% trans "Installation succeded." %}");
-                        $("next").value = "{% trans "Continue" %}";
-                        $$("#mss input").each(function(i){ i.disabled = false; });
-                        new Ajax.Request("{% url reload_packages %}");
+    getState = function() {
+        $.get("{% url state "install" %}")
+        .success(function(r) {
+            $('#log').html(formatLog(r.output));
+            scrollLog();
+            if (r.code != 2000) {
+                if (r.code == 0) {
+                    $(".alert").removeClass("alert-info");
+                    $(".alert").addClass("alert-success");
+                    $(".alert").html('<i class="icon-ok"></i> {% trans "Installation succeded." %}');
+                    $("#next").html("{% trans "Continue" %} →");
+                    $("#next")[0].disabled = false;
+                    $.get("{% url reload_packages %}");
+                }
+                else {
+                    $("#task").addClass("warning error");
+                    if (r.code == 13 || r.code == 14) {
+                        $(".alert").html("{% trans "Installation failed. You should update your medias." %}");
                     }
                     else {
-                        $("task").addClassName("warning error");
-                        if (o.code == 13 || o.code == 14) {
-                            $("task").update("{% trans "Installation failed. You should update your medias (urpmi.update -a)." %}");
-                        }
-                        else {
-                            $("task").update("{% trans "Installation failed." %}");
-                        }
-                        $("next").value = "{% trans "Can't continue" %}";
-                        $("back").disabled = false;
-                        toggleLog(current_log.previous().down());
+                        $(".alert").html("{% trans "Installation failed." %}");
                     }
+                    $("#next").html("{% trans "Can't continue" %}");
+                    //toggleLog(current_log.previous().down());
                 }
             }
+            else {
+                // Refresh the status
+                setTimeout(getState, 2000);
+            }
         });
-    }
+    };
 
-    Event.observe(window, 'load', function() {
-        run();
+    $(document).ready(function() {
+        getState();
     });
 </script>
-<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span class="active">3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
-<div class="block">
-    <h2>{% trans "Installation" %}</h2>
-    <p>{% blocktrans count modules|length as counter %}The following component is being installed{% plural %}The following components are being installed{% endblocktrans %} :
+<section id="install">
+    <div class="page-header">
+        <h1>{{ transaction.current_step.title }}</h1>
+    </div>
+    <p class="alert alert-info">{% blocktrans count modules|length as counter %}The following component is being installed{% plural %}The following components are being installed{% endblocktrans %} :
     {% for m in modules %}
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>
     <div class="install">
-        <p id="task" class="task"><img src="/site_media/img/load.gif" /> {% trans "Please wait..." %}</p>
-        <div class="log_button"><input type="button" value="{% trans "Show log" %}" onclick="toggleLog(this)"/></div>
-        <div id="log" class="log" style="display: none;"> </div>
+        <div class="log-button pull-right">
+            <button class="btn btn-info btn-small" data-toggle="button" type="button" onclick="toggleLog(this)">{% trans "Show log" %}</button>
+        </div>
+        <div class="clearfix"></div>
+        <div id="log" class="log" style="display: none;"></div>
     </div>
-    <form id="mss" name="mss" action="{% url config %}" method="post">
-        <div class="validation">
-            <input id="next" type="submit" name="continue" value="{% trans "Please wait..." %}" disabled="disabled" />
-            <input id="back" type="button" value="{% trans "Back" %}" disabled="disabled" />
+    <form id="mss" name="mss" action="{{ transaction.next_step_url }}" method="post">
+        <div class="form-actions">
+            <div class="pull-right">
+                <button id="next" type="submit" name="continue" disabled="disabled">{% trans "Please wait..." %}</button>
+            </div>
         </div>
     </form>
-</div>
+</section>
 {% endblock %}

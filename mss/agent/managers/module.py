@@ -33,7 +33,7 @@ from mss.agent.lib.utils import grep
 from mss.agent.classes.module import Module
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
-logging.basicConfig(level=logging.INFO, filename=LOG_FILENAME)
+logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
 logger = logging.getLogger('MyLogger')
 handler = logging.handlers.RotatingFileHandler(
               LOG_FILENAME, maxBytes=10485760, backupCount=5)
@@ -78,6 +78,8 @@ class ModuleManager:
         _ = self.TM.translate
         # process manager
         self.PM = PM
+        # BDD access
+        self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # logging
         self.logger = logging.getLogger()
         self.load_packages()
@@ -89,6 +91,30 @@ class ModuleManager:
         """ change lang during execution """
         self.logger.info("Lang changed to %s" % lang)
         self.TM.set_lang(lang)
+
+    @expose
+    def set_option(self, key, value):
+        """ add an option in the DB """
+        c = self.conn.cursor()
+        c.execute('select * from options where key=?', (key,))
+        if c.fetchone():
+            c.execute('update options set value=? where key=?', (value, key))
+        else:
+            c.execute('insert into options values (?,?)', (key, value))
+        self.conn.commit()
+        c.close()
+
+    @expose 
+    def get_option(self, key):
+        """ get an option from the BDD """
+        c = self.conn.cursor()
+        c.execute('select * from options where key=?', (key,))
+        option = c.fetchone()
+        c.close()
+        if option:
+            return option[1]
+        else:
+            return False
 
     @expose
     def load_packages(self):
@@ -182,8 +208,9 @@ class ModuleManager:
         conflicts = self.get_conflicts([], module)
         conflicts = [conflict.name for conflict in conflicts]
         # return result
-        result = {'id': module.id, 'name': module.name,
-            'desc': module.desc, 'infos': module.infos,
+        result = {
+            'id': module.id, 'name': module.name,
+            'url': module.url, 'desc': module.desc, 'market': module.market,
             'preinst': module.preinst, 'installed': module.get_installed(),
             'configured': module.get_configured(), 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps}

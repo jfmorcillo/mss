@@ -1,6 +1,7 @@
 <module id="mds_dns">
-    <name>DNS server with MDS backend</name>
+    <name>DNS service</name>
     <desc>Resolve computer names on your network</desc>
+    <url>http://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>bind</rpm>

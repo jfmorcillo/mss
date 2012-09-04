@@ -1,15 +1,18 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<div class="block block-height">
-    <h2>{% trans "An error has occured." %}</h2>
+<section id="error">
+    <div class="page-header">
+        <h1>{% trans "An error has occured." %}</h1>
+    </div>
     {% ifequal code "111" %}
-    <p>{% trans "XML-RPC server is unreacheable." %}<br />{% blocktrans %}Check the service status with the <strong>service mss-rpc status</strong> command.{% endblocktrans %}</p>
+        <p class="alert alert-error">{% trans "MSS agent is unreacheable." %}<br />
+        {% blocktrans %}Check the service status with the <strong>service mss-agent status</strong> command.{% endblocktrans %}</p>
     {% endifequal %}
-    <form id="mss" name="mss" action="{% url sections %}" method="post">
-        <div class="validation">
-            <input id="next" type="submit" name="continue" value="{% trans "Home page" %}" />
+    <div class="form-actions">
+        <div class="pull-right">
+            <a href="{% url sections %}">{% trans "Home page" %}</a>
         </div>
-    </form>
-</div>
+    </div>
+</section>
 {% endblock %}

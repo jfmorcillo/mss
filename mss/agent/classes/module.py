@@ -46,7 +46,10 @@ class Module:
         self.logger = logging.getLogger()
         self.path = path
         self.arch = arch
-        tree = ET.parse(os.path.join(self.path, "desc.xml"))
+        try:
+            tree = ET.parse(os.path.join(self.path, "desc.xml"))
+        except:
+            raise Exception("Syntax error in desc.xml (%s)" % self.path)
         self.root = tree.getroot()
         # BDD access
         self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
@@ -71,10 +74,14 @@ class Module:
         self.TM.set_catalog(self.id, self.path)
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
-        self._infos = {}
-        self._infos['url'] = self.root.findtext("info/url")
-        self._infos['buy'] = self.root.findtext("info/buy")
-        self._infos['file'] = self.root.findtext("info/file")
+        self._url = self.root.findtext("url")
+        self._market = False
+        if self.root.findtext("market/buy_url"):
+            self._market = {}
+            self._market['buy_url'] = self.root.findtext("market/buy_url")
+            self._market['info_url'] = self.root.findtext("market/info_url")
+            self._market['info_file'] = self.root.findtext("market/info_file")
+            self._market['info_title'] = self.root.find("market/info_file").attrib["title"]
         # get module deps
         self._deps = [m.text for m in self.root.findall("deps/module")]
         # get module conflicts
@@ -85,18 +92,24 @@ class Module:
         else:
             self._preinst = " "
 
-
     def get_name(self):
         return _(self._name, self.id)
     name = property(get_name)
 
     def get_desc(self):
-        return _(self._desc, self.id)
+        if self._desc:
+            return _(self._desc, self.id)
+        else:
+            return ""
     desc = property(get_desc)
+    
+    def get_url(self):
+        return self._url
+    url = property(get_url)
 
-    def get_infos(self):
-        return self._infos
-    infos = property(get_infos)
+    def get_market(self):
+        return self._market
+    market = property(get_market)
 
     def get_deps(self):
         return self._deps
@@ -128,6 +141,13 @@ class Module:
         else:
             self._configured = False
         c.close()
+        # if the module has no configuration consider it is configured
+        try:
+            script, args = getattr(self.module, 'get_config_info')()
+        except AttributeError:
+            script, args = (None, [])
+        if script == None:
+            self._configured = True
 
     def get_configured(self):
         return self._configured
@@ -169,13 +189,14 @@ class Module:
             name = self.id
             verbose_name = media.attrib.get("verbose_name", name)
             auth = media.attrib.get("auth", None)
+            can_skip = media.attrib.get("can_skip", False)
             urls = []
             # format media URL with correct arch
             for url in media.findall("url"):
                 urls.append(re.sub('@ARCH@', self.arch, url.text))
             proto = media.attrib.get("proto", "http")
             mode = media.attrib.get("mode", None)
-            return Media(name, verbose_name, urls, auth, proto, mode)
+            return Media(name, verbose_name, urls, auth, proto, mode, can_skip)
         else:
             return None
 

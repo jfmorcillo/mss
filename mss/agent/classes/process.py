@@ -57,7 +57,6 @@ class ProcessThread(threading.Thread):
         self.catch_output()
         return 0
 
-
     def catch_output(self):
         """ get command context """
         while self.isAlive():

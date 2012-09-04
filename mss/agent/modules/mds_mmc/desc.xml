@@ -1,12 +1,14 @@
 <module id="mds_mmc">
-    <name>MDS main components</name>
-    <desc>MMC web interface and OpenLDAP directory</desc>
+    <name>Users and groups management</name>
+    <url>http://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>mmc-web-base</rpm>
             <rpm>mmc-web-ppolicy</rpm>
+            <rpm>mmc-web-bulkimport</rpm>
             <rpm>python-mmc-base</rpm>
             <rpm>python-mmc-ppolicy</rpm>
+            <rpm>python-mmc-bulkimport</rpm>
             <rpm>mmc-check-password</rpm>
             <rpm>mmc-agent</rpm>
             <rpm>openldap-servers</rpm>
@@ -18,18 +20,17 @@
     </packages>
     <config>
         <text name="mdsdomain" require="yes" default="example.com" validation="fqdn">
-            <label>MDS domain name</label>
-            <help>Usually the domain name (eg: domain.com) managed with MDS. This define the LDAP root.</help>
+            <label>Your domain name</label>
+            <help>The domain name used in your organization (eg: mandriva.com).</help>
         </text>
         <password name="mdspasswd" require="yes">
-            <label>MDS password</label>
-            <help>The MDS admin password.</help>
+            <label>Management password</label>
+            <help>The password needed to access the management interface.</help>
         </password>
-        <check name="mdsppolicy" default="on">
-            <label>Password policy</label>
-            <help>Enable password policy on MDS (password age, expiration, history, lock-out...)</help>
-        </check>
     </config>
+    <medias verbose_name="Mandriva Business Server" name="mbs" auth="my" proto="https" mode="distrib" can_skip="yes">
+        <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
+    </medias>
     <text>Error at generating password</text>
     <text>Password successfully generated</text>
     <text>OpenLDAP configuration file was generated with errors.</text>

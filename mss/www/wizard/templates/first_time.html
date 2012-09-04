@@ -1,15 +1,19 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<div class="block block-height block-center">
-    <h2>{% trans "Mandriva Server Setup" %}</h2>
-    <p>{% blocktrans %}Welcome on the Mandriva Server Setup. MSS aims to help system administrators to setup quickly system services such as DNS and OpenLDAP. Moreother, MSS allows you to setup <a href="http://mds.mandriva.org">Mandriva Directory Server</a> and <a href="http://pulse2.mandriva.org">Pulse 2</a> products easily.{% endblocktrans %}</p>
-    <br />
-    <p class="warning"><strong>{% trans "You have to use your Mandriva account to log in unless there is no network connectivity. Only your Mandriva account will be able to log in after your first connection." %}</strong></p>
-    <br />
-    <fieldset>
+<section id="login">
+    <div class="page-header">
+        <h1>{% trans "Welcome" %}</h1>
+    </div>
+    <p>{% trans "Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly setup the services you need on your server." %}</p>
+    <p>{% trans "Login to begin to setup your server." %}</p>
+    <form class="form-horizontal" action="{% url login %}" method="post">
         <legend>{% trans "Login" %}</legend>
-    {% include 'login_form.html' %}
-    </fieldset>
-</div>
+        {% include "login_form.html" %}
+    </form>
+</section>
+<script type="text/javascript">
+    // Hack to make the content block centered on this page
+    $('.span9').addClass('span6');
+</script>
 {% endblock %}

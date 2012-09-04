@@ -1,50 +1,70 @@
 {% load i18n %}
 <script type="text/javascript">
-    checknet = function() {
-        tmp = ""
-        updater = new Ajax.PeriodicalUpdater(tmp, '{% url state "net" %}', {
-            frequency: 1,
-            decay: 2,
-            method: 'get',
-            onSuccess: function(t) {
-                o = t.responseJSON;
-                if (o.code != 2000) {
-                    updater.stop();
-                    if (o.code == 0) {
-                        $('password').disabled = false;
-                        $('username').disabled = false;
-                        $('username').focus();
-                        $('netinfo').addClassName("success info");
-                        $('netinfo').innerHTML = "{% trans "Use your Mandriva account to login." %}";
+    $(document).ready(function() {
+        (function checknet() {
+            $.get('{% url state "net" %}')
+            .success(function(t) {
+                if (t.code != 2000) {
+                    if (t.code == 0) {
+                        $('#username')[0].disabled = false;
+                        $('#username')[0].focus();
+                        $('#username').tooltip({
+                            placement: 'right',
+                            title: "{% trans "Your my.mandriva.com email address." %}"                                
+                        });
+                        $('#password')[0].disabled = false;
+                        $('#password').tooltip({
+                            placement: 'right',
+                            title: "{% trans "Your my.mandriva.com password." %}"
+                        });
+                        $('#netinfo').addClass("alert-success");
+                        $('#netinfo').html('<i class="icon-ok"></i> {% trans "Use your Mandriva account to login." %}');
+                        $('#netinfo').slideDown();
+                        $('#netinfo').fadeIn();
                     }
                     else {
-                        $('password').disabled = false;
-                        $('username').value = "root";
-                        $('password').focus();
-                        $('netinfo').addClassName("warning info");
-                        $('netinfo').innerHTML = "{% trans "No internet connection.<br/>Use the root password to login." %}";
+                        $('#password')[0].disabled = false;
+                        $('#username')[0].disabled = false;
+                        $('#username')[0].value = "root";
+                        $('#password')[0].focus();
+                        $('#password').tooltip({
+                            placement: 'right',
+                            title: "{% trans "The server <em>root</em> password." %}"
+                        });
+                        $('#netinfo').html('<i class="icon-exclamation-sign"></i> {% trans "No internet connection, use the root password to login." %}');
+                        $('#netinfo').slideDown();
+                        $('#netinfo').fadeIn();
                     }
-                    $('submit').disabled = false;
+                    $('#submit')[0].disabled = false;
                 }
-            }
-        });
-    }
-    Event.observe(window, 'load', function() {
-        checknet();
+                else {
+                    setTimeout(checknet, 2000);
+                }
+            });
+        })();
     });
 </script>
-<form action="{% url login %}" method="post" accept-charset="utf-8">
-    <p id="netinfo"></p>
-    <p>
-        <label for="username">{% trans "Username" %}: </label>
-        <input type="text" name="username" value="" id="username" size="20" disabled="disabled" />
-    </p>
-        <label for="password">{% trans "Password" %}: </label>
-        <input type="password" name="password" value="" id="password" size="20" disabled="disabled" />
-    </p>
-    <p>
-        <label for="language">{% trans "Language" %}: </label>
+<p id="netinfo" class="alert" style="display: none"></p>
+<div class="control-group">
+    <label class="control-label" for="username">{% trans "Username" %}: </label>
+    <div class="controls">
+        <input type="text" name="username" value="" id="username" disabled="disabled" />
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="password">{% trans "Password" %}: </label>
+    <div class="controls">
+        <input type="password" name="password" value="" id="password" disabled="disabled" />
+    </div>
+</div>
+<div class="control-group">
+    <label class="control-label" for="language">{% trans "Language" %}: </label>
+    <div class="controls">
         {% include 'language_form.html' %}
-    </p>
-    <div class="right"><input type="submit" id="submit" value="{% trans "Enter" %} →" disabled="disabled"></div>
-</form>
+    </div>
+</div>
+<div class="form-actions">
+    <div class="pull-right">
+        <button id="submit" type="submit" class="btn btn-primary" disabled="disabled">{% trans "Enter" %} →</button>
+    </div>
+</div>

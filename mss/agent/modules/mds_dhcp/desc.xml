@@ -1,6 +1,7 @@
 <module id="mds_dhcp">
-    <name>DHCP server with MDS backend</name>
+    <name>DHCP service</name>
     <desc>Configure your client computers IP settings</desc>
+    <url>http://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>dhcp-server</rpm>

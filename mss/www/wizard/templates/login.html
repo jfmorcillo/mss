@@ -1,11 +1,16 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<div class="block block-center">
-    <h2>Mandriva Server Setup</h2>
-    <fieldset>
-        <legend>{% trans "Login" %}</legend>
+<section id="login">
+    <div class="page-header">
+        <h1>{% trans "Login" %}</h1>
+    </div>
+    <form class="form-horizontal" action="{% url login %}" method="post" accept-charset="utf-8">
         {% include "login_form.html" %}
-    </fieldset>
-</div>
+    </form>
+</section>
+<script type="text/javascript">
+    // Hack to make the content block centered on this page
+    $('.span9').addClass('span6');
+</script>
 {% endblock %}

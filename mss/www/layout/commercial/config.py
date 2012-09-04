@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id: config.py 2233 2010-09-09 08:56:31Z jpbraun $
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -27,36 +25,8 @@ from mss.www.wizard.config import ConfigManager
 
 config = ConfigManager()
 
-config.add_section({'id': 'commercial', 'name': _('Commercial components'), 'icon': 'commercial/section_commercial.png',
-    'desc': _('Easy installation and configuration of several software (Zarafa, eGroupware, ...) with Mandriva Directory Server integration.'), 'conf': {'class': 'block-2'}})
+config.add_section({'id': 'market', 'name': _('Marketplace'),
+                    'desc': ''})
 
-config.add_bundle("commercial", {'id': 'zarafa', 'name': _('Zarafa'), 'icon': 'commercial/bundle_zarafa.gif',
-    'desc': _('Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. On MES5 Zarafa is integrated with MDS. MDS provides an easy way to manage Zarafa users and groups and much more...'), 'modules': ["zarafa"], 'conf': {'class': 'block-2 block-clear'}})
-
-# config.add_module("mds", "mail", "zarafa")
-
-
-#    {
-#        'id': '1',
-#        'name': _('eGroupware Suite'),
-#        'icon': 'commercial/bundle_egroupware.png',
-#        'desc': _('eGroupware is a enterprise ready groupware software for your network. It enables you to manage contacts, appointments, todos and many more for your whole business. eGroupware is a groupware server. It comes with a native web-interface which allowes to access your data from any platform all over the planet. Moreover you also have the choice to access the EGroupware server with your favorite groupware client (Kontact, Evolution, Outlook) and also with your mobile or PDA via SyncML.'),
-#        'modules': ["egroupware"],
-#        'conf': {'class': 'block-2 block-clear'},
-#    },
-#    {
-#        'id': '2',
-#        'name': _('Group-Office'),
-#        'icon': 'commercial/bundle_groupoffice.png',
-#        'desc': _('Take your office online. Share projects, calendars, files and e-mail online with co-workers and clients. Easy to use and fully customizable, Group-Office takes online collaboration to the next level.'),
-#        'modules': ["groupoffice"],
-#        'conf': {'class': 'block-2'},
-#    },
-#    {
-#        'id': '3',
-#        'name': _('Authentication Firewall Suite for Linux'),
-#        'icon': 'commercial/bundle_nufw.png',
-#        'desc': _('NuFW adds user-based filtering to Netfilter, the state of the art IP filtering layer from the Linux kernel. Its exclusive algorithm allows authenticated filtering even on multiuser computers'),
-#        'modules': ["nufw"],
-#        'conf': {'class': 'block-2 block-clear'},
-#    },
+config.add_bundle("market", {'id': 'collaboration', 'name': _('Collaboration'),
+                             'modules': ["zarafa"]})

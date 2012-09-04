@@ -1,6 +1,7 @@
 <module id="mds_audit">
-    <name>Audit module for MDS</name>
-    <desc>Track any changes made on the MDS interface</desc>
+    <name>Audit plugin</name>
+    <desc>Track any changes made in the management interface</desc>
+    <url>http://@HOSTNAME@/mmc/</url>
     <deps>
         <module>mds_mmc</module>
         <module>mysql</module>

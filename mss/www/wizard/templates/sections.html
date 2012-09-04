@@ -1,44 +1,57 @@
 {% extends 'base.html' %}
 {% load i18n %}
+
+{% block sidebar %}
+    {% for section in sections %}
+    <li {% ifequal section.id "core" %}class="active"{% endifequal %}>
+        <a href="#{{ section.id }}" data-target="{{ section.id }}">{% trans section.name %}</a>
+    </li>
+    {% endfor %}
+    <script type="text/javascript">
+        showSection = function() {
+            $('#sidebar li').removeClass("active");
+            $(this).parent().addClass("active");
+            section = $(this).data("target");
+            $('section').each(function(i) {
+                if (this.id == section)
+                    $(this).show();
+                else
+                    $(this).hide();
+            });
+        };
+
+        $('#sidebar a').click(showSection);
+    </script>
+{% endblock %}
+
 {% block content %}
 {% if sections %}
     {% for section in sections %}
-    <div class="block block-border {{ section.conf.class }}" id="{{ section.id }}">
-        <div class="block-logo">
-            {% if section.icon %}
-            <img src="{{ MEDIA_URL }}img/modules/{{ section.icon }}" />
-            {% endif %}
+    <section id="{{ section.id }}" class="section" {% ifnotequal section.id "core" %}style="display: none"{% endifnotequal %}>
+        <div class="page-header">
+            <h1>{% trans section.name %}<small>{% trans section.subtext %}</small></h1>
         </div>
-        <div class="block-content">
-            <h2>{% trans section.name %}</h2>
-            <p class="desc">{% autoescape off %}{% trans section.desc %}{% endautoescape %}</p>
+        <p>{% autoescape off %}{% trans section.desc %}{% endautoescape %}</p>
+        
+        <div class="section-screenshots">
+            <img class="img-polaroid" src="http://placehold.it/200x140">
+            <img class="img-polaroid" src="http://placehold.it/200x140">
+            <img class="img-polaroid" src="http://placehold.it/200x140">
         </div>
-        <form name="mss" action="{% url section section.id %}" method="post">
-            <div class="validation right">
-                <input type="submit" name="continue" value="{% trans "Enter" %} →" />
+
+        <div class="form-actions">
+            <div class="pull-right">
+                <a href="{% url section section.id %}">{% trans "Continue" %}&nbsp;→</a>
             </div>
-        </form>
-        <script type="text/javascript">
-            // set section height
-            Event.observe(window, 'load', function() {
-                cur = $('{{ section.id }}');
-                prev = $('{{ section.id }}').previous();
-                if( cur.hasClassName("block-2") && !cur.hasClassName("block-clear") && prev.hasClassName("block-2")) {
-                    if (prev.clientHeight > cur.clientHeight) {
-                        cur.style.height = (prev.clientHeight-20)+"px";
-                    }
-                    else if (prev.clientHeight < cur.clientHeight) {
-                        prev.style.height = (cur.clientHeight-20)+"px";
-                    }
-                }
-            });
-        </script>
-    </div>
+        </div>
+    </section>
     {% endfor %}
 {% else %}
-    <div class="block block-height">
-        <p class="error">{% trans "No modules for Mandriva Server Setup installed." %}</p>
-        <p>{% trans "Check for mss-modules-* packages." %}</p>
+    <div class="section-form">
+        <div class="block block-section block-height">
+            <p class="error">{% trans "No modules for Mandriva Server Setup installed." %}</p>
+            <p>{% trans "Check for mss-modules-* packages." %}</p>
+        </div>
     </div>
 {% endif %}
 {% endblock %}

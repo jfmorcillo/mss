@@ -48,6 +48,7 @@ if not os.path.exists(bdd):
     conn = sqlite3.connect(bdd)
     c = conn.cursor()
     c.execute('create table module(name varchar(50), configured varchar(50));')
+    c.execute('create table options(key varchar(50), value varchar(50));')
     conn.commit()
     c.close()
     print "done."

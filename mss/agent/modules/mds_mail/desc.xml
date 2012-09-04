@@ -1,6 +1,7 @@
 <module id="mds_mail">
-    <name>Mail server with MDS backend</name>
-    <desc>Mail/POP/IMAP server with virtual domains, anti-virus and anti-spam toolkits</desc>
+    <name>Mail service</name>
+    <desc>Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits</desc>
+    <url>http://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>postfix</rpm>

@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -43,7 +41,7 @@ from django.utils.translation import ugettext as _, activate
 from lib.jsonui.response import JSONResponse
 from config import ConfigManager
 from xmlrpc import XmlRpc
-#import rdflib
+from transaction import Transaction, Steps
 
 xmlrpc = XmlRpc()
 CM = ConfigManager()
@@ -65,6 +63,10 @@ def set_lang(request, lang):
     # redirect to url if supplied in GET
     if url:
         return HttpResponseRedirect(url)
+    elif 'HTTP_REFERER' in request.META:
+        return HttpResponseRedirect(request.META['HTTP_REFERER'])
+    else:
+        return HttpResponseRedirect("/")
 
 def mylogin(request):
     if request.method == "POST":
@@ -91,8 +93,17 @@ def mylogout(request):
 
 def first_time(request):
     set_lang(request, settings.DEFAULT_LANGUAGE)
-    # first time check
-    if len(User.objects.all()) == 0:
+    # Check if first-time installation was done
+    err, result = xmlrpc.call('get_option', 'first-time')
+    if not result:
+        request.session['first-time'] = False;
+    else:
+        request.session['first-time'] = True;
+    
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('sections'))
+
+    if not request.session['first-time']:
         xmlrpc.call('check_net')
         return direct_to_template(request, 'first_time.html')
     else:
@@ -105,6 +116,24 @@ def login_form(request):
         xmlrpc.call('check_net')
         return render_to_response('login.html',
             context_instance=RequestContext(request))
+
+def first_time_required(function):
+    # Check if we need to run the first-time
+    # installation
+    def wrap(request, *args, **kwargs):
+        if not request.session['first-time']:
+            transaction = Transaction(request, ['mds_mmc'])
+            transaction.update_step({
+                'id': Steps.PREINST,
+                'title': _('Welcome'),
+                'info': _('Before you can install any services we need to setup a few things with you.'),
+                'show_modules': False
+            })
+            return HttpResponseRedirect(reverse('prepare'))
+        else:
+            return function(request, *args, **kwargs)
+
+    return wrap
 
 def error(request, code):
     """ error page """
@@ -136,7 +165,7 @@ def get_status(request):
                 TIMEOUT += 1
                 time.sleep(1)
         else:
-            return HttpResponseBadRequest(_("The XML-RPC server is not responding"))
+            return HttpResponseBadRequest(_("MSS agent is unreacheable."))
 
 def get_state(request, thread, module):
     """ used to get any thread result code and output """
@@ -151,6 +180,7 @@ def get_state(request, thread, module):
                 line["text"] = toHtml(request, line["text"])
     return JSONResponse({'code': code, 'output': output})
 
+@first_time_required
 @login_required
 def sections(request):
     """ sections list """
@@ -160,15 +190,10 @@ def sections(request):
          'language_form': True },
         context_instance=RequestContext(request))
 
+@first_time_required
 @login_required
 def section(request, section):
     """ render section page """
-    # flush some user session data
-    for key in ('modules', 'modules_list'):
-        try:
-            del request.session[key]
-        except KeyError:
-            pass
     # get section
     section_info = CM.get_section(section)
     # get modules info for modules list
@@ -179,64 +204,80 @@ def section(request, section):
         # detailed modules list
         modules = result
         # check module access
+        # format management url
         for module in modules:
-            module['access'] = True
-            if module['infos']['buy'] and \
-            not request.user.profile.has_family('mes5-get-%s' % module['id']):
-                module['access'] = False
+            if module['url']:
+                module['url'] = toHtml(request, module['url'], False)
+            if module['market']:
+                module['market']['access'] = False
+                if request.user.profile.has_family('mes5-get-%s' % module['id']):
+                    module['market']['access'] = True
         # create simple modules list
         modules_list = [m.get('id') for m in modules]
         # remove modules not present server side
         for bundle in section_info["bundles"]:
             for module in bundle["modules"]:
                 if module not in modules_list:
+                    print module
                     section['modules'].remove(module)
 
         return render_to_response('section.html',
-            {'section': section_info,
+            {'sections': CM.get_sections(), 'section': section_info,
             'modules': modules, 'language_form': True },
             context_instance=RequestContext(request))
 
 @login_required
-def preinst(request):
-    """ preinst page """
+def prepare(request):
+    """ prepare the transaction """
+    # flush some user session data
+    for key in ('modules', 'modules_info', 'transaction'):
+        try:
+            del request.session[key]
+        except KeyError:
+            pass
+    # get module list
     if request.method == "POST":
-        # get module list
         modules = []
         for module, value in request.POST.items():
             modules.append(module)
-        # get preinstall info for modules
-        err, result = xmlrpc.call('preinstall_modules', modules)
-        if err:
-            return err
-        else:
-            modules = result
-            # store module info in session
-            request.session['modules'] = modules
-            request.session['modules_list'] = [m.get('id') for m in modules]
-            return render_to_response('preinst.html',
-                {'modules': modules},
-                context_instance=RequestContext(request))
     else:
-        return HttpResponseRedirect(reverse('sections'))
+        try:
+            modules = request.session['modules_list']
+        except KeyError:
+            return HttpResponseRedirect(reverse('sections'))
+
+    print modules
+    transaction = Transaction(request, modules)
+    return HttpResponseRedirect(transaction.next_step_url())
 
 @login_required
-def medias(request, module=None):
-    """ media page """
-    # direct call with module
-    # mainly for MES5 media add
-    if module:
-        request.session['modules_list'] = [module]
-        # get preinstall info for modules
-        err, result = xmlrpc.call('preinstall_modules', [module])
-        if err:
-            return err
-        else:
-            modules = result
-        request.session['modules'] = modules
+def preinst(request):
+    """ preinst page """
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.PREINST)
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
 
-    modules_list = request.session['modules_list']
-    err, result = xmlrpc.call('get_medias', modules_list)
+    # get preinstall text for modules
+    err, result = xmlrpc.call('preinstall_modules', transaction.modules)
+    if err:
+        return err
+    else:
+        print result
+        request.session['modules'] = result
+        return render_to_response('preinst.html',
+            {'modules': result, 'transaction': transaction},
+            context_instance=RequestContext(request))
+
+@login_required
+def medias(request):
+    """ media auth page """
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.MEDIAS)
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
+
+    err, result = xmlrpc.call('get_medias', transaction.modules)
     if err:
         return err
     else:
@@ -244,23 +285,32 @@ def medias(request, module=None):
         if medias:
             # check if we need authentication
             auths = Set()
+            can_skip = False
             for media in medias:
                 if 'auth' in media and media['auth']:
                     auths.add(media['auth'])
+                if 'can_skip' in media and media['can_skip']:
+                    can_skip = True
             if auths:
                 return render_to_response('media_auth.html',
-                    {'auths': auths}, context_instance=RequestContext(request))
+                        {'can_skip': True, 'auths': auths, 'transaction': transaction}, 
+                        context_instance=RequestContext(request))
             else:
                 return render_to_response('media_add.html',
-                    {'medias': medias}, context_instance=RequestContext(request))
+                        {'medias': medias, 'transaction': transaction}, 
+                        context_instance=RequestContext(request))
         else:
-            return HttpResponseRedirect(reverse('install'))
+            return HttpResponseRedirect(transaction.next_step_url())
 
 @login_required
 def medias_add(request):
     """ media add page """
-    modules_list = request.session['modules_list']
-    err, result = xmlrpc.call('get_medias', modules_list)
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.MEDIAS_ADD)
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
+
+    err, result = xmlrpc.call('get_medias', transaction.modules)
     if err:
         return err
     else:
@@ -272,7 +322,8 @@ def medias_add(request):
                     media['password'] = request.POST[media['auth']+'_password']
 
         return render_to_response('media_add.html',
-            {'medias': medias}, context_instance=RequestContext(request))
+                {'medias': medias, 'transaction': transaction}, 
+                context_instance=RequestContext(request))
 
 @login_required
 def add_media(request, module):
@@ -294,17 +345,21 @@ def medias_update(request):
 @login_required
 def install(request):
     """ install page """
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.INSTALL)
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
+
     # launch modules install
-    err, result = xmlrpc.call('install_modules', request.session['modules_list'])
+    err, result = xmlrpc.call('install_modules', transaction.modules)
     if err:
         return err
     else:
         if result:
             return render_to_response('install.html',
-                {'modules': request.session['modules']},
-                context_instance=RequestContext(request))
-        else:
-            return HttpResponseRedirect(reverse('config'))
+                    {'modules': request.session['modules'],
+                    'transaction': transaction},
+                    context_instance=RequestContext(request))
 
 @login_required
 def reload_packages(request):
@@ -314,13 +369,18 @@ def reload_packages(request):
 @login_required
 def config(request):
     """ configuration page """
-    modules = request.session['modules']
-    modules_list = request.session['modules_list']
-    err, result = xmlrpc.call('get_config', modules_list)
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.CONFIG)
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
+
+    err, result = xmlrpc.call('get_config', transaction.modules)
     if err:
         return err
     else:
         config = result
+    
+    modules = request.session['modules']
     # check if the modules needs configuration
     do_config = False
     # check if the modules have configuration scripts
@@ -335,6 +395,7 @@ def config(request):
                 # store in the module list skip_config
                 # information for config_run view
                 m2['skip_config'] = m1[0].get('skip_config')
+
     request.session['modules'] = modules
 
     # all modules does'nt have a configuration script
@@ -342,12 +403,14 @@ def config(request):
         for module in modules_list:
             config_end(request, module)
         return render_to_response('config_no.html',
-            {'modules': modules},
+            {'modules': modules,
+             'transaction': transaction},
             context_instance=RequestContext(request));
     # some module have a configuration
     elif do_config:
         return render_to_response('config.html',
-            {'config': config, 'modules': modules},
+            {'config': config, 'modules': modules,
+             'transaction': transaction},
             context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('config_valid'))
@@ -355,14 +418,14 @@ def config(request):
 @login_required
 def config_valid(request):
     """ check user configuration """
+    transaction = Transaction(request)
     modules = request.session['modules']
-    modules_list = request.session['modules_list']
     # get forms values
     config = {}
     for name, value in request.POST.items():
         config[name] = value
     # validate values
-    err, result = xmlrpc.call('valid_config', modules_list, config)
+    err, result = xmlrpc.call('valid_config', transaction.modules, config)
     if err:
         return err
     else:
@@ -370,20 +433,14 @@ def config_valid(request):
         config = result[1]
     if errors:
         return render_to_response('config.html',
-            {'config': config, 'modules': modules},
-            context_instance=RequestContext(request))
+                {'config': config, 'modules': modules, 
+                 'transaction': transaction},
+                context_instance=RequestContext(request))
     else:
         return render_to_response('config_run.html',
-            {'config': config, 'modules': modules, 'mode': 'start'},
-            context_instance=RequestContext(request))
-
-@login_required
-def config_start(request):
-    """ contiguration start page """
-    modules = request.session['modules']
-    return render_to_response('config_run.html',
-        {'modules': modules, 'mode': 'run' },
-        context_instance=RequestContext(request))
+                {'config': config, 'modules': modules,
+                 'transaction': transaction},
+                context_instance=RequestContext(request))
 
 @login_required
 def config_run(request, module):
@@ -391,21 +448,25 @@ def config_run(request, module):
     xmlrpc.call('run_config', module)
     return HttpResponse("")
 
-
 @login_required
 def config_end(request, module):
     """ tells the agent the module has been configured """
     xmlrpc.call('end_config', module)
+    # FIXME
+    if module == "mds_mmc":
+        xmlrpc.call('set_option', 'first-time', 'yes')
+        request.session['first-time'] = True;
     return HttpResponse("")
 
 
-def toHtml(request, text):
+def toHtml(request, text, links = True):
     # replace hostname tag with server name
     text = re.sub('@HOSTNAME@', request.META['HTTP_HOST'].replace(':8000', ''), text);
     # new line replacement
     text = re.sub('@BR@', '<br/>', text);
     # bold support
     text = re.sub(r'@B@(.*)@B@', r'<strong>\1</strong>', text);
-    # make links
-    text = re.sub(r'(https?:\/\/[^ <)]*)', r'<a href="\1">\1</a>', text);
+    if links:
+        # make links
+        text = re.sub(r'(https?:\/\/[^ <)]*)', r'<a href="\1">\1</a>', text);
     return text

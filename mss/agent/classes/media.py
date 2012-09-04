@@ -25,13 +25,14 @@ import urllib
 
 class Media:
 
-    def __init__(self, name, verbose_name, urls, auth=None, proto="https", mode="default"):
+    def __init__(self, name, verbose_name, urls, auth=None, proto="https", mode="default", can_skip=False):
         self.name = name
         self.verbose_name = verbose_name
         self.auth = auth
         self.urls = urls
         self.proto = proto
         self.mode = mode
+        self.can_skip = can_skip
 
     def need_auth(self):
         if self.auth:

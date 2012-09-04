@@ -1,35 +1,43 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
 {% block content %}
-<h1><span class="active">1. {% trans "Preinstallation" %}</span> &raquo; <span>2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
-<div class="block">
-    <h2>{% trans "Preinstallation" %}</h2>
-    <p>{% blocktrans count modules|length as counter %}You have selected the following module.{% plural %}You have selected the following modules.{% endblocktrans %}</p>
-    <fieldset>
-        <legend>{% trans "Modules" %}</legend>
-        {% for module in modules %}
-        <h3>{{ module.name }}</h3>
-        <p class="help">{{ module.desc }}
-        {% if module.dep %}(<strong>{% trans "Added as a dependency" %}</strong>){% endif %}
-        {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
-        {% if module.preinst %}
-        <p class="desc">{{ module.preinst }}</p>
+<section id="preinst">
+    <div class="page-header">
+        <h1>{{ transaction.current_step.title }}</h1>
+    </div>
+    {% if modules %}
+    <p class="alert">{{ transaction.current_step.info }}</p>
+    {% else %}
+    <p class="alert alert-error">{% trans "No component selected." %}</p>
+    {% endif %}
+    <form name="mss" action="{{ transaction.next_step_url }}" method="post">
+        {% if transaction.current_step.show_modules %}
+            {% for module in modules %}
+            <div class="module">
+                <h2>{{ module.name }}</h2>
+                <p class="help-block">{{ module.desc }}
+                {% if module.dep %}(<strong>{% trans "Added as a dependency" %}</strong>){% endif %}
+                {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
+                {% if module.preinst %}
+                <p class="help-block">{{ module.preinst }}</p>
+                {% endif %}
+                {% if module.force %}
+                <p class="alert alert-error">{% trans "If other components requires this component they may be broken after the reinstallation." %}</p>
+                {% endif %}
+            </div>
+            {% endfor %}
         {% endif %}
-        {% if module.force %}
-        <p class="warning error">{% trans "If other components requires this component they may be broken after the reinstallation." %}</p>
-        {% endif %}
-        {% endfor %}
-        {% if not modules %}
-        <p class="warning error">{% trans "No component selected." %}</p>
-        {% endif %}
-    </fieldset>
-    <form name="mss" action="{% url medias %}" method="post">
-        <div class="validation">
+        <div class="form-actions">
             {% if modules %}
-            <input type="submit" name="continue" value="{% trans "Continue" %}" />
+            <div class="pull-right">
+                <button class="btn btn-primary" type="submit">{% trans "Continue" %} →</button>
+            </div>
             {% endif %}
-            <input type="button" id="back" value="{% trans "Back" %}" />
+            <a class="btn" href="{% url section "core" %}" id="back">{% trans "Back" %}</a>
         </div>
     </form>
-</div>
+</section>
 {% endblock %}

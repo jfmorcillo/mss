@@ -1,12 +1,9 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<div class="block block-center">
-    <h2>Mandriva Server Setup</h2>
-    <fieldset>
-        <legend>{% trans "Login" %}</legend>
-        {% include "login_form.html" %}
-        <p class="error warning">{% trans "Error : wrong username or password." %}</p>
-    </fieldset>
-</div>
+<form class="form-horizontal" action="{% url login %}" method="post" accept-charset="utf-8">
+    <legend>{% trans "Login" %}</legend>
+    <p class="alert alert-error">{% trans "Wrong username or password." %}</p>
+    {% include "login_form.html" %}
+</form>
 {% endblock %}

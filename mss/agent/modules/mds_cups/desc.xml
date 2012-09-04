@@ -1,6 +1,7 @@
 <module id="mds_cups">
-    <name>Printing server</name>
+    <name>Printing service</name>
     <desc>Install and configure network printers</desc>
+    <url>http://@HOSTNAME@:631/</url>
     <packages>
         <target name="all">
             <rpm>cups</rpm>
@@ -15,5 +16,5 @@
     <text>Service Cups reloaded succesfully.</text>
     <text>Service Cups fails restarting. Check</text>
     <text>Cups is running.</text>
-    <text>You can add new printers from local Cups web interface : http://localhost:631/</text>
+    <text>You can add new printers from local Cups web interface : http://@HOSTNAME@:631/</text>
 </module>

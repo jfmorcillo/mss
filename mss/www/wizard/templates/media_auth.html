@@ -1,37 +1,50 @@
 {% extends 'base.html' %}
 {% load i18n %}
-
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
 {% block content %}
-<h1><span>1. {% trans "Preinstallation" %}</span> &raquo; <span class="active">2. {% trans "Medias" %}</span> &raquo; <span>3. {% trans "Installation" %}</span> &raquo; <span>4. {% trans "Configuration" %}</span></h1>
-<div class="block">
-    <h2>{% trans "Media authentication" %}</h2>
-    <p>{% trans "One or more medias need authentication" %}</p>
-    <form name="mss" action="{% url medias_add %}" method="post">
+<section id="media-authentication">
+    <div class="page-header">
+        <h1>{{ transaction.current_step.title }}</h1>
+    </div>
+    <p class="alert">{{ transaction.current_step.info }}</p>
+    <form name="media-authentication" class="form-horizontal" action="{{ transaction.next_step_url }}" method="post">
     {% for auth in auths %}
         {% ifequal auth "my" %}
         <fieldset>
             <legend>{% trans "My authentication" %}</legend>
-            <p>
-                <label for="{{ auth }}_username">{% trans "Username" %} : </label>
-                <input name="{{ auth }}_username" id="{{ auth }}_username" type="text" value="{% if user.profile %}{{ user.username }}{% endif %}" />
-            </p>
-            <p class="help">
-            {% trans "Your my.mandriva.com email address." %}
-            </p>
-            <p>
-                <label for="{{ auth}}_password">{% trans "Password" %} : </label>
-                <input name="{{ auth}}_password" id="{{ auth}}_password" type="password" />
-            </p>
-            <p class="help">
-            {% trans "Your my.mandriva.com password." %}
-            </p>
+            <div class="control-group">
+                <label class="control-label" for="{{ auth }}_username">{% trans "Username" %} : </label>
+                <div class="controls">
+                    <input name="{{ auth }}_username" id="{{ auth }}_username" 
+                           type="text" value="{% if user.profile %}{{ user.username }}{% endif %}"
+                           data-placement="right" rel="tooltip" 
+                           data-original-title="{% trans "Your my.mandriva.com email address." %}" />
+                </div>
+            </div>
+            <div class="control-group">                
+                <label class="control-label" for="{{ auth}}_password">{% trans "Password" %} : </label>
+                <div class="controls">
+                    <input name="{{ auth}}_password" id="{{ auth}}_password" type="password"
+                           data-placement="right" rel="tooltip" 
+                           data-original-title="{% trans "Your my.mandriva.com password." %}" />
+                </div>
+            </div>
         </fieldset>
         {% endifequal %}
     {% endfor %}
-        <div class="validation">
-            <input type="submit" value="{% trans "Continue" %}" />
-            <input type="button" id="back" value="{% trans "Back" %}" />
+                {{ medias }}
+        <div class="form-actions">
+            <div class="pull-right">
+                {% if can_skip %}
+                <a href="{% url install %}">{% trans "Don't add medias" %}</a><!--
+                -->&nbsp;<span class="separator"></span>&nbsp;<!--
+                {% endif %}
+                --><button type="submit">{% trans "Add medias" %}</button>
+            </div>
+            <a href="{% url preinst %}">{% trans "Back" %}</a>
         </div>
     </form>
-</div>
+</section>
 {% endblock %}

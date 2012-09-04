@@ -1,6 +1,7 @@
 <module id="mds_webmail">
-    <name>Webmail with MDS backend</name>
-    <desc>Integrate roundcube for your MDS installation</desc>
+    <name>Webmail</name>
+    <desc>Roundcube, a complete webmail solution for your mail service</desc>
+    <url>http://@HOSTNAME@/roundcubemail/</url>
     <packages>
         <target name="all">
             <rpm>roundcubemail</rpm>

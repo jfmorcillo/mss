@@ -1,6 +1,8 @@
 <module id="mds_smb">
-    <name>SAMBA PDC and file server</name>
-    <desc>Share files and printers and authenticate users on a Microsoft network</desc>
+    <name>Windows users and file sharing management</name>
+    <desc>Authenticate Windows users with SAMBA, provide Windows file shares on
+    your network</desc>
+    <url>http://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>samba-server</rpm>
@@ -29,7 +31,7 @@
             <help>The name of the Microsoft domain administrator.</help>
         </text>         
         <password name="smbpasswd" require="yes">
-            <label>Adminstrator password</label>
+            <label>Administrator password</label>
             <help>Password for the Microsoft domain administrator.</help>
         </password>
     </config>
