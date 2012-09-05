@@ -27,6 +27,10 @@ import copy
 import logging
 import sqlite3
 import xml.etree.ElementTree as ET
+try: 
+    import json
+except ImportError:
+    import simplejson as json
 from datetime import datetime
 from IPy import IP
 
@@ -39,7 +43,8 @@ class Module:
 
     """
 
-    def __init__(self, path, TM, arch):
+    def __init__(self, path, MM, TM, arch):
+        self.MM = MM
         self.TM = TM
         global _
         _ = self.TM.translate
@@ -74,7 +79,9 @@ class Module:
         self.TM.set_catalog(self.id, self.path)
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
-        self._url = self.root.findtext("url")
+        self._actions = []
+        for action in self.root.findall("actions/action"):
+            self._actions.append(action.attrib)
         self._market = False
         if self.root.findtext("market/buy_url"):
             self._market = {}
@@ -103,9 +110,9 @@ class Module:
             return ""
     desc = property(get_desc)
     
-    def get_url(self):
-        return self._url
-    url = property(get_url)
+    def get_actions(self):
+        return self._actions
+    actions = property(get_actions)
 
     def get_market(self):
         return self._market
@@ -354,6 +361,11 @@ class Module:
                             field["error"] = _(result, module)
                         elif field.get("error"):
                             del field["error"]
+
+                # store the field value in the DB
+                if not 'error' in field and 'store' in field:
+                    # use json to serialize the value (can be a tuple)
+                    self.MM.set_option(field["name"], json.dumps(field["default"]))
 
         # store config if no errors
         if not errors:

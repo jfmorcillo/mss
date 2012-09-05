@@ -20,13 +20,10 @@ class Transaction:
             self.modules = request.session['modules_list']
             self.modules_info = request.session['modules_info']
         else:
-            self.modules = modules
-            err, result = xmlrpc.call('preinstall_modules', self.modules)
+            err, result = xmlrpc.call('preinstall_modules', modules)
             self.modules_info = result
-            # add depedencies
-            for module in self.modules_info:
-                if not module['id'] in self.modules:
-                    self.modules.append(module['id'])
+            # update with depedencies
+            self.modules = [ m['id'] for m in self.modules_info ]
             self.transaction = [
                 {
                     'id': Steps.PREINST,
@@ -72,6 +69,11 @@ class Transaction:
             self.prepare()
             self.save(request)
 
+    def save(self, request):
+        request.session['transaction'] = self.transaction
+        request.session['modules_list'] = self.modules
+        request.session['modules_info'] = self.modules_info
+
     def find_step(self, step):
         for s in self.transaction:
             if s['id'] == step:
@@ -109,11 +111,6 @@ class Transaction:
             infos = module[0]
             if not infos['skip_config']:
                 self.enable_step(Steps.CONFIG);
-
-    def save(self, request):
-        request.session['transaction'] = self.transaction
-        request.session['modules_list'] = self.modules
-        request.session['modules_info'] = self.modules_info
 
     def current_step(self):
         for s in self.transaction:

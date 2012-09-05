@@ -154,7 +154,7 @@ class ModuleManager:
         self.logger.info("Get available mss modules : ")
         for module in modules:
             self.logger.debug("Loading %s" % module)
-            m = Module(os.path.join(self.modulesDirectory, module), self.TM, self.arch)
+            m = Module(os.path.join(self.modulesDirectory, module), self, self.TM, self.arch)
             self.modules[m.id] = m
             self.logger.info(m)
 
@@ -210,7 +210,7 @@ class ModuleManager:
         # return result
         result = {
             'id': module.id, 'name': module.name,
-            'url': module.url, 'desc': module.desc, 'market': module.market,
+            'actions': module.actions, 'desc': module.desc, 'market': module.market,
             'preinst': module.preinst, 'installed': module.get_installed(),
             'configured': module.get_configured(), 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps}

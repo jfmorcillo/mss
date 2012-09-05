@@ -1,7 +1,9 @@
 <module id="mds_cups">
     <name>Printing service</name>
     <desc>Install and configure network printers</desc>
-    <url>http://@HOSTNAME@:631/</url>
+    <actions>
+        <action type="link" name="Printers management" value="http://@HOSTNAME@:631/" />
+    </actions>
     <packages>
         <target name="all">
             <rpm>cups</rpm>

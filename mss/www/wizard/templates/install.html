@@ -15,20 +15,26 @@
                     $(".alert").removeClass("alert-info");
                     $(".alert").addClass("alert-success");
                     $(".alert").html('<i class="icon-ok"></i> {% trans "Installation succeded." %}');
+                    $("form").attr("action", "{{ transaction.next_step_url }}");
                     $("#next").html("{% trans "Continue" %} →");
                     $("#next")[0].disabled = false;
+                    $("#back").removeClass("disabled");
                     $.get("{% url reload_packages %}");
                 }
                 else {
-                    $("#task").addClass("warning error");
+                    $(".alert").removeClass("alert-info");
+                    $(".alert").addClass("alert-error");
                     if (r.code == 13 || r.code == 14) {
-                        $(".alert").html("{% trans "Installation failed. You should update your medias." %}");
+                        $(".alert").html("{% trans "Installation failed. Update your medias and retry to install." %}");
                     }
                     else {
                         $(".alert").html("{% trans "Installation failed." %}");
                     }
-                    $("#next").html("{% trans "Can't continue" %}");
-                    //toggleLog(current_log.previous().down());
+                    toggleLog($(".log-button .btn")[0]);
+                    $("form").attr("action", "{% url install %}");
+                    $("#next").html("{% trans "Retry" %}");
+                    $("#next")[0].disabled = false;
+                    $("#back").removeClass("disabled");
                 }
             }
             else {
@@ -47,7 +53,7 @@
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
     <p class="alert alert-info">{% blocktrans count modules|length as counter %}The following component is being installed{% plural %}The following components are being installed{% endblocktrans %} :
-    {% for m in modules %}
+    {% for m in transaction.modules_info %}
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>
     <div class="install">
@@ -57,11 +63,12 @@
         <div class="clearfix"></div>
         <div id="log" class="log" style="display: none;"></div>
     </div>
-    <form id="mss" name="mss" action="{{ transaction.next_step_url }}" method="post">
+    <form id="install-form" action="" method="post">
         <div class="form-actions">
             <div class="pull-right">
                 <button id="next" type="submit" name="continue" disabled="disabled">{% trans "Please wait..." %}</button>
             </div>
+            <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
         </div>
     </form>
 </section>

@@ -1,7 +1,9 @@
 <module id="mds_mail">
     <name>Mail service</name>
     <desc>Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits</desc>
-    <url>http://@HOSTNAME@/mmc/</url>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+    </actions>
     <packages>
         <target name="all">
             <rpm>postfix</rpm>

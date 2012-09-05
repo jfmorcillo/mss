@@ -27,7 +27,7 @@ from mss.agent.lib.utils import getINIoption
 
 def get_config_info():
 
-    return ("setup-mmc.sh", ['mdsdomain', 'mdspasswd', 'mdsppolicy'])
+    return ("setup-mmc.sh", ['domain', 'mdspasswd', 'mdsppolicy'])
 
 def get_current_config():
 
@@ -43,3 +43,24 @@ def get_current_config():
         return {'mdsdomain': mdsdomain, "mdsppolicy": mdsppolicy}
     else:
         return {}
+
+def get_hostname():
+    """ 
+        Return the current hostname 
+    """
+    from socket import gethostname
+    return gethostname()
+
+def get_domain():
+    """ 
+        Return the current domain 
+        If none, return example.com
+    """
+    from socket import getfqdn
+    try:
+        domain = '.'.join(getfqdn().split('.')[1:])
+    except:
+        pass
+    if not domain:
+        domain = "example.com"
+    return domain

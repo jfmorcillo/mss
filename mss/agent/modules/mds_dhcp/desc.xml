@@ -1,7 +1,9 @@
 <module id="mds_dhcp">
     <name>DHCP service</name>
     <desc>Configure your client computers IP settings</desc>
-    <url>http://@HOSTNAME@/mmc/</url>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+    </actions>
     <packages>
         <target name="all">
             <rpm>dhcp-server</rpm>

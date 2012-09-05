@@ -154,14 +154,18 @@
                         {% endif %}
                     {% endif %}
                     <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
-                    {% if m.url and m.configured %}
+                    {% if m.actions and m.configured %}
                     &nbsp;
                     <span class="btn-group">
                         <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                             <i class="icon-cog"></i>&nbsp;<span class="caret"></span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a href="{{ m.url }}" target="_blank">{% trans "Manage" %}</a></li>
+                            {% for action in m.actions %}
+                                {% ifequal action.type "link" %}
+                                <li><a href="{{ action.value }}" target="_blank">{{ action.name }}</a></li>
+                                {% endifequal %}
+                            {% endfor %}
                         </ul>
                     </span>
                     {% endif %}

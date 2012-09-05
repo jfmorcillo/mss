@@ -121,13 +121,24 @@ def first_time_required(function):
     # Check if we need to run the first-time
     # installation
     def wrap(request, *args, **kwargs):
+        # flush some user session data
+        for key in ('modules', 'modules_info', 'transaction'):
+            try:
+                del request.session[key]
+            except KeyError:
+                pass
         if not request.session['first-time']:
             transaction = Transaction(request, ['mds_mmc'])
+            # Custom transaction for first-time
             transaction.update_step({
                 'id': Steps.PREINST,
                 'title': _('Welcome'),
                 'info': _('Before you can install any services we need to setup a few things with you.'),
                 'show_modules': False
+            })
+            transaction.update_step({
+                'id': Steps.MEDIAS,
+                'info': _('You can add the repositories of Mandriva Business Server with your my.mandriva.com account to get security updates. Repositories are not required to install server components.'),
             })
             return HttpResponseRedirect(reverse('prepare'))
         else:
@@ -206,8 +217,9 @@ def section(request, section):
         # check module access
         # format management url
         for module in modules:
-            if module['url']:
-                module['url'] = toHtml(request, module['url'], False)
+            for action in module['actions']:
+                if action['type'] == "link":
+                    action['value'] = toHtml(request, action['value'], False)
             if module['market']:
                 module['market']['access'] = False
                 if request.user.profile.has_family('mes5-get-%s' % module['id']):
@@ -229,13 +241,6 @@ def section(request, section):
 @login_required
 def prepare(request):
     """ prepare the transaction """
-    # flush some user session data
-    for key in ('modules', 'modules_info', 'transaction'):
-        try:
-            del request.session[key]
-        except KeyError:
-            pass
-    # get module list
     if request.method == "POST":
         modules = []
         for module, value in request.POST.items():
@@ -258,16 +263,8 @@ def preinst(request):
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    # get preinstall text for modules
-    err, result = xmlrpc.call('preinstall_modules', transaction.modules)
-    if err:
-        return err
-    else:
-        print result
-        request.session['modules'] = result
-        return render_to_response('preinst.html',
-            {'modules': result, 'transaction': transaction},
-            context_instance=RequestContext(request))
+    return render_to_response('preinst.html', {'transaction': transaction},
+                              context_instance=RequestContext(request))
 
 @login_required
 def medias(request):
@@ -357,8 +354,7 @@ def install(request):
     else:
         if result:
             return render_to_response('install.html',
-                    {'modules': request.session['modules'],
-                    'transaction': transaction},
+                    {'transaction': transaction},
                     context_instance=RequestContext(request))
 
 @login_required
@@ -380,13 +376,12 @@ def config(request):
     else:
         config = result
     
-    modules = request.session['modules']
     # check if the modules needs configuration
     do_config = False
     # check if the modules have configuration scripts
     skip_config = True
     for m1 in config:
-        for m2 in modules:
+        for m2 in transaction.modules_info:
             if m1[0]['id'] == m2['id']:
                 if m1[0].get('do_config'):
                     do_config = True
@@ -395,22 +390,18 @@ def config(request):
                 # store in the module list skip_config
                 # information for config_run view
                 m2['skip_config'] = m1[0].get('skip_config')
-
-    request.session['modules'] = modules
-
+    transaction.save(request)
     # all modules does'nt have a configuration script
     if skip_config:
-        for module in modules_list:
+        for module in transaction.modules:
             config_end(request, module)
         return render_to_response('config_no.html',
-            {'modules': modules,
-             'transaction': transaction},
+            {'transaction': transaction},
             context_instance=RequestContext(request));
     # some module have a configuration
     elif do_config:
         return render_to_response('config.html',
-            {'config': config, 'modules': modules,
-             'transaction': transaction},
+            {'config': config, 'transaction': transaction},
             context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('config_valid'))
@@ -419,7 +410,7 @@ def config(request):
 def config_valid(request):
     """ check user configuration """
     transaction = Transaction(request)
-    modules = request.session['modules']
+
     # get forms values
     config = {}
     for name, value in request.POST.items():
@@ -433,13 +424,11 @@ def config_valid(request):
         config = result[1]
     if errors:
         return render_to_response('config.html',
-                {'config': config, 'modules': modules, 
-                 'transaction': transaction},
+                {'config': config, 'transaction': transaction},
                 context_instance=RequestContext(request))
     else:
         return render_to_response('config_run.html',
-                {'config': config, 'modules': modules,
-                 'transaction': transaction},
+                {'config': config, 'transaction': transaction},
                 context_instance=RequestContext(request))
 
 @login_required

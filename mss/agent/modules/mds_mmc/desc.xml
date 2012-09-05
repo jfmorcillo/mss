@@ -1,6 +1,8 @@
 <module id="mds_mmc">
     <name>Users and groups management</name>
-    <url>http://@HOSTNAME@/mmc/</url>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+    </actions>
     <packages>
         <target name="all">
             <rpm>mmc-web-base</rpm>
@@ -19,7 +21,11 @@
         </target>
     </packages>
     <config>
-        <text name="mdsdomain" require="yes" default="example.com" validation="fqdn">
+        <text name="hostname" require="yes" default="get_hostname" store="yes">
+            <label>The server hostname</label>
+            <help>Hostname without the domain name</help>
+        </text>
+        <text name="domain" require="yes" default="get_domain" validation="fqdn" store="yes">
             <label>Your domain name</label>
             <help>The domain name used in your organization (eg: mandriva.com).</help>
         </text>
@@ -28,7 +34,7 @@
             <help>The password needed to access the management interface.</help>
         </password>
     </config>
-    <medias verbose_name="Mandriva Business Server" name="mbs" auth="my" proto="https" mode="distrib" can_skip="yes">
+    <medias verbose_name="Mandriva Business Server repositories" name="mbs" auth="my" proto="https" mode="distrib" can_skip="yes">
         <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
     </medias>
     <text>Error at generating password</text>

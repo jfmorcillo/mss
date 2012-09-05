@@ -25,9 +25,11 @@ $(document).ready(function() {
 
     // links with the disabled CSS class
     // are really disabled :o
-    $('a.disabled').click(function() {
-        if (this.hasClass("disabled"))
+    $('a.disabled').click(function(ev) {
+        if ($(this).hasClass("disabled")) {
+            ev.preventDefault();
             return false;
+        }
     });
 });
 

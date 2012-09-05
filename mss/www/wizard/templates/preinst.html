@@ -8,14 +8,14 @@
     <div class="page-header">
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
-    {% if modules %}
+    {% if transaction.modules %}
     <p class="alert">{{ transaction.current_step.info }}</p>
     {% else %}
     <p class="alert alert-error">{% trans "No component selected." %}</p>
     {% endif %}
     <form name="mss" action="{{ transaction.next_step_url }}" method="post">
         {% if transaction.current_step.show_modules %}
-            {% for module in modules %}
+            {% for module in transaction.modules_info %}
             <div class="module">
                 <h2>{{ module.name }}</h2>
                 <p class="help-block">{{ module.desc }}
@@ -31,7 +31,7 @@
             {% endfor %}
         {% endif %}
         <div class="form-actions">
-            {% if modules %}
+            {% if transaction.modules %}
             <div class="pull-right">
                 <button class="btn btn-primary" type="submit">{% trans "Continue" %} →</button>
             </div>

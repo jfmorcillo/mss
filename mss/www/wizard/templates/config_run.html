@@ -42,7 +42,7 @@
     });
     var current = 0;
     var modules = [];
-    {% for m in modules %}
+    {% for m in transaction.modules_info %}
         {% if not m.skip_config %}
             modules.push('{{ m.id }}');
         {% endif %}
@@ -135,7 +135,7 @@
 
     <p id="summary" class="alert alert-info">{% trans "Running configuration..." %}</p>
 
-    {% for m in modules %}
+    {% for m in transaction.modules_info %}
     <div class="module" id="{{ m.id }}">
         <h2>{{ m.name }}</h2>
         <p class=help-block">{{ m.desc }}</p>
@@ -143,7 +143,7 @@
             {% if m.skip_config %}
             <p class="alert alert-success">{% trans "No configuration for this module." %}</p>
             <script type="text/javascript">
-                //$.get('/mss/config/end/{{ m.id }}/');
+                $.get('/mss/config/end/{{ m.id }}/');
             });
             </script>
             {% else %}

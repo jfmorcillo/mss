@@ -1,7 +1,10 @@
 <module id="mds_webmail">
     <name>Webmail</name>
     <desc>Roundcube, a complete webmail solution for your mail service</desc>
-    <url>http://@HOSTNAME@/roundcubemail/</url>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Webmail interface" value="http://@HOSTNAME@/roundcubemail/" />
+    </actions>
     <packages>
         <target name="all">
             <rpm>roundcubemail</rpm>

@@ -64,11 +64,7 @@ form {
 }
 
 .form-actions a {
-    display: table;
-}
-
-.form-actions .pull-right a {
-    display: inline;
+    display: inline-block;
 }
 
 .form-actions .separator {

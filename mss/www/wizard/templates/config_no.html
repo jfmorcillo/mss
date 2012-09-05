@@ -1,15 +1,12 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block sidebar %}
-    <li><span>{% trans "Preinstallation" %}</span></li>
-    <li><span>{% trans "Medias" %}</span></li>
-    <li><span>{% trans "Installation" %}</span></li>
-    <li class="active"><span>{% trans "Configuration" %}</li>
+{% include 'sidebar.html' %}
 {% endblock %}
 {% block content %}
 <section id="configuration">
     <div class="page-header">
-        <h1>Configuration</h1>
+        <h1>{{ transaction.title }}</h1>
     </div>
     <p class="alert alert-success">{% trans "Installation & configuration was successful." %}</p>
     <div class="form-actions">

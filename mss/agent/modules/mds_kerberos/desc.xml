@@ -1,6 +1,9 @@
 <module id="mds_kerberos">
     <name>Kerberos authentication with MDS backend</name>
     <desc>Install and configure Kerberos authentication</desc>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+    </actions>
     <packages>
         <target name="all">
     	    <rpm>krb5-server</rpm>

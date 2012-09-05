@@ -2,7 +2,9 @@
     <name>Windows users and file sharing management</name>
     <desc>Authenticate Windows users with SAMBA, provide Windows file shares on
     your network</desc>
-    <url>http://@HOSTNAME@/mmc/</url>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+    </actions>
     <packages>
         <target name="all">
             <rpm>samba-server</rpm>
