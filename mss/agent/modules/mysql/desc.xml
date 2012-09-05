@@ -11,9 +11,9 @@
         <module>mysqlmax</module>
     </conflicts>
     <config>
-        <password name="current_mypasswd">
+        <password name="current_mypasswd" show="configured">
             <label>Current password</label>
-            <help>Current MySQL root password. Leave blank for first installation.</help>
+            <help>Current MySQL root password.</help>
         </password>
         <password name="mypasswd" require="yes">
             <label>New password</label>

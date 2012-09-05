@@ -28,6 +28,10 @@ import logging.handlers
 import platform
 import sqlite3
 from sets import Set
+try: 
+    import json
+except ImportError:
+    import simplejson as json
 
 from mss.agent.lib.utils import grep
 from mss.agent.classes.module import Module
@@ -98,9 +102,10 @@ class ModuleManager:
         c = self.conn.cursor()
         c.execute('select * from options where key=?', (key,))
         if c.fetchone():
-            c.execute('update options set value=? where key=?', (value, key))
+            # use json to serialize the value (can be a tuple)
+            c.execute('update options set value=? where key=?', (json.dumps(value), key))
         else:
-            c.execute('insert into options values (?,?)', (key, value))
+            c.execute('insert into options values (?,?)', (key, json.dumps(value)))
         self.conn.commit()
         c.close()
 
@@ -112,7 +117,7 @@ class ModuleManager:
         option = c.fetchone()
         c.close()
         if option:
-            return option[1]
+            return json.loads(option[1])
         else:
             return False
 

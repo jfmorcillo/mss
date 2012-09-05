@@ -87,53 +87,62 @@
             	/>
         	{% else %}
                 {% if field.type %}
-                <div class="control-group {% if field.error %}error{% endif %}">
         	    {% ifequal field.type "text" %}
-            		<label for="{{ field.id }}_{{ field.name }}" class="control-label">
-            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
-            		</label>
-                    <div class="controls">
-            		{% if field.multi %}
-                        <span id="{{ field.id }}_{{ field.name }}" 
-                              name="{{ field.id }}_{{ field.name }}"
-                              data-placement="right" rel="tooltip" 
-                              data-original-title="{{ field.help }}"></span>
-                        <p><a class="btn btn-small" onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
-                            <i class="icon-plus-sign"></i> {% trans "Add" %}
-                        </a></p>
-            		    {% if field.default %}
-            			<script type="text/javascript">
-            			{% for text in field.default %}
-                		    addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
-            			{% endfor %}
-            			</script>
-            		    {% endif %}
-            		{% else %}
-            		    {% if module.0.configured and field.edit_if_unconfigured %}
-                            <input
-                                id="{{ field.id }}_{{ field.name }}"
-                                name="{{ field.id }}_{{ field.name }}"
-                                value="{{ field.default }}"
-                                type="hidden"
-                            />
-                            {{ field.default }}
-                	    {% else %}
-                            <input
-                                id="{{ field.id }}_{{ field.name }}"
-                                name="{{ field.id }}_{{ field.name }}"
-                                value="{{ field.default }}"
-                                type="text" 
-                                data-placement="right" rel="tooltip" 
-                                data-original-title="{{ field.help }}" 
-                            />
-            		    {% endif %}
-                    {% endif %}
-                    {% if field.error %}
-                        <span class="help-block">{{ field.error }}</span>
-                    {% endif %}
+                    {% if field.hidden %}
+                    <input type="hidden" id="{{ field.id }}_{{ field.name }}"
+                           name="{{ field.id }}_{{ field.name }}"
+                           value="{{ field.default }}"
+                    />
+                    {% else %}
+                    <div class="control-group {% if field.error %}error{% endif %}">
+                        <label for="{{ field.id }}_{{ field.name }}" class="control-label">
+                            {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+                        </label>
+                        <div class="controls">
+                        {% if field.multi %}
+                            <span id="{{ field.id }}_{{ field.name }}" 
+                                  name="{{ field.id }}_{{ field.name }}"
+                                  data-placement="right" rel="tooltip" 
+                                  data-original-title="{{ field.help }}"></span>
+                            <p><a class="btn btn-small" onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
+                                <i class="icon-plus-sign"></i> {% trans "Add" %}
+                            </a></p>
+                            {% if field.default %}
+                            <script type="text/javascript">
+                            {% for text in field.default %}
+                                addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
+                            {% endfor %}
+                            </script>
+                            {% endif %}                    
+                        {% else %}
+                            {% if module.0.configured and field.edit_if_unconfigured %}
+                                <input
+                                    id="{{ field.id }}_{{ field.name }}"
+                                    name="{{ field.id }}_{{ field.name }}"
+                                    value="{{ field.default }}"
+                                    type="hidden"
+                                />
+                                {{ field.default }}
+                            {% else %}
+                                <input
+                                    id="{{ field.id }}_{{ field.name }}"
+                                    name="{{ field.id }}_{{ field.name }}"
+                                    value="{{ field.default }}"
+                                    type="text" 
+                                    data-placement="right" rel="tooltip" 
+                                    data-original-title="{{ field.help }}" 
+                                />
+                            {% endif %}
+                        {% endif %}
+                        {% if field.error %}
+                            <span class="help-block">{{ field.error }}</span>
+                        {% endif %}
+                        </div>
                     </div>
+                    {% endif %}
         	    {% endifequal %}
         	    {% ifequal field.type "password" %}
+                <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
             		</label>
@@ -164,8 +173,10 @@
                             <span class="help-block">{{ field.error }}</span>
                         {% endif %}
                     </div>
+                </div>
         	    {% endifequal %}
         	    {% ifequal field.type "options" %}
+                <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
                     </label>
@@ -186,8 +197,10 @@
                             <span class="help-block">{{ field.error }}</span>
                         {% endif %}
                     </div>
+                </div>
         	    {% endifequal %}
         	    {% ifequal field.type "check" %}
+                <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
             		</label>
@@ -201,8 +214,10 @@
                             data-original-title="{{ field.help }}"
                         />
                     </div>
+                </div>
         	    {% endifequal %}
         	    {% ifequal field.type "network" %}
+                <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
                     </label>
@@ -225,8 +240,8 @@
                     {% endfor %}
                     </script>
             		{% endif %}
-        	    {% endifequal %}                
                 </div>
+        	    {% endifequal %}                
                 {% endif %}
         	    {% if not module.0.do_config %}
                     <p class="alert">{% trans "No configuration for this module." %}</p>

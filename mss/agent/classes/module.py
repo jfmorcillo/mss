@@ -27,10 +27,6 @@ import copy
 import logging
 import sqlite3
 import xml.etree.ElementTree as ET
-try: 
-    import json
-except ImportError:
-    import simplejson as json
 from datetime import datetime
 from IPy import IP
 
@@ -257,11 +253,6 @@ class Module:
                             {'name': option.text,
                              'value': option.attrib.get('value')}
                         )
-                # get default value for multi fields
-                if "multi" in field_config and "default" in field_config:
-                    if type(field_config["default"]) == str:
-                        default = field_config["default"].split(";")
-                        field_config["default"] = default
                 # add current value if module is configured
                 if self.get_configured() and current_config.get(field_config['name']):
                     field_config['default'] = current_config.get(field_config['name'])
@@ -269,15 +260,21 @@ class Module:
                 if not self.get_configured() and "default" in field_config:
                     # check if the default value is a module's method
                     try:
-                        field_config["default"] = getattr(self.module, field_config["default"])()
+                        if isinstance(field_config["default"], basestring):
+                            field_config["default"] = getattr(self.module, field_config["default"])(self)
                     except AttributeError:
                         # not a method
-                        pass
+                        # get default value for multi fields
+                        if "multi" in field_config and "default" in field_config:
+                            if isinstance(field_config["default"], basestring):
+                                default = field_config["default"].split(";")
+                                field_config["default"] = default
                     except Exception, err:
                         self.logger.error("Error in %s() in %s module : " % (field_config["default"], self.id))
                         self.logger.error(str(err))
                         self.logger.error("Can't calculate default field value")
                         field_config["default"] = ""
+
                 # reset require attribute if field is hidden for reconfiguration
                 if self.get_configured() and "show_if_unconfigured" in field_config and "require" in field_config:
                     del field_config["require"]
@@ -364,8 +361,7 @@ class Module:
 
                 # store the field value in the DB
                 if not 'error' in field and 'store' in field:
-                    # use json to serialize the value (can be a tuple)
-                    self.MM.set_option(field["name"], json.dumps(field["default"]))
+                    self.MM.set_option(field["name"], field["default"])
 
         # store config if no errors
         if not errors:

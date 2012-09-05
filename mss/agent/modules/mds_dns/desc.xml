@@ -16,7 +16,7 @@
         <module>mds_mmc</module>
     </deps>
     <config>
-        <network name="bind_networks" format="short" validation="network">
+        <network name="bind_networks" format="short" validation="network" default="get_networks">
             <label>My networks</label>
             <help>Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0.</help>
         </network>

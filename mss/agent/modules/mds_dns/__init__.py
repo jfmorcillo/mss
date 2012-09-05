@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -24,6 +22,8 @@
 import re
 import os
 from IPy import IP
+
+from mss.agent.lib.utils import ethernet_ifs
 
 def get_config_info():
     return ("setup-dns.sh", ["bind_networks", "bind_forwarders"])
@@ -53,3 +53,14 @@ def get_current_config():
                 bind_forwarders.append(forwarder)
 
     return {'bind_networks': bind_networks, 'bind_forwarders': bind_forwarders}
+
+def get_networks(module):
+    """
+    Return networks of the local machine
+    """
+
+    networks = []
+    for iface in ethernet_ifs():
+        networks.append((iface[2], iface[3]))
+
+    return networks

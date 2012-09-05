@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -26,6 +24,8 @@ import sys
 import ConfigParser
 import re
 import os
+import netifaces
+from IPy import IP
 
 def formatExceptionInfo(maxTBlevel=5):
     cla, exc, trbk = sys.exc_info()
@@ -54,3 +54,15 @@ def grep(search, file):
             return False
     else:
         return False
+
+def ethernet_ifs():
+    ifs = []
+    for interface in netifaces.interfaces():
+        if interface.startswith("eth"):
+            if_detail = netifaces.ifaddresses(interface)
+            addr = if_detail[netifaces.AF_INET][0]['addr']
+            netmask = if_detail[netifaces.AF_INET][0]['netmask']
+            network = IP(addr).make_net(netmask).strNormal(0)
+            ifs.append([interface, addr, network, netmask]) 
+
+    return ifs

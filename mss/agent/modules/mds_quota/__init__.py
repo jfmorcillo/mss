@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -21,5 +19,20 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+from subprocess import Popen, PIPE
+
 def get_config_info():
     return ("setup-quota.sh", ['filesystems'])
+
+def get_filesystems(module):
+    """
+    Return / and /home devices for quotas
+    """
+    mountpoints = []
+    p = Popen(["mount | grep '/dev/sd' | awk '{ print $1 \":\" $3 }'"], 
+              shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
+    for line in p.stdout:
+        if line.strip().split('/').pop() in ['', 'home']:
+            mountpoints.append(line.strip())
+
+    return mountpoints

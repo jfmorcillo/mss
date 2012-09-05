@@ -44,14 +44,14 @@ def get_current_config():
     else:
         return {}
 
-def get_hostname():
+def get_hostname(module):
     """ 
         Return the current hostname 
     """
     from socket import gethostname
     return gethostname()
 
-def get_domain():
+def get_domain(module):
     """ 
         Return the current domain 
         If none, return example.com

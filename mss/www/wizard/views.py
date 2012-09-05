@@ -230,7 +230,6 @@ def section(request, section):
         for bundle in section_info["bundles"]:
             for module in bundle["modules"]:
                 if module not in modules_list:
-                    print module
                     section['modules'].remove(module)
 
         return render_to_response('section.html',
@@ -251,7 +250,6 @@ def prepare(request):
         except KeyError:
             return HttpResponseRedirect(reverse('sections'))
 
-    print modules
     transaction = Transaction(request, modules)
     return HttpResponseRedirect(transaction.next_step_url())
 
@@ -446,7 +444,6 @@ def config_end(request, module):
         xmlrpc.call('set_option', 'first-time', 'yes')
         request.session['first-time'] = True;
     return HttpResponse("")
-
 
 def toHtml(request, text, links = True):
     # replace hostname tag with server name

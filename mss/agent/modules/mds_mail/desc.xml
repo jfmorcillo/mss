@@ -24,11 +24,8 @@
         <module>mds_mmc</module>
     </deps>
     <config>
-        <text name="smtpd_myhostname" require="yes" validation="fqdn">
-            <label>My hostname</label>
-            <help>The host FQDN (eg: smtp.domain.com)</help>
-        </text>
-        <network name="smtpd_mynetworks" format="short" validation="network">
+        <text name="smtpd_myhostname" require="yes" validation="fqdn" default="get_fqdn" hidden="yes" />
+        <network name="smtpd_mynetworks" format="short" validation="network" default="get_networks">
             <label>My networks</label>
             <help>Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0</help>
         </network>
