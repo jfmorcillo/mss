@@ -18,7 +18,7 @@ for f in $fss; do
     if [ $? -ne 0 ]; then
         echo "0Add usrquota option for# $mountpoint"
         sed -i "s/^\(UUID=${uuid}[[:space:]]\+[^ ]\+[[:space:]]\+[^ ]\+[[:space:]]\+\)\([^ ]\+\)\(.*\)$/\1\2,usrquota\3/" /etc/fstab
-        if [ "$fs" == "ext3" ]; then
+        if [ "$fs" == "ext3" ] || [ "$fs" == "ext4" ]; then
             echo "0Remount# $mountpoint"
             mount -o remount,usrquota $mountpoint
             echo "0Create quota files for# $mountpoint"
@@ -29,6 +29,7 @@ for f in $fss; do
             echo "7Restart the system to active quotas"
         else
             echo "2Quotas not supported on this filesystem :# $fs"
+            exit 1
         fi
     else
         echo "0Quota option already present for# $mountpoint"
@@ -42,7 +43,7 @@ backup /etc/mmc/plugins/userquota.ini
 cat $userquota_tpl > /etc/mmc/plugins/userquota.ini
 sed -i "s!\@FILESYSTEMS\@!${filesystems}!" /etc/mmc/plugins/userquota.ini
 
-echo "8Quota module is activated in the MDS interface."
-echo "7You can now configure user quotas from the MDS interface : http://@HOSTNAME@/mmc/."
+echo "8Quota module is activated in the management interface."
+echo "7You can now configure user quotas from the management interface : http://@HOSTNAME@/mmc/."
 
 exit 0
