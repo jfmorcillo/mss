@@ -21,6 +21,12 @@
         };
 
         $('#sidebar a').click(showSection);
+
+        $(document).ready(function() {
+            {% for section in sections %}
+            $(".gal-{{ section.id }}").colorbox({rel: 'gal-{{ section.id }}', opacity: 0.8});
+            {% endfor %}
+        });
     </script>
 {% endblock %}
 
@@ -31,12 +37,15 @@
         <div class="page-header">
             <h1>{% trans section.name %}<small>{% trans section.subtext %}</small></h1>
         </div>
-        <p>{% autoescape off %}{% trans section.desc %}{% endautoescape %}</p>
-        
+        {% autoescape off %}
+        {% trans section.desc %}
+        {% endautoescape %}
         <div class="section-screenshots">
-            <img class="img-polaroid" src="http://placehold.it/200x140">
-            <img class="img-polaroid" src="http://placehold.it/200x140">
-            <img class="img-polaroid" src="http://placehold.it/200x140">
+            {% for screen in section.screenshots %}
+            <a href="{{ MEDIA_URL }}img/modules/{{ screen }}.png" class="gal-{{ section.id }} cboxElement">
+                <img class="img-polaroid" src="{{ MEDIA_URL }}img/modules/{{ screen }}_thumb.png" />
+            </a>
+            {% endfor %}
         </div>
 
         <div class="form-actions">

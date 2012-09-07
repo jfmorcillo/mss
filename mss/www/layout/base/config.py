@@ -24,8 +24,9 @@ from mss.www.wizard.config import ConfigManager
 
 config = ConfigManager()
 
-config.add_section({'id': 'core', 'name': _('Core services'),
-    'icon': 'base/section_mds.png', 'desc': _('Install and configure the services that suits your needs.')})
+config.add_section({'id': 'core', 'name': _('Core Services'),
+    'desc': _('<p>Basic services for your server.</p><ul><li>User management and file sharing</li><li>Mail service</li><li>Network services (DNS/DHCP)</li><li>Printing service</li></ul>'),
+    'screenshots': ['base/core1', 'base/core2', 'base/core3']})
 
 config.add_bundle("core", {'id': 'users', 'name': _('Users'),
     'conf': {'class': 'block-section'}, 

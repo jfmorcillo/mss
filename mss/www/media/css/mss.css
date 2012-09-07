@@ -433,3 +433,8 @@ div#status {
 .dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: url("../img/glyphicons-halflings-gray.png");
 }
+
+.section-screenshots a {
+    text-decoration: none;
+
+}
