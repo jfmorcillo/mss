@@ -112,7 +112,7 @@
         current_log_btn = $($("#"+modules[current]+" .log-button .btn")[0]);
         current_log = $($("#"+modules[current]+" .log")[0]);
         current_task = $($("#"+modules[current]+" .alert")[0]);
-        current_task.html('<img src="/site_media/img/load.gif" /> {% trans "Running configuration..." %}');
+        current_task.html('<img src="/site_media/img/load-info.gif" style="vertical-align: bottom"/> {% trans "Running configuration..." %}');
         current_task.addClass('alert-info');
         $.get('/mss/config/run/'+modules[current]+'/')
         .success(check)
