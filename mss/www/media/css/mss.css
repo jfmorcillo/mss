@@ -252,13 +252,17 @@ div#status {
     background-image: url('../img/lang/ru_RU.png');
 }
 
+#sidebar {
+    margin-right: -2.564102564102564%;
+}
+
 #sidebar .breadcrumb {
     margin-top: 55px;
 }
 
-#sidebar .affix {
-    top: 25%;
-    width: 23%;
+#sidebar .nav {
+    padding: 0px;
+    padding-top: 170px;
 }
 
 #sidebar .nav li {
@@ -266,15 +270,14 @@ div#status {
 }
 
 #sidebar .nav li a, #sidebar .nav li span {
+    display: block;
     font-size: 115%;
     background: transparent;
     color: #999;
     padding: 10px 15px;
     font-weight: bold;
-    margin-left: -15px;
-    margin-right: -15px;
-    display: block;
     border-top: 4px solid transparent;
+    margin: 0;
 }
 
 #sidebar .nav li.active a, #sidebar .nav li.active span, #sidebar .nav li.active:hover a {
@@ -436,5 +439,4 @@ div#status {
 
 .section-screenshots a {
     text-decoration: none;
-
 }
