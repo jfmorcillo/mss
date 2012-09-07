@@ -30,7 +30,8 @@
                     else {
                         $(".alert").html("{% trans "Installation failed." %}");
                     }
-                    toggleLog($(".log-button .btn")[0]);
+                    if ($('#log')[0].css('display') == "none")
+                        $(".log-button .btn")[0].click();
                     $("form").attr("action", "{% url install %}");
                     $("#next").html("{% trans "Retry" %}");
                     $("#next")[0].disabled = false;
