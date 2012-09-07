@@ -37,26 +37,14 @@
     <medias verbose_name="Mandriva Business Server repositories" name="mbs" auth="my" proto="https" mode="distrib" can_skip="yes">
         <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
     </medias>
-    <text>Error at generating password</text>
-    <text>Password successfully generated</text>
-    <text>OpenLDAP configuration file was generated with errors.</text>
-    <text>Aborting. File used was</text>
-    <text>OpenLDAP configuration file successfully generated.</text>
-    <text>Database loading failed during test run.</text>
-    <text>Ldif file used:</text>
-    <text>slapd.conf file used:</text>
-    <text>Database loading test successfull.</text>
     <text>Service</text>
+    <text>and</text>
     <text>stopped succesfully.</text>
     <text>fails stopping. Check</text>
-    <text>Writing</text>
-    <text>and</text>
-    <text>Loading database...</text>
-    <text>Database loaded successfully.</text>
-    <text>Your previous database directory has been backed up as</text>
     <text>started succesfully.</text>
     <text>fails starting. Check</text>
-    <text>Mandriva Directory Server is running.</text>
-    <text>You can log in the MDS interface from http://@HOSTNAME@/mmc/.</text>
-    <text>MDS administrator : root</text>
+    <text>The MBS management interface is configured.</text>
+    <text>You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups.</text>
+    <text>Administrator name : root</text>
+    <text>Administrator password : </text>
 </module>

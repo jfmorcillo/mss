@@ -127,7 +127,7 @@ else echo "2Service# ldap #fails stopping. Check# /var/log/syslog"; exit 1
 fi
 /sbin/service mmc-agent stop > /dev/null 2>&1
 if [ $? -eq 0 ]; then echo "0Service# mmc #stopped succesfully."
-else echo "2Service# mmc #fails stopping. Check# /var/log/mmc/mmc-agent"; exit 1
+else echo "2Service# mmc-agent #fails stopping. Check# /var/log/mmc/mmc-agent"; exit 1
 fi
 
 backup_db=`clean_database /var/lib/ldap`
@@ -157,8 +157,8 @@ else echo "1Service# ldap #fails starting. Check# /var/log/syslog"; exit 1
 fi
 
 /sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service# MMC #started succesfully."
-else echo "1Service# MMC #fails starting. Check# /var/log/mmc/mmc-agent.log"; exit 1
+if [ $? -eq 0 ]; then echo "0Service# mmc-agent #started succesfully."
+else echo "1Service# mmc-agent #fails starting. Check# /var/log/mmc/mmc-agent.log"; exit 1
 fi
 
 /sbin/service httpd restart > /dev/null 2>&1
@@ -166,9 +166,9 @@ if [ $? -eq 0 ]; then echo "0Service# httpd #started succesfully."
 else echo "1Service# httpd #fails starting. Check# /var/log/syslog"; exit 1
 fi
 
-echo "8Mandriva Directory Server is running."
-echo "8You can log in the MDS interface from http://@HOSTNAME@/mmc/."
-echo "8MDS administrator : root"
-# echo "7MDS administrator password : $mypass"
+echo "8The MBS management interface is configured."
+echo "8You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups."
+echo "8Administrator name : root"
+echo "8Administrator password : #$mypass"
 
 exit 0

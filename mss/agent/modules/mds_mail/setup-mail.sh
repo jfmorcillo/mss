@@ -8,7 +8,7 @@ fi
 mds_base_ini="/etc/mmc/plugins/base.ini"
 
 if [ ! -f $mds_base_ini ]; then
-    echo "2MMC interface is not installed."
+    echo "2mmc-agent interface is not installed."
     echo "2Can't continue."
     exit 1
 fi
@@ -86,16 +86,16 @@ cat $openssl_cnf_template > /tmp/openssl.cnf
 sed -i "s/\@COMMONNAME\@/$smtpd_myhostname.$smptd_myorigin/" /tmp/openssl.cnf
 sed -i "s/\@DOMAIN\@/$smptd_myorigin/" /tmp/openssl.cnf
 
-mkdir -p /etc/ssl/mmc-wizard/certs
-mkdir -p /etc/ssl/mmc-wizard/private
+mkdir -p /etc/ssl/mss/certs
+mkdir -p /etc/ssl/mss/private
 openssl req -x509 -new \
     -config /tmp/openssl.cnf \
-    -out /etc/ssl/mmc-wizard/certs/smtpd.pem \
-    -keyout /etc/ssl/mmc-wizard/private/smtpd.key \
+    -out /etc/ssl/mss/certs/smtpd.pem \
+    -keyout /etc/ssl/mss/private/smtpd.key \
     -days 730 -nodes -batch > /dev/null 2>&1
 rm -f /tmp/openssl.cnf
 
-chmod 600 /etc/ssl/mmc-wizard/private/smtpd.key
+chmod 600 /etc/ssl/mss/private/smtpd.key
 
 adduser -r -g mail --uid 499 vmail > /dev/null 2>&1
 mkdir -p /home/vmail > /dev/null 2>&1
@@ -133,8 +133,8 @@ backup /etc/mail/spamassassin/local.cf
 cat $spamassassin_template > /etc/mail/spamassassin/local.cf
 
 /sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service #MMC# reloaded succesfully."
-else echo "2Service #MMC# fails restarting. Check #/var/log/mmc/mmc-agent.log"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service #mmc-agent# reloaded succesfully."
+else echo "2Service #mmc-agent# fails restarting. Check #/var/log/mmc/mmc-agent.log"; sleep 1; exit 1
 fi
 
 /sbin/service amavisd restart > /dev/null 2>&1
@@ -157,12 +157,12 @@ if [ $? -eq 0 ]; then echo "0Service #dovecot# reloaded succesfully."
 else echo "2Service #dovecot# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
 fi
 
-echo "8Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
-echo "7You can create mail domains in the MDS interface and specify mail adresses to users and groups."
+echo "8The mail service is configured."
+echo "8You can add mail addresses and aliases to your users through the management interface at http://@HOSTNAME@/mmc/."
 echo "7- mails are stored in /home/vmail/user/Maildir"
-echo "7- SSL is enabled on the smtp server"
+echo "7- SSL is enabled on the SMTP server"
 echo "7- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"
 echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks" 
-echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
+echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995 or/and IMAPS 993) on your firewall."
 
 exit 0

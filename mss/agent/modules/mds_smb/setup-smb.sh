@@ -42,8 +42,8 @@ cat $base_smb_template > /etc/samba/smb.conf
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/samba/smb.conf
 sed -i "s/\@WORKGROUP\@/$smbdomain/" /etc/samba/smb.conf
 sed -i "s/\@NETBIOSNAME\@/$smbnetbios/" /etc/samba/smb.conf
-if [ $? -eq 0 ]; then echo "0Samba configuration done. (/etc/samba/smb.conf updated)";
-else echo "2Error while configuring Samba. (/etc/samba/smb.conf)"; exit 1
+if [ $? -eq 0 ]; then echo "0SAMBA configuration done. (/etc/samba/smb.conf updated)";
+else echo "2Error while configuring SAMBA. (/etc/samba/smb.conf)"; exit 1
 fi
 
 smbpasswd -w $mdspass
@@ -140,11 +140,9 @@ rm -f /home/samba/test
 echo "8Domain name :# $smbdomain"
 echo "8Server name :# $smbnetbios"
 echo "8Domain administrator :# $smbadmin"
-echo 7- a public share is created in /home/samba/shares/public
-echo 7- you can create a logon.bat script in /home/samba/netlogon
-echo 8Make sure you have enabled SAMBA services on your firewall.
-echo '8You can now use the MDS interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).'
-echo 1Profiles are disabled by default.
-echo 1- edit /etc/samba/smb.conf manually to activate them.
+echo "7- a public share is created in /home/samba/shares/public"
+echo "7- you can create a logon.bat script in /home/samba/netlogon"
+echo "8Make sure you have enabled SAMBA services on your firewall."
+echo "8You can now use the management interface to manage your Windows users and shares at http://@HOSTNAME@/mmc/."
 
 exit 0

@@ -1,6 +1,6 @@
 <module id="mds_dhcp">
     <name>DHCP service</name>
-    <desc>Configure your client computers IP settings</desc>
+    <desc>Configure automatically your client computers IP settings</desc>
     <actions>
         <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
     </actions>
@@ -14,10 +14,8 @@
     <deps>
         <module>mds_mmc</module>
     </deps>
-    <text>MMC interface is not installed.</text>
-    <text>Can't continue.</text>
-    <text>MDS configuration done. (/etc/mmc/plugins/network.ini updated)</text>
-    <text>Error while configuring MDS. (/etc/mmc/plugins/network.ini)</text>
+    <text>Configuration done. (/etc/mmc/plugins/network.ini updated)</text>
+    <text>Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)</text>
     <text>Configuration of dhcp-server done. (/etc/dhcpd.conf updated)</text>
     <text>Error while configuring dhcp-server. (/etc/dhcpd.conf)</text>
     <text>Service MMC reloaded succesfully.</text>

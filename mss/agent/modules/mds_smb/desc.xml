@@ -67,7 +67,5 @@
     <text>- a public share is created in /home/samba/shares/public</text>
     <text>- you can create a logon.bat script in /home/samba/netlogon</text>
     <text>Make sure you have enabled SAMBA services on your firewall.</text>
-    <text>You can now use the MDS interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).</text>
-    <text>Profiles are disabled by default.</text>
-    <text>- edit /etc/samba/smb.conf manually to activate them.</text>
+    <text>You can now use the management interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).</text>
 </module>
