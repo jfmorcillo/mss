@@ -29,19 +29,15 @@ config.add_section({'id': 'core', 'name': _('Core Services'),
     'screenshots': ['base/core1', 'base/core2', 'base/core3']})
 
 config.add_bundle("core", {'id': 'users', 'name': _('Users'),
-    'conf': {'class': 'block-section'}, 
     'modules': ["mds_mmc", "mds_smb", "mds_quota"]})
 
 config.add_bundle("core", {'id': 'mail', 'name': _('Mail'),
-    'conf': {'class': 'block-section'}, 
     'modules': ["mds_mail", "mds_webmail"]})
 
 config.add_bundle("core", {'id': 'net', 'name': _('Network'),
-    'modules': ["mds_dns", "mds_dhcp"], 
-    'conf': {'class': 'block-section'}})
+    'modules': ["mds_dns", "mds_dhcp"]})
 
 config.add_bundle("core", {'id': 'other', 'name': _('Other'),
-    'conf': {'class': 'block-section'}, 
     'modules': ["mds_audit", "mds_cups"]})
 
 config.add_section({'id': 'other', 'name': _('Other services'), 'desc': ''})
