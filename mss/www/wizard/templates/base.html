@@ -94,19 +94,19 @@
                                 </form>
                                 <a href="#" onclick="$('#mbs-repositories')[0].submit()" class="error"
                                    data-placement="bottom" rel="tooltip"
-                                   data-original-title="{% trans "You don't have the Mandriva Business Server repositories installed. Install them to get security updates." %}"><i class="icon-warning-sign"></i>&nbsp;{% trans "Add medias" %}</a>
+                                   data-original-title="{% trans "You don't have the Mandriva Business Server repositories installed. Install them to get security updates." %}"><i class="icon-warning-sign icon-gray"></i>&nbsp;{% trans "Add medias" %}</a>
                             </li>
                             {% else %}
                             <li>
                                 <a href="#" data-placement="bottom" rel="tooltip"
                                    data-original-title="{% trans "Update packages list on your server." %}"
-                                   onclick="updateMedias(); return false;"><i class="icon-refresh"></i>&nbsp;{% trans "Update medias" %}</a>
+                                   onclick="updateMedias(); return false;"><i class="icon-refresh icon-gray"></i>&nbsp;{% trans "Update medias" %}</a>
                             </li>
                             {% endif %}
                             {% if language_form %}
                             <li class="dropdown">
                                 <a id="languages" class="dropdown-toggle" data-toggle="dropdown" role="button" href="#">
-                                    <i class="icon-flag"></i>&nbsp;{% trans "Language" %}<b class="caret"></b>
+                                    <i class="icon-flag icon-gray"></i>&nbsp;{% trans "Language" %}<b class="caret"></b>
                                 </a>
                                 <ul id="languages-menu" class="dropdown-menu" aria-labelledby="languages" role="menu">
                                     {% for lang in LANGUAGES %}
@@ -116,7 +116,7 @@
                             </li>
                             {% endif %}
                             <li>
-                                <a href="{% url logout %}"><i class="icon-off"></i>&nbsp;{% trans "Logout" %}</a>
+                                <a href="{% url logout %}"><i class="icon-off icon-gray"></i>&nbsp;{% trans "Logout" %}</a>
                             </li>
                         </ul>
                         {% endif %}
