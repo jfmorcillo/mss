@@ -1,7 +1,0 @@
-<module id="mes5">
-    <name>MES5</name>
-    <desc>Dummy module for MES5 medias installation</desc>
-    <medias verbose_name="Mandriva Enterprise Server 5" name="mes5" auth="my" proto="https" mode="distrib">
-        <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
-    </medias>
-</module>

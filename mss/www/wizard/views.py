@@ -251,7 +251,7 @@ def prepare(request):
             return HttpResponseRedirect(reverse('sections'))
 
     transaction = Transaction(request, modules)
-    return HttpResponseRedirect(transaction.next_step_url())
+    return HttpResponseRedirect(transaction.first_step_url())
 
 @login_required
 def preinst(request):
@@ -288,7 +288,8 @@ def medias(request):
                     can_skip = True
             if auths:
                 return render_to_response('media_auth.html',
-                        {'can_skip': True, 'auths': auths, 'transaction': transaction}, 
+                        {'can_skip': can_skip, 'auths': auths, 
+                         'transaction': transaction}, 
                         context_instance=RequestContext(request))
             else:
                 return render_to_response('media_add.html',

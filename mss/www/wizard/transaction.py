@@ -124,6 +124,11 @@ class Transaction:
             else:
                 s['current'] = False
 
+    def first_step(self):
+        for step in self.transaction:
+            if not step['disabled']:
+                return step
+
     def next_step(self):
         next = False
         for step in self.transaction:
@@ -131,9 +136,11 @@ class Transaction:
                 return step
             if step['current']:
                 next = True
-        for step in self.transaction:
-            if not step['disabled']:
-                return step
+        # no next step, return home
+        return {'id': 'sections'}
 
     def next_step_url(self):
         return reverse(self.next_step()['id'])
+
+    def first_step_url(self):
+        return reverse(self.first_step()['id'])

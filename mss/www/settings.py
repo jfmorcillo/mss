@@ -72,7 +72,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.request",
     "django.core.context_processors.media",
     "mss.www.wizard.context.current_lang",
-    "mss.www.wizard.context.mes_media",
+    "mss.www.wizard.context.main_media",
 )
 
 MIDDLEWARE_CLASSES = (

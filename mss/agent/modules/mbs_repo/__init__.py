@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -21,17 +19,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from mss.www.wizard.xmlrpc import XmlRpc
+from mss.agent.lib.utils import grep
 
-xmlrpc = XmlRpc()
-
-def main_media(request):
-    err, result = xmlrpc.call("check_media", "download\.mandriva\.com\/EnterpriseServer")
-    if err:
-        return {'main_media': False}
-    else:
-        return {'main_media': result}
-        
-def current_lang(request):
-    from django.conf import settings
-    return {'current_lang': settings.DEFAULT_LANGUAGE}
+def check_configured():
+    return grep('download\.mandriva\.com\/EnterpriseServer', '/etc/urpmi/urpmi.cfg')
