@@ -17,6 +17,6 @@
     </packages>
     <text>Service Cups reloaded succesfully.</text>
     <text>Service Cups fails restarting. Check</text>
-    <text>Cups is running.</text>
-    <text>You can add new printers from local Cups web interface : http://@HOSTNAME@:631/</text>
+    <text>The printing service is running.</text>
+    <text>You can add new printers from the Cups web interface : http://@HOSTNAME@:631/</text>
 </module>

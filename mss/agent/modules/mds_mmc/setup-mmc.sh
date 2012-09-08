@@ -61,14 +61,14 @@ sed -i "s/\@PASSWORD\@/$mypass_e/" /etc/mmc/plugins/base.ini
 mkdir /home/archives > /dev/null 2>&1
 
 ## ppolicy
-backup /etc/mmc/plugins/ppolicy.ini
-cat $ppolicy_template > /etc/mmc/plugins/ppolicy.ini
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/ppolicy.ini
-if [ "$ppolicy" == "on" ]; then
-    sed -i "s/\@DISABLE\@/0/" /etc/mmc/plugins/ppolicy.ini
-else
-    sed -i "s/\@DISABLE\@/1/" /etc/mmc/plugins/ppolicy.ini
-fi
+#backup /etc/mmc/plugins/ppolicy.ini
+#cat $ppolicy_template > /etc/mmc/plugins/ppolicy.ini
+#sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/ppolicy.ini
+#if [ "$ppolicy" == "on" ]; then
+#    sed -i "s/\@DISABLE\@/0/" /etc/mmc/plugins/ppolicy.ini
+#else
+#    sed -i "s/\@DISABLE\@/1/" /etc/mmc/plugins/ppolicy.ini
+#fi
 
 # now, /etc/openldap/ldap.conf
 myldapconf=`make_temp`

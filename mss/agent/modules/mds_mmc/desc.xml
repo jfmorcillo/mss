@@ -6,16 +6,13 @@
     <packages>
         <target name="all">
             <rpm>mmc-web-base</rpm>
-            <rpm>mmc-web-ppolicy</rpm>
             <rpm>mmc-web-bulkimport</rpm>
             <rpm>python-mmc-base</rpm>
-            <rpm>python-mmc-ppolicy</rpm>
             <rpm>python-mmc-bulkimport</rpm>
-            <rpm>mmc-check-password</rpm>
             <rpm>mmc-agent</rpm>
             <rpm>openldap-servers</rpm>
             <rpm>nss_ldap</rpm>
-	        <rpm>openldap-clients</rpm>
+	    <rpm>openldap-clients</rpm>
             <rpm>pam_ldap</rpm>
             <rpm>openldap-mandriva-dit</rpm>
         </target>

@@ -61,8 +61,8 @@ backup $bind_conf
 cp $bind_template $bind_conf
 
 /sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service MMC reloaded succesfully."
-else echo "2Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"; sleep 1; exit 1
+if [ $? -eq 0 ]; then echo "0Service mmc-agent reloaded succesfully."
+else echo "2Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"; sleep 1; exit 1
 fi
 
 /sbin/service named restart > /dev/null 2>&1
@@ -72,14 +72,14 @@ fi
 
 chkconfig named on
 
-echo "8DNS module is activated in the MDS interface."
+echo "8The DNS service is running."
 if [ ! -z "$forwarders" ]; then
     echo "7Your DNS will forward external queries to : #$forwarders"
 fi
 if [ ! -z "$networks" ]; then
     echo "7The following networks are able to query your DNS for external domains : #$networks"
 fi
-echo "7You can now add DNS zones from the MDS interface : http://@HOSTNAME@/mmc/"
+echo "7You can now add DNS zones in the management interface : http://@HOSTNAME@/mmc/"
 echo "8Make sure you have enabled the DNS service (port 53) on your firewall."
 
 exit 0

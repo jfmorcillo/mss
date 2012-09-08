@@ -25,7 +25,7 @@ from mss.www.wizard.config import ConfigManager
 config = ConfigManager()
 
 config.add_section({'id': 'core', 'name': _('Core Services'),
-    'desc': _('<p>Basic services for your server.</p><ul><li>User management and file sharing</li><li>Mail service</li><li>Network services (DNS/DHCP)</li><li>Printing service</li></ul>'),
+    'desc': _('<h4>Basic services for your server managed by an easy to use management interface</h4><ul><li>User management and file sharing</li><li>Mail service & Webmail</li><li>Network services (DNS/DHCP)</li><li>Printing service</li></ul><h4>Management interface overview</h4>'),
     'screenshots': ['base/core1', 'base/core2', 'base/core3']})
 
 config.add_bundle("core", {'id': 'users', 'name': _('Users'),
@@ -38,6 +38,7 @@ config.add_bundle("core", {'id': 'net', 'name': _('Network'),
     'modules': ["mds_dns", "mds_dhcp"]})
 
 config.add_bundle("core", {'id': 'other', 'name': _('Other'),
-    'modules': ["mds_audit", "mds_cups"]})
+    'modules': ["mds_cups"]})
 
-config.add_section({'id': 'other', 'name': _('Other services'), 'desc': ''})
+config.add_section({'id': 'other', 'name': _('Other Services'), 
+                    'desc': _('<h4>Other integrated services for your server</h4><ul><li>Instant messaging</li><li>Intranet</li><li>VPN access</li><li>FTP service</li></ul><br/>')})

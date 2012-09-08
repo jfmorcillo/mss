@@ -1,4 +1,4 @@
-html, body, #wrapper, #wrapper .row-fluid, #wrapper .row-fluid .span9 {
+html, body, #wrapper, #wrapper .row, #wrapper .row .span9 {
     height: 100%;
 }
 
@@ -13,14 +13,17 @@ a {
     color: #57b;
 }
 
+h4 {
+    color: #666;
+}
+
 .dropdown-menu li > a:hover, .dropdown-menu li > a:focus, .dropdown-submenu:hover > a {
     background: #57b;
 }
 
-#wrapper .row-fluid .span9 {
+#wrapper .row .span9 {
     background-color: #F5F5F5;
     min-height: 100%;
-    padding-bottom: 50px;
 }
 
 .content {
@@ -45,12 +48,13 @@ form {
 .form-actions button, .form-actions a, .modal-footer a {
     background: none;
     border: 0px;
-    color: #222;
+    color: #57b;
     text-shadow: 0 -1px 0 rgba(255, 255, 255, 1);
     padding: 1em;
     font-weight: bold;
     font-size: 115%;
     white-space: nowrap;
+    text-shadow: 1px 1px 2px white;
     -webkit-border-radius: 0px;
        -moz-border-radius: 0px;
             border-radius: 0px;
@@ -61,7 +65,7 @@ form {
 
 .form-actions button:hover, .form-actions a:hover, .modal-footer a:hover {
     background: #E3E3E3;
-    color: #222;
+    color: #57b;
     text-shadow: 0 -1px 0 rgba(255, 255, 255, 1);
     text-decoration: none;
 }
@@ -185,6 +189,7 @@ legend {
     color: #7d7d7d;
     font-size: 30px;
     margin-bottom: 0px;
+    text-shadow: 1px 1px 2px white;
 }
 
 .navbar .brand {
@@ -258,6 +263,7 @@ div#status {
 
 #sidebar .breadcrumb {
     margin-top: 55px;
+    text-shadow: 1px 1px 2px white;
 }
 
 #sidebar .nav {
@@ -357,7 +363,7 @@ div#status {
 /* Tooltips */
 
 .tooltip {
-    font-size: 12px;
+    font-size: 13px;
 }
 
 .tooltip-inner {
@@ -439,4 +445,8 @@ div#status {
 
 .section-screenshots a {
     text-decoration: none;
+}
+
+.center {
+    text-align: center;
 }

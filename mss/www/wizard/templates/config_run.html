@@ -55,8 +55,8 @@
         }
         else {
             $("#summary").html("{% trans "Configuration terminated, details are displayed below." %}");
-            $("#summary").removeClass("alert-info");
             $("#summary").addClass("alert-success");
+            $("#summary").show('fast');
             $("#next").html("{% trans "Home page" %}");
             $('#next').removeClass("disabled");
         }
@@ -102,6 +102,8 @@
         $("#next").html("{% trans "Home page" %}");
         $("#next").removeClass('disabled');
         $("#summary").html("{% trans "Configuration terminated, details are displayed below." %}");
+        $("#summary").addClass("alert-info");
+        $("#summary").show('fast');
         task = $('#' + modules[current]).find('.alert');
         task.removeClass('alert-info');
         task.addClass('alert-error');
@@ -133,7 +135,7 @@
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
 
-    <p id="summary" class="alert alert-info">{% trans "Running configuration..." %}</p>
+    <p id="summary" class="alert" style="display: none;"></p>
 
     {% for m in transaction.modules_info %}
     <div class="module" id="{{ m.id }}">

@@ -14,7 +14,7 @@ fi
 
 chkconfig cups on
 
-echo "8Cups is running."
-echo "7You can add new printers from local Cups web interface : http://localhost:631/"
+echo "8The printing service is running."
+echo "7You can add new printers from the Cups web interface : https://@HOSTNAME@:631/"
 
 exit 0

@@ -18,8 +18,8 @@
     <text>Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)</text>
     <text>Configuration of dhcp-server done. (/etc/dhcpd.conf updated)</text>
     <text>Error while configuring dhcp-server. (/etc/dhcpd.conf)</text>
-    <text>Service MMC reloaded succesfully.</text>
-    <text>Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log</text>
-    <text>DHCP module is activated in the MDS interface.</text>
-    <text>You can now configure your DHCP settings from the MDS interface : http://@HOSTNAME@/mmc/</text>
+    <text>Service mmc-agent reloaded succesfully.</text>
+    <text>Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log</text>
+    <text>The DHCP service is installed.</text>
+    <text>You can now configure your DHCP settings from the management interface : http://@HOSTNAME@/mmc/</text>
 </module>
