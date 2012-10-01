@@ -27,9 +27,9 @@ moduleload	syncprov.la
 moduleload	ppolicy.la
 #moduleload	refint.la
 
-TLSCertificateFile      /etc/ssl/openldap/ldap.pem
-TLSCertificateKeyFile   /etc/ssl/openldap/ldap.pem
-TLSCACertificateFile    /etc/ssl/openldap/ldap.pem
+TLSCertificateFile      /etc/pki/tls/certs/ldap.pem
+TLSCertificateKeyFile   /etc/pki/tls/private/ldap.pem
+TLSCACertificateFile    /etc/pki/tls/certs/ldap.pem
 
 #loglevel 256
 
