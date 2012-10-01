@@ -95,7 +95,7 @@ class Transaction:
     def prepare(self):
         err, result = xmlrpc.call('get_medias', self.modules)
         for media in result:
-            if 'auth' in media:
+            if 'auth' in media and media['auth']:
                 self.enable_step(Steps.MEDIAS);
         if len(result) > 0:
             self.enable_step(Steps.MEDIAS_ADD);
