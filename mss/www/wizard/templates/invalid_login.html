@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 {% load i18n %}
 {% block content %}
-<form class="form-horizontal" action="{% url login %}" method="post" accept-charset="utf-8">
-    <legend>{% trans "Login" %}</legend>
-    <p class="alert alert-error">{% trans "Wrong username or password." %}</p>
-    {% include "login_form.html" %}
-</form>
+<section id="login">
+    <div class="page-header">
+        <h1>{% trans "Login" %}</h1>
+    </div>
+    <form class="form-horizontal" action="{% url login %}" method="post" accept-charset="utf-8">
+    	<p class="alert alert-error">{% trans "Wrong username or password." %}</p>
+        {% include "login_form.html" %}
+    </form>
+</section>
+<script type="text/javascript">
+    // Hack to make the content block centered on this page
+    $('.span9').addClass('span6');
+</script>
 {% endblock %}
