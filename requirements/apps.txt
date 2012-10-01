@@ -4,6 +4,7 @@ python-IPy
 python-OpenSSL
 python-setuptools
 python-docutils
+python-netifaces
 binutils
 gettext
 locales-fr
