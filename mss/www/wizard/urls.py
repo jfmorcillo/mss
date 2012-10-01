@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -26,6 +24,7 @@ from django.conf.urls.defaults import *
 urlpatterns = patterns('mss.www.wizard.views',
     url(r'^$', 'first_time', name="first_time"),
     url(r'^lang/(?P<lang>[\w_]+)/$', 'set_lang', name="set_lang"),
+    url(r'^has_net/(?P<has_net>[\d]+)/$', 'has_net', name="has_net"),
     url(r'^account/authentication/$', 'login_form', name="login_form"),
     url(r'^account/login/$', 'mylogin', name="login"),
     url(r'^account/logout/$', 'mylogout', name="logout"),

@@ -87,7 +87,6 @@ class ModuleManager:
         # logging
         self.logger = logging.getLogger()
         self.load_packages()
-        self.PM.update_medias()
         self.load_modules()
 
     @expose

@@ -29,13 +29,14 @@
                         $('#password')[0].focus();
                         $('#password').tooltip({
                             placement: 'right',
-                            title: "{% trans "The server <em>root</em> password." %}"
+                            title: "{% trans "The server <strong>root</strong> password." %}"
                         });
                         $('#netinfo').html('<i class="icon-exclamation-sign"></i> {% trans "No internet connection, use the root password to login." %}');
                         $('#netinfo').slideDown();
                         $('#netinfo').fadeIn();
                     }
                     $('#submit')[0].disabled = false;
+                    $.get('/mss/has_net/' + t.code + '/');
                 }
                 else {
                     setTimeout(checknet, 2000);

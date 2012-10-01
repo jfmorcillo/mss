@@ -191,6 +191,14 @@ def get_state(request, thread, module):
                 line["text"] = toHtml(request, line["text"])
     return JSONResponse({'code': code, 'output': output})
 
+def has_net(request, has_net):
+    """ Run some actions if we have the connection or not """
+    if int(has_net) == 0:
+        # update the medias if net is ok
+        xmlrpc.call("update_medias")
+
+    return HttpResponse("")
+
 @first_time_required
 @login_required
 def sections(request):
