@@ -30,11 +30,9 @@ from django.core.urlresolvers import reverse
 class XmlRpc:
     """ Class to handle the xmlrpc calls """
 
-    def __init__(self):
-        self.conn = xmlrpclib.ServerProxy('http://localhost:8001')
-
     def call(self, method_name, *args):
-        method = getattr(self.conn, method_name)
+        conn = xmlrpclib.ServerProxy('http://localhost:8001')
+        method = getattr(conn, method_name)
         try:
             return [False, method(*args)]
         except socket_error, err:
