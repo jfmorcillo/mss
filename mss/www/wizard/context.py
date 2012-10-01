@@ -26,7 +26,7 @@ from mss.www.wizard.xmlrpc import XmlRpc
 xmlrpc = XmlRpc()
 
 def main_media(request):
-    err, result = xmlrpc.call("check_media", "download\.mandriva\.com\/EnterpriseServer")
+    err, result = xmlrpc.call("check_media", "mes5devel\.mandriva\.com\/BIG\/mbs\/")
     if err:
         return {'main_media': False}
     else:

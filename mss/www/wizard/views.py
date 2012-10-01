@@ -99,7 +99,7 @@ def first_time(request):
         request.session['first-time'] = False;
     else:
         request.session['first-time'] = True;
-    
+
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse('sections'))
 
@@ -296,12 +296,12 @@ def medias(request):
                     can_skip = True
             if auths:
                 return render_to_response('media_auth.html',
-                        {'can_skip': can_skip, 'auths': auths, 
-                         'transaction': transaction}, 
+                        {'can_skip': can_skip, 'auths': auths,
+                         'transaction': transaction},
                         context_instance=RequestContext(request))
             else:
                 return render_to_response('media_add.html',
-                        {'medias': medias, 'transaction': transaction}, 
+                        {'medias': medias, 'transaction': transaction},
                         context_instance=RequestContext(request))
         else:
             return HttpResponseRedirect(transaction.next_step_url())
@@ -326,7 +326,7 @@ def medias_add(request):
                     media['password'] = request.POST[media['auth']+'_password']
 
         return render_to_response('media_add.html',
-                {'medias': medias, 'transaction': transaction}, 
+                {'medias': medias, 'transaction': transaction},
                 context_instance=RequestContext(request))
 
 @login_required
@@ -382,7 +382,7 @@ def config(request):
         return err
     else:
         config = result
-    
+
     # check if the modules needs configuration
     do_config = False
     # check if the modules have configuration scripts
