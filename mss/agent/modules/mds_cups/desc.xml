@@ -2,7 +2,7 @@
     <name>Printing service</name>
     <desc>Install and configure network printers</desc>
     <actions>
-        <action type="link" name="Printers management" value="http://@HOSTNAME@:631/" />
+        <action type="link" name="Printers management" value="http://@HOSTNAME@:631/admin/" />
     </actions>
     <packages>
         <target name="all">
