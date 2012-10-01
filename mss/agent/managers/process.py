@@ -62,7 +62,7 @@ class ProcessManager:
 
     def check_net(self):
         """ check if net is available """
-        self.launch("net", ["ping", "-c", "2", "my.mandriva.com"], replace=True)
+        self.launch("net", ["wget", "-T", "2", "http://api.mandriva.com", "-O", "/dev/null"], replace=True)
 
     def add_media(self, command):
         """ add media """
