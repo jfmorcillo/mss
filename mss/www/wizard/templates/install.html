@@ -15,7 +15,7 @@
                     $(".alert").removeClass("alert-info");
                     $(".alert").addClass("alert-success");
                     $(".alert").html('<i class="icon-ok"></i> {% trans "Installation succeded." %}');
-                    $("form").attr("action", "{{ transaction.next_step_url }}");
+                    $("#install-form").attr("action", "{{ transaction.next_step_url }}");
                     $("#next").html("{% trans "Continue" %} →");
                     $("#next")[0].disabled = false;
                     $("#back").removeClass("disabled");
@@ -24,16 +24,14 @@
                 else {
                     $(".alert").removeClass("alert-info");
                     $(".alert").addClass("alert-error");
-                    if (r.code == 13 || r.code == 14) {
+                    if (r.code == 13 || r.code == 14)
                         $(".alert").html("{% trans "Installation failed. Update your medias and retry to install." %}");
-                    }
-                    else {
+                    else
                         $(".alert").html("{% trans "Installation failed." %}");
-                    }
-                    if ($('#log')[0].css('display') == "none")
+                    if ($('#log').css('display') == "none")
                         $(".log-button .btn")[0].click();
-                    $("form").attr("action", "{% url install %}");
-                    $("#next").html("{% trans "Retry" %}");
+                    $("#install-form").attr("action", "{% url install %}");
+                    $("#next").text("{% trans "Retry" %}");
                     $("#next")[0].disabled = false;
                     $("#back").removeClass("disabled");
                 }
