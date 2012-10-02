@@ -19,7 +19,7 @@ class CatchAjaxException(object):
 
 	    modal_title.html("Error while calling %s");
 	    modal_message.html("%s");
-	    modal_close.html("{% trans "Close" %}")
+	    modal_close.html("Close");
 
 	    modal_body.append(modal_message);
 	    modal_header.append(modal_title);
