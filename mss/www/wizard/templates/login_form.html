@@ -31,6 +31,7 @@
                             placement: 'right',
                             title: "{% trans "The server <strong>root</strong> password." %}"
                         });
+                        $('#netinfo').addClass("alert-warning");
                         $('#netinfo').html('<i class="icon-exclamation-sign"></i> {% trans "No internet connection, use the root password to login." %}');
                         $('#netinfo').slideDown();
                         $('#netinfo').fadeIn();
