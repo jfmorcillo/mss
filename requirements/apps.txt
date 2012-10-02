@@ -5,6 +5,8 @@ python-OpenSSL
 python-setuptools
 python-docutils
 python-netifaces
+python-sphinx
 binutils
 gettext
 locales-fr
+gnome-doc-utils
