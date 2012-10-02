@@ -1,6 +1,4 @@
-# See /usr/share/postfix/main.cf.dist for a commented, more complete version
-
-smtpd_banner = $myhostname ESMTP $mail_name (Mandriva MES5)
+smtpd_banner = $myhostname ESMTP $mail_name (Mandriva Business Server)
 biff = no
 
 # appending .domain is the MUA's job.
@@ -46,8 +44,8 @@ dovecot_destination_recipient_limit = 1
 # TLS parameters
 smtpd_use_tls = yes
 smtpd_tls_loglevel = 1
-smtpd_tls_cert_file = /etc/ssl/mmc-wizard/certs/smtpd.pem 
-smtpd_tls_key_file = /etc/ssl/mmc-wizard/private/smtpd.key
+smtpd_tls_cert_file = /etc/pki/tls/certs/postfix.pem
+smtpd_tls_key_file = /etc/pki/tls/private/postfix.pem
 
 # Enable SASL authentication for the smtpd daemon
 smtpd_sasl_auth_enable = yes

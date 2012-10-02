@@ -35,7 +35,6 @@ ldap_aliases_cf="templates/ldap-aliases.cf"
 ldap_domains_cf="templates/ldap-domains.cf"
 ldap_maildrop_cf="templates/ldap-maildrop.cf"
 ldap_transport_cf="templates/ldap-transport.cf"
-openssl_cnf_template="templates/openssl.cnf.tpl"
 amavis_template="templates/amavisd.conf.tpl"
 spamassassin_template="templates/local.cf.tpl"
 
@@ -80,22 +79,6 @@ fi
 cat $dovecot_ldap_template > /etc/dovecot-ldap.conf
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/dovecot-ldap.conf
 sed -i "s/\@HOST\@/$mdsserver/" /etc/dovecot-ldap.conf
-
-# certifs gen
-cat $openssl_cnf_template > /tmp/openssl.cnf
-sed -i "s/\@COMMONNAME\@/$smtpd_myhostname.$smptd_myorigin/" /tmp/openssl.cnf
-sed -i "s/\@DOMAIN\@/$smptd_myorigin/" /tmp/openssl.cnf
-
-mkdir -p /etc/ssl/mss/certs
-mkdir -p /etc/ssl/mss/private
-openssl req -x509 -new \
-    -config /tmp/openssl.cnf \
-    -out /etc/ssl/mss/certs/smtpd.pem \
-    -keyout /etc/ssl/mss/private/smtpd.key \
-    -days 730 -nodes -batch > /dev/null 2>&1
-rm -f /tmp/openssl.cnf
-
-chmod 600 /etc/ssl/mss/private/smtpd.key
 
 adduser -r -g mail --uid 30 vmail > /dev/null 2>&1
 mkdir -p /home/vmail > /dev/null 2>&1
