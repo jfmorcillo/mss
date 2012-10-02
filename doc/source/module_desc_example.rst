@@ -7,8 +7,8 @@ Module ``desc.xml`` examples
 .. literalinclude:: ../../mss/agent/modules/mds_mmc/desc.xml
     :language: xml
     
-``groupoffice`` module
+``zarafa`` module
 ----------------------
 
-.. literalinclude:: ../../mss/agent/modules/groupoffice/desc.xml
+.. literalinclude:: ../../mss/agent/modules/zarafa/desc.xml
     :language: xml

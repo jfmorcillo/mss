@@ -31,6 +31,19 @@ same name as the module name
     <name>My module</name>
     <desc>A great module</desc>
 
+Actions
+^^^^^^^
+
+Action menu to display when the module has been configured. Currently only
+html links are supported.
+
+::
+
+ <actions>
+     <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+     <action type="link" name="Webmail" value="http://@HOSTNAME@/roundcubemail/" />
+ </actions>
+
 Medias
 ^^^^^^
 
@@ -41,12 +54,13 @@ MSS allows you to add medias on the system to install packages.
 * @auth (optional) : None (default) | my
 * @proto : http (default) | https
 * @mode (optional) : None (default) | distrib | updates
+* @can_skip (optional) : Node (default) | yes
 
 @ARCH@ will be replaced by the machine arch (x86_64 or i586).
 
 ::
 
-    <medias verbose_name="My module" name="module" auth="my" proto="https">
+    <medias verbose_name="MES5 repositories" name="mes5" auth="my" proto="https">
         <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
     </medias>
 
@@ -298,10 +312,11 @@ Configuration definition in ``desc.xml`` :
     :language: py
 
 The setup script and templates
--------------------------------------------------
+------------------------------
 
 To run modules configuration the MSS agent runs shell scripts as root in the
-background. The script name and its parameters launch by MSS have to be declared in the :py:func:`get_config_info` function.
+background. The script name and its parameters launch by MSS have to be declared 
+in the :py:func:`get_config_info` function.
 
 ``mds_webmail`` script example :
 
