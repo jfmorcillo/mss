@@ -192,6 +192,10 @@ legend {
     text-shadow: 1px 1px 2px white;
 }
 
+.page-header h1 img {
+    vertical-align: bottom;
+}
+
 .navbar .brand {
     padding: 5px 10px;
 }

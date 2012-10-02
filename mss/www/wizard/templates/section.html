@@ -1,13 +1,4 @@
-{% extends 'base.html' %}
 {% load i18n %}
-{% block sidebar %}
-    {% for bundle in section.bundles %}
-    <li>
-        <a href="#{{ bundle.id }}">{% trans bundle.name %}</a>
-    </li>
-    {% endfor %}
-{% endblock %}
-{% block content %}
 <script type="text/javascript">
     var conflicts = new Object();
     var installs = new Object();
@@ -115,123 +106,119 @@
         createPopups();
     });
 </script>
-<section id="{{ section.id }}">
-    <form name="mss" action="{% url prepare %}" method="post">
-        {% for bundle in section.bundles %}
-        <div class="bundle" id="{{ bundle.id }}">
-            <div class="page-header">
-                <a name="{{ bundle.id }}"></a>
-                <h1>{% trans bundle.name %}{% if bundle.desc %}&nbsp;<small>{% trans bundle.desc %}</small>{% endif %}</h1>
-            </div>
-                {% for module in bundle.modules %}
-                    {% for m in modules %}
-                        {% ifequal m.id module %}
-                    
-            <script type="text/javascript">
-                {% if m.conflicts %}
-                    {% for conflict in m.conflicts %}
-                if (! conflicts.{{ conflict }})
-                    conflicts.{{ conflict }} = new Array();
-                conflicts.{{ conflict }}.push("{{ m.id }}");
-                    {% endfor %}
-                {% endif %}
+<form name="mss" action="{% url prepare %}" method="post">
+    {% for bundle in section.bundles %}
+    <div class="bundle" id="{{ bundle.id }}">
+        <div class="page-header">
+            <a name="{{ bundle.id }}"></a>
+            <h1>{% if bundle.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" /> {% endif %}{% trans bundle.name %}{% if bundle.desc %}&nbsp;<small>{% trans bundle.desc %}</small>{% endif %}</h1>
+        </div>
+            {% for module in bundle.modules %}
+                {% for m in modules %}
+                    {% ifequal m.id module %}
+                
+        <script type="text/javascript">
+            {% if m.conflicts %}
+                {% for conflict in m.conflicts %}
+            if (! conflicts.{{ conflict }})
+                conflicts.{{ conflict }} = new Array();
+            conflicts.{{ conflict }}.push("{{ m.id }}");
+                {% endfor %}
+            {% endif %}
+            {% if m.configured %}
+            installs.{{ m.id }} = true;
+            {% else %}
+            installs.{{ m.id }} = false;
+            {% endif %}
+        </script>
+
+        <div class="module control-group" id="{{ m.id }}">
+            <label class="{% if not m.configured and not m.conflict %}checkbox{% endif %}">
                 {% if m.configured %}
-                installs.{{ m.id }} = true;
+                    <i class="icon-ok icon-blue"></i>
                 {% else %}
-                installs.{{ m.id }} = false;
-                {% endif %}
-            </script>
-
-            <div class="module control-group" id="{{ m.id }}">
-                <label class="{% if not m.configured and not m.conflict %}checkbox{% endif %}">
-                    {% if m.configured %}
-                        <i class="icon-ok icon-blue"></i>
+                    {% if m.conflict %}
+                        <i class="icon-ban-circle"></i>
                     {% else %}
-                        {% if m.conflict %}
-                            <i class="icon-ban-circle"></i>
-                        {% else %}
-                            <input type="checkbox" name="{{ m.id }}" class="module-checkbox">
-                        {% endif %}
+                        <input type="checkbox" name="{{ m.id }}" class="module-checkbox">
                     {% endif %}
-                    <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
-                    {% if m.actions and m.configured %}
-                    &nbsp;
-                    <span class="btn-group">
-                        <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-                            <i class="icon-cog"></i>&nbsp;<span class="caret"></span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            {% for action in m.actions %}
-                                {% ifequal action.type "link" %}
-                                <li><a href="{{ action.value }}" target="_blank">{{ action.name }}</a></li>
-                                {% endifequal %}
-                            {% endfor %}
-                        </ul>
-                    </span>
-                    {% endif %}
-                    <div class="popover-content" style="display: none">
-                        {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This component is installed and configured" %}</p>{% endif %}
-                        {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
-                            {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                        {% endif %}
-                        {% if m.market.access %}<p><i class="icon-shopping-cart"></i> {% trans "You have bought this component" %}</p>{% endif %}
-                    </div>
-                </label>
-
-                {% comment %}
-                {% if m.configured %}
-                <span class="actions">{% trans "Actions" %}
-                    <div class="actions" style="display: none">
-                        <div class="action">
-                            <input class="action" type="checkbox" name="force-{{ m.id }}" id="force-{{ m.id }}" /><label for="force-{{ m.id }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
-                        </div>
-                    </div>
+                {% endif %}
+                <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
+                {% if m.actions and m.configured %}
+                &nbsp;
+                <span class="btn-group">
+                    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                        <i class="icon-cog"></i>&nbsp;<span class="caret"></span>
+                    </button>
+                    <ul class="dropdown-menu">
+                        {% for action in m.actions %}
+                            {% ifequal action.type "link" %}
+                            <li><a href="{{ action.value }}" target="_blank">{{ action.name }}</a></li>
+                            {% endifequal %}
+                        {% endfor %}
+                    </ul>
                 </span>
                 {% endif %}
-                {% endcomment %}
+                <div class="popover-content" style="display: none">
+                    {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This component is installed and configured" %}</p>{% endif %}
+                    {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
+                        {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+                    {% endif %}
+                    {% if m.market.access %}<p><i class="icon-shopping-cart"></i> {% trans "You have bought this component" %}</p>{% endif %}
+                </div>
+            </label>
 
-                <span class="help-block">{{ m.desc|safe }}</span>
-                {% if m.market %}
-                <p>
-                    <a class="btn btn-small btn-success" href="{{ m.market.buy_url }}"><i class="icon-shopping-cart icon-white"></i> {% trans "Buy" %}</a>
-                    {% if m.market.info_file %}
-                    &nbsp;<a class="btn btn-small" href="#modal-{{ m.id }}" role="button" data-toggle="modal"><i class="icon-info-sign"></i> {% trans "More information" %}</a>
-                    {% endif %}
-                    {% if m.market.info_url %}
-                    &nbsp;<a class="btn btn-small" href="{{ m.market.info_url }}"><i class="icon-info-sign"></i> {% trans "More information" %}</a>
-                    {% endif %}
-                </p>
-                    {% if m.market.info_file %}
-                <div class="modal hide fade" id="modal-{{ m.id }}" role="dialog" aria-hidden="true">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                        <h3>{{ m.market.info_title }}</h3>
-                    </div>
-                    <div class="modal-body">
-                        {% include m.market.info_file %}
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#" data-dismiss="modal" aria-hidden="true">Close</a>
+            {% comment %}
+            {% if m.configured %}
+            <span class="actions">{% trans "Actions" %}
+                <div class="actions" style="display: none">
+                    <div class="action">
+                        <input class="action" type="checkbox" name="force-{{ m.id }}" id="force-{{ m.id }}" /><label for="force-{{ m.id }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
                     </div>
                 </div>
-                    {% endif %}
+            </span>
+            {% endif %}
+            {% endcomment %}
+
+            <span class="help-block">{{ m.desc|safe }}</span>
+            {% if m.market %}
+            <p>
+                <a class="btn btn-small btn-success" href="{{ m.market.buy_url }}"><i class="icon-shopping-cart icon-white"></i> {% trans "Buy" %}</a>
+                {% if m.market.info_file %}
+                &nbsp;<a class="btn btn-small" href="#modal-{{ m.id }}" role="button" data-toggle="modal"><i class="icon-info-sign"></i> {% trans "More information" %}</a>
                 {% endif %}
-
-            </div> <!-- /module -->
-
-                    {% endifequal %}
-                {% endfor %}
-            {% endfor %}
-        </div> <!-- /bundle -->
-        {% endfor %}
-        
-        <div class="form-actions">
-                <div class="pull-right">
-                    <button class="btn btn-primary" type="submit">{% trans "Install and configure selected components" %}&nbsp;→</button>
+                {% if m.market.info_url %}
+                &nbsp;<a class="btn btn-small" href="{{ m.market.info_url }}"><i class="icon-info-sign"></i> {% trans "More information" %}</a>
+                {% endif %}
+            </p>
+                {% if m.market.info_file %}
+            <div class="modal hide fade" id="modal-{{ m.id }}" role="dialog" aria-hidden="true">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                    <h3>{{ m.market.info_title }}</h3>
                 </div>
-                <a class="btn" href="{% url sections %}" id="back">{% trans "Back" %}</a>
+                <div class="modal-body">
+                    {% include m.market.info_file %}
+                </div>
+                <div class="modal-footer">
+                    <a href="#" data-dismiss="modal" aria-hidden="true">Close</a>
+                </div>
+            </div>
+                {% endif %}
+            {% endif %}
+
+        </div> <!-- /module -->
+
+                {% endifequal %}
+            {% endfor %}
+        {% endfor %}
+    </div> <!-- /bundle -->
+    {% endfor %}
+    
+    <div class="form-actions">
+            <div class="pull-right">
+                <button class="btn btn-primary" type="submit">{% trans "Install and configure selected components" %}&nbsp;→</button>
             </div>
         </div>
-    </form>
-</section>
-{% endblock %}
+    </div>
+</form>

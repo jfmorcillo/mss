@@ -12,56 +12,30 @@
             $('#sidebar li').removeClass("active");
             $(this).parent().addClass("active");
             section = $(this).data("target");
-            $('section').each(function(i) {
-                if (this.id == section)
-                    $(this).show();
-                else
-                    $(this).hide();
+            $.get('/mss/sections/' + section + '/')
+            .success(function(content) {
+                $('#section').html(content);
             });
         };
 
         $('#sidebar a').click(showSection);
-
-        $(document).ready(function() {
-            {% for section in sections %}
-            $(".gal-{{ section.id }}").colorbox({rel: 'gal-{{ section.id }}', opacity: 0.8});
-            {% endfor %}
-        });
     </script>
 {% endblock %}
 
 {% block content %}
 {% if sections %}
-    {% for section in sections %}
-    <section id="{{ section.id }}" class="section" {% ifnotequal section.id "core" %}style="display: none"{% endifnotequal %}>
-        <div class="page-header">
-            <h1>{% trans section.name %}<small>{% trans section.subtext %}</small></h1>
-        </div>
-        {% autoescape off %}
-        {% trans section.desc %}
-        {% endautoescape %}
-        <div class="section-screenshots">
-            {% for screen in section.screenshots %}
-            <a href="{{ MEDIA_URL }}img/modules/{{ screen }}.png" class="gal-{{ section.id }} cboxElement">
-                <img class="img-polaroid" src="{{ MEDIA_URL }}img/modules/{{ screen }}_thumb.png" />
-            </a>
-            {% endfor %}
-        </div>
-
-        <div class="form-actions">
-            <div class="center">
-                <a href="{% url section section.id %}">{% trans "Select components to install" %}&nbsp;→</a>
-            </div>
-        </div>
-    </section>
-    {% endfor %}
+    <section id="section" class="section"></section>
+    <script type="text/javascript">
+        $.get('{% url section "core" %}')
+        .success(function(content) {
+            $('#section').html(content);
+        });
+    </script>
 {% else %}
-    <div class="section-form">
-        <div class="block block-section block-height">
-            <p class="error">{% trans "No modules for Mandriva Server Setup installed." %}</p>
-            <p>{% trans "Check for mss-modules-* packages." %}</p>
-        </div>
-    </div>
+    <section>
+        <p class="alert alert-error">{% trans "No modules for Mandriva Server Setup installed." %}</p>
+        <p class="alter">{% trans "Check for mss-modules-* packages." %}</p>
+    </section>
 {% endif %}
 {% endblock %}
 

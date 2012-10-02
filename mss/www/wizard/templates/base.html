@@ -135,16 +135,6 @@
                 </div>
                 <div class="span9">
                     <div id="content" class="content">
-                        {% if sections %}
-                        <ul class="breadcrumb">
-                            {% if section.name %}
-                            <li><a href="{% url sections %}">{% trans "Home" %}</a> <span class="divider">/</span></li>
-                            <li class="active">{{ section.name }}</li>
-                            {% else %}
-                            <li class="active">{% trans "Home" %}</li>
-                            {% endif %}
-                        </ul>
-                        {% endif %}
                         {% block content %}{% endblock %}
                     </div>
                 </div>

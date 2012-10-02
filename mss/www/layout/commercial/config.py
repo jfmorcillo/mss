@@ -28,5 +28,8 @@ config = ConfigManager()
 config.add_section({'id': 'market', 'name': _('Marketplace'),
                     'desc': '<p>You may purchase, install and use the solutions available in the market place with a few clicks.</p>'})
 
-config.add_bundle("market", {'id': 'collaboration', 'name': _('Collaboration'),
-                             'modules': ["zarafa"]})
+config.add_bundle("market", {
+    'id': 'collaboration', 'name': _('Collaboration'),
+    'icon': 'commercial/collaboration.png',
+    'modules': ["zarafa"]
+})
