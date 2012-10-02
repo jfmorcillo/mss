@@ -86,7 +86,8 @@ class ProcessThread(threading.Thread):
                 # get last bytes from output
                 if fd:
                     self.lock.acquire()
-                    self._output += os.read(fd, 4096)
+                    while os.read(fd, 1):
+                        self._output += os.read(fd, 4096)
                     self.lock.release()
                 self._code = self.process.returncode
                 if self.callback:

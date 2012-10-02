@@ -106,7 +106,6 @@ class Transaction:
                 self.enable_step(Steps.INSTALL);
         
         err, result = xmlrpc.call('get_config', self.modules)
-        print result
         for module in result:
             infos = module[0]
             if not infos['skip_config']:
