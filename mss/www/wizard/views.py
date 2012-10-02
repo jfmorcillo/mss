@@ -193,9 +193,11 @@ def get_state(request, thread, module):
 
 def has_net(request, has_net):
     """ Run some actions if we have the connection or not """
+    request.session['has_net'] = False
     if int(has_net) == 0:
         # update the medias if net is ok
         xmlrpc.call("update_medias")
+        request.session['has_net'] = True
 
     return HttpResponse("")
 
@@ -205,8 +207,7 @@ def sections(request):
     """ sections list """
     # render the main page with all sections
     return render_to_response('sections.html',
-        {'sections': CM.get_sections(),
-         'language_form': True },
+        {'sections': CM.get_sections()},
         context_instance=RequestContext(request))
 
 @first_time_required
@@ -242,7 +243,7 @@ def section(request, section):
 
         return render_to_response('section.html',
             {'sections': CM.get_sections(), 'section': section_info,
-            'modules': modules, 'language_form': True },
+            'modules': modules },
             context_instance=RequestContext(request))
 
 @login_required
