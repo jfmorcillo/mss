@@ -123,15 +123,6 @@ section .form-actions, section .form-horizontal .form-actions {
     margin-top: 18px;
 }
 
-.section-screenshots {
-    margin: auto;
-    text-align: center;
-}
-
-.section-screenshots img {
-    margin: 9px;
-}
-
 legend {
     border-width: 0px 0px 2px 0px;
     margin-bottom: 9px;
@@ -214,7 +205,7 @@ legend {
     color: #b94a48;
 }
 
-div#status {
+#status {
     position: fixed;
     bottom: 0;
     width: 870px;
@@ -243,25 +234,19 @@ div#status {
     background-position: 2px;
 }
 
-#languages-menu a {
-    padding-left: 43px;
-    background-repeat: no-repeat;
-    background-position: 20px;
-}
-
-#language option.fr_FR, #languages-menu a.fr_FR {
+#language option.fr_FR {
     background-image: url('../img/lang/fr_FR.png');
 }
 
-#language option.en, #languages-menu a.en {
+#language option.en {
     background-image: url('../img/lang/en.png');
 }
 
-#language option.pt_BR, #languages-menu a.pt_BR {
+#language option.pt_BR {
     background-image: url('../img/lang/pt_BR.png');
 }
 
-#language option.ru_RU, #languages-menu a.ru_RU {
+#language option.ru_RU {
     background-image: url('../img/lang/ru_RU.png');
 }
 
@@ -366,6 +351,33 @@ div#status {
        -moz-border-radius: 0px;
             border-radius: 0px;
     border-width: 4px 0px 0px 0px;
+    background-color: white;
+    border-color: #eee;
+    color: #444;
+}
+
+.alert-warning {
+    color: #C09853;
+    background-color: #FCF8E3;
+    border-color: #FBEED5;
+}
+
+.alert-success {
+    color: #468847;
+    background-color: #dff0d8;
+    border-color: #d6e9c6;
+}
+
+.alert-error {
+    color: #b94a48;
+    background-color: #f2dede;
+    border-color: #eed3d7;
+}
+
+.alert-info {
+    color: #3a87ad;
+    background-color: #d9edf7;
+    border-color: #bce8f1;
 }
 
 /* Tooltips */
@@ -449,42 +461,4 @@ div#status {
 .dropdown-menu > .active > a > [class^="icon-"],
 .dropdown-menu > .active > a > [class*=" icon-"] {
   background-image: url("../img/glyphicons-halflings-gray.png");
-}
-
-.section-screenshots a {
-    text-decoration: none;
-}
-
-.center {
-    text-align: center;
-}
-
-.alert {
-    background-color: white;
-    border-color: #eee;
-    color: #444;
-}
-
-.alert-warning {
-    color: #C09853;
-    background-color: #FCF8E3;
-    border-color: #FBEED5;
-}
-
-.alert-success {
-    color: #468847;
-    background-color: #dff0d8;
-    border-color: #d6e9c6;
-}
-
-.alert-error {
-    color: #b94a48;
-    background-color: #f2dede;
-    border-color: #eed3d7;
-}
-
-.alert-info {
-    color: #3a87ad;
-    background-color: #d9edf7;
-    border-color: #bce8f1;
 }

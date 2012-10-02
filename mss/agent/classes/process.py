@@ -27,7 +27,7 @@ from subprocess import Popen, PIPE, STDOUT
 class ProcessThread(threading.Thread):
     """ Base class for running tasks """
 
-    def __init__(self, command, cwd, callback, shell):
+    def __init__(self, command, cwd, callback, shell, env):
         self.process = None
         self.command = command
         self.cwd = cwd
@@ -36,6 +36,7 @@ class ProcessThread(threading.Thread):
         self._output = ""
         self.lock = threading.RLock()
         self.shell = shell
+        self.env = env
         threading.Thread.__init__(self)
 
     @property
@@ -49,7 +50,7 @@ class ProcessThread(threading.Thread):
     def run(self):
         """ run command """
         self.process = Popen(self.command, stdout=PIPE, stderr=STDOUT,
-            bufsize=1, cwd=self.cwd, shell=self.shell)
+            bufsize=1, cwd=self.cwd, shell=self.shell, env=self.env)
         self.catch_output()
         return 0
 

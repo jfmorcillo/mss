@@ -61,7 +61,7 @@ class Transaction:
                 {
                     'id': Steps.CONFIG,
                     'disabled': True,
-                    'title': _("Configuration"),
+                    'title': _("Initial configuration"),
                     'info': "",
                     'current': False
                 }
