@@ -12,9 +12,9 @@
             scrollLog();
             if (r.code != 2000) {
                 if (r.code == 0) {
-                    $(".alert").removeClass("alert-info");
-                    $(".alert").addClass("alert-success");
-                    $(".alert").html('<i class="icon-ok"></i> {% trans "Installation succeded." %}');
+                    $("#install-task").removeClass("alert-info");
+                    $("#install-task").addClass("alert-success");
+                    $("#install-task").html('<i class="icon-ok"></i> {% trans "Installation succeded." %}');
                     $("#install-form").attr("action", "{{ transaction.next_step_url }}");
                     $("#next").html("{% trans "Continue" %} →");
                     $("#next")[0].disabled = false;
@@ -22,8 +22,8 @@
                     $.get("{% url reload_packages %}");
                 }
                 else {
-                    $(".alert").removeClass("alert-info");
-                    $(".alert").addClass("alert-error");
+                    $("#install-task").removeClass("alert-info");
+                    $("#install-task").addClass("alert-error");
                     if (r.code == 13 || r.code == 14)
                         $(".alert").html("{% trans "Installation failed. Update your medias and retry to install." %}");
                     else
@@ -51,7 +51,7 @@
     <div class="page-header">
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
-    <p class="alert alert-info">{% blocktrans count modules|length as counter %}The following component is being installed{% plural %}The following components are being installed{% endblocktrans %} :
+    <p class="alert alert-info" id="install-task">{% blocktrans count modules|length as counter %}The following component is being installed{% plural %}The following components are being installed{% endblocktrans %} :
     {% for m in transaction.modules_info %}
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>

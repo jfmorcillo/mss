@@ -11,7 +11,11 @@
     </form>
 </section>
 <script type="text/javascript">
-    // Hack to make the content block centered on this page
-    $('.span9').addClass('span6');
+    $(document).ready(function() {
+        // Hack to make the content block centered on this page
+        $('.span9').addClass('span6');
+        $('.form-actions').css('width', '570px');
+        $('#status').css('width', '570px');
+    });
 </script>
 {% endblock %}

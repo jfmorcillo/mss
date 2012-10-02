@@ -40,7 +40,7 @@
                 .success(function(status) {
                     // hide status on Ready state
                     if (status.indexOf('{% trans "Ready" %}') === 0) {
-                        $('#status').html(status);
+                        $('#status-text').html(status);
                         $('#status').addClass("alert-success");
                         $('#status').removeClass("alert-info");
                         $('#status').removeClass("alert-error");
@@ -48,7 +48,7 @@
                     }
                     // show status bar on activity
                     else if (status != "") {
-                        $('#status').html('<img src="{{ MEDIA_URL }}img/load-info.gif" />&nbsp;' + status);
+                        $('#status-text').html('<img src="{{ MEDIA_URL }}img/load-info.gif" />&nbsp;' + status);
                         $('#status').addClass("alert-info");
                         $('#status').removeClass("alert-success");
                         $('#status').removeClass("alert-error");
@@ -58,7 +58,7 @@
                     updateStatus(false);
                 })
                 .error(function(xhr) {
-                    $('#status').html(xhr.responseText);
+                    $('#status-text').html(xhr.responseText);
                     // set error style if error
                     $('#status').addClass("alert-error");
                     $('#status').removeClass("alert-success");
@@ -137,9 +137,11 @@
                     <div id="content" class="content">
                         {% block content %}{% endblock %}
                     </div>
+                    <div id="status" class="alert alert-success" style="display: none">
+                        <div id="status-text">{% trans "Ready" %}</div>
+                    </div>
                 </div>
             </div>
         </div>
-        <div id="status" class="alert alert-success" style="display: none">{% trans "Ready" %}</div>
     </body>
 </html>

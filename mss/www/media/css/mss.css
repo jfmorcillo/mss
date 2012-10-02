@@ -49,7 +49,6 @@ form {
     background: none;
     border: 0px;
     color: #57b;
-    text-shadow: 0 -1px 0 rgba(255, 255, 255, 1);
     padding: 1em;
     font-weight: bold;
     font-size: 115%;
@@ -218,19 +217,24 @@ legend {
 div#status {
     position: fixed;
     bottom: 0;
-    left: 0;
-    height: 20px;
-    width: 100%;
-    line-height: 22px;
-    padding-left: 5px;
-    margin: 0px;
+    width: 870px;
     -webkit-border-radius: 0px;
        -moz-border-radius: 0px;
             border-radius: 0px;
+    font-weight: bold;
+    font-size: 115%;
+    white-space: nowrap;
+    text-shadow: 1px 1px 2px white;
+    padding: 0;
+    margin: 0;
 }
 
 #status img {
     vertical-align: top;
+}
+
+#status-text {
+    padding: 1em;
 }
 
 #language option {
