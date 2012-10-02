@@ -95,36 +95,36 @@ class Module:
         else:
             self._preinst = " "
 
-    def get_name(self):
+    @property
+    def name(self):
         return _(self._name, self.id)
-    name = property(get_name)
 
-    def get_desc(self):
+    @property
+    def desc(self):
         if self._desc:
             return _(self._desc, self.id)
         else:
             return ""
-    desc = property(get_desc)
-    
-    def get_actions(self):
+   
+    @property
+    def actions(self):
         return self._actions
-    actions = property(get_actions)
 
-    def get_market(self):
+    @property
+    def market(self):
         return self._market
-    market = property(get_market)
 
-    def get_deps(self):
+    @property
+    def deps(self):
         return self._deps
-    deps = property(get_deps)
 
-    def get_conflicts(self):
+    @property
+    def conflicts(self):
         return self._conflicts
-    conflicts = property(get_conflicts)
 
-    def get_preinst(self):
+    @property
+    def preinst(self):
         return _(self._preinst, self.id).strip()
-    preinst = property(get_preinst)
 
     def check_configured(self):
         # check if module is configured by calling module method
@@ -152,10 +152,12 @@ class Module:
         if script == None:
             self._configured = True
 
-    def get_configured(self):
+    @property
+    def configured(self):
         return self._configured
 
-    def set_configured(self, value):
+    @configured.setter
+    def configured(self, value):
         self._configured = value
         if value:
             c = self.conn.cursor()
@@ -167,25 +169,29 @@ class Module:
             self.conn.commit()
             c.close()
 
-    def get_installed(self):
+    @property
+    def installed(self):
         return self._installed
 
-    def set_installed(self, value):
+    @installed.setter
+    def installed(self, value):
         self._installed = value
 
-    def get_packages(self):
+    @property
+    def packages(self):
         """ get packages for module """
-        if not getattr(self, "packages", None):
+        if not getattr(self, "_packages", None):
             # get packages for current arch
-            self.packages = []
+            self._packages = []
             targets = self.root.findall("packages/target")
             for target in targets:
                 if target.attrib['name'] == "all" or \
                    target.attrib['name'] == self.arch:
-                    self.packages += [rpm.text for rpm in target.findall("rpm")]
-        return self.packages
+                    self._packages += [rpm.text for rpm in target.findall("rpm")]
+        return self._packages
 
-    def get_medias(self):
+    @property
+    def medias(self):
         """ get medias for module """
         media = self.root.find("medias")
         if media:
@@ -236,7 +242,7 @@ class Module:
             if fields:
                 # if we have fields, show the configuration page
                 self.config[0]['do_config'] = True
-                self.config[0]['configured'] = self.get_configured()
+                self.config[0]['configured'] = self.configured
             for field in fields:
                 field_config = field.attrib
                 field_help = field.findtext("help")
@@ -254,10 +260,10 @@ class Module:
                              'value': option.attrib.get('value')}
                         )
                 # add current value if module is configured
-                if self.get_configured() and current_config.get(field_config['name']):
+                if self.configured and current_config.get(field_config['name']):
                     field_config['default'] = current_config.get(field_config['name'])
                 # calculate default value if not configured
-                if not self.get_configured() and "default" in field_config:
+                if not self.configured and "default" in field_config:
                     # check if the default value is a module's method
                     try:
                         if isinstance(field_config["default"], basestring):
@@ -276,7 +282,7 @@ class Module:
                         field_config["default"] = ""
 
                 # reset require attribute if field is hidden for reconfiguration
-                if self.get_configured() and "show_if_unconfigured" in field_config and "require" in field_config:
+                if self.configured and "show_if_unconfigured" in field_config and "require" in field_config:
                     del field_config["require"]
 
                 self.config.append(field_config)

@@ -171,13 +171,13 @@ class ModuleManager:
 
     def check_installed(self, module):
         """ check if module is installed """
-        packages = set(module.get_packages())
+        packages = set(module.packages)
         # check if packages are installed
         if len(packages) == len(packages.intersection(self.packages)):
-            module.set_installed(True)
+            module.installed = True
             return True
         else:
-            module.set_installed(False)
+            module.installed = False
             return False
 
     def get_conflicts(self, conflicts, module):
@@ -186,7 +186,7 @@ class ModuleManager:
         for m in module.conflicts:
             try:
                 m = self.modules[m]
-                if not m in conflicts and m.get_configured():
+                if not m in conflicts and m.configured:
                     conflicts.append(m)
                     self.logger.debug("Conflict with : %s" % str(m.id))
                     conflicts = self.get_conflicts(conflicts, m)
@@ -197,7 +197,7 @@ class ModuleManager:
                 m = self.modules[m]
                 for m1 in m.conflicts:
                     m1 = self.modules[m1]
-                    if not m1 in conflicts and m1.get_configured():
+                    if not m1 in conflicts and m1.configured:
                         conflicts.append(m1)
                         self.logger.debug("Conflict with : %s" % str(m1.id))
             except KeyError:
@@ -215,8 +215,8 @@ class ModuleManager:
         result = {
             'id': module.id, 'name': module.name,
             'actions': module.actions, 'desc': module.desc, 'market': module.market,
-            'preinst': module.preinst, 'installed': module.get_installed(),
-            'configured': module.get_configured(), 'conflict': conflicts,
+            'preinst': module.preinst, 'installed': module.installed,
+            'configured': module.configured, 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps}
         self.logger.debug("Module info : %s" % str(result))
         return result
@@ -235,7 +235,7 @@ class ModuleManager:
     @expose
     def get_packages(self, module):
         """ returns package list for module """
-        return self.modules[module].get_packages()
+        return self.modules[module].packages
 
     @expose
     def preinstall_modules(self, modules):
@@ -338,14 +338,14 @@ class ModuleManager:
     def get_medias(self, modules):
         """ get medias for modules """
         self.logger.info("Get medias for modules : %s" % str(modules))
-        medias = [ self.modules[module].get_medias() for module in modules if not self.check_media(module) and self.modules[module].get_medias() ]
+        medias = [ self.modules[module].medias for module in modules if not self.check_media(module) and self.modules[module].medias ]
         self.logger.debug("Media list : %s" % str(medias))
         return medias
 
     @expose
     def add_media(self, module, login=None, passwd=None):
         """ add all medias for module """
-        media = self.modules[module].get_medias()
+        media = self.modules[module].medias
         self.logger.info("Add media : %s" % media.name)
         # get add commands for media
         command = media.get_command(login, passwd)
@@ -358,7 +358,7 @@ class ModuleManager:
         self.logger.info("Install modules : %s" % str(modules))
         packages = []
         for module in modules:
-            packages += self.modules[module].get_packages()
+            packages += self.modules[module].packages
         if packages:
             self.logger.debug("Install packages : %s" % str(packages))
             self.PM.install_packages(packages)
@@ -399,7 +399,7 @@ class ModuleManager:
     @expose
     def end_config(self, module):
         self.logger.debug("Set %s as configured" % str(module))
-        self.modules[module].set_configured(True)
+        self.modules[module].configured = True
         return 0
 
     def clean_output(self, string):

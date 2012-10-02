@@ -38,16 +38,13 @@ class ProcessThread(threading.Thread):
         self.shell = shell
         threading.Thread.__init__(self)
 
-
-    def get_output(self):
+    @property
+    def output(self):
         return self._output.decode("UTF-8")
-    output = property(get_output)
 
-
-    def get_code(self):
+    @property
+    def code(self):
         return self._code
-    code = property(get_code)
-
 
     def run(self):
         """ run command """
