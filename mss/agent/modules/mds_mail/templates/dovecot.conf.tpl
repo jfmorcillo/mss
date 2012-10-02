@@ -95,8 +95,8 @@ mail_gid = mail
 # dropping root privileges, so keep the key file unreadable by anyone but
 # root. Included doc/mkcert.sh can be used to easily generate self-signed
 # certificate, just make sure to update the domains in dovecot-openssl.cnf
-ssl_cert_file = /etc/ssl/mmc-wizard/certs/smtpd.pem
-ssl_key_file = /etc/ssl/mmc-wizard/private/smtpd.key
+ssl_cert_file = /etc/ssl/mss/certs/smtpd.pem
+ssl_key_file = /etc/ssl/mss/private/smtpd.key
 
 # If key file is password protected, give the password here. Alternatively
 # give it when starting dovecot with -p parameter.

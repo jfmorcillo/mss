@@ -97,7 +97,7 @@ rm -f /tmp/openssl.cnf
 
 chmod 600 /etc/ssl/mss/private/smtpd.key
 
-adduser -r -g mail --uid 499 vmail > /dev/null 2>&1
+adduser -r -g mail --uid 30 vmail > /dev/null 2>&1
 mkdir -p /home/vmail > /dev/null 2>&1
 chown vmail:mail /home/vmail
 
