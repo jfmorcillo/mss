@@ -1,132 +1,146 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <i.sence.i@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-18 16:11+0200\n"
+"POT-Creation-Date: 2012-10-02 18:01+0200\n"
 "PO-Revision-Date: 2011-06-28 18:22+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru_RU\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: config.py:29 config.py:33
-msgid "Mandriva Directory Server"
-msgstr "Mandriva Directory Server"
+#: config.py:27
+msgid "Core Services"
+msgstr ""
 
 #: config.py:30
-msgid "MDS is an enterprise directory platform based on LDAP designed to manage identities, and various network services commonly used.<br/><br/>In addition, MDS is controlled through a modern and friendly web interface.<br /><br />For an overview of MDS, visit the <a href=\"http://mds.mandriva.org/\">project website</a>."
-msgstr "MDS - это платформа для работы с каталогами на основе LDAP, предназначена для управления идентификацией и различными стандартными сетевыми сервисами.<br/><br/>Кроме того, MDS управляется с помощью современного и дружественного веб-интерфейса.<br /><br />Для обзора MDS, посетите <a href=\"http://mds.mandriva.org/\">project website</a>."
+msgid "Users"
+msgstr ""
 
-#: config.py:34
-msgid "Required base components"
-msgstr "Необходимые базовые компоненты "
-
-#: config.py:37
-msgid "File server modules"
-msgstr "Модули файлового сервера"
-
-#: config.py:38
-msgid "SAMBA, Cups and quota support"
-msgstr "Поддержка Samba, cистемы печати Cups и квот"
-
-#: config.py:41
-msgid "Mail modules"
-msgstr "Почтовые модули"
+#: config.py:36
+msgid "Mail"
+msgstr ""
 
 #: config.py:42
-msgid "SMTP, IMAP server and other tools"
-msgstr "Инструменты SMTP, IMAP сервера и другие"
-
-#: config.py:45
-msgid "Network modules"
-msgstr "Сетевые модули"
-
-#: config.py:46 config.py:62
-msgid "Network managing tools"
-msgstr "Инструменты управления сетью"
-
-#: config.py:49
-msgid "Other modules"
-msgstr "Другие модули"
-
-#: config.py:50
-msgid "Various MDS modules"
-msgstr "Различные модули MDS"
-
-#: config.py:53
-msgid "Pulse 2 - Coming soon"
-msgstr "Ожидается новая версия Pulse 2"
-
-#: config.py:54
-msgid "Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href=\"http://pulse2.mandriva.org/\">project website</a>."
-msgstr "Pulse 2 - это инструмент с открытым кодом, который упрощает процесс развертывания приложений, инвентаризации и технического обслуживания ИТ-сети.<br />Он был разработан для обработки от нескольких компьютеров в одном месте, до 100 000 и более компьютеров рассредоточенных локально.<br /><br />Чтобы более подробно ознакомиться с новой версии Pulse 2, посетите <a href=\"http://pulse2.mandriva.org/\">project website</a>."
-
-#: config.py:57
-msgid "Server services and tools"
-msgstr "Службы и инструменты сервера"
-
-#: config.py:58
-msgid "Install basic server stacks like DHCP, OpenLDAP or VPN software."
-msgstr "Установка основных стеков сервера, таких как DHCP, OpenLDAP или VPN."
-
-#: config.py:61
 msgid "Network"
 msgstr "Сеть"
 
-#: config.py:65
-msgid "LAMP server"
-msgstr "LAMP сервер"
+#: config.py:48
+msgid "Other"
+msgstr ""
 
-#: config.py:66
-msgid "Toolkit for dynamic web site hosting"
-msgstr "Инструментарий для хостинга динамических веб сайтов"
+#: config.py:53
+msgid "Other Services"
+msgstr ""
 
-#: config.py:69
-msgid "Printing and file server"
-msgstr "Сервер печати и файловый сервер"
+#~ msgid "Mandriva Directory Server"
+#~ msgstr "Mandriva Directory Server"
 
-#: config.py:70
-msgid "SAMBA, Cups and NFS servers."
-msgstr "Серверы SAMBA, Cups и NFS."
+#~ msgid ""
+#~ "MDS is an enterprise directory platform based on LDAP designed to manage "
+#~ "identities, and various network services commonly used.<br/><br/>In "
+#~ "addition, MDS is controlled through a modern and friendly web interface."
+#~ "<br /><br />For an overview of MDS, visit the <a href=\"http://mds."
+#~ "mandriva.org/\">project website</a>."
+#~ msgstr ""
+#~ "MDS - это платформа для работы с каталогами на основе LDAP, предназначена "
+#~ "для управления идентификацией и различными стандартными сетевыми "
+#~ "сервисами.<br/><br/>Кроме того, MDS управляется с помощью современного и "
+#~ "дружественного веб-интерфейса.<br /><br />Для обзора MDS, посетите <a "
+#~ "href=\"http://mds.mandriva.org/\">project website</a>."
 
-#: config.py:73
-msgid "Databases"
-msgstr "Базы данных"
+#~ msgid "Required base components"
+#~ msgstr "Необходимые базовые компоненты "
 
-#: config.py:74
-msgid "Relational databases"
-msgstr "Реляционные базы данных"
+#~ msgid "File server modules"
+#~ msgstr "Модули файлового сервера"
 
-#: config.py:77
-msgid "Backup Tools"
-msgstr "Инструменты резервного копирования"
+#~ msgid "SAMBA, Cups and quota support"
+#~ msgstr "Поддержка Samba, cистемы печати Cups и квот"
 
-#: config.py:78
-msgid "Backup Server"
-msgstr "Сервер резервного копирования"
+#~ msgid "Mail modules"
+#~ msgstr "Почтовые модули"
 
-#: config.py:81
-msgid "Mail server"
-msgstr "Почтовый сервер"
+#~ msgid "SMTP, IMAP server and other tools"
+#~ msgstr "Инструменты SMTP, IMAP сервера и другие"
 
-#: config.py:82
-msgid "Mail server with POP/IMAP and Webmail access"
-msgstr "Почтовый сервер с доступом POP/IMAP и Webmail"
+#~ msgid "Network modules"
+#~ msgstr "Сетевые модули"
 
-#: config.py:86
-msgid "Authentication"
-msgstr "Аутентификация"
+#~ msgid "Network managing tools"
+#~ msgstr "Инструменты управления сетью"
 
-#: config.py:87
-msgid "Tools for managing identities"
-msgstr "Инструменты для управления идентификационными данными"
+#~ msgid "Other modules"
+#~ msgstr "Другие модули"
 
+#~ msgid "Various MDS modules"
+#~ msgstr "Различные модули MDS"
 
+#~ msgid "Pulse 2 - Coming soon"
+#~ msgstr "Ожидается новая версия Pulse 2"
+
+#~ msgid ""
+#~ "Pulse 2 is an Open Source tool that simplifies application deployment, "
+#~ "inventory, and maintenance of an IT network.<br />It has been designed to "
+#~ "handle from a few computers on a single site to 100 000+ computers spread "
+#~ "on many sites.<br /><br />For more information on Pulse 2, visit the <a "
+#~ "href=\"http://pulse2.mandriva.org/\">project website</a>."
+#~ msgstr ""
+#~ "Pulse 2 - это инструмент с открытым кодом, который упрощает процесс "
+#~ "развертывания приложений, инвентаризации и технического обслуживания ИТ-"
+#~ "сети.<br />Он был разработан для обработки от нескольких компьютеров в "
+#~ "одном месте, до 100 000 и более компьютеров рассредоточенных локально."
+#~ "<br /><br />Чтобы более подробно ознакомиться с новой версии Pulse 2, "
+#~ "посетите <a href=\"http://pulse2.mandriva.org/\">project website</a>."
+
+#~ msgid "Server services and tools"
+#~ msgstr "Службы и инструменты сервера"
+
+#~ msgid "Install basic server stacks like DHCP, OpenLDAP or VPN software."
+#~ msgstr ""
+#~ "Установка основных стеков сервера, таких как DHCP, OpenLDAP или VPN."
+
+#~ msgid "LAMP server"
+#~ msgstr "LAMP сервер"
+
+#~ msgid "Toolkit for dynamic web site hosting"
+#~ msgstr "Инструментарий для хостинга динамических веб сайтов"
+
+#~ msgid "Printing and file server"
+#~ msgstr "Сервер печати и файловый сервер"
+
+#~ msgid "SAMBA, Cups and NFS servers."
+#~ msgstr "Серверы SAMBA, Cups и NFS."
+
+#~ msgid "Databases"
+#~ msgstr "Базы данных"
+
+#~ msgid "Relational databases"
+#~ msgstr "Реляционные базы данных"
+
+#~ msgid "Backup Tools"
+#~ msgstr "Инструменты резервного копирования"
+
+#~ msgid "Backup Server"
+#~ msgstr "Сервер резервного копирования"
+
+#~ msgid "Mail server"
+#~ msgstr "Почтовый сервер"
+
+#~ msgid "Mail server with POP/IMAP and Webmail access"
+#~ msgstr "Почтовый сервер с доступом POP/IMAP и Webmail"
+
+#~ msgid "Authentication"
+#~ msgstr "Аутентификация"
+
+#~ msgid "Tools for managing identities"
+#~ msgstr "Инструменты для управления идентификационными данными"

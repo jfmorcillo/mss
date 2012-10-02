@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,46 +10,46 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mds_webmail/desc.xml:2(name)
-msgid "Webmail with MDS backend"
+msgid "Webmail"
 msgstr ""
 
 #: modules/mds_webmail/desc.xml:3(desc)
-msgid "Integrate roundcube for your MDS installation"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml:6(rpm)
-msgid "roundcubemail"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml:7(rpm)
-msgid "sqlite-tools"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml:8(rpm)
-msgid "php-fileinfo"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml:9(rpm)
-msgid "php-mcrypt"
+msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 
 #: modules/mds_webmail/desc.xml:10(rpm)
+msgid "roundcubemail"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:11(rpm)
+msgid "sqlite-tools"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:12(rpm)
+msgid "php-fileinfo"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:13(rpm)
+msgid "php-mcrypt"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:14(rpm)
 msgid "php-pear-MDB2_Driver_sqlite"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:14(module)
+#: modules/mds_webmail/desc.xml:18(module)
 msgid "mds_mail"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:17(module)
+#: modules/mds_webmail/desc.xml:21(module)
 msgid "zarafa"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:19(text)
+#: modules/mds_webmail/desc.xml:23(text)
 msgid "Webmail RoundCube is activated on your server."
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:20(text)
+#: modules/mds_webmail/desc.xml:24(text)
 msgid "You can access the webmail interface at http://@HOSTNAME@/roundcubemail/"
 msgstr ""
 

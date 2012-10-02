@@ -1,9 +1,10 @@
 # 
+## Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
-"PO-Revision-Date: 2011-06-17 07:01+0000\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"PO-Revision-Date: 2012-10-05 08:49+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -37,8 +38,8 @@ msgid "Current password"
 msgstr "Mot de passe actuel"
 
 #: modules/mysql/desc.xml16(help)
-msgid "Current MySQL root password. Leave blank for first installation."
-msgstr "Mot de passe MySQL root actuel. Laissez vide pour une première installation."
+msgid "Current MySQL root password."
+msgstr ""
 
 #: modules/mysql/desc.xml19(label)
 msgid "New password"

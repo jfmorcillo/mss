@@ -1,73 +1,80 @@
-# 
+#
 #   <i.sence.i@gmail.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:26+0200\n"
 "PO-Revision-Date: 2011-07-06 09:49+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: ru_RU\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: ru_RU\n"
-"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: modules/mds_cups/desc.xml2(name)
-msgid "Printing server"
-msgstr "Принт-сервер"
-
-#: modules/mds_cups/desc.xml3(desc)
+#: modules/mds_cups/desc.xml:3(desc)
 msgid "Install and configure network printers"
 msgstr "Установка и настройка сетевых принтеров"
 
-#: modules/mds_cups/desc.xml6(rpm)
-msgid "cups"
-msgstr "cups"
+#: modules/mds_cups/desc.xml:2(name)
+#, fuzzy
+msgid "Printing service"
+msgstr "Принт-сервер"
 
-#: modules/mds_cups/desc.xml7(rpm)
-msgid "cups-drivers"
-msgstr "cups-drivers"
-
-#: modules/mds_cups/desc.xml8(rpm)
-msgid "cups-windows"
-msgstr "cups-windows "
-
-#: modules/mds_cups/desc.xml9(rpm)
-msgid "foomatic-filters"
-msgstr "foomatic-filters"
-
-#: modules/mds_cups/desc.xml10(rpm)
-msgid "hplip-hpijs-ppds"
-msgstr "hplip-hpijs-ppds"
-
-#: modules/mds_cups/desc.xml11(rpm)
-msgid "postscript-ppds"
-msgstr "postscript-ppds"
-
-#: modules/mds_cups/desc.xml12(rpm)
-msgid "hplip"
-msgstr "hplip"
-
-#: modules/mds_cups/desc.xml15(text)
-msgid "Service Cups reloaded succesfully."
-msgstr "Служба Cups успешно перезагружена"
-
-#: modules/mds_cups/desc.xml16(text)
+#: modules/mds_cups/desc.xml:19(text)
 msgid "Service Cups fails restarting. Check"
 msgstr "Службу Cups не удалось перезапустить. Необходимо выполнить проверку"
 
-#: modules/mds_cups/desc.xml17(text)
-msgid "Cups is running."
-msgstr "Cups работает."
+#: modules/mds_cups/desc.xml:18(text)
+msgid "Service Cups reloaded succesfully."
+msgstr "Служба Cups успешно перезагружена"
 
-#: modules/mds_cups/desc.xml18(text)
-msgid "You can add new printers from local Cups web interface : http://localhost:631/"
-msgstr "Вы можете добавить новые принтеры с локального веб-интерфейса Cups: http://localhost:631/"
+#: modules/mds_cups/desc.xml:20(text)
+msgid "The printing service is running."
+msgstr ""
+
+#: modules/mds_cups/desc.xml:21(text)
+#, fuzzy
+msgid ""
+"You can add new printers from the Cups web interface : http://@HOSTNAME@:631/"
+msgstr ""
+"Вы можете добавить новые принтеры с локального веб-интерфейса Cups: http://"
+"localhost:631/"
+
+#: modules/mds_cups/desc.xml:9(rpm)
+msgid "cups"
+msgstr "cups"
+
+#: modules/mds_cups/desc.xml:10(rpm)
+msgid "cups-drivers"
+msgstr "cups-drivers"
+
+#: modules/mds_cups/desc.xml:11(rpm)
+msgid "cups-windows"
+msgstr "cups-windows "
+
+#: modules/mds_cups/desc.xml:12(rpm)
+msgid "foomatic-filters"
+msgstr "foomatic-filters"
+
+#: modules/mds_cups/desc.xml:15(rpm)
+msgid "hplip"
+msgstr "hplip"
+
+#: modules/mds_cups/desc.xml:13(rpm)
+msgid "hplip-hpijs-ppds"
+msgstr "hplip-hpijs-ppds"
+
+#: modules/mds_cups/desc.xml:14(rpm)
+msgid "postscript-ppds"
+msgstr "postscript-ppds"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_cups/desc.xml0(None)
+#: modules/mds_cups/desc.xml:0(None)
 msgid "translator-credits"
 msgstr "translator-credits"
 
-
+#~ msgid "Cups is running."
+#~ msgstr "Cups работает."

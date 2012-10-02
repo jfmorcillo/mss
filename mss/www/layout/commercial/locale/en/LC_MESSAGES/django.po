@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-18 16:11+0200\n"
+"POT-Creation-Date: 2012-10-02 18:01+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,24 +17,10 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: config.py:30
-msgid "Commercial components"
+#: config.py:28
+msgid "Marketplace"
 msgstr ""
 
 #: config.py:31
-msgid ""
-"Easy installation and configuration of several software (Zarafa, "
-"eGroupware, ...) with Mandriva Directory Server integration."
-msgstr ""
-
-#: config.py:33
-msgid "Zarafa"
-msgstr ""
-
-#: config.py:34
-msgid ""
-"Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
-"compatibility, ActiveSync support and a rich webmail interface. On MES5 "
-"Zarafa is integrated with MDS. MDS provides an easy way to manage Zarafa "
-"users and groups and much more..."
+msgid "Collaboration"
 msgstr ""

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,67 +10,59 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mds_dhcp/desc.xml:2(name)
-msgid "DHCP server with MDS backend"
+msgid "DHCP service"
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:3(desc)
-msgid "Configure your client computers IP settings"
+msgid "Configure automatically your client computers IP settings"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:6(rpm)
+#: modules/mds_dhcp/desc.xml:9(rpm)
 msgid "dhcp-server"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:7(rpm)
+#: modules/mds_dhcp/desc.xml:10(rpm)
 msgid "mmc-web-network"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:8(rpm)
+#: modules/mds_dhcp/desc.xml:11(rpm)
 msgid "python-mmc-network"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:12(module)
+#: modules/mds_dhcp/desc.xml:15(module)
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:14(text)
-msgid "MMC interface is not installed."
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml:15(text)
-msgid "Can't continue."
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml:16(text)
-msgid "MDS configuration done. (/etc/mmc/plugins/network.ini updated)"
-msgstr ""
-
 #: modules/mds_dhcp/desc.xml:17(text)
-msgid "Error while configuring MDS. (/etc/mmc/plugins/network.ini)"
+msgid "Configuration done. (/etc/mmc/plugins/network.ini updated)"
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:18(text)
-msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
+msgid "Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)"
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:19(text)
-msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
+msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:20(text)
-msgid "Service MMC reloaded succesfully."
+msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:21(text)
-msgid "Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"
+msgid "Service mmc-agent reloaded succesfully."
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:22(text)
-msgid "DHCP module is activated in the MDS interface."
+msgid "Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:23(text)
-msgid "You can now configure your DHCP settings from the MDS interface : http://@HOSTNAME@/mmc/"
+msgid "The DHCP service is installed."
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:24(text)
+msgid "You can now configure your DHCP settings from the management interface : http://@HOSTNAME@/mmc/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

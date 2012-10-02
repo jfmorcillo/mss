@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,63 +10,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mds_mail/desc.xml:2(name)
-msgid "Mail server with MDS backend"
+msgid "Mail service"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:3(desc)
-msgid "Mail/POP/IMAP server with virtual domains, anti-virus and anti-spam toolkits"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:6(rpm)
-msgid "postfix"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:7(rpm)
-msgid "mmc-web-mail"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:8(rpm)
-msgid "python-mmc-mail"
+msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:9(rpm)
-msgid "amavisd-new"
+msgid "postfix"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:10(rpm)
-msgid "spamassassin"
+msgid "mmc-web-mail"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:11(rpm)
-msgid "spamassassin-tools"
+msgid "python-mmc-mail"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:12(rpm)
-msgid "clamd"
+msgid "amavisd-new"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:13(rpm)
-msgid "dovecot"
+msgid "spamassassin"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:14(rpm)
+msgid "spamassassin-tools"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:15(rpm)
+msgid "clamd"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:16(rpm)
+msgid "dovecot"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:17(rpm)
 msgid "dovecot-plugins-ldap"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:18(module)
+#: modules/mds_mail/desc.xml:21(module)
 msgid "zarafa"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:21(module)
+#: modules/mds_mail/desc.xml:24(module)
 msgid "mds_mmc"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:25(label)
-msgid "My hostname"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:26(help)
-msgid "The host FQDN (eg: smtp.domain.com)"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:29(label)
@@ -98,58 +90,50 @@ msgid "POP3S"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:40(text)
-msgid "MMC interface is not installed."
-msgstr ""
-
-#: modules/mds_mail/desc.xml:41(text)
-msgid "Can't continue."
-msgstr ""
-
-#: modules/mds_mail/desc.xml:42(text)
 msgid "Razor configured successfully."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:43(text)
+#: modules/mds_mail/desc.xml:41(text)
 msgid "Failed to register razor. Try to run as root"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:44(text)
+#: modules/mds_mail/desc.xml:42(text)
 msgid "Service"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:45(text)
+#: modules/mds_mail/desc.xml:43(text)
 msgid "reloaded succesfully."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:46(text)
+#: modules/mds_mail/desc.xml:44(text)
 msgid "fails restarting. Check"
 msgstr ""
 
+#: modules/mds_mail/desc.xml:45(text)
+msgid "The mail service is configured."
+msgstr ""
+
+#: modules/mds_mail/desc.xml:46(text)
+msgid "You can add mail addresses and aliases to your users through the management interface at http://@HOSTNAME@/mmc/."
+msgstr ""
+
 #: modules/mds_mail/desc.xml:47(text)
-msgid "Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:48(text)
-msgid "You can create mail domains in the MDS interface and specify mail adresses to users and groups."
-msgstr ""
-
-#: modules/mds_mail/desc.xml:49(text)
 msgid "- mails are stored in /home/vmail/user/Maildir"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:50(text)
-msgid "- SSL is enabled on the smtp server"
+#: modules/mds_mail/desc.xml:48(text)
+msgid "- SSL is enabled on the SMTP server"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:51(text)
+#: modules/mds_mail/desc.xml:49(text)
 msgid "- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:52(text)
+#: modules/mds_mail/desc.xml:50(text)
 msgid "- Networks authorized to send mail without authentication :"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:53(text)
+#: modules/mds_mail/desc.xml:51(text)
 msgid "Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
 msgstr ""
 

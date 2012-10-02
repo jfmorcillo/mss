@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,62 +10,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mds_audit/desc.xml:2(name)
-msgid "Audit module for MDS"
+msgid "Audit plugin"
 msgstr ""
 
 #: modules/mds_audit/desc.xml:3(desc)
-msgid "Track any changes made on the MDS interface"
+msgid "Track any changes made in the management interface"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:5(module)
+#: modules/mds_audit/desc.xml:8(module)
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:6(module)
+#: modules/mds_audit/desc.xml:9(module)
 msgid "mysql"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:10(label)
+#: modules/mds_audit/desc.xml:13(rpm)
+msgid "python-sqlalchemy"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:14(rpm)
+msgid "python-mysql"
+msgstr ""
+
+#: modules/mds_audit/desc.xml:19(label)
 msgid "MySQL root password"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:11(help)
+#: modules/mds_audit/desc.xml:20(help)
 msgid "Used to create the audit database"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:14(label)
+#: modules/mds_audit/desc.xml:23(label)
 msgid "MySQL audit password"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:15(help)
+#: modules/mds_audit/desc.xml:24(help)
 msgid "MySQL user password for the audit database"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:18(text)
+#: modules/mds_audit/desc.xml:27(text)
 msgid "Cleaning up..."
 msgstr ""
 
-#: modules/mds_audit/desc.xml:19(text)
+#: modules/mds_audit/desc.xml:28(text)
 msgid "The current MySQL password is not valid."
 msgstr ""
 
-#: modules/mds_audit/desc.xml:20(text)
+#: modules/mds_audit/desc.xml:29(text)
 msgid "Create audit database"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:21(text)
+#: modules/mds_audit/desc.xml:30(text)
 msgid "Grant privileges on database"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:22(text)
+#: modules/mds_audit/desc.xml:31(text)
 msgid "Service MMC started succesfully."
 msgstr ""
 
-#: modules/mds_audit/desc.xml:23(text)
+#: modules/mds_audit/desc.xml:32(text)
 msgid "Service MMC fails starting. Check"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:24(text)
+#: modules/mds_audit/desc.xml:33(text)
 msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
 msgstr ""
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,23 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: classes/validation.py:34
-msgid "Incorrect FQDN."
-msgstr ""
-
-#: classes/validation.py:41 classes/validation.py:50
-msgid "Incorrect IP address."
-msgstr ""
-
-#: classes/validation.py:44
-msgid "Incorrect netmask address."
-msgstr ""
-
-#: classes/module.py:283
+#: classes/module.py:340
 msgid "This field can't be empty."
 msgstr ""
 
-#: classes/module.py:288
+#: classes/module.py:345
 msgid "Password mismatch."
 msgstr ""
 

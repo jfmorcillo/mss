@@ -1,36 +1,50 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
+#
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-18 16:11+0200\n"
+"POT-Creation-Date: 2012-10-02 18:01+0200\n"
 "PO-Revision-Date: 2011-06-21 16:50+0000\n"
 "Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: config.py:30
-msgid "Commercial components"
-msgstr "Componentes comerciais"
+#: config.py:28
+msgid "Marketplace"
+msgstr ""
 
 #: config.py:31
-msgid "Easy installation and configuration of several software (Zarafa, eGroupware, ...) with Mandriva Directory Server integration."
-msgstr "Fácil instalação e configuração de software diversos (Zarafa, eGroupware, ...) com a integração do Mandriva Directory Server."
+msgid "Collaboration"
+msgstr ""
 
-#: config.py:33
-msgid "Zarafa"
-msgstr "Zarafa"
+#~ msgid "Commercial components"
+#~ msgstr "Componentes comerciais"
 
-#: config.py:34
-msgid "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. On MES5 Zarafa is integrated with MDS. MDS provides an easy way to manage Zarafa users and groups and much more..."
-msgstr "O Zarafa é um substituto para o Microsoft Exchange. Ele possui total compatibilidade com o MS Outlook, suporte ao ActiveSync e uma rica interface de webmail. No MES5 o Zarafa é integrado com MDS. O MDS fornece uma maneira fácil de gerenciar usuários e grupos Zarafa e muito mais..."
+#~ msgid ""
+#~ "Easy installation and configuration of several software (Zarafa, "
+#~ "eGroupware, ...) with Mandriva Directory Server integration."
+#~ msgstr ""
+#~ "Fácil instalação e configuração de software diversos (Zarafa, "
+#~ "eGroupware, ...) com a integração do Mandriva Directory Server."
 
+#~ msgid "Zarafa"
+#~ msgstr "Zarafa"
 
+#~ msgid ""
+#~ "Zarafa is a replacement for Microsoft Exchange. It features full MS "
+#~ "Outlook compatibility, ActiveSync support and a rich webmail interface. "
+#~ "On MES5 Zarafa is integrated with MDS. MDS provides an easy way to manage "
+#~ "Zarafa users and groups and much more..."
+#~ msgstr ""
+#~ "O Zarafa é um substituto para o Microsoft Exchange. Ele possui total "
+#~ "compatibilidade com o MS Outlook, suporte ao ActiveSync e uma rica "
+#~ "interface de webmail. No MES5 o Zarafa é integrado com MDS. O MDS fornece "
+#~ "uma maneira fácil de gerenciar usuários e grupos Zarafa e muito mais..."

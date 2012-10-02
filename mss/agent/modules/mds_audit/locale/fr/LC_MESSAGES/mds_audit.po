@@ -1,9 +1,10 @@
 # 
+## Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
-"PO-Revision-Date: 2011-06-17 07:00+0000\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"PO-Revision-Date: 2012-10-05 08:48+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,64 +14,74 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: modules/mds_audit/desc.xml2(name)
-msgid "Audit module for MDS"
-msgstr "Module d'audit pour MDS"
+msgid "Audit plugin"
+msgstr ""
 
 #: modules/mds_audit/desc.xml3(desc)
-msgid "Track any changes made on the MDS interface"
-msgstr "Traque tous les changements faits depuis l'interface MDS"
+msgid "Track any changes made in the management interface"
+msgstr ""
 
-#: modules/mds_audit/desc.xml5(module)
+#: modules/mds_audit/desc.xml8(module)
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_audit/desc.xml6(module)
+#: modules/mds_audit/desc.xml9(module)
 msgid "mysql"
 msgstr ""
 
-#: modules/mds_audit/desc.xml10(label)
+#: modules/mds_audit/desc.xml13(rpm)
+msgid "python-sqlalchemy"
+msgstr ""
+
+#: modules/mds_audit/desc.xml14(rpm)
+msgid "python-mysql"
+msgstr ""
+
+#: modules/mds_audit/desc.xml19(label)
 msgid "MySQL root password"
 msgstr "Mot de passe root MySQL"
 
-#: modules/mds_audit/desc.xml11(help)
+#: modules/mds_audit/desc.xml20(help)
 msgid "Used to create the audit database"
 msgstr "Utilisé pour créer la base de données d'audit"
 
-#: modules/mds_audit/desc.xml14(label)
+#: modules/mds_audit/desc.xml23(label)
 msgid "MySQL audit password"
 msgstr "Mot de passe audit MySQL"
 
-#: modules/mds_audit/desc.xml15(help)
+#: modules/mds_audit/desc.xml24(help)
 msgid "MySQL user password for the audit database"
 msgstr ""
 
-#: modules/mds_audit/desc.xml18(text)
+#: modules/mds_audit/desc.xml27(text)
 msgid "Cleaning up..."
 msgstr "Netoyage..."
 
-#: modules/mds_audit/desc.xml19(text)
+#: modules/mds_audit/desc.xml28(text)
 msgid "The current MySQL password is not valid."
 msgstr "Le mot de passe root MySQL est incorrect."
 
-#: modules/mds_audit/desc.xml20(text)
+#: modules/mds_audit/desc.xml29(text)
 msgid "Create audit database"
 msgstr "Création de la base de données d'audit"
 
-#: modules/mds_audit/desc.xml21(text)
+#: modules/mds_audit/desc.xml30(text)
 msgid "Grant privileges on database"
 msgstr "Donne les privilèges sur la base"
 
-#: modules/mds_audit/desc.xml22(text)
+#: modules/mds_audit/desc.xml31(text)
 msgid "Service MMC started succesfully."
 msgstr "Le service MMC a démarré correctement."
 
-#: modules/mds_audit/desc.xml23(text)
+#: modules/mds_audit/desc.xml32(text)
 msgid "Service MMC fails starting. Check"
 msgstr "Le service MMC n'a pas démarré. Vérifiez"
 
-#: modules/mds_audit/desc.xml24(text)
-msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
-msgstr "Le module d'audit est activé dans l'interface MDS : http://@HOSTNAME@/mmc/"
+#: modules/mds_audit/desc.xml33(text)
+msgid ""
+"Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgstr ""
+"Le module d'audit est activé dans l'interface MDS : http://@HOSTNAME@/mmc/"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds_audit/desc.xml0(None)

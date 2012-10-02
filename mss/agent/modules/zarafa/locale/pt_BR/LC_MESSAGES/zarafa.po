@@ -1,228 +1,242 @@
-# 
+#
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:26+0200\n"
 "PO-Revision-Date: 2011-07-13 09:43+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/zarafa/desc.xml2(name)
-msgid "Zarafa"
-msgstr ""
-
-#: modules/zarafa/desc.xml3(desc)
-msgid "Zarafa suite with MDS backend, anti-virus and anti-spam toolkits"
-msgstr ""
-
-#: modules/zarafa/desc.xml5(module)
-msgid "mds_mmc"
-msgstr ""
-
-#: modules/zarafa/desc.xml6(module)
-msgid "mysql"
-msgstr ""
-
-#: modules/zarafa/desc.xml9(module)
-msgid "mds_mail"
-msgstr ""
-
-#: modules/zarafa/desc.xml10(module)
-msgid "mds_webmail"
-msgstr ""
-
-#: modules/zarafa/desc.xml13(url)
-msgid "http://www.zarafa.com/"
-msgstr ""
-
-#: modules/zarafa/desc.xml14(buy)
-msgid "http://store.mandriva.com"
-msgstr ""
-
-#: modules/zarafa/desc.xml15(file)
-msgid "zarafa.html"
-msgstr ""
-
-#: modules/zarafa/desc.xml18(url)
-msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-msgstr ""
-
-#: modules/zarafa/desc.xml22(rpm)
-msgid "zarafa"
-msgstr "f73243bf51733371404f355841e61cc7_tr"
-
-#: modules/zarafa/desc.xml23(rpm)
-msgid "zarafa-webaccess"
-msgstr ""
-
-#: modules/zarafa/desc.xml24(rpm)
-msgid "php-xml"
-msgstr ""
-
-#: modules/zarafa/desc.xml25(rpm)
-msgid "python-mmc-mail"
-msgstr ""
-
-#: modules/zarafa/desc.xml26(rpm)
-msgid "mmc-web-mail"
-msgstr ""
-
-#: modules/zarafa/desc.xml27(rpm)
-msgid "postfix"
-msgstr ""
-
-#: modules/zarafa/desc.xml28(rpm)
-msgid "postfix-ldap"
-msgstr ""
-
-#: modules/zarafa/desc.xml29(rpm)
-msgid "amavisd-new"
-msgstr ""
-
-#: modules/zarafa/desc.xml30(rpm)
-msgid "spamassassin"
-msgstr ""
-
-#: modules/zarafa/desc.xml31(rpm)
-msgid "spamassassin-tools"
-msgstr ""
-
-#: modules/zarafa/desc.xml32(rpm)
-msgid "clamd"
-msgstr ""
-
-#: modules/zarafa/desc.xml37(label)
-msgid "MySQL root password"
-msgstr ""
-
-#: modules/zarafa/desc.xml38(help)
-msgid "Used to create the zarafa database"
-msgstr ""
-
-#: modules/zarafa/desc.xml41(label)
-msgid "MySQL zarafa password"
-msgstr ""
-
-#: modules/zarafa/desc.xml42(help)
-msgid "MySQL user password for the zarafa database"
-msgstr ""
-
-#: modules/zarafa/desc.xml45(label)
-msgid "Attachments directory"
-msgstr ""
-
-#: modules/zarafa/desc.xml46(help)
-msgid "Where do you want to store mail attachments ?"
-msgstr ""
-
-#: modules/zarafa/desc.xml49(label)
-msgid "Default language for Zarafa folders"
-msgstr ""
-
-#: modules/zarafa/desc.xml50(help)
-msgid "Create default folders for users in the selected language"
-msgstr ""
-
-#: modules/zarafa/desc.xml51(option)
-msgid "English"
-msgstr ""
-
-#: modules/zarafa/desc.xml52(option)
-msgid "Français"
-msgstr ""
-
-#: modules/zarafa/desc.xml53(option)
-msgid "Deutsch"
-msgstr ""
-
-#: modules/zarafa/desc.xml56(label)
-msgid "IMAP/IMAPS support"
-msgstr ""
-
-#: modules/zarafa/desc.xml57(help)
-msgid "Enable IMAP and IMAPS on the Zarafa server"
-msgstr ""
-
-#: modules/zarafa/desc.xml60(label)
-msgid "CalDAV/iCal support"
-msgstr ""
-
-#: modules/zarafa/desc.xml61(help)
-msgid "Export calendars in CalDAV/iCal format for mail clients (thunderbird, evolution...)"
-msgstr ""
-
-#: modules/zarafa/desc.xml64(label)
-msgid "ActiveSync support"
-msgstr ""
-
-#: modules/zarafa/desc.xml65(help)
-msgid "Enable ActiveSync for mobile phones synchronisation (mail, contacts, calendars)"
-msgstr ""
-
-#: modules/zarafa/desc.xml68(label)
-msgid "My hostname"
-msgstr ""
-
-#: modules/zarafa/desc.xml69(help)
-msgid "The host FQDN (eg: smtp.domain.com)"
-msgstr ""
-
-#: modules/zarafa/desc.xml72(label)
-msgid "My networks"
-msgstr ""
-
-#: modules/zarafa/desc.xml73(help)
-msgid "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
-msgstr ""
-
-#: modules/zarafa/desc.xml76(text)
-msgid "Zarafa web interface is available at : http://@HOSTNAME@/webaccess/"
-msgstr ""
-
-#: modules/zarafa/desc.xml77(text)
-msgid "Mail module with Zarafa support is activated in the MDS interface : http://@HOSTNAME@/mmc/"
-msgstr ""
-
-#: modules/zarafa/desc.xml78(text)
-msgid "You can create mail domains in the MDS interface and specify mail adresses to users and groups"
-msgstr ""
-
-#: modules/zarafa/desc.xml79(text)
-msgid "You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa"
-msgstr ""
-
-#: modules/zarafa/desc.xml80(text)
-msgid "- SSL is enabled on the smtp server"
-msgstr ""
-
-#: modules/zarafa/desc.xml81(text)
-msgid "- IMAP and IMAPS protocols are enabled"
-msgstr ""
-
-#: modules/zarafa/desc.xml82(text)
-msgid "- iCal and CalDAV protocols are enabled. You can access calendars on http://@HOSTNAME@:8080/caldav and http://@HOSTNAME@:8080/ical with your mail client, or on port 8443 over https"
-msgstr ""
-
-#: modules/zarafa/desc.xml83(text)
+#: modules/zarafa/desc.xml:86(text)
 msgid "- ActiveSync support is enabled"
 msgstr ""
 
-#: modules/zarafa/desc.xml84(text)
+#: modules/zarafa/desc.xml:84(text)
+msgid "- IMAP and IMAPS protocols are enabled"
+msgstr ""
+
+#: modules/zarafa/desc.xml:87(text)
 msgid "- Networks authorized to send mail without authentication :"
 msgstr ""
 
-#: modules/zarafa/desc.xml85(text)
-msgid "Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, IMAPS 993, CalDAV/iCal 8080 and 8443 (SSL)) on your firewall"
+#: modules/zarafa/desc.xml:83(text)
+msgid "- SSL is enabled on the smtp server"
+msgstr ""
+
+#: modules/zarafa/desc.xml:85(text)
+msgid ""
+"- iCal and CalDAV protocols are enabled. You can access calendars on http://"
+"@HOSTNAME@:8080/caldav and http://@HOSTNAME@:8080/ical with your mail "
+"client, or on port 8443 over https"
+msgstr ""
+
+#: modules/zarafa/desc.xml:67(label)
+msgid "ActiveSync support"
+msgstr ""
+
+#: modules/zarafa/desc.xml:48(label)
+msgid "Attachments directory"
+msgstr ""
+
+#: modules/zarafa/desc.xml:63(label)
+msgid "CalDAV/iCal support"
+msgstr ""
+
+#: modules/zarafa/desc.xml:53(help)
+msgid "Create default folders for users in the selected language"
+msgstr ""
+
+#: modules/zarafa/desc.xml:52(label)
+msgid "Default language for Zarafa folders"
+msgstr ""
+
+#: modules/zarafa/desc.xml:56(option)
+msgid "Deutsch"
+msgstr ""
+
+#: modules/zarafa/desc.xml:68(help)
+msgid ""
+"Enable ActiveSync for mobile phones synchronisation (mail, contacts, "
+"calendars)"
+msgstr ""
+
+#: modules/zarafa/desc.xml:60(help)
+msgid "Enable IMAP and IMAPS on the Zarafa server"
+msgstr ""
+
+#: modules/zarafa/desc.xml:54(option)
+msgid "English"
+msgstr ""
+
+#: modules/zarafa/desc.xml:64(help)
+msgid ""
+"Export calendars in CalDAV/iCal format for mail clients (thunderbird, "
+"evolution...)"
+msgstr ""
+
+#: modules/zarafa/desc.xml:55(option)
+msgid "Français"
+msgstr ""
+
+#: modules/zarafa/desc.xml:59(label)
+msgid "IMAP/IMAPS support"
+msgstr ""
+
+#: modules/zarafa/desc.xml:80(text)
+msgid ""
+"Mail module with Zarafa support is activated in the MDS interface : http://"
+"@HOSTNAME@/mmc/"
+msgstr ""
+
+#: modules/zarafa/desc.xml:88(text)
+msgid ""
+"Make sure you have enabled mail services (SMTP 25, SMTPS 465, IMAP 143, "
+"IMAPS 993, CalDAV/iCal 8080 and 8443 (SSL)) on your firewall"
+msgstr ""
+
+#: modules/zarafa/desc.xml:71(label)
+msgid "My hostname"
+msgstr ""
+
+#: modules/zarafa/desc.xml:75(label)
+msgid "My networks"
+msgstr ""
+
+#: modules/zarafa/desc.xml:40(label)
+msgid "MySQL root password"
+msgstr ""
+
+#: modules/zarafa/desc.xml:45(help)
+msgid "MySQL user password for the zarafa database"
+msgstr ""
+
+#: modules/zarafa/desc.xml:44(label)
+msgid "MySQL zarafa password"
+msgstr ""
+
+#: modules/zarafa/desc.xml:76(help)
+msgid ""
+"Specify which clients are authorized to send mails through the mail server. "
+"If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
+msgstr ""
+
+#: modules/zarafa/desc.xml:72(help)
+msgid "The host FQDN (eg: smtp.domain.com)"
+msgstr ""
+
+#: modules/zarafa/desc.xml:41(help)
+msgid "Used to create the zarafa database"
+msgstr ""
+
+#: modules/zarafa/desc.xml:49(help)
+msgid "Where do you want to store mail attachments ?"
+msgstr ""
+
+#: modules/zarafa/desc.xml:81(text)
+msgid ""
+"You can create mail domains in the MDS interface and specify mail adresses "
+"to users and groups"
+msgstr ""
+
+#: modules/zarafa/desc.xml:82(text)
+msgid ""
+"You have to set zarafa attributes to users and groups from the MDS interface "
+"if you want them in zarafa"
+msgstr ""
+
+#: modules/zarafa/desc.xml:2(name)
+msgid "Zarafa Collaboration Platform"
+msgstr ""
+
+#: modules/zarafa/desc.xml:3(desc)
+msgid ""
+"Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
+"compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
+"and groups are managed in the MBS management interface"
+msgstr ""
+
+#: modules/zarafa/desc.xml:79(text)
+msgid "Zarafa web interface is available at : http://@HOSTNAME@/webaccess/"
+msgstr ""
+
+#: modules/zarafa/desc.xml:32(rpm)
+msgid "amavisd-new"
+msgstr ""
+
+#: modules/zarafa/desc.xml:35(rpm)
+msgid "clamd"
+msgstr ""
+
+#: modules/zarafa/desc.xml:21(url)
+msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
+msgstr ""
+
+#: modules/zarafa/desc.xml:18(buy_url)
+msgid "http://store.mandriva.com"
+msgstr ""
+
+#: modules/zarafa/desc.xml:9(module)
+msgid "mds_mail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:5(module)
+msgid "mds_mmc"
+msgstr ""
+
+#: modules/zarafa/desc.xml:10(module)
+msgid "mds_webmail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:29(rpm)
+msgid "mmc-web-mail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:6(module)
+msgid "mysql"
+msgstr ""
+
+#: modules/zarafa/desc.xml:27(rpm)
+msgid "php-xml"
+msgstr ""
+
+#: modules/zarafa/desc.xml:30(rpm)
+msgid "postfix"
+msgstr ""
+
+#: modules/zarafa/desc.xml:31(rpm)
+msgid "postfix-ldap"
+msgstr ""
+
+#: modules/zarafa/desc.xml:28(rpm)
+msgid "python-mmc-mail"
+msgstr ""
+
+#: modules/zarafa/desc.xml:33(rpm)
+msgid "spamassassin"
+msgstr ""
+
+#: modules/zarafa/desc.xml:34(rpm)
+msgid "spamassassin-tools"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/zarafa/desc.xml0(None)
+#: modules/zarafa/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
 
+#: modules/zarafa/desc.xml:25(rpm)
+msgid "zarafa"
+msgstr "f73243bf51733371404f355841e61cc7_tr"
 
+#: modules/zarafa/desc.xml:26(rpm)
+msgid "zarafa-webaccess"
+msgstr ""
+
+#: modules/zarafa/desc.xml:17(info_file)
+msgid "zarafa.html"
+msgstr ""

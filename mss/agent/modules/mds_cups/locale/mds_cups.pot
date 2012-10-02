@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -10,55 +10,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: modules/mds_cups/desc.xml:2(name)
-msgid "Printing server"
+msgid "Printing service"
 msgstr ""
 
 #: modules/mds_cups/desc.xml:3(desc)
 msgid "Install and configure network printers"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:6(rpm)
+#: modules/mds_cups/desc.xml:9(rpm)
 msgid "cups"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:7(rpm)
+#: modules/mds_cups/desc.xml:10(rpm)
 msgid "cups-drivers"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:8(rpm)
+#: modules/mds_cups/desc.xml:11(rpm)
 msgid "cups-windows"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:9(rpm)
+#: modules/mds_cups/desc.xml:12(rpm)
 msgid "foomatic-filters"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:10(rpm)
+#: modules/mds_cups/desc.xml:13(rpm)
 msgid "hplip-hpijs-ppds"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:11(rpm)
+#: modules/mds_cups/desc.xml:14(rpm)
 msgid "postscript-ppds"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:12(rpm)
+#: modules/mds_cups/desc.xml:15(rpm)
 msgid "hplip"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:15(text)
+#: modules/mds_cups/desc.xml:18(text)
 msgid "Service Cups reloaded succesfully."
 msgstr ""
 
-#: modules/mds_cups/desc.xml:16(text)
+#: modules/mds_cups/desc.xml:19(text)
 msgid "Service Cups fails restarting. Check"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:17(text)
-msgid "Cups is running."
+#: modules/mds_cups/desc.xml:20(text)
+msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/desc.xml:18(text)
-msgid "You can add new printers from local Cups web interface : http://localhost:631/"
+#: modules/mds_cups/desc.xml:21(text)
+msgid "You can add new printers from the Cups web interface : http://@HOSTNAME@:631/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

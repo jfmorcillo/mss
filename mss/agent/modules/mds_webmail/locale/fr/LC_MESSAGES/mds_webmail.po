@@ -1,9 +1,10 @@
 # 
+## Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2011-06-10 12:21+0200\n"
-"PO-Revision-Date: 2011-06-17 07:01+0000\n"
+"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"PO-Revision-Date: 2012-10-05 08:49+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -13,48 +14,51 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: modules/mds_webmail/desc.xml2(name)
-msgid "Webmail with MDS backend"
+msgid "Webmail"
 msgstr ""
 
 #: modules/mds_webmail/desc.xml3(desc)
-msgid "Integrate roundcube for your MDS installation"
-msgstr "Intègre RoundCube à l'installation MDS"
-
-#: modules/mds_webmail/desc.xml6(rpm)
-msgid "roundcubemail"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml7(rpm)
-msgid "sqlite-tools"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml8(rpm)
-msgid "php-fileinfo"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml9(rpm)
-msgid "php-mcrypt"
+msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 
 #: modules/mds_webmail/desc.xml10(rpm)
+msgid "roundcubemail"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml11(rpm)
+msgid "sqlite-tools"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml12(rpm)
+msgid "php-fileinfo"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml13(rpm)
+msgid "php-mcrypt"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml14(rpm)
 msgid "php-pear-MDB2_Driver_sqlite"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml14(module)
+#: modules/mds_webmail/desc.xml18(module)
 msgid "mds_mail"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml17(module)
+#: modules/mds_webmail/desc.xml21(module)
 msgid "zarafa"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml19(text)
+#: modules/mds_webmail/desc.xml23(text)
 msgid "Webmail RoundCube is activated on your server."
 msgstr "Le webmail RoundCube est activé sur votre serveur."
 
-#: modules/mds_webmail/desc.xml20(text)
-msgid "You can access the webmail interface at http://@HOSTNAME@/roundcubemail/"
-msgstr "Vous pouvez accéder à l'interface du webmail sur http://@HOSTNAME@/roundcubemail/"
+#: modules/mds_webmail/desc.xml24(text)
+msgid ""
+"You can access the webmail interface at http://@HOSTNAME@/roundcubemail/"
+msgstr ""
+"Vous pouvez accéder à l'interface du webmail sur "
+"http://@HOSTNAME@/roundcubemail/"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds_webmail/desc.xml0(None)

@@ -2,12 +2,14 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # 
+## Translators:
+#   <jpbraun@mandriva.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2011-04-18 16:11+0200\n"
-"PO-Revision-Date: 2011-06-17 07:02+0000\n"
+"POT-Creation-Date: 2012-10-02 18:01+0200\n"
+"PO-Revision-Date: 2012-10-05 09:30+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -16,116 +18,28 @@ msgstr ""
 "Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: config.py:29 config.py:33
-msgid "Mandriva Directory Server"
-msgstr ""
+#: config.py:27
+msgid "Core Services"
+msgstr "Services essentiels"
 
 #: config.py:30
-msgid "MDS is an enterprise directory platform based on LDAP designed to manage identities, and various network services commonly used.<br/><br/>In addition, MDS is controlled through a modern and friendly web interface.<br /><br />For an overview of MDS, visit the <a href=\"http://mds.mandriva.org/\">project website</a>."
-msgstr "Mandriva Directory Server est un annuaire d'entreprise permettant de gérer les comptes et profils des utilisateurs d'un réseau, ainsi que différents services réseaux communément utilisés.<br/><br/>MDS se pilote par le biais d'une interface web moderne et conviviale. Pour plus d'informations visitez le <a href=\"http://mds.mandriva.org/\">site du projet</a>."
+msgid "Users"
+msgstr "Utilisateurs"
 
-#: config.py:34
-msgid "Required base components"
-msgstr "Composant de base requis"
-
-#: config.py:37
-msgid "File server modules"
-msgstr "Modules pour serveur de fichiers"
-
-#: config.py:38
-msgid "SAMBA, Cups and quota support"
-msgstr "SAMBA, Cups et support des quotas"
-
-#: config.py:41
-msgid "Mail modules"
-msgstr "Modules pour serveur de mails"
+#: config.py:36
+msgid "Mail"
+msgstr "Messagerie"
 
 #: config.py:42
-msgid "SMTP, IMAP server and other tools"
-msgstr "Serveur SMTP, IMAP et autres outils"
-
-#: config.py:45
-msgid "Network modules"
-msgstr "Modules pour services réseaux"
-
-#: config.py:46 config.py:62
-msgid "Network managing tools"
-msgstr "Outils de gestion réseau"
-
-#: config.py:49
-msgid "Other modules"
-msgstr "Autres modules"
-
-#: config.py:50
-msgid "Various MDS modules"
-msgstr "Divers modules MDS"
-
-#: config.py:53
-msgid "Pulse 2 - Coming soon"
-msgstr "Pulse 2 - Bientôt disponible"
-
-#: config.py:54
-msgid "Pulse 2 is an Open Source tool that simplifies application deployment, inventory, and maintenance of an IT network.<br />It has been designed to handle from a few computers on a single site to 100 000+ computers spread on many sites.<br /><br />For more information on Pulse 2, visit the <a href=\"http://pulse2.mandriva.org/\">project website</a>."
-msgstr "Pulse 2 offre des fonctionnalités d'inventaire, de maintenance, de mise à jour et de prise de contrôle sur des parcs d'une dizaine à plusieurs milliers de machines. Pulse 2 est conçu pour gérer des parcs de plus de 100 000 machines réparties sur plusieurs sites.<br /><br /> Pour plus d'information sur Pulse 2, visitez le <a href=\"http://pulse2.mandriva.org/\">site du projet</a>."
-
-#: config.py:57
-msgid "Server services and tools"
-msgstr "Services et outils pour un serveur"
-
-#: config.py:58
-msgid "Install basic server stacks like DHCP, OpenLDAP or VPN software."
-msgstr "Installation de piles logicielles serveur comme DHCP, OpenLDAP."
-
-#: config.py:61
 msgid "Network"
 msgstr "Réseau"
 
-#: config.py:65
-msgid "LAMP server"
-msgstr "Serveur LAMP"
+#: config.py:48
+msgid "Other"
+msgstr "Autres"
 
-#: config.py:66
-msgid "Toolkit for dynamic web site hosting"
-msgstr "Un ensemble d'outils libres pour héberger des sites web dynamiques"
-
-#: config.py:69
-msgid "Printing and file server"
-msgstr "Serveur de fichier et d'impression"
-
-#: config.py:70
-msgid "SAMBA, Cups and NFS servers."
-msgstr "SAMBA, Cups et support des quotas"
-
-#: config.py:73
-msgid "Databases"
-msgstr "Bases de données"
-
-#: config.py:74
-msgid "Relational databases"
-msgstr "Bases de données relationnelles"
-
-#: config.py:77
-msgid "Backup Tools"
-msgstr "Outils de sauvegarde"
-
-#: config.py:78
-msgid "Backup Server"
-msgstr "Serveur de sauvegarde"
-
-#: config.py:81
-msgid "Mail server"
-msgstr "Serveur de mail"
-
-#: config.py:82
-msgid "Mail server with POP/IMAP and Webmail access"
-msgstr "Serveurs SMTP, POP, IMAP et Webmail"
-
-#: config.py:86
-msgid "Authentication"
-msgstr "Authentification"
-
-#: config.py:87
-msgid "Tools for managing identities"
-msgstr "Outils de gestion des identités"
+#: config.py:53
+msgid "Other Services"
+msgstr "Autre services"
 
 
