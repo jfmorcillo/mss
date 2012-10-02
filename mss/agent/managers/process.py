@@ -69,19 +69,18 @@ class ProcessManager:
         self.launch("media", command, shell=True)
         #return (self.threads['media'].code, self.threads['media'].output)
 
-    def launch(self, name, command, wait=False, cwd=None, callback=None, shell=False, replace=False):
+    def launch(self, name, command, cwd=None, callback=None, shell=False, replace=False):
         """ launch wrapper """
-        # stop the current thread if replace if True
-        # if replace and name in self.threads:
-        #    self.threads[name].stop()
+        # stop the current thread if replace is True
+        if replace and name in self.threads:
+            self.threads[name].stop()
         # accept only one thread
         if not name in self.threads or not self.threads[name].isAlive():
             self.threads[name] = ProcessThread(command, cwd, callback, shell)
             self.threads[name].start()
-            if wait:
-                self.threads[name].join()
         else:
-            raise ProcessManagerBusyError, "ProcessManager is busy"
+            # let the thread finished
+            pass
 
     def p_state(self, name):
         """ get thread execution state """

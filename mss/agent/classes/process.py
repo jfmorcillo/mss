@@ -28,7 +28,6 @@ class ProcessThread(threading.Thread):
     """ Base class for running tasks """
 
     def __init__(self, command, cwd, callback, shell):
-        #threading.Thread.__init__(self, **kwds)
         self.process = None
         self.command = command
         self.cwd = cwd
@@ -56,6 +55,14 @@ class ProcessThread(threading.Thread):
             bufsize=1, cwd=self.cwd, shell=self.shell)
         self.catch_output()
         return 0
+
+    def stop(self):
+        """ stop current process if exists"""
+        try:
+            self.process.terminate()
+            self.join()
+        except OSError:
+            pass
 
     def catch_output(self):
         """ get command context """
