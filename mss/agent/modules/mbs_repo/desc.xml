@@ -1,6 +1,6 @@
 <module id="mbs_repo">
     <name>Mandriva Business Server repositories</name>
-    <desc>Get secutiry updates through MBS repositories</desc>
+    <desc>Get security updates through MBS repositories</desc>
     <medias verbose_name="MBS repositories" name="mbs" proto="http" mode="distrib">
         <url>mes5devel.mandriva.com/BIG/mbs/2/@ARCH@/</url>
     </medias>
