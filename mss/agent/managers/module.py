@@ -37,6 +37,7 @@ from mss.agent.lib.utils import grep
 from mss.agent.classes.module import Module
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
+LSB_FILENAME = '/etc/os-release'
 logging.basicConfig(level=logging.DEBUG, filename=LOG_FILENAME)
 logger = logging.getLogger('MyLogger')
 handler = logging.handlers.RotatingFileHandler(
@@ -148,6 +149,17 @@ class ModuleManager:
     def check_media(self, search):
         """ check if media exist """
         return grep(search, '/etc/urpmi/urpmi.cfg')
+
+    @expose
+    def check_distribution(self, distribution):
+	""" Allow to check which distribution we are using"""
+	if os.path.exists(LSB_FILENAME):
+	    for line in open(LSB_FILENAME):
+	        if line.startswith("PRETTY_NAME"):
+                    if distribution in line:
+	                return True
+
+	return False
 
     def load_modules(self):
         """

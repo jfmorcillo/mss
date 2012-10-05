@@ -87,7 +87,7 @@
                     <div class="nav-collapse">
                         {% if user.is_authenticated %}
                         <ul class="nav pull-right">
-                            {% if not main_media and request.session.has_net %}
+                            {% if is_mbs and not main_media and request.session.has_net %}
                             <li>
                                 <form id="mbs-repositories" method="post" action="{% url prepare %}">
                                     <input type="hidden" name="mbs_repo" value="mbs_repo" />
