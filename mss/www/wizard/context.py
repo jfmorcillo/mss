@@ -31,7 +31,11 @@ def main_media(request):
         return {'main_media': False}
     else:
         return {'main_media': result}
-        
+
+def is_mbs(request):
+    err, result = xmlrpc.call("check_distribution", "MBS")
+    return {'is_mbs': result}
+
 def current_lang(request):
     from django.conf import settings
     return {'current_lang': settings.DEFAULT_LANGUAGE}
