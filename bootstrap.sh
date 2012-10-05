@@ -18,6 +18,7 @@ sh manage.sh todev
 mkdir -p /var/log/mss/
 mkdir -p /var/lib/mss/
 touch /var/log/mss/mss-agent.log
+rm -f /usr/lib/python2.7/site-packages/mss
 ln -s ${path}/mss /usr/lib/python2.7/site-packages/mss
 python mss/www/manage.py syncdb --noinput
 chown $user.$user /var/lib/mss/
