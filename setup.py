@@ -22,7 +22,6 @@
 # MA 02110-1301, USA.
 
 from setuptools import setup, find_packages
-import sys, os
 
 setup(
     name='mss',
