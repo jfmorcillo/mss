@@ -194,7 +194,7 @@ class Module:
     def medias(self):
         """ get medias for module """
         media = self.root.find("medias")
-        if media:
+        if media is not None:
             name = self.id
             verbose_name = media.attrib.get("verbose_name", name)
             auth = media.attrib.get("auth", None)
