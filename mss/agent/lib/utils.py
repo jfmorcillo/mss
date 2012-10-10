@@ -26,6 +26,9 @@ import re
 import os
 import netifaces
 from IPy import IP
+import logging
+
+logger = logging.getLogger()
 
 def formatExceptionInfo(maxTBlevel=5):
     cla, exc, trbk = sys.exc_info()
@@ -60,9 +63,11 @@ def ethernet_ifs():
     for interface in netifaces.interfaces():
         if interface.startswith("eth"):
             if_detail = netifaces.ifaddresses(interface)
-            addr = if_detail[netifaces.AF_INET][0]['addr']
-            netmask = if_detail[netifaces.AF_INET][0]['netmask']
-            network = IP(addr).make_net(netmask).strNormal(0)
-            ifs.append([interface, addr, network, netmask]) 
+            # check if interface is configured
+            if netifaces.AF_INET in if_detail:
+                addr = if_detail[netifaces.AF_INET][0]['addr']
+                netmask = if_detail[netifaces.AF_INET][0]['netmask']
+                network = IP(addr).make_net(netmask).strNormal(0)
+                ifs.append([interface, addr, network, netmask])
 
     return ifs
