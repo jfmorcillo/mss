@@ -129,18 +129,21 @@ def first_time_required(function):
                 pass
         if not request.session['first-time']:
             transaction = Transaction(request, ['mds_mmc'])
-            # Custom transaction for first-time
-            transaction.update_step({
-                'id': Steps.PREINST,
-                'title': _('Welcome'),
-                'info': _('Before you can install any services we need to setup a few things with you.'),
-                'show_modules': False
-            })
-            transaction.update_step({
-                'id': Steps.MEDIAS,
-                'info': _('You can add the repositories of Mandriva Business Server with your my.mandriva.com account to get security updates. Repositories are not required to install server components.'),
-            })
-            return HttpResponseRedirect(reverse('prepare'))
+            if isinstance(transaction.transaction, HttpResponseRedirect):
+                return transaction.transaction
+            else:
+                # Custom transaction for first-time
+                transaction.update_step({
+                    'id': Steps.PREINST,
+                    'title': _('Welcome'),
+                    'info': _('Before you can install any services we need to setup a few things with you.'),
+                    'show_modules': False
+                })
+                transaction.update_step({
+                    'id': Steps.MEDIAS,
+                    'info': _('You can add the repositories of Mandriva Business Server with your my.mandriva.com account to get security updates. Repositories are not required to install server components.'),
+                })
+                return HttpResponseRedirect(reverse('prepare'))
         else:
             return function(request, *args, **kwargs)
 

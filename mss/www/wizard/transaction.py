@@ -21,53 +21,56 @@ class Transaction:
             self.modules_info = request.session['modules_info']
         else:
             err, result = xmlrpc.call('preinstall_modules', modules)
-            self.modules_info = result
-            # update with depedencies
-            self.modules = [ m['id'] for m in self.modules_info ]
-            self.transaction = [
-                {
-                    'id': Steps.PREINST,
-                    'disabled': False,
-                    'title': _("Installation summary"),
-                    'info': ungettext(
-                                "The folowing component will be installed.",
-                                "The folowing components will be installed.",
-                                len(self.modules)
-                            ),
-                    'show_modules': True,
-                    'current': False
-                },
-                {
-                    'id': Steps.MEDIAS,
-                    'disabled': True,
-                    'title': _("Medias authentication"),
-                    'info': _("One or more medias need authentication"),
-                    'current': False,
-                },
-                {
-                    'id': Steps.MEDIAS_ADD,
-                    'disabled': True,
-                    'title': _("Medias add"),
-                    'info': "",
-                    'current': False,
-                },
-                {
-                    'id': Steps.INSTALL,
-                    'disabled': True,
-                    'title': _("Installation"),
-                    'info': "",
-                    'current': False,
-                },
-                {
-                    'id': Steps.CONFIG,
-                    'disabled': True,
-                    'title': _("Initial configuration"),
-                    'info': "",
-                    'current': False
-                }
-            ]
-            self.prepare()
-            self.save(request)
+            if err:
+                self.transaction = err
+            else:
+                self.modules_info = result
+                # update with depedencies
+                self.modules = [ m['id'] for m in self.modules_info ]
+                self.transaction = [
+                    {
+                        'id': Steps.PREINST,
+                        'disabled': False,
+                        'title': _("Installation summary"),
+                        'info': ungettext(
+                                    "The folowing component will be installed.",
+                                    "The folowing components will be installed.",
+                                    len(self.modules)
+                                ),
+                        'show_modules': True,
+                        'current': False
+                    },
+                    {
+                        'id': Steps.MEDIAS,
+                        'disabled': True,
+                        'title': _("Medias authentication"),
+                        'info': _("One or more medias need authentication"),
+                        'current': False,
+                    },
+                    {
+                        'id': Steps.MEDIAS_ADD,
+                        'disabled': True,
+                        'title': _("Medias add"),
+                        'info': "",
+                        'current': False,
+                    },
+                    {
+                        'id': Steps.INSTALL,
+                        'disabled': True,
+                        'title': _("Installation"),
+                        'info': "",
+                        'current': False,
+                    },
+                    {
+                        'id': Steps.CONFIG,
+                        'disabled': True,
+                        'title': _("Initial configuration"),
+                        'info': "",
+                        'current': False
+                    }
+                ]
+                self.prepare()
+                self.save(request)
 
     def save(self, request):
         request.session['transaction'] = self.transaction
