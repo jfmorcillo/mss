@@ -33,7 +33,7 @@ from IPy import IP
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
 
-class Module:
+class Module(object):
     """
     Base class for all modules instances
 
