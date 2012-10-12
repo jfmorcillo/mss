@@ -42,6 +42,11 @@ cat $base_smb_template > /etc/samba/smb.conf
 sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/samba/smb.conf
 sed -i "s/\@WORKGROUP\@/$smbdomain/" /etc/samba/smb.conf
 sed -i "s/\@NETBIOSNAME\@/$smbnetbios/" /etc/samba/smb.conf
+# handle 64bit
+if [ -d /usr/lib64/mmc ]; then
+    sed -i "s!/usr/lib/mmc!/usr/lib64/mmc!g" /etc/samba/smb.conf
+fi
+
 if [ $? -eq 0 ]; then echo "0SAMBA configuration done. (/etc/samba/smb.conf updated)";
 else echo "2Error while configuring SAMBA. (/etc/samba/smb.conf)"; exit 1
 fi
