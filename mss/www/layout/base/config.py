@@ -49,5 +49,10 @@ config.add_bundle("core", {
     'icon': 'base/other.png',
     'modules': ["mds_cups", "mds_proxy"]
 })
+config.add_bundle("core", {
+    'id': 'instant_messaging', 'name': _('Instant Messaging'),
+    'icon': 'base/other.png',
+    'modules': ["ejabberd"]
+})
 
 config.add_section({'id': 'other', 'name': _('Other Services')})

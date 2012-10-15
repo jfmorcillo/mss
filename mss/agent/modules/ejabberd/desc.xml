@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../desc.xsd" id="ejabberd">
+	<name>Jabber/SMPP instant messaging server</name>
+	<desc>A distributed, fault-tolerant Jabber/XMPP server</desc>
+	<packages>
+		<target name="all">
+			<rpm>ejabberd</rpm>
+		</target>
+	</packages>
+</module>
+	
