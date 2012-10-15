@@ -7,7 +7,7 @@ path=`pwd`
 
 [ ! -f $0 ] && echo "You are not in the directory where the script lives" && exit 1
 
-[ ! -h $link ] && echo "MSS package installed ? $link is not a link." && exit 1
+[ ! -h $link ] && [ -x $link ] && echo "MSS package installed ? $link is not a link." && exit 1
 
 echo "What is your username ? (used to run the webserver)"
 read user
