@@ -60,17 +60,9 @@ fi
 backup $bind_conf
 cp $bind_template $bind_conf
 
-/sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service mmc-agent reloaded succesfully."
-else echo "2Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"; sleep 1; exit 1
-fi
-
-/sbin/service named restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service named reloaded succesfully."
-else echo "2Service named fails restarting. Check /var/log/syslog"; sleep 1; exit 1
-fi
-
-chkconfig named on
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
+restart_service named
+enable_service named
 
 echo "8The DNS service is running."
 if [ ! -z "$forwarders" ]; then

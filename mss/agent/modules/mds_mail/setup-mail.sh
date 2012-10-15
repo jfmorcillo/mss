@@ -115,30 +115,11 @@ fi
 backup /etc/mail/spamassassin/local.cf
 cat $spamassassin_template > /etc/mail/spamassassin/local.cf
 
-/sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service #mmc-agent# reloaded succesfully."
-else echo "2Service #mmc-agent# fails restarting. Check #/var/log/mmc/mmc-agent.log"; sleep 1; exit 1
-fi
-
-/sbin/service amavisd restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service #amavis# reloaded succesfully."
-else echo "2Service #amavis# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
-fi
-
-/sbin/service clamd restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service #clamd# reloaded succesfully."
-else echo "2Service #clamd# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
-fi
-
-/sbin/service postfix restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service #postfix# reloaded succesfully."
-else echo "2Service #postfix# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
-fi
-
-/sbin/service dovecot restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service #dovecot# reloaded succesfully."
-else echo "2Service #dovecot# fails restarting. Check #/var/log/syslog"; sleep 1; exit 1
-fi
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
+restart_service amavisd
+restart_service clamd
+restart_service postfix
+restart_service dovecot
 
 echo "8The mail service is configured."
 echo "8You can add mail addresses and aliases to your users through the management interface at http://@HOSTNAME@/mmc/."

@@ -56,10 +56,7 @@ if [ $? -eq 0 ]; then echo "0SAMBA password set.";
 else echo "2Error while setting SAMBA password. (smbpasswd)"; exit 1
 fi
 
-/sbin/service smb restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service SAMBA reloaded succesfully."
-else echo "2Service SAMBA fails restarting."; exit 1
-fi
+restart_service smb
 
 sid=`net getlocalsid $smbdomain | cut -d ':' -f2 | cut -d ' ' -f2`
 
@@ -95,10 +92,7 @@ if [ $? -eq 0 ]; then echo "0Directory populated for SAMBA.";
 else echo "2Error while populating directory.# (smbldap-populate -m 512 -k 512 -a $smbadmin)"; exit 1
 fi
 
-/sbin/service smb restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service SAMBA reloaded succesfully."
-else echo "2Service SAMBA fails restarting."; exit 1
-fi
+restart_service smb
 
 ###### now /etc/mmc/plugins/samba.ini
 backup /etc/mmc/plugins/samba.ini
@@ -112,10 +106,7 @@ sed -i "s/^defaultUserGroup = users$/defaultUserGroup = Domain Users/" /etc/mmc/
 if [ $? -eq 0 ]; then echo "1Users are now created in the Domain Users group by default. If users were created, they still remains in the users group.";
 fi
 
-/sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service MMC reloaded succesfully."
-else echo "2Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"; exit 1
-fi
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $mdsserver -U $smbadmin%$smbpass > /dev/null 2>&1
 if [ $? -eq 0 ]; then echo "0Successfully granted rights for Domain Admins group."

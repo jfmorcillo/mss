@@ -153,19 +153,19 @@ if [ "$zarafa_zpush" == "on" ]; then
     cp -f ${zpush_tpl} /etc/httpd/conf/webapps.d/z-push.conf
 fi
 # run services at boot
-chkconfig zarafa-server on
+enable_service zarafa-server
 if [ "$zarafa_imap" == "on" ]; then
-    chkconfig zarafa-gateway on
+    enable_service zarafa-gateway
 else
-    chkconfig zarafa-gateway off
+    disable_service zarafa-gateway
 fi
-chkconfig zarafa-spooler on
-chkconfig zarafa-monitor on
-chkconfig zarafa-dagent on
+enable_service zarafa-spooler
+enable_service zarafa-monitor
+enable_service zarafa-dagent
 if [ "$zarafa_ical" == "on" ]; then
-    chkconfig zarafa-ical on
+    enable_service zarafa-ical
 else
-    chkconfig zarafa-ical off
+    disable_service zarafa-ical
 fi
 
 # create postfix configuration

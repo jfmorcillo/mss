@@ -121,14 +121,8 @@ else
 fi
 
 # let's go for real now
-/sbin/service ldap stop > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service# ldap #stopped succesfully."
-else echo "2Service# ldap #fails stopping. Check# /var/log/syslog"; exit 1
-fi
-/sbin/service mmc-agent stop > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service# mmc #stopped succesfully."
-else echo "2Service# mmc-agent #fails stopping. Check# /var/log/mmc/mmc-agent"; exit 1
-fi
+stop_service ldap
+stop_service mmc-agent /var/log/mmc/mmc-agent.log
 
 backup_db=`clean_database /var/lib/ldap`
 backup_slapd_conf=`mybackup /etc/openldap/slapd.conf`
@@ -151,20 +145,9 @@ else
     echo "0Your previous database directory has been backed up as# $backup_db."
 fi
 
-/sbin/service ldap restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service# ldap #started succesfully."
-else echo "1Service# ldap #fails starting. Check# /var/log/syslog"; exit 1
-fi
-
-/sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service# mmc-agent #started succesfully."
-else echo "1Service# mmc-agent #fails starting. Check# /var/log/mmc/mmc-agent.log"; exit 1
-fi
-
-/sbin/service httpd restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service# httpd #started succesfully."
-else echo "1Service# httpd #fails starting. Check# /var/log/syslog"; exit 1
-fi
+restart_service ldap
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
+restart_service httpd
 
 echo "8The MBS management interface is configured."
 echo "8You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups."

@@ -46,12 +46,9 @@ chmod 640 /etc/dhcpd.conf
 if [ $? -eq 0 ]; then echo "0Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
 else echo "2Error while configuring the dhcp-server. (/etc/dhcpd.conf)"; exit 1
 fi
-/sbin/service mmc-agent restart > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Service mmc-agent reloaded succesfully."
-else echo "2Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"; exit 1
-fi
 
-chkconfig dhcpd on
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
+enable_service dhcpd
 
 echo 8The DHCP service is installed.
 echo 7You can now configure your DHCP settings from the management interface : http://@HOSTNAME@/mmc/

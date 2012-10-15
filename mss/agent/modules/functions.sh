@@ -143,9 +143,9 @@ function mysql_cleanup() {
 }
 
 function restart_service() {
-    /sbin/service $1 restart > /dev/null 2>&1
+    systemctl restart $1.service
     if [ $? -eq 0 ]; then
-        echo "0Service #${1}# reloaded succesfully."
+        echo "0Service #${1}# restarted succesfully."
     else
         if [ ! -z $2 ]; then
             log=$2
@@ -156,6 +156,26 @@ function restart_service() {
         sleep 1
         exit 1
     fi
+}
+
+function stop_service() {
+    systemctl stop $1.service
+    if [ $? -eq 0 ]; then
+        echo "0Service #${1}# stopped succesfully."
+    else
+        if [ ! -z $2 ]; then
+            log=$2
+        else
+            log="/var/log/syslog"
+        fi
+        echo "2Service #${1}# fails to stop. Check #${2}#."
+        sleep 1
+        exit 1
+    fi
+}
+
+function enable_service() {
+    systemctl enable $1.service
 }
 
 # escapestr_sed()
