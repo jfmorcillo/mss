@@ -1,8 +1,6 @@
 #
 # (c) 2010 Mandriva, http://www.mandriva.com/
 #
-# $Id$
-#
 # This file is part of Mandriva Server Setup
 #
 # MSS is free software; you can redistribute it and/or modify
@@ -22,8 +20,6 @@
 
 todev() {
 	echo -n "Swithing to dev environement..."
-	rm -rf mss/www/cpserver
-	cp -r mss/www/cpserver-dev mss/www/cpserver
 	sed -i "s!^DEBUG.*!DEBUG = True!" mss/www/settings.py
 	sed -i 's!^\(.*logging\.\)INFO\(.*\)$!\1DEBUG\2!' mss/agent/managers/module.py
 	echo "dev"
@@ -40,8 +36,6 @@ isprod() {
 
 toprod() {
 	echo -n "Swithing to prod environement..."
-	rm -rf mss/www/cpserver
-	cp -r mss/www/cpserver-prod mss/www/cpserver
 	sed -i "s!^DEBUG.*!DEBUG = False!" mss/www/settings.py
 	sed -i 's!^\(.*logging\.\)DEBUG\(.*\)$!\1INFO\2!' mss/agent/managers/module.py
 	echo "done"

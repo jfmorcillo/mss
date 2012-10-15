@@ -2,11 +2,12 @@
 
 link=/usr/lib/python2.7/site-packages/mss
 agent=/usr/sbin/mss-agent
+www=/usr/bin/mss-www
 path=`pwd`
 
 [ ! -f $0 ] && echo "You are not in the directory where the script lives" && exit 1
 
-[ -d $link ] && echo "MSS package installed ? $link is a directory." && exit 1
+[ ! -h $link ] && echo "MSS package installed ? $link is not a link." && exit 1
 
 echo "What is your username ? (used to run the webserver)"
 read user
@@ -24,9 +25,11 @@ mkdir -p /var/log/mss/
 mkdir -p /var/lib/mss/
 touch /var/log/mss/mss-agent.log
 [ -f $link ] && rm -f $link
-ln -s ${path}/mss $link
+ln -s ${path}/mss/ $link
 [ -f $agent ] && rm -f $agent
 ln -s ${path}/bin/agent/mss-agent.py $agent
+[ -f $www ] && rm -f $www
+ln -s ${path}/bin/www/mss-www.sh $www
 python mss/www/manage.py syncdb --noinput
 chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db

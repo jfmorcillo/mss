@@ -38,7 +38,7 @@ from mss.agent.classes.module import Module
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
 LSB_FILENAME = '/etc/os-release'
-logging.basicConfig(level=logging.INFO)
+logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger()
 formatter = logging.Formatter('%(asctime)s:%(levelname)s: %(message)s')
 handler = logging.handlers.RotatingFileHandler(
