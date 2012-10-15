@@ -1,0 +1,11 @@
+[Unit]
+Description=Mandriva Server Setup Web Interface
+Wants=mss-agent.service
+
+[Service]
+ExecStart=/usr/sbin/mss-www
+User=mss
+Group=mss
+
+[Install]
+WantedBy=multi-user.target

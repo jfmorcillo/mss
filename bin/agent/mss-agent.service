@@ -1,0 +1,8 @@
+[Unit]
+Description=Mandriva Server Setup Agent
+
+[Service]
+ExecStart=/usr/sbin/mss-agent
+
+[Install]
+WantedBy=multi-user.target

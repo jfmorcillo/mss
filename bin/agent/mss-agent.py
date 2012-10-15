@@ -1,39 +1,44 @@
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
+#
+# (c) 2010-2012 Mandriva, http://www.mandriva.com/
+#
+# This file is part of Mandriva Server Setup
+#
+# MSS is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# MSS is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MSS; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA 02110-1301, USA.
 
 import sys
-import os
 from SimpleXMLRPCServer import SimpleXMLRPCServer
+
 from mss.agent.managers.module import ModuleManager
 from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
-from mss.agent.daemon import Daemon
 from mss.agent.lib.auth import authenticate
 
-class MSS(Daemon):
-    def run(self):
-        PM = ProcessManager()
-        TM = TranslationManager()
-        MM = ModuleManager(PM, TM)
-        server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True,
-            logRequests=False)
-        server.register_instance(MM)
-        server.register_function(authenticate)
-        server.serve_forever()
+PM = ProcessManager()
+TM = TranslationManager()
+MM = ModuleManager(PM, TM)
 
-if __name__ == "__main__":
-    daemon = MSS('/var/run/mss-agent.pid')
-    if len(sys.argv) == 2:
-        if 'start' == sys.argv[1]:
-            daemon.start()
-        elif 'stop' == sys.argv[1]:
-            daemon.stop()
-        elif 'restart' == sys.argv[1]:
-            daemon.restart()
-        else:
-            print "Unknown command"
-            sys.exit(2)
-        sys.exit(0)
-    else:
-        print "Usage: %s start|stop|restart" % sys.argv[0]
-        sys.exit(2)
+server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
+server.register_instance(MM)
+server.register_function(authenticate)
+
+try:
+    print 'This is MSS XML-RPC agent'
+    print 'Use Control-C to exit'
+    server.serve_forever()
+except KeyboardInterrupt:
+    print 'Exiting'
