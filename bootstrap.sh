@@ -20,12 +20,24 @@ do
     urpmi --auto $package
 done
 
-sh manage.sh todev
+function generate_salt() {
+	salt=</dev/urandom tr -dc A-Za-z0-9 | head -c 50
+	echo $salt
+}
+
 mkdir -p /var/log/mss/
 mkdir -p /var/lib/mss/
 touch /var/log/mss/mss-agent.log
-[ -f $link ] && rm -f $link
-ln -s ${path}/mss/ $link
+if [ ! -f ${path}/mss/www/settings.py ]; then
+    echo Creating settings.py file....
+    cp ${path}/mss/www/settings.py.example ${path}/mss/www/settings.py
+    chown $user.$user ${path}/mss/www/settings.py
+    salt=`generate_salt`
+    sed -i "s!^SECRET_KEY.*!SECRET_KEY = \"${salt}\"!" ${path}/mss/www/settings.py
+fi
+sh manage.sh todev
+[ -h $link ] && rm -f $link
+ln -s ${path}/mss $link
 [ -f $agent ] && rm -f $agent
 ln -s ${path}/bin/agent/mss-agent.py $agent
 [ -f $www ] && rm -f $www
@@ -35,3 +47,4 @@ chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db
 python mss/agent/setup_mss.py
 su -c 'sh build_mo.sh' $user
+

@@ -57,7 +57,7 @@ LANGUAGES = (
   ('pt_BR', 'Português do Brasil'),
 )
 
-SECRET_KEY = 'eq*6patei-(m5jat5&s50f#0%(g$plt@q!_n4g!d(^w=f3kgfc'
+SECRET_KEY = ''
 
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',

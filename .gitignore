@@ -5,3 +5,4 @@ mss.egg-info
 dist
 doc/build
 .tx
+mss/www/settings.py
