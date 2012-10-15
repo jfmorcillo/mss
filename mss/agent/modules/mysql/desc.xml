@@ -1,4 +1,6 @@
-<module id="mysql">
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../desc.xsd" id="mysql">
     <name>MySQL database</name>
     <desc>MySQL relational database</desc>
     <packages>
