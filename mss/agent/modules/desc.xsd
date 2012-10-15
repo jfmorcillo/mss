@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified">
+	<xs:element name="module">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="name" minOccurs="1"></xs:element>
+				<xs:element name="desc" minOccurs="1"></xs:element>
+				<xs:element ref="packages" minOccurs="1"></xs:element>
+				<xs:element ref="conflicts" minOccurs="0"></xs:element>
+				<xs:element ref="config" minOccurs="0"></xs:element>
+				<xs:element name="text" minOccurs="0" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:string" use="required"></xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="packages">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="target" minOccurs="1"></xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="target">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="rpm" minOccurs="1" maxOccurs="unbounded"></xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="all"></xs:enumeration>
+						<xs:enumeration value="x86_64"></xs:enumeration>
+						<xs:enumeration value="i586"></xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="conflicts">
+		<xs:complexType>
+		<xs:sequence>
+		<xs:element name="module"></xs:element>
+		</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="config"></xs:element>
+
+</xs:schema>
