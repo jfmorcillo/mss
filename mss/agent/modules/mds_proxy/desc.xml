@@ -1,0 +1,24 @@
+<module id="mds_proxy">
+    <name>Proxy Cache service</name>
+    <desc>Control your Internet connection with content filters.</desc>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+    </actions>
+    <packages>
+        <target name="all"> 
+            <rpm>squid</rpm>
+            <rpm>sarg</rpm>
+            <rpm>python-mmc-proxy</rpm>
+	    <rpm>mmc-web-proxy</rpm>
+        </target>
+	<deps>
+            <module>mds_proxy</module>
+	</deps>
+    </packages>
+      
+    
+    <text>Service squid reloaded succesfully.</text>
+    <text>Service squid fails restarting. Check /var/log/syslog.log</text>
+    <text>The squid service is running.</text>
+   
+</module>
