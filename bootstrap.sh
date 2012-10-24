@@ -15,10 +15,16 @@ read user
 id $user > /dev/null 2>&1
 [ $? -ne 0 ] && echo "User doesn't exists" && exit 1 
 
-for package in `cat requirements/apps.txt`
-do
-    urpmi --auto $package
-done
+if [ ! -f requirements/no_dep ] 
+then
+	for package in `cat requirements/apps.txt`
+	do
+		urpmi --auto $package
+	done
+	touch requirements/no_dep 
+else
+      	echo skipping dependencies, remove requirements/no_dep to enable dependency checking
+fi
 
 function generate_salt() {
 	salt=</dev/urandom tr -dc A-Za-z0-9 | head -c 50
