@@ -1,23 +1,9 @@
 #!/bin/bash
 # Copyright Mandriva 2009, 2010 all rights reserved
-if [ "`id -u`" != "0" ]; then
-	echo "Error, must be root user"
-	exit 1
-fi
-
-mds_base_ini="/etc/mmc/plugins/base.ini"
-
-if [ ! -f $mds_base_ini ]; then
-    echo "2mmc-agent interface is not installed."
-    echo "2Can't continue."
-    exit 1
-fi
-
-mdssuffix=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-mdspass=`grep '^password' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-mdsserver=127.0.0.1
 
 . '../functions.sh'
+
+check_mmc_configured
 
 if [ "`uname -m`" != "x86_64" ]; then
     main_cf_template="templates/main-32.cf.tpl"
@@ -64,8 +50,8 @@ for template in $ldap_accounts_cf $ldap_aliases_cf $ldap_domains_cf $ldap_maildr
 do
     newfile="/etc/postfix/`basename $template`"
     cat $template > $newfile
-    sed -i "s/\@HOST\@/$mdsserver/" $newfile
-    sed -i "s/\@SUFFIX\@/$mdssuffix/" $newfile
+    sed -i "s/\@HOST\@/$MDSSERVER/" $newfile
+    sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $newfile
 done
 
 # dovecot
@@ -77,8 +63,8 @@ if [ -f /etc/dovecot-ldap.conf ];
     then backup /etc/dovecot-ldap.conf
 fi
 cat $dovecot_ldap_template > /etc/dovecot-ldap.conf
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/dovecot-ldap.conf
-sed -i "s/\@HOST\@/$mdsserver/" /etc/dovecot-ldap.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/dovecot-ldap.conf
+sed -i "s/\@HOST\@/$MDSSERVER/" /etc/dovecot-ldap.conf
 
 adduser -r -g mail --uid 30 vmail > /dev/null 2>&1
 mkdir -p /home/vmail > /dev/null 2>&1
@@ -87,12 +73,12 @@ chown vmail:mail /home/vmail
 # mmc conf
 backup /etc/mmc/plugins/mail.ini
 cat $mail_ini_template > /etc/mmc/plugins/mail.ini
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/mail.ini
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/mail.ini
 
 # amavis configuration
 backup /etc/amavisd/amavisd.conf
 cat $amavis_template > /etc/amavisd/amavisd.conf
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/amavisd/amavisd.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/amavisd/amavisd.conf
 sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/amavisd/amavisd.conf
 
 chmod 640 /etc/amavisd/amavisd.conf

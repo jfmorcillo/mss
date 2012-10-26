@@ -1,12 +1,9 @@
 #!/bin/bash
 # Copyright Mandriva 2009, 2010 all rights reserved
 
-if [ "`id -u`" != "0" ]; then
-	echo "Error, must be root user"
-	exit 1
-fi
-
 . '../functions.sh'
+
+check_root
 
 roundcube_db_conf_template="templates/db.inc.php.tpl"
 roundcube_main_conf_template="templates/main.inc.php.tpl"

@@ -2,6 +2,8 @@
 
 . ../functions.sh
 
+check_mmc_configured
+
 userquota_tpl="templates/userquota.ini.tpl"
 
 fss=$1

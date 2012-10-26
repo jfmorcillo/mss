@@ -29,13 +29,9 @@
 #        Jean-Philippe Braun - jpbraun@mandriva.com
 # Date: 10/08/2012
 
-
-if [ "`id -u`" != "0" ]; then
-	echo "Error, must be root user"
-	exit 1
-fi
-
 . '../functions.sh'
+
+check_mmc_configured
 
 proxy_template="templates/squid.conf.tpl"
 sarg_template="templates/sarg.conf.tpl"
@@ -44,15 +40,10 @@ proxy_conf="/etc/squid/squid.conf"
 sarg_conf="/etc/sarg/sarg.conf"
 proxy_rules="/etc/squid/rules"
 
-mds_base_ini="/etc/mmc/plugins/base.ini"
-my_domain=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-pass_dn=`grep '^password' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-pass_dn_e=`escape_sed $mdspass`
-
 echo "0Configuring squid..."
 backup $proxy_conf
 cat $proxy_template > $proxy_conf
-sed -i "s/\@DN\@/$my_domain/" $proxy_conf
+sed -i "s/\@DN\@/$MDSSUFFIX/" $proxy_conf
 # handle 64bit
 if [ -d /usr/lib64 ]; then
     sed -i "s!/usr/lib!/usr/lib64!g" $proxy_conf
@@ -60,8 +51,8 @@ fi
 
 backup $sarg_conf
 cat $sarg_template > $sarg_conf
-sed -i "s/\@DN\@/$my_domain/" $sarg_conf
-sed -i "s/\@PASS\@/$pass_dn_e/" $sarg_conf
+sed -i "s/\@DN\@/$MDSSUFFIX/" $sarg_conf
+sed -i "s/\@PASS\@/$MDSPASS_E/" $sarg_conf
 
 echo "0Creating groups..."
 python create-groups.py

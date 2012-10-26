@@ -1,19 +1,13 @@
 #!/bin/bash
 # Copyright Mandriva 2009, 2010 all rights reserved
-if [ "`id -u`" != "0" ]; then
-	echo "Error, must be root user"
-	exit 1
-fi
 
 . '../functions.sh'
+
+check_mmc_configured
 
 mds_network_template="templates/network.ini.tpl"
 bind_template="templates/named.conf.tpl"
 bind_conf="/var/lib/named/etc/named.conf"
-
-mds_base_ini="/etc/mmc/plugins/base.ini"
-
-mdssuffix=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
 
 networks="$1"
 forwarders="$2"
@@ -22,7 +16,7 @@ ln -sf /var/lib/named/var/named/ /var/named
 
 backup /etc/mmc/plugins/network.ini
 cat $mds_network_template > /etc/mmc/plugins/network.ini
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/network.ini
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/network.ini
 if [ $? -eq 0 ]; then echo "0MDS configuration done. (/etc/mmc/plugins/network.ini updated)";
 else echo "2Error while configuring MDS. (/etc/mmc/plugins/network.ini)"; sleep 1; exit 1
 fi

@@ -32,7 +32,7 @@ def get_current_config():
     ini='/etc/samba/smb.conf'
     if os.path.exists(ini):
         smbdomain = getINIoption('global', 'workgroup', ini)
-        smbnetbios = getINIoption('global', 'netbiosname', ini)
+        smbnetbios = getINIoption('global', 'netbios name', ini)
         return {'smbdomain': smbdomain, 'smbnetbios': smbnetbios, 'smbadmin': ''}
     else:
         return {}

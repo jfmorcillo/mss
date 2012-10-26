@@ -26,8 +26,8 @@ function check_mmc_configured() {
     else
         MDSSERVER=127.0.0.1
         MDSSUFFIX=`grep '^baseDN' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-        MDSPASS=`grep '^password' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-        MDSPASS_E=`escape_sed $mdspass`
+        MDSPASS=`grep '^password ' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+        MDSPASS_E=`escape_sed $MDSPASS`
     fi
 }
 

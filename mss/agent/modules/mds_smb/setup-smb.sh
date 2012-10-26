@@ -1,12 +1,9 @@
 #!/bin/bash
 # Copyright Mandriva 2009, 2010 all rights reserved
 
-if [ "`id -u`" != "0" ]; then
-	echo "1Error, must be root user"
-	exit 1
-fi
-
 . ../functions.sh
+
+check_mmc_configured
 
 base_smb_template="templates/smb.conf.tpl"
 smbldap_bind_template="templates/smbldap_bind.conf.tpl"
@@ -14,19 +11,6 @@ smbldap_template="templates/smbldap.conf.tpl"
 mds_smb_template="templates/samba.ini.tpl"
 ldap_conf_template="templates/ldap.conf.tpl"
 nsswitch_template="templates/nsswitch.conf.tpl"
-
-mds_base_ini="/etc/mmc/plugins/base.ini"
-
-if [ ! -f $mds_base_ini ]; then
-    echo "2MMC interface is not installed."
-    echo "2Can't continue."
-    exit 1
-fi
-
-mdssuffix=`grep '^baseDN' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-mdspass=`grep '^password' $mds_base_ini | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-mdspass_e=`escape_sed $mdspass`
-mdsserver=127.0.0.1
 
 smbdomain="$1"
 smbnetbios="$2"
@@ -39,7 +23,7 @@ myslapdconf=`make_temp`
 #### Now /etc/samba/smb.conf
 backup /etc/samba/smb.conf
 cat $base_smb_template > /etc/samba/smb.conf
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/samba/smb.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/samba/smb.conf
 sed -i "s/\@WORKGROUP\@/$smbdomain/" /etc/samba/smb.conf
 sed -i "s/\@NETBIOSNAME\@/$smbnetbios/" /etc/samba/smb.conf
 # handle 64bit
@@ -51,7 +35,7 @@ if [ $? -eq 0 ]; then echo "0SAMBA configuration done. (/etc/samba/smb.conf upda
 else echo "2Error while configuring SAMBA. (/etc/samba/smb.conf)"; exit 1
 fi
 
-smbpasswd -w $mdspass
+smbpasswd -w $MDSPASS
 if [ $? -eq 0 ]; then echo "0SAMBA password set.";
 else echo "2Error while setting SAMBA password. (smbpasswd)"; exit 1
 fi
@@ -64,8 +48,8 @@ backup /etc/nsswitch.conf
 cat $nsswitch_template > /etc/nsswitch.conf
 backup /etc/ldap.conf
 cat $ldap_conf_template > /etc/ldap.conf
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/ldap.conf
-sed -i "s/\@SERVER\@/$mdsserver/" /etc/ldap.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/ldap.conf
+sed -i "s/\@SERVER\@/$MDSSERVER/" /etc/ldap.conf
 if [ $? -eq 0 ]; then echo "0lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)";
 else echo "2Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"; exit 1
 fi
@@ -73,16 +57,16 @@ fi
 ###### now /etc/smbldap-tools/smbldap.conf
 backup /etc/smbldap-tools/smbldap.conf
 cat $smbldap_template > /etc/smbldap-tools/smbldap.conf
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/smbldap-tools/smbldap.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/smbldap-tools/smbldap.conf
 sed -i "s/\@WORKGROUP\@/$smbdomain/" /etc/smbldap-tools/smbldap.conf
 sed -i "s/\@SID\@/$sid/" /etc/smbldap-tools/smbldap.conf
-sed -i "s/\@SERVER\@/$mdsserver/" /etc/smbldap-tools/smbldap.conf
+sed -i "s/\@SERVER\@/$MDSSERVER/" /etc/smbldap-tools/smbldap.conf
 
 ###### now /etc/smbldap-tools/smbldap_bind.conf
 backup /etc/smbldap-tools/smbldap_bind.conf
 cat $smbldap_bind_template > /etc/smbldap-tools/smbldap_bind.conf 
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/smbldap-tools/smbldap_bind.conf
-sed -i "s/\@PASSWORD\@/$mdspass_e/" /etc/smbldap-tools/smbldap_bind.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/smbldap-tools/smbldap_bind.conf
+sed -i "s/\@PASSWORD\@/$MDSPASS_E/" /etc/smbldap-tools/smbldap_bind.conf
 if [ $? -eq 0 ]; then echo "0smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf updated)";
 else echo "2Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf)"; exit 1
 fi
@@ -97,7 +81,7 @@ restart_service smb
 ###### now /etc/mmc/plugins/samba.ini
 backup /etc/mmc/plugins/samba.ini
 cat $mds_smb_template > /etc/mmc/plugins/samba.ini
-sed -i "s/\@SUFFIX\@/$mdssuffix/" /etc/mmc/plugins/samba.ini
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/samba.ini
 if [ $? -eq 0 ]; then echo "0MDS SAMBA configuration done.";
 else echo "2Error while configuring MDS SAMBA module."; exit 1
 fi
@@ -108,7 +92,7 @@ fi
 
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
-net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $mdsserver -U $smbadmin%$smbpass > /dev/null 2>&1
+net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $MDSSERVER -U $smbadmin%$smbpass > /dev/null 2>&1
 if [ $? -eq 0 ]; then echo "0Successfully granted rights for Domain Admins group."
 else echo "2Failed granted rigths for Domain Admins group"; exit 1
 fi
