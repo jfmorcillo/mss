@@ -13,17 +13,17 @@ echo "What is your username ? (used to run the webserver)"
 read user
 
 id $user > /dev/null 2>&1
-[ $? -ne 0 ] && echo "User doesn't exists" && exit 1 
+[ $? -ne 0 ] && echo "User doesn't exists" && exit 1
 
-if [ ! -f requirements/no_dep ] 
+if [ ! -f requirements/no_dep ]
 then
-	for package in `cat requirements/apps.txt`
-	do
-		urpmi --auto $package
-	done
-	touch requirements/no_dep 
+    for package in `cat requirements/apps.txt`
+    do
+        urpmi --auto $package
+    done
+    touch requirements/no_dep
 else
-      	echo skipping dependencies, remove requirements/no_dep to enable dependency checking
+    echo skipping dependencies, remove requirements/no_dep to enable dependency checking
 fi
 
 function generate_salt() {
