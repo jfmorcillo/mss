@@ -6,6 +6,22 @@ function echo_v() {
 	fi
 }
 
+# $1: path to "/etc/mmc/plugins/base.ini"
+# checks that MMC is properly configured. In such a case define 
+# some useful configuration variables:
+# MDSSUFFIX, MDSPASS, MDSPASS_E 
+function check_mmc_configured() {
+	if [ ! -f $1 ]; then
+    	echo "2MMC interface is not installed."
+    	echo "2Can't continue."
+    	exit 1
+    else
+    	MDSSUFFIX=`grep '^baseDN' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+    	MDSPASS=`grep '^password' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+    	MDSPASS_E=`escape_sed $mdspass`
+	fi
+}
+
 # output: stdout: example.com or the possible detected domain
 function detect_domain() {
 	mydomain=`hostname -d`
