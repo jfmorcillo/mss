@@ -88,7 +88,7 @@
 %% You can define one or several, for example:
 %% {hosts, ["example.net", "example.com", "example.org"]}.
 %%
-{hosts, ["@SERVERNAME@"]}.
+{hosts, ["@DOMAIN@"]}.
 
 %%
 %% route_subdomains: Delegate subdomains to other XMPP servers.
@@ -115,8 +115,7 @@
 			%% certificate, specify the full path to the
 			%% file and uncomment this line:
 			%%
-			%%{certfile, "/etc/pki/tls/private/ejabberd.pem"}, starttls,
-			@ENCRYPTION@
+			{certfile, "/etc/pki/tls/private/ejabberd.pem"}, starttls,
 			{access, c2s},
 			{shaper, c2s_shaper},
 			{max_stanza_size, 65536}
@@ -248,7 +247,7 @@
 {auth_method, ldap}.
 %%
 %% List of LDAP servers:
-{ldap_servers, ["@SERVER@"]}.
+{ldap_servers, ["127.0.0.1"]}.
 %%
 %% Encryption of connection to LDAP servers:
 {ldap_encrypt, none}.
@@ -259,7 +258,7 @@
 %%{ldap_port, 636}.
 %%
 %% LDAP manager:
-{ldap_rootdn, ""}.
+%%{ldap_rootdn, ""}.
 %%
 %% Password of LDAP manager:
 %%{ldap_password, "password"}.
@@ -269,7 +268,7 @@
 {ldap_base, "ou=People,@SUFFIX@"}.
 %%
 %% LDAP attribute that holds user ID:
-%{ldap_uids, [{"mail", "%u@example.com"}]}.
+{ldap_uids, [{"mail", "%u@@DOMAIN@"}]}.
 %%
 %% LDAP filter:
 %%{ldap_filter, "(objectClass=shadowAccount)"}.

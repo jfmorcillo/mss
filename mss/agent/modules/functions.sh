@@ -6,20 +6,29 @@ function echo_v() {
 	fi
 }
 
-# $1: path to "/etc/mmc/plugins/base.ini"
+function check_root() {
+    if [ "`id -u`" != "0" ]; then
+        echo "Error, must be root user"
+        exit 1
+    fi
+}
+
 # checks that MMC is properly configured. In such a case define 
 # some useful configuration variables:
 # MDSSUFFIX, MDSPASS, MDSPASS_E 
 function check_mmc_configured() {
-	if [ ! -f $1 ]; then
-    	echo "2MMC interface is not installed."
-    	echo "2Can't continue."
-    	exit 1
+    check_root
+    MDS_BASE_INI="/etc/mmc/plugins/base.ini"
+    if [ ! -f $MDS_BASE_INI ]; then
+        echo "2MMC interface is not installed."
+        echo "2Can't continue."
+        exit 1
     else
-    	MDSSUFFIX=`grep '^baseDN' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-    	MDSPASS=`grep '^password' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
-    	MDSPASS_E=`escape_sed $mdspass`
-	fi
+        MDSSERVER=127.0.0.1
+        MDSSUFFIX=`grep '^baseDN' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+        MDSPASS=`grep '^password' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
+        MDSPASS_E=`escape_sed $mdspass`
+    fi
 }
 
 # output: stdout: example.com or the possible detected domain
@@ -168,7 +177,8 @@ function restart_service() {
         else
             log="/var/log/syslog"
         fi
-        echo "2Service #${1}# fails restarting. Check #${2}#."
+        echo "2Service #${1}# fails restarting. Check #${log}#."
+	systemctl status $1.service
         sleep 1
         exit 1
     fi
@@ -184,7 +194,8 @@ function stop_service() {
         else
             log="/var/log/syslog"
         fi
-        echo "2Service #${1}# fails to stop. Check #${2}#."
+        echo "2Service #${1}# fails to stop. Check #${log}#."
+	systemctl status $1.service
         sleep 1
         exit 1
     fi

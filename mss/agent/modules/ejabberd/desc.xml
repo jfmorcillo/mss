@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:noNamespaceSchemaLocation="../desc.xsd" id="ejabberd">
-	<name>Jabber/XMPP instant messaging server</name>
-	<desc>A distributed, fault-tolerant Jabber/XMPP server</desc>
-	<packages>
-		<target name="all">
-			<rpm>ejabberd</rpm>
-		</target>
-		</packages>
-		<config>
-		    <text name="servername" require="yes">
-		        <label>Server Name</label>
-		        <help>The name you want to use for the instant messaging server. You can use any name but one known by DNS is recommended (else the server IP address has to be provided when setting up clients)</help>
-		    </text>
-		    <options name="encryption" default="starttls">
-		        <label>Encryption</label>
-		        <help>starttls is recommended, tls is deprecated, none might be dangerous</help>
-		        <option value="starttls">starttls</option>
-		        <option value="tls">tls</option>
-				<option value="none">none</option>
-		    </options>
-		</config>
-	
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="ejabberd">
+    <name>Jabber/XMPP instant messaging server</name>
+    <desc>A distributed, fault-tolerant Jabber/XMPP server</desc>
+    <packages>
+        <target name="all">
+            <rpm>ejabberd</rpm>
+        </target>
+    </packages>
+    <config>
+        <text name="hostname" default="get_hostname" require="yes" hidden="yes" />
+        <text name="domain" default="get_domain" require="yes">
+            <label>Domain</label>
+            <help>The domain used for jabber communications</help>
+        </text>
+    </config>
+    <text>The instant messaging service is configured.</text>
+    <text>You can simply add users through the management interface at</text>
+    <text>Configure clients with JID like</text>
+    <text>and use</text>
+    <text>as the server.</text>
+    <text>If</text>
+    <text>is registered as a Jabber server in the DNS zone</text>
+    <text>there is no need to configure the server address in clients.</text>
 </module>
-	
