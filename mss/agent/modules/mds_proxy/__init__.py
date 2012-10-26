@@ -19,24 +19,5 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-#import re
-#import os
-#from IPy import IP
-
-#from mss.agent.lib.utils import ethernet_ifs
-
 def get_config_info():
     return ("setup-proxy.sh", [])
-
-
-
-#def get_networks(module):
-#    """
-#    Return networks of the local machine
-#    """
-
-#    networks = []
-#    for iface in ethernet_ifs():
-#        networks.append((iface[2], iface[3]))
-
-#    return networks

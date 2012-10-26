@@ -38,12 +38,12 @@ acl Safe_ports port 777         # multiling http
 acl CONNECT method CONNECT
 ############################################# AUTH CONF #####################################
 auth_param basic realm Atention: Autentication Required!
-auth_param basic program /usr/lib64/squid/squid_ldap_auth -b "@DN@" -f uid=%s localhost
+auth_param basic program /usr/lib/squid/squid_ldap_auth -b "@DN@" -f uid=%s localhost
 auth_param basic children 3
 auth_param basic casesensitive off
 auth_param basic credentialsttl 1 hours
 
-external_acl_type ldap_auth %LOGIN /usr/lib64/squid/squid_ldap_group -d -b "dc=@DN@" -f "(&(memberuid=%u)(cn=%g))" -h localhost
+external_acl_type ldap_auth %LOGIN /usr/lib/squid/squid_ldap_group -d -b "dc=@DN@" -f "(&(memberuid=%u)(cn=%g))" -h localhost
 
 ######################################## GENERIC ACLs ########################
 #
@@ -51,11 +51,11 @@ acl auth proxy_auth REQUIRED
 #
 ######################################## MASTER GROUP ACLs ####################
 #
-acl master_group external ldap_auth Internet_Master
+acl master_group external ldap_auth "Internet Master"
 #
 #########################################  NORMAL GROUP ACLs #################
 #
-acl normal_group external ldap_auth Internet
+acl normal_group external ldap_auth "Internet Filtered"
 
 acl normal_bad_ext urlpath_regex -i "/etc/squid/rules/group_internet/normal_blacklist_ext.txt"
 acl normal_blacklist url_regex -i "/etc/squid/rules/group_internet/normal_blacklist.txt"
@@ -63,7 +63,7 @@ acl normal_whitelist url_regex -i "/etc/squid/rules/group_internet/normal_whitel
 #
 ################################ TIME ACLS ###################################
 #
-acl time_group external ldap_auth Internet_Time
+acl time_group external ldap_auth "Internet Time"
 
 acl time_day       time MTWHF   "/etc/squid/rules/group_internet/time_day.txt"
 #
