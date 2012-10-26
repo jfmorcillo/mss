@@ -21,3 +21,38 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+import re
+import logging
+
+def check_configured():
+    logging.getLogger().debug("EJABBERD A CHECK CONFIGURE")
+    return False
+
+def get_config_info():
+    return ('setup-ejabberd.sh', ['servername','encryption'])
+
+def get_current_config():
+    logging.getLogger().debug("APPEL A GET CURRENT CONFIG")
+    configuration_file = open('/etc/ejabberd/ejabberd.cfg')
+    configuration = configuration_file.read()
+    configuration_file.close()
+    
+    server=re.search('^{hosts, \["(.*)"\]}', configuration, re.M)
+    if server:
+        servername = server.group(1)
+    else:
+        servername = ""
+    logging.getLogger().debug("server name: %s", servername)
+        
+    crypt = re.search('\s*{certfile, "/etc/pki/tls/private/ejabberd.pem"}, starttls,', configuration, re.M)
+    if crypt:
+        encryption = "starttls"
+    else:
+        crypt = re.search('\s*{certfile, "/etc/pki/tls/private/ejabberd.pem"}, tls,', configuration, re.M)
+        if crypt:
+            encryption = "tls"
+        else:
+            encryption = "none"
+    logging.getLogger().debug("encryption: %s", encryption)
+    return {'servername': servername,
+            'encryption': encryption}

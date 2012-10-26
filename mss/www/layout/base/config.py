@@ -50,7 +50,7 @@ config.add_bundle("core", {
     'modules': ["mds_cups", "mds_proxy"]
 })
 config.add_bundle("core", {
-    'id': 'instant_messaging', 'name': _('Instant Messaging'),
+    'id': 'ejabberd', 'name': _('Instant Messaging'),
     'icon': 'base/other.png',
     'modules': ["ejabberd"]
 })

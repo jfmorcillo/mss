@@ -1,12 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:noNamespaceSchemaLocation="../desc.xsd" id="ejabberd">
-	<name>Jabber/SMPP instant messaging server</name>
+	<name>Jabber/XMPP instant messaging server</name>
 	<desc>A distributed, fault-tolerant Jabber/XMPP server</desc>
 	<packages>
 		<target name="all">
 			<rpm>ejabberd</rpm>
 		</target>
-	</packages>
+		</packages>
+		<config>
+		    <text name="servername" require="yes">
+		        <label>Server Name</label>
+		        <help>The name you want to use for the instant messaging server. You can use any name but one known by DNS is recommended (else the server IP address has to be provided when setting up clients)</help>
+		    </text>
+		    <options name="encryption" default="starttls">
+		        <label>Encryption</label>
+		        <help>starttls is recommended, tls is deprecated, none might be dangerous</help>
+		        <option value="starttls">starttls</option>
+		        <option value="tls">tls</option>
+				<option value="none">none</option>
+		    </options>
+		</config>
+	
 </module>
 	
