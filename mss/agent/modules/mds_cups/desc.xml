@@ -1,6 +1,6 @@
 <module id="mds_cups">
     <name>Printing service</name>
-    <desc>Install and configure network printers</desc>
+    <desc>Network printers management</desc>
     <actions>
         <action type="link" name="Printers management" value="http://@HOSTNAME@:631/admin/" />
     </actions>

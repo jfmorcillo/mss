@@ -1,6 +1,6 @@
 <module id="mds_proxy">
     <name>Proxy service</name>
-    <desc>Control your Internet connection with content filters.</desc>
+    <desc>Control your Internet connection with content filters</desc>
     <actions>
         <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
     </actions>
