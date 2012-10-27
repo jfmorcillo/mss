@@ -1,0 +1,13 @@
+<module id="network">
+    <name>Network setup</name>
+    <desc>Configure network interfaces</desc>
+    <packages>
+        <target name="all">
+            <rpm>shorewall</rpm>
+        </target>
+    </packages>
+    <config>
+        <custom name="interfaces" />
+    </config>
+</module>
+
