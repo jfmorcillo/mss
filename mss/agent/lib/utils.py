@@ -45,6 +45,24 @@ def getINIoption(section, option, ini):
     config.read(ini)
     return config.get(section, option)
 
+def get_config_option(file, option):
+    """
+    Returns the option value of a config file formatted like:
+    OPTION=value
+    """
+    if os.path.exists(file):
+        h = open(file)
+        string = h.read()
+        h.close()
+        expr = re.compile("\s*%s\s*=\s*(.*)" % option, re.M)
+        match = expr.search(string)
+        if match and match.group(1):
+            return match.group(1).strip()
+        else:
+            return ""
+    else:
+        raise OSError("File not found")
+
 def grep(search, file):
     if os.path.exists(file):
         h = open(file)
