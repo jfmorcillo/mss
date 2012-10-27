@@ -30,7 +30,7 @@ def get_config_info():
     "dns_lookup_kdc", "dns_lookup_realm", "tgs_enctypes", "tkt_enctypes", "permitted_enctypes","allow_weak_enctypes", "clock_skew"])
 
 
-def get_current_config():
+def get_current_config(module):
     config = {}
     KRB_CONF = "/etc/krb5.conf"
     KRB_CONF_PARAMS = {

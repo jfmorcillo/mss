@@ -27,7 +27,7 @@ def get_config_info():
 
     return ("setup-mmc.sh", ['domain', 'mdspasswd', 'mdsppolicy'])
 
-def get_current_config():
+def get_current_config(module):
 
     ini='/etc/mmc/plugins/base.ini'
     if os.path.exists(ini):

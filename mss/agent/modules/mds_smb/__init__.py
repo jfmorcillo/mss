@@ -27,7 +27,7 @@ from mss.agent.lib.utils import getINIoption
 def get_config_info():
     return ("setup-smb.sh", ["smbdomain", "smbnetbios", "smbadmin", "smbpasswd"])
 
-def get_current_config():
+def get_current_config(module):
 
     ini='/etc/samba/smb.conf'
     if os.path.exists(ini):

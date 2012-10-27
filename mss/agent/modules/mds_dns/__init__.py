@@ -28,7 +28,7 @@ from mss.agent.lib.utils import ethernet_ifs
 def get_config_info():
     return ("setup-dns.sh", ["bind_networks", "bind_forwarders"])
 
-def get_current_config():
+def get_current_config(module):
 
     bind_networks = []
     if os.path.exists('/var/lib/named/etc/mss_acls.conf'):

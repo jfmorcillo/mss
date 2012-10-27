@@ -41,7 +41,7 @@ def get_domain(module):
     """
     return module.MM.get_option("domain")
 
-def get_current_config():
+def get_current_config(module):
     configuration_file = open('/etc/ejabberd/ejabberd.cfg')
     configuration = configuration_file.read()
     configuration_file.close()

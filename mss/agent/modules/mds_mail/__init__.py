@@ -31,7 +31,7 @@ from mss.agent.lib.utils import ethernet_ifs
 def get_config_info():
     return ('setup-mail.sh', ['smtpd_myhostname', 'smtpd_mynetworks', 'popimap_proto'])
 
-def get_current_config():
+def get_current_config(module):
 
     # get postfix config
     p = Popen(['/usr/sbin/postconf', '-h', 'myhostname'], stdout=PIPE)
