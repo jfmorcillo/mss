@@ -20,6 +20,7 @@
 # MA 02110-1301, USA.
 
 import re
+import socket
 
 class Validation:
     """
@@ -44,7 +45,11 @@ class Validation:
         return None
 
     def ip(self, ips):
+        if isinstance(ips, basestring):
+            ips = [ips]
         for ip in ips:
-            if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
+            try:
+                socket.inet_aton(ip)
+            except socket.error:
                 return "Incorrect IP address."
         return None
