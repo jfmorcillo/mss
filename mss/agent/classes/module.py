@@ -105,7 +105,7 @@ class Module(object):
             return _(self._desc, self.id)
         else:
             return ""
-   
+
     @property
     def actions(self):
         return self._actions
@@ -214,7 +214,7 @@ class Module(object):
         reload(self.module)
         # get current module config
         try:
-            current_config = getattr(self.module, 'get_current_config')()
+            current_config = getattr(self.module, 'get_current_config')(self)
         except AttributeError:
             current_config = {}
         except Exception, err:
@@ -259,6 +259,8 @@ class Module(object):
                             {'name': option.text,
                              'value': option.attrib.get('value')}
                         )
+                if field_config["type"] == "custom":
+                    self.config = getattr(self.module, 'get_%s_config' % field_config['name'])(self.config)
                 # add current value if module is configured
                 if self.configured and current_config.get(field_config['name']):
                     field_config['default'] = current_config.get(field_config['name'])
@@ -285,7 +287,8 @@ class Module(object):
                 if self.configured and "show_if_unconfigured" in field_config and "require" in field_config:
                     del field_config["require"]
 
-                self.config.append(field_config)
+                if field_config["type"] != "custom":
+                    self.config.append(field_config)
 
         return self.config
 
