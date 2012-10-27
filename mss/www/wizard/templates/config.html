@@ -87,6 +87,9 @@
             	/>
         	{% else %}
                 {% if field.type %}
+                {% ifequal field.type "subtitle" %}
+                    <h3>{{ field.label }}</h3>
+                {% endifequal %}
         	    {% ifequal field.type "text" %}
                     {% if field.hidden %}
                     <input type="hidden" id="{{ field.id }}_{{ field.name }}"
@@ -191,6 +194,22 @@
                                 {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
                                 {{ option.name }}
                             </option>
+                            {% if option.toggle %}
+                            <script type="text/javascript">
+                                $('#{{ field.id }}_{{ field.name }}').change(function() {
+                                    {% for f in option.toggle %}
+                                    $('#{{ field.id }}_{{ f }}').parent().parent().toggle();
+                                    {% endfor %}
+                                });
+                                {% ifnotequal option.value field.default %}
+                                $(document).ready(function() {
+                                    {% for f in option.toggle %}
+                                    $('#{{ field.id }}_{{ f }}').parent().parent().hide();
+                                    {% endfor %}
+                                });
+                                {% endifnotequal %}
+                            </script>
+                                {% endif %}
                         {% endfor %}
                         </select>
                         {% if field.error %}
