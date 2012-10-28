@@ -23,15 +23,11 @@
 # For more information, please read the nsswitch.conf.5 manual page.
 #
 
-# passwd: files nis
-# shadow: files nis
-# group:  files nis
-
-passwd:		files compat ldap winbind [NOTFOUND=return] db
+passwd:		files ldap
 shadow:		files
-group:		files compat ldap winbind [NOTFOUND=return] db
+group:		files ldap
 
-hosts:  	files nis dns
+hosts:  	files dns
 networks:	files
 
 services:	files
