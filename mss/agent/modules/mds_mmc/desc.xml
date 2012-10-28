@@ -19,6 +19,7 @@
             <rpm>openldap-clients</rpm>
             <rpm>pam_ldap</rpm>
             <rpm>openldap-mandriva-dit</rpm>
+            <rpm>apache-mod_ssl</rpm>
         </target>
     </packages>
     <config>
