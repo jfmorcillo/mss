@@ -2,7 +2,7 @@
     <name>Audit plugin</name>
     <desc>Track any changes made in the management interface</desc>
     <actions>
-        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/main.php" />
     </actions>
     <deps>
         <module>mds_mmc</module>

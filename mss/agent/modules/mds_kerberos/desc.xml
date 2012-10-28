@@ -2,7 +2,7 @@
     <name>Kerberos authentication with MDS backend</name>
     <desc>Install and configure Kerberos authentication</desc>
     <actions>
-        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/main.php" />
     </actions>
     <packages>
         <target name="all">

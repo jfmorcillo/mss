@@ -10,7 +10,7 @@
         <module>mds_webmail</module>
     </conflicts>
     <actions>
-        <action type="link" name="Users and groups management" value="https://@HOSTNAME@/mmc/" />
+        <action type="link" name="Users and groups management" value="https://@HOSTNAME@/mmc/main.php" />
         <action type="link" name="Zarafa webmail interface" value="http://@HOSTNAME@/webaccess/" />
     </actions>
     <market>

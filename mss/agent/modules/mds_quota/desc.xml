@@ -1,7 +1,6 @@
 <module id="mds_quota">
     <name>User quota management</name>
     <desc>Set file quotas on the server</desc>
-    <url>https://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>quota</rpm>
