@@ -39,7 +39,7 @@ class ProcessManager:
 
     def install_packages(self, packages):
         """ launch installation of packages list """
-        self.launch("install", ["urpmi", "--auto", "--force"] + packages)
+        self.launch("install", ["urpmi", "--auto"] + packages)
 
     def run_script(self, script, args, cwd):
         """ launch configuration script for module """
