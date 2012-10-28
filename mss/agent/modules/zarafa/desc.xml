@@ -10,7 +10,7 @@
         <module>mds_webmail</module>
     </conflicts>
     <actions>
-        <action type="link" name="Users and groups management" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Users and groups management" value="https://@HOSTNAME@/mmc/" />
         <action type="link" name="Zarafa webmail interface" value="http://@HOSTNAME@/webaccess/" />
     </actions>
     <market>
@@ -77,7 +77,7 @@
         </network>
     </config>
     <text>Zarafa web interface is available at : http://@HOSTNAME@/webaccess/</text>
-    <text>Mail module with Zarafa support is activated in the MDS interface : http://@HOSTNAME@/mmc/</text>
+    <text>Mail module with Zarafa support is activated in the MDS interface : https://@HOSTNAME@/mmc/</text>
     <text>You can create mail domains in the MDS interface and specify mail adresses to users and groups</text>
     <text>You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa</text>
     <text>- SSL is enabled on the smtp server</text>

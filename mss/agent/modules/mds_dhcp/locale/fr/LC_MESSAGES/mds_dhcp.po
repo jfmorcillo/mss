@@ -69,7 +69,7 @@ msgstr ""
 #: modules/mds_dhcp/desc.xml24(text)
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

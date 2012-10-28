@@ -22,7 +22,7 @@ msgid "Set file quotas on the server"
 msgstr ""
 
 #: modules/mds_quota/desc.xml4(url)
-msgid "http://@HOSTNAME@/mmc/"
+msgid "https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #: modules/mds_quota/desc.xml7(rpm)
@@ -94,7 +94,7 @@ msgstr "Le module de quotas est activé sur l'interface MDS"
 #: modules/mds_quota/desc.xml30(text)
 msgid ""
 "You can now configure user quotas from the MDS interface : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 msgstr ""
 "Vous pouvez définir des quotas sur les utilisateurs et groupes depuis "
 "l'interface MDS : http://@HOSTNAME@/"

@@ -15,8 +15,8 @@ msgstr ""
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
 #: modules/mds_audit/desc.xml:33(text)
-msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
-msgstr "Модуль аудит включен в MDS-интерфейс: http://@HOSTNAME@/mmc/"
+msgid "Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/"
+msgstr "Модуль аудит включен в MDS-интерфейс: https://@HOSTNAME@/mmc/"
 
 #: modules/mds_audit/desc.xml:2(name)
 msgid "Audit plugin"

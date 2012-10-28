@@ -108,7 +108,7 @@ msgstr ""
 #: modules/mds_mail/desc.xml:46(text)
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
-"interface at http://@HOSTNAME@/mmc/."
+"interface at https://@HOSTNAME@/mmc/."
 msgstr ""
 
 #: modules/mds_mail/desc.xml:12(rpm)
@@ -175,9 +175,9 @@ msgstr "zarafa"
 #~ msgstr "MMC-интерфейс не установлен."
 
 #~ msgid ""
-#~ "Mail module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+#~ "Mail module is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 #~ msgstr ""
-#~ "почтовый модуль активирован в MDS-интерфейсе: http://@HOSTNAME@/mmc/"
+#~ "почтовый модуль активирован в MDS-интерфейсе: https://@HOSTNAME@/mmc/"
 
 #~ msgid "Mail server with MDS backend"
 #~ msgstr "Почтовый сервер с MDS backend"

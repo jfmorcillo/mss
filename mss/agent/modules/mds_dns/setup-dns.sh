@@ -65,7 +65,7 @@ fi
 if [ ! -z "$networks" ]; then
     echo "7The following networks are able to query your DNS for external domains : #$networks"
 fi
-echo "7You can now add DNS zones in the management interface : http://@HOSTNAME@/mmc/"
+echo "7You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/"
 echo "8Make sure you have enabled the DNS service (port 53) on your firewall."
 
 exit 0

@@ -18,7 +18,7 @@ msgid "Set file quotas on the server"
 msgstr ""
 
 #: modules/mds_quota/desc.xml:4(url)
-msgid "http://@HOSTNAME@/mmc/"
+msgid "https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #: modules/mds_quota/desc.xml:7(rpm)
@@ -82,7 +82,7 @@ msgid "Quota module is activated in the MDS interface."
 msgstr ""
 
 #: modules/mds_quota/desc.xml:30(text)
-msgid "You can now configure user quotas from the MDS interface : http://@HOSTNAME@/mmc/"
+msgid "You can now configure user quotas from the MDS interface : https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

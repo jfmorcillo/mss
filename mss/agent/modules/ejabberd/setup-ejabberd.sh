@@ -25,6 +25,6 @@ sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $EJABBERD_CONF
 restart_service $SERVICE
 
 echo "8The instant messaging service is configured."
-echo "8You can simply add users through the management interface at# http://@HOSTNAME@/mmc/. #The user's mail will be used as his Jabber ID."
+echo "8You can simply add users through the management interface at# https://@HOSTNAME@/mmc/. #The user's mail will be used as his Jabber ID."
 echo "7Configure clients with JID like# @B@uid@$domain@B@ #and use# @B@$hostname.$domain@B@ #as the server."
 echo "7If# @B@$hostname.$domain@B@ #is registered as a Jabber server in the DNS zone# @B@$domain@B@ #there is no need to configure the server address in clients."

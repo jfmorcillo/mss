@@ -2,7 +2,7 @@
     <name>Audit plugin</name>
     <desc>Track any changes made in the management interface</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <deps>
         <module>mds_mmc</module>
@@ -30,5 +30,5 @@
     <text>Grant privileges on database</text>
     <text>Service MMC started succesfully.</text>
     <text>Service MMC fails starting. Check</text>
-    <text>Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/</text>
+    <text>Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/</text>
 </module>

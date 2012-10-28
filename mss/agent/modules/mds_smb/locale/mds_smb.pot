@@ -194,7 +194,7 @@ msgid "Make sure you have enabled SAMBA services on your firewall."
 msgstr ""
 
 #: modules/mds_smb/desc.xml:70(text)
-msgid "You can now use the management interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/)."
+msgid "You can now use the management interface to manage your Windows users and shares (https://@HOSTNAME@/mmc/)."
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

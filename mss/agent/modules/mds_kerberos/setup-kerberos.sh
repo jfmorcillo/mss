@@ -682,4 +682,4 @@ fi
 #COM1
 
 echo "8Kerberos module is activated in the MDS interface"
-echo "7You can add Kerberos principals from the MDS interface: http://@HOSTNAME@/mmc/"
+echo "7You can add Kerberos principals from the MDS interface: https://@HOSTNAME@/mmc/"

@@ -3,7 +3,7 @@
     <desc>Authenticate Windows users with SAMBA, provide Windows file shares on
     your network</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <packages>
         <target name="all">
@@ -67,5 +67,5 @@
     <text>- a public share is created in /home/samba/shares/public</text>
     <text>- you can create a logon.bat script in /home/samba/netlogon</text>
     <text>Make sure you have enabled SAMBA services on your firewall.</text>
-    <text>You can now use the management interface to manage your Windows users and shares (http://@HOSTNAME@/mmc/).</text>
+    <text>You can now use the management interface to manage your Windows users and shares (https://@HOSTNAME@/mmc/).</text>
 </module>

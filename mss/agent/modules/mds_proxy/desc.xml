@@ -2,7 +2,7 @@
     <name>Proxy service</name>
     <desc>Control your Internet connection with content filters</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <packages>
         <target name="all">
@@ -13,5 +13,5 @@
         </target>
     </packages>
     <text>The Proxy service is running</text>
-    <text>You can now configure your Internet rules from the management interface : http://@HOSTNAME@/mmc/</text>
+    <text>You can now configure your Internet rules from the management interface : https://@HOSTNAME@/mmc/</text>
 </module>

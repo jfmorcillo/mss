@@ -1,7 +1,7 @@
 <module id="mds_mmc">
     <name>Users and groups management</name>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <packages>
         <target name="all">
@@ -41,7 +41,7 @@
     <text>started succesfully.</text>
     <text>fails starting. Check</text>
     <text>The MBS management interface is configured.</text>
-    <text>You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups.</text>
+    <text>You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups.</text>
     <text>Administrator name : root</text>
     <text>Administrator password : </text>
 </module>

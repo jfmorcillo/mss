@@ -98,7 +98,7 @@ msgstr ""
 #: modules/mds_dns/desc.xml36(text)
 msgid ""
 "You can now add DNS zones in the management interface : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #: modules/mds_dns/desc.xml37(text)

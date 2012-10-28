@@ -1,7 +1,7 @@
 <module id="mds_quota">
     <name>User quota management</name>
     <desc>Set file quotas on the server</desc>
-    <url>http://@HOSTNAME@/mmc/</url>
+    <url>https://@HOSTNAME@/mmc/</url>
     <packages>
         <target name="all">
             <rpm>quota</rpm>
@@ -27,5 +27,5 @@
     <text>Quotas not supported on this filesystem :</text>
     <text>Quota option already present for</text>
     <text>Quota module is activated in the MDS interface.</text>
-    <text>You can now configure user quotas from the MDS interface : http://@HOSTNAME@/mmc/</text>
+    <text>You can now configure user quotas from the MDS interface : https://@HOSTNAME@/mmc/</text>
 </module>

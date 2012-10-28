@@ -34,6 +34,6 @@ restart_service mmc-agent /var/log/mmc/mmc-agent.log
 enable_service dhcpd
 
 echo 8The DHCP service is installed.
-echo 7You can now configure your DHCP settings from the management interface : http://@HOSTNAME@/mmc/
+echo 7You can now configure your DHCP settings from the management interface : https://@HOSTNAME@/mmc/
 
 exit 0

@@ -14,9 +14,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: modules/mds_audit/desc.xml:33(text)
-msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgid "Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 msgstr ""
-"Módulo de auditoria está ativado na interface do MDS: http://@HOSTNAME@/mmc/"
+"Módulo de auditoria está ativado na interface do MDS: https://@HOSTNAME@/mmc/"
 
 #: modules/mds_audit/desc.xml:2(name)
 msgid "Audit plugin"

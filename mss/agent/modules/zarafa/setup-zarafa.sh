@@ -260,7 +260,7 @@ fi
 restart_service httpd /var/log/httpd/error.log
 
 echo "8Zarafa web interface is available at : http://@HOSTNAME@/webaccess/"
-echo "8Mail module with Zarafa support is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+echo "8Mail module with Zarafa support is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 echo "7You can create mail domains in the MDS interface and specify mail adresses to users and groups"
 echo "7You have to set zarafa attributes to users and groups from the MDS interface if you want them in zarafa"
 echo "7- SSL is enabled on the smtp server"

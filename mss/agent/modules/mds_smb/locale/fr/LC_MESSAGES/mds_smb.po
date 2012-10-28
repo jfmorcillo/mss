@@ -235,7 +235,7 @@ msgstr "Assurez vous que votre pare-feu accepte les services SAMBA en entrée."
 #: modules/mds_smb/desc.xml70(text)
 msgid ""
 "You can now use the management interface to manage your Windows users and "
-"shares (http://@HOSTNAME@/mmc/)."
+"shares (https://@HOSTNAME@/mmc/)."
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

@@ -110,7 +110,7 @@ msgid "The MBS management interface is configured."
 msgstr ""
 
 #: modules/mds_mmc/desc.xml:44(text)
-msgid "You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups."
+msgid "You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups."
 msgstr ""
 
 #: modules/mds_mmc/desc.xml:45(text)

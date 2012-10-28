@@ -22,6 +22,6 @@ the ``desc.xml`` file in ``<text>`` nodes :
         <text>started succesfully.</text>
         <text>fails starting. Check</text>
         <text>Mandriva Directory Server is running.</text>
-        <text>You can log in the MDS interface from http://@HOSTNAME@/mmc/.</text>
+        <text>You can log in the MDS interface from https://@HOSTNAME@/mmc/.</text>
         <text>MDS administrator : root</text>
     </module>

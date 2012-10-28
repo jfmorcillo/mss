@@ -2,7 +2,7 @@
     <name>Mail service</name>
     <desc>Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <packages>
         <target name="all">
@@ -43,7 +43,7 @@
     <text> reloaded succesfully.</text>
     <text> fails restarting. Check </text>
     <text>The mail service is configured.</text>
-    <text>You can add mail addresses and aliases to your users through the management interface at http://@HOSTNAME@/mmc/.</text>
+    <text>You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/.</text>
     <text>- mails are stored in /home/vmail/user/Maildir</text>
     <text>- SSL is enabled on the SMTP server</text>
     <text>- Non-SSL connexions on external interfaces are disabled by default on the IMAP server</text>

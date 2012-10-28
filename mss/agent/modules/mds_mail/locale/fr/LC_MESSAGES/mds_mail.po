@@ -124,7 +124,7 @@ msgstr ""
 #: modules/mds_mail/desc.xml46(text)
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
-"interface at http://@HOSTNAME@/mmc/."
+"interface at https://@HOSTNAME@/mmc/."
 msgstr ""
 
 #: modules/mds_mail/desc.xml47(text)

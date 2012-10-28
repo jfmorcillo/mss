@@ -78,10 +78,10 @@ msgid ""
 "mmc/"
 msgstr ""
 "Agora você pode configurar as quotas de usuários a partir da interface MDS "
-"em http://@HOSTNAME@/mmc/"
+"em https://@HOSTNAME@/mmc/"
 
 #: modules/mds_quota/desc.xml:4(url)
-msgid "http://@HOSTNAME@/mmc/"
+msgid "https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #: modules/mds_quota/desc.xml:13(module)

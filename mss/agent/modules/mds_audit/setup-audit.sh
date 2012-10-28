@@ -37,6 +37,6 @@ mmc-helper audit init
 
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
-echo 8Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/
+echo 8Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/
 
 exit 0

@@ -86,7 +86,7 @@ msgid "The following networks are able to query your DNS for external domains :"
 msgstr ""
 
 #: modules/mds_dns/desc.xml:36(text)
-msgid "You can now add DNS zones in the management interface : http://@HOSTNAME@/mmc/"
+msgid "You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #: modules/mds_dns/desc.xml:37(text)

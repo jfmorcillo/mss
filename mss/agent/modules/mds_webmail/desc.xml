@@ -2,7 +2,7 @@
     <name>Webmail</name>
     <desc>Roundcube, a complete webmail solution for your mail service</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
         <action type="link" name="Webmail interface" value="http://@HOSTNAME@/roundcubemail/" />
     </actions>
     <packages>

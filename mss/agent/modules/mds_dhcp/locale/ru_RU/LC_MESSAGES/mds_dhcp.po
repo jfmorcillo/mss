@@ -64,7 +64,7 @@ msgstr "Интерфейс MMC не установлен."
 #, fuzzy
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 msgstr ""
 "Вы можете сконфигурировать настройки DHCP с MDS-интерфейса: http://"
 "@HOSTNAME@/mmc/"

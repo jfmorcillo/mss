@@ -79,9 +79,9 @@ msgstr "Le service MMC n'a pas démarré. Vérifiez"
 
 #: modules/mds_audit/desc.xml33(text)
 msgid ""
-"Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+"Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 msgstr ""
-"Le module d'audit est activé dans l'interface MDS : http://@HOSTNAME@/mmc/"
+"Le module d'audit est activé dans l'interface MDS : https://@HOSTNAME@/mmc/"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds_audit/desc.xml0(None)

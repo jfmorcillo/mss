@@ -62,10 +62,10 @@ msgstr "A interface MMC não está instalada."
 #, fuzzy
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 msgstr ""
 "Agora você pode configurar suas definições de DHCP a partir da interface MDS "
-"em http://@HOSTNAME@/mmc/"
+"em https://@HOSTNAME@/mmc/"
 
 #: modules/mds_dhcp/desc.xml:9(rpm)
 msgid "dhcp-server"

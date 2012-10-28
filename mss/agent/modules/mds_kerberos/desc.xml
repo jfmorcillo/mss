@@ -2,7 +2,7 @@
     <name>Kerberos authentication with MDS backend</name>
     <desc>Install and configure Kerberos authentication</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <packages>
         <target name="all">
@@ -162,5 +162,5 @@
     <text>Service mmc-agent started successfully</text>
     <text>Service mmc-agent fails starting. Check</text>
     <text>Kerberos module is activated in the MDS interface</text>
-    <text>You can add Kerberos principals from the MDS interface: http://@HOSTNAME@/mmc/</text>
+    <text>You can add Kerberos principals from the MDS interface: https://@HOSTNAME@/mmc/</text>
 </module>

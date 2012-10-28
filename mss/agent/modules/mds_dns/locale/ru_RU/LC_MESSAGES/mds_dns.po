@@ -86,7 +86,7 @@ msgid ""
 "You can now add DNS zones in the management interface : http://@HOSTNAME@/"
 "mmc/"
 msgstr ""
-"Вы не можете добавить DNS-зоны с MDS-интерфейса:  http://@HOSTNAME@/mmc/"
+"Вы не можете добавить DNS-зоны с MDS-интерфейса:  https://@HOSTNAME@/mmc/"
 
 #: modules/mds_dns/desc.xml:34(text)
 msgid "Your DNS will forward external queries to :"

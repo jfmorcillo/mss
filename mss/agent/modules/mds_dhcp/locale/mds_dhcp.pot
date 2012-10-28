@@ -62,7 +62,7 @@ msgid "The DHCP service is installed."
 msgstr ""
 
 #: modules/mds_dhcp/desc.xml:24(text)
-msgid "You can now configure your DHCP settings from the management interface : http://@HOSTNAME@/mmc/"
+msgid "You can now configure your DHCP settings from the management interface : https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

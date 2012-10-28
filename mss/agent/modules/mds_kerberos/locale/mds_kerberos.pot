@@ -498,7 +498,7 @@ msgid "Kerberos module is activated in the MDS interface"
 msgstr ""
 
 #: modules/mds_kerberos/desc.xml:165(text)
-msgid "You can add Kerberos principals from the MDS interface: http://@HOSTNAME@/mmc/"
+msgid "You can add Kerberos principals from the MDS interface: https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

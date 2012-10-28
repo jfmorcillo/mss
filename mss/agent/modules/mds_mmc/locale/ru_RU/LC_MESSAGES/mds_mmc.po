@@ -59,9 +59,9 @@ msgstr ""
 #: modules/mds_mmc/desc.xml:44(text)
 #, fuzzy
 msgid ""
-"You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and "
+"You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and "
 "start adding users and groups."
-msgstr "Вы можете войти в MDS-интерфейс с http://@HOSTNAME@/mmc/."
+msgstr "Вы можете войти в MDS-интерфейс с https://@HOSTNAME@/mmc/."
 
 #: modules/mds_mmc/desc.xml:26(label)
 #, fuzzy

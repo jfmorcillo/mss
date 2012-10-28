@@ -108,7 +108,7 @@ restart_service postfix
 restart_service dovecot
 
 echo "8The mail service is configured."
-echo "8You can add mail addresses and aliases to your users through the management interface at http://@HOSTNAME@/mmc/."
+echo "8You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
 echo "7- mails are stored in /home/vmail/user/Maildir"
 echo "7- SSL is enabled on the SMTP server"
 echo "7- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"

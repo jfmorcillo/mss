@@ -178,7 +178,7 @@ msgid "Zarafa web interface is available at : http://@HOSTNAME@/webaccess/"
 msgstr ""
 
 #: modules/zarafa/desc.xml:80(text)
-msgid "Mail module with Zarafa support is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgid "Mail module with Zarafa support is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #: modules/zarafa/desc.xml:81(text)

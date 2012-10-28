@@ -162,7 +162,7 @@ msgstr ""
 #: modules/mds_smb/desc.xml:70(text)
 msgid ""
 "You can now use the management interface to manage your Windows users and "
-"shares (http://@HOSTNAME@/mmc/)."
+"shares (https://@HOSTNAME@/mmc/)."
 msgstr ""
 
 #: modules/mds_smb/desc.xml:61(text)

@@ -46,6 +46,6 @@ cat $userquota_tpl > /etc/mmc/plugins/userquota.ini
 sed -i "s!\@FILESYSTEMS\@!${filesystems}!" /etc/mmc/plugins/userquota.ini
 
 echo "8Quota module is activated in the management interface."
-echo "7You can now configure user quotas from the management interface : http://@HOSTNAME@/mmc/."
+echo "7You can now configure user quotas from the management interface : https://@HOSTNAME@/mmc/."
 
 exit 0

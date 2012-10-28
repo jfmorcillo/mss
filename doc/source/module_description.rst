@@ -40,7 +40,7 @@ html links are supported.
 ::
 
  <actions>
-     <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+     <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
      <action type="link" name="Webmail" value="http://@HOSTNAME@/roundcubemail/" />
  </actions>
 

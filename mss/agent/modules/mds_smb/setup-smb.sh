@@ -108,6 +108,6 @@ echo "8Domain administrator :# $smbadmin"
 echo "7- a public share is created in /home/samba/shares/public"
 echo "7- you can create a logon.bat script in /home/samba/netlogon"
 echo "8Make sure you have enabled SAMBA services on your firewall."
-echo "8You can now use the management interface to manage your Windows users and shares at http://@HOSTNAME@/mmc/."
+echo "8You can now use the management interface to manage your Windows users and shares at https://@HOSTNAME@/mmc/."
 
 exit 0

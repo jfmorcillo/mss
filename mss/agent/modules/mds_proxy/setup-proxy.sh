@@ -78,6 +78,6 @@ restart_service squid
 enable_service squid
 
 echo 8The Proxy service is running
-echo 7You can now configure your Internet rules from the management interface : http://@HOSTNAME@/mmc/
+echo 7You can now configure your Internet rules from the management interface : https://@HOSTNAME@/mmc/
 
 exit 0

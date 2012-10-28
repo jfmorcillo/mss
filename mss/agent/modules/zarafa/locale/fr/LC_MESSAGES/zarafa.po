@@ -199,10 +199,10 @@ msgstr ""
 #: modules/zarafa/desc.xml80(text)
 msgid ""
 "Mail module with Zarafa support is activated in the MDS interface : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 msgstr ""
 "Le module de mail avec support Zarafa est activé sur l'interface MDS : "
-"http://@HOSTNAME@/mmc/"
+"https://@HOSTNAME@/mmc/"
 
 #: modules/zarafa/desc.xml81(text)
 msgid ""

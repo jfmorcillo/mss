@@ -115,7 +115,7 @@ msgstr ""
 
 #: modules/mds_mmc/desc.xml44(text)
 msgid ""
-"You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and "
+"You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and "
 "start adding users and groups."
 msgstr ""
 

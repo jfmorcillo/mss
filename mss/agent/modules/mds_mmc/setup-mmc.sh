@@ -139,7 +139,7 @@ restart_service httpd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 echo "8The MBS management interface is configured."
-echo "8You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups."
+echo "8You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups."
 echo "8Administrator name : root"
 echo "8Administrator password : #$mypass"
 

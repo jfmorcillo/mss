@@ -174,10 +174,10 @@ msgstr ""
 #, fuzzy
 msgid ""
 "You can now use the management interface to manage your Windows users and "
-"shares (http://@HOSTNAME@/mmc/)."
+"shares (https://@HOSTNAME@/mmc/)."
 msgstr ""
 "Теперь вы можете использовать MDS-интерфейс для управления пользователями и "
-"общим доступом Windows (http://@HOSTNAME@/mmc/)."
+"общим доступом Windows (https://@HOSTNAME@/mmc/)."
 
 #: modules/mds_smb/desc.xml:61(text)
 msgid ""

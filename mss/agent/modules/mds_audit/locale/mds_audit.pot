@@ -74,7 +74,7 @@ msgid "Service MMC fails starting. Check"
 msgstr ""
 
 #: modules/mds_audit/desc.xml:33(text)
-msgid "Audit module is activated in the MDS interface : http://@HOSTNAME@/mmc/"
+msgid "Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

@@ -2,7 +2,7 @@
     <name>DNS service</name>
     <desc>Resolve computer names on your network</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/mmc/" />
+        <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
     </actions>
     <packages>
         <target name="all">
@@ -33,6 +33,6 @@
     <text>The DNS service is running.</text>
     <text>Your DNS will forward external queries to : </text>
     <text>The following networks are able to query your DNS for external domains : </text>
-    <text>You can now add DNS zones in the management interface : http://@HOSTNAME@/mmc/</text>
+    <text>You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/</text>
     <text>Make sure you have enabled the DNS service (port 53) on your firewall.</text>
 </module>
