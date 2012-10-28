@@ -40,6 +40,7 @@ function build_shorewall_conf() {
     echo $2 $1 detect >> $shorewall_interfaces
     echo $2 ipv4 >> $shorewall_zones
     echo SSH/ACCEPT     $2  fw >> $shorewall_rules
+    echo Web/ACCEPT     $2  fw >> $shorewall_rules
     echo ACCEPT         $2  fw  tcp     8000 >> $shorewall_rules
 }
 
