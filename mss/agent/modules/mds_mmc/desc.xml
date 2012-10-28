@@ -32,9 +32,6 @@
         <module>system</module>
         <module>network</module>
     </deps>
-    <medias verbose_name="Mandriva Business Server repositories" name="mbs" auth="my" proto="https" mode="distrib" can_skip="yes">
-        <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
-    </medias>
     <text>Service</text>
     <text>and</text>
     <text>stopped succesfully.</text>
