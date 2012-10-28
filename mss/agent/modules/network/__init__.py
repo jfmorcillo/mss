@@ -124,6 +124,3 @@ def get_interfaces_config(config):
                                'label': 'Gateway',
                                'type': 'text', 'validation': 'ip'})
     return config
-
-def check_configured():
-    return False

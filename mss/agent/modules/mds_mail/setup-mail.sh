@@ -24,23 +24,20 @@ ldap_transport_cf="templates/ldap-transport.cf"
 amavis_template="templates/amavisd.conf.tpl"
 spamassassin_template="templates/local.cf.tpl"
 
-smtpd_myhostname="$1"
 # always authorize localhost
 smtpd_mynetworks="127.0.0.1/32"
 # add networks specified in wizard
-for network in $2
+for network in $1
 do
     smtpd_mynetworks=$smtpd_mynetworks,$network
 done
-popimap_proto="$3"
-
-hostname=`echo $smtpd_myhostname | sed 's/\..*//g'`
+popimap_proto="$2"
 
 # postfix
 backup /etc/postfix/main.cf
 cat $main_cf_template > /etc/postfix/main.cf
-sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/postfix/main.cf
-sed -i "s/\@HOSTNAME\@/$hostname/" /etc/postfix/main.cf
+sed -i "s/\@FQDN\@/$FQDN/" /etc/postfix/main.cf
+sed -i "s/\@HOSTNAME\@/$HOST/" /etc/postfix/main.cf
 sed -i "s!\@MYNETWORKS\@!$smtpd_mynetworks!" /etc/postfix/main.cf
 
 backup /etc/postfix/master.cf
@@ -79,7 +76,7 @@ sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/mail.ini
 backup /etc/amavisd/amavisd.conf
 cat $amavis_template > /etc/amavisd/amavisd.conf
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/amavisd/amavisd.conf
-sed -i "s/\@FQDN\@/$smtpd_myhostname/" /etc/amavisd/amavisd.conf
+sed -i "s/\@FQDN\@/$FQDN/" /etc/amavisd/amavisd.conf
 
 chmod 640 /etc/amavisd/amavisd.conf
 
@@ -91,7 +88,7 @@ if [ $? -eq 0 ]; then echo "0Razor configured successfully."
 else 
 	su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover' 2>&1 > /dev/null
 	if [ $? -eq 0 ]; then echo "0Razor configured successfully."
-	else echo "1Failed to register razor. Try to run as root# : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
+	else echo "1Failed to register razor. Try to run as root later# : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
 	fi
 fi
 # no pyzor on mandriva :(
@@ -102,6 +99,10 @@ backup /etc/mail/spamassassin/local.cf
 cat $spamassassin_template > /etc/mail/spamassassin/local.cf
 
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
+
+# add the default mail domain
+python add_domain.py $DOMAIN
+
 restart_service amavisd
 restart_service clamd
 restart_service postfix
@@ -109,6 +110,7 @@ restart_service dovecot
 
 echo "8The mail service is configured."
 echo "8You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
+echo "7- the mail domain# $DOMAIN #has been created"
 echo "7- mails are stored in /home/vmail/user/Maildir"
 echo "7- SSL is enabled on the SMTP server"
 echo "7- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"

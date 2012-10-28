@@ -182,8 +182,7 @@ function restart_service() {
             log="/var/log/syslog"
         fi
         echo "2Service #${1}# fails restarting. Check #${log}#."
-	systemctl status $1.service
-        sleep 1
+        systemctl status $1.service
         exit 1
     fi
 }
@@ -199,8 +198,7 @@ function stop_service() {
             log="/var/log/syslog"
         fi
         echo "2Service #${1}# fails to stop. Check #${log}#."
-	systemctl status $1.service
-        sleep 1
+        systemctl status $1.service
         exit 1
     fi
 }

@@ -51,6 +51,3 @@ def valid_hostname(string):
         return "Incorrect hostname."
     else:
         return None
-
-def check_configured():
-    return False
