@@ -1,10 +1,4 @@
-# Copyright Mandriva 2009, 2010 all rights reserved
-
-function echo_v() {
-	if [ -n "$verbose" ]; then
-		echo "== $@"
-	fi
-}
+# Copyright Mandriva 2009, 2010, 2012 all rights reserved
 
 function check_root() {
     if [ "`id -u`" != "0" ]; then
@@ -33,16 +27,6 @@ function check_mmc_configured() {
         MDSPASS=`grep '^password ' $MDS_BASE_INI | sed 's/^.*[[:space:]]\+=[[:space:]]\+//'`
         MDSPASS_E=`escape_sed $MDSPASS`
     fi
-}
-
-# output: stdout: example.com or the possible detected domain
-function detect_domain() {
-	mydomain=`hostname -d`
-	if [ -z "$mydomain" ]; then
-		mydomain="example.com"
-	fi
-	echo "$mydomain"
-	return 0
 }
 
 # output: stdout: name of temporary file
@@ -87,7 +71,6 @@ function mybackup() {
 }
 
 # $1: *file* to be backed up
-# output (stdout): backup filename
 function backup() {
     now=`date +%s`
 	if [ ! -f "$1" ]; then
