@@ -21,6 +21,8 @@ ppolicy_template="templates/ppolicy.ini.tpl"
 base_ldif_template="templates/init.ldif.tpl"
 acl_template="templates/mandriva-dit-access.conf.tpl"
 acl_file="/etc/openldap/mandriva-dit-access.conf"
+ldap_conf_template="templates/ldap.conf.tpl"
+nsswitch_template="templates/nsswitch.conf.tpl"
 
 myfqdn=`hostname -f`
 if [ -z "$myfqdn" ]; then

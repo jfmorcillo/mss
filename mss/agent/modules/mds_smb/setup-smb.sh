@@ -9,16 +9,11 @@ base_smb_template="templates/smb.conf.tpl"
 smbldap_bind_template="templates/smbldap_bind.conf.tpl"
 smbldap_template="templates/smbldap.conf.tpl"
 mds_smb_template="templates/samba.ini.tpl"
-ldap_conf_template="templates/ldap.conf.tpl"
-nsswitch_template="templates/nsswitch.conf.tpl"
 
 smbdomain="$1"
 smbnetbios="$2"
 smbadmin="$3"
 smbpass="$4"
-
-# first, slapd.conf
-myslapdconf=`make_temp`
 
 #### Now /etc/samba/smb.conf
 backup /etc/samba/smb.conf
@@ -43,16 +38,6 @@ fi
 restart_service smb
 
 sid=`net getlocalsid $smbdomain | cut -d ':' -f2 | cut -d ' ' -f2`
-
-backup /etc/nsswitch.conf
-cat $nsswitch_template > /etc/nsswitch.conf
-backup /etc/ldap.conf
-cat $ldap_conf_template > /etc/ldap.conf
-sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/ldap.conf
-sed -i "s/\@SERVER\@/$MDSSERVER/" /etc/ldap.conf
-if [ $? -eq 0 ]; then echo "0lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)";
-else echo "2Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"; exit 1
-fi
 
 ###### now /etc/smbldap-tools/smbldap.conf
 backup /etc/smbldap-tools/smbldap.conf
