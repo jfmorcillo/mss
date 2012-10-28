@@ -8,13 +8,6 @@
             <rpm>ejabberd</rpm>
         </target>
     </packages>
-    <config>
-        <text name="hostname" default="get_hostname" require="yes" hidden="yes" />
-        <text name="domain" default="get_domain" require="yes">
-            <label>Domain</label>
-            <help>The domain used for jabber communications</help>
-        </text>
-    </config>
     <text>The instant messaging service is configured.</text>
     <text>You can simply add users through the management interface at</text>
     <text>Configure clients with JID like</text>

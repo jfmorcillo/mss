@@ -1,0 +1,60 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-10-28 09:23+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/ejabberd/desc.xml:4(name)
+msgid "Jabber/XMPP instant messaging server"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:5(desc)
+msgid "A distributed, fault-tolerant Jabber/XMPP server"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:8(rpm)
+msgid "ejabberd"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:11(text)
+msgid "The instant messaging service is configured."
+msgstr ""
+
+#: modules/ejabberd/desc.xml:12(text)
+msgid "You can simply add users through the management interface at"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:13(text)
+msgid "Configure clients with JID like"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:14(text)
+msgid "and use"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:15(text)
+msgid "as the server."
+msgstr ""
+
+#: modules/ejabberd/desc.xml:16(text)
+msgid "If"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:17(text)
+msgid "is registered as a Jabber server in the DNS zone"
+msgstr ""
+
+#: modules/ejabberd/desc.xml:18(text)
+msgid "there is no need to configure the server address in clients."
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/ejabberd/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+
