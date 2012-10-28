@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-06-21 16:34+0000\n"
 "Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,7 +33,7 @@ msgstr "Instalando pacotes"
 msgid "Loading packages list"
 msgstr "Carregando lista de pacotes"
 
-#: classes/module.py:345
+#: classes/module.py:348
 msgid "Password mismatch."
 msgstr "Senha incorreta."
 
@@ -45,7 +45,7 @@ msgstr "Pronto"
 msgid "Running configuration"
 msgstr "Configuração em andamento"
 
-#: classes/module.py:340
+#: classes/module.py:343
 msgid "This field can't be empty."
 msgstr "Este campo não pode ser vazio."
 

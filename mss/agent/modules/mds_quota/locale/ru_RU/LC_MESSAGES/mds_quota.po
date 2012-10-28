@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-07-07 06:22+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -73,9 +73,10 @@ msgid "User quota management"
 msgstr "Поддержка квот пользователей "
 
 #: modules/mds_quota/desc.xml:30(text)
+#, fuzzy
 msgid ""
-"You can now configure user quotas from the MDS interface : http://@HOSTNAME@/"
-"mmc/"
+"You can now configure user quotas from the MDS interface : https://"
+"@HOSTNAME@/mmc/"
 msgstr ""
 "Сейчас вы можете настроить пользовательские квоты с MDS-интерфейса: http://"
 "@HOSTNAME@/mmc/"

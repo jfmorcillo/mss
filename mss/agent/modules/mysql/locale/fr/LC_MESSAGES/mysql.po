@@ -1,149 +1,147 @@
-# 
-## Translators:
+#
+# # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2012-10-05 08:49+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mysql/desc.xml2(name)
-msgid "MySQL database"
-msgstr "Serveur MySQL"
-
-#: modules/mysql/desc.xml3(desc)
-msgid "MySQL relational database"
-msgstr "Base de donnée relationnelle MySQL"
-
-#: modules/mysql/desc.xml6(rpm)
-msgid "mysql"
-msgstr ""
-
-#: modules/mysql/desc.xml7(rpm)
-msgid "mysql-client"
-msgstr ""
-
-#: modules/mysql/desc.xml11(module)
-msgid "mysqlmax"
-msgstr ""
-
-#: modules/mysql/desc.xml15(label)
-msgid "Current password"
-msgstr "Mot de passe actuel"
-
-#: modules/mysql/desc.xml16(help)
-msgid "Current MySQL root password."
-msgstr ""
-
-#: modules/mysql/desc.xml19(label)
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: modules/mysql/desc.xml20(help)
-msgid "New MySQL root password. Set here the new password."
-msgstr "Nouveau mot de passe root MySQL."
-
-#: modules/mysql/desc.xml23(text)
-msgid "OK, successfully used password, moving on..."
-msgstr ""
-
-#: modules/mysql/desc.xml24(text)
-msgid "Invalid current MySQL password."
-msgstr "Mot de passe MySQL actuel incorrect."
-
-#: modules/mysql/desc.xml25(text)
-msgid "Setting the root password ensures that nobody can log into the MySQL"
-msgstr ""
-
-#: modules/mysql/desc.xml26(text)
-msgid "root user without the proper authorisation."
-msgstr ""
-
-#: modules/mysql/desc.xml27(text)
-msgid "Password updated successfully!"
-msgstr ""
-
-#: modules/mysql/desc.xml28(text)
-msgid "Reloading privilege tables.."
-msgstr ""
-
-#: modules/mysql/desc.xml29(text)
-msgid "Password update failed!"
-msgstr ""
-
-#: modules/mysql/desc.xml30(text)
-msgid "Removing anonymous users"
-msgstr ""
-
-#: modules/mysql/desc.xml31(text)
-msgid "... Success!"
-msgstr ""
-
-#: modules/mysql/desc.xml32(text)
-msgid "... Failed!"
-msgstr ""
-
-#: modules/mysql/desc.xml33(text)
-msgid "Disallowing root login remotely"
-msgstr ""
-
-#: modules/mysql/desc.xml34(text)
-msgid "Remove test database and access to it"
-msgstr ""
-
-#: modules/mysql/desc.xml35(text)
-msgid "- Dropping test database..."
-msgstr ""
-
-#: modules/mysql/desc.xml36(text)
-msgid "... Failed! Not critical, keep moving..."
-msgstr ""
-
-#: modules/mysql/desc.xml37(text)
-msgid "- Removing privileges on test database..."
-msgstr ""
-
-#: modules/mysql/desc.xml38(text)
-msgid "Reloading the privilege tables"
-msgstr ""
-
-#: modules/mysql/desc.xml39(text)
-msgid "Aborting!"
-msgstr ""
-
-#: modules/mysql/desc.xml40(text)
-msgid "Cleaning up..."
-msgstr ""
-
-#: modules/mysql/desc.xml41(text)
-msgid "MySQL is running"
-msgstr "MySQL est en exécution"
-
-#: modules/mysql/desc.xml42(text)
+#: modules/mysql/desc.xml:44(text)
 msgid "- A password has been set for the root user"
 msgstr "- Un mot de passe a été positionné pour l'utilisateur root"
 
-#: modules/mysql/desc.xml43(text)
+#: modules/mysql/desc.xml:45(text)
 msgid "- Anonymous users were removed"
 msgstr "- Les utilisateurs anonymes ont étés supprimés"
 
-#: modules/mysql/desc.xml44(text)
-msgid "- Test database has been removed"
-msgstr "- La base de donnée de test a été supprimée"
+#: modules/mysql/desc.xml:37(text)
+msgid "- Dropping test database..."
+msgstr ""
 
-#: modules/mysql/desc.xml45(text)
+#: modules/mysql/desc.xml:47(text)
 msgid "- Remote login for root has been disabled"
 msgstr "- Les connexions distantes de l'utilisateur root sont désactivées"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mysql/desc.xml0(None)
-msgid "translator-credits"
+#: modules/mysql/desc.xml:39(text)
+msgid "- Removing privileges on test database..."
 msgstr ""
 
+#: modules/mysql/desc.xml:46(text)
+msgid "- Test database has been removed"
+msgstr "- La base de donnée de test a été supprimée"
 
+#: modules/mysql/desc.xml:34(text)
+msgid "... Failed!"
+msgstr ""
+
+#: modules/mysql/desc.xml:38(text)
+msgid "... Failed! Not critical, keep moving..."
+msgstr ""
+
+#: modules/mysql/desc.xml:33(text)
+msgid "... Success!"
+msgstr ""
+
+#: modules/mysql/desc.xml:41(text)
+msgid "Aborting!"
+msgstr ""
+
+#: modules/mysql/desc.xml:42(text)
+msgid "Cleaning up..."
+msgstr ""
+
+#: modules/mysql/desc.xml:18(help)
+msgid "Current MySQL root password."
+msgstr ""
+
+#: modules/mysql/desc.xml:17(label)
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: modules/mysql/desc.xml:35(text)
+msgid "Disallowing root login remotely"
+msgstr ""
+
+#: modules/mysql/desc.xml:26(text)
+msgid "Invalid current MySQL password."
+msgstr "Mot de passe MySQL actuel incorrect."
+
+#: modules/mysql/desc.xml:4(name)
+msgid "MySQL database"
+msgstr "Serveur MySQL"
+
+#: modules/mysql/desc.xml:43(text)
+msgid "MySQL is running"
+msgstr "MySQL est en exécution"
+
+#: modules/mysql/desc.xml:5(desc)
+msgid "MySQL relational database"
+msgstr "Base de donnée relationnelle MySQL"
+
+#: modules/mysql/desc.xml:22(help)
+msgid "New MySQL root password. Set here the new password."
+msgstr "Nouveau mot de passe root MySQL."
+
+#: modules/mysql/desc.xml:21(label)
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: modules/mysql/desc.xml:25(text)
+msgid "OK, successfully used password, moving on..."
+msgstr ""
+
+#: modules/mysql/desc.xml:31(text)
+msgid "Password update failed!"
+msgstr ""
+
+#: modules/mysql/desc.xml:29(text)
+msgid "Password updated successfully!"
+msgstr ""
+
+#: modules/mysql/desc.xml:30(text)
+msgid "Reloading privilege tables.."
+msgstr ""
+
+#: modules/mysql/desc.xml:40(text)
+msgid "Reloading the privilege tables"
+msgstr ""
+
+#: modules/mysql/desc.xml:36(text)
+msgid "Remove test database and access to it"
+msgstr ""
+
+#: modules/mysql/desc.xml:32(text)
+msgid "Removing anonymous users"
+msgstr ""
+
+#: modules/mysql/desc.xml:27(text)
+msgid "Setting the root password ensures that nobody can log into the MySQL"
+msgstr ""
+
+#: modules/mysql/desc.xml:8(rpm)
+msgid "mysql"
+msgstr ""
+
+#: modules/mysql/desc.xml:9(rpm)
+msgid "mysql-client"
+msgstr ""
+
+#: modules/mysql/desc.xml:13(module)
+msgid "mysqlmax"
+msgstr ""
+
+#: modules/mysql/desc.xml:28(text)
+msgid "root user without the proper authorisation."
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mysql/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

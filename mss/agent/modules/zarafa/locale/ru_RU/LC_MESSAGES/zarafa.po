@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-07-07 09:24+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -97,8 +97,9 @@ msgid "IMAP/IMAPS support"
 msgstr "Поддержка IMAP/IMAPS"
 
 #: modules/zarafa/desc.xml:80(text)
+#, fuzzy
 msgid ""
-"Mail module with Zarafa support is activated in the MDS interface : http://"
+"Mail module with Zarafa support is activated in the MDS interface : https://"
 "@HOSTNAME@/mmc/"
 msgstr ""
 "Почтовый модуль с поддержкой Zarafa автивируется на MDS-интерфейсе: http://"

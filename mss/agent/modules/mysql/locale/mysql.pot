@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"POT-Creation-Date: 2012-10-28 09:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -9,131 +9,131 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mysql/desc.xml:2(name)
+#: modules/mysql/desc.xml:4(name)
 msgid "MySQL database"
 msgstr ""
 
-#: modules/mysql/desc.xml:3(desc)
+#: modules/mysql/desc.xml:5(desc)
 msgid "MySQL relational database"
 msgstr ""
 
-#: modules/mysql/desc.xml:6(rpm)
+#: modules/mysql/desc.xml:8(rpm)
 msgid "mysql"
 msgstr ""
 
-#: modules/mysql/desc.xml:7(rpm)
+#: modules/mysql/desc.xml:9(rpm)
 msgid "mysql-client"
 msgstr ""
 
-#: modules/mysql/desc.xml:11(module)
+#: modules/mysql/desc.xml:13(module)
 msgid "mysqlmax"
 msgstr ""
 
-#: modules/mysql/desc.xml:15(label)
+#: modules/mysql/desc.xml:17(label)
 msgid "Current password"
 msgstr ""
 
-#: modules/mysql/desc.xml:16(help)
+#: modules/mysql/desc.xml:18(help)
 msgid "Current MySQL root password."
 msgstr ""
 
-#: modules/mysql/desc.xml:19(label)
+#: modules/mysql/desc.xml:21(label)
 msgid "New password"
 msgstr ""
 
-#: modules/mysql/desc.xml:20(help)
+#: modules/mysql/desc.xml:22(help)
 msgid "New MySQL root password. Set here the new password."
 msgstr ""
 
-#: modules/mysql/desc.xml:23(text)
+#: modules/mysql/desc.xml:25(text)
 msgid "OK, successfully used password, moving on..."
 msgstr ""
 
-#: modules/mysql/desc.xml:24(text)
+#: modules/mysql/desc.xml:26(text)
 msgid "Invalid current MySQL password."
 msgstr ""
 
-#: modules/mysql/desc.xml:25(text)
+#: modules/mysql/desc.xml:27(text)
 msgid "Setting the root password ensures that nobody can log into the MySQL"
 msgstr ""
 
-#: modules/mysql/desc.xml:26(text)
+#: modules/mysql/desc.xml:28(text)
 msgid "root user without the proper authorisation."
 msgstr ""
 
-#: modules/mysql/desc.xml:27(text)
+#: modules/mysql/desc.xml:29(text)
 msgid "Password updated successfully!"
 msgstr ""
 
-#: modules/mysql/desc.xml:28(text)
+#: modules/mysql/desc.xml:30(text)
 msgid "Reloading privilege tables.."
 msgstr ""
 
-#: modules/mysql/desc.xml:29(text)
+#: modules/mysql/desc.xml:31(text)
 msgid "Password update failed!"
 msgstr ""
 
-#: modules/mysql/desc.xml:30(text)
+#: modules/mysql/desc.xml:32(text)
 msgid "Removing anonymous users"
 msgstr ""
 
-#: modules/mysql/desc.xml:31(text)
+#: modules/mysql/desc.xml:33(text)
 msgid "... Success!"
 msgstr ""
 
-#: modules/mysql/desc.xml:32(text)
+#: modules/mysql/desc.xml:34(text)
 msgid "... Failed!"
 msgstr ""
 
-#: modules/mysql/desc.xml:33(text)
+#: modules/mysql/desc.xml:35(text)
 msgid "Disallowing root login remotely"
 msgstr ""
 
-#: modules/mysql/desc.xml:34(text)
+#: modules/mysql/desc.xml:36(text)
 msgid "Remove test database and access to it"
 msgstr ""
 
-#: modules/mysql/desc.xml:35(text)
+#: modules/mysql/desc.xml:37(text)
 msgid "- Dropping test database..."
 msgstr ""
 
-#: modules/mysql/desc.xml:36(text)
+#: modules/mysql/desc.xml:38(text)
 msgid "... Failed! Not critical, keep moving..."
 msgstr ""
 
-#: modules/mysql/desc.xml:37(text)
+#: modules/mysql/desc.xml:39(text)
 msgid "- Removing privileges on test database..."
 msgstr ""
 
-#: modules/mysql/desc.xml:38(text)
+#: modules/mysql/desc.xml:40(text)
 msgid "Reloading the privilege tables"
 msgstr ""
 
-#: modules/mysql/desc.xml:39(text)
+#: modules/mysql/desc.xml:41(text)
 msgid "Aborting!"
 msgstr ""
 
-#: modules/mysql/desc.xml:40(text)
+#: modules/mysql/desc.xml:42(text)
 msgid "Cleaning up..."
 msgstr ""
 
-#: modules/mysql/desc.xml:41(text)
+#: modules/mysql/desc.xml:43(text)
 msgid "MySQL is running"
 msgstr ""
 
-#: modules/mysql/desc.xml:42(text)
+#: modules/mysql/desc.xml:44(text)
 msgid "- A password has been set for the root user"
 msgstr ""
 
-#: modules/mysql/desc.xml:43(text)
+#: modules/mysql/desc.xml:45(text)
 msgid "- Anonymous users were removed"
 msgstr ""
 
-#: modules/mysql/desc.xml:44(text)
+#: modules/mysql/desc.xml:46(text)
 msgid "- Test database has been removed"
 msgstr ""
 
-#: modules/mysql/desc.xml:45(text)
+#: modules/mysql/desc.xml:47(text)
 msgid "- Remote login for root has been disabled"
 msgstr ""
 

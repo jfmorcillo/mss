@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"POT-Creation-Date: 2012-10-28 09:23+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -54,70 +54,62 @@ msgid "openldap-mandriva-dit"
 msgstr ""
 
 #: modules/mds_mmc/desc.xml:22(label)
-msgid "The server hostname"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:23(help)
-msgid "Hostname without the domain name"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:26(label)
-msgid "Your domain name"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:27(help)
-msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:30(label)
 msgid "Management password"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:31(help)
+#: modules/mds_mmc/desc.xml:23(help)
 msgid "The password needed to access the management interface."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:35(url)
+#: modules/mds_mmc/desc.xml:27(module)
+msgid "system"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:28(module)
+msgid "network"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:31(url)
 msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:37(text)
+#: modules/mds_mmc/desc.xml:33(text)
 msgid "Service"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:38(text)
+#: modules/mds_mmc/desc.xml:34(text)
 msgid "and"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:39(text)
+#: modules/mds_mmc/desc.xml:35(text)
 msgid "stopped succesfully."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:40(text)
+#: modules/mds_mmc/desc.xml:36(text)
 msgid "fails stopping. Check"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:41(text)
+#: modules/mds_mmc/desc.xml:37(text)
 msgid "started succesfully."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:42(text)
+#: modules/mds_mmc/desc.xml:38(text)
 msgid "fails starting. Check"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:43(text)
+#: modules/mds_mmc/desc.xml:39(text)
 msgid "The MBS management interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:44(text)
+#: modules/mds_mmc/desc.xml:40(text)
 msgid "You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:45(text)
+#: modules/mds_mmc/desc.xml:41(text)
 msgid "Administrator name : root"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:46(text)
+#: modules/mds_mmc/desc.xml:42(text)
 msgid "Administrator password :"
 msgstr ""
 

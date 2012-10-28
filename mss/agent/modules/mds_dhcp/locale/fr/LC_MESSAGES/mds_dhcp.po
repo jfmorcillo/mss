@@ -1,80 +1,78 @@
-# 
-## Translators:
+#
+# # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2012-10-05 08:48+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_dhcp/desc.xml2(name)
-msgid "DHCP service"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml3(desc)
-msgid "Configure automatically your client computers IP settings"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml9(rpm)
-msgid "dhcp-server"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml10(rpm)
-msgid "mmc-web-network"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml11(rpm)
-msgid "python-mmc-network"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml15(module)
-msgid "mds_mmc"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml17(text)
+#: modules/mds_dhcp/desc.xml:17(text)
 msgid "Configuration done. (/etc/mmc/plugins/network.ini updated)"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml18(text)
+#: modules/mds_dhcp/desc.xml:19(text)
+msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
+msgstr "Configuration de dhcp-server faite. (/etc/dhcpd.conf mis à jour)"
+
+#: modules/mds_dhcp/desc.xml:3(desc)
+msgid "Configure automatically your client computers IP settings"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:2(name)
+msgid "DHCP service"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:20(text)
+msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
+msgstr "Error lors de la configuration de dhcp-server. (/etc/dhcpd.conf)"
+
+#: modules/mds_dhcp/desc.xml:18(text)
 msgid ""
 "Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml19(text)
-msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
-msgstr "Configuration de dhcp-server faite. (/etc/dhcpd.conf mis à jour)"
-
-#: modules/mds_dhcp/desc.xml20(text)
-msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
-msgstr "Error lors de la configuration de dhcp-server. (/etc/dhcpd.conf)"
-
-#: modules/mds_dhcp/desc.xml21(text)
-msgid "Service mmc-agent reloaded succesfully."
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml22(text)
+#: modules/mds_dhcp/desc.xml:22(text)
 msgid "Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml23(text)
+#: modules/mds_dhcp/desc.xml:21(text)
+msgid "Service mmc-agent reloaded succesfully."
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:23(text)
 msgid "The DHCP service is installed."
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml24(text)
+#: modules/mds_dhcp/desc.xml:24(text)
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_dhcp/desc.xml0(None)
-msgid "translator-credits"
+#: modules/mds_dhcp/desc.xml:9(rpm)
+msgid "dhcp-server"
 msgstr ""
 
+#: modules/mds_dhcp/desc.xml:15(module)
+msgid "mds_mmc"
+msgstr ""
 
+#: modules/mds_dhcp/desc.xml:10(rpm)
+msgid "mmc-web-network"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:11(rpm)
+msgid "python-mmc-network"
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_dhcp/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""

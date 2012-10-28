@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-07-12 17:23+0000\n"
 "Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,8 +14,8 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: modules/mds_cups/desc.xml:3(desc)
-msgid "Install and configure network printers"
-msgstr "Instalar e configurar impressoras de rede"
+msgid "Network printers management"
+msgstr ""
 
 #: modules/mds_cups/desc.xml:2(name)
 #, fuzzy
@@ -77,3 +77,6 @@ msgstr "translator-credits"
 
 #~ msgid "Cups is running."
 #~ msgstr "O Cups está em execução."
+
+#~ msgid "Install and configure network printers"
+#~ msgstr "Instalar e configurar impressoras de rede"

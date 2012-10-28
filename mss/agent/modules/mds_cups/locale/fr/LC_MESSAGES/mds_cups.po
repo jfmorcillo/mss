@@ -1,75 +1,75 @@
-# 
-## Translators:
+#
+# # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2012-10-05 08:48+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_cups/desc.xml2(name)
+#: modules/mds_cups/desc.xml:3(desc)
+msgid "Network printers management"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:2(name)
 msgid "Printing service"
 msgstr ""
 
-#: modules/mds_cups/desc.xml3(desc)
-msgid "Install and configure network printers"
-msgstr "Installe et configure des imprimantes réseau"
-
-#: modules/mds_cups/desc.xml9(rpm)
-msgid "cups"
-msgstr ""
-
-#: modules/mds_cups/desc.xml10(rpm)
-msgid "cups-drivers"
-msgstr ""
-
-#: modules/mds_cups/desc.xml11(rpm)
-msgid "cups-windows"
-msgstr ""
-
-#: modules/mds_cups/desc.xml12(rpm)
-msgid "foomatic-filters"
-msgstr ""
-
-#: modules/mds_cups/desc.xml13(rpm)
-msgid "hplip-hpijs-ppds"
-msgstr ""
-
-#: modules/mds_cups/desc.xml14(rpm)
-msgid "postscript-ppds"
-msgstr ""
-
-#: modules/mds_cups/desc.xml15(rpm)
-msgid "hplip"
-msgstr ""
-
-#: modules/mds_cups/desc.xml18(text)
-msgid "Service Cups reloaded succesfully."
-msgstr "Le service Cups a redémarré."
-
-#: modules/mds_cups/desc.xml19(text)
+#: modules/mds_cups/desc.xml:19(text)
 msgid "Service Cups fails restarting. Check"
 msgstr "Le service Cups n'a pas redémarré. Vérifiez"
 
-#: modules/mds_cups/desc.xml20(text)
+#: modules/mds_cups/desc.xml:18(text)
+msgid "Service Cups reloaded succesfully."
+msgstr "Le service Cups a redémarré."
+
+#: modules/mds_cups/desc.xml:20(text)
 msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/desc.xml21(text)
+#: modules/mds_cups/desc.xml:21(text)
 msgid ""
-"You can add new printers from the Cups web interface : "
-"http://@HOSTNAME@:631/"
+"You can add new printers from the Cups web interface : http://@HOSTNAME@:631/"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:9(rpm)
+msgid "cups"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:10(rpm)
+msgid "cups-drivers"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:11(rpm)
+msgid "cups-windows"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:12(rpm)
+msgid "foomatic-filters"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:15(rpm)
+msgid "hplip"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:13(rpm)
+msgid "hplip-hpijs-ppds"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:14(rpm)
+msgid "postscript-ppds"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_cups/desc.xml0(None)
+#: modules/mds_cups/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
 
-
+#~ msgid "Install and configure network printers"
+#~ msgstr "Installe et configure des imprimantes réseau"

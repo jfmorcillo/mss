@@ -1,0 +1,40 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2012-10-28 09:23+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: modules/system/desc.xml:2(name)
+msgid "System setup"
+msgstr ""
+
+#: modules/system/desc.xml:3(desc)
+msgid "General system configuration"
+msgstr ""
+
+#: modules/system/desc.xml:6(label)
+msgid "The server hostname"
+msgstr ""
+
+#: modules/system/desc.xml:7(help)
+msgid "Hostname without the domain name"
+msgstr ""
+
+#: modules/system/desc.xml:10(label)
+msgid "Your domain name"
+msgstr ""
+
+#: modules/system/desc.xml:11(help)
+msgid "The domain name used in your organization (eg: mandriva.com)."
+msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/system/desc.xml:0(None)
+msgid "translator-credits"
+msgstr ""
+

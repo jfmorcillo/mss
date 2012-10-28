@@ -1,135 +1,125 @@
-# 
-## Translators:
+#
+# # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:27+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2012-10-05 08:48+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mmc/desc.xml2(name)
-msgid "Users and groups management"
+#: modules/mds_mmc/desc.xml:41(text)
+msgid "Administrator name : root"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml8(rpm)
-msgid "mmc-web-base"
+#: modules/mds_mmc/desc.xml:42(text)
+msgid "Administrator password :"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml9(rpm)
-msgid "mmc-web-bulkimport"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml10(rpm)
-msgid "python-mmc-base"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml11(rpm)
-msgid "python-mmc-bulkimport"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml12(rpm)
-msgid "mmc-agent"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml13(rpm)
-msgid "openldap-servers"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml14(rpm)
-msgid "nss_ldap"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml15(rpm)
-msgid "openldap-clients"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml16(rpm)
-msgid "pam_ldap"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml17(rpm)
-msgid "openldap-mandriva-dit"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml22(label)
-msgid "The server hostname"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml23(help)
-msgid "Hostname without the domain name"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml26(label)
-msgid "Your domain name"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml27(help)
-msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr ""
-
-#: modules/mds_mmc/desc.xml30(label)
+#: modules/mds_mmc/desc.xml:22(label)
 msgid "Management password"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml31(help)
-msgid "The password needed to access the management interface."
-msgstr ""
-
-#: modules/mds_mmc/desc.xml35(url)
-msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml37(text)
+#: modules/mds_mmc/desc.xml:33(text)
 msgid "Service"
 msgstr "Le service"
 
-#: modules/mds_mmc/desc.xml38(text)
-msgid "and"
-msgstr "et"
-
-#: modules/mds_mmc/desc.xml39(text)
-msgid "stopped succesfully."
-msgstr "est arrêté."
-
-#: modules/mds_mmc/desc.xml40(text)
-msgid "fails stopping. Check"
-msgstr "ne s'est pas arrêté. Vérifiez"
-
-#: modules/mds_mmc/desc.xml41(text)
-msgid "started succesfully."
-msgstr "a démarré."
-
-#: modules/mds_mmc/desc.xml42(text)
-msgid "fails starting. Check"
-msgstr "n'a pas démarré. Vérifiez"
-
-#: modules/mds_mmc/desc.xml43(text)
+#: modules/mds_mmc/desc.xml:39(text)
 msgid "The MBS management interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml44(text)
+#: modules/mds_mmc/desc.xml:23(help)
+msgid "The password needed to access the management interface."
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:2(name)
+msgid "Users and groups management"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:40(text)
 msgid ""
 "You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and "
 "start adding users and groups."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml45(text)
-msgid "Administrator name : root"
+#: modules/mds_mmc/desc.xml:34(text)
+msgid "and"
+msgstr "et"
+
+#: modules/mds_mmc/desc.xml:31(url)
+msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml46(text)
-msgid "Administrator password :"
+#: modules/mds_mmc/desc.xml:38(text)
+msgid "fails starting. Check"
+msgstr "n'a pas démarré. Vérifiez"
+
+#: modules/mds_mmc/desc.xml:36(text)
+msgid "fails stopping. Check"
+msgstr "ne s'est pas arrêté. Vérifiez"
+
+#: modules/mds_mmc/desc.xml:12(rpm)
+msgid "mmc-agent"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:8(rpm)
+msgid "mmc-web-base"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:9(rpm)
+msgid "mmc-web-bulkimport"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:28(module)
+msgid "network"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:14(rpm)
+msgid "nss_ldap"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:15(rpm)
+msgid "openldap-clients"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:17(rpm)
+msgid "openldap-mandriva-dit"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:13(rpm)
+msgid "openldap-servers"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:16(rpm)
+msgid "pam_ldap"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:10(rpm)
+msgid "python-mmc-base"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:11(rpm)
+msgid "python-mmc-bulkimport"
+msgstr ""
+
+#: modules/mds_mmc/desc.xml:37(text)
+msgid "started succesfully."
+msgstr "a démarré."
+
+#: modules/mds_mmc/desc.xml:35(text)
+msgid "stopped succesfully."
+msgstr "est arrêté."
+
+#: modules/mds_mmc/desc.xml:27(module)
+msgid "system"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_mmc/desc.xml0(None)
+#: modules/mds_mmc/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
-
-

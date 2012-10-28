@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-07-06 16:51+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,73 +14,56 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: modules/mds_mmc/desc.xml:45(text)
+#: modules/mds_mmc/desc.xml:41(text)
 #, fuzzy
 msgid "Administrator name : root"
 msgstr "Администратор MDS: root"
 
-#: modules/mds_mmc/desc.xml:46(text)
+#: modules/mds_mmc/desc.xml:42(text)
 msgid "Administrator password :"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:23(help)
-msgid "Hostname without the domain name"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:30(label)
+#: modules/mds_mmc/desc.xml:22(label)
 #, fuzzy
 msgid "Management password"
 msgstr "Пароль MDS"
 
-#: modules/mds_mmc/desc.xml:37(text)
+#: modules/mds_mmc/desc.xml:33(text)
 msgid "Service"
 msgstr "Служба"
 
-#: modules/mds_mmc/desc.xml:43(text)
+#: modules/mds_mmc/desc.xml:39(text)
 msgid "The MBS management interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:27(help)
-msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:31(help)
+#: modules/mds_mmc/desc.xml:23(help)
 msgid "The password needed to access the management interface."
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:22(label)
-msgid "The server hostname"
 msgstr ""
 
 #: modules/mds_mmc/desc.xml:2(name)
 msgid "Users and groups management"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:44(text)
+#: modules/mds_mmc/desc.xml:40(text)
 #, fuzzy
 msgid ""
 "You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and "
 "start adding users and groups."
 msgstr "Вы можете войти в MDS-интерфейс с https://@HOSTNAME@/mmc/."
 
-#: modules/mds_mmc/desc.xml:26(label)
-#, fuzzy
-msgid "Your domain name"
-msgstr "Имя домена MDS "
-
-#: modules/mds_mmc/desc.xml:38(text)
+#: modules/mds_mmc/desc.xml:34(text)
 msgid "and"
 msgstr "и"
 
-#: modules/mds_mmc/desc.xml:35(url)
+#: modules/mds_mmc/desc.xml:31(url)
 msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:42(text)
+#: modules/mds_mmc/desc.xml:38(text)
 msgid "fails starting. Check"
 msgstr "не удалось запустить. Выполнить проверку"
 
-#: modules/mds_mmc/desc.xml:40(text)
+#: modules/mds_mmc/desc.xml:36(text)
 msgid "fails stopping. Check"
 msgstr "не удалось остановить. Выполнить проверку "
 
@@ -96,6 +79,10 @@ msgstr "mmc-web-base"
 #, fuzzy
 msgid "mmc-web-bulkimport"
 msgstr "mmc-web-ppolicy"
+
+#: modules/mds_mmc/desc.xml:28(module)
+msgid "network"
+msgstr ""
 
 #: modules/mds_mmc/desc.xml:14(rpm)
 msgid "nss_ldap"
@@ -126,13 +113,17 @@ msgstr "python-mmc-base"
 msgid "python-mmc-bulkimport"
 msgstr "python-mmc-base"
 
-#: modules/mds_mmc/desc.xml:41(text)
+#: modules/mds_mmc/desc.xml:37(text)
 msgid "started succesfully."
 msgstr "запущено успешно."
 
-#: modules/mds_mmc/desc.xml:39(text)
+#: modules/mds_mmc/desc.xml:35(text)
 msgid "stopped succesfully."
 msgstr "успешно остановлена."
+
+#: modules/mds_mmc/desc.xml:27(module)
+msgid "system"
+msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds_mmc/desc.xml:0(None)
@@ -200,6 +191,10 @@ msgstr "translator-credits"
 
 #~ msgid "Writing"
 #~ msgstr "Запись"
+
+#, fuzzy
+#~ msgid "Your domain name"
+#~ msgstr "Имя домена MDS "
 
 #~ msgid "Your previous database directory has been backed up as"
 #~ msgstr "Для предидущего каталога базы данных была создана резервная копия"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-08-18 15:02+0300\n"
 "Last-Translator: anyname <nma@osinit.ru>\n"
 "Language-Team: \n"
@@ -465,8 +465,9 @@ msgid "Updating kerberos DNS data in database..."
 msgstr "Обновление DNS-данных kerberos в базе данных..."
 
 #: modules/mds_kerberos/desc.xml:165(text)
+#, fuzzy
 msgid ""
-"You can add Kerberos principals from the MDS interface: http://@HOSTNAME@/"
+"You can add Kerberos principals from the MDS interface: https://@HOSTNAME@/"
 "mmc/"
 msgstr ""
 "Вы можете добавить принципалов Kerberos из MDS-интерфейса: http://@HOSTNAME@/"

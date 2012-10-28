@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-10-28 09:22+0100\n"
 "PO-Revision-Date: 2011-07-12 18:10+0000\n"
 "Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -82,7 +82,7 @@ msgstr ""
 #: modules/mds_dns/desc.xml:36(text)
 #, fuzzy
 msgid ""
-"You can now add DNS zones in the management interface : http://@HOSTNAME@/"
+"You can now add DNS zones in the management interface : https://@HOSTNAME@/"
 "mmc/"
 msgstr ""
 "Agora você pode adicionar zonas DNS a partir da interface MDS em http://"
