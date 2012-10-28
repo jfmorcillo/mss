@@ -25,7 +25,10 @@ import gettext
 import os
 import locale
 
+from mss.agent.lib.utils import Singleton
+
 class TranslationManager:
+    __metaclass__ = Singleton
 
     def __init__(self):
         #self.lang = ""

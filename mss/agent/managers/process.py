@@ -22,11 +22,13 @@
 import os
 from gettext import gettext as _
 
+from mss.agent.lib.utils import Singleton
 from mss.agent.classes.process import ProcessThread
 
 
 class ProcessManager:
     """ Class managing running tasks """
+    __metaclass__ = Singleton
 
     def __init__(self):
         # thread pool

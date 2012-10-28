@@ -28,13 +28,15 @@ import logging.handlers
 import platform
 import sqlite3
 from sets import Set
-try: 
+try:
     import json
 except ImportError:
     import simplejson as json
 
-from mss.agent.lib.utils import grep
+from mss.agent.lib.utils import grep, Singleton
 from mss.agent.classes.module import Module
+from mss.agent.managers.process import ProcessManager
+from mss.agent.managers.translation import TranslationManager
 
 LOG_FILENAME = '/var/log/mss/mss-agent.log'
 LSB_FILENAME = '/etc/os-release'
@@ -46,6 +48,8 @@ handler = logging.handlers.RotatingFileHandler(
 handler.setFormatter(formatter)
 logger.addHandler(handler)
 os.chmod(LOG_FILENAME, 0600)
+
+_ = TranslationManager().translate
 
 def expose(f):
     "Decorator to set exposed flag on a function."
@@ -62,6 +66,7 @@ class ModuleManager:
     Class for managing modules
 
     """
+    __metaclass__ = Singleton
 
     def _dispatch(self, method, params):
         func = getattr(self, method)
@@ -70,7 +75,7 @@ class ModuleManager:
 
         return func(*params)
 
-    def __init__(self, PM, TM):
+    def __init__(self):
         if platform.machine() == 'x86_64':
             self.arch = 'x86_64'
         else:
@@ -79,12 +84,7 @@ class ModuleManager:
         self.modules = {}
         self.packages = []
         # translation manager
-        self.TM = TM
-        self.TM.set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
-        global _
-        _ = self.TM.translate
-        # process manager
-        self.PM = PM
+        TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
         # BDD access
         self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # logging
@@ -96,7 +96,7 @@ class ModuleManager:
     def set_lang(self, lang):
         """ change lang during execution """
         self.logger.info("Lang changed to %s" % lang)
-        self.TM.set_lang(lang)
+        TranslationManager().set_lang(lang)
 
     @expose
     def set_option(self, key, value):
@@ -111,7 +111,7 @@ class ModuleManager:
         self.conn.commit()
         c.close()
 
-    @expose 
+    @expose
     def get_option(self, key):
         """ get an option from the BDD """
         c = self.conn.cursor()
@@ -126,15 +126,15 @@ class ModuleManager:
     @expose
     def load_packages(self):
         self.logger.info("Load packages...")
-        self.PM.load_packages(self.set_packages)
+        ProcessManager().load_packages(self.set_packages)
 
     @expose
     def check_net(self):
-        self.PM.check_net()
+        ProcessManager().check_net()
 
     @expose
     def update_medias(self):
-        self.PM.update_medias()
+        ProcessManager().update_medias()
 
     def set_packages(self, code, output):
         if code == 0:
@@ -172,7 +172,7 @@ class ModuleManager:
         self.logger.info("Get available mss modules : ")
         for module in modules:
             self.logger.debug("Loading %s" % module)
-            m = Module(os.path.join(self.modulesDirectory, module), self, self.TM, self.arch)
+            m = Module(os.path.join(self.modulesDirectory, module), self, self.arch)
             self.modules[m.id] = m
             self.logger.info(m)
 
@@ -364,7 +364,7 @@ class ModuleManager:
         # get add commands for media
         command = media.get_command(login, passwd)
         self.logger.debug("Execute: %s" % str(command))
-        self.PM.add_media(command)
+        ProcessManager().add_media(command)
 
     @expose
     def install_modules(self, modules):
@@ -375,7 +375,7 @@ class ModuleManager:
             packages += self.modules[module].packages
         if packages:
             self.logger.debug("Install packages : %s" % str(packages))
-            self.PM.install_packages(packages)
+            ProcessManager().install_packages(packages)
             return True
         else:
             self.logger.info("No packages to install")
@@ -408,7 +408,7 @@ class ModuleManager:
         self.logger.debug("Run configuration for %s" % str(module))
         path, script, args = self.modules[module].info_config()
         self.logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
-        return self.PM.run_script(script, args, path)
+        return ProcessManager().run_script(script, args, path)
 
     @expose
     def end_config(self, module):
@@ -424,7 +424,7 @@ class ModuleManager:
     @expose
     def get_state(self, name, module="agent"):
         """ return execution output """
-        code, output = self.PM.p_state(name)
+        code, output = ProcessManager().p_state(name)
         # format output
         tmp = output.splitlines()
         output = []
@@ -462,7 +462,7 @@ class ModuleManager:
     def get_status(self):
         """ return current agent status """
         status = ""
-        statuses = self.PM.pm_state()
+        statuses = ProcessManager().pm_state()
         for sts in statuses:
             status += _(sts, "agent")+', '
         return status[:-2]

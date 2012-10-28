@@ -32,6 +32,9 @@ from IPy import IP
 
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
+from mss.agent.managers.translation import TranslationManager
+
+_ = TranslationManager().translate
 
 class Module(object):
     """
@@ -39,11 +42,8 @@ class Module(object):
 
     """
 
-    def __init__(self, path, MM, TM, arch):
+    def __init__(self, path, MM, arch):
         self.MM = MM
-        self.TM = TM
-        global _
-        _ = self.TM.translate
         self.logger = logging.getLogger()
         self.path = path
         self.arch = arch
@@ -72,7 +72,7 @@ class Module(object):
         """ load module basic infos """
         # get common info
         self.id = self.root.attrib.get("id")
-        self.TM.set_catalog(self.id, self.path)
+        TranslationManager().set_catalog(self.id, self.path)
         self._name = self.root.findtext("name")
         self._desc = self.root.findtext("desc")
         self._actions = []

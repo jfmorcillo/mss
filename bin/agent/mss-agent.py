@@ -20,17 +20,12 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-import sys
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 
 from mss.agent.managers.module import ModuleManager
-from mss.agent.managers.process import ProcessManager
-from mss.agent.managers.translation import TranslationManager
 from mss.agent.lib.auth import authenticate
 
-PM = ProcessManager()
-TM = TranslationManager()
-MM = ModuleManager(PM, TM)
+MM = ModuleManager()
 
 server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
 server.register_instance(MM)
