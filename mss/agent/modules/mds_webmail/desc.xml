@@ -3,7 +3,7 @@
     <desc>Roundcube, a complete webmail solution for your mail service</desc>
     <actions>
         <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
-        <action type="link" name="Webmail interface" value="http://@HOSTNAME@/roundcubemail/" />
+        <action type="link" name="Webmail interface" value="https://@HOSTNAME@/roundcubemail/" />
     </actions>
     <packages>
         <target name="all">
@@ -21,5 +21,5 @@
         <module>zarafa</module>
     </conflicts>
     <text>Webmail RoundCube is activated on your server.</text>
-    <text>You can access the webmail interface at http://@HOSTNAME@/roundcubemail/</text>
+    <text>You can access the webmail interface at https://@HOSTNAME@/roundcubemail/</text>
 </module>
