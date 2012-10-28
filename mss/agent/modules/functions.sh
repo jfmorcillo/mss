@@ -211,3 +211,20 @@ function add_schema() {
     cp -f $1 /etc/openldap/schema/
     echo Schema ${schema} added to OpenLDAP.
 }
+
+function https_redirect() {
+    location=$1
+    apache_conf=$2
+    grep -q "Redirect http requests" $2
+    if [ $? -ne 0 ]; then
+        echo "
+# Generated configuration edit at your own risk!
+# Redirect http requests to https
+<Location \"/$1\">
+    Options +FollowSymLinks
+    RewriteEngine On
+    RewriteCond %{SERVER_PORT} ^80$
+    RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
+</Location>" >> $2
+    fi
+}

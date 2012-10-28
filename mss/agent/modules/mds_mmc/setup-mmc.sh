@@ -133,6 +133,9 @@ fi
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/services.ini
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/dashboard.ini
 
+# http -> https redirection
+https_redirect mmc /etc/httpd/conf/webapps.d/mmc.conf
+
 restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd

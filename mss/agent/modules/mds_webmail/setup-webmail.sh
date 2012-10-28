@@ -26,6 +26,9 @@ chmod 0600 /var/lib/roundcubemail/sqlite.db
 chown -R apache.apache /usr/share/roundcubemail/
 chown -R apache.apache /var/log/roundcubemail/
 
+# http -> https redirection
+https_redirect roundcubemail /etc/httpd/conf/webapps.d/roundcubemail.conf
+
 # copy main config
 backup /etc/roundcubemail/main.inc.php
 cat $roundcube_main_conf_template > /etc/roundcubemail/main.inc.php
