@@ -11,6 +11,10 @@ function check_root() {
         echo "Error, must be root user"
         exit 1
     fi
+    SERVER=127.0.0.1
+    HOST=`hostname`
+    DOMAIN=`hostname -d`
+    FQDN=`hostname -f`
 }
 
 # checks that MMC is properly configured. In such a case define 

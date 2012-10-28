@@ -24,14 +24,9 @@ acl_file="/etc/openldap/mandriva-dit-access.conf"
 ldap_conf_template="templates/ldap.conf.tpl"
 nsswitch_template="templates/nsswitch.conf.tpl"
 
-myfqdn=`hostname -f`
-if [ -z "$myfqdn" ]; then
-	myfqdn="localhost"
-fi
-mydomain=$1
-mypass_e=`escape_sed $2`
-mypass=$2
-ppolicy=$3
+mypass_e=`escape_sed $1`
+mypass=$1
+mysuffix=`calc_suffix $DOMAIN`
 
 # MDS schemas
 add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dhcp.schema
@@ -39,7 +34,7 @@ add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dnszone.schema
 add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mail.schema
 add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mmc.schema
 
-mysuffix=`calc_suffix $mydomain`
+# Generate LDAP password
 pass=`$SLAPPASSWD -h {SSHA} -s "$mypass"`
 if [ "$?" -ne "0" ]; then echo "1Error at generating password"; exit 1
 else echo "0Password successfully generated"
@@ -59,25 +54,15 @@ sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/base.ini
 sed -i "s/\@PASSWORD\@/$mypass_e/" /etc/mmc/plugins/base.ini
 mkdir /home/archives > /dev/null 2>&1
 
-## ppolicy
-#backup /etc/mmc/plugins/ppolicy.ini
-#cat $ppolicy_template > /etc/mmc/plugins/ppolicy.ini
-#sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/ppolicy.ini
-#if [ "$ppolicy" == "on" ]; then
-#    sed -i "s/\@DISABLE\@/0/" /etc/mmc/plugins/ppolicy.ini
-#else
-#    sed -i "s/\@DISABLE\@/1/" /etc/mmc/plugins/ppolicy.ini
-#fi
-
 # now, /etc/openldap/ldap.conf
 myldapconf=`make_temp`
 cat /etc/openldap/ldap.conf | \
-	sed -e "s/^BASE[[:blank:]]\+.*/BASE $mysuffix/g;\
-	s/^HOST[[:blank:]]\+.*/HOST $myfqdn/g;\
-	s@^URI[[:blank:]]\+.*@URI ldap://$myfqdn@g" \
+	sed -e "s/^BASE[[:blank:]]\+.*/BASE ${mysuffix}/g;\
+	s/^HOST[[:blank:]]\+.*/HOST ${SERVER}/g;\
+	s@^URI[[:blank:]]\+.*@URI ldap://${SERVER}@g" \
 	> $myldapconf
 if ! grep -qE '^(HOST|URI)' $myldapconf; then
-	echo "URI ldap://$myfqdn" >> $myldapconf
+	echo "URI ldap://${SERVER}" >> $myldapconf
 fi
 if ! grep -qE '^BASE' $myldapconf; then
 	echo "BASE $mysuffix" >> $myldapconf
@@ -103,8 +88,8 @@ fi
 myldif=`make_temp`
 cat $base_ldif_template | sed -e "\
 	s/@SUFFIX@/$mysuffix/g;\
-	s/@DC@/${mydomain%%.[a-zA-Z0-9]*}/g;\
-	s/@DOMAIN@/${mydomain}/g;\
+	s/@DC@/${DOMAIN%%.[a-zA-Z0-9]*}/g;\
+	s/@DOMAIN@/${DOMAIN}/g;\
 	s|@ldapadmin_password@|$pass|g" > $myldif
 
 # dry run first
@@ -151,6 +136,7 @@ sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/dashboard.ini
 restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 echo "8The MBS management interface is configured."
 echo "8You can log in the MBS management interface at http://@HOSTNAME@/mmc/ and start adding users and groups."

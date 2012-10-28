@@ -22,19 +22,15 @@
         </target>
     </packages>
     <config>
-        <text name="hostname" require="yes" default="get_hostname" store="yes">
-            <label>The server hostname</label>
-            <help>Hostname without the domain name</help>
-        </text>
-        <text name="domain" require="yes" default="get_domain" validation="fqdn" store="yes">
-            <label>Your domain name</label>
-            <help>The domain name used in your organization (eg: mandriva.com).</help>
-        </text>
         <password name="mdspasswd" require="yes">
             <label>Management password</label>
             <help>The password needed to access the management interface.</help>
         </password>
     </config>
+    <deps>
+        <module>system</module>
+        <module>network</module>
+    </deps>
     <medias verbose_name="Mandriva Business Server repositories" name="mbs" auth="my" proto="https" mode="distrib" can_skip="yes">
         <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
     </medias>

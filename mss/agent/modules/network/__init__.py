@@ -77,8 +77,8 @@ def get_interfaces_config(config):
                                'label': 'Interface type',
                                'type': 'options',
                                'options': [
-                                   {'name': 'Internal network', 'value': 'lan' + interface[0:1:-1]},
-                                   {'name': 'External network', 'value': 'wan' + interface[0:1:-1]}
+                                   {'name': 'Internal network', 'value': 'lan' + interface[-1]},
+                                   {'name': 'External network', 'value': 'wan' + interface[-1]}
                                 ]
                                })
                 config.append({'id': 'network',

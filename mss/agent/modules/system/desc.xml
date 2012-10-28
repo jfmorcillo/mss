@@ -1,0 +1,15 @@
+<module id="system">
+    <name>System setup</name>
+    <desc>General system configuration</desc>
+    <config>
+        <text name="hostname" require="yes" default="get_hostname" validation="valid_hostname" store="yes">
+            <label>The server hostname</label>
+            <help>Hostname without the domain name</help>
+        </text>
+        <text name="domain" require="yes" default="get_domain" validation="fqdn" store="yes">
+            <label>Your domain name</label>
+            <help>The domain name used in your organization (eg: mandriva.com).</help>
+        </text>
+    </config>
+</module>
+

@@ -128,7 +128,7 @@ def first_time_required(function):
             except KeyError:
                 pass
         if not request.session['first-time']:
-            transaction = Transaction(request, ['mds_mmc', 'network'])
+            transaction = Transaction(request, ['mds_mmc'])
             if isinstance(transaction.transaction, HttpResponseRedirect):
                 return transaction.transaction
             else:
