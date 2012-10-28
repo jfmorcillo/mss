@@ -36,6 +36,16 @@
             <label>Administrator password</label>
             <help>Password for the Microsoft domain administrator.</help>
         </password>
+        <check name="fw_lan" default="on">
+            <label>Allow connections from internal networks</label>
+            <help>Configure the firewall to accept SAMBA related traffic on interfaces
+                configured as 'internal'</help>
+        </check>
+        <check name="fw_wan" default="off">
+            <label>Allow connections connections external networks</label>
+            <help>Configure the firewall to accept SAMBA related traffic on interfaces
+                configured as 'external'</help>
+        </check>
     </config>
     <text>SAMBA configuration done. (/etc/samba/smb.conf updated)</text>
     <text>Error while configuring SAMBA. (/etc/samba/smb.conf)</text>

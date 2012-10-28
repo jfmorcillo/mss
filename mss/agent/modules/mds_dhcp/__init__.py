@@ -22,4 +22,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ("setup-dhcp.sh", [])
+    return ("setup-dhcp.sh", ["fw_lan", "fw_wan"])

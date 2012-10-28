@@ -29,7 +29,7 @@ from IPy import IP
 from mss.agent.lib.utils import ethernet_ifs 
 
 def get_config_info():
-    return ('setup-mail.sh', ['smtpd_myhostname', 'smtpd_mynetworks', 'popimap_proto'])
+    return ('setup-mail.sh', ['smtpd_mynetworks', 'popimap_proto', 'fw_lan', 'fw_wan'])
 
 def get_current_config(module):
 

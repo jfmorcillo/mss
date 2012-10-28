@@ -24,6 +24,16 @@
             <label>Forwarders</label>
             <help>Forward external DNS queries to DNS of your choice</help>
         </text>
+        <check name="fw_lan" default="on">
+            <label>Allow DNS from internal networks</label>
+            <help>Configure the firewall to accept DNS requests on interfaces
+                configured as 'internal'</help>
+        </check>
+        <check name="fw_wan" default="off">
+            <label>Allow DNS from external networks</label>
+            <help>Configure the firewall to accept DNS requests on interfaces
+                configured as 'external'</help>
+        </check>
     </config>
     <text>No networks are authorized to make external queries.</text>
     <text>Service mmc-agent reloaded succesfully.</text>

@@ -26,7 +26,7 @@
     <config>
         <network name="smtpd_mynetworks" format="short" validation="network" default="get_networks">
             <label>My networks</label>
-            <help>Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0</help>
+            <help>Specify which clients are authorized to send mails through the mail server without authentication.</help>
         </network>
         <options name="popimap_proto" require="yes">
             <label>Protocols supported</label>
@@ -35,6 +35,16 @@
             <option value="imaps imap">IMAPS</option>
             <option value="pop3 pop3s">POP3S</option>
         </options>
+        <check name="fw_lan" default="on">
+            <label>Allow mail services access from internal networks</label>
+            <help>Configure the firewall to accept smtp/imap/pop3 connections
+                on interfaces configured as 'internal'</help>
+        </check>
+        <check name="fw_wan" default="off">
+            <label>Allow mail services access from external networks</label>
+            <help>Configure the firewall to accept smtp/imap/pop3 connections
+                on interfaces configured as 'external'</help>
+        </check>
     </config>
     <text>Razor configured successfully.</text>
     <text>Failed to register razor. Try to run as root</text>

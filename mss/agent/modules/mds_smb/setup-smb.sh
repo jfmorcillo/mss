@@ -14,6 +14,8 @@ smbdomain="$1"
 smbnetbios="$2"
 smbadmin="$3"
 smbpass="$4"
+fw_lan="$5"
+fw_wan="$6"
 
 #### Now /etc/samba/smb.conf
 backup /etc/samba/smb.conf
@@ -63,6 +65,11 @@ fi
 
 restart_service smb
 
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a SMB/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a SMB/ACCEPT -t wan
+restart_service shorewall
+
 ###### now /etc/mmc/plugins/samba.ini
 backup /etc/mmc/plugins/samba.ini
 cat $mds_smb_template > /etc/mmc/plugins/samba.ini
@@ -107,7 +114,6 @@ echo "8Server name :# $smbnetbios"
 echo "8Domain administrator :# $smbadmin"
 echo "7- a public share is created in /home/samba/shares/public"
 echo "7- you can create a logon.bat script in /home/samba/netlogon"
-echo "8Make sure you have enabled SAMBA services on your firewall."
 echo "8You can now use the management interface to manage your Windows users and shares at https://@HOSTNAME@/mmc/."
 
 exit 0

@@ -25,7 +25,7 @@ import os
 from mss.agent.lib.utils import getINIoption
 
 def get_config_info():
-    return ("setup-smb.sh", ["smbdomain", "smbnetbios", "smbadmin", "smbpasswd"])
+    return ("setup-smb.sh", ["smbdomain", "smbnetbios", "smbadmin", "smbpasswd", "fw_lan", "fw_wan"])
 
 def get_current_config(module):
 

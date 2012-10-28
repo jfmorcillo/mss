@@ -1,0 +1,40 @@
+#!/usr/bin/python
+
+if __name__ == "__main__":
+
+    import sys, os
+    from optparse import OptionParser
+
+    usage = "usage: %prog --action [ACCEPT/DROP] --type [lan|wan] [--proto tcp|udp] [--dest-port port]"
+    parser = OptionParser(usage=usage)
+    parser.add_option("-a", "--action", dest="action", action="store",
+                      help="Rule action (ACCEPT, DROP...)")
+    parser.add_option("-t", "--type", dest="type", action="store",
+                      help="Internal or External zone (lan/wan)", default="")
+    parser.add_option("-p", "--proto", dest="proto", action="store",
+                      help="Protocol type (tcp/udp)", default="")
+    parser.add_option("-P", "--dest-port", dest="dst_port", action="store",
+                      help="Destination port(s)", default="")
+
+    (options, args) = parser.parse_args(sys.argv)
+
+    if options.action and options.type:
+
+        if options.type not in ('lan', 'wan'):
+            parser.error("Type must be lan or wan.")
+        if options.proto and options.proto not in ('tcp', 'udp'):
+            parser.error("Proto must be tcp or udp.")
+        if options.action == "ACCEPT" and not options.dst_port:
+            parser.error("Dest port must be set.")
+        if options.action == "ACCEPT" and not options.proto:
+            parser.error("Proto must be set.")
+
+        from mmc.plugins.shorewall import get_zones, add_rule, ShorewallMacroDoesNotExists
+        zones = get_zones(options.type)
+        for zone in zones:
+            try:
+                add_rule(options.action, zone, "fw", options.proto, options.dst_port)
+            except ShorewallMacroDoesNotExists, e:
+                parser.error(e)
+    else:
+        parser.error("Action and type must be defined.")

@@ -18,7 +18,7 @@
         remove = $('<button>', { 'class': 'btn', 'type': 'button' });
         remove.append('<i class="icon-remove"></i>');
         remove.click(function(){ 
-            $(this).parent().next().remove(); 
+            $(this).parent().next().remove();
             $(this).parent().remove();
             // Be sure to destroy the tooltip
             $('.tooltip').remove();
@@ -42,12 +42,12 @@
         remove = $('<button>', {'class': 'btn', 'type': 'button'});
         remove.append('<i class="icon-remove"></i>');
         remove.click(function(){ 
-            $(this).parent().next().remove(); 
+            $(this).parent().next().remove();
             $(this).parent().remove();
             // Be sure to destroy the tooltip
             $('.tooltip').remove();
         });
-        
+
         field.append(input);
         field.append(remove);
         container.append(field);
@@ -79,7 +79,7 @@
             {% endfor %}
             {% for field in module %}
             {% if module.0.configured and field.show_if_unconfigured %}
-                <input 
+                <input
                     id="{{ field.id }}_{{ field.name }}"
                     name="{{ field.id }}_{{ field.name }}"
                     value="{{ field.default }}"
@@ -99,13 +99,13 @@
                     {% else %}
                     <div class="control-group {% if field.error %}error{% endif %}">
                         <label for="{{ field.id }}_{{ field.name }}" class="control-label">
-                            {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+                            {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                         </label>
                         <div class="controls">
                         {% if field.multi %}
-                            <span id="{{ field.id }}_{{ field.name }}" 
+                            <span id="{{ field.id }}_{{ field.name }}"
                                   name="{{ field.id }}_{{ field.name }}"
-                                  data-placement="right" rel="tooltip" 
+                                  data-placement="right" rel="tooltip"
                                   data-original-title="{{ field.help }}"></span>
                             <p><a class="btn btn-small" onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
                                 <i class="icon-plus-sign"></i> {% trans "Add" %}
@@ -116,7 +116,7 @@
                                 addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
                             {% endfor %}
                             </script>
-                            {% endif %}                    
+                            {% endif %}
                         {% else %}
                             {% if module.0.configured and field.edit_if_unconfigured %}
                                 <input
@@ -131,9 +131,9 @@
                                     id="{{ field.id }}_{{ field.name }}"
                                     name="{{ field.id }}_{{ field.name }}"
                                     value="{{ field.default }}"
-                                    type="text" 
-                                    data-placement="right" rel="tooltip" 
-                                    data-original-title="{{ field.help }}" 
+                                    type="text"
+                                    data-placement="right" rel="tooltip"
+                                    data-original-title="{{ field.help }}"
                                 />
                             {% endif %}
                         {% endif %}
@@ -147,7 +147,7 @@
         	    {% ifequal field.type "password" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
             		</label>
                     <div class="controls">
                         <input
@@ -155,22 +155,22 @@
                             name="{{ field.id }}_{{ field.name }}"
                             type="password"
                             value="{{ field.default }}"
-                            data-placement="right" rel="tooltip" 
-                            data-original-title="{{ field.help }}" 
+                            data-placement="right" rel="tooltip"
+                            data-original-title="{{ field.help }}"
                         />
                     </div>
                 </div>
                 <div class="control-group {% if field.error %}error{% endif %}">
                     <label class="control-label" for="{{ field.id }}_{{ field.name }}2">
-                        {% trans "Re-enter password" %}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+                        {% trans "Re-enter password" %}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                     </label>
                     <div class="controls">
                         <input
                             id="{{ field.id }}_{{ field.name }}2"
                             name="{{ field.id }}_{{ field.name }}2"
                             type="password"
-                            data-placement="right" rel="tooltip" 
-                            data-original-title="{{ field.help }}" 
+                            data-placement="right" rel="tooltip"
+                            data-original-title="{{ field.help }}"
                         />
                         {% if field.error %}
                             <span class="help-block">{{ field.error }}</span>
@@ -181,13 +181,13 @@
         	    {% ifequal field.type "options" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                     </label>
                     <div class="controls">
                         <select {% if field.error %}class="error"{% endif %}
                             id="{{ field.id }}_{{ field.name }}"
                             name="{{ field.id }}_{{ field.name }}"
-                            data-placement="right" rel="tooltip" 
+                            data-placement="right" rel="tooltip"
                             data-original-title="{{ field.help }}">
                         {% for option in field.options %}
                             <option value="{{ option.value }}"
@@ -220,30 +220,31 @@
         	    {% endifequal %}
         	    {% ifequal field.type "check" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
-            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
-            		</label>
                     <div class="controls">
                         <input
                             id="{{ field.id }}_{{ field.name }}"
                             name="{{ field.id }}_{{ field.name }}"
                             type="checkbox"
                             {% ifequal field.default "on" %} checked="checked" {% endifequal %}
-                            data-placement="right" rel="tooltip" 
+                            data-placement="left" rel="tooltip"
                             data-original-title="{{ field.help }}"
+                            style="vertical-align: top"
                         />
+                        <label for="{{ field.id }}_{{ field.name }}" style="display: inline">
+                            {{ field.label }}
+                        </label>
                     </div>
                 </div>
         	    {% endifequal %}
         	    {% ifequal field.type "network" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
             		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
-            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}: 
+            		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                     </label>
                     <div class="controls">
-                        <span id="{{ field.id }}_{{ field.name }}" 
+                        <span id="{{ field.id }}_{{ field.name }}"
                               name="{{ field.id }}_{{ field.name }}"
-                              data-placement="right" rel="tooltip" 
+                              data-placement="right" rel="tooltip"
                               data-original-title="{{ field.help }}"></span>
                         <p><a class="btn btn-small" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" >
                             <i class="icon-plus-sign"></i> {% trans "Add" %}
@@ -260,7 +261,7 @@
                     </script>
             		{% endif %}
                 </div>
-        	    {% endifequal %}                
+        	    {% endifequal %}
                 {% endif %}
         	    {% if not module.0.do_config %}
                     <p class="alert">{% trans "No configuration for this module." %}</p>

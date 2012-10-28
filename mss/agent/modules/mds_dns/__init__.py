@@ -26,7 +26,7 @@ from IPy import IP
 from mss.agent.lib.utils import ethernet_ifs
 
 def get_config_info():
-    return ("setup-dns.sh", ["bind_networks", "bind_forwarders"])
+    return ("setup-dns.sh", ["bind_networks", "bind_forwarders", "fw_lan", "fw_wan"])
 
 def get_current_config(module):
 

@@ -3,6 +3,7 @@
 link=/usr/lib/python2.7/site-packages/mss
 agent=/usr/sbin/mss-agent
 www=/usr/bin/mss-www
+mss_shorewall_rules=/usr/sbin/mss-add-shorewall-rule
 path=`pwd`
 
 [ ! -f $0 ] && echo "You are not in the directory where the script lives" && exit 1
@@ -48,6 +49,8 @@ ln -s ${path}/mss $link
 ln -s ${path}/bin/agent/mss-agent.py $agent
 [ -f $www ] && rm -f $www
 ln -s ${path}/bin/www/mss-www.sh $www
+[ -f $mss_shorewall_rules ] && rm -f $mss_shorewall_rules
+ln -s ${path}/bin/mss-add-shorewall-rule $mss_shorewall_rules
 python mss/www/manage.py syncdb --noinput
 chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db

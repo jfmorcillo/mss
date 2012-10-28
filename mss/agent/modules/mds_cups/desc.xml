@@ -15,8 +15,19 @@
             <rpm>hplip</rpm>
         </target>
     </packages>
-    <text>Service Cups reloaded succesfully.</text>
-    <text>Service Cups fails restarting. Check</text>
+    <config>
+        <check name="fw_lan" default="on">
+            <label>Allow connections to the management interface from internal networks</label>
+            <help>Configure the firewall to accept connections on the Cups
+                interface from interfaces configured as 'internal'</help>
+        </check>
+        <check name="fw_wan" default="off">
+            <label>Allow connections to the management interface from external networks</label>
+            <help>Configure the firewall to accept connections on the Cups
+                interface from interfaces configured as 'external'</help>
+        </check>
+    </config>
     <text>The printing service is running.</text>
-    <text>You can add new printers from the Cups web interface : http://@HOSTNAME@:631/</text>
+    <text>You can add new printers from the Cups web interface : https://@HOSTNAME@:631/admin/</text>
+    <text>Login to the Cups interface is the root account.</text>
 </module>

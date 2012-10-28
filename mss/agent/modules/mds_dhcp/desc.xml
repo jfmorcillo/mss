@@ -14,6 +14,18 @@
     <deps>
         <module>mds_mmc</module>
     </deps>
+    <config>
+        <check name="fw_lan" default="on">
+            <label>Allow DHCP requests from internal networks</label>
+            <help>Configure the firewall to accept DHCP requests on interfaces
+                configured as 'internal'</help>
+        </check>
+        <check name="fw_wan" default="off">
+            <label>Allow DHCP requests from external networks</label>
+            <help>Configure the firewall to accept DHCP requests on interfaces
+                configured as 'external'</help>
+        </check>
+    </config>
     <text>Configuration done. (/etc/mmc/plugins/network.ini updated)</text>
     <text>Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)</text>
     <text>Configuration of dhcp-server done. (/etc/dhcpd.conf updated)</text>

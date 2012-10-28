@@ -11,6 +11,8 @@ bind_conf="/var/lib/named/etc/named.conf"
 
 networks="$1"
 forwarders="$2"
+fw_lan="$3"
+fw_wan="$4"
 
 ln -sf /var/lib/named/var/named/ /var/named
 
@@ -58,6 +60,11 @@ restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service named
 enable_service named
 
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a DNS/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a DNS/ACCEPT -t wan
+restart_service shorewall
+
 echo "8The DNS service is running."
 if [ ! -z "$forwarders" ]; then
     echo "7Your DNS will forward external queries to : #$forwarders"
@@ -66,6 +73,5 @@ if [ ! -z "$networks" ]; then
     echo "7The following networks are able to query your DNS for external domains : #$networks"
 fi
 echo "7You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/"
-echo "8Make sure you have enabled the DNS service (port 53) on your firewall."
 
 exit 0

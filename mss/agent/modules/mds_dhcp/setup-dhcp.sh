@@ -5,6 +5,9 @@
 
 check_mmc_configured
 
+fw_lan="$1"
+fw_wan="$2"
+
 base_reseau_template="templates/network.ini.tpl"
 base_dhcpd_template="templates/dhcpd.conf.tpl"
 hostname=`hostname`
@@ -32,6 +35,11 @@ fi
 
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 enable_service dhcpd
+
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t lan -p udp -P 67:68
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t wan -p udp -P 67:68
+restart_service shorewall
 
 echo 8The DHCP service is installed.
 echo 7You can now configure your DHCP settings from the management interface : https://@HOSTNAME@/mmc/

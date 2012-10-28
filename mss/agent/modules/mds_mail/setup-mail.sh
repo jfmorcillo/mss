@@ -32,6 +32,8 @@ do
     smtpd_mynetworks=$smtpd_mynetworks,$network
 done
 popimap_proto="$2"
+fw_lan="$3"
+fw_wan="$4"
 
 # postfix
 backup /etc/postfix/main.cf
@@ -56,7 +58,7 @@ backup /etc/dovecot.conf
 cat $dovecot_template > /etc/dovecot.conf
 sed -i "s/\@PROTOCOLS\@/$popimap_proto/" /etc/dovecot.conf
 
-if [ -f /etc/dovecot-ldap.conf ]; 
+if [ -f /etc/dovecot-ldap.conf ];
     then backup /etc/dovecot-ldap.conf
 fi
 cat $dovecot_ldap_template > /etc/dovecot-ldap.conf
@@ -85,7 +87,7 @@ usermod -G amavis clamav
 # amavis / razor
 su - amavis -s /bin/sh -c 'razor-admin -d --create && razor-admin -register && razor-admin -discover' 2>&1 > /dev/null
 if [ $? -eq 0 ]; then echo "0Razor configured successfully."
-else 
+else
 	su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover' 2>&1 > /dev/null
 	if [ $? -eq 0 ]; then echo "0Razor configured successfully."
 	else echo "1Failed to register razor. Try to run as root later# : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
@@ -108,13 +110,24 @@ restart_service clamd
 restart_service postfix
 restart_service dovecot
 
+function add_rules() {
+    mss-add-shorewall-rule -a SMTP/ACCEPT -t $1
+    mss-add-shorewall-rule -a SMTPS/ACCEPT -t $1
+    [[ "$popimap_proto" =~ "imaps" ]] && mss-add-shorewall-rule -a IMAPS/ACCEPT -t $1
+    [[ "$popimap_proto" =~ "pop3s" ]] && mss-add-shorewall-rule -a POP3S/ACCEPT -t $1
+}
+
+# configure the Firewall
+[ $fw_lan == "on" ] && add_rules lan
+[ $fw_wan == "on" ] && add_rules wan
+restart_service shorewall
+
 echo "8The mail service is configured."
 echo "8You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
 echo "7- the mail domain# $DOMAIN #has been created"
 echo "7- mails are stored in /home/vmail/user/Maildir"
 echo "7- SSL is enabled on the SMTP server"
-echo "7- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"
-echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks" 
-echo "8Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995 or/and IMAPS 993) on your firewall."
+echo "7- @B@Non-SSL connexions are disabled by default on the IMAP/POP3 server@B@"
+echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks"
 
 exit 0

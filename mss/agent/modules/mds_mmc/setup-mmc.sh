@@ -136,6 +136,9 @@ sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/dashboard.ini
 # http -> https redirection
 https_redirect mmc /etc/httpd/conf/webapps.d/mmc.conf
 
+# add shorewall plugin...
+cp -r plugins/shorewall /usr/lib/python2.7/site-packages/mmc/plugins/
+
 restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd
