@@ -30,28 +30,31 @@ function begin_shorewall_conf() {
     shorewall_interfaces=`mktemp`
     shorewall_zones=`mktemp`
     shorewall_policy=`mktemp`
+    shorewall_rules=`mktemp`
     echo fw     all     ACCEPT >> $shorewall_policy
+    echo fw     firewall >> $shorewall_zones
+    echo SECTION NEW >> $shorewall_rules
 }
 
 function build_shorewall_conf() {
     echo $2 $1 detect >> $shorewall_interfaces
     echo $2 ipv4 >> $shorewall_zones
-    [[ $2 = lan* ]] && echo $2 fw ACCEPT >> $shorewall_policy
-    echo $2 all DROP info >> $shorewall_policy
+    echo ACCEPT/SSH     $2  fw >> $shorewall_rules
+    echo ACCEPT         $2  fw  tcp     8000 >> $shorewall_rules
 }
 
 function end_shorewall_conf() {
     # Finish shorewall conf
-    echo fw firewall >> $shorewall_zones
-    # Default policy
     echo all all DROP >> $shorewall_policy
     # write conf
     backup /etc/shorewall/zones
     backup /etc/shorewall/interfaces
     backup /etc/shorewall/policy
+    backup /etc/shorewall/rules
     mv $shorewall_zones /etc/shorewall/zones
     mv $shorewall_interfaces /etc/shorewall/interfaces
     mv $shorewall_policy /etc/shorewall/policy
+    mv $shorewall_rules /etc/shorewall/rules
 }
 
 begin_shorewall_conf
