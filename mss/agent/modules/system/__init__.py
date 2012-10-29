@@ -47,7 +47,7 @@ def get_domain(module):
 
 def valid_hostname(string):
     """ validate hostname """
-    if not re.match('^[a-z]+$', string):
+    if not re.match('^[a-z]+[a-z0-9]*$', string):
         return "Incorrect hostname."
     else:
         return None
