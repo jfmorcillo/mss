@@ -29,9 +29,11 @@ chown -R apache.apache /var/log/roundcubemail/
 # http -> https redirection
 https_redirect roundcubemail /etc/httpd/conf/webapps.d/roundcubemail.conf
 
+restart_service httpd
+
 # copy main config
 backup /etc/roundcubemail/main.inc.php
 cat $roundcube_main_conf_template > /etc/roundcubemail/main.inc.php
 
 echo "8Webmail Roundcube is activated on your server."
-echo "8You can access the webmail interface at http://@HOSTNAME@/roundcubemail/"
+echo "8You can access the webmail interface at https://@HOSTNAME@/roundcubemail/"
