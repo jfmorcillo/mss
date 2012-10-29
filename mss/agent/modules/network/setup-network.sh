@@ -20,8 +20,6 @@ function build_net_conf() {
         else
             echo BOOTPROTO=dhcp >> $conf
         fi
-        # Disable ifplugd
-        echo MII_NOT_SUPPORTED=yes >> $conf
         # Write the conf
         backup /etc/sysconfig/network-scripts/ifcfg-$1
         mv $conf /etc/sysconfig/network-scripts/ifcfg-$1
@@ -41,9 +39,11 @@ function begin_shorewall_conf() {
 function build_shorewall_conf() {
     echo $2 $1 detect >> $shorewall_interfaces
     echo $2 ipv4 >> $shorewall_zones
-    echo SSH/ACCEPT     $2  fw >> $shorewall_rules
-    echo Web/ACCEPT     $2  fw >> $shorewall_rules
-    echo ACCEPT         $2  fw  tcp     8000 >> $shorewall_rules
+    if [ "$2" =~ "lan" ]; then
+        echo SSH/ACCEPT     $2  fw >> $shorewall_rules
+        echo Web/ACCEPT     $2  fw >> $shorewall_rules
+        echo ACCEPT         $2  fw  tcp     8000 >> $shorewall_rules
+    fi
 }
 
 function end_shorewall_conf() {
@@ -70,7 +70,5 @@ done
 
 end_shorewall_conf
 
-restart_service shorewall
-
 echo 8Network is configured.
-echo 8Restart the network service through the management interface to apply the configuration.
+echo 8Restart the server to apply the configuration.
