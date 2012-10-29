@@ -49,6 +49,7 @@ def get_interfaces_config(config):
             if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
             if_detail = netifaces.ifaddresses(interface)
             configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail
+            method = "none"
             addr = ""
             netmask = ""
             dns1 = ""
@@ -67,60 +68,61 @@ def get_interfaces_config(config):
                 domain = get_config_option(if_file, "DOMAIN")
                 gateway = get_config_option(if_file, "GATEWAY")
 
-                config.append({'id': 'network',
-                               'type': 'subtitle', 'label': interface})
-                config.append({'id': 'network', 'name': interface + '_name',
-                               'type': 'text', 'hidden': 'yes', 'default': interface})
-                config.append({'id': 'network',
-                               'name': interface + '_type',
-                               'require': 'yes',
-                               'label': 'Interface type',
-                               'type': 'options',
-                               'options': [
-                                   {'name': 'Internal network', 'value': 'lan' + interface[-1]},
-                                   {'name': 'External network', 'value': 'wan' + interface[-1]}
-                                ]
-                               })
-                config.append({'id': 'network',
-                               'name': interface + '_method',
-                               'default': method, 'require': 'yes',
-                               'label': 'Configuration method',
-                               'type': 'options',
-                               'options': [
-                                   {'name': 'DHCP configuration', 'value': 'dhcp'},
-                                   {'name': 'Manual configuration', 'value': 'static',
-                                    'toggle': [interface + '_addr', interface + '_netmask', interface + '_dns1',
-                                               interface + '_dns2', interface + '_domain', interface + '_gateway']}
-                                ]
-                               })
-                config.append({'id': 'network',
-                               'name': interface + '_addr',
-                               'default': addr,
-                               'label': 'IP Address',
-                               'type': 'text', 'validation': 'ip'})
-                config.append({'id': 'network',
-                               'name': interface + '_netmask',
-                               'default': netmask,
-                               'label': 'Netmask',
-                               'type': 'text', 'validation': 'ip'})
-                config.append({'id': 'network',
-                               'name': interface + '_dns1',
-                               'default': dns1,
-                               'label': 'First DNS server',
-                               'type': 'text', 'validation': 'ip'})
-                config.append({'id': 'network',
-                               'name': interface + '_dns2',
-                               'default': dns2,
-                               'label': 'Second DNS server',
-                               'type': 'text', 'validation': 'ip'})
-                config.append({'id': 'network',
-                               'name': interface + '_domain',
-                               'default': domain,
-                               'label': 'Domain search',
-                               'type': 'text', 'validation': 'fqdn'})
-                config.append({'id': 'network',
-                               'name': interface + '_gateway',
-                               'default': gateway,
-                               'label': 'Gateway',
-                               'type': 'text', 'validation': 'ip'})
+            config.append({'id': 'network',
+                           'type': 'subtitle', 'label': interface})
+            config.append({'id': 'network', 'name': interface + '_name',
+                           'type': 'text', 'hidden': 'yes', 'default': interface})
+            config.append({'id': 'network',
+                           'name': interface + '_type',
+                           'require': 'yes',
+                           'label': 'Interface type',
+                           'type': 'options',
+                           'options': [
+                               {'name': 'Internal network', 'value': 'lan' + interface[-1]},
+                               {'name': 'External network', 'value': 'wan' + interface[-1]}
+                            ]
+                           })
+            config.append({'id': 'network',
+                           'name': interface + '_method',
+                           'default': method, 'require': 'yes',
+                           'label': 'Configuration method',
+                           'type': 'options',
+                           'options': [
+                               {'name': 'No configuration', 'value': 'none'},
+                               {'name': 'DHCP configuration', 'value': 'dhcp'},
+                               {'name': 'Manual configuration', 'value': 'static',
+                                'toggle': [interface + '_addr', interface + '_netmask', interface + '_dns1',
+                                           interface + '_dns2', interface + '_domain', interface + '_gateway']}
+                            ]
+                           })
+            config.append({'id': 'network',
+                           'name': interface + '_addr',
+                           'default': addr,
+                           'label': 'IP Address',
+                           'type': 'text', 'validation': 'ip'})
+            config.append({'id': 'network',
+                           'name': interface + '_netmask',
+                           'default': netmask,
+                           'label': 'Netmask',
+                           'type': 'text', 'validation': 'ip'})
+            config.append({'id': 'network',
+                           'name': interface + '_dns1',
+                           'default': dns1,
+                           'label': 'First DNS server',
+                           'type': 'text', 'validation': 'ip'})
+            config.append({'id': 'network',
+                           'name': interface + '_dns2',
+                           'default': dns2,
+                           'label': 'Second DNS server',
+                           'type': 'text', 'validation': 'ip'})
+            config.append({'id': 'network',
+                           'name': interface + '_domain',
+                           'default': domain,
+                           'label': 'Domain search',
+                           'type': 'text', 'validation': 'fqdn'})
+            config.append({'id': 'network',
+                           'name': interface + '_gateway',
+                           'default': gateway,
+                           'label': 'Gateway',
+                           'type': 'text', 'validation': 'ip'})
     return config

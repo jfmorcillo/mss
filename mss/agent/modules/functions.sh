@@ -74,7 +74,7 @@ function mybackup() {
 function backup() {
     now=`date +%s`
 	if [ ! -f "$1" ]; then
-        echo "1No file to backup"
+        echo "No file to backup ($1)"
     else
         newname="$1-mss-wizard-$now"
         cp -a "$1" "$newname"

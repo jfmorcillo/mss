@@ -197,9 +197,12 @@
                             {% if option.toggle %}
                             <script type="text/javascript">
                                 $('#{{ field.id }}_{{ field.name }}').change(function() {
-                                    {% for f in option.toggle %}
-                                    $('#{{ field.id }}_{{ f }}').parent().parent().toggle();
-                                    {% endfor %}
+                                    if ("{{ option.value }}" == $(this).val()) {
+                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().show();{% endfor %}
+                                    }
+                                    else {
+                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().hide();{% endfor %}
+                                    }
                                 });
                                 {% ifnotequal option.value field.default %}
                                 $(document).ready(function() {

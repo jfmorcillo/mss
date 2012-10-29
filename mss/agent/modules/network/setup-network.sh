@@ -5,25 +5,27 @@
 check_root
 
 function build_net_conf() {
-    conf=`mktemp`
-    echo DEVICE=$1 > $conf
-    echo ONBOOT=yes >> $conf
-    if [ $2 = "static" ]; then
-        echo BOOTPROTO=none >> $conf
-        echo IPADDR=$3 >> $conf
-        echo NETMASK=$4 >> $conf
-        [[ ! $5x = x ]] && echo DNS1=$5 >> $conf
-        [[ ! $6x = x ]] && echo DNS2=$6 >> $conf
-        [[ ! $7x = x ]] && echo DOMAIN=$7 >> $conf
-        [[ ! $8x = x ]] && echo GATEWAY=$8 >> $conf
-    else
-        echo BOOTPROTO=dhcp >> $conf
+    if [ ! $2 = "none" ]; then
+        conf=`mktemp`
+        echo DEVICE=$1 > $conf
+        echo ONBOOT=yes >> $conf
+        if [ $2 = "static" ]; then
+            echo BOOTPROTO=none >> $conf
+            echo IPADDR=$3 >> $conf
+            echo NETMASK=$4 >> $conf
+            [[ ! $5x = x ]] && echo DNS1=$5 >> $conf
+            [[ ! $6x = x ]] && echo DNS2=$6 >> $conf
+            [[ ! $7x = x ]] && echo DOMAIN=$7 >> $conf
+            [[ ! $8x = x ]] && echo GATEWAY=$8 >> $conf
+        else
+            echo BOOTPROTO=dhcp >> $conf
+        fi
+        # Disable ifplugd
+        echo MII_NOT_SUPPORTED=yes >> $conf
+        # Write the conf
+        backup /etc/sysconfig/network-scripts/ifcfg-$1
+        mv $conf /etc/sysconfig/network-scripts/ifcfg-$1
     fi
-    # Disable ifplugd
-    echo MII_NOT_SUPPORTED=yes >> $conf
-    # Write the conf
-    backup /etc/sysconfig/network-scripts/ifcfg-$1
-    mv $conf /etc/sysconfig/network-scripts/ifcfg-$1
 }
 
 function begin_shorewall_conf() {
