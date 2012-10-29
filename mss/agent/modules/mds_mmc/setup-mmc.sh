@@ -129,6 +129,16 @@ else
     echo "0Your previous database directory has been backed up as# $backup_db."
 fi
 
+backup /etc/nsswitch.conf
+cat $nsswitch_template > /etc/nsswitch.conf
+backup /etc/ldap.conf
+cat $ldap_conf_template > /etc/ldap.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/ldap.conf
+sed -i "s/\@SERVER\@/$MDSSERVER/" /etc/ldap.conf
+if [ $? -eq 0 ]; then echo "0lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)";
+else echo "2Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"; exit 1
+fi
+
 # enable modules
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/services.ini
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/dashboard.ini
