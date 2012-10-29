@@ -64,9 +64,9 @@ class ShorewallRules(ShorewallConf):
     def add(self, action, src, dst, proto = "", dst_port = ""):
         action = action.split('/')
         if len(action) == 2:
-            if not os.path.exists(os.path.join('/usr', 'share', 'shorewall', 'macro.%s' % action[1])) and \
-               not os.path.exists(os.path.join('/etc', 'shorewall', 'macro.%s' % action[1])):
-                raise ShorewallMacroDoesNotExists("Macro %s does not exists" % action[1])
+            if not os.path.exists(os.path.join('/usr', 'share', 'shorewall', 'macro.%s' % action[0])) and \
+               not os.path.exists(os.path.join('/etc', 'shorewall', 'macro.%s' % action[0])):
+                raise ShorewallMacroDoesNotExists("Macro %s does not exists" % action[0])
         action = "/".join(action)
         self.add_line([action, src, dst, proto, dst_port])
 
