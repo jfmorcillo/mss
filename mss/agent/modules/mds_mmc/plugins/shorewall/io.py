@@ -45,9 +45,7 @@ class ShorewallConf:
     def add_line(self, values, position = None):
         new = ShorewallLine(values)
         # remove identic lines first
-        for index, line in enumerate(self.file[:]):
-            if str(line) == str(new):
-                del self.file[index]
+        self.del_line(values)
         if position is not None:
             fake_index = 0
             for index, line in enumerate(self.file):
@@ -59,6 +57,25 @@ class ShorewallConf:
             self.file.append(new)
         self.write()
         return True
+
+    def replace_line(self, old_values, new_values):
+        old = ShorewallLine(old_values)
+        new = ShorewallLine(new_values)
+        for index, line in enumerate(self.file[:]):
+            if str(line) == str(old):
+                self.file[index] = new
+                self.write()
+                return True
+        return False
+
+    def del_line(self, values):
+        delete = ShorewallLine(values)
+        for index, line in enumerate(self.file[:]):
+            if str(line) == str(delete):
+                del self.file[index]
+                self.write()
+                return True
+        return False
 
     def get_line(self, position):
         fake_index = 0
