@@ -240,9 +240,9 @@ def section(request, section):
         modules_list = [m.get('id') for m in modules]
         # remove modules not present server side
         for bundle in section_info["bundles"]:
-            for module in bundle["modules"]:
+            for module in bundle["modules"][:]:
                 if module not in modules_list:
-                    section['modules'].remove(module)
+                    bundle["modules"].remove(module)
 
         return render_to_response('section.html',
             {'sections': CM.get_sections(), 'section': section_info,
