@@ -21,6 +21,18 @@
     <conflicts>
         <module>zarafa</module>
     </conflicts>
+    <config>
+        <check name="fw_lan" default="on">
+            <label>Allow access from internal networks</label>
+            <help>Configure the firewall to allow access to the webmail
+                interface from internal networks</help>
+        </check>
+        <check name="fw_wan" default="on">
+            <label>Allow access from external networks</label>
+            <help>Configure the firewall to allow access to the webmail
+                interface from external networks</help>
+        </check>
+    </config>
     <text>Webmail RoundCube is activated on your server.</text>
     <text>You can access the webmail interface at https://@HOSTNAME@/roundcubemail/</text>
 </module>

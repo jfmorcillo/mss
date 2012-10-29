@@ -1,5 +1,6 @@
 <module id="mds_mmc">
-    <name>Users and groups management</name>
+    <name>Management interface</name>
+    <desc>Users and groups management</desc>
     <actions>
         <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/main.php" />
     </actions>
@@ -27,6 +28,16 @@
             <label>Management password</label>
             <help>The password needed to access the management interface.</help>
         </password>
+        <check name="fw_lan" default="on">
+            <label>Allow access from internal networks</label>
+            <help>Configure the firewall to allow access to the Management
+                interface from internal networks</help>
+        </check>
+        <check name="fw_wan" default="off">
+            <label>Allow access from external networks</label>
+            <help>Configure the firewall to allow access to the Management
+                interface from external networks</help>
+        </check>
     </config>
     <deps>
         <module>system</module>

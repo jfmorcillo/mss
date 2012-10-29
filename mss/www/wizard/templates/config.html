@@ -233,7 +233,12 @@
                             data-original-title="{{ field.help }}"
                             style="vertical-align: top"
                         />
-                        <label for="{{ field.id }}_{{ field.name }}" style="display: inline">
+                        <label
+                            for="{{ field.id }}_{{ field.name }}"
+                            data-placement="right" rel="tooltip"
+                            data-original-title="{{ field.help }}"
+                            style="display: inline"
+                        >
                             {{ field.label }}
                         </label>
                     </div>

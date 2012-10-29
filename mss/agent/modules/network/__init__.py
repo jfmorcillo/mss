@@ -37,6 +37,7 @@ def get_config_info():
             args.append(interface + "_dns2")
             args.append(interface + "_domain")
             args.append(interface + "_gateway")
+    args = args + ["fw_mss_lan", "fw_ssh_lan", "fw_mss_wan", "fw_ssh_wan"]
     return ("setup-network.sh", args)
 
 def get_interfaces_config(config):
@@ -76,6 +77,7 @@ def get_interfaces_config(config):
                            'name': interface + '_type',
                            'require': 'yes',
                            'label': 'Interface type',
+                           'help': 'Choose "External" if the interface is connected to the Internet. If the interface is connected to an internal network, choose "Internal"',
                            'type': 'options',
                            'options': [
                                {'name': 'Internal network', 'value': 'lan' + interface[-1]},
@@ -125,4 +127,28 @@ def get_interfaces_config(config):
                            'default': gateway,
                            'label': 'Gateway',
                            'type': 'text', 'validation': 'ip'})
+
+    config.append({'id': 'network',
+                   'type': 'subtitle', 'label': 'Firewall configuration'})
+    config.append({'id': 'network',
+                   'name': 'fw_mss_lan',
+                   'default': 'on',
+                   'label': 'Allow access to Mandriva Server Setup from internal networks',
+                   'type': 'check'})
+    config.append({'id': 'network',
+                   'name': 'fw_ssh_lan',
+                   'default': 'on',
+                   'label': 'Allow SSH access from internal networks',
+                   'type': 'check'})
+    config.append({'id': 'network',
+                   'name': 'fw_mss_wan',
+                   'default': 'off',
+                   'label': 'Allow access to Mandriva Server Setup from external networks',
+                   'type': 'check'})
+    config.append({'id': 'network',
+                   'name': 'fw_ssh_wan',
+                   'default': 'on',
+                   'label': 'Allow SSH access from external networks',
+                   'type': 'check'})
+
     return config

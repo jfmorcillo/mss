@@ -19,46 +19,5 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-import re
-import os
-from mss.agent.lib.utils import getINIoption
-
 def get_config_info():
-
-    return ("setup-mmc.sh", ['domain', 'mdspasswd', 'mdsppolicy'])
-
-def get_current_config(module):
-
-    ini='/etc/mmc/plugins/base.ini'
-    if os.path.exists(ini):
-        mdsdomain = getINIoption('ldap', 'baseDN', ini)
-        mdsdomain = re.sub('^dc=', '', mdsdomain)
-        mdsdomain = re.sub(',[\s]*dc=', '.', mdsdomain)
-        if getINIoption('main', 'disable', '/etc/mmc/plugins/ppolicy.ini') == "0":
-            mdsppolicy = "on"
-        else:
-            mdsppolicy = "off"
-        return {'mdsdomain': mdsdomain, "mdsppolicy": mdsppolicy}
-    else:
-        return {}
-
-def get_hostname(module):
-    """ 
-        Return the current hostname 
-    """
-    from socket import gethostname
-    return gethostname()
-
-def get_domain(module):
-    """ 
-        Return the current domain 
-        If none, return example.com
-    """
-    from socket import getfqdn
-    try:
-        domain = '.'.join(getfqdn().split('.')[1:])
-    except:
-        pass
-    if not domain:
-        domain = "example.com"
-    return domain
+    return ("setup-mmc.sh", ['mdspasswd', 'fw_lan', 'fw_wan'])

@@ -8,7 +8,6 @@ check_root
 SLAPTEST="/usr/sbin/slaptest"
 SLAPADD="/usr/sbin/slapadd"
 SLAPPASSWD="/usr/sbin/slappasswd"
-SERVER=127.0.0.1
 
 if [ "`uname -m`" != "x86_64" ]; then
 	slapd_conf_template="templates/slapd-32.conf.tpl"
@@ -25,9 +24,11 @@ acl_file="/etc/openldap/mandriva-dit-access.conf"
 ldap_conf_template="templates/ldap.conf.tpl"
 nsswitch_template="templates/nsswitch.conf.tpl"
 
-mypass_e=`escape_sed $1`
 mypass=$1
+mypass_e=`escape_sed $mypass`
 mysuffix=`calc_suffix $DOMAIN`
+fw_lan=$2
+fw_wan=$3
 
 # MDS schemas
 add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dhcp.schema
@@ -154,6 +155,10 @@ restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
+
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t wan
 
 echo "8The MBS management interface is configured."
 echo "8You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups."

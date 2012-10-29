@@ -5,6 +5,9 @@
 
 check_root
 
+fw_lan=$1
+fw_wan=$1
+
 roundcube_db_conf_template="templates/db.inc.php.tpl"
 roundcube_main_conf_template="templates/main.inc.php.tpl"
 
@@ -34,6 +37,11 @@ restart_service httpd
 # copy main config
 backup /etc/roundcubemail/main.inc.php
 cat $roundcube_main_conf_template > /etc/roundcubemail/main.inc.php
+
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t wan
+restart_service shorewall
 
 echo "8Webmail Roundcube is activated on your server."
 echo "8You can access the webmail interface at https://@HOSTNAME@/roundcubemail/"
