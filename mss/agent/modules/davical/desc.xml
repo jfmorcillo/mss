@@ -2,9 +2,9 @@
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../desc.xsd" id="davical">
     <name>Calendar and Addressbook</name>
-    <desc> DAViCal a server for calendar and addressbook sharing.</desc>
+    <desc>DAViCal a server for calendar and addressbook sharing.</desc>
     <actions>
-        <action type="link" name="Management interface" value="http://@HOSTNAME@/davical/admin.php"/>
+        <action type="link" name="DAViCal administration" value="https://@HOSTNAME@/davical/"/>
     </actions>
     <packages>
         <target name="all">
@@ -16,13 +16,13 @@
         </target>
     </packages>
     <deps>
-<!--         <module>apache</module> -->
+        <!-- <module>apache</module> -->
         <module>postgresql</module>
     </deps>
     <text>Something goes wrong with the database setup</text>
     <text>Check the logs</text>
     <text>The calendar and addressbook server is configured.</text>
-    <text>The temporary admin password is </text>
-    <text> (without the ' ')</text>
-    <text>Remember to change it using the manadement interface </text>
+    <text>- Administrator :</text>
+    <text>- Password :</text>
+    <text>Change it using the management interface</text>
 </module>

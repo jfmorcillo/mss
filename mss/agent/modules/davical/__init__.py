@@ -2,8 +2,6 @@
 #
 # (c) 2012 Mandriva, http://www.mandriva.com/
 #
-# $Id$
-#
 # This file is part of Mandriva Server Setup
 #
 # MSS is free software; you can redistribute it and/or modify
@@ -21,24 +19,5 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-import re
-import logging
-
 def get_config_info():
-    return ('setup-davical.sh', ['hostname', 'domain'])
-
-def get_hostname(module):
-    """
-    Return the server hostname
-    """
-    return module.MM.get_option("hostname")
-
-def get_domain(module):
-    """
-    Return the server domain
-    """
-    return module.MM.get_option("domain")
-
-def get_current_config(module):
-    domain = module.MM.get_option("domain")
-    return {'domain': domain}
+    return ('setup-davical.sh', [])

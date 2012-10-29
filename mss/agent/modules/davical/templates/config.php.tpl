@@ -29,7 +29,7 @@ $c->pg_connect[] = "dbname=davical user=davical_app";
 * Is used to specify the authentication realm of the server, as well as
 * being used as a name to display in various places.
 */
-// $c->system_name = "DAViCal CalDAV Server";
+$c->system_name = "@FQDN@ Calendar Server";
 
 /**
 * default: true
@@ -102,7 +102,7 @@ $c->admin_email ='admin@@DOMAIN@';
 * creation of calendar collections.
 * Default: true
 */
-$c->collections_always_exist = false;
+// $c->collections_always_exist = false;
 
 /**
 * The name of a user's "home" calendar. This will be created for each
@@ -136,7 +136,7 @@ $c->collections_always_exist = false;
 * Or also from these aggregated privileges:
 *   'write', 'schedule-deliver', 'schedule-send', 'all'
 */
-// $c->default_privileges = array('read-free-busy', 'schedule-query-freebusy');
+$c->default_privileges = array('read', 'read-free-busy', 'schedule-deliver', 'schedule-send');
 
 
 /**
@@ -151,10 +151,10 @@ $c->collections_always_exist = false;
 //                         );
 
 /**
-* If true, then remote scheduling will be enabled.  There is a possibility 
+* If true, then remote scheduling will be enabled.  There is a possibility
 * of receiving spam events in calendars if enabled, you will at least know
 * what domain the spam came from as domain key signatures are required for
-* events to be accepted.  
+* events to be accepted.
 *
 * You probably need to setup Domain Keys for your domain as well as the
 * appropiate DNS SRV records.
@@ -172,7 +172,7 @@ $c->collections_always_exist = false;
 //$c->enable_scheduling = true;
 
 /**
-* Domain Key domain to use when signing outbound scheduling requests, this 
+* Domain Key domain to use when signing outbound scheduling requests, this
 * is the domain with the public key in a TXT record as shown above.
 *
 * TODO: enable domain/signing by per user keys, patches welcome.
@@ -189,10 +189,10 @@ $c->collections_always_exist = false;
 //$c->scheduling_dkim_selector = 'cal';
 
 /*
-* Domain Key private key 
+* Domain Key private key
 * Required if you want to enable outbound remote server scheduling
 * Default: none
-*/  
+*/
 /*
 $c->schedule_private_key = 'PRIVATE-KEY-BASE-64-DATA';
 */
@@ -201,13 +201,10 @@ $c->schedule_private_key = 'PRIVATE-KEY-BASE-64-DATA';
 * External subscription (BIND) minimum refresh interval
 * Required if you want to enable remote binding ( webcal subscriptions )
 * Default: none
-*/  
+*/
 /*
 $c->external_refresh = 60;
 */
-
-
-
 
 /***************************************************************************
 *                                                                          *
@@ -321,20 +318,30 @@ $c->external_refresh = 60;
  */
 $c->authenticate_hook['call'] = 'LDAP_check';
 $c->authenticate_hook['config'] = array(
-    'host'              => '@MDSSERVER@',
+    'host' => '@MDSSERVER@',
     'port' => '389',
-//    'bindDN'            => 'auth@DOMAIN',
-//    'passDN'            => 'secret',
-//    'baseDNUsers'       => 'dc=DOMAIN,dc=local',
-    'baseDNUsers'       => 'ou=People,@SUFFIX@',
-    'protocolVersion'   => 3,
-//    'optReferrals'      => 0,
+    'baseDNUsers' => 'ou=People,@SUFFIX@',
+    'baseDNGroups' => 'ou=Group,@SUFFIX@',
+    'protocolVersion' => 3,
     'filterUsers' => 'objectClass=inetOrgPerson',
-    'mapping_field'     => array("username" => "uid",
-                                 "fullname" => "cn" ,
-                                 "email"    => "mail"),
-    'default_value'     => array("date_format_type" => "E","locale" => "en_NZ"),
-    'format_updated'    => array('Y' => array(0,4),'m' => array(4,2),'d'=> array(6,2),'H' => array(8,2),'M'=>array(10,2),'S' => array(12,2))
+    'filterGroups' => 'objectClass=posixGroup',
+    'mapping_field' => array("username" => "uid",
+                             "updated" => "modifyTimestamp",
+                             "fullname" => "cn" ,
+                             "email" => "mail",
+                             "locale" =>"preferredLanguage"),
+    'group_mapping_field' => array("username" => "cn",
+                                   "updated" => "modifyTimestamp",
+                                   "fullname" => "cn" ,
+                                   "members" => "memberUid"),
+    'group_member_attr_to' => array("uid", "mail"),
+    'default_value' => array("date_format_type" => "E", "locale" => "en_US"),
+    'format_updated' => array('Y' => array(0,4),
+                              'm' => array(4,2),
+                              'd' => array(6,2),
+                              'H' => array(8,2),
+                              'M' => array(10,2),
+                              'S' => array(12,2))
     );
 
   /* If there is some user you do not want to sync from LDAP, put their username in this list */
@@ -433,3 +440,7 @@ include('drivers_ldap.php');
 //                  //              'debug_jid' => 'otheruser@example.com'  // send a copy of all publishes to this jid
 //                                );
 // include ( 'pubsub.php' );
+//
+
+// Disable auto schedule to allow thunderbird to invite people
+$c->enable_auto_schedule = false;

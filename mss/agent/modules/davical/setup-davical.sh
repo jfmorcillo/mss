@@ -1,8 +1,6 @@
 #!/bin/bash
 # Copyright Mandriva 2012 all rights reserved
 
-# $1 host
-
 . '../functions.sh'
 
 check_mmc_configured
@@ -21,27 +19,26 @@ backup $PG_CONF_FILE
 #remove any previous Davical configuration
 sed -i "s/^.*davical.*$//" $PG_CONF_FILE
 #http://www.davical.org/installation.php recommends to add these lines at the top of pg configuration file
- sed -i -e '/# TYPE  DATABASE        USER            ADDRESS                 METHOD/ a\
+sed -i -e '/# TYPE  DATABASE        USER            ADDRESS                 METHOD/ a\
 local   davical    davical_app   trust\
 local   davical    davical_dba   trust' $PG_CONF_FILE
 
 restart_service postgresql
 
-#sometimes posgres takes too much time to restart and breaks the setup process
-#TODO replace with somthing smarter
+# Wait postgres to be up
+# TODO replace with somthing smarter
 for (( i=20 ; i ; i-=1 )); do sleep 1; echo -n '.'; done
 
-###Create Davical DB
-#TODO: check that DB don't already exists
+# Drop any Davical DB
+su postgres -c 'dropdb davical' 2>/dev/null
+# Create the DB
 su postgres -c /usr/share/davical/dba/create-database.sh 2>&1
-#when this script ends it prints the admin password it must be printed to the user of MSS
-#get the generated password from the DB
+# Get the generated password from the DB
 DAVICAL_ADMIN_PASS=`su postgres -c "psql davical -c 'select username, password from usr;'" | sed -n '/admin/s/^ *admin.*\*\*\(.*\)$/\1/p'`
 
 if [ ! $DAVICAL_ADMIN_PASS ];
 then
-    echo "1Something goes wrong with the database setup"
-    echo "1Check the logs"
+    echo "1Failed to setup the database."
     exit 1
 fi
 
@@ -55,8 +52,12 @@ cat $APACHE_DAVICAL_CONF_TEMPLATE > $APACHE_DAVICAL_CONF
 backup $DAVICAL_CONF
 cat $DAVICAL_CONF_TEMPLATE > $DAVICAL_CONF
 sed -i "s/\@MDSSERVER\@/$MDSSERVER/" $DAVICAL_CONF
-sed -i "s/\@DOMAIN\@/$MDSDOMAIN/" $DAVICAL_CONF
+sed -i "s/\@DOMAIN\@/$DOMAIN/" $DAVICAL_CONF
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $DAVICAL_CONF
+sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CONF
+
+# http -> https redirection
+https_redirect davical $APACHE_DAVICAL_CONF
 
 restart_service $SERVICE
 
@@ -71,6 +72,8 @@ cat $DAVICAL_CRON_TEMPLATE > $DAVICAL_CRON
 sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CRON
 
 echo "8The calendar and addressbook server is configured."
-echo "7The temporary 'admin' password is '$DAVICAL_ADMIN_PASS' (without the ' ')"
-echo "7Remember to change it using the management interface http://$FQDN/davical/admin.php"
+echo "7 - Administrator :# admin"
+echo "7 - Password :# $DAVICAL_ADMIN_PASS"
+echo "7Change it using the management interface# https://@HOSTNAME@/davical/"
 
+exit 0
