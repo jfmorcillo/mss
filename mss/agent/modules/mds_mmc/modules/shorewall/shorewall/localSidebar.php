@@ -31,7 +31,6 @@ if (count(getZones("wan")) > 0 && count(getZones("lan")) > 0)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("Internal → External", "shorewall"), "shorewall", "shorewall", "internal_external", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
 if (count(getZones("wan")) > 0 && count(getZones("lan")) > 0)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("External → Internal", "shorewall"), "shorewall", "shorewall", "external_internal", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
-$sidemenu->addSideMenuItem(new SideMenuItem(_T("Policies", "shorewall"), "shorewall", "shorewall", "policies", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
 if (count(getZones("wan")) > 0 && count(getZones("lan")) > 0)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("NAT", "shorewall"), "shorewall", "shorewall", "masquerade", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
 

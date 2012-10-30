@@ -76,9 +76,6 @@ $page = new Page("delete_external_internal_rule");
 $page->setOptions(array("visible" => False, "AJAX" => True));
 $submod->addPage($page);
 
-$page = new Page("policies", _T("Firewall policies"));
-$submod->addPage($page);
-
 $page = new Page("masquerade", _T("NAT"));
 $submod->addPage($page);
 

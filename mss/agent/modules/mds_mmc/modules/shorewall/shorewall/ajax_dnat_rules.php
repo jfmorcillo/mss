@@ -24,6 +24,8 @@ include("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
 
 $filter = $_GET["filter"];
 $list = getRules("DNAT", $src, $dst, $filter);
+$zones_wan = getZonesInterfaces($src);
+$zones_lan = getZonesInterfaces($dst);
 
 $deleteAction = new ActionPopupItem(_T("Delete rule"), "delete_" . $page . "_rule", "delete", "");
 

@@ -21,23 +21,33 @@
  */
 
 require("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
+require("modules/shorewall/includes/functions.inc.php");
 require("modules/shorewall/shorewall/localSidebar.php");
 require("graph/navbar.inc.php");
 
-// Rules list display
-
-$ajax = new AjaxFilter(urlStrRedirect("shorewall/shorewall/ajax_" . $page));
-$ajax->display();
-
-$p = new PageGenerator(_T("Rules", "shorewall"));
-$p->setSideMenu($sidemenu);
-$p->display();
-
-$ajax->displayDivToUpdate();
-
 // Handle form return
 
-if (isset($_POST['badd'])) {
+if (isset($_POST['bpolicy'])) {
+    foreach(getPolicies() as $policy) {
+        if (isset($_POST[$policy[0] . "_" . $policy[1] . "_policy"])) {
+            $new = $_POST[$policy[0] . "_" . $policy[1] . "_policy"];
+            $old = $policy[2];
+            if ($new != $old) {
+                changePolicies($policy[0], $policy[1], $new, $policy[3]);
+                if (!isXMLRPCError()) {
+                    $n = new NotifyWidgetSuccess(_T("Policy changed."));
+                    handleServicesModule($n);
+                    header("Location: " . urlStrRedirect("shorewall/shorewall/" . $page));
+                }
+                else {
+                    new NotifyWidgetFailure(_T("Failed to change the policy."));
+                }
+            }
+        }
+    }
+}
+
+if (isset($_POST['brule'])) {
     if (isset($_POST['service'])) {
         $service = $_POST['service'];
         if ($service) {
@@ -53,20 +63,68 @@ if (isset($_POST['badd'])) {
                 }
             }
             else {
-                $action = $_POST['decision'] . "/" . $service;
+                $action = $service . "/" . $_POST['decision'];
                 $proto = "";
                 $port = "";
             }
-            foreach(getZones($src) as $zone)
-                addRule($action, $zone, $dst, $proto, $port);
-            new NotifyWidgetSuccess(_T("Rule added."));
+            if ($_POST['source'] == "all") {
+                foreach(getZones($src) as $zone)
+                   addRule($action, $zone, $dst, $proto, $port);
+            }
+            else
+                addRule($action, $_POST['source'], $dst, $proto, $port);
+            if (!isXMLRPCError()) {
+                $n = new NotifyWidgetSuccess(_T("Rule added."));
+                handleServicesModule($n);
+                header("Location: " . urlStrRedirect("shorewall/shorewall/" . $page));
+            }
+            else {
+                new NotifyWidgetFailure(_T("Failed to add the rule."));
+            }
         }
     }
     else {
         new NotifyWidgetFailure(_T("Service must be specified."));
     }
-    header("Location: " . urlStrRedirect("shorewall/shorewall/" . $page));
 }
+
+// Display policy form
+
+$p = new PageGenerator(_T("Policy", "shorewall"));
+$p->setSideMenu($sidemenu);
+$p->display();
+
+echo '<p>' . _T("The policy applies if no rule match the request.") . '</p>';
+
+$f = new ValidatingForm(array("id" => "policy"));
+$f->push(new Table());
+
+foreach(getPolicies() as $policy) {
+    if (startsWith($policy[0], $src) && startsWith($policy[1], $dst)) {
+        $label = sprintf("%s (%s) → %s (%s)", getZoneType($policy[0]), $policy[0], getZoneType($policy[1]), $policy[1]);
+        $decisionTpl = new SelectItem($policy[0] . "_" . $policy[1] . "_policy");
+        $decisionTpl->setElements(array(_T("Accept"), _T("Drop")));
+        $decisionTpl->setElementsVal(array("ACCEPT", "DROP"));
+        $decisionTpl->setSelected($policy[2]);
+        $f->add(new TrFormElement($label, $decisionTpl));
+    }
+}
+
+$f->pop();
+$f->addButton("bpolicy", _T("Save"));
+$f->display();
+
+print '<br />';
+
+// Rules list display
+
+$ajax = new AjaxFilter(urlStrRedirect("shorewall/shorewall/ajax_" . $page));
+$ajax->display();
+
+$t = new TitleElement(_T("Rules"), 2);
+$t->display();
+
+$ajax->displayDivToUpdate();
 
 // Add rule form
 
@@ -75,14 +133,34 @@ print '<script type="text/javascript" src="modules/shorewall/includes/functions.
 $t = new TitleElement(_T("Add rule"), 2);
 $t->display();
 
-$f = new ValidatingForm();
+$f = new ValidatingForm(array("id" => "rule"));
 $f->push(new Table());
 
 $decisionTpl = new SelectItem("decision");
-$decisionTpl->setElements(array("ACCEPT", "DROP", "REJECT"));
-$decisionTpl->setElementsVal(array("ACCEPT", "DROP", "REJECT"));
+$decisionTpl->setElements(array(_T("Accept"), _T("Drop")));
+$decisionTpl->setElementsVal(array("ACCEPT", "DROP"));
 
 $f->add(new TrFormElement(_T("Decision"), $decisionTpl));
+
+$zones = getZonesInterfaces($src);
+if (count($zones) > 1) {
+    $sources = array("All");
+    $sourcesVals = array("all");
+    foreach($zones as $zone) {
+        $sources[] = sprintf("%s (%s)", $zone[0], $zone[1]);
+        $sourcesVals[] = $zone[0];
+    }
+    $sourcesTpl = new SelectItem("source");
+    $sourcesTpl->setElements($sources);
+    $sourcesTpl->setElementsVal($sourcesVals);
+    
+    $f->add(new TrFormElement(_T("Source"), $sourcesTpl));
+}
+else {
+    $tr = new TrFormElement(_T("Source"), new HiddenTpl("source"));
+    $tr->setStyle("display: none");
+    $f->add($tr, array("value" => "all"));
+}
 
 $macros = getServices();
 $services = array("", "Custom rule...") + $macros;
@@ -112,7 +190,7 @@ $f->add(
 
 $f->pop();
 $f->pop();
-$f->addButton("badd", _T("Add rule"));
+$f->addButton("brule", _T("Add rule"));
 $f->display();
 
 ?>
