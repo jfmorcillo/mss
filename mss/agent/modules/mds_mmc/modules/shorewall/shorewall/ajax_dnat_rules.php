@@ -20,8 +20,6 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
-
 $filter = $_GET["filter"];
 $list = getRules("DNAT", $src, $dst, $filter);
 $zones_wan = getZonesInterfaces($src);

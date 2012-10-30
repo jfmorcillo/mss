@@ -20,8 +20,6 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-include("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
-
 $zones = getZonesInterfaces();
 $rules = getMasqueradeRules();
 $deleteAction = new ActionPopupItem(_T("Delete NAT rule"), "delete_masquerade_rule", "delete", "");

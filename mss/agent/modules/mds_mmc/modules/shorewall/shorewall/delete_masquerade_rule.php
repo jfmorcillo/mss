@@ -19,8 +19,6 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-include("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
-
 if (isset($_POST["bdelete"])) {
     $rules = getMasqueradeRules();
     $rule = $rules[$_POST['id']];

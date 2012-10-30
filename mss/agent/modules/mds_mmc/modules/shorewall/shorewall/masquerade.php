@@ -20,7 +20,6 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
 require("modules/shorewall/shorewall/localSidebar.php");
 require("graph/navbar.inc.php");
 

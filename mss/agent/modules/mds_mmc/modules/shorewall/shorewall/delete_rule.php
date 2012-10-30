@@ -19,12 +19,10 @@
  * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
  */
 
-include("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
-
 if (isset($_POST["bdelete"])) {
     $list = getRules("", $src, $dst, $filter);
     $rule = $list[$_POST['id']];
-    foreach(getZones($src) as $zone)
+    foreach(getShorewallZones($src) as $zone)
         delRule($rule[0], $rule[1], $rule[2], $rule[3], $rule[4]);
     if (!isXMLRPCError())
         new NotifyWidgetSuccess(_T("The rule has been deleted."));

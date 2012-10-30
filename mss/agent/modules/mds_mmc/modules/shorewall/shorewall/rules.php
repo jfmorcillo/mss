@@ -20,7 +20,6 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-require("modules/shorewall/includes/shorewall-xmlrpc.inc.php");
 require("modules/shorewall/includes/functions.inc.php");
 require("modules/shorewall/shorewall/localSidebar.php");
 require("graph/navbar.inc.php");
@@ -68,7 +67,7 @@ if (isset($_POST['brule'])) {
                 $port = "";
             }
             if ($_POST['source'] == "all") {
-                foreach(getZones($src) as $zone)
+                foreach(getShorewallZones($src) as $zone)
                    addRule($action, $zone, $dst, $proto, $port);
             }
             else

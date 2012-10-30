@@ -23,15 +23,19 @@
 $sidemenu = new SideMenu();
 $sidemenu->setClass("shorewall");
 $sidemenu->setBackgroundImage("img/users/icn_users_large.gif");
-if (count(getZones("lan")) > 0)
+
+$lan_zones = getShorewallZones("lan");
+$wan_zones = getShorewallZones("wan");
+
+if ($lan_zones)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("Internal → Server", "shorewall"), "shorewall", "shorewall", "internal_fw", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
-if (count(getZones("wan")) > 0)
+if ($wan_zones)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("External → Server", "shorewall"), "shorewall", "shorewall", "external_fw", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
-if (count(getZones("wan")) > 0 && count(getZones("lan")) > 0)
+if ($lan_zones && $wan_zones)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("Internal → External", "shorewall"), "shorewall", "shorewall", "internal_external", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
-if (count(getZones("wan")) > 0 && count(getZones("lan")) > 0)
+if ($lan_zones && $wan_zones)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("External → Internal", "shorewall"), "shorewall", "shorewall", "external_internal", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
-if (count(getZones("wan")) > 0 && count(getZones("lan")) > 0)
+if ($lan_zones && $wan_zones)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("NAT", "shorewall"), "shorewall", "shorewall", "masquerade", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
 
 ?>
