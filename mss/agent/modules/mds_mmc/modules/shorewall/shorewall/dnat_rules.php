@@ -70,18 +70,18 @@ if (isset($_POST['brule'])) {
                 $proto = "";
                 $port = "";
             }
-            
+
             $source = $_POST['source'];
             $destination = $_POST['destination'];
 
             if ($src_ip)
                 $source = $source . ':' . $src_ip;
-            
+
             if ($dest_port)
                 $destination =  $destination . ":" . $dest_ip . ":" . $dest_port;
             else
                 $destination =  $destination . ":" . $dest_ip;
-            
+
             addRule($action, $source, $destination, $proto, $port);
             if (!isXMLRPCError()) {
                 $n = new NotifyWidgetSuccess(_T("Rule added."));
@@ -167,7 +167,7 @@ $protoTpl->setElementsVal(array("", "tcp", "udp"));
 
 $f->add(new TrFormElement(_T("Protocol"), $protoTpl));
 $f->add(
-        new TrFormElement(_T("Port(s)"), new InputTpl("port", "/^[0-9:,]+$/"), 
+        new TrFormElement(_T("Port(s)"), new InputTpl("port", "/^[0-9:,]+$/"),
                           array("tooltip" => _T("You can specify multiple ports using ',' as separator (eg: 22,34,56). Port ranges can be defined with ':' (eg: 3400:3500 - from port 3400 to port 3500)."))),
         array("value" => "")
 );
@@ -187,7 +187,7 @@ if (count($zones) > 1) {
     $sourcesTpl = new SelectItem("source");
     $sourcesTpl->setElements($sources);
     $sourcesTpl->setElementsVal($sourcesVals);
-    
+
     $f->add(new TrFormElement(_T("Source zone"), $sourcesTpl));
 }
 else {
@@ -197,7 +197,7 @@ else {
 }
 
 $f->add(
-        new TrFormElement(_T("Source IP(s)"), new InputTpl("src_ip"), 
+        new TrFormElement(_T("Source IP(s)"), new InputTpl("src_ip"),
                           array("tooltip" => _T("Allow connection from IP(s) address(es) (separate IPs with ',')."))),
         array("value" => "")
 );
@@ -213,7 +213,7 @@ if (count($zones) > 1) {
     $destinationsTpl = new SelectItem("destination");
     $destinationsTpl->setElements($destinations);
     $destinationsTpl->setElementsVal($destinationsVals);
-    
+
     $f->add(new TrFormElement(_T("Destination zone"), $destinationsTpl));
 }
 else {
@@ -223,7 +223,7 @@ else {
 }
 
 $f->add(
-        new TrFormElement(_T("Destination IP"), new InputTpl("dest_ip"), 
+        new TrFormElement(_T("Destination IP"), new InputTpl("dest_ip"),
                           array("tooltip" => _T("The computer IP in the internal network where the request will be transfered."))),
         array("value" => "", "required" => true)
 );

@@ -20,7 +20,8 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$src = "wan";
+$zones_types = getZonesTypes();
+$src = $zones_types['external'];
 $dst = "fw";
 $page = "external_fw";
 include('rules.php');

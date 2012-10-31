@@ -151,6 +151,7 @@ https_redirect mmc /etc/httpd/conf/webapps.d/mmc.conf
 # add shorewall plugin...
 cp -r plugins/shorewall /usr/lib/python2.7/site-packages/mmc/plugins/
 cp -r modules/shorewall /usr/share/mmc/modules/
+cp plugins/shorewall.ini /etc/mmc/plugins/
 
 restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log

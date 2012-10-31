@@ -20,9 +20,10 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$src = "lan";
-$dst = "wan";
-$page = "internal_fw";
+$zones_types = getZonesTypes();
+$src = $zones_types['internal'];
+$dst = $zones_types['external'];
+$page = "internal_external";
 include('delete_rule.php');
 
 ?>

@@ -23,9 +23,11 @@ MDS shorewall plugin for the MMC agent.
 
 import os
 import glob
+import logging
 
 from mmc.core.version import scmRevision
 from mmc.plugins.shorewall.io import ShorewallConf
+from mmc.plugins.shorewall.config import ShorewallPluginConfig
 
 VERSION = "2.4.3"
 APIVERSION = "6:2:4"
@@ -35,15 +37,28 @@ def getVersion(): return VERSION
 def getApiVersion(): return APIVERSION
 def getRevision(): return REVISION
 
+logger = logging.getLogger()
+
 def activate():
+    conf = ShorewallPluginConfig('shorewall')
+    files = ['zones', 'interfaces', 'rules', 'policy']
+    for file in files:
+        path = os.path.join(conf.path, file)
+        if not os.path.exists(path):
+            logger.error("%s doesn't exists" % path)
+            return False
+    if len(get_zones(conf.external_zones_names)) == 0 and \
+       len(get_zones(conf.internal_zones_names)) == 0:
+           logger.error("No external or internal zone defined.")
+           return False
     return True
 
 
 class ShorewallZones(ShorewallConf):
 
     def __init__(self):
-        ShorewallConf.__init__(self, '/etc/shorewall/zones',
-                               r'^(?P<name>[\w\d]+)\s+(?P<type>[\w\d]+)')
+        ShorewallConf.__init__(self, 'zones',
+            r'^(?P<name>[\w\d]+)\s+(?P<type>[\w\d]+)')
         self.read()
 
     def get(self, type = ""):
@@ -57,7 +72,7 @@ class ShorewallZones(ShorewallConf):
 class ShorewallRules(ShorewallConf):
 
     def __init__(self):
-        ShorewallConf.__init__(self, '/etc/shorewall/rules',
+        ShorewallConf.__init__(self, 'rules',
             r'^(?P<action>[\w\d/]+)\s+(?P<src>[\w\d:.]+)\s+(?P<dst>[\w\d:.]+)\s*(?P<proto>[\w\d]*)\s*(?P<dst_port>[:\w\d]*)')
         self.read()
 
@@ -91,7 +106,7 @@ class ShorewallRules(ShorewallConf):
 class ShorewallPolicies(ShorewallConf):
 
     def __init__(self):
-        ShorewallConf.__init__(self, '/etc/shorewall/policy',
+        ShorewallConf.__init__(self, 'policy',
             r'^(?P<src>[\w]+)\s+(?P<dst>[\w]+)\s+(?P<policy>ACCEPT|DROP|REJECT)\s*(?P<log>[\w]*)')
         self.read()
 
@@ -123,7 +138,7 @@ class ShorewallPolicies(ShorewallConf):
 class ShorewallMasq(ShorewallConf):
 
     def __init__(self):
-        ShorewallConf.__init__(self, '/etc/shorewall/masq',
+        ShorewallConf.__init__(self, 'masq',
             r'^(?P<lan_if>[\w]+)\s+(?P<wan_if>[\w]+)')
         self.read()
 
@@ -132,7 +147,7 @@ class ShorewallMasq(ShorewallConf):
 
     def add(self, wan_if, lan_if):
         return self.add_line([wan_if, lan_if])
-    
+
     def delete(self, wan_if, lan_if):
         return self.del_line([wan_if, lan_if])
 
@@ -140,7 +155,7 @@ class ShorewallMasq(ShorewallConf):
 class ShorewallInterfaces(ShorewallConf):
 
     def __init__(self):
-        ShorewallConf.__init__(self, '/etc/shorewall/interfaces',
+        ShorewallConf.__init__(self, 'interfaces',
             r'^(?P<zone>[\w]+)\s+(?P<if>[\w]+)')
         self.read()
 
@@ -162,6 +177,10 @@ def get_zones(type = ""):
 def get_zones_interfaces(type = ""):
     return ShorewallInterfaces().get(type)
 
+def get_zones_types():
+    conf = ShorewallPluginConfig('shorewall')
+    return (conf.internal_zones_names, conf.external_zones_names)
+
 def add_rule(action, src, dst, proto = "", dst_port = ""):
     return ShorewallRules().add(action, src, dst, proto, dst_port)
 
@@ -172,8 +191,9 @@ def get_rules(action = "", src = "", dst = "", filter = ""):
     return ShorewallRules().get(action, src, dst, filter)
 
 def get_services():
-    services = [ os.path.basename(m)[6:] for m in glob.glob('/usr/share/shorewall/macro.*') ] + \
-               [ os.path.basename(m)[6:] for m in glob.glob('/etc/shorewall/macro.*') ]
+    conf = ShorewallPluginConfig('shorewall')
+    services = [ os.path.basename(m)[6:] for m in glob.glob(os.path.join(conf.macros_path, 'macro.*')) ] + \
+               [ os.path.basename(m)[6:] for m in glob.glob(os.path.join(conf.path, '/macro.*')) ]
     services.sort()
     return services
 
@@ -191,3 +211,4 @@ def del_masquerade_rule(wan_if, lan_if):
 
 def add_masquerade_rule(wan_if, lan_if):
     return ShorewallMasq().add(wan_if, lan_if)
+

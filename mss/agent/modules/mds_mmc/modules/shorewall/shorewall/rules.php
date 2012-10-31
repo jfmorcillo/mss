@@ -152,7 +152,7 @@ if (count($zones) > 1) {
     $sourcesTpl = new SelectItem("source");
     $sourcesTpl->setElements($sources);
     $sourcesTpl->setElementsVal($sourcesVals);
-    
+
     $f->add(new TrFormElement(_T("Source"), $sourcesTpl));
 }
 else {
@@ -182,7 +182,7 @@ $protoTpl->setElementsVal(array("", "tcp", "udp"));
 
 $f->add(new TrFormElement(_T("Protocol"), $protoTpl));
 $f->add(
-        new TrFormElement(_T("Port(s)"), new InputTpl("port", "/^[0-9:,]+$/"), 
+        new TrFormElement(_T("Port(s)"), new InputTpl("port", "/^[0-9:,]+$/"),
                           array("tooltip" => _T("You can specify multiple ports using ',' as separator (eg: 22,34,56). Port ranges can be defined with ':' (eg: 3400:3500 - from port 3400 to port 3500)."))),
         array("value" => "")
 );

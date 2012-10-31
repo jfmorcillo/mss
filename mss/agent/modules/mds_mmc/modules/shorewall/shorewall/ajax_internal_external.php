@@ -20,8 +20,9 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$src = "lan";
-$dst = "wan";
+$zones_types = getZonesTypes();
+$src = $zones_types['internal'];
+$dst = $zones_types['external'];
 $page = "internal_external";
 include('ajax_rules.php');
 

@@ -20,7 +20,8 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$src = "lan";
+$zones_types = getZonesTypes();
+$src = $zones_types['internal'];
 $dst = "fw";
 $page = "internal_fw";
 include('delete_rule.php');

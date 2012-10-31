@@ -20,8 +20,9 @@
  * along with MMC.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-$src = "wan";
-$dst = "lan";
+$zones_types = getZonesTypes();
+$src = $zones_types['external'];
+$dst = $zones_types['internal'];
 $page = "external_internal";
 include('dnat_rules.php');
 

@@ -25,8 +25,9 @@
  */
 
 include('modules/shorewall/includes/shorewall-xmlrpc.inc.php');
-$lan_zones = getShorewallZones("lan");
-$wan_zones = getShorewallZones("wan");
+$zones_types = getZonesTypes();
+$lan_zones = getShorewallZones($zones_types['internal']);
+$wan_zones = getShorewallZones($zones_types['external']);
 
 $mod = new Module("shorewall");
 $mod->setVersion("2.4.3");
@@ -36,7 +37,7 @@ $mod->setAPIVersion("0:0:0");
 
 $submod = new SubModule("shorewall", _T("Firewall", "shorewall"));
 $submod->setDefaultPage("shorewall/shorewall/internal_fw");
-$submod->setImg('img/navbar/load');
+$submod->setImg('modules/shorewall/graph/navbar/shorewall');
 $submod->setPriority(20000);
 
 /* Add the page to the module */
@@ -70,7 +71,7 @@ $submod->addPage($page);
 
 $page = new Page("internal_external", _T("Internal → External", "shorewall"));
 $submod->addPage($page);
-if (!$lan_zones && !$wan_zones)
+if (!$lan_zones || !$wan_zones)
     $page->setOptions(array("visible" => False));
 
 $page = new Page("ajax_internal_external");
@@ -79,7 +80,7 @@ $submod->addPage($page);
 
 $page = new Page("external_internal", _T("External → Internal", "shorewall"));
 $submod->addPage($page);
-if (!$lan_zones && !$wan_zones)
+if (!$lan_zones || !$wan_zones)
     $page->setOptions(array("visible" => False));
 
 $page = new Page("ajax_external_internal");
@@ -92,7 +93,7 @@ $submod->addPage($page);
 
 $page = new Page("masquerade", _T("NAT"));
 $submod->addPage($page);
-if (!$lan_zones && !$wan_zones)
+if (!$lan_zones || !$wan_zones)
     $page->setOptions(array("visible" => False));
 
 $page = new Page("ajax_masquerade");

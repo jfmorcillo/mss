@@ -51,9 +51,11 @@ $t->display();
 $f = new ValidatingForm();
 $f->push(new Table());
 
+$zones_types = getZonesTypes();
+
 $external = array();
 $externalVals = array();
-foreach(getZonesInterfaces("wan") as $zone) {
+foreach(getZonesInterfaces($zones_types["external"]) as $zone) {
     $external[] = sprintf("%s (%s)", $zone[0], $zone[1]);
     $externalVals[] = $zone[1];
 }
@@ -65,7 +67,7 @@ $f->add(new TrFormElement(_T("External network (Internet)"), $externalTpl));
 
 $internal = array();
 $internalVals = array();
-foreach(getZonesInterfaces("lan") as $zone) {
+foreach(getZonesInterfaces($zones_types["internal"]) as $zone) {
     $internal[] = sprintf("%s (%s)", $zone[0], $zone[1]);
     $internalVals[] = $zone[1];
 }

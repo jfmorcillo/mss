@@ -50,6 +50,15 @@ function getZonesInterfaces($type = "") {
         $_SESSION['shorewall_zones_interfaces_' . $type] = xmlCall("shorewall.get_zones_interfaces", array($type));
     return $_SESSION['shorewall_zones_interfaces_' . $type];
 }
+function getZonesTypes() {
+    if (!isset($_SESSION['shorewall_zones_types'])) {
+        list($internal, $external) = xmlCall("shorewall.get_zones_types", array());
+        $_SESSION['shorewall_zones_types'] = array();
+        $_SESSION['shorewall_zones_types']['internal'] = $internal;
+        $_SESSION['shorewall_zones_types']['external'] = $external;
+    }
+    return $_SESSION['shorewall_zones_types'];
+}
 function getMasqueradeRules() {
     return xmlCall("shorewall.get_masquerade_rules", array());
 }

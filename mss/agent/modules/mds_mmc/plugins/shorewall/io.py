@@ -1,4 +1,7 @@
 import re
+import os
+
+from mmc.plugins.shorewall.config import ShorewallPluginConfig
 
 class ShorewallLine:
 
@@ -19,8 +22,9 @@ class ShorewallLine:
 
 class ShorewallConf:
 
-    def __init__(self, path, pattern):
-        self.path = path
+    def __init__(self, file, pattern):
+        self.conf = ShorewallPluginConfig('shorewall')
+        self.path = os.path.join(self.conf.path, file)
         self.pattern = pattern
         self.file = []
 

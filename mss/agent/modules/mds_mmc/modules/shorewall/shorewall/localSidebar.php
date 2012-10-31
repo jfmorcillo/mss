@@ -24,8 +24,9 @@ $sidemenu = new SideMenu();
 $sidemenu->setClass("shorewall");
 $sidemenu->setBackgroundImage("img/users/icn_users_large.gif");
 
-$lan_zones = getShorewallZones("lan");
-$wan_zones = getShorewallZones("wan");
+$zones_types = getZonesTypes();
+$lan_zones = getShorewallZones($zones_types['internal']);
+$wan_zones = getShorewallZones($zones_types['external']);
 
 if ($lan_zones)
     $sidemenu->addSideMenuItem(new SideMenuItem(_T("Internal → Server", "shorewall"), "shorewall", "shorewall", "internal_fw", "img/config/icn_global_active.gif", "img/config/icn_global.gif"));
