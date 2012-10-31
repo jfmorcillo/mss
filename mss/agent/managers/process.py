@@ -53,7 +53,7 @@ class ProcessManager:
 
     def reboot(self):
         """ reboot the server """
-        self.launch("reboot", ["reboot"])
+        self.launch("reboot", "sleep 3 && reboot", shell=True)
 
     def update_medias(self):
         """ update medias lists """
@@ -103,6 +103,8 @@ class ProcessManager:
                     status.append(_("Running configuration"))
                 if name == "net":
                     status.append(_("Checking network"))
+                if name == "reboot":
+                    status.append(_("Rebooting"))
         if not status:
             status.append(_("Ready"))
         return status
