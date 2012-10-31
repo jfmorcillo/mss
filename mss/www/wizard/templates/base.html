@@ -26,12 +26,17 @@
                     }
                 });
             }
-
             // launch medias update
             updateMedias = function() {
                 $.get('{% url medias_update %}');
             }
-
+            // launch medias update
+            reboot = function() {
+                $.get('{% url reboot_run %}')
+                 .success(function() {
+                     window.location.href='{% url logout %}';
+                 });
+            }
             // long polling for status bar
             updateStatus = function(force) {
                 $.get('{% url status %}', {'force': force})

@@ -94,6 +94,11 @@ class Module(object):
             self._preinst = self.root.findtext("preinst/text")
         else:
             self._preinst = " "
+        # reboot after configuration ?
+        if self.root.findtext("postinstall/reboot") == "yes":
+            self._reboot = True
+        else:
+            self._reboot = False
 
     @property
     def name(self):
@@ -125,6 +130,10 @@ class Module(object):
     @property
     def preinst(self):
         return _(self._preinst, self.id).strip()
+
+    @property
+    def reboot(self):
+        return self._reboot
 
     def check_configured(self):
         # check if module is configured by calling module method

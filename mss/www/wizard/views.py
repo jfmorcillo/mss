@@ -139,10 +139,6 @@ def first_time_required(function):
                     'info': _('Before you can install any services we need to setup a few things with you.'),
                     'show_modules': False
                 })
-                transaction.update_step({
-                    'id': Steps.MEDIAS,
-                    'info': _('You can add the repositories of Mandriva Business Server with your my.mandriva.com account to get security updates. Repositories are not required to install server components.'),
-                })
                 return HttpResponseRedirect(reverse('prepare'))
         else:
             return function(request, *args, **kwargs)
@@ -457,6 +453,20 @@ def config_end(request, module):
         xmlrpc.call('set_option', 'first-time', 'yes')
         request.session['first-time'] = True;
     return HttpResponse("")
+
+@login_required
+def reboot(request):
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.REBOOT)
+    return render_to_response('reboot.html',
+            {'transaction': transaction},
+            context_instance=RequestContext(request))
+
+@login_required
+def reboot_run(request):
+    xmlrpc.call('reboot')
+    return HttpResponse("")
+
 
 def toHtml(request, text, links = True):
     # replace hostname tag with server name

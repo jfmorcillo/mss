@@ -57,7 +57,7 @@
             $("#summary").html("{% trans "Configuration terminated, details are displayed below." %}");
             $("#summary").addClass("alert-success");
             $("#summary").show('fast');
-            $("#next").html("{% trans "Home page" %}");
+            $("#next").html("{% trans "Continue" %}");
             $('#next').removeClass("disabled");
         }
     }
@@ -163,7 +163,7 @@
 
     <div class="form-actions">
         <div class="pull-right">
-            <a href="{% url sections %}" class="disabled" id="next">{% trans "Please wait..." %}</a>
+            <a href="{{ transaction.next_step_url }}" class="disabled" id="next">{% trans "Please wait..." %}</a>
         </div>
     </div>
 </section>

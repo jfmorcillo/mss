@@ -10,6 +10,7 @@ class Steps:
     MEDIAS_ADD = "medias_add"
     INSTALL = "install"
     CONFIG = "config"
+    REBOOT = "reboot"
 
 class Transaction:
 
@@ -67,6 +68,12 @@ class Transaction:
                         'title': _("Initial configuration"),
                         'info': "",
                         'current': False
+                    },
+                    {
+                        'id': Steps.REBOOT,
+                        'disabled': True,
+                        'title': _("Reboot"),
+                        'current': False
                     }
                 ]
                 self.prepare()
@@ -107,6 +114,8 @@ class Transaction:
         for module in result:
             if not module['installed']:
                 self.enable_step(Steps.INSTALL);
+            if module['reboot']:
+                self.enable_step(Steps.REBOOT);
         
         err, result = xmlrpc.call('get_config', self.modules)
         for module in result:

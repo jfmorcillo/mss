@@ -136,6 +136,10 @@ class ModuleManager:
     def update_medias(self):
         ProcessManager().update_medias()
 
+    @expose
+    def reboot(self):
+        ProcessManager().reboot()
+
     def set_packages(self, code, output):
         if code == 0:
             packages = output.split('#')
@@ -231,7 +235,7 @@ class ModuleManager:
             'actions': module.actions, 'desc': module.desc, 'market': module.market,
             'preinst': module.preinst, 'installed': module.installed,
             'configured': module.configured, 'conflict': conflicts,
-            'conflicts': module.conflicts, 'deps': module.deps}
+            'conflicts': module.conflicts, 'deps': module.deps, 'reboot': module.reboot}
         self.logger.debug("Module info : %s" % str(result))
         return result
 

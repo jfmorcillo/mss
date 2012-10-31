@@ -51,6 +51,10 @@ class ProcessManager:
         else:
             return False
 
+    def reboot(self):
+        """ reboot the server """
+        self.launch("reboot", ["reboot"])
+
     def update_medias(self):
         """ update medias lists """
         self.launch("update", ["urpmi.update", "-a"])
