@@ -106,5 +106,6 @@ done
 
 end_shorewall_conf
 
-echo 8Network and firewall is configured.
-echo 8Restart the server to apply the configuration.
+echo 8Network and firewall configured.
+
+exit 0

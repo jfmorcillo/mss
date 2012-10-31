@@ -163,7 +163,7 @@ restart_service mmc-agent /var/log/mmc/mmc-agent.log
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t wan
 
 echo "8The MBS management interface is configured."
-echo "8You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups."
+echo "8You can log in the Management interface at https://@HOSTNAME@/mmc/ after the reboot."
 echo "8Administrator name : root"
 echo "8Administrator password : #$mypass"
 
