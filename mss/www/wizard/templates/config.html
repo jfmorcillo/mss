@@ -201,14 +201,14 @@
                                     {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().show();{% endfor %}
                                     }
                                     else {
-                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().hide();{% endfor %}
+                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().hide();
+                                    $('#{{ field.id }}_{{ f }}').val("");{% endfor %}
                                     }
                                 });
                                 {% ifnotequal option.value field.default %}
                                 $(document).ready(function() {
-                                    {% for f in option.toggle %}
-                                    $('#{{ field.id }}_{{ f }}').parent().parent().hide();
-                                    {% endfor %}
+                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().hide();
+                                    $('#{{ field.id }}_{{ f }}').val("");{% endfor %}
                                 });
                                 {% endifnotequal %}
                             </script>
