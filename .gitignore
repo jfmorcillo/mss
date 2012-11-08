@@ -6,3 +6,4 @@ dist
 doc/build
 .tx
 mss/www/settings.py
+setup.cfg

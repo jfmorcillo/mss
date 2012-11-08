@@ -1,11 +1,7 @@
-include README LICENCE doc/Makefile
+include README LICENCE
 recursive-include bin/ *
-recursive-include doc/source *
 recursive-include mss/ *
 recursive-exclude mss/ *.po
-recursive-exclude mss/www/cpserver-dev/ *
-recursive-exclude mss/www/cpserver-prod/ *
-recursive-exclude packaging/ *
-recursive-exclude doc/build/ *
-recursive-exclude mss.egg-info/ *
+recursive-exclude doc/ *
 recursive-exclude dist/ *
+recursive-exclude mss.egg-info/ *
