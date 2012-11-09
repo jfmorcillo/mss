@@ -21,7 +21,6 @@
 
 import os
 import netifaces
-from IPy import IP
 
 from mss.agent.lib.utils import grep, get_config_option
 
@@ -45,7 +44,6 @@ def get_interfaces_config(config):
     Dynamic configuration for ethernet interfaces
     """
     CONFIG_DIR = "/etc/sysconfig/network-scripts"
-    GATEWAY = "/etc/sysconfig/network"
     for interface in netifaces.interfaces():
         if interface.startswith("eth"):
             if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
@@ -58,7 +56,7 @@ def get_interfaces_config(config):
             domain = ""
             gateway = ""
             if configured:
-                if grep(if_file, "BOOTPROTO=dhcp"):
+                if grep("BOOTPROTO=dhcp", if_file):
                     method = "dhcp"
                 else:
                     method = "static"
