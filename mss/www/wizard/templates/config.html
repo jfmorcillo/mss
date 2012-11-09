@@ -11,10 +11,10 @@
         container = $("#" + module + "_" + fieldname);
         field = $('<div>', {'class': 'input-append field-multi'});
         input_ip = $('<input>', { 'name': module+"_"+fieldname+"_"+field_cnt+"_ip",
-                     'type':'text', 'value': ip});
+                     'type':'text', 'value': ip, 'class': 'input-medium' });
         separator = $('<span>').html(" / ");
         input_mask = $('<input>', { 'name': module+"_"+fieldname+"_"+field_cnt+"_mask",
-                       'type':'text', 'value': mask});
+                       'type':'text', 'value': mask, 'class': 'input-medium' });
         remove = $('<button>', { 'class': 'btn', 'type': 'button' });
         remove.append('<i class="icon-remove"></i>');
         remove.click(function(){ 
