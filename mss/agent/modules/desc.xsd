@@ -38,7 +38,9 @@
 			</xs:element>
 			<xs:element minOccurs="1" name="desc" type="xs:anyType">
 			</xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" name="actions" type="actionsComplexType"></xs:element>
 			<xs:element minOccurs="1" ref="packages"></xs:element>
+            <xs:element minOccurs="0" maxOccurs="1" name="deps" type="depsComplexType"></xs:element>
 			<xs:element minOccurs="0" ref="conflicts"></xs:element>
 			<xs:element minOccurs="0" maxOccurs="unbounded" ref="config">
 			</xs:element>
@@ -115,4 +117,26 @@
 			</xs:extension>
 		</xs:complexContent>
 	</xs:complexType>
+	<xs:complexType name="actionsComplexType">
+        <xs:sequence>
+            <xs:element name="action" type="actionComplexType" maxOccurs="unbounded" minOccurs="1"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="actionComplexType">
+        <xs:attribute name="type">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="link"></xs:enumeration>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="name" type="xs:string"></xs:attribute>
+        <xs:attribute name="value" type="xs:anyURI"></xs:attribute>
+    </xs:complexType>
+    <xs:complexType name="depsComplexType">
+        <xs:sequence>
+            <xs:element name="module" type="xs:string" maxOccurs="unbounded" minOccurs="1"></xs:element>
+        </xs:sequence>
+    </xs:complexType>
+
 </xs:schema>
