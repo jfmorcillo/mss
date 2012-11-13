@@ -35,7 +35,7 @@ config.add_bundle("core", {
 config.add_bundle("core", {
     'id': 'mail', 'name': _('Mail'),
     'icon': 'base/mail.png',
-    'modules': ["mds_mail", "mds_webmail"]
+    'modules': ["mds_mail", "mds_webmail", "davical"]
 })
 
 config.add_bundle("core", {

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="davical">
+    <name>Calendar and Addressbook</name>
+    <desc> DAViCal a server for calendar and addressbook sharing.</desc>
+    <actions>
+        <action type="link" name="Management interface" value="http://@HOSTNAME@/davical/admin.php"/>
+    </actions>
+    <packages>
+        <target name="all">
+            <rpm>davical</rpm>
+            <!-- The following dependences should be inside the package. While the dependency is broken, let's install it manually -->
+            <rpm>php-pdo_pgsql</rpm>
+            <rpm>php-calendar</rpm>
+            <rpm>php-ldap</rpm>
+        </target>
+    </packages>
+    <deps>
+<!--         <module>apache</module> -->
+        <module>postgresql</module>
+    </deps>
+    <config>
+        <text name="domain" default="get_domain" require="yes">
+            <label>Domain</label>
+            <help>The domain used for jabber communications</help>
+        </text>
+    </config>
+    <text>The instant messaging service is configured.</text>
+    <text>You can simply add users through the management interface at</text>
+    <text>Configure clients with JID like</text>
+    <text>and use</text>
+    <text>as the server.</text>
+    <text>If</text>
+    <text>is registered as a Jabber server in the DNS zone</text>
+    <text>there is no need to configure the server address in clients.</text>
+</module>
