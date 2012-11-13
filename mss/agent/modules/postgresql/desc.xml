@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:noNamespaceSchemaLocation="../desc.xsd" id="postgresql">
+    <name>PostgreSQL database</name>
+    <desc>PostgreSQL relational database</desc>
+    <packages>
+        <target name="all">
+            <rpm>postgresql9.1-server</rpm>
+        </target>
+    </packages>
+<!--     <config>
+        <password name="current_mypasswd" show="configured">
+            <label>Current password</label>
+            <help>Current PostgreSQL root password.</help>
+        </password>
+        <password name="mypasswd" require="yes">
+            <label>New password</label>
+            <help>New PostgreSQL root password. Set here the new password.</help>
+        </password>
+    </config> -->
+</module>
