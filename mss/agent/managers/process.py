@@ -28,13 +28,6 @@ from mss.agent.classes.process import ProcessThread
 class ProcessManager:
     """ Class managing running tasks """
 
-    def _dispatch(self, method, params):
-        func = getattr(self, method)
-        if not is_exposed(func):
-            raise Exception('Method "%s" is not supported' % method)
-
-        return func(*params)
-
     def __init__(self):
         # thread pool
         self.threads = {}

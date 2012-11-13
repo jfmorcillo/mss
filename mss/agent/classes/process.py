@@ -61,6 +61,8 @@ class ProcessThread(threading.Thread):
             self.join()
         except OSError:
             pass
+        except AttributeError:
+            pass
 
     def catch_output(self):
         """ get command context """
