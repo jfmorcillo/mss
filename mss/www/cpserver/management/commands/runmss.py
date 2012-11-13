@@ -15,10 +15,9 @@ class Command(BaseCommand):
     requires_model_validation = False
 
     def handle(self, addrport='', *args, **options):
-        import django
         from django.conf import settings
         from django.core.handlers.wsgi import WSGIHandler
-        from cpserver.wsgiserver import CherryPyWSGIServer, WSGIPathInfoDispatcher
+        from cherrypy.wsgiserver import CherryPyWSGIServer, WSGIPathInfoDispatcher
         from cpserver.mediahandler import MediaHandler
         from cpserver.translogger import TransLogger
 
@@ -32,14 +31,15 @@ class Command(BaseCommand):
                 addr, port = addrport.split(':')
             except ValueError:
                 addr, port = '', addrport
+
         if not addr:
-            addr = '127.0.0.1'
+            addr = '0.0.0.0'
 
         if not port.isdigit():
             raise CommandError('%r is not a valid port number' % port)
 
         threads = options.get('threads', 10)
-        ssl_certificate = options.get('threads', None)
+        ssl_certificate = options.get('ssl_certificate', None)
         ssl_private_key = options.get('ssl_private_key', None)
         quit_command = (sys.platform == 'win32') and 'CTRL-BREAK' or 'CONTROL-C'
         use_reloader = settings.DEBUG
@@ -66,8 +66,8 @@ class Command(BaseCommand):
             server = CherryPyWSGIServer((addr, int(port)), dispatcher, threads)
 
             if ssl_private_key and ssl_certificate:
-                server.ssl_certificate = options['ssl_certificate']
-                server.ssl_private_key = options['ssl_private_key']  
+                from cherrypy.wsgiserver.ssl_pyopenssl import pyOpenSSLAdapter
+                server.ssl_adapter = pyOpenSSLAdapter(ssl_certificate, ssl_private_key, None)
 
             try:
                 server.start()

@@ -1,7 +1,5 @@
 import os, stat, mimetypes
-import django
 from django.utils.http import http_date
-from django.conf import settings
 
 class MediaHandler( object ):
 
