@@ -19,18 +19,10 @@
 <!--         <module>apache</module> -->
         <module>postgresql</module>
     </deps>
-    <config>
-        <text name="domain" default="get_domain" require="yes">
-            <label>Domain</label>
-            <help>The domain used for jabber communications</help>
-        </text>
-    </config>
-    <text>The instant messaging service is configured.</text>
-    <text>You can simply add users through the management interface at</text>
-    <text>Configure clients with JID like</text>
-    <text>and use</text>
-    <text>as the server.</text>
-    <text>If</text>
-    <text>is registered as a Jabber server in the DNS zone</text>
-    <text>there is no need to configure the server address in clients.</text>
+    <text>Something goes wrong with the database setup</text>
+    <text>Check the logs</text>
+    <text>The calendar and addressbook server is configured.</text>
+    <text>The temporary admin password is </text>
+    <text> (without the ' ')</text>
+    <text>Remember to change it using the manadement interface </text>
 </module>
