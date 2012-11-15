@@ -6,6 +6,7 @@ python-setuptools
 python-docutils
 python-netifaces
 python-sphinx
+python-cherrypy
 binutils
 gettext
 locales-fr
