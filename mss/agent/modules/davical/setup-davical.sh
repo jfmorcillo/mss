@@ -8,7 +8,6 @@
 check_mmc_configured
 
 SERVICE="httpd"
-HOSTNAME=$1
 PG_CONF_FILE="/var/lib/pgsql/data/pg_hba.conf"
 DAVICAL_CONF_TEMPLATE="templates/config.php.tpl"
 DAVICAL_CONF="/etc/davical/config.php"
@@ -26,7 +25,7 @@ local   davical    davical_dba   trust' $PG_CONF_FILE
 
 restart_service postgresql
 
-#sometimes posgres takes too much time to restart and breaks
+#sometimes posgres takes too much time to restart and breaks the setup process
 #TODO replace with somthing smarter
 for (( i=20 ; i ; i-=1 )); do sleep 1; echo -n '.'; done
 
@@ -60,9 +59,21 @@ sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $DAVICAL_CONF
 restart_service $SERVICE
 
 ###Open the firewall port
-#No need to open a particular port as Davical listen on the standard http port that should be opened
+#No need to open a particular port as Davical listen on the standard http port that should be already opened
+
+###Sync the ldap user list with Davical user list (user provisioning)
+#first time sync
+su apache -c /usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE' /usr/share/davical/scripts/cron-sync-ldap.php $HOST.$DOMAIN
+#cron rule for later sync
+TMP_CRON=`mktemp`
+crontab -u apache -l > $TMP_CRON
+#clear any old davical rule
+sed -i 's@^.*/usr/share/davical/scripts/cron-sync-ldap.php.*$@@' $TMP_CRON
+echo "08 *    * * * apache /usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE' /usr/share/davical/scripts/cron-sync-ldap.php  $HOST.$DOMAIN" > $TMP_CRON
+crontab -u apache $TMP_CRON
+rm $TMP_CRON
 
 echo "8The calendar and addressbook server is configured."
-echo "7The temporary admin password is '$DAVICAL_ADMIN_PASS' (without the ' ')"
-echo "7Remember to change it using the manadement interface http://@HOSTNAME@/davical/admin.php"
+echo "7The temporary 'admin' password is '$DAVICAL_ADMIN_PASS' (without the ' ')"
+echo "7Remember to change it using the management interface http://@$HOST.$DOMAIN@/davical/admin.php"
 
