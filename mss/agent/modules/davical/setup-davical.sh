@@ -13,6 +13,8 @@ DAVICAL_CONF_TEMPLATE="templates/config.php.tpl"
 DAVICAL_CONF="/etc/davical/config.php"
 APACHE_DAVICAL_CONF_TEMPLATE="templates/davical.conf.tpl"
 APACHE_DAVICAL_CONF="/etc/httpd/conf/webapps.d/davical.conf"
+DAVICAL_CRON_TEMPLATE="templates/davical.cron.tpl"
+DAVICAL_CRON="/etc/cron.d/davical"
 
 ###Give Davical access to the Postgre DB
 backup $PG_CONF_FILE
@@ -63,17 +65,12 @@ restart_service $SERVICE
 
 ###Sync the ldap user list with Davical user list (user provisioning)
 #first time sync
-su apache -c /usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE' /usr/share/davical/scripts/cron-sync-ldap.php $HOST.$DOMAIN
+su apache -c "/usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE' /usr/share/davical/scripts/cron-sync-ldap.php $FQDN"
 #cron rule for later sync
-TMP_CRON=`mktemp`
-crontab -u apache -l > $TMP_CRON
-#clear any old davical rule
-sed -i 's@^.*/usr/share/davical/scripts/cron-sync-ldap.php.*$@@' $TMP_CRON
-echo "08 *    * * * apache /usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE' /usr/share/davical/scripts/cron-sync-ldap.php  $HOST.$DOMAIN" > $TMP_CRON
-crontab -u apache $TMP_CRON
-rm $TMP_CRON
+cat $DAVICAL_CRON_TEMPLATE > $DAVICAL_CRON
+sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CRON
 
 echo "8The calendar and addressbook server is configured."
 echo "7The temporary 'admin' password is '$DAVICAL_ADMIN_PASS' (without the ' ')"
-echo "7Remember to change it using the management interface http://@$HOST.$DOMAIN@/davical/admin.php"
+echo "7Remember to change it using the management interface http://$FQDN/davical/admin.php"
 
