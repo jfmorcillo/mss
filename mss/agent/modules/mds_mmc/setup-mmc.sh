@@ -8,6 +8,7 @@ check_root
 SLAPTEST="/usr/sbin/slaptest"
 SLAPADD="/usr/sbin/slapadd"
 SLAPPASSWD="/usr/sbin/slappasswd"
+SERVER=127.0.0.1
 
 if [ "`uname -m`" != "x86_64" ]; then
 	slapd_conf_template="templates/slapd-32.conf.tpl"
@@ -133,8 +134,8 @@ backup /etc/nsswitch.conf
 cat $nsswitch_template > /etc/nsswitch.conf
 backup /etc/ldap.conf
 cat $ldap_conf_template > /etc/ldap.conf
-sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/ldap.conf
-sed -i "s/\@SERVER\@/$MDSSERVER/" /etc/ldap.conf
+sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/ldap.conf
+sed -i "s/\@SERVER\@/$SERVER/" /etc/ldap.conf
 if [ $? -eq 0 ]; then echo "0lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)";
 else echo "2Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"; exit 1
 fi
