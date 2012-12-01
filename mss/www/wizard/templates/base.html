@@ -61,7 +61,10 @@
                     updateStatus(false);
                 })
                 .error(function(xhr) {
-                    $('#status-text').html(xhr.responseText);
+                    if (xhr.status == 0 && xhr.statusText == "error")
+                        $('#status-text').html('{% trans "The MSS interface is unreachable" %}');
+                    else
+                        $('#status-text').html(xhr.responseText);
                     // set error style if error
                     $('#status').addClass("alert-error");
                     $('#status').removeClass("alert-success");
