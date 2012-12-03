@@ -22,7 +22,7 @@
 
         toString: function() {
             output = "";
-            output += this.format('', '{% trans "Configuration summary" %}');
+            output += this.format('info', '{% trans "Configuration summary" %}');
             output += this.format('warning', '{% trans "Configuration warnings" %}');
             output += this.format('error', '{% trans "Configuration errors" %}');
             return output;
