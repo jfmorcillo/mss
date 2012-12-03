@@ -153,6 +153,9 @@ cp -r plugins/shorewall /usr/lib/python2.7/site-packages/mmc/plugins/
 cp -r modules/shorewall /usr/share/mmc/modules/
 cp plugins/shorewall.ini /etc/mmc/plugins/
 
+# copy MBS logo
+cp mbs_logo.png /usr/share/mmc/img/logo/
+
 restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd
