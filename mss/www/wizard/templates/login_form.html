@@ -4,7 +4,7 @@
         (function checknet() {
             $.get('{% url state "net" %}')
             .success(function(t) {
-                if (t.code != 2000) {
+                if (isInt(t.code) && t.code != 2000) {
                     if (t.code == 0) {
                         $('#username')[0].disabled = false;
                         $('#username')[0].focus();

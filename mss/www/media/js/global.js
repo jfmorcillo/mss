@@ -59,3 +59,11 @@ formatLog = function(JSONoutput) {
     }
     return output;
 }
+
+isInt = function(someNumber) {
+    var intRegex = /^\d+$/;
+    if(intRegex.test(someNumber))
+        return true;
+    else
+        return false;
+}
