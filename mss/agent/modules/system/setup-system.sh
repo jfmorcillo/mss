@@ -15,6 +15,6 @@ backup /etc/hostname
 echo $hostname > /etc/hostname
 hostname -F /etc/hostname
 
-echo "0Hostname and domain setup."
+echo "8Hostname and domain name configured."
 
 exit 0
