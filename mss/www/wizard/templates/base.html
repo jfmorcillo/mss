@@ -61,17 +61,22 @@
                     updateStatus(false);
                 })
                 .error(function(xhr) {
-                    if (xhr.status == 0 && xhr.statusText == "error")
-                        $('#status-text').html('{% trans "The MSS interface is unreachable" %}');
-                    else
-                        $('#status-text').html(xhr.responseText);
-                    // set error style if error
-                    $('#status').addClass("alert-error");
-                    $('#status').removeClass("alert-success");
-                    $('#status').removeClass("alert-info");
-                    // refresh every 2s on error
-                    setTimeout('updateStatus(false)', 2000);
-                    $("#status").slideDown();
+                    // Wait a little before displaying the message
+                    // requests are also aborted when the user changes pages
+                    setTimeout(function() {
+                        // request aborted
+                        if (xhr.status == 0 && xhr.statusText == "error")
+                            $('#status-text').html('{% trans "The MSS interface is unreachable" %}');
+                        else
+                            $('#status-text').html(xhr.responseText);
+                        // set error style if error
+                        $('#status').addClass("alert-error");
+                        $('#status').removeClass("alert-success");
+                        $('#status').removeClass("alert-info");
+                        // refresh every 2s on error
+                        setTimeout('updateStatus(false)', 2000);
+                        $("#status").slideDown();
+                    }, 500);
                 });
             }
 
