@@ -80,9 +80,11 @@ def mylogin(request):
                 return HttpResponseRedirect(reverse('sections'))
         else:
             # disabled account
+            xmlrpc.call('check_net')
             return direct_to_template(request, 'inactive_account.html')
     else:
         # invalid login
+        xmlrpc.call('check_net')
         return direct_to_template(request, 'invalid_login.html')
 
 def mylogout(request):
