@@ -65,11 +65,6 @@ fi
 
 restart_service smb
 
-# configure the Firewall
-[ $fw_lan == "on" ] && mss-add-shorewall-rule -a SMB/ACCEPT -t lan
-[ $fw_wan == "on" ] && mss-add-shorewall-rule -a SMB/ACCEPT -t wan
-restart_service shorewall
-
 ###### now /etc/mmc/plugins/samba.ini
 backup /etc/mmc/plugins/samba.ini
 cat $mds_smb_template > /etc/mmc/plugins/samba.ini
@@ -81,8 +76,6 @@ fi
 sed -i "s/^defaultUserGroup = users$/defaultUserGroup = Domain Users/" /etc/mmc/plugins/base.ini
 if [ $? -eq 0 ]; then echo "1Users are now created in the Domain Users group by default. If users were created, they still remains in the users group.";
 fi
-
-restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $MDSSERVER -U $smbadmin%$smbpass > /dev/null 2>&1
 if [ $? -eq 0 ]; then echo "0Successfully granted rights for Domain Admins group."
@@ -107,6 +100,13 @@ else
     echo "0Acls supported by filesystem."
 fi
 rm -f /home/samba/test
+
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
+
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a SMB/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a SMB/ACCEPT -t wan
+restart_service shorewall
 
 # confirmation
 echo "8Domain name :# $smbdomain"
