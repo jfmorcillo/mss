@@ -20,15 +20,15 @@
 # MA 02110-1301, USA.
 
 
-from django.utils.translation import ugettext as _
-from mss.www.wizard.config import ConfigManager
+#from django.utils.translation import ugettext as _
+#from mss.www.wizard.config import ConfigManager
 
-config = ConfigManager()
+#config = ConfigManager()
 
-config.add_section({'id': 'market', 'name': _('Marketplace')})
+#config.add_section({'id': 'market', 'name': _('Marketplace')})
 
-config.add_bundle("market", {
-    'id': 'collaboration', 'name': _('Collaboration'),
-    'icon': 'commercial/collaboration.png',
-    'modules': ["zarafa"]
-})
+#config.add_bundle("market", {
+    #'id': 'collaboration', 'name': _('Collaboration'),
+    #'icon': 'commercial/collaboration.png',
+    #'modules': ["zarafa"]
+#})
