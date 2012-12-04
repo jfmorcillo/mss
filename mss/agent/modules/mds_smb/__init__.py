@@ -22,10 +22,29 @@
 # MA 02110-1301, USA.
 
 import os
+import re
 from mss.agent.lib.utils import getINIoption
 
 def get_config_info():
     return ("setup-smb.sh", ["smbdomain", "smbnetbios", "smbadmin", "smbpasswd", "fw_lan", "fw_wan"])
+
+def get_netbios(module):
+    from socket import gethostname
+    return gethostname().upper()
+
+def valid_netbios(string):
+    """ validate netbios """
+    if not re.match('^[A-Z]+[A-Z0-9]*$', string):
+        return "Incorrect netbios name (only uppercase characters and digits allowed)."
+    else:
+        return None
+
+def valid_domain(string):
+    """ validate domain """
+    if not re.match('^[A-Z]+[A-Z0-9]*$', string):
+        return "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
+    else:
+        return None
 
 def get_current_config(module):
 

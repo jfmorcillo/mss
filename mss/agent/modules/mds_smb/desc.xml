@@ -20,11 +20,13 @@
         <module>mds_mmc</module>
     </deps>
     <config>
-        <text name="smbdomain" require="yes" default="MES5DOMAIN">
+        <text name="smbdomain" require="yes" default="MBSDOMAIN"
+            validation="valid_domain">
             <label>SAMBA domain name</label>
             <help>The name of your Microsoft domain.</help>
         </text>
-        <text name="smbnetbios" require="yes" default="MES5SRV">
+        <text name="smbnetbios" require="yes" default="get_netbios"
+            validation="valid_netbios">
             <label>Netbios name</label>
             <help>The name of your SAMBA server in the Microsoft domain.</help>
         </text>
