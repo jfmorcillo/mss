@@ -26,11 +26,7 @@ import sys
 import logging
 import platform
 import sqlite3
-from sets import Set
-try:
-    import json
-except ImportError:
-    import simplejson as json
+import json
 
 from mss.agent.lib.utils import grep, Singleton
 from mss.agent.classes.module import Module

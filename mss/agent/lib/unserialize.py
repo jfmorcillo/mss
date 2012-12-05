@@ -1,4 +1,5 @@
-import types, string, re
+import string
+import re
 
 """
 Unserialize class for the PHP serialization format.
@@ -66,7 +67,6 @@ class PHPUnserialize(object):
 		return (type, offset, value)
 		"""
 
-		buf = []
 		dtype = string.lower(data[offset:offset+1])
 
 		#print "# dtype =", dtype
@@ -74,7 +74,7 @@ class PHPUnserialize(object):
 		# 't:' = 2 chars
 		dataoffset = offset + 2
 		typeconvert = lambda x : x
-		chars = datalength = 0
+		chars = 0
 
  		# int => Integer
 		if dtype == 'i':
