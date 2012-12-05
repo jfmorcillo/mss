@@ -19,22 +19,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-import xmlrpclib
-from datetime import datetime
 import re
 import time
-from xml.sax import SAXParseException
 from sets import Set
 
 from django.shortcuts import render_to_response
-from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse, Http404
+from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 from django.views.generic.simple import direct_to_template
 from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.models import User
-from django.core.exceptions import ObjectDoesNotExist
 from django.conf import settings
 from django.utils.translation import ugettext as _, activate
 
@@ -70,7 +65,6 @@ def set_lang(request, lang):
 
 def mylogin(request):
     if request.method == "POST":
-        lang = request.POST.get('language', None)
         user = authenticate(username=request.POST['username'],
             password=request.POST['password'])
         if user is not None:
@@ -443,7 +437,13 @@ def config_valid(request):
 @login_required
 def config_run(request, module):
     """ run configuration script for module """
-    xmlrpc.call('run_config', module)
+    err, result = xmlrpc.call('get_modules', [module])
+    if err:
+        return err
+    else:
+        for module in result:
+            if not module['configured']:
+                xmlrpc.call('run_config', module['id'])
     return HttpResponse("")
 
 @login_required
