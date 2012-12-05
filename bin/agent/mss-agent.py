@@ -21,19 +21,55 @@
 # MA 02110-1301, USA.
 
 from SimpleXMLRPCServer import SimpleXMLRPCServer
+from optparse import OptionParser
+import logging
+import logging.handlers
+import os
 
 from mss.agent.managers.module import ModuleManager
 from mss.agent.lib.auth import authenticate
 
-MM = ModuleManager()
+if __name__ == "__main__":
 
-server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
-server.register_instance(MM)
-server.register_function(authenticate)
+    parser = OptionParser()
+    parser.add_option("-d", "--debug", action="store_true", dest="debug",
+                      default=False, help="Enable debug mode")
 
-try:
-    print 'This is MSS XML-RPC agent'
-    print 'Use Control-C to exit'
-    server.serve_forever()
-except KeyboardInterrupt:
-    print 'Exiting'
+    (options, args) = parser.parse_args()
+
+    # Setup logging
+    LOG_FILENAME = '/var/log/mss/mss-agent.log'
+    os.chmod(LOG_FILENAME, 0600)
+
+    level = logging.ERROR
+    format = '%(asctime)s - %(message)s'
+    if options.debug:
+        level = logging.DEBUG
+        format = '%(asctime)s|%(name)s|%(levelname)s: %(message)s'
+    
+    logger = logging.getLogger()
+    logger.setLevel(level)
+   
+    formatter = logging.Formatter(format)
+    
+    ch = logging.StreamHandler()
+    ch.setFormatter(formatter)
+    fh = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10485760, backupCount=5)
+    fh.setFormatter(formatter)
+
+    logger.addHandler(ch)
+    logger.addHandler(fh)
+
+    # Run the XML-RPC server
+    MM = ModuleManager()
+
+    server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
+    server.register_instance(MM)
+    server.register_function(authenticate)
+
+    try:
+        print 'This is MSS XML-RPC agent'
+        print 'Use Control-C to exit'
+        server.serve_forever()
+    except KeyboardInterrupt:
+        print 'Exiting'

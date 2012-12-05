@@ -24,7 +24,6 @@ import re
 import glob
 import sys
 import logging
-import logging.handlers
 import platform
 import sqlite3
 from sets import Set
@@ -38,18 +37,9 @@ from mss.agent.classes.module import Module
 from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
 
-LOG_FILENAME = '/var/log/mss/mss-agent.log'
 LSB_FILENAME = '/etc/os-release'
-logging.basicConfig(level=logging.DEBUG)
-logger = logging.getLogger()
-formatter = logging.Formatter('%(asctime)s:%(levelname)s: %(message)s')
-handler = logging.handlers.RotatingFileHandler(
-              LOG_FILENAME, maxBytes=10485760, backupCount=5)
-handler.setFormatter(formatter)
-logger.addHandler(handler)
-os.chmod(LOG_FILENAME, 0600)
-
 _ = TranslationManager().translate
+logger = logging.getLogger(__name__)
 
 def expose(f):
     "Decorator to set exposed flag on a function."
@@ -88,14 +78,13 @@ class ModuleManager:
         # BDD access
         self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
         # logging
-        self.logger = logging.getLogger()
         self.load_packages()
         self.load_modules()
 
     @expose
     def set_lang(self, lang):
         """ change lang during execution """
-        self.logger.info("Lang changed to %s" % lang)
+        logger.info("Lang changed to %s" % lang)
         TranslationManager().set_lang(lang)
 
     @expose
@@ -125,7 +114,7 @@ class ModuleManager:
 
     @expose
     def load_packages(self):
-        self.logger.info("Load packages...")
+        logger.info("Load packages...")
         ProcessManager().load_packages(self.set_packages)
 
     @expose
@@ -144,12 +133,12 @@ class ModuleManager:
         if code == 0:
             packages = output.split('#')
             if not packages:
-                self.logger.error("No packages found.")
+                logger.error("No packages found.")
             else:
                 self.packages = packages
-                self.logger.info("Loading packages done.")
+                logger.info("Loading packages done.")
         else:
-            self.logger.error("Can't load packages.")
+            logger.error("Can't load packages.")
 
     @expose
     def check_media(self, search):
@@ -173,12 +162,12 @@ class ModuleManager:
         """
         sys.path.append(self.modulesDirectory)
         modules = self.get_available_modules()
-        self.logger.info("Get available mss modules : ")
+        logger.info("Get available mss modules : ")
         for module in modules:
-            self.logger.debug("Loading %s" % module)
+            logger.debug("Loading %s" % module)
             m = Module(os.path.join(self.modulesDirectory, module), self, self.arch)
             self.modules[m.id] = m
-            self.logger.info(m)
+            logger.info(m)
 
     def get_available_modules(self):
         ret = []
@@ -206,7 +195,7 @@ class ModuleManager:
                 m = self.modules[m]
                 if not m in conflicts and m.configured:
                     conflicts.append(m)
-                    self.logger.debug("Conflict with : %s" % str(m.id))
+                    logger.debug("Conflict with : %s" % str(m.id))
                     conflicts = self.get_conflicts(conflicts, m)
             except KeyError:
                 pass
@@ -217,7 +206,7 @@ class ModuleManager:
                     m1 = self.modules[m1]
                     if not m1 in conflicts and m1.configured:
                         conflicts.append(m1)
-                        self.logger.debug("Conflict with : %s" % str(m1.id))
+                        logger.debug("Conflict with : %s" % str(m1.id))
             except KeyError:
                 pass
         return conflicts
@@ -236,17 +225,17 @@ class ModuleManager:
             'preinst': module.preinst, 'installed': module.installed,
             'configured': module.configured, 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps, 'reboot': module.reboot}
-        self.logger.debug("Module info : %s" % str(result))
+        logger.debug("Module info : %s" % str(result))
         return result
 
     @expose
     def get_modules(self, modules):
         """ return basic info for modules """
-        self.logger.info("Get modules info : %s" % str(modules))
+        logger.info("Get modules info : %s" % str(modules))
         result = []
         for m in modules:
             if m in self.modules:
-                self.logger.debug("Get module info : %s" % str(m))
+                logger.debug("Get module info : %s" % str(m))
                 result.append(self.get_module(m))
         return result
 
@@ -289,7 +278,7 @@ class ModuleManager:
                 m['force'] = True
             else:
                 m['force'] = False
-        self.logger.info("Pre-install modules : %s" % str(modules))
+        logger.info("Pre-install modules : %s" % str(modules))
         return modules
 
     def order_deps(self, modules, cnt=1):
@@ -348,47 +337,47 @@ class ModuleManager:
                     if self.modules[dep]:
                         deps.append(dep)
                 except KeyError:
-                    self.logger.error("Module %s doesn't exists !" % dep)
+                    logger.error("Module %s doesn't exists !" % dep)
             return deps
         return None
 
     @expose
     def get_medias(self, modules):
         """ get medias for modules """
-        self.logger.info("Get medias for modules : %s" % str(modules))
+        logger.info("Get medias for modules : %s" % str(modules))
         medias = [ self.modules[module].medias for module in modules if not self.check_media(module) and self.modules[module].medias ]
-        self.logger.debug("Media list : %s" % str(medias))
+        logger.debug("Media list : %s" % str(medias))
         return medias
 
     @expose
     def add_media(self, module, login=None, passwd=None):
         """ add all medias for module """
         media = self.modules[module].medias
-        self.logger.info("Add media : %s" % media.name)
+        logger.info("Add media : %s" % media.name)
         # get add commands for media
         command = media.get_command(login, passwd)
-        self.logger.debug("Execute: %s" % str(command))
+        logger.debug("Execute: %s" % str(command))
         ProcessManager().add_media(command)
 
     @expose
     def install_modules(self, modules):
         """ install modules packages """
-        self.logger.info("Install modules : %s" % str(modules))
+        logger.info("Install modules : %s" % str(modules))
         packages = []
         for module in modules:
             packages += self.modules[module].packages
         if packages:
-            self.logger.debug("Install packages : %s" % str(packages))
+            logger.debug("Install packages : %s" % str(packages))
             ProcessManager().install_packages(packages)
             return True
         else:
-            self.logger.info("No packages to install")
+            logger.info("No packages to install")
             return False
 
     @expose
     def get_config(self, modules):
         """ get modules config """
-        self.logger.info("Get config for modules : %s" % str(modules))
+        logger.info("Get config for modules : %s" % str(modules))
         config = []
         for module in modules:
             config.append(self.modules[module].get_config())
@@ -409,14 +398,14 @@ class ModuleManager:
     @expose
     def run_config(self, module):
         """ run configuration for module """
-        self.logger.debug("Run configuration for %s" % str(module))
+        logger.debug("Run configuration for %s" % str(module))
         path, script, args = self.modules[module].info_config()
-        self.logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
+        logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
         return ProcessManager().run_script(script, args, path)
 
     @expose
     def end_config(self, module):
-        self.logger.debug("Set %s as configured" % str(module))
+        logger.debug("Set %s as configured" % str(module))
         self.modules[module].configured = True
         return 0
 
@@ -459,7 +448,7 @@ class ModuleManager:
             code = 2000
             output = [{'code': 0, 'text': u''}]
 
-        self.logger.debug(output)
+        logger.debug(output)
         return (code, output)
 
     @expose

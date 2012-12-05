@@ -26,9 +26,6 @@ import re
 import os
 import netifaces
 from IPy import IP
-import logging
-
-logger = logging.getLogger()
 
 def formatExceptionInfo(maxTBlevel=5):
     cla, exc, trbk = sys.exc_info()

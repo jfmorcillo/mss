@@ -35,6 +35,7 @@ from mss.agent.classes.validation import Validation
 from mss.agent.managers.translation import TranslationManager
 
 _ = TranslationManager().translate
+logger = logging.getLogger(__name__)
 
 class Module(object):
     """
@@ -44,7 +45,6 @@ class Module(object):
 
     def __init__(self, path, MM, arch):
         self.MM = MM
-        self.logger = logging.getLogger()
         self.path = path
         self.arch = arch
         try:
@@ -64,8 +64,8 @@ class Module(object):
             # load module
             self.module = imp.load_module(self.id, f, p, d)
         except Exception, err:
-            self.logger.error("Can't load module %s __init__.py :" % self.id)
-            self.logger.error("%s" % err)
+            logger.error("Can't load module %s __init__.py :" % self.id)
+            logger.error("%s" % err)
         self.check_configured()
 
     def load(self):
@@ -227,9 +227,9 @@ class Module(object):
         except AttributeError:
             current_config = {}
         except Exception, err:
-            self.logger.error("Error in get_current_config in %s module : " % self.id)
-            self.logger.error(str(err))
-            self.logger.error("Can't get module current config")
+            logger.error("Error in get_current_config in %s module : " % self.id)
+            logger.error(str(err))
+            logger.error("Can't get module current config")
             current_config = {}
         # get script name and args order
         try:
@@ -287,9 +287,9 @@ class Module(object):
                                 default = field_config["default"].split(";")
                                 field_config["default"] = default
                     except Exception, err:
-                        self.logger.error("Error in %s() in %s module : " % (field_config["default"], self.id))
-                        self.logger.error(str(err))
-                        self.logger.error("Can't calculate default field value")
+                        logger.error("Error in %s() in %s module : " % (field_config["default"], self.id))
+                        logger.error(str(err))
+                        logger.error("Can't calculate default field value")
                         field_config["default"] = ""
 
                 # reset require attribute if field is hidden for reconfiguration
