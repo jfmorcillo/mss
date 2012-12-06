@@ -47,7 +47,7 @@ config.add_bundle("core", {
 config.add_bundle("core", {
     'id': 'other', 'name': _('Other'),
     'icon': 'base/other.png',
-    'modules': ["mds_cups", "mds_proxy"]
+    'modules': ["mds_cups"]
 })
 
 config.add_section({'id': 'other', 'name': _('Other Services')})
