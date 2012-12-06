@@ -53,7 +53,6 @@ LANGUAGE_CODE = 'en'
 LANGUAGES = (
   ('en', 'English'),
   ('fr_FR', 'Français'),
-  ('ru_RU', 'Russian'),
   ('pt_BR', 'Português do Brasil'),
 )
 
