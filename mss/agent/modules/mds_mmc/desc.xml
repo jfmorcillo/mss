@@ -10,10 +10,12 @@
             <rpm>mmc-web-bulkimport</rpm>
             <rpm>mmc-web-services</rpm>
             <rpm>mmc-web-dashboard</rpm>
+            <rpm>mmc-web-shorewall</rpm>
             <rpm>python-mmc-base</rpm>
             <rpm>python-mmc-bulkimport</rpm>
             <rpm>python-mmc-services</rpm>
             <rpm>python-mmc-dashboard</rpm>
+            <rpm>python-mmc-shorewall</rpm>
             <rpm>mmc-agent</rpm>
             <rpm>openldap-servers</rpm>
             <rpm>nss_ldap</rpm>
