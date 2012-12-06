@@ -143,15 +143,9 @@ fi
 
 # enable modules
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/services.ini
-sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/dashboard.ini
 
 # http -> https redirection
 https_redirect mmc /etc/httpd/conf/webapps.d/mmc.conf
-
-# add shorewall plugin...
-cp -r plugins/shorewall /usr/lib/python2.7/site-packages/mmc/plugins/
-cp -r modules/shorewall /usr/share/mmc/modules/
-cp plugins/shorewall.ini /etc/mmc/plugins/
 
 # copy MBS logo
 cp mbs_logo.png /usr/share/mmc/img/logo/
