@@ -6,13 +6,11 @@
             .success(function(t) {
                 if (isInt(t.code) && t.code != 2000) {
                     if (t.code == 0) {
-                        $('#username')[0].disabled = false;
                         $('#username')[0].focus();
                         $('#username').tooltip({
                             placement: 'right',
-                            title: "{% trans "Your my.mandriva.com email address." %}"                                
+                            title: "{% trans "Your my.mandriva.com email address." %}"
                         });
-                        $('#password')[0].disabled = false;
                         $('#password').tooltip({
                             placement: 'right',
                             title: "{% trans "Your my.mandriva.com password." %}"
@@ -23,8 +21,6 @@
                         $('#netinfo').fadeIn();
                     }
                     else {
-                        $('#password')[0].disabled = false;
-                        $('#username')[0].disabled = false;
                         $('#username')[0].value = "root";
                         $('#password')[0].focus();
                         $('#password').tooltip({
@@ -36,7 +32,6 @@
                         $('#netinfo').slideDown();
                         $('#netinfo').fadeIn();
                     }
-                    $('#submit')[0].disabled = false;
                     $.get('/mss/has_net/' + t.code + '/');
                 }
                 else {
@@ -50,13 +45,13 @@
 <div class="control-group">
     <label class="control-label" for="username">{% trans "Username" %}: </label>
     <div class="controls">
-        <input type="text" name="username" value="" id="username" disabled="disabled" />
+        <input type="text" name="username" value="" id="username" />
     </div>
 </div>
 <div class="control-group">
     <label class="control-label" for="password">{% trans "Password" %}: </label>
     <div class="controls">
-        <input type="password" name="password" value="" id="password" disabled="disabled" />
+        <input type="password" name="password" value="" id="password" />
     </div>
 </div>
 <div class="control-group">
@@ -67,6 +62,6 @@
 </div>
 <div class="form-actions">
     <div class="pull-right">
-        <button id="submit" type="submit" class="btn btn-primary" disabled="disabled">{% trans "Enter" %} →</button>
+        <button id="submit" type="submit" class="btn btn-primary">{% trans "Enter" %} →</button>
     </div>
 </div>
