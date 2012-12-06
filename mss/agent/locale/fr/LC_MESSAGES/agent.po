@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-06-17 06:59+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,39 +16,43 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: managers/process.py:102
+#: managers/process.py:104
 msgid "Adding media"
 msgstr "Ajout des médias"
 
-#: managers/process.py:106
+#: managers/process.py:108
 msgid "Checking network"
 msgstr "Vérification du réseau"
 
-#: managers/process.py:98
+#: managers/process.py:100
 msgid "Installing packages"
 msgstr "Installation des packages"
 
-#: managers/process.py:96
+#: managers/process.py:98
 msgid "Loading packages list"
 msgstr "Chargement de la liste de packages"
 
-#: classes/module.py:348
+#: classes/module.py:357
 msgid "Password mismatch."
 msgstr "Les mots de passe ne sont pas identiques."
 
-#: managers/process.py:108
+#: managers/process.py:112
 msgid "Ready"
 msgstr "Prêt"
 
-#: managers/process.py:104
+#: managers/process.py:110
+msgid "Rebooting"
+msgstr ""
+
+#: managers/process.py:106
 msgid "Running configuration"
 msgstr "Exécution de la configuration"
 
-#: classes/module.py:343
+#: classes/module.py:352
 msgid "This field can't be empty."
 msgstr "Ce champ ne peut pas être vide."
 
-#: managers/process.py:100
+#: managers/process.py:102
 msgid "Updating medias"
 msgstr "Mise à jour des médias"
 

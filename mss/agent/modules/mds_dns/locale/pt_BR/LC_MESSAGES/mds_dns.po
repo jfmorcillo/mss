@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-12 18:10+0000\n"
 "Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -12,6 +12,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/mds_dns/desc.xml:33(label)
+msgid "Allow DNS from external networks"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:28(label)
+msgid "Allow DNS from internal networks"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:34(help)
+msgid ""
+"Configure the firewall to accept DNS requests on interfaces configured as "
+"'external'"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:29(help)
+msgid ""
+"Configure the firewall to accept DNS requests on interfaces configured as "
+"'internal'"
+msgstr ""
 
 #: modules/mds_dns/desc.xml:2(name)
 msgid "DNS service"
@@ -25,7 +45,7 @@ msgstr "Encaminhar consultas de DNS externo para o DNS de sua escolha"
 msgid "Forwarders"
 msgstr "Encaminhadores"
 
-#: modules/mds_dns/desc.xml:37(text)
+#: modules/mds_dns/desc.xml:47(text)
 msgid "Make sure you have enabled the DNS service (port 53) on your firewall."
 msgstr ""
 "Certifique-se que você habilitou o serviço de DNS (porta 53) em seu firewall."
@@ -34,7 +54,7 @@ msgstr ""
 msgid "My networks"
 msgstr "Minhas redes"
 
-#: modules/mds_dns/desc.xml:28(text)
+#: modules/mds_dns/desc.xml:38(text)
 msgid "No networks are authorized to make external queries."
 msgstr "Nenhuma rede está autorizada a fazer consultas externas."
 
@@ -42,22 +62,22 @@ msgstr "Nenhuma rede está autorizada a fazer consultas externas."
 msgid "Resolve computer names on your network"
 msgstr "Resolver nomes de computador em sua rede"
 
-#: modules/mds_dns/desc.xml:30(text)
+#: modules/mds_dns/desc.xml:40(text)
 #, fuzzy
 msgid "Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"
 msgstr ""
 "O Serviço MMC falhou ao reiniciar. Verifique /var/log/mmc/mmc-agent.log"
 
-#: modules/mds_dns/desc.xml:29(text)
+#: modules/mds_dns/desc.xml:39(text)
 #, fuzzy
 msgid "Service mmc-agent reloaded succesfully."
 msgstr "O serviço chamado foi recarregado com sucesso."
 
-#: modules/mds_dns/desc.xml:32(text)
+#: modules/mds_dns/desc.xml:42(text)
 msgid "Service named fails restarting. Check /var/log/syslog"
 msgstr "O serviço chamado falhou ao reiniciar. Verifique /var/log/syslog"
 
-#: modules/mds_dns/desc.xml:31(text)
+#: modules/mds_dns/desc.xml:41(text)
 msgid "Service named reloaded succesfully."
 msgstr "O serviço chamado foi recarregado com sucesso."
 
@@ -69,17 +89,17 @@ msgstr ""
 "Especificar quais redes estão autorizadas a resolver consultas externas com "
 "o seu servidor DNS (recursão). por exemplo: 192.168.0.0/255.255.255.0."
 
-#: modules/mds_dns/desc.xml:33(text)
+#: modules/mds_dns/desc.xml:43(text)
 msgid "The DNS service is running."
 msgstr ""
 
-#: modules/mds_dns/desc.xml:35(text)
+#: modules/mds_dns/desc.xml:45(text)
 msgid ""
 "The following networks are able to query your DNS for external domains :"
 msgstr ""
 "As seguintes redes são capazes de consultar o seu DNS para domínios externos:"
 
-#: modules/mds_dns/desc.xml:36(text)
+#: modules/mds_dns/desc.xml:46(text)
 #, fuzzy
 msgid ""
 "You can now add DNS zones in the management interface : https://@HOSTNAME@/"
@@ -88,7 +108,7 @@ msgstr ""
 "Agora você pode adicionar zonas DNS a partir da interface MDS em http://"
 "@HOSTNAME@/mmc/"
 
-#: modules/mds_dns/desc.xml:34(text)
+#: modules/mds_dns/desc.xml:44(text)
 msgid "Your DNS will forward external queries to :"
 msgstr "Seu DNS irá encaminhar consultas externas para:"
 

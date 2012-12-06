@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2012-10-05 08:48+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,6 +13,30 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
+#: modules/mds_cups/desc.xml:25(label)
+msgid "Allow connections to the management interface from external networks"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:20(label)
+msgid "Allow connections to the management interface from internal networks"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:26(help)
+msgid ""
+"Configure the firewall to accept connections on the Cups interface from "
+"interfaces configured as 'external'"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:21(help)
+msgid ""
+"Configure the firewall to accept connections on the Cups interface from "
+"interfaces configured as 'internal'"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:32(text)
+msgid "Login to the Cups interface is the root account."
+msgstr ""
+
 #: modules/mds_cups/desc.xml:3(desc)
 msgid "Network printers management"
 msgstr ""
@@ -21,21 +45,14 @@ msgstr ""
 msgid "Printing service"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:19(text)
-msgid "Service Cups fails restarting. Check"
-msgstr "Le service Cups n'a pas redémarré. Vérifiez"
-
-#: modules/mds_cups/desc.xml:18(text)
-msgid "Service Cups reloaded succesfully."
-msgstr "Le service Cups a redémarré."
-
-#: modules/mds_cups/desc.xml:20(text)
+#: modules/mds_cups/desc.xml:30(text)
 msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/desc.xml:21(text)
+#: modules/mds_cups/desc.xml:31(text)
 msgid ""
-"You can add new printers from the Cups web interface : http://@HOSTNAME@:631/"
+"You can add new printers from the Cups web interface : https://"
+"@HOSTNAME@:631/admin/"
 msgstr ""
 
 #: modules/mds_cups/desc.xml:9(rpm)
@@ -73,3 +90,9 @@ msgstr ""
 
 #~ msgid "Install and configure network printers"
 #~ msgstr "Installe et configure des imprimantes réseau"
+
+#~ msgid "Service Cups fails restarting. Check"
+#~ msgstr "Le service Cups n'a pas redémarré. Vérifiez"
+
+#~ msgid "Service Cups reloaded succesfully."
+#~ msgstr "Le service Cups a redémarré."

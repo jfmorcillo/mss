@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-13 09:42+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,42 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: managers/process.py:102
+#: managers/process.py:104
 msgid "Adding media"
 msgstr ""
 
-#: managers/process.py:106
+#: managers/process.py:108
 msgid "Checking network"
 msgstr ""
 
-#: managers/process.py:98
+#: managers/process.py:100
 msgid "Installing packages"
 msgstr ""
 
-#: managers/process.py:96
+#: managers/process.py:98
 msgid "Loading packages list"
 msgstr ""
 
-#: classes/module.py:348
+#: classes/module.py:357
 msgid "Password mismatch."
 msgstr ""
 
-#: managers/process.py:108
+#: managers/process.py:112
 msgid "Ready"
 msgstr ""
 
-#: managers/process.py:104
+#: managers/process.py:110
+msgid "Rebooting"
+msgstr ""
+
+#: managers/process.py:106
 msgid "Running configuration"
 msgstr ""
 
-#: classes/module.py:343
+#: classes/module.py:352
 msgid "This field can't be empty."
 msgstr ""
 
-#: managers/process.py:100
+#: managers/process.py:102
 msgid "Updating medias"
 msgstr ""

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2012-10-05 08:48+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,11 +13,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_dhcp/desc.xml:17(text)
+#: modules/mds_dhcp/desc.xml:24(label)
+msgid "Allow DHCP requests from external networks"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:19(label)
+msgid "Allow DHCP requests from internal networks"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:29(text)
 msgid "Configuration done. (/etc/mmc/plugins/network.ini updated)"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:19(text)
+#: modules/mds_dhcp/desc.xml:31(text)
 msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
 msgstr "Configuration de dhcp-server faite. (/etc/dhcpd.conf mis à jour)"
 
@@ -25,32 +33,44 @@ msgstr "Configuration de dhcp-server faite. (/etc/dhcpd.conf mis à jour)"
 msgid "Configure automatically your client computers IP settings"
 msgstr ""
 
+#: modules/mds_dhcp/desc.xml:25(help)
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'external'"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:20(help)
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'internal'"
+msgstr ""
+
 #: modules/mds_dhcp/desc.xml:2(name)
 msgid "DHCP service"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:20(text)
+#: modules/mds_dhcp/desc.xml:32(text)
 msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
 msgstr "Error lors de la configuration de dhcp-server. (/etc/dhcpd.conf)"
 
-#: modules/mds_dhcp/desc.xml:18(text)
+#: modules/mds_dhcp/desc.xml:30(text)
 msgid ""
 "Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:22(text)
+#: modules/mds_dhcp/desc.xml:34(text)
 msgid "Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:21(text)
+#: modules/mds_dhcp/desc.xml:33(text)
 msgid "Service mmc-agent reloaded succesfully."
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:23(text)
+#: modules/mds_dhcp/desc.xml:35(text)
 msgid "The DHCP service is installed."
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:24(text)
+#: modules/mds_dhcp/desc.xml:36(text)
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"

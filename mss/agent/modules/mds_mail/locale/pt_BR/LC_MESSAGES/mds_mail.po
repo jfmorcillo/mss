@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-12 20:18+0000\n"
 "Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -13,11 +13,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mail/desc.xml:50(text)
+#: modules/mds_mail/desc.xml:59(text)
 msgid "- Networks authorized to send mail without authentication :"
 msgstr "- Redes autorizadas a enviar e-mails sem autenticação:"
 
-#: modules/mds_mail/desc.xml:49(text)
+#: modules/mds_mail/desc.xml:58(text)
 msgid ""
 "- Non-SSL connexions on external interfaces are disabled by default on the "
 "IMAP server"
@@ -25,14 +25,22 @@ msgstr ""
 "- Conexões Non-SSL em interfaces externas são desativadas por padrão no "
 "servidor IMAP"
 
-#: modules/mds_mail/desc.xml:48(text)
+#: modules/mds_mail/desc.xml:57(text)
 #, fuzzy
 msgid "- SSL is enabled on the SMTP server"
 msgstr "- SSL está habilitado no servidor smtp"
 
-#: modules/mds_mail/desc.xml:47(text)
+#: modules/mds_mail/desc.xml:56(text)
 msgid "- mails are stored in /home/vmail/user/Maildir"
 msgstr "- Os e-mails são armazenados em /home/vmail/user/Maildir"
+
+#: modules/mds_mail/desc.xml:44(label)
+msgid "Allow mail services access from external networks"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:39(label)
+msgid "Allow mail services access from internal networks"
+msgstr ""
 
 #: modules/mds_mail/desc.xml:3(desc)
 #, fuzzy
@@ -41,15 +49,27 @@ msgstr ""
 "Servidor Mail/POP/IMAP com ferramentas para domínios virtuais, anti-vírus e "
 "anti-spam"
 
-#: modules/mds_mail/desc.xml:41(text)
+#: modules/mds_mail/desc.xml:45(help)
+msgid ""
+"Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
+"configured as 'external'"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:40(help)
+msgid ""
+"Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
+"configured as 'internal'"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:50(text)
 msgid "Failed to register razor. Try to run as root"
 msgstr "Falha ao registrar o Razor. Tente executar como root"
 
-#: modules/mds_mail/desc.xml:36(option)
+#: modules/mds_mail/desc.xml:35(option)
 msgid "IMAPS"
 msgstr "IMAPS"
 
-#: modules/mds_mail/desc.xml:35(option)
+#: modules/mds_mail/desc.xml:34(option)
 msgid "IMAPS and POP3S"
 msgstr "IMAPS e POP3S"
 
@@ -58,7 +78,7 @@ msgstr "IMAPS e POP3S"
 msgid "Mail service"
 msgstr "Serviço"
 
-#: modules/mds_mail/desc.xml:51(text)
+#: modules/mds_mail/desc.xml:60(text)
 msgid ""
 "Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, "
 "IMAPS 993) on your firewall."
@@ -66,44 +86,45 @@ msgstr ""
 "Certifique-se de ter habilitado os serviços de correio (SMTP 25, SMTPS 465, "
 "POPS 995, IMAPS 993) no seu firewall."
 
-#: modules/mds_mail/desc.xml:29(label)
+#: modules/mds_mail/desc.xml:28(label)
 msgid "My networks"
 msgstr "Minhas redes"
 
-#: modules/mds_mail/desc.xml:37(option)
+#: modules/mds_mail/desc.xml:36(option)
 msgid "POP3S"
 msgstr "POP3S"
 
-#: modules/mds_mail/desc.xml:33(label)
+#: modules/mds_mail/desc.xml:32(label)
 msgid "Protocols supported"
 msgstr "Protocolos suportados"
 
-#: modules/mds_mail/desc.xml:34(help)
+#: modules/mds_mail/desc.xml:33(help)
 msgid "Protocols that the dovecot server will provide."
 msgstr "Os protocolos que o servidor dovecot irá fornecer."
 
-#: modules/mds_mail/desc.xml:40(text)
+#: modules/mds_mail/desc.xml:49(text)
 msgid "Razor configured successfully."
 msgstr "O Razor configurado com êxito."
 
-#: modules/mds_mail/desc.xml:42(text)
+#: modules/mds_mail/desc.xml:51(text)
 msgid "Service"
 msgstr "Serviço"
 
-#: modules/mds_mail/desc.xml:30(help)
+#: modules/mds_mail/desc.xml:29(help)
+#, fuzzy
 msgid ""
-"Specify which clients are authorized to send mails through the mail server. "
-"If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
+"Specify which clients are authorized to send mails through the mail server "
+"without authentication."
 msgstr ""
 "Especifique quais os clientes estão autorizados a enviar e-mails através do "
 "servidor de correio. Se o seu endereço de rede é 192.168.0.0 especificar: "
 "192.168.0.0/255.255.255.0"
 
-#: modules/mds_mail/desc.xml:45(text)
+#: modules/mds_mail/desc.xml:54(text)
 msgid "The mail service is configured."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:46(text)
+#: modules/mds_mail/desc.xml:55(text)
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
@@ -125,7 +146,7 @@ msgstr "dovecot"
 msgid "dovecot-plugins-ldap"
 msgstr "dovecot-plugins-ldap"
 
-#: modules/mds_mail/desc.xml:44(text)
+#: modules/mds_mail/desc.xml:53(text)
 msgid "fails restarting. Check"
 msgstr "Falha ao reiniciar. Verifique"
 
@@ -145,7 +166,7 @@ msgstr "postfix"
 msgid "python-mmc-mail"
 msgstr "python-mmc-mail"
 
-#: modules/mds_mail/desc.xml:43(text)
+#: modules/mds_mail/desc.xml:52(text)
 msgid "reloaded succesfully."
 msgstr "recarregado com sucesso."
 

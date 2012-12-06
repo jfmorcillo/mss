@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-06 09:49+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,6 +14,30 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
+#: modules/mds_cups/desc.xml:25(label)
+msgid "Allow connections to the management interface from external networks"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:20(label)
+msgid "Allow connections to the management interface from internal networks"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:26(help)
+msgid ""
+"Configure the firewall to accept connections on the Cups interface from "
+"interfaces configured as 'external'"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:21(help)
+msgid ""
+"Configure the firewall to accept connections on the Cups interface from "
+"interfaces configured as 'internal'"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:32(text)
+msgid "Login to the Cups interface is the root account."
+msgstr ""
+
 #: modules/mds_cups/desc.xml:3(desc)
 msgid "Network printers management"
 msgstr ""
@@ -23,22 +47,15 @@ msgstr ""
 msgid "Printing service"
 msgstr "Принт-сервер"
 
-#: modules/mds_cups/desc.xml:19(text)
-msgid "Service Cups fails restarting. Check"
-msgstr "Службу Cups не удалось перезапустить. Необходимо выполнить проверку"
-
-#: modules/mds_cups/desc.xml:18(text)
-msgid "Service Cups reloaded succesfully."
-msgstr "Служба Cups успешно перезагружена"
-
-#: modules/mds_cups/desc.xml:20(text)
+#: modules/mds_cups/desc.xml:30(text)
 msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/desc.xml:21(text)
+#: modules/mds_cups/desc.xml:31(text)
 #, fuzzy
 msgid ""
-"You can add new printers from the Cups web interface : http://@HOSTNAME@:631/"
+"You can add new printers from the Cups web interface : https://"
+"@HOSTNAME@:631/admin/"
 msgstr ""
 "Вы можете добавить новые принтеры с локального веб-интерфейса Cups: http://"
 "localhost:631/"
@@ -81,3 +98,9 @@ msgstr "translator-credits"
 
 #~ msgid "Install and configure network printers"
 #~ msgstr "Установка и настройка сетевых принтеров"
+
+#~ msgid "Service Cups fails restarting. Check"
+#~ msgstr "Службу Cups не удалось перезапустить. Необходимо выполнить проверку"
+
+#~ msgid "Service Cups reloaded succesfully."
+#~ msgstr "Служба Cups успешно перезагружена"

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-28 09:23+0100\n"
+"POT-Creation-Date: 2012-12-06 10:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,79 +61,95 @@ msgstr ""
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:29(label)
+#: modules/mds_mail/desc.xml:28(label)
 msgid "My networks"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:30(help)
-msgid "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
+#: modules/mds_mail/desc.xml:29(help)
+msgid "Specify which clients are authorized to send mails through the mail server without authentication."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:33(label)
+#: modules/mds_mail/desc.xml:32(label)
 msgid "Protocols supported"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:34(help)
+#: modules/mds_mail/desc.xml:33(help)
 msgid "Protocols that the dovecot server will provide."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:35(option)
+#: modules/mds_mail/desc.xml:34(option)
 msgid "IMAPS and POP3S"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:36(option)
+#: modules/mds_mail/desc.xml:35(option)
 msgid "IMAPS"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:37(option)
+#: modules/mds_mail/desc.xml:36(option)
 msgid "POP3S"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:40(text)
-msgid "Razor configured successfully."
+#: modules/mds_mail/desc.xml:39(label)
+msgid "Allow mail services access from internal networks"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:41(text)
-msgid "Failed to register razor. Try to run as root"
+#: modules/mds_mail/desc.xml:40(help)
+msgid "Configure the firewall to accept smtp/imap/pop3 connections on interfaces configured as 'internal'"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:42(text)
-msgid "Service"
+#: modules/mds_mail/desc.xml:44(label)
+msgid "Allow mail services access from external networks"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:43(text)
-msgid "reloaded succesfully."
-msgstr ""
-
-#: modules/mds_mail/desc.xml:44(text)
-msgid "fails restarting. Check"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:45(text)
-msgid "The mail service is configured."
-msgstr ""
-
-#: modules/mds_mail/desc.xml:46(text)
-msgid "You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
-msgstr ""
-
-#: modules/mds_mail/desc.xml:47(text)
-msgid "- mails are stored in /home/vmail/user/Maildir"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:48(text)
-msgid "- SSL is enabled on the SMTP server"
+#: modules/mds_mail/desc.xml:45(help)
+msgid "Configure the firewall to accept smtp/imap/pop3 connections on interfaces configured as 'external'"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:49(text)
-msgid "- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"
+msgid "Razor configured successfully."
 msgstr ""
 
 #: modules/mds_mail/desc.xml:50(text)
-msgid "- Networks authorized to send mail without authentication :"
+msgid "Failed to register razor. Try to run as root"
 msgstr ""
 
 #: modules/mds_mail/desc.xml:51(text)
+msgid "Service"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:52(text)
+msgid "reloaded succesfully."
+msgstr ""
+
+#: modules/mds_mail/desc.xml:53(text)
+msgid "fails restarting. Check"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:54(text)
+msgid "The mail service is configured."
+msgstr ""
+
+#: modules/mds_mail/desc.xml:55(text)
+msgid "You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
+msgstr ""
+
+#: modules/mds_mail/desc.xml:56(text)
+msgid "- mails are stored in /home/vmail/user/Maildir"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:57(text)
+msgid "- SSL is enabled on the SMTP server"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:58(text)
+msgid "- Non-SSL connexions on external interfaces are disabled by default on the IMAP server"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:59(text)
+msgid "- Networks authorized to send mail without authentication :"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:60(text)
 msgid "Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, IMAPS 993) on your firewall."
 msgstr ""
 

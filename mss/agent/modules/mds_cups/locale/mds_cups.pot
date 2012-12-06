@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2012-10-28 09:23+0100\n"
+"POT-Creation-Date: 2012-12-06 10:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,20 +45,32 @@ msgstr ""
 msgid "hplip"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:18(text)
-msgid "Service Cups reloaded succesfully."
+#: modules/mds_cups/desc.xml:20(label)
+msgid "Allow connections to the management interface from internal networks"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:19(text)
-msgid "Service Cups fails restarting. Check"
+#: modules/mds_cups/desc.xml:21(help)
+msgid "Configure the firewall to accept connections on the Cups interface from interfaces configured as 'internal'"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:20(text)
+#: modules/mds_cups/desc.xml:25(label)
+msgid "Allow connections to the management interface from external networks"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:26(help)
+msgid "Configure the firewall to accept connections on the Cups interface from interfaces configured as 'external'"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:30(text)
 msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/desc.xml:21(text)
-msgid "You can add new printers from the Cups web interface : http://@HOSTNAME@:631/"
+#: modules/mds_cups/desc.xml:31(text)
+msgid "You can add new printers from the Cups web interface : https://@HOSTNAME@:631/admin/"
+msgstr ""
+
+#: modules/mds_cups/desc.xml:32(text)
+msgid "Login to the Cups interface is the root account."
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2

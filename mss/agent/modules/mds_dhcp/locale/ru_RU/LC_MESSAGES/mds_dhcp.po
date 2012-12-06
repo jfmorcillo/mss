@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-06 14:19+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,12 +14,20 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: modules/mds_dhcp/desc.xml:17(text)
+#: modules/mds_dhcp/desc.xml:24(label)
+msgid "Allow DHCP requests from external networks"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:19(label)
+msgid "Allow DHCP requests from internal networks"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:29(text)
 #, fuzzy
 msgid "Configuration done. (/etc/mmc/plugins/network.ini updated)"
 msgstr "Выполнена конфигурация MDS. (/etc/mmc/plugins/network.ini updated)"
 
-#: modules/mds_dhcp/desc.xml:19(text)
+#: modules/mds_dhcp/desc.xml:31(text)
 msgid "Configuration of dhcp-server done. (/etc/dhcpd.conf updated)"
 msgstr "Выполнена конфигурация dhcp-сервера. (/etc/dhcpd.conf updated)"
 
@@ -28,39 +36,51 @@ msgstr "Выполнена конфигурация dhcp-сервера. (/etc/d
 msgid "Configure automatically your client computers IP settings"
 msgstr "Конфигурация IP-настроек клиентских компьютеров"
 
+#: modules/mds_dhcp/desc.xml:25(help)
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'external'"
+msgstr ""
+
+#: modules/mds_dhcp/desc.xml:20(help)
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'internal'"
+msgstr ""
+
 #: modules/mds_dhcp/desc.xml:2(name)
 #, fuzzy
 msgid "DHCP service"
 msgstr "DHCP сервер с MDS backend"
 
-#: modules/mds_dhcp/desc.xml:20(text)
+#: modules/mds_dhcp/desc.xml:32(text)
 msgid "Error while configuring dhcp-server. (/etc/dhcpd.conf)"
 msgstr "Ошибка при конфигурации dhcp-сервера. (/etc/dhcpd.conf)"
 
-#: modules/mds_dhcp/desc.xml:18(text)
+#: modules/mds_dhcp/desc.xml:30(text)
 #, fuzzy
 msgid ""
 "Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)"
 msgstr "Ошибка при конфигурации MDS. (/etc/mmc/plugins/network.ini)"
 
-#: modules/mds_dhcp/desc.xml:22(text)
+#: modules/mds_dhcp/desc.xml:34(text)
 #, fuzzy
 msgid "Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"
 msgstr ""
 "Не удается перезапустить службу MMC. Выполнить проверку /var/log/mmc/mmc-"
 "agent.log"
 
-#: modules/mds_dhcp/desc.xml:21(text)
+#: modules/mds_dhcp/desc.xml:33(text)
 #, fuzzy
 msgid "Service mmc-agent reloaded succesfully."
 msgstr "Служба ММС перезагружена успешно."
 
-#: modules/mds_dhcp/desc.xml:23(text)
+#: modules/mds_dhcp/desc.xml:35(text)
 #, fuzzy
 msgid "The DHCP service is installed."
 msgstr "Интерфейс MMC не установлен."
 
-#: modules/mds_dhcp/desc.xml:24(text)
+#: modules/mds_dhcp/desc.xml:36(text)
 #, fuzzy
 msgid ""
 "You can now configure your DHCP settings from the management interface : "

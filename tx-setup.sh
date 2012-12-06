@@ -19,6 +19,12 @@ test -d .tx || tx init --host=https://transifex.mandriva.com
 
 cwd=`pwd`
 
+cd mss/agent
+tx set --execute --auto-local -r mss.agent -s en -f locale/agent.pot "locale/<lang>/LC_MESSAGES/agent.po"
+
+cd $cwd
+
+
 cd mss/agent/modules
 for mod in *
 do

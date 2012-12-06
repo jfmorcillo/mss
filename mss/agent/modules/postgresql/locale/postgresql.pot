@@ -9,20 +9,20 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mbs_repo/desc.xml:2(name)
-msgid "Mandriva Business Server repositories"
+#: modules/postgresql/desc.xml:4(name)
+msgid "PostgreSQL database"
 msgstr ""
 
-#: modules/mbs_repo/desc.xml:3(desc)
-msgid "Get security updates through MBS repositories"
+#: modules/postgresql/desc.xml:5(desc)
+msgid "PostgreSQL relational database"
 msgstr ""
 
-#: modules/mbs_repo/desc.xml:5(url)
-msgid "mes5devel.mandriva.com/BIG/mbs/2/@ARCH@/"
+#: modules/postgresql/desc.xml:8(rpm)
+msgid "postgresql9.1-server"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mbs_repo/desc.xml:0(None)
+#: modules/postgresql/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
 

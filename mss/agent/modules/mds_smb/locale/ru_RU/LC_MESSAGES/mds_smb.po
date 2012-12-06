@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-07 07:10+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,26 +14,34 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: modules/mds_smb/desc.xml:67(text)
+#: modules/mds_smb/desc.xml:79(text)
 msgid "- a public share is created in /home/samba/shares/public"
 msgstr "- создан общий доступ в /home/samba/shares/public"
 
-#: modules/mds_smb/desc.xml:68(text)
+#: modules/mds_smb/desc.xml:80(text)
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr "- вы можете создать скрипт logon.bat в /home/samba/netlogon"
 
-#: modules/mds_smb/desc.xml:63(text)
+#: modules/mds_smb/desc.xml:75(text)
 msgid "Acls supported by filesystem."
 msgstr "Acls, поддерживаемые файловой системой."
 
-#: modules/mds_smb/desc.xml:32(label)
+#: modules/mds_smb/desc.xml:34(label)
 msgid "Administrator name"
 msgstr "Имя администратора"
 
-#: modules/mds_smb/desc.xml:36(label)
+#: modules/mds_smb/desc.xml:38(label)
 #, fuzzy
 msgid "Administrator password"
 msgstr "Пароль администратора"
+
+#: modules/mds_smb/desc.xml:47(label)
+msgid "Allow connections connections external networks"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:42(label)
+msgid "Allow connections from internal networks"
+msgstr ""
 
 #: modules/mds_smb/desc.xml:3(desc)
 msgid ""
@@ -41,33 +49,45 @@ msgid ""
 "network"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:50(text)
+#: modules/mds_smb/desc.xml:48(help)
+msgid ""
+"Configure the firewall to accept SAMBA related traffic on interfaces "
+"configured as 'external'"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:43(help)
+msgid ""
+"Configure the firewall to accept SAMBA related traffic on interfaces "
+"configured as 'internal'"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:62(text)
 msgid "Directory populated for SAMBA."
 msgstr "Каталог собранный для SAMBA."
 
-#: modules/mds_smb/desc.xml:66(text)
+#: modules/mds_smb/desc.xml:78(text)
 msgid "Domain administrator :"
 msgstr "Администратор домена:"
 
-#: modules/mds_smb/desc.xml:64(text)
+#: modules/mds_smb/desc.xml:76(text)
 msgid "Domain name :"
 msgstr "Имя домена:"
 
-#: modules/mds_smb/desc.xml:55(text)
+#: modules/mds_smb/desc.xml:67(text)
 msgid "Error while configuring MDS SAMBA module."
 msgstr "Ошибка при настройке модуля MDS SAMBA."
 
-#: modules/mds_smb/desc.xml:41(text)
+#: modules/mds_smb/desc.xml:53(text)
 msgid "Error while configuring SAMBA. (/etc/samba/smb.conf)"
 msgstr "Ошибка при конфигурации SAMBA. (/etc/samba/smb.conf)"
 
-#: modules/mds_smb/desc.xml:47(text)
+#: modules/mds_smb/desc.xml:59(text)
 msgid ""
 "Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"
 msgstr ""
 "Ошибка при конфигурации lib nss-ldap. (/etc/ldap.conf и /etc/nsswitch.conf)"
 
-#: modules/mds_smb/desc.xml:49(text)
+#: modules/mds_smb/desc.xml:61(text)
 msgid ""
 "Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /"
 "etc/smbldap-tools/smbldap_bind.conf)"
@@ -75,90 +95,90 @@ msgstr ""
 "Ошибка при конфигурации  smbldap-tools.  (/etc/smbldap-tools/smbldap.conf и /"
 "etc/smbldap-tools/smbldap_bind.conf)"
 
-#: modules/mds_smb/desc.xml:51(text)
+#: modules/mds_smb/desc.xml:63(text)
 msgid "Error while populating directory."
 msgstr "Ошибка при сборе каталога."
 
-#: modules/mds_smb/desc.xml:43(text)
+#: modules/mds_smb/desc.xml:55(text)
 msgid "Error while setting SAMBA password. (smbpasswd)"
 msgstr "Ошибка при установке пароля SAMBA. (smbpasswd)"
 
-#: modules/mds_smb/desc.xml:60(text)
+#: modules/mds_smb/desc.xml:72(text)
 msgid "Failed granted rigths for Domain Admins group"
 msgstr "Не удалось предоставить права для группы Администраторов домена"
 
-#: modules/mds_smb/desc.xml:62(text)
+#: modules/mds_smb/desc.xml:74(text)
 msgid "For ext3 filesystems you have to add the acl option in /etc/fstab."
 msgstr ""
 "Для файловой системы ext3 вам необходимо добавить опцию acl в /etc/fstab."
 
-#: modules/mds_smb/desc.xml:54(text)
+#: modules/mds_smb/desc.xml:66(text)
 msgid "MDS SAMBA configuration done."
 msgstr "Выполнена настройка MDS SAMBA."
 
-#: modules/mds_smb/desc.xml:69(text)
+#: modules/mds_smb/desc.xml:81(text)
 msgid "Make sure you have enabled SAMBA services on your firewall."
 msgstr "Убедитесь, что вы включили услуги SAMBA на брандмауэре."
 
-#: modules/mds_smb/desc.xml:28(label)
+#: modules/mds_smb/desc.xml:30(label)
 msgid "Netbios name"
 msgstr "Имя Netbios"
 
-#: modules/mds_smb/desc.xml:37(help)
+#: modules/mds_smb/desc.xml:39(help)
 msgid "Password for the Microsoft domain administrator."
 msgstr "Пароль администратора Microsoft-домена"
 
-#: modules/mds_smb/desc.xml:40(text)
+#: modules/mds_smb/desc.xml:52(text)
 msgid "SAMBA configuration done. (/etc/samba/smb.conf updated)"
 msgstr "Выполнена конфигурация SAMBA. (/etc/samba/smb.conf updated)"
 
-#: modules/mds_smb/desc.xml:24(label)
+#: modules/mds_smb/desc.xml:25(label)
 msgid "SAMBA domain name"
 msgstr "Имя домена SAMBA"
 
-#: modules/mds_smb/desc.xml:42(text)
+#: modules/mds_smb/desc.xml:54(text)
 msgid "SAMBA password set."
 msgstr "Установка пароля SAMBA."
 
-#: modules/mds_smb/desc.xml:65(text)
+#: modules/mds_smb/desc.xml:77(text)
 msgid "Server name :"
 msgstr "Имя сервера:"
 
-#: modules/mds_smb/desc.xml:58(text)
+#: modules/mds_smb/desc.xml:70(text)
 msgid "Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"
 msgstr ""
 "Не удается перезапустить службу MMC. Выполнить проверку /var/log/mmc/mmc-"
 "agent.log"
 
-#: modules/mds_smb/desc.xml:57(text)
+#: modules/mds_smb/desc.xml:69(text)
 msgid "Service MMC reloaded succesfully."
 msgstr "Служба MMC перезагружена успешно."
 
-#: modules/mds_smb/desc.xml:45(text) modules/mds_smb/desc.xml:53(text)
+#: modules/mds_smb/desc.xml:57(text) modules/mds_smb/desc.xml:65(text)
 msgid "Service SAMBA fails restarting."
 msgstr "Не удалось перезапустить службу SAMBA."
 
-#: modules/mds_smb/desc.xml:44(text) modules/mds_smb/desc.xml:52(text)
+#: modules/mds_smb/desc.xml:56(text) modules/mds_smb/desc.xml:64(text)
 msgid "Service SAMBA reloaded succesfully."
 msgstr "Служба SAMBA успешно перезагружена."
 
-#: modules/mds_smb/desc.xml:59(text)
+#: modules/mds_smb/desc.xml:71(text)
 msgid "Successfully granted rights for Domain Admins group."
 msgstr "Успешно предоставлены права для группы Администраторов домена."
 
-#: modules/mds_smb/desc.xml:33(help)
+#: modules/mds_smb/desc.xml:35(help)
 msgid "The name of the Microsoft domain administrator."
 msgstr "Имя администратора Microsoft-домена"
 
-#: modules/mds_smb/desc.xml:25(help)
+#: modules/mds_smb/desc.xml:26(help)
 msgid "The name of your Microsoft domain."
 msgstr "Имя вашего Microsoft-домена"
 
-#: modules/mds_smb/desc.xml:29(help)
+#: modules/mds_smb/desc.xml:31(help)
 msgid "The name of your SAMBA server in the Microsoft domain."
 msgstr "Имя вашего SAMBA-сервера в Microsoft-домене"
 
-#: modules/mds_smb/desc.xml:56(text)
+#: modules/mds_smb/desc.xml:68(text)
 msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created, they still remains in the users group."
@@ -170,7 +190,7 @@ msgstr ""
 msgid "Windows users and file sharing management"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:70(text)
+#: modules/mds_smb/desc.xml:82(text)
 #, fuzzy
 msgid ""
 "You can now use the management interface to manage your Windows users and "
@@ -179,7 +199,7 @@ msgstr ""
 "Теперь вы можете использовать MDS-интерфейс для управления пользователями и "
 "общим доступом Windows (https://@HOSTNAME@/mmc/)."
 
-#: modules/mds_smb/desc.xml:61(text)
+#: modules/mds_smb/desc.xml:73(text)
 msgid ""
 "Your filesystem does not support ACL. You won't be able to set ACLs on SAMBA "
 "shares."
@@ -187,7 +207,7 @@ msgstr ""
 "Ваша файловая система не поддерживает ACL. Вы не сможете установить ACLs в "
 "общем доступе SAMBA."
 
-#: modules/mds_smb/desc.xml:46(text)
+#: modules/mds_smb/desc.xml:58(text)
 msgid ""
 "lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf "
 "updated)"
@@ -223,7 +243,7 @@ msgstr "samba-doc"
 msgid "samba-server"
 msgstr "samba-server"
 
-#: modules/mds_smb/desc.xml:48(text)
+#: modules/mds_smb/desc.xml:60(text)
 msgid ""
 "smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/"
 "smbldap-tools/smbldap_bind.conf updated)"

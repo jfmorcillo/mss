@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-28 09:22+0100\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-07 06:22+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,43 +14,43 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: modules/mds_quota/desc.xml:21(text)
+#: modules/mds_quota/desc.xml:20(text)
 msgid "Add usrquota option for"
 msgstr "Добавить опция usrquota для"
 
-#: modules/mds_quota/desc.xml:23(text)
+#: modules/mds_quota/desc.xml:22(text)
 msgid "Create quota files for"
 msgstr "Создать файлы квот для "
 
-#: modules/mds_quota/desc.xml:17(label)
+#: modules/mds_quota/desc.xml:16(label)
 msgid "Filesystems"
 msgstr "Файловые системы"
 
-#: modules/mds_quota/desc.xml:29(text)
+#: modules/mds_quota/desc.xml:28(text)
 msgid "Quota module is activated in the MDS interface."
 msgstr "Модуль квоты активирован на MDS-интерфейсе"
 
-#: modules/mds_quota/desc.xml:28(text)
+#: modules/mds_quota/desc.xml:27(text)
 msgid "Quota option already present for"
 msgstr "Опция квоты уже существует для"
 
-#: modules/mds_quota/desc.xml:24(text)
+#: modules/mds_quota/desc.xml:23(text)
 msgid "Quotas activated on"
 msgstr "Квоты активированы на"
 
-#: modules/mds_quota/desc.xml:25(text)
+#: modules/mds_quota/desc.xml:24(text)
 msgid "Quotas configured on"
 msgstr "Квоты настроена на"
 
-#: modules/mds_quota/desc.xml:27(text)
+#: modules/mds_quota/desc.xml:26(text)
 msgid "Quotas not supported on this filesystem :"
 msgstr "Квоты не поддерживаются в этой файловой системе"
 
-#: modules/mds_quota/desc.xml:22(text)
+#: modules/mds_quota/desc.xml:21(text)
 msgid "Remount"
 msgstr "Перемонтировать"
 
-#: modules/mds_quota/desc.xml:26(text)
+#: modules/mds_quota/desc.xml:25(text)
 msgid "Restart the system to active quotas"
 msgstr "Перезапустите систему, чтобы активировать квоты"
 
@@ -59,7 +59,7 @@ msgstr "Перезапустите систему, чтобы активиров
 msgid "Set file quotas on the server"
 msgstr "Установить файл квот на файловом сервере"
 
-#: modules/mds_quota/desc.xml:18(help)
+#: modules/mds_quota/desc.xml:17(help)
 msgid ""
 "Specify the filesystems where you want to apply user quotas with the "
 "following format : \"Device path\":\"Identifier string\" (eg: /dev/sda1:Root)"
@@ -72,7 +72,7 @@ msgstr ""
 msgid "User quota management"
 msgstr "Поддержка квот пользователей "
 
-#: modules/mds_quota/desc.xml:30(text)
+#: modules/mds_quota/desc.xml:29(text)
 #, fuzzy
 msgid ""
 "You can now configure user quotas from the MDS interface : https://"
@@ -81,23 +81,19 @@ msgstr ""
 "Сейчас вы можете настроить пользовательские квоты с MDS-интерфейса: http://"
 "@HOSTNAME@/mmc/"
 
-#: modules/mds_quota/desc.xml:4(url)
-msgid "https://@HOSTNAME@/mmc/"
-msgstr ""
-
-#: modules/mds_quota/desc.xml:13(module)
+#: modules/mds_quota/desc.xml:12(module)
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: modules/mds_quota/desc.xml:9(rpm)
+#: modules/mds_quota/desc.xml:8(rpm)
 msgid "mmc-web-userquota"
 msgstr "mmc-web-userquota"
 
-#: modules/mds_quota/desc.xml:8(rpm)
+#: modules/mds_quota/desc.xml:7(rpm)
 msgid "python-mmc-userquota"
 msgstr "python-mmc-userquota"
 
-#: modules/mds_quota/desc.xml:7(rpm)
+#: modules/mds_quota/desc.xml:6(rpm)
 msgid "quota"
 msgstr "quota"
 

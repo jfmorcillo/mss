@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-10-02 17:26+0200\n"
+"POT-Creation-Date: 2012-12-06 10:54+0100\n"
 "PO-Revision-Date: 2011-07-07 07:18+0000\n"
 "Last-Translator: Irina Sikach <i.sence.i@gmail.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -14,46 +14,67 @@ msgstr ""
 "Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
 "%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
 
-#: modules/mds_webmail/desc.xml:3(desc)
+#: modules/mds_webmail/desc.xml:31(label)
+msgid "Allow access from external networks"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:26(label)
+msgid "Allow access from internal networks"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:32(help)
+msgid ""
+"Configure the firewall to allow access to the webmail interface from "
+"external networks"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:27(help)
+msgid ""
+"Configure the firewall to allow access to the webmail interface from "
+"internal networks"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml:4(desc)
 msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:2(name)
+#: modules/mds_webmail/desc.xml:3(name)
 msgid "Webmail"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:23(text)
+#: modules/mds_webmail/desc.xml:36(text)
 msgid "Webmail RoundCube is activated on your server."
 msgstr "Служба веб-почты RoundCube активирована на вашем сервере."
 
-#: modules/mds_webmail/desc.xml:24(text)
+#: modules/mds_webmail/desc.xml:37(text)
+#, fuzzy
 msgid ""
-"You can access the webmail interface at http://@HOSTNAME@/roundcubemail/"
+"You can access the webmail interface at https://@HOSTNAME@/roundcubemail/"
 msgstr ""
 "Вы можете получить доступ через веб-интерфейс на http://@HOSTNAME@/"
 "roundcubemail/"
 
-#: modules/mds_webmail/desc.xml:18(module)
+#: modules/mds_webmail/desc.xml:19(module)
 msgid "mds_mail"
 msgstr "mds_mai"
 
-#: modules/mds_webmail/desc.xml:12(rpm)
+#: modules/mds_webmail/desc.xml:13(rpm)
 msgid "php-fileinfo"
 msgstr "php-fileinfo"
 
-#: modules/mds_webmail/desc.xml:13(rpm)
+#: modules/mds_webmail/desc.xml:14(rpm)
 msgid "php-mcrypt"
 msgstr "php-mcrypt"
 
-#: modules/mds_webmail/desc.xml:14(rpm)
+#: modules/mds_webmail/desc.xml:15(rpm)
 msgid "php-pear-MDB2_Driver_sqlite"
 msgstr "php-pear-MDB2_Driver_sqlite"
 
-#: modules/mds_webmail/desc.xml:10(rpm)
+#: modules/mds_webmail/desc.xml:11(rpm)
 msgid "roundcubemail"
 msgstr "roundcubemail"
 
-#: modules/mds_webmail/desc.xml:11(rpm)
+#: modules/mds_webmail/desc.xml:12(rpm)
 msgid "sqlite-tools"
 msgstr "sqlite-tools"
 
@@ -62,7 +83,7 @@ msgstr "sqlite-tools"
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: modules/mds_webmail/desc.xml:21(module)
+#: modules/mds_webmail/desc.xml:22(module)
 msgid "zarafa"
 msgstr "zarafa"
 

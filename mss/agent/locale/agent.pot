@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-28 09:23+0100\n"
+"POT-Creation-Date: 2012-12-06 10:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,38 +17,42 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: classes/module.py:343
+#: classes/module.py:352
 msgid "This field can't be empty."
 msgstr ""
 
-#: classes/module.py:348
+#: classes/module.py:357
 msgid "Password mismatch."
 msgstr ""
 
-#: managers/process.py:96
+#: managers/process.py:98
 msgid "Loading packages list"
 msgstr ""
 
-#: managers/process.py:98
+#: managers/process.py:100
 msgid "Installing packages"
 msgstr ""
 
-#: managers/process.py:100
+#: managers/process.py:102
 msgid "Updating medias"
 msgstr ""
 
-#: managers/process.py:102
+#: managers/process.py:104
 msgid "Adding media"
 msgstr ""
 
-#: managers/process.py:104
+#: managers/process.py:106
 msgid "Running configuration"
 msgstr ""
 
-#: managers/process.py:106
+#: managers/process.py:108
 msgid "Checking network"
 msgstr ""
 
-#: managers/process.py:108
+#: managers/process.py:110
+msgid "Rebooting"
+msgstr ""
+
+#: managers/process.py:112
 msgid "Ready"
 msgstr ""
