@@ -347,6 +347,7 @@ def install(request):
     """ install page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.INSTALL)
+
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
@@ -370,6 +371,7 @@ def config(request):
     """ configuration page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.CONFIG)
+
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
@@ -414,6 +416,15 @@ def config_valid(request):
     """ check user configuration """
     transaction = Transaction(request)
 
+    do_config = False
+    # redirect if configuration is already done
+    for module in transaction.modules_info:
+        if not module['configured']:
+            do_config = True
+
+    if not do_config:
+        return HttpResponseRedirect(transaction.next_step_url())
+
     # get forms values
     config = {}
     for name, value in request.POST.items():
@@ -437,13 +448,10 @@ def config_valid(request):
 @login_required
 def config_run(request, module):
     """ run configuration script for module """
-    err, result = xmlrpc.call('get_modules', [module])
-    if err:
-        return err
-    else:
-        for module in result:
-            if not module['configured']:
-                xmlrpc.call('run_config', module['id'])
+    transaction = Transaction(request)
+    for module in transaction.modules_info:
+        if not module['configured']:
+            xmlrpc.call('run_config', module['id'])
     return HttpResponse("")
 
 @login_required
@@ -460,6 +468,10 @@ def config_end(request, module):
 def reboot(request):
     transaction = Transaction(request)
     transaction.set_current_step(Steps.REBOOT)
+
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
+
     return render_to_response('reboot.html',
             {'transaction': transaction},
             context_instance=RequestContext(request))
@@ -468,7 +480,6 @@ def reboot(request):
 def reboot_run(request):
     xmlrpc.call('reboot')
     return HttpResponse("")
-
 
 def toHtml(request, text, links = True):
     # replace hostname tag with server name

@@ -20,6 +20,7 @@ class Transaction:
             self.transaction = request.session['transaction']
             self.modules = request.session['modules_list']
             self.modules_info = request.session['modules_info']
+            self.update_module_info()
         else:
             err, result = xmlrpc.call('preinstall_modules', modules)
             if err:
@@ -92,7 +93,7 @@ class Transaction:
 
     def disable_step(self, step):
         self.find_step(step)['disabled'] = True
-    
+
     def enable_step(self, step):
         self.find_step(step)['disabled'] = False
 
@@ -101,7 +102,7 @@ class Transaction:
             if s['id'] == step['id']:
                 for key, value in step.items():
                     s[key] = value
-    
+
     def prepare(self):
         err, result = xmlrpc.call('get_medias', self.modules)
         for media in result:
@@ -116,12 +117,16 @@ class Transaction:
                 self.enable_step(Steps.INSTALL);
             if module['reboot']:
                 self.enable_step(Steps.REBOOT);
-        
+
         err, result = xmlrpc.call('get_config', self.modules)
         for module in result:
             infos = module[0]
             if not infos['skip_config']:
                 self.enable_step(Steps.CONFIG);
+
+    def update_module_info(self):
+        err, result = xmlrpc.call('preinstall_modules', self.modules)
+        self.modules_info = result
 
     def current_step(self):
         for s in self.transaction:
