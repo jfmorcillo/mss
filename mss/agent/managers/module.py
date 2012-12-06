@@ -397,7 +397,7 @@ class ModuleManager:
         logger.debug("Run configuration for %s" % str(module))
         path, script, args = self.modules[module].info_config()
         logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
-        return ProcessManager().run_script(script, args, path)
+        return ProcessManager().run_script(script, args, path, module)
 
     @expose
     def end_config(self, module):
@@ -413,7 +413,7 @@ class ModuleManager:
     @expose
     def get_state(self, name, module="agent"):
         """ return execution output """
-        code, output = ProcessManager().p_state(name)
+        code, output = ProcessManager().p_state(name, module)
         # format output
         tmp = output.splitlines()
         output = []

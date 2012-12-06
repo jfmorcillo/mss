@@ -43,10 +43,10 @@ class ProcessManager:
         """ launch installation of packages list """
         self.launch("install", ["urpmi", "--auto", "--no-suggests"] + packages)
 
-    def run_script(self, script, args, cwd):
+    def run_script(self, script, args, cwd, module):
         """ launch configuration script for module """
         if os.path.exists(os.path.join(cwd, script)):
-            self.launch("config", ["bash", script] + args, cwd=cwd)
+            self.launch("config", ["bash", script] + args, cwd=cwd, module=module)
             return True
         else:
             return False
@@ -68,43 +68,46 @@ class ProcessManager:
         self.launch("media", command, shell=True)
         #return (self.threads['media'].code, self.threads['media'].output)
 
-    def launch(self, name, command, cwd=None, callback=None, shell=False, replace=False, env=None):
+    def launch(self, name, command, cwd=None, callback=None, shell=False, replace=False, env=None, module="agent"):
         """ launch wrapper """
         # stop the current thread if replace is True
-        if replace and name in self.threads:
-            self.threads[name].stop()
+        if replace and name in self.threads and module in self.threads[name]:
+            self.threads[name][module].stop()
         # accept only one thread
-        if not name in self.threads or not self.threads[name].isAlive():
-            self.threads[name] = ProcessThread(command, cwd, callback, shell, env)
-            self.threads[name].start()
+        if not name in self.threads:
+            self.threads[name] = {}
+        if not module in self.threads[name] or not self.threads[name][module].isAlive():
+            self.threads[name][module] = ProcessThread(command, cwd, callback, shell, env)
+            self.threads[name][module].start()
         else:
             # let the thread finished
             pass
 
-    def p_state(self, name):
+    def p_state(self, name, module="agent"):
         """ get thread execution state """
-        if name in self.threads:
-            return (self.threads[name].code, self.threads[name].output)
+        if name in self.threads and module in self.threads[name]:
+            return (self.threads[name][module].code, self.threads[name][module].output)
 
     def pm_state(self):
         """ get execution manager status """
         status = []
-        for name, thread in self.threads.items():
-            if thread.isAlive():
-                if name == "load":
-                    status.append(_("Loading packages list"))
-                if name == "install":
-                    status.append(_("Installing packages"))
-                if name == "update":
-                    status.append(_("Updating medias"))
-                if name == "media":
-                    status.append(_("Adding media"))
-                if name == "config":
-                    status.append(_("Running configuration"))
-                if name == "net":
-                    status.append(_("Checking network"))
-                if name == "reboot":
-                    status.append(_("Rebooting"))
+        for name, module in self.threads.items():
+            for module_name, thread in module.items():
+                if thread.isAlive():
+                    if name == "load":
+                        status.append(_("Loading packages list"))
+                    if name == "install":
+                        status.append(_("Installing packages"))
+                    if name == "update":
+                        status.append(_("Updating medias"))
+                    if name == "media":
+                        status.append(_("Adding media"))
+                    if name == "config":
+                        status.append(_("Running configuration"))
+                    if name == "net":
+                        status.append(_("Checking network"))
+                    if name == "reboot":
+                        status.append(_("Rebooting"))
         if not status:
             status.append(_("Ready"))
         return status
