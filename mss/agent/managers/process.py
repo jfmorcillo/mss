@@ -80,7 +80,7 @@ class ProcessManager:
             self.threads[name][module] = ProcessThread(command, cwd, callback, shell, env)
             self.threads[name][module].start()
         else:
-            # let the thread finished
+            # let the thread finish
             pass
 
     def p_state(self, name, module="agent"):
@@ -122,5 +122,10 @@ class ProcessManagerError(Exception):
     def __str__(self):
         return self.msg
 
+
 class ProcessManagerBusyError(ProcessManagerError):
+    pass
+
+
+class ProcessManagerStateDoesntExists(ProcessManagerError):
     pass

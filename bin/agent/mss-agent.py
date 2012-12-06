@@ -28,8 +28,12 @@ import os
 
 from mss.agent.managers.module import ModuleManager
 from mss.agent.lib.auth import authenticate
+from mss.agent.lib.db import Base, engine
 
 if __name__ == "__main__":
+
+    # Create all tables if needed
+    Base.metadata.create_all(engine)
 
     parser = OptionParser()
     parser.add_option("-d", "--debug", action="store_true", dest="debug",
@@ -46,12 +50,12 @@ if __name__ == "__main__":
     if options.debug:
         level = logging.DEBUG
         format = '%(asctime)s|%(name)s|%(levelname)s: %(message)s'
-    
+
     logger = logging.getLogger()
     logger.setLevel(level)
-   
+
     formatter = logging.Formatter(format)
-    
+
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
     fh = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10485760, backupCount=5)

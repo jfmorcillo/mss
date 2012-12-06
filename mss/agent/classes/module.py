@@ -25,11 +25,11 @@ import re
 import imp
 import copy
 import logging
-import sqlite3
 import xml.etree.ElementTree as ET
 from datetime import datetime
 from IPy import IP
 
+from mss.agent.lib.db import Session, ModuleTable
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
 from mss.agent.managers.translation import TranslationManager
@@ -53,7 +53,7 @@ class Module(object):
             raise Exception("Syntax error in desc.xml (%s)" % self.path)
         self.root = tree.getroot()
         # BDD access
-        self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
+        self.session = Session()
         # load module info
         self.load()
         # get module config object
@@ -146,13 +146,11 @@ class Module(object):
                 except:
                     pass
     	# check if module is configured from database
-        c = self.conn.cursor()
-        c.execute('select * from module where name=?', (self.id,))
-        if c.fetchone():
+        module = self.session.query(ModuleTable).filter(ModuleTable.name == self.id).first()
+        if module and module.configured:
             self._configured = True
         else:
             self._configured = False
-        c.close()
         # if the module has no configuration consider it is configured
         try:
             script, args = getattr(self.module, 'get_config_info')()
@@ -169,14 +167,10 @@ class Module(object):
     def configured(self, value):
         self._configured = value
         if value:
-            c = self.conn.cursor()
-            c.execute('select * from module where name=?', (self.id,))
-            if c.fetchone():
-                c.execute('update module set configured=? where name=?', (datetime.now(), self.id))
-            else:
-                c.execute('insert into module values (?,?)', (self.id, datetime.now()))
-            self.conn.commit()
-            c.close()
+            module = ModuleTable(self.id)
+            module.configured = datetime.now()
+            self.session.merge(module)
+            self.session.commit()
 
     @property
     def installed(self):

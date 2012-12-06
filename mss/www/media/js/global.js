@@ -43,19 +43,21 @@ scrollLog = function() {
 
 formatLog = function(JSONoutput) {
     output = "";
-    for (i=0; i<JSONoutput.length; i++) {
-        code = JSONoutput[i].code;
-        text = JSONoutput[i].text;
-        css="";
-        if (code == 1)
-            css="warning";
-        else if(code == 2)
-            css="error";
-        else if(code == 7)
-            css="info";
-        else if(code == 8)
-            css="info";
-        output += '<span class="'+css+'">'+text+'</span>';
+    if (JSONoutput) {
+        for (i=0; i<JSONoutput.length; i++) {
+            code = JSONoutput[i].code;
+            text = JSONoutput[i].text;
+            css="";
+            if (code == 1)
+                css="warning";
+            else if(code == 2)
+                css="error";
+            else if(code == 7)
+                css="info";
+            else if(code == 8)
+                css="info";
+            output += '<span class="'+css+'">'+text+'</span>';
+        }
     }
     return output;
 }

@@ -25,12 +25,12 @@ import glob
 import sys
 import logging
 import platform
-import sqlite3
 import json
 
 from mss.agent.lib.utils import grep, Singleton
+from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.classes.module import Module
-from mss.agent.managers.process import ProcessManager
+from mss.agent.managers.process import ProcessManager, ProcessManagerStateDoesntExists
 from mss.agent.managers.translation import TranslationManager
 
 LSB_FILENAME = '/etc/os-release'
@@ -72,7 +72,7 @@ class ModuleManager:
         # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
         # BDD access
-        self.conn = sqlite3.connect('/var/lib/mss/mss-agent.db')
+        self.session = Session()
         # logging
         self.load_packages()
         self.load_modules()
@@ -86,25 +86,16 @@ class ModuleManager:
     @expose
     def set_option(self, key, value):
         """ add an option in the DB """
-        c = self.conn.cursor()
-        c.execute('select * from options where key=?', (key,))
-        if c.fetchone():
-            # use json to serialize the value (can be a tuple)
-            c.execute('update options set value=? where key=?', (json.dumps(value), key))
-        else:
-            c.execute('insert into options values (?,?)', (key, json.dumps(value)))
-        self.conn.commit()
-        c.close()
+        option = OptionTable(key, value)
+        self.session.merge(option)
+        self.session.commit()
 
     @expose
     def get_option(self, key):
         """ get an option from the BDD """
-        c = self.conn.cursor()
-        c.execute('select * from options where key=?', (key,))
-        option = c.fetchone()
-        c.close()
+        option = self.session.query(OptionTable).get(key)
         if option:
-            return json.loads(option[1])
+            return json.loads(option.value)
         else:
             return False
 
@@ -401,8 +392,20 @@ class ModuleManager:
 
     @expose
     def end_config(self, module):
-        logger.debug("Set %s as configured" % str(module))
-        self.modules[module].configured = True
+        if not self.modules[module].configured:
+            logger.debug("Set %s as configured" % str(module))
+            self.modules[module].configured = True
+            # store the config log
+            logger.debug("Saving %s configuration log in the DB" % str(module))
+            log_type = self.session.query(LogTypeTable).filter(LogTypeTable.name == "config").first()
+            if not log_type:
+                log_type = LogTypeTable("config")
+                self.session.add(log_type)
+                self.session.commit()
+            module_obj = self.session.query(ModuleTable).filter(ModuleTable.name == module).first()
+            config_log = LogTable(log_type.id, module_obj.id, self.get_state("config", module))
+            self.session.add(config_log)
+            self.session.commit()
         return 0
 
     def clean_output(self, string):
@@ -444,6 +447,7 @@ class ModuleManager:
             code = 2000
             output = [{'code': 0, 'text': u''}]
 
+        print ("RETURN #########################")
         logger.debug(output)
         return (code, output)
 
