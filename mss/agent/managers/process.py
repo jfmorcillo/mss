@@ -20,11 +20,13 @@
 # MA 02110-1301, USA.
 
 import os
+import logging
 from gettext import gettext as _
 
 from mss.agent.lib.utils import Singleton
 from mss.agent.classes.process import ProcessThread
 
+logger = logging.getLogger(__name__)
 
 class ProcessManager:
     """ Class managing running tasks """
@@ -32,7 +34,7 @@ class ProcessManager:
 
     def __init__(self):
         # thread pool
-        self.threads = {}
+        self.threads = []
 
     def load_packages(self, callback):
         """ get all installed packages """
@@ -68,46 +70,59 @@ class ProcessManager:
         self.launch("media", command, shell=True)
         #return (self.threads['media'].code, self.threads['media'].output)
 
-    def launch(self, name, command, cwd=None, callback=None, shell=False, replace=False, env=None, module="agent"):
+    def launch(self, type, command, cwd=None, callback=None, shell=False,
+               replace=False, env=None, module="agent"):
         """ launch wrapper """
+        thread = self.get_thread(type, module)
         # stop the current thread if replace is True
-        if replace and name in self.threads and module in self.threads[name]:
-            self.threads[name][module].stop()
-        # accept only one thread
-        if not name in self.threads:
-            self.threads[name] = {}
-        if not module in self.threads[name] or not self.threads[name][module].isAlive():
-            self.threads[name][module] = ProcessThread(command, cwd, callback, shell, env)
-            self.threads[name][module].start()
+        if replace and thread:
+            thread.stop()
+            logger.debug("Stopping %s thread of module %s" % (type, module))
+        if not thread or not thread.isAlive():
+            # remove previoud thread
+            if thread:
+                self.threads.remove(thread)
+            thread = ProcessThread(type, module, command, cwd, callback, shell, env)
+            self.threads.append(thread)
+            logger.debug("Create %s thread for module %s" % (type, module))
+            logger.debug("Command is: %s" % " ".join(command))
+            thread.start()
         else:
             # let the thread finish
             pass
 
-    def p_state(self, name, module="agent"):
+    def get_thread(self, type, module="agent"):
+        """ get thread in list """
+        for thread in self.threads:
+            if thread.type == type and thread.module == module:
+                return thread
+        return False
+
+    def p_state(self, type, module="agent"):
         """ get thread execution state """
-        if name in self.threads and module in self.threads[name]:
-            return (self.threads[name][module].code, self.threads[name][module].output)
+        thread = self.get_thread(type, module)
+        if thread:
+            return (thread.code, thread.output)
 
     def pm_state(self):
         """ get execution manager status """
         status = []
-        for name, module in self.threads.items():
-            for module_name, thread in module.items():
-                if thread.isAlive():
-                    if name == "load":
-                        status.append(_("Loading packages list"))
-                    if name == "install":
-                        status.append(_("Installing packages"))
-                    if name == "update":
-                        status.append(_("Updating medias"))
-                    if name == "media":
-                        status.append(_("Adding media"))
-                    if name == "config":
-                        status.append(_("Running configuration"))
-                    if name == "net":
-                        status.append(_("Checking network"))
-                    if name == "reboot":
-                        status.append(_("Rebooting"))
+        for thread in self.threads:
+            if thread.isAlive():
+                if thread.type == "load":
+                    status.append(_("Loading packages list"))
+                if thread.type == "install":
+                    status.append(_("Installing packages"))
+                if thread.type == "update":
+                    status.append(_("Updating medias"))
+                if thread.type == "media":
+                    status.append(_("Adding media"))
+                if thread.type == "config":
+                    status.append(_("Running configuration"))
+                if thread.type == "net":
+                    status.append(_("Checking network"))
+                if thread.type == "reboot":
+                    status.append(_("Rebooting"))
         if not status:
             status.append(_("Ready"))
         return status

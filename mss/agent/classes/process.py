@@ -22,19 +22,25 @@
 import os
 import select
 import threading
+import logging
 from subprocess import Popen, PIPE, STDOUT
+
+logger = logging.getLogger(__name__)
 
 class ProcessThread(threading.Thread):
     """ Base class for running tasks """
 
-    def __init__(self, command, cwd, callback, shell, env):
+    def __init__(self, type, module, command, cwd, callback, shell, env):
         self.process = None
-        self.command = command
-        self.cwd = cwd
-        self.callback = callback
         self._code = 2000
         self._output = ""
         self.lock = threading.RLock()
+        # thread type (config, install...)
+        self.type = type
+        self.module = module
+        self.command = command
+        self.cwd = cwd
+        self.callback = callback
         self.shell = shell
         self.env = env
         threading.Thread.__init__(self)
@@ -49,6 +55,7 @@ class ProcessThread(threading.Thread):
 
     def run(self):
         """ run command """
+        logger.debug("Running %s command" % self.type)
         self.process = Popen(self.command, stdout=PIPE, stderr=STDOUT,
             bufsize=1, cwd=self.cwd, shell=self.shell, env=self.env)
         self.catch_output()
@@ -95,4 +102,5 @@ class ProcessThread(threading.Thread):
                 self._code = self.process.returncode
                 if self.callback:
                     self.callback(self._code, self._output)
+                logger.debug("Finished %s command" % self.type)
                 break

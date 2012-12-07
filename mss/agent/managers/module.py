@@ -414,9 +414,9 @@ class ModuleManager:
         return string
 
     @expose
-    def get_state(self, name, module="agent"):
+    def get_state(self, type, module="agent"):
         """ return execution output """
-        code, output = ProcessManager().p_state(name, module)
+        code, output = ProcessManager().p_state(type, module)
         # format output
         tmp = output.splitlines()
         output = []
@@ -447,8 +447,6 @@ class ModuleManager:
             code = 2000
             output = [{'code': 0, 'text': u''}]
 
-        print ("RETURN #########################")
-        logger.debug(output)
         return (code, output)
 
     @expose
