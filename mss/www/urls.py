@@ -2,8 +2,6 @@
 #
 # (c) 2010 Mandriva, http://www.mandriva.com/
 #
-# $Id$
-#
 # This file is part of Mandriva Server Setup
 #
 # MSS is free software; you can redistribute it and/or modify
@@ -21,7 +19,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, include
 import settings
 
 urlpatterns = patterns('django.views.generic.simple',
@@ -37,6 +35,6 @@ urlpatterns += patterns('',
 )
 
 urlpatterns += patterns('',
-    (r'^404/', 'django.views.generic.simple.direct_to_template', {'template': '404.html'}),
-    (r'^500/', 'django.views.generic.simple.direct_to_template', {'template': '500.html'}),
+    (r'^errors/', include('mss.www.better500s.urls')),
+    (r'^404/', 'django.views.generic.simple.direct_to_template', {'template': 'better500s/404.html'}),
 )

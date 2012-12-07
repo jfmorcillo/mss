@@ -7,7 +7,7 @@
 <script type="text/javascript">
     getState = function() {
         $.get("{% url state "install" %}")
-        .success(function(r) {
+         .success(function(r) {
             $('#log').html(formatLog(r.output));
             scrollLog();
             if (r.code != 2000) {
@@ -19,7 +19,10 @@
                     $("#next").html("{% trans "Continue" %} →");
                     $("#next")[0].disabled = false;
                     $("#back").removeClass("disabled");
-                    $.get("{% url reload_packages %}");
+                    $.get("{% url reload_packages %}")
+                     .error(function(xhr) {
+                        if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+                     });
                 }
                 else {
                     $("#install-task").removeClass("alert-info");
@@ -40,7 +43,10 @@
                 // Refresh the status
                 setTimeout(getState, 2000);
             }
-        });
+         })
+         .error(function(xhr) {
+            if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+         });
     };
 
     $(document).ready(function() {

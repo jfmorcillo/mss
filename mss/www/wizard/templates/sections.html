@@ -13,9 +13,12 @@
             $(this).parent().addClass("active");
             section = $(this).data("target");
             $.get('/mss/sections/' + section + '/')
-            .success(function(content) {
+             .success(function(content) {
                 $('#section').html(content);
-            });
+             })
+             .error(function(xhr) {
+                if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+             });
         };
 
         $('#sidebar a').click(showSection);
@@ -27,9 +30,12 @@
     <section id="section" class="section"></section>
     <script type="text/javascript">
         $.get('{% url section "core" %}')
-        .success(function(content) {
+         .success(function(content) {
             $('#section').html(content);
-        });
+         })
+         .error(function(xhr) {
+            if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+         });
     </script>
 {% else %}
     <section>

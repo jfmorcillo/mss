@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block content %}
+    <section id="error-500">
+        <div class="page-header">
+            <h1>{% trans "An unexpected error occured" %}</h1>
+        </div>
+        {% if exception_value %}
+            <p>{% trans "The error message is" %} :</p>
+            <div class="alert alert-error" style="padding-right: 14px">
+                <div class="traceback">
+                    <div class="log-button pull-right">
+                        <button class="btn btn-danger btn-small" data-toggle="button" type="button" onclick="toggleLog(this)">{% trans "Show details" %}</button>
+                    </div>
+                    {{ exception_value|escape }}
+                    <div class="clearfix"></div>
+                    <div id="log" class="log" style="display: none;">{{simple_traceback|linebreaks|cut:"\n"}}</div>
+                </div>
+            </div>
+        {% endif %}
+        {% comment %}
+		{% if epoch and request.session.has_net %}
+            <p class="alert alert-info">{% trans "To help us solve this problem, can you explain what you were trying to do just now ?" %}</p>
+            <form action="/errors/{{ post_url }}" method="post" class="form-inline">
+                {% csrf_token %}
+                <input type="hidden" name="epoch" value="{{ epoch }}" />
+                <input type="hidden" id="simple_traceback" name="simple_traceback" value="{{ simple_traceback }}" />
+                <div class="control-group">
+                    <textarea id="user_notes" name="user_notes" value="" rows="3" style="width: 95%"></textarea>
+                </div>
+                <div class="control-group">
+                    <input class="btn btn-primary" type="submit" value="{% trans "Send" %}" />
+                </div>
+            </form>
+        {% endif %}
+        {% endcomment %}
+
+        <div class="form-actions">
+            <div class="pull-right">
+                <a href="{% url sections %}" class="btn btn-primary">{% trans "Home" %}</a>
+            </div>
+        </div>
+    </section>
+
+    {% comment %}
+	<script type="text/javascript" charset="utf-8">
+		$(function() {
+		  {% if ajax_url %}
+			$.ajax({
+			  url: "/errors/{{ ajax_url }}",
+			  type: "POST",
+			  dataType: "json",
+			  data: {'epoch': '{{ epoch }}', 'simple_traceback': $("input[name=simple_traceback]").val()},
+			});
+		  {% endif %}
+		  $("#user_notes").focus()
+		});
+    </script>
+    {% endcomment %}
+
+{% endblock %}

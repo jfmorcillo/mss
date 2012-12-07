@@ -35,14 +35,17 @@
             current_task = $($("#"+medias[current].name+" .alert")[0]);
             current_task.addClass('alert-info');
             current_task.html('{% trans "Adding media..." %}');
-            $.post('/mss/media/add/'+medias[current].name+'/', 
+            $.post('/mss/media/add/'+medias[current].name+'/',
                    {'username': medias[current].username, 'password': medias[current].password})
-            .success(check);
+             .success(check)
+             .error(function(xhr) {
+                if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+             });
         };
 
         check = function() {
             $.get("{% url state "media" %}")
-            .success(function(r) {
+             .success(function(r) {
                 current_log.html(formatLog(r.output));
                 scrollLog();
                 if (r.code != 2000) {
@@ -64,15 +67,18 @@
                         current_task.html("{% trans "Failed to add media." %}");
                         if (current_log.css("display") == "none")
                             current_log_btn.click();
-                        $('#back').removeClass("disabled");
+                       $('#back').removeClass("disabled");
                         $("#next").html("{% trans "Continue" %} →");
                     }
                 }
                 else
                     setTimeout(check, 2000);
-            });
+             })
+             .error(function(xhr) {
+                if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+             });
         };
-        
+
         $(document).ready(function() {
             run();
         });

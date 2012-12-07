@@ -180,7 +180,7 @@ h3 {
 .page-header {
     border-bottom: 3px solid #ddd;
     margin: 33px 0px;
-}   
+}
 
 .page-header h1 {
     color: #7d7d7d;
@@ -324,6 +324,7 @@ h3 {
     font-size: 11px;
     line-height: 14px;
     padding: 2px 5px 2px 5px;
+    text-shadow: none;
 }
 
 .log span {

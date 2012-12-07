@@ -64,7 +64,7 @@
 
     check = function() {
         $.get('/mss/state/config/'+modules[current]+'/')
-        .success(function(r) {
+         .success(function(r) {
             current_log.html(formatLog(r.output));
             scrollLog();
             if (r.code != 2000) {
@@ -72,7 +72,10 @@
                     current_task.removeClass("alert-info");
                     current_task.addClass("alert-success");
                     current_task.html('<i class="icon-ok"></i> {% trans "Configuration succeded." %}');
-                    $.get('/mss/config/end/'+modules[current]+'/');
+                    $.get('/mss/config/end/'+modules[current]+'/')
+                     .error(function(xhr) {
+                        if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+                     });
                     install_summary = current_task.next();
                     log = new collectLog();
                     install_summary.html(log.toString());
@@ -95,7 +98,10 @@
                 setTimeout(check, 2000);
             }
 
-        });
+         })
+         .error(function(xhr) {
+            if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+         });
     }
 
     stop = function() {
@@ -119,9 +125,10 @@
         $.get('/mss/config/run/'+modules[current]+'/')
         .success(check)
         .error(function(xhr) {
-            if (xhr.status == 404) {
+            if (xhr.status == 404)
                 stop();
-            }
+            else if (xhr.responseText && xhr.status == 500)
+                $('body').html(xhr.responseText);
         });
     }
 
@@ -145,7 +152,10 @@
             {% if m.skip_config %}
             <p class="alert alert-success">{% trans "No configuration for this module." %}</p>
             <script type="text/javascript">
-                $.get('/mss/config/end/{{ m.id }}/');
+                $.get('/mss/config/end/{{ m.id }}/')
+                 .error(function(xhr) {
+                    if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+                 });
             });
             </script>
             {% else %}

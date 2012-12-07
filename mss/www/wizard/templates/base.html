@@ -28,13 +28,19 @@
             }
             // launch medias update
             updateMedias = function() {
-                $.get('{% url medias_update %}');
+                $.get('{% url medias_update %}')
+                 .error(function(xhr) {
+                    if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+                 });
             }
             // launch medias update
             reboot = function() {
                 $.get('{% url reboot_run %}')
                  .success(function() {
                      window.location.href='{% url logout %}';
+                 })
+                 .error(function(xhr) {
+                    if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
                  });
             }
             // long polling for status bar
@@ -66,7 +72,9 @@
                     setTimeout(function() {
                         // request aborted
                         if (xhr.status == 0 && xhr.statusText == "error")
-                            $('#status-text').html('{% trans "The MSS interface is unreachable" %}');
+                            $('#status-text').html("{% trans "The MSS interface is unreachable" %}");
+                        else if (xhr.status == 500)
+                            $('body').html(xhr.responseText);
                         else
                             $('#status-text').html(xhr.responseText);
                         // set error style if error

@@ -28,6 +28,7 @@ do
 done
 
 tx set --execute --auto-local -r mss.wizard -s en "mss/www/wizard/locale/<lang>/LC_MESSAGES/django.po"
+tx set --execute --auto-local -r mss.errors -s en "mss/www/better500s/locale/<lang>/LC_MESSAGES/django.po"
 
 for layout in mss/www/layout/*
 do
