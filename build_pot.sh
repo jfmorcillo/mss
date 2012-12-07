@@ -22,6 +22,7 @@ cd mss/agent
 
 # Agent translation
 pot="locale/agent.pot"
+langs="fr_FR pt_BR"
 rm -f ${pot}
 touch ${pot}
 find . -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
@@ -32,27 +33,29 @@ done
 
 # Modules translation
 for module in modules/*; do
-    mod=`basename $module`
-    xml=modules/${mod}/desc.xml
-    pot=modules/${mod}/locale/${mod}.pot
-    if [ -d modules/${mod} ]; then        
-        if [ -d modules/${mod}/locale ]; then
-            rm -f ${pot}
-            touch ${pot}
-            if [ -f $xml ]; then
-                echo -n "creating ${pot}"
-                xml2po -o ${pot} ${xml}
-                echo "....done."
-            fi
-            for po in `find modules/${mod}/locale -type f -name *.po`; do
-                if [ -f $po ]; then
-                    echo -n "updating ${po}..."
-                    msgmerge --update --add-location --sort-output ${po} ${pot}
-                fi
-            done
-        else
-            echo "locale dir not found for module ${mod}"
+    if [ -d $module ]; then
+        mod=`basename $module`
+        xml=modules/${mod}/desc.xml
+        pot=modules/${mod}/locale/${mod}.pot
+        for lang in $langs; do
+            [ ! -d modules/${mod}/locale/$lang/LC_MESSAGES ] && mkdir -p modules/${mod}/locale/$lang/LC_MESSAGES
+            touch modules/${mod}/locale/${lang}/LC_MESSAGES/${mod}.po
+        done
+        rm -f ${pot}
+        touch ${pot}
+        if [ -f $xml ]; then
+            echo -n "creating ${pot}"
+            xml2po -o ${pot} ${xml}
+            bash --dump-po-strings modules/${mod}/*.sh >> ${pot}
+            find modules/${mod} -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
+            echo "....done."
         fi
+        for po in `find modules/${mod}/locale -type f -name *.po`; do
+            if [ -f $po ]; then
+                echo -n "updating ${po}..."
+                msgmerge --update --add-location --sort-output ${po} ${pot}
+            fi
+        done
     fi
 done
 
