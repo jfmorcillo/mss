@@ -25,7 +25,7 @@ pot="locale/agent.pot"
 langs="fr_FR pt_BR"
 rm -f ${pot}
 touch ${pot}
-find . -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
+find . -name modules -prune -o -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
 for name in `find locale -type f -name *.po`; do
 	echo -n "updating ${name}..."
 	msgmerge --update --add-location --sort-output ${name} ${pot}
