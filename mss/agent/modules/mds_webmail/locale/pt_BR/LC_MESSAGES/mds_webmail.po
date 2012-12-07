@@ -1,92 +1,87 @@
-#
+# 
+## Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-12-06 10:54+0100\n"
-"PO-Revision-Date: 2011-07-12 19:37+0000\n"
-"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2012-12-06 10:55+0100\n"
+"PO-Revision-Date: 2012-12-10 14:32+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_webmail/desc.xml:31(label)
-msgid "Allow access from external networks"
+#: modules/mds_webmail/desc.xml3(name)
+msgid "Webmail"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:26(label)
+#: modules/mds_webmail/desc.xml4(desc)
+msgid "Roundcube, a complete webmail solution for your mail service"
+msgstr ""
+
+#: modules/mds_webmail/desc.xml11(rpm)
+msgid "roundcubemail"
+msgstr "roundcubemail"
+
+#: modules/mds_webmail/desc.xml12(rpm)
+msgid "sqlite-tools"
+msgstr "sqlite-tools"
+
+#: modules/mds_webmail/desc.xml13(rpm)
+msgid "php-fileinfo"
+msgstr "php-fileinfo"
+
+#: modules/mds_webmail/desc.xml14(rpm)
+msgid "php-mcrypt"
+msgstr "php-mcrypt"
+
+#: modules/mds_webmail/desc.xml15(rpm)
+msgid "php-pear-MDB2_Driver_sqlite"
+msgstr "php-pear-MDB2_Driver_sqlite"
+
+#: modules/mds_webmail/desc.xml19(module)
+msgid "mds_mail"
+msgstr "mds_mail"
+
+#: modules/mds_webmail/desc.xml22(module)
+msgid "zarafa"
+msgstr "zarafa"
+
+#: modules/mds_webmail/desc.xml26(label)
 msgid "Allow access from internal networks"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:32(help)
-msgid ""
-"Configure the firewall to allow access to the webmail interface from "
-"external networks"
-msgstr ""
-
-#: modules/mds_webmail/desc.xml:27(help)
+#: modules/mds_webmail/desc.xml27(help)
 msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "internal networks"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:4(desc)
-msgid "Roundcube, a complete webmail solution for your mail service"
+#: modules/mds_webmail/desc.xml31(label)
+msgid "Allow access from external networks"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:3(name)
-msgid "Webmail"
+#: modules/mds_webmail/desc.xml32(help)
+msgid ""
+"Configure the firewall to allow access to the webmail interface from "
+"external networks"
 msgstr ""
 
-#: modules/mds_webmail/desc.xml:36(text)
+#: modules/mds_webmail/desc.xml36(text)
 msgid "Webmail RoundCube is activated on your server."
 msgstr "Webmail RoundCube está ativado em seu servidor."
 
-#: modules/mds_webmail/desc.xml:37(text)
-#, fuzzy
+#: modules/mds_webmail/desc.xml37(text)
 msgid ""
 "You can access the webmail interface at https://@HOSTNAME@/roundcubemail/"
 msgstr ""
-"Você pode acessar a interface do webmail em http://@HOSTNAME@/roundcubemail/"
-
-#: modules/mds_webmail/desc.xml:19(module)
-msgid "mds_mail"
-msgstr "mds_mail"
-
-#: modules/mds_webmail/desc.xml:13(rpm)
-msgid "php-fileinfo"
-msgstr "php-fileinfo"
-
-#: modules/mds_webmail/desc.xml:14(rpm)
-msgid "php-mcrypt"
-msgstr "php-mcrypt"
-
-#: modules/mds_webmail/desc.xml:15(rpm)
-msgid "php-pear-MDB2_Driver_sqlite"
-msgstr "php-pear-MDB2_Driver_sqlite"
-
-#: modules/mds_webmail/desc.xml:11(rpm)
-msgid "roundcubemail"
-msgstr "roundcubemail"
-
-#: modules/mds_webmail/desc.xml:12(rpm)
-msgid "sqlite-tools"
-msgstr "sqlite-tools"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_webmail/desc.xml:0(None)
+#: modules/mds_webmail/desc.xml0(None)
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#: modules/mds_webmail/desc.xml:22(module)
-msgid "zarafa"
-msgstr "zarafa"
 
-#~ msgid "Integrate roundcube for your MDS installation"
-#~ msgstr "Integrar o RoundCube para a sua instalação MDS"
-
-#~ msgid "Webmail with MDS backend"
-#~ msgstr "Webmail com backend MDS"

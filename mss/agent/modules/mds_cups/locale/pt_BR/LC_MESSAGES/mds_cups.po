@@ -1,105 +1,92 @@
-#
+# 
+## Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-12-06 10:54+0100\n"
-"PO-Revision-Date: 2011-07-12 17:23+0000\n"
-"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2012-12-06 10:55+0100\n"
+"PO-Revision-Date: 2012-12-10 14:32+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_cups/desc.xml:25(label)
-msgid "Allow connections to the management interface from external networks"
+#: modules/mds_cups/desc.xml2(name)
+msgid "Printing service"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:20(label)
+#: modules/mds_cups/desc.xml3(desc)
+msgid "Network printers management"
+msgstr ""
+
+#: modules/mds_cups/desc.xml9(rpm)
+msgid "cups"
+msgstr "cups"
+
+#: modules/mds_cups/desc.xml10(rpm)
+msgid "cups-drivers"
+msgstr "cups-drivers"
+
+#: modules/mds_cups/desc.xml11(rpm)
+msgid "cups-windows"
+msgstr "cups-windows"
+
+#: modules/mds_cups/desc.xml12(rpm)
+msgid "foomatic-filters"
+msgstr "foomatic-filters"
+
+#: modules/mds_cups/desc.xml13(rpm)
+msgid "hplip-hpijs-ppds"
+msgstr "hplip-hpijs-ppds"
+
+#: modules/mds_cups/desc.xml14(rpm)
+msgid "postscript-ppds"
+msgstr "postscript-ppds"
+
+#: modules/mds_cups/desc.xml15(rpm)
+msgid "hplip"
+msgstr "hplip"
+
+#: modules/mds_cups/desc.xml20(label)
 msgid "Allow connections to the management interface from internal networks"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:26(help)
-msgid ""
-"Configure the firewall to accept connections on the Cups interface from "
-"interfaces configured as 'external'"
-msgstr ""
-
-#: modules/mds_cups/desc.xml:21(help)
+#: modules/mds_cups/desc.xml21(help)
 msgid ""
 "Configure the firewall to accept connections on the Cups interface from "
 "interfaces configured as 'internal'"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:32(text)
-msgid "Login to the Cups interface is the root account."
+#: modules/mds_cups/desc.xml25(label)
+msgid "Allow connections to the management interface from external networks"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:3(desc)
-msgid "Network printers management"
+#: modules/mds_cups/desc.xml26(help)
+msgid ""
+"Configure the firewall to accept connections on the Cups interface from "
+"interfaces configured as 'external'"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:2(name)
-#, fuzzy
-msgid "Printing service"
-msgstr "Servidor de impressão"
-
-#: modules/mds_cups/desc.xml:30(text)
+#: modules/mds_cups/desc.xml30(text)
 msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/desc.xml:31(text)
-#, fuzzy
+#: modules/mds_cups/desc.xml31(text)
 msgid ""
-"You can add new printers from the Cups web interface : https://"
-"@HOSTNAME@:631/admin/"
+"You can add new printers from the Cups web interface : "
+"https://@HOSTNAME@:631/admin/"
 msgstr ""
-"Você pode adicionar novas impressoras a partir da interface local web Cups: "
-"http://localhost:631/"
 
-#: modules/mds_cups/desc.xml:9(rpm)
-msgid "cups"
-msgstr "cups"
-
-#: modules/mds_cups/desc.xml:10(rpm)
-msgid "cups-drivers"
-msgstr "cups-drivers"
-
-#: modules/mds_cups/desc.xml:11(rpm)
-msgid "cups-windows"
-msgstr "cups-windows"
-
-#: modules/mds_cups/desc.xml:12(rpm)
-msgid "foomatic-filters"
-msgstr "foomatic-filters"
-
-#: modules/mds_cups/desc.xml:15(rpm)
-msgid "hplip"
-msgstr "hplip"
-
-#: modules/mds_cups/desc.xml:13(rpm)
-msgid "hplip-hpijs-ppds"
-msgstr "hplip-hpijs-ppds"
-
-#: modules/mds_cups/desc.xml:14(rpm)
-msgid "postscript-ppds"
-msgstr "postscript-ppds"
+#: modules/mds_cups/desc.xml32(text)
+msgid "Login to the Cups interface is the root account."
+msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_cups/desc.xml:0(None)
+#: modules/mds_cups/desc.xml0(None)
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#~ msgid "Cups is running."
-#~ msgstr "O Cups está em execução."
 
-#~ msgid "Install and configure network printers"
-#~ msgstr "Instalar e configurar impressoras de rede"
-
-#~ msgid "Service Cups fails restarting. Check"
-#~ msgstr "O serviço Cups falhou na reinicialização. Verifique"
-
-#~ msgid "Service Cups reloaded succesfully."
-#~ msgstr "O serviço Cups foi recarregado com sucesso."
