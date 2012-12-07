@@ -25,6 +25,7 @@ import glob
 import sys
 import logging
 import platform
+import traceback
 import json
 
 from mss.agent.lib.utils import grep, Singleton
@@ -59,7 +60,11 @@ class ModuleManager:
         if not is_exposed(func):
             raise Exception('Method "%s" is not supported' % method)
 
-        return func(*params)
+        try:
+            return func(*params)
+        except:
+            logger.error(traceback.format_exc())
+            raise
 
     def __init__(self):
         if platform.machine() == 'x86_64':

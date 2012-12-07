@@ -63,7 +63,7 @@ sed -i "s/^defaultUserGroup = users$/defaultUserGroup = Domain Users/" /etc/mmc/
 [ $? -eq 0 ] && warning $"Users are now created in the Domain Users group by default. If users were created before, they still remains in the users group."
 
 net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $MDSSERVER -U $smbadmin%$smbpass > /dev/null 2>&1
-[ $? -ne 0 ] && error $"Failed granted rigths for Domain Admins group"; exit 1
+[ $? -ne 0 ] && error $"Failed granted rigths for Domain Admins group" && exit 1
 
 # create directories
 mkdir -p /home/samba/netlogon

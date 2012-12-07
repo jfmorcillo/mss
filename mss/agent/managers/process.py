@@ -25,7 +25,7 @@ from gettext import gettext as _
 
 from mss.agent.lib.utils import Singleton
 from mss.agent.classes.process import ProcessThread
-from mss.agent.manager.translation import TranslationManager
+from mss.agent.managers.translation import TranslationManager
 
 logger = logging.getLogger(__name__)
 
@@ -50,7 +50,7 @@ class ProcessManager:
     def run_script(self, script, args, cwd, module):
         """ launch configuration script for module """
         env = {'TEXTDOMAIN': module,
-               'TEXTDOMAINDIR': os.path.join(TranslationManager.get_catalog(module), 'locale')}
+               'TEXTDOMAINDIR': os.path.join(TranslationManager().get_catalog_path(module), 'locale')}
         if os.path.exists(os.path.join(cwd, script)):
             self.launch("config", ["bash", script] + args, cwd=cwd,
                         module=module, env=env)

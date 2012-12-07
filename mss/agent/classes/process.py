@@ -49,7 +49,10 @@ class ProcessThread(threading.Thread):
 
     @property
     def output(self):
-        return self._output.decode("UTF-8")
+        try:
+            return self._output.decode('utf-8')
+        except:
+            return self._output.decode('latin-1')
 
     @property
     def code(self):

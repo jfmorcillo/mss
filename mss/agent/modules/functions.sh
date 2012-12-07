@@ -157,14 +157,14 @@ function mysql_cleanup() {
 function restart_service() {
     systemctl restart $1.service
     if [ $? -eq 0 ]; then
-        echo "0Service #${1}# restarted succesfully."
+        echo "0Service ${1} restarted succesfully."
     else
         if [ ! -z $2 ]; then
             log=$2
         else
             log="/var/log/syslog"
         fi
-        echo "2Service #${1}# fails restarting. Check #${log}#."
+        echo "2Service ${1} fails restarting. Check ${log}."
         systemctl status $1.service
         exit 1
     fi
@@ -180,7 +180,7 @@ function stop_service() {
         else
             log="/var/log/syslog"
         fi
-        echo "2Service ${1} fails to stop. Check #${log}#."
+        echo "2Service ${1} fails to stop. Check ${log}."
         systemctl status $1.service
         exit 1
     fi

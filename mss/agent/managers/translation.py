@@ -32,7 +32,6 @@ class TranslationManager:
     __metaclass__ = Singleton
 
     def __init__(self):
-        #self.lang = ""
         # set default locale when starting agent
         self.lang = locale.getdefaultlocale()[0]
         self.catalogs = {}
@@ -54,8 +53,8 @@ class TranslationManager:
             translation = gettext.NullTranslations()
         self.catalogs[name] = (path, translation)
 
-    def get_catalog(self, name):
-        return self.catalogs[name]
+    def get_catalog_path(self, name):
+        return self.catalogs[name][0]
 
     def translate(self, string, catalog):
         """Translate a given string to the language of the application."""
