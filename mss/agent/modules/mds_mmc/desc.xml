@@ -49,14 +49,4 @@
         <module>system</module>
         <module>network</module>
     </deps>
-    <text>Service</text>
-    <text>and</text>
-    <text>stopped succesfully.</text>
-    <text>fails stopping. Check</text>
-    <text>started succesfully.</text>
-    <text>fails starting. Check</text>
-    <text>The MBS management interface is configured.</text>
-    <text>You can log in the MBS management interface at https://@HOSTNAME@/mmc/ and start adding users and groups.</text>
-    <text>Administrator name : root</text>
-    <text>Administrator password : </text>
 </module>

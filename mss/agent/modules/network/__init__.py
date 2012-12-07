@@ -23,6 +23,9 @@ import os
 import netifaces
 
 from mss.agent.lib.utils import grep, get_config_option
+from mss.agent.managers.translation import TranslationManager
+
+_ = TranslationManager().translate
 
 def get_config_info():
     args = []
@@ -76,23 +79,23 @@ def get_interfaces_config(config):
             config.append({'id': 'network',
                            'name': interface + '_type',
                            'require': 'yes',
-                           'label': 'Interface type',
-                           'help': 'Choose "External" if the interface is connected to the Internet. If the interface is connected to an internal network, choose "Internal"',
+                           'label': _('Interface type', 'network'),
+                           'help': _('Choose "External" if the interface is connected to the Internet. If the interface is connected to an internal network, choose "Internal"', 'network'),
                            'type': 'options',
                            'options': [
-                               {'name': 'Internal network', 'value': 'lan' + interface[-1]},
-                               {'name': 'External network', 'value': 'wan' + interface[-1]}
+                               {'name': _('Internal network', 'network'), 'value': 'lan' + interface[-1]},
+                               {'name': _('External network', 'network'), 'value': 'wan' + interface[-1]}
                             ]
                            })
             config.append({'id': 'network',
                            'name': interface + '_method',
                            'default': method, 'require': 'yes',
-                           'label': 'Configuration method',
+                           'label': _('Configuration method', 'network'),
                            'type': 'options',
                            'options': [
-                               {'name': 'No configuration', 'value': 'none'},
-                               {'name': 'DHCP configuration', 'value': 'dhcp'},
-                               {'name': 'Manual configuration', 'value': 'static',
+                               {'name': _('No configuration', 'network'), 'value': 'none'},
+                               {'name': _('DHCP configuration', 'network'), 'value': 'dhcp'},
+                               {'name': _('Manual configuration', 'network'), 'value': 'static',
                                 'toggle': [interface + '_addr', interface + '_netmask', interface + '_dns1',
                                            interface + '_dns2', interface + '_domain', interface + '_gateway']}
                             ]
@@ -100,55 +103,55 @@ def get_interfaces_config(config):
             config.append({'id': 'network',
                            'name': interface + '_addr',
                            'default': addr,
-                           'label': 'IP Address',
+                           'label': _('IP Address', 'network'),
                            'type': 'text', 'validation': 'ip'})
             config.append({'id': 'network',
                            'name': interface + '_netmask',
                            'default': netmask,
-                           'label': 'Netmask',
+                           'label': _('Netmask', 'network'),
                            'type': 'text', 'validation': 'ip'})
             config.append({'id': 'network',
                            'name': interface + '_dns1',
                            'default': dns1,
-                           'label': 'First DNS server',
+                           'label': _('First DNS server', 'network'),
                            'type': 'text', 'validation': 'ip'})
             config.append({'id': 'network',
                            'name': interface + '_dns2',
                            'default': dns2,
-                           'label': 'Second DNS server',
+                           'label': _('Second DNS server', 'network'),
                            'type': 'text', 'validation': 'ip'})
             config.append({'id': 'network',
                            'name': interface + '_domain',
                            'default': domain,
-                           'label': 'Domain search',
+                           'label': _('Domain search', 'network'),
                            'type': 'text', 'validation': 'fqdn'})
             config.append({'id': 'network',
                            'name': interface + '_gateway',
                            'default': gateway,
-                           'label': 'Gateway',
+                           'label': _('Gateway', 'network'),
                            'type': 'text', 'validation': 'ip'})
 
     config.append({'id': 'network',
-                   'type': 'subtitle', 'label': 'Firewall configuration'})
+                   'type': 'subtitle', 'label': _('Firewall configuration', 'network')})
     config.append({'id': 'network',
                    'name': 'fw_mss_lan',
                    'default': 'on',
-                   'label': 'Allow access to Mandriva Server Setup from internal networks',
+                   'label': _('Allow access to Mandriva Server Setup from internal networks', 'network'),
                    'type': 'check'})
     config.append({'id': 'network',
                    'name': 'fw_ssh_lan',
                    'default': 'on',
-                   'label': 'Allow SSH access from internal networks',
+                   'label': _('Allow SSH access from internal networks', 'network'),
                    'type': 'check'})
     config.append({'id': 'network',
                    'name': 'fw_mss_wan',
                    'default': 'off',
-                   'label': 'Allow access to Mandriva Server Setup from external networks',
+                   'label': _('Allow access to Mandriva Server Setup from external networks', 'network'),
                    'type': 'check'})
     config.append({'id': 'network',
                    'name': 'fw_ssh_wan',
                    'default': 'on',
-                   'label': 'Allow SSH access from external networks',
+                   'label': _('Allow SSH access from external networks', 'network'),
                    'type': 'check'})
 
     return config

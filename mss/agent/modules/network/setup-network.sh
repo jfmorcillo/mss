@@ -106,6 +106,6 @@ done
 
 end_shorewall_conf
 
-echo 8Network and firewall configured.
+info_b $"Network and firewall configured."
 
 exit 0

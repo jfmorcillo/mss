@@ -38,9 +38,7 @@ add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mmc.schema
 
 # Generate LDAP password
 pass=`$SLAPPASSWD -h {SSHA} -s "$mypass"`
-if [ "$?" -ne "0" ]; then echo "1Error at generating password"; exit 1
-else echo "0Password successfully generated"
-fi
+[ $? -ne 0 ] &&  error $"Error while generating the password." && exit 1
 
 myslapdconf=`make_temp`
 cat $slapd_conf_template > $myslapdconf
@@ -77,14 +75,7 @@ chmod 0640 $acl_file
 chgrp ldap $acl_file
 
 $SLAPTEST -u -f $myslapdconf > /dev/null 2>&1
-if [ $? -ne 0 ]; then
-	echo "2OpenLDAP configuration file was generated with errors."
-	echo "2Aborting. File used was# $myslapdconf"
-	rm -f $myldapconf
-	exit 1
-else
-    echo "0OpenLDAP configuration file successfully generated."
-fi
+[ $? -ne 0 ] &&  error $"OpenLDAP configuration has errors." && exit 1
 
 # LDIF
 myldif=`make_temp`
@@ -96,15 +87,7 @@ cat $base_ldif_template | sed -e "\
 
 # dry run first
 $SLAPADD -u -f $myslapdconf < $myldif
-if [ $? -ne 0 ]; then
-	echo "2Database loading failed during test run."
-	echo "2Ldif file used:# $myldif"
-	echo "2slapd.conf file used:# $myslapdconf"
-	rm -f $myldapconf
-	exit 1
-else
-    echo "0Database loading test successfull."
-fi
+[ $? -ne 0 ] &&  error $"Database load test failed." && exit 1
 
 # let's go for real now
 stop_service ldap
@@ -113,23 +96,12 @@ stop_service mmc-agent /var/log/mmc/mmc-agent.log
 backup_db=`clean_database /var/lib/ldap`
 backup_slapd_conf=`mybackup /etc/openldap/slapd.conf`
 backup_ldap_conf=`mybackup /etc/openldap/ldap.conf`
-echo "0Writing# /etc/openldap/slapd.conf #and# /etc/openldap/ldap.conf..."
 cat $myslapdconf > /etc/openldap/slapd.conf; rm -f $myslapdconf
 cat $myldapconf > /etc/openldap/ldap.conf; rm -f $myldapconf
 
 echo "0Loading database..."
 $SLAPADD < $myldif
-if [ $? -ne 0 ]; then
-	echo "2Something went wrong while initializing the database"
-	echo "2Aborting. Your previous database is at# $backup_db"
-	echo "2Your original /etc/openldap/{slapd,ldap}.conf files"
-	echo "2were backed up as# $backup_slapd_conf #and"
-	echo "2$backup_ldap_conf, respectively."
-	exit 1
-else
-    echo "0Database loaded successfully."
-    echo "0Your previous database directory has been backed up as# $backup_db."
-fi
+[ $? -ne 0 ] &&  error $"Failed to initialize the database." && exit 1
 
 backup /etc/nsswitch.conf
 cat $nsswitch_template > /etc/nsswitch.conf
@@ -137,9 +109,7 @@ backup /etc/ldap.conf
 cat $ldap_conf_template > /etc/ldap.conf
 sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/ldap.conf
 sed -i "s/\@SERVER\@/$SERVER/" /etc/ldap.conf
-if [ $? -eq 0 ]; then echo "0lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)";
-else echo "2Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)"; exit 1
-fi
+[ $? -ne 0 ] && error $"Error while configuring lib nss-ldap." && exit 1
 
 # enable modules
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/services.ini
@@ -159,9 +129,9 @@ restart_service mmc-agent /var/log/mmc/mmc-agent.log
 [ $fw_lan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t lan
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t wan
 
-echo "8The MBS administration web interface is configured."
-echo "8You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
-echo "8Administrator name : root"
-echo "8Administrator password : #$mypass"
+info_b $"The MBS administration web interface is configured."
+info $"You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
+info $"Administrator name : root"
+info $"Administrator password : $mypass"
 
 exit 0
