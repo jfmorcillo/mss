@@ -6,7 +6,7 @@
 check_root
 
 fw_lan=$1
-fw_wan=$1
+fw_wan=$2
 
 roundcube_db_conf_template="templates/db.inc.php.tpl"
 roundcube_main_conf_template="templates/main.inc.php.tpl"
