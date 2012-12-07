@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <jfmorcillo@mandriva.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"PO-Revision-Date: 2012-12-14 21:29+0000\n"
+"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +20,7 @@ msgstr ""
 
 #: modules/mds_dns/desc.xml3(name)
 msgid "DNS service"
-msgstr ""
+msgstr "Service DNS"
 
 #: modules/mds_dns/desc.xml4(desc)
 msgid "Resolve computer names on your network"
@@ -27,23 +28,23 @@ msgstr "Résous les noms de machine sur votre réseau"
 
 #: modules/mds_dns/desc.xml10(rpm)
 msgid "bind"
-msgstr ""
+msgstr "bind"
 
 #: modules/mds_dns/desc.xml11(rpm)
 msgid "bind-utils"
-msgstr ""
+msgstr "bind-utils"
 
 #: modules/mds_dns/desc.xml12(rpm)
 msgid "mmc-web-network"
-msgstr ""
+msgstr "mmc-web-network"
 
 #: modules/mds_dns/desc.xml13(rpm)
 msgid "python-mmc-network"
-msgstr ""
+msgstr "python-mmc-network"
 
 #: modules/mds_dns/desc.xml17(module)
 msgid "mds_mmc"
-msgstr ""
+msgstr "mds_mmc"
 
 #: modules/mds_dns/desc.xml21(label)
 msgid "My networks"
@@ -67,28 +68,32 @@ msgstr "Relaie les requêtes externes vers les serveurs DNS de votre choix."
 
 #: modules/mds_dns/desc.xml29(label)
 msgid "Allow DNS from internal networks"
-msgstr ""
+msgstr "Permettre l'accès au service DNS pour les réseaux internes «interne»"
 
 #: modules/mds_dns/desc.xml30(help)
 msgid ""
 "Configure the firewall to accept DNS requests on interfaces configured as "
 "'internal'"
 msgstr ""
+"Configure le firewall pour accepter les requêtes DNS provenant des "
+"interfaces réseaux configurées comme  «interne»"
 
 #: modules/mds_dns/desc.xml34(label)
 msgid "Allow DNS from external networks"
-msgstr ""
+msgstr "Permettre l'accès au service DNS pour les réseaux externes"
 
 #: modules/mds_dns/desc.xml35(help)
 msgid ""
 "Configure the firewall to accept DNS requests on interfaces configured as "
 "'external'"
 msgstr ""
+"Configure le firewall pour accepter les requêtes DNS provenant des "
+"interfaces réseaux configurées comme  «externe»"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds_dns/desc.xml0(None)
 msgid "translator-credits"
-msgstr ""
+msgstr "Crédit de traduction"
 
 #: modules/mds_dns/setup-dns.sh:34
 msgid "No networks are authorized to make external queries."
@@ -96,22 +101,26 @@ msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
 
 #: modules/mds_dns/setup-dns.sh:71
 msgid "The DNS service is running."
-msgstr ""
+msgstr "Le service DNS fonctionne."
 
 #: modules/mds_dns/setup-dns.sh:73
 msgid "Your DNS will forward external queries to : $forwarders"
-msgstr ""
+msgstr "Votre DNS transférera les requêtes externes à : $forwarders"
 
 #: modules/mds_dns/setup-dns.sh:76
 msgid ""
 "The following networks are able to query your DNS for external domains : "
 "$networks"
 msgstr ""
+"Les réseaux suivants peuvent interroger votre DNS pour les domaines externes"
+" : $networks"
 
 #: modules/mds_dns/setup-dns.sh:78
 msgid ""
 "You can now add DNS zones in the management interface : "
 "https://@HOSTNAME@/mmc/"
 msgstr ""
+"Vous pouvez maintenant ajouter des zones DNS à partir de l'interface de "
+"gestion : https://@HOSTNAME@/mmc/"
 
 

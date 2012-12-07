@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <jfmorcillo@mandriva.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"PO-Revision-Date: 2012-12-14 20:15+0000\n"
+"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,59 +20,61 @@ msgstr ""
 
 #: modules/mds_mail/desc.xml3(name)
 msgid "Mail service"
-msgstr ""
+msgstr "Service de Mail"
 
 #: modules/mds_mail/desc.xml4(desc)
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
+"Service de messagerie complet avec POP/IMAP et outils anti-virus et anti-"
+"spam"
 
 #: modules/mds_mail/desc.xml10(rpm)
 msgid "postfix"
-msgstr ""
+msgstr "postfix"
 
 #: modules/mds_mail/desc.xml11(rpm)
 msgid "postfix-ldap"
-msgstr ""
+msgstr "postfix-ldap"
 
 #: modules/mds_mail/desc.xml12(rpm)
 msgid "mmc-web-mail"
-msgstr ""
+msgstr "mmc-web-mail"
 
 #: modules/mds_mail/desc.xml13(rpm)
 msgid "python-mmc-mail"
-msgstr ""
+msgstr "python-mmc-mail"
 
 #: modules/mds_mail/desc.xml14(rpm)
 msgid "amavisd-new"
-msgstr ""
+msgstr "amavisd-new"
 
 #: modules/mds_mail/desc.xml15(rpm)
 msgid "spamassassin"
-msgstr ""
+msgstr "spamassassin"
 
 #: modules/mds_mail/desc.xml16(rpm)
 msgid "spamassassin-tools"
-msgstr ""
+msgstr "spamassassin-tools"
 
 #: modules/mds_mail/desc.xml17(rpm)
 msgid "clamd"
-msgstr ""
+msgstr "clamd"
 
 #: modules/mds_mail/desc.xml18(rpm)
 msgid "dovecot"
-msgstr ""
+msgstr "dovecot"
 
 #: modules/mds_mail/desc.xml19(rpm)
 msgid "dovecot-plugins-ldap"
-msgstr ""
+msgstr "dovecot-plugins-ldap"
 
 #: modules/mds_mail/desc.xml23(module)
 msgid "zarafa"
-msgstr ""
+msgstr "zarafa"
 
 #: modules/mds_mail/desc.xml26(module)
 msgid "mds_mmc"
-msgstr ""
+msgstr "mds_mmc"
 
 #: modules/mds_mail/desc.xml30(label)
 msgid "My networks"
@@ -82,6 +85,8 @@ msgid ""
 "Specify which clients are authorized to send mails through the mail server "
 "without authentication."
 msgstr ""
+"Spécifiez quels clients sans authentification sont autorisés à envoyer des "
+"mails via le serveur de messagerie."
 
 #: modules/mds_mail/desc.xml34(label)
 msgid "Protocols supported"
@@ -105,69 +110,83 @@ msgstr "POP3S"
 
 #: modules/mds_mail/desc.xml41(label)
 msgid "Allow mail services access from internal networks"
-msgstr ""
+msgstr "Permettre l'accès au service de mail depuis les réseaux internes"
 
 #: modules/mds_mail/desc.xml42(help)
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'internal'"
 msgstr ""
+"Configurer le firewall pour accepter les connexions smtp/imap/pop3 sur les "
+"interfaces configurées comme «internes»"
 
 #: modules/mds_mail/desc.xml46(label)
 msgid "Allow mail services access from external networks"
-msgstr ""
+msgstr "Permettre l'accès au services de mail depuis les réseaux externes"
 
 #: modules/mds_mail/desc.xml47(help)
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'external'"
 msgstr ""
+"Configurer le firewall pour accepter les connexions smtp/imap/pop3 sur les "
+"interfaces configurées comme «externes»"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/mds_mail/desc.xml0(None)
 msgid "translator-credits"
-msgstr ""
+msgstr "credits de traduction"
 
 #: modules/mds_mail/setup-mail.sh:91
 msgid ""
 "Failed to register razor. Try to run as root later : su - amavis -s /bin/sh "
 "-c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
+"Impossible d'enregistrer Razor. Plus tard, essayez d'exécuter en tant que "
+"root : su - amavis -s /bin/sh -c 'razor-admin-registre && razor-admin-"
+"discover'"
 
 #: modules/mds_mail/setup-mail.sh:122
 msgid "The mail service is configured."
-msgstr ""
+msgstr "Le service de Mail est configuré."
 
 #: modules/mds_mail/setup-mail.sh:123
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
 msgstr ""
+"Vous pouvez ajouter des adresses de messagerie et des alias pour vos "
+"utilisateurs grâce à l'interface de gestion située à "
+"https://@HOSTNAME@/mmc/."
 
 #: modules/mds_mail/setup-mail.sh:124
 msgid "- the mail domain $DOMAIN has been created"
-msgstr ""
+msgstr "- le domaine de mail $DOMAIN a été créé"
 
 #: modules/mds_mail/setup-mail.sh:125
 msgid "- SSL is enabled on the SMTP server"
-msgstr ""
+msgstr "- SSL est activé sur le serveur SMTP"
 
 #: modules/mds_mail/setup-mail.sh:126
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
 msgstr ""
+"- Les connexions non-SSL sont désactivés par défaut sur ​​le serveur "
+"IMAP/POP3"
 
 #: modules/mds_mail/setup-mail.sh:127
 msgid ""
 "- Networks authorized to send mail without authentication : "
 "$smtpd_mynetworks"
 msgstr ""
+"- Réseaux autorisés à envoyer du courrier sans authentification: "
+"$smtpd_mynetworks"
 
 #: modules/mds_mail/add_domain.py:16
 msgid "Default mail domain"
-msgstr ""
+msgstr "Domaine de mail par défaut"
 
 #: modules/mds_mail/add_domain.py:20
 msgid "Failed to add the mail domain."
-msgstr ""
+msgstr "Echec de l'ajout du domaine de mail"
 
 

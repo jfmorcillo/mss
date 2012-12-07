@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <jfmorcillo@mandriva.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2012-12-14 17:53+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"PO-Revision-Date: 2012-12-14 18:37+0000\n"
+"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,59 +20,68 @@ msgstr ""
 
 #: modules/ejabberd/desc.xml4(name)
 msgid "Jabber/XMPP instant messaging server"
-msgstr ""
+msgstr "Jabber/XMPP serveur de messagerie instantanée"
 
 #: modules/ejabberd/desc.xml5(desc)
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
-msgstr ""
+msgstr "Un serveur Jabber/XMPP distribué et tolérant aux pannes"
 
 #: modules/ejabberd/desc.xml8(rpm)
 msgid "ejabberd"
-msgstr ""
+msgstr "ejabberd"
 
 #: modules/ejabberd/desc.xml13(label)
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "Permettre l'accès depuis les réseaux internes"
 
 #: modules/ejabberd/desc.xml14(help)
 msgid ""
 "Configure the firewall to allow access to the Instant Messaging Service from"
 " internal networks"
 msgstr ""
+"Configurer le firewall pour permettre l'accès au service de messagerie "
+"instantanée depuis les réseaux internes"
 
 #: modules/ejabberd/desc.xml17(label)
 msgid "Allow access from external networks"
-msgstr ""
+msgstr "Permettre l'accès depuis les réseaux externes"
 
 #: modules/ejabberd/desc.xml18(help)
 msgid ""
 "Configure the firewall to allow access to the Instant Messaging Service from"
 " external networks"
 msgstr ""
+"Configurer le firewall pour permettre l'accès au service de messagerie "
+"instantanée depuis les réseaux externes"
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
 #: modules/ejabberd/desc.xml0(None)
 msgid "translator-credits"
-msgstr ""
+msgstr "Crédits de traduction"
 
 #: modules/ejabberd/setup-ejabberd.sh:28
 msgid "The instant messaging service is configured."
-msgstr ""
+msgstr "The service de messagerie instantanée est configuré."
 
 #: modules/ejabberd/setup-ejabberd.sh:29
 msgid ""
 "You can simply add users through the management interface at "
 "https://@HOSTNAME@/mmc/. The user's mail will be used as his Jabber ID."
 msgstr ""
+"Vous pouvez simplement ajouter des utilisateurs à travers l'interface de "
+"gestion à https://@HOSTNAME@/mmc/. L'adresse e-mail de l'utilisateur sera "
+"utilisé pour son identifiant Jabber."
 
 #: modules/ejabberd/setup-ejabberd.sh:30
 msgid "Use $HOST.$DOMAIN as the server."
-msgstr ""
+msgstr "Utiliser $HOST.$DOMAIN comme serveur."
 
 #: modules/ejabberd/setup-ejabberd.sh:31
 msgid ""
 "If $HOST.$DOMAIN is setup as a Jabber server in the $DOMAIN DNS zone there "
 "is no need to configure the server address in client."
 msgstr ""
+"Si $HOST.$DOMAIN est configuré comme un serveur Jabber dans la zone DNS, il "
+"n'est pas nécessaire de configurer l'adresse du serveur dans le client."
 
 

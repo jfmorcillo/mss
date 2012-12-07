@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
+"PO-Revision-Date: 2012-12-14 20:11+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -125,7 +125,7 @@ msgstr "translator-credits"
 
 #: modules/mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
-msgstr ""
+msgstr "Erreur lors du positionnement du mot de passe."
 
 #: modules/mds_smb/setup-smb.sh:53
 msgid "Error while populating directory."
@@ -136,6 +136,9 @@ msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created before, they still remains in the users group."
 msgstr ""
+"Les utilisateurs sont maintenant créés par défaut dans le groupe Domain "
+"Users. Si des utilisateurs ont étés créés précédement ils appartiennent "
+"toujours au groupe users."
 
 #: modules/mds_smb/setup-smb.sh:66
 msgid "Failed granted rigths for Domain Admins group"
@@ -143,15 +146,15 @@ msgstr "Echec lors du changement de droits sur le groupe \"Domain Admins\"."
 
 #: modules/mds_smb/setup-smb.sh:84
 msgid "Domain name : $smbdomain"
-msgstr ""
+msgstr "Domaine SAMBA : $smbdomain"
 
 #: modules/mds_smb/setup-smb.sh:85
 msgid "Server name : $smbnetbios"
-msgstr ""
+msgstr "Nom du serveur SAMBA : $smbnetbios"
 
 #: modules/mds_smb/setup-smb.sh:86
 msgid "Domain administrator : $smbadmin"
-msgstr ""
+msgstr "Administrateur du domaine SAMBA : "
 
 #: modules/mds_smb/setup-smb.sh:87
 msgid "- a public share is created in /home/samba/shares/public"
@@ -168,14 +171,18 @@ msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
 msgstr ""
+"Vous pouvez maintenant utiliser l'interface d'administration pour gérer les "
+"utilisateurs Windows et partages de fichiers sur https://@HOSTNAME@/mmc/."
 
 #: modules/mds_smb/__init__.py:39
 msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
-msgstr ""
+msgstr "Nom netbios incorrect (caractères en majuscule et chiffres autorisés)"
 
 #: modules/mds_smb/__init__.py:46
 msgid ""
 "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
 msgstr ""
+"Nom de domaine SAMBA incorrect (caractères en majuscule et chiffres "
+"autorisés)"
 
 
