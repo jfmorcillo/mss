@@ -1,74 +1,61 @@
-#
-# # Translators:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2012-10-05 08:49+0000\n"
+"PO-Revision-Date: 2012-12-14 17:53+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: fr\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mysql/desc.xml:18(help)
-msgid "Current MySQL root password."
-msgstr ""
-
-#: modules/mysql/desc.xml:17(label)
-msgid "Current password"
-msgstr "Mot de passe actuel"
-
-#: modules/mysql/desc.xml:4(name)
+#: modules/mysql/desc.xml4(name)
 msgid "MySQL database"
 msgstr "Serveur MySQL"
 
-#: modules/mysql/desc.xml:5(desc)
+#: modules/mysql/desc.xml5(desc)
 msgid "MySQL relational database"
 msgstr "Base de donnée relationnelle MySQL"
 
-#: modules/mysql/desc.xml:22(help)
-msgid "New MySQL root password. Set here the new password."
-msgstr "Nouveau mot de passe root MySQL."
-
-#: modules/mysql/desc.xml:21(label)
-msgid "New password"
-msgstr "Nouveau mot de passe"
-
-#: modules/mysql/desc.xml:8(rpm)
+#: modules/mysql/desc.xml8(rpm)
 msgid "mysql"
 msgstr ""
 
-#: modules/mysql/desc.xml:9(rpm)
+#: modules/mysql/desc.xml9(rpm)
 msgid "mysql-client"
 msgstr ""
 
-#: modules/mysql/desc.xml:13(module)
+#: modules/mysql/desc.xml13(module)
 msgid "mysqlmax"
 msgstr ""
 
+#: modules/mysql/desc.xml17(label)
+msgid "Current password"
+msgstr "Mot de passe actuel"
+
+#: modules/mysql/desc.xml18(help)
+msgid "Current MySQL root password."
+msgstr ""
+
+#: modules/mysql/desc.xml21(label)
+msgid "New password"
+msgstr "Nouveau mot de passe"
+
+#: modules/mysql/desc.xml22(help)
+msgid "New MySQL root password. Set here the new password."
+msgstr "Nouveau mot de passe root MySQL."
+
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mysql/desc.xml:0(None)
+#: modules/mysql/desc.xml0(None)
 msgid "translator-credits"
 msgstr ""
 
-#~ msgid "- A password has been set for the root user"
-#~ msgstr "- Un mot de passe a été positionné pour l'utilisateur root"
 
-#~ msgid "- Anonymous users were removed"
-#~ msgstr "- Les utilisateurs anonymes ont étés supprimés"
-
-#~ msgid "- Remote login for root has been disabled"
-#~ msgstr "- Les connexions distantes de l'utilisateur root sont désactivées"
-
-#~ msgid "- Test database has been removed"
-#~ msgstr "- La base de donnée de test a été supprimée"
-
-#~ msgid "Invalid current MySQL password."
-#~ msgstr "Mot de passe MySQL actuel incorrect."
-
-#~ msgid "MySQL is running"
-#~ msgstr "MySQL est en exécution"
