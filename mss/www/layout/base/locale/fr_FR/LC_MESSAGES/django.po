@@ -1,0 +1,45 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-10-02 18:01+0200\n"
+"PO-Revision-Date: 2012-10-05 09:30+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: config.py:27
+msgid "Core Services"
+msgstr "Services essentiels"
+
+#: config.py:30
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: config.py:36
+msgid "Mail"
+msgstr "Messagerie"
+
+#: config.py:42
+msgid "Network"
+msgstr "Réseau"
+
+#: config.py:48
+msgid "Other"
+msgstr "Autres"
+
+#: config.py:53
+msgid "Other Services"
+msgstr "Autre services"
+
+

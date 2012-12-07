@@ -1,0 +1,275 @@
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"POT-Creation-Date: 2012-12-06 10:55+0100\n"
+"PO-Revision-Date: 2012-12-10 14:44+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: modules/mds_smb/desc.xml2(name)
+msgid "Windows users and file sharing management"
+msgstr "Gestion des utilisateurs et partages de fichiers Windows"
+
+#: modules/mds_smb/desc.xml3(desc)
+msgid ""
+"Authenticate Windows users with SAMBA, provide Windows file shares on your "
+"network"
+msgstr ""
+"Authentifie les utilisateurs Windows avec SAMBA et fourni des partages de "
+"fichiers sur votre réseau"
+
+#: modules/mds_smb/desc.xml10(rpm)
+msgid "samba-server"
+msgstr "samba-server"
+
+#: modules/mds_smb/desc.xml11(rpm)
+msgid "samba-client"
+msgstr "samba-client"
+
+#: modules/mds_smb/desc.xml12(rpm)
+msgid "samba-common"
+msgstr "samba-common"
+
+#: modules/mds_smb/desc.xml13(rpm)
+msgid "samba-doc"
+msgstr "samba-doc"
+
+#: modules/mds_smb/desc.xml14(rpm)
+msgid "smbldap-tools"
+msgstr "smbldap-tools"
+
+#: modules/mds_smb/desc.xml15(rpm)
+msgid "mmc-web-samba"
+msgstr "mmc-web-samba"
+
+#: modules/mds_smb/desc.xml16(rpm)
+msgid "python-mmc-samba"
+msgstr "python-mmc-samba"
+
+#: modules/mds_smb/desc.xml20(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_smb/desc.xml25(label)
+msgid "SAMBA domain name"
+msgstr "Nom de domaine SAMBA"
+
+#: modules/mds_smb/desc.xml26(help)
+msgid "The name of your Microsoft domain."
+msgstr "Le nom de votre domaine Microsoft."
+
+#: modules/mds_smb/desc.xml30(label)
+msgid "Netbios name"
+msgstr "Nom netbios"
+
+#: modules/mds_smb/desc.xml31(help)
+msgid "The name of your SAMBA server in the Microsoft domain."
+msgstr "Le nom de votre serveur SAMBA sur le domaine Microsoft."
+
+#: modules/mds_smb/desc.xml34(label)
+msgid "Administrator name"
+msgstr "Nom de l'administrateur"
+
+#: modules/mds_smb/desc.xml35(help)
+msgid "The name of the Microsoft domain administrator."
+msgstr "Le nom de l'administrateur du domaine"
+
+#: modules/mds_smb/desc.xml38(label)
+msgid "Administrator password"
+msgstr "Mot de passe de l'administrateur"
+
+#: modules/mds_smb/desc.xml39(help)
+msgid "Password for the Microsoft domain administrator."
+msgstr "Mot de passe pour l'administrateur du domaine"
+
+#: modules/mds_smb/desc.xml42(label)
+msgid "Allow connections from internal networks"
+msgstr "Autoriser les connexions depuis les réseaux internes"
+
+#: modules/mds_smb/desc.xml43(help)
+msgid ""
+"Configure the firewall to accept SAMBA related traffic on interfaces "
+"configured as 'internal'"
+msgstr ""
+"Configurer le firewall pour accepter le traffic SAMBA sur les interfaces "
+"internes"
+
+#: modules/mds_smb/desc.xml47(label)
+msgid "Allow connections connections external networks"
+msgstr "Autoriser les connexions depuis les réseaux externes"
+
+#: modules/mds_smb/desc.xml48(help)
+msgid ""
+"Configure the firewall to accept SAMBA related traffic on interfaces "
+"configured as 'external'"
+msgstr ""
+"Configurer le firewall pour accepter le traffic SAMBA sur les interfaces "
+"externes"
+
+#: modules/mds_smb/desc.xml52(text)
+msgid "SAMBA configuration done. (/etc/samba/smb.conf updated)"
+msgstr "Configuration SAMBA faite. (/etc/samba/smb.conf mis à jour)"
+
+#: modules/mds_smb/desc.xml53(text)
+msgid "Error while configuring SAMBA. (/etc/samba/smb.conf)"
+msgstr "Erreur lors de la configuration SAMBA. (/etc/samba/smb.conf)"
+
+#: modules/mds_smb/desc.xml54(text)
+msgid "SAMBA password set."
+msgstr "Mot de passe SAMBA enregistré."
+
+#: modules/mds_smb/desc.xml55(text)
+msgid "Error while setting SAMBA password. (smbpasswd)"
+msgstr "Erreur lors de l'enregistrement du mot de passe SAMBA. (smbpasswd)"
+
+#: modules/mds_smb/desc.xml56(text) modules/mds_smb/desc.xml64(text)
+msgid "Service SAMBA reloaded succesfully."
+msgstr "Le service SAMBA a re-démarré avec succès."
+
+#: modules/mds_smb/desc.xml57(text) modules/mds_smb/desc.xml65(text)
+msgid "Service SAMBA fails restarting."
+msgstr "Le service SAMBA n'a pas redémarré."
+
+#: modules/mds_smb/desc.xml58(text)
+msgid ""
+"lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf "
+"updated)"
+msgstr ""
+"Configuration de la lib nss-ldap faite. (/etc/ldap.conf et "
+"/etc/nsswitch.conf mis à jour)"
+
+#: modules/mds_smb/desc.xml59(text)
+msgid ""
+"Error while configuring lib nss-ldap. (/etc/ldap.conf and "
+"/etc/nsswitch.conf)"
+msgstr ""
+"Erreur lors de la configuration de la lib nss-ldap. (/etc/ldap.conf and "
+"/etc/nsswitch.conf)"
+
+#: modules/mds_smb/desc.xml60(text)
+msgid ""
+"smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc"
+"/smbldap-tools/smbldap_bind.conf updated)"
+msgstr ""
+"Configuration de smbldap-tools réussie (/etc/smbldap-tools/smbldap.conf et "
+"/etc/smbldap-tools/smbldap_bind.conf mis à jour)"
+
+#: modules/mds_smb/desc.xml61(text)
+msgid ""
+"Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and "
+"/etc/smbldap-tools/smbldap_bind.conf)"
+msgstr ""
+"Erreur lors de la configuration de smbldap-tools (/etc/smbldap-"
+"tools/smbldap.conf et /etc/smbldap-tools/smbldap_bind.conf)"
+
+#: modules/mds_smb/desc.xml62(text)
+msgid "Directory populated for SAMBA."
+msgstr "Annuaire renseigné pour SAMBA."
+
+#: modules/mds_smb/desc.xml63(text)
+msgid "Error while populating directory."
+msgstr "Erreur lors du renseignement de l'annuaire pour Samba."
+
+#: modules/mds_smb/desc.xml66(text)
+msgid "MDS SAMBA configuration done."
+msgstr "Configuration du module SAMBA de MDS réussie."
+
+#: modules/mds_smb/desc.xml67(text)
+msgid "Error while configuring MDS SAMBA module."
+msgstr "Erreur lors de la configuration du module SAMBA."
+
+#: modules/mds_smb/desc.xml68(text)
+msgid ""
+"Users are now created in the Domain Users group by default. If users were "
+"created, they still remains in the users group."
+msgstr ""
+"Les utilisateurs auront désormais comme groupe principal le groupe \"Domain "
+"Users\" (Utilisateurs du domaine). Les anciens utilisateurs ne sont pas mis "
+"à jour. Ils appartiennent toujours au groupe \"users\"."
+
+#: modules/mds_smb/desc.xml69(text)
+msgid "Service MMC reloaded succesfully."
+msgstr "Le service mmc-agent a re-démarré avec succès."
+
+#: modules/mds_smb/desc.xml70(text)
+msgid "Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log"
+msgstr ""
+"Erreur lors du re-démarrage du service mmc-agent. Vérifiez /var/log/mmc/mmc-"
+"agent.log."
+
+#: modules/mds_smb/desc.xml71(text)
+msgid "Successfully granted rights for Domain Admins group."
+msgstr ""
+"Les utilisateurs du groupe \"Domain Admins\" peuvent ajouter des machines au"
+" domaine."
+
+#: modules/mds_smb/desc.xml72(text)
+msgid "Failed granted rigths for Domain Admins group"
+msgstr "Echec lors du changement de droits sur le groupe \"Domain Admins\"."
+
+#: modules/mds_smb/desc.xml73(text)
+msgid ""
+"Your filesystem does not support ACL. You won't be able to set ACLs on SAMBA"
+" shares."
+msgstr ""
+"Votre système de fichiers ne supporte pas les ACLs. Vous ne pourrez "
+"positionner des ACLs sur les partages SAMBA."
+
+#: modules/mds_smb/desc.xml74(text)
+msgid "For ext3 filesystems you have to add the acl option in /etc/fstab."
+msgstr ""
+"Pour les systèmes de fichiers ext3 vous devez ajouter l'option \"acl\" sur "
+"la partition /home dans /etc/fstab."
+
+#: modules/mds_smb/desc.xml75(text)
+msgid "Acls supported by filesystem."
+msgstr "ACLs supportées par le système de fichier."
+
+#: modules/mds_smb/desc.xml76(text)
+msgid "Domain name :"
+msgstr "Nom du domaine Microsoft : "
+
+#: modules/mds_smb/desc.xml77(text)
+msgid "Server name :"
+msgstr "Nom Netbios du serveur : "
+
+#: modules/mds_smb/desc.xml78(text)
+msgid "Domain administrator :"
+msgstr "Nom de l'administrateur du domaine :"
+
+#: modules/mds_smb/desc.xml79(text)
+msgid "- a public share is created in /home/samba/shares/public"
+msgstr "- un partage public est créé dans /home/samba/shares/public"
+
+#: modules/mds_smb/desc.xml80(text)
+msgid "- you can create a logon.bat script in /home/samba/netlogon"
+msgstr ""
+"- vous pouvez créer un script de logon \"logon.bat\" dans "
+"/home/samba/netlogon"
+
+#: modules/mds_smb/desc.xml81(text)
+msgid "Make sure you have enabled SAMBA services on your firewall."
+msgstr "Assurez vous que votre pare-feu accepte les services SAMBA en entrée."
+
+#: modules/mds_smb/desc.xml82(text)
+msgid ""
+"You can now use the management interface to manage your Windows users and "
+"shares (https://@HOSTNAME@/mmc/)."
+msgstr ""
+"Vous pouvez maintenant utiliser l'interface de gestion pour gérer les "
+"utilisateurs et les partages de fichiers Windows (https://@HOSTNAME@/mmc/)."
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_smb/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
+
+
