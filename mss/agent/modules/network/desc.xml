@@ -1,4 +1,5 @@
-<module id="network">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="network">
     <name>Network setup</name>
     <desc>Configure network interfaces</desc>
     <packages>

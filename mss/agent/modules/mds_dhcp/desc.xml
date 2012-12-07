@@ -1,4 +1,5 @@
-<module id="mds_dhcp">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_dhcp">
     <name>DHCP service</name>
     <desc>Configure automatically your client computers IP settings</desc>
     <actions>

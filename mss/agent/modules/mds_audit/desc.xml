@@ -1,4 +1,5 @@
-<module id="mds_audit">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_audit">
     <name>Audit plugin</name>
     <desc>Track any changes made in the management interface</desc>
     <actions>

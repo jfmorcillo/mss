@@ -1,4 +1,5 @@
-<module id="mds_proxy">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_proxy">
     <name>Proxy service</name>
     <desc>Control your Internet connection with content filters</desc>
     <actions>

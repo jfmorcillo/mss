@@ -1,4 +1,5 @@
-<module id="zarafa">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="zarafa">
     <name>Zarafa Collaboration Platform</name>
     <desc>Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface</desc>
     <deps>

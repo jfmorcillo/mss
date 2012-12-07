@@ -1,4 +1,5 @@
-<module id="mds_quota">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_quota">
     <name>User quota management</name>
     <desc>Set file quotas on the server</desc>
     <packages>

@@ -1,4 +1,5 @@
-<module id="mds_cups">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_cups">
     <name>Printing service</name>
     <desc>Network printers management</desc>
     <actions>

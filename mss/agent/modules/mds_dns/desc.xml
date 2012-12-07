@@ -1,4 +1,5 @@
-<module id="mds_dns">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_dns">
     <name>DNS service</name>
     <desc>Resolve computer names on your network</desc>
     <actions>

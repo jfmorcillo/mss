@@ -1,4 +1,5 @@
-<module id="mds_mmc">
+<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_mmc">
     <name>MBS administration web interface</name>
     <desc>Users and groups management</desc>
     <actions>
