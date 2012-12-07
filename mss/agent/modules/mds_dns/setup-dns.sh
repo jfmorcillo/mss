@@ -16,9 +16,15 @@ fw_wan="$4"
 
 ln -sf /var/lib/named/var/named/ /var/named
 
+# check if DHCP module is enabled
+dhcp_enable=1
+[ ! -f /etc/dhcpd.conf ] && dhcp_enable=0
+
 backup /etc/mmc/plugins/network.ini
 cat $mds_network_template > /etc/mmc/plugins/network.ini
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/network.ini
+sed -i "s/\@HOSTNAME\@/$HOST/" /etc/mmc/plugins/network.ini
+sed -i "s/\@DHCPENABLE\@/$dhcpenable/" /etc/mmc/plugins/network.ini
 if [ $? -eq 0 ]; then echo "0MDS configuration done. (/etc/mmc/plugins/network.ini updated)";
 else echo "2Error while configuring MDS. (/etc/mmc/plugins/network.ini)"; sleep 1; exit 1
 fi

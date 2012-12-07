@@ -2,6 +2,7 @@
 disable = 0
 
 [dhcp]
+enable = 1
 dn = ou=DHCP,@SUFFIX@
 pidfile = /var/run/dhcpd/dhcpd.pid
 init = /etc/rc.d/init.d/dhcpd
@@ -10,6 +11,7 @@ leases = /var/lib/dhcp/dhcpd.leases
 hostname = @HOSTNAME@
 
 [dns]
+enable = @DNSENABLE@
 dn = ou=DNS,@SUFFIX@
 pidfile = /var/lib/named/var/run/named.pid
 init = /etc/rc.d/init.d/named

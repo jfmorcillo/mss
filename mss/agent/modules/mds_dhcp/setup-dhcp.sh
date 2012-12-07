@@ -11,13 +11,16 @@ fw_wan="$2"
 base_reseau_template="templates/network.ini.tpl"
 base_dhcpd_template="templates/dhcpd.conf.tpl"
 
-ln -sf /var/lib/named/var/named/ /var/named
+# check if DNS module is enabled
+dns_enable=1
+[ ! -f /var/lib/named/etc/named.conf ] && dns_enable=0
 
 ###### now /etc/mmc/plugin/network.ini
 backup /etc/mmc/plugins/network.ini
 cat $base_reseau_template > /etc/mmc/plugins/network.ini
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/network.ini
 sed -i "s/\@HOSTNAME\@/$HOST/" /etc/mmc/plugins/network.ini
+sed -i "s/\@DNSENABLE\@/$dns_enable/" /etc/mmc/plugins/network.ini
 if [ $? -eq 0 ]; then echo "0Configuration done. (/etc/mmc/plugins/network.ini updated)";
 else echo "2Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)"; exit 1
 fi
