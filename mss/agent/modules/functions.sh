@@ -11,9 +11,9 @@ function check_root() {
     FQDN=`hostname -f`
 }
 
-# checks that MMC is properly configured. In such a case define 
+# checks that MMC is properly configured. In such a case define
 # some useful configuration variables:
-# MDSSUFFIX, MDSPASS, MDSPASS_E 
+# MDSSUFFIX, MDSPASS, MDSPASS_E
 function check_mmc_configured() {
     check_root
     MDS_BASE_INI="/etc/mmc/plugins/base.ini"
@@ -79,9 +79,9 @@ function backup() {
         newname="$1-mss-wizard-$now"
         cp -a "$1" "$newname"
         if [ $? -eq 0 ]; then
-            echo "0Backed up #$1# to #$newname"
+            echo "Backed up $1 to $newname"
         else
-            echo "1Cannot make backup for $1"
+            echo "Cannot make backup for $1"
             exit 1
         fi
 	fi
@@ -173,14 +173,14 @@ function restart_service() {
 function stop_service() {
     systemctl stop $1.service
     if [ $? -eq 0 ]; then
-        echo "0Service #${1}# stopped succesfully."
+        echo "Service ${1} stopped succesfully."
     else
         if [ ! -z $2 ]; then
             log=$2
         else
             log="/var/log/syslog"
         fi
-        echo "2Service #${1}# fails to stop. Check #${log}#."
+        echo "2Service ${1} fails to stop. Check #${log}#."
         systemctl status $1.service
         exit 1
     fi
@@ -227,4 +227,20 @@ function https_redirect() {
     RewriteRule .* https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 </Location>" >> $2
     fi
+}
+
+function info_b() {
+    echo 8$1
+}
+
+function info() {
+    echo 7$1
+}
+
+function error() {
+    echo 2$1
+}
+
+function warning() {
+    echo 1$1
 }

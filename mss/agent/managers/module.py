@@ -425,14 +425,11 @@ class ModuleManager:
                 try:
                     if int(line[0]) in range(9):
                         text_code = line[0]
-                        text = u""
-                        # split by # for multiple translations
-                        tmp = line[1:].split('#')
-                        for t in tmp:
-                            text += _(t, module)
+                        text = line[1:]
                     else:
                         text_code = 0
-                        text = self.clean_output(line)
+                        text = line
+                    output.append({'code': text_code, 'text': self.clean_output(text)})
                 # no code at line start
                 except ValueError:
                     text_code = 0
@@ -441,8 +438,6 @@ class ModuleManager:
                 # no char in line
                 except IndexError:
                     pass
-                else:
-                    output.append({'code': text_code, 'text': self.clean_output(text)})
         else:
             code = 2000
             output = [{'code': 0, 'text': u''}]

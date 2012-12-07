@@ -47,8 +47,11 @@ class ProcessManager:
 
     def run_script(self, script, args, cwd, module):
         """ launch configuration script for module """
+        env = {'TEXTDOMAIN': module,
+               'TEXTDOMAINDIR': '/usr/lib/python2.7/site-packages/mss/agent/modules/%s/locale/' % module}
         if os.path.exists(os.path.join(cwd, script)):
-            self.launch("config", ["bash", script] + args, cwd=cwd, module=module)
+            self.launch("config", ["bash", script] + args, cwd=cwd,
+                        module=module, env=env)
             return True
         else:
             return False

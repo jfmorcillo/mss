@@ -42,7 +42,9 @@ class ProcessThread(threading.Thread):
         self.cwd = cwd
         self.callback = callback
         self.shell = shell
-        self.env = env
+        self.env = os.environ.copy()
+        if env:
+            self.env.update(env)
         threading.Thread.__init__(self)
 
     @property
