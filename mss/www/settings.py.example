@@ -25,6 +25,10 @@ import os
 import locale
 import sys
 import glob
+import logging
+import logging.handlers
+
+logger = logging.getLogger()
 
 ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
@@ -32,6 +36,25 @@ PROJECT_DIR = os.path.dirname(__file__)
 
 DEBUG = False
 TEMPLATE_DEBUG = DEBUG
+
+EMAIL_SUBJECT_PREFIX = "[MSS]"
+SERVER_EMAIL = "mss+mbs@mandriva.com"
+
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+    format = '%(asctime)s|%(name)s|%(levelname)s: %(message)s'
+    formatter = logging.Formatter(format)
+    ch = logging.StreamHandler()
+    ch.setLevel(logging.DEBUG)
+    ch.setFormatter(formatter)
+    logger.addHandler(ch)
+else:
+    LOG_FILENAME = '/var/log/mss/mss-www.log'
+    os.chmod(LOG_FILENAME, 0600)
+    fh = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10485760, backupCount=5)
+    fh.setLevel(logging.ERROR)
+    logger.addHandler(fh)
+
 
 DATABASES = {
     'default': {
