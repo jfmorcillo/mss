@@ -21,8 +21,8 @@ sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $EJABBERD_CONF
 restart_service $SERVICE
 
 # configure the Firewall
-[ $fw_lan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t lan -p tcp -P 5222
-[ $fw_wan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t wan -p tcp -P 5222
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a JabberPlain/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a JabberPlain/ACCEPT -t wan
 restart_service shorewall
 
 echo "8The instant messaging service is configured."
