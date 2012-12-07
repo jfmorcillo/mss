@@ -35,6 +35,8 @@ function generate_salt() {
 mkdir -p /var/log/mss/
 mkdir -p /var/lib/mss/
 touch /var/log/mss/mss-agent.log
+touch /var/log/mss/mss-www.log
+chown $user.$user /var/log/mss/mss-www.log
 if [ ! -f ${path}/mss/www/settings.py ]; then
     echo Creating settings.py file....
     cp ${path}/mss/www/settings.py.example ${path}/mss/www/settings.py
@@ -54,6 +56,4 @@ ln -s ${path}/bin/mss-add-shorewall-rule $mss_shorewall_rules
 python mss/www/manage.py syncdb --noinput
 chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db
-python mss/agent/setup_mss.py
 su -c 'sh build_mo.sh' $user
-

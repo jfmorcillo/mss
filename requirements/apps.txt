@@ -1,12 +1,13 @@
-python  
-python-django  
-python-IPy  
+python
+python-django
+python-IPy
 python-OpenSSL
 python-setuptools
 python-docutils
 python-netifaces
 python-sphinx
 python-cherrypy
+python-sqlalchemy
 binutils
 gettext
 locales-fr
