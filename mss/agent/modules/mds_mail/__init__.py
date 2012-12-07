@@ -25,7 +25,7 @@ import re
 from subprocess import Popen, PIPE
 from IPy import IP
 
-from mss.agent.lib.utils import ethernet_ifs 
+from mss.agent.lib.utils import ethernet_ifs
 
 def get_config_info():
     return ('setup-mail.sh', ['smtpd_mynetworks', 'popimap_proto', 'fw_lan', 'fw_wan'])
@@ -57,18 +57,8 @@ def get_current_config(module):
     else:
         popimap_proto = ""
 
-    return {'smtpd_myhostname': smtpd_myhostname, 
+    return {'smtpd_myhostname': smtpd_myhostname,
         'smtpd_mynetworks': smtpd_mynetworks, 'popimap_proto': popimap_proto}
-
-def get_fqdn(module):
-    """
-    Return the server FQDN
-    """
-
-    hostname = module.MM.get_option("hostname")
-    domain = module.MM.get_option("domain")
-
-    return hostname + "." + domain
 
 def get_networks(module):
     """

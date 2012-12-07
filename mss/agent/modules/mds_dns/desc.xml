@@ -36,14 +36,4 @@
                 configured as 'external'</help>
         </check>
     </config>
-    <text>No networks are authorized to make external queries.</text>
-    <text>Service mmc-agent reloaded succesfully.</text>
-    <text>Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log</text>
-    <text>Service named reloaded succesfully.</text>
-    <text>Service named fails restarting. Check /var/log/syslog</text>
-    <text>The DNS service is running.</text>
-    <text>Your DNS will forward external queries to : </text>
-    <text>The following networks are able to query your DNS for external domains : </text>
-    <text>You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/</text>
-    <text>Make sure you have enabled the DNS service (port 53) on your firewall.</text>
 </module>

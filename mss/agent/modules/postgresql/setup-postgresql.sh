@@ -3,12 +3,8 @@
 
 . '../functions.sh'
 
-check_mmc_configured
+check_root
 
-SERVICE="postgresql"
-PG_CONF_FILE="/var/lib/pgsql/data/pg_hba.conf"
-PG_CONF_FILE_TEMPLATE="templates/pg_hba.conf.tpl"
+restart_service postgresql
 
-#cat $PG_CONF_FILE_TEMPLATE > $PG_CONF_FILE
-
-restart_service $SERVICE
+info_b $"Postgresql is running."

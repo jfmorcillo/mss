@@ -43,5 +43,5 @@ cat $roundcube_main_conf_template > /etc/roundcubemail/main.inc.php
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t wan
 restart_service shorewall
 
-echo "8Webmail Roundcube is activated on your server."
-echo "8You can access the webmail interface at https://@HOSTNAME@/roundcubemail/"
+info_b $"Webmail Roundcube is installed on your server."
+info $"You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."

@@ -28,14 +28,8 @@ if [ -d /usr/lib64/mmc ]; then
     sed -i "s!/usr/lib/mmc!/usr/lib64/mmc!g" /etc/samba/smb.conf
 fi
 
-if [ $? -eq 0 ]; then echo "0SAMBA configuration done. (/etc/samba/smb.conf updated)";
-else echo "2Error while configuring SAMBA. (/etc/samba/smb.conf)"; exit 1
-fi
-
 smbpasswd -w $MDSPASS
-if [ $? -eq 0 ]; then echo "0SAMBA password set.";
-else echo "2Error while setting SAMBA password. (smbpasswd)"; exit 1
-fi
+[ $? -ne 0 ] && error $"Error while setting SAMBA password." && exit 1
 
 restart_service smb
 
@@ -51,17 +45,12 @@ sed -i "s/\@SERVER\@/$MDSSERVER/" /etc/smbldap-tools/smbldap.conf
 
 ###### now /etc/smbldap-tools/smbldap_bind.conf
 backup /etc/smbldap-tools/smbldap_bind.conf
-cat $smbldap_bind_template > /etc/smbldap-tools/smbldap_bind.conf 
+cat $smbldap_bind_template > /etc/smbldap-tools/smbldap_bind.conf
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/smbldap-tools/smbldap_bind.conf
 sed -i "s/\@PASSWORD\@/$MDSPASS_E/" /etc/smbldap-tools/smbldap_bind.conf
-if [ $? -eq 0 ]; then echo "0smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf updated)";
-else echo "2Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf)"; exit 1
-fi
 
 echo -e "$smbpass\n$smbpass" | smbldap-populate -m 512 -k 512 -a "$smbadmin"
-if [ $? -eq 0 ]; then echo "0Directory populated for SAMBA.";
-else echo "2Error while populating directory.# (smbldap-populate -m 512 -k 512 -a $smbadmin)"; exit 1
-fi
+[ $? -ne 0 ] && error $"Error while populating directory." && exit 1
 
 restart_service smb
 
@@ -69,18 +58,12 @@ restart_service smb
 backup /etc/mmc/plugins/samba.ini
 cat $mds_smb_template > /etc/mmc/plugins/samba.ini
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/samba.ini
-if [ $? -eq 0 ]; then echo "0MDS SAMBA configuration done.";
-else echo "2Error while configuring MDS SAMBA module."; exit 1
-fi
 
 sed -i "s/^defaultUserGroup = users$/defaultUserGroup = Domain Users/" /etc/mmc/plugins/base.ini
-if [ $? -eq 0 ]; then echo "1Users are now created in the Domain Users group by default. If users were created, they still remains in the users group.";
-fi
+[ $? -eq 0 ] && warning $"Users are now created in the Domain Users group by default. If users were created before, they still remains in the users group."
 
 net rpc rights grant "$smbdomain\Domain Admins" SeMachineAccountPrivilege -S $MDSSERVER -U $smbadmin%$smbpass > /dev/null 2>&1
-if [ $? -eq 0 ]; then echo "0Successfully granted rights for Domain Admins group."
-else echo "2Failed granted rigths for Domain Admins group"; exit 1
-fi
+[ $? -ne 0 ] && error $"Failed granted rigths for Domain Admins group"; exit 1
 
 # create directories
 mkdir -p /home/samba/netlogon
@@ -90,17 +73,6 @@ mkdir -p /home/samba/profiles
 chown "root:Domain Users" /home/samba/profiles
 chmod 770 /home/samba/profiles
 
-# ACL test
-touch /home/samba/test
-setfacl -m g:"Domain Users":rx /home/samba/test > /dev/null 2>&1
-if [ $? -ne 0 ]; then 
-    echo "1Your filesystem does not support ACL. You won't be able to set ACLs on SAMBA shares."
-    echo "1For ext3 filesystems you have to add the acl option in /etc/fstab."
-else 
-    echo "0Acls supported by filesystem."
-fi
-rm -f /home/samba/test
-
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 # configure the Firewall
@@ -109,11 +81,11 @@ restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service shorewall
 
 # confirmation
-echo "8Domain name :# $smbdomain"
-echo "8Server name :# $smbnetbios"
-echo "8Domain administrator :# $smbadmin"
-echo "7- a public share is created in /home/samba/shares/public"
-echo "7- you can create a logon.bat script in /home/samba/netlogon"
-echo "8You can now use the management interface to manage your Windows users and shares at https://@HOSTNAME@/mmc/."
+info_b $"Domain name : $smbdomain"
+info_b $"Server name : $smbnetbios"
+info_b $"Domain administrator : $smbadmin"
+info $"- a public share is created in /home/samba/shares/public"
+info $"- you can create a logon.bat script in /home/samba/netlogon"
+info_b $"You can now use the management interface to manage your Windows users and shares at https://@HOSTNAME@/mmc/."
 
 exit 0

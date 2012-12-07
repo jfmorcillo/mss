@@ -27,12 +27,4 @@
                 configured as 'external'</help>
         </check>
     </config>
-    <text>Configuration done. (/etc/mmc/plugins/network.ini updated)</text>
-    <text>Error while configuring the dhcp service. (/etc/mmc/plugins/network.ini)</text>
-    <text>Configuration of dhcp-server done. (/etc/dhcpd.conf updated)</text>
-    <text>Error while configuring dhcp-server. (/etc/dhcpd.conf)</text>
-    <text>Service mmc-agent reloaded succesfully.</text>
-    <text>Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log</text>
-    <text>The DHCP service is installed.</text>
-    <text>You can now configure your DHCP settings from the management interface : https://@HOSTNAME@/mmc/</text>
 </module>

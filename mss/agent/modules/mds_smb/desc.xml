@@ -34,7 +34,7 @@
         <text name="smbadmin" require="yes" default="admin">
             <label>Administrator name</label>
             <help>The name of the Microsoft domain administrator.</help>
-        </text>         
+        </text>
         <password name="smbpasswd" require="yes">
             <label>Administrator password</label>
             <help>Password for the Microsoft domain administrator.</help>
@@ -50,35 +50,4 @@
                 configured as 'external'</help>
         </check>
     </config>
-    <text>SAMBA configuration done. (/etc/samba/smb.conf updated)</text>
-    <text>Error while configuring SAMBA. (/etc/samba/smb.conf)</text>
-    <text>SAMBA password set.</text>
-    <text>Error while setting SAMBA password. (smbpasswd)</text>
-    <text>Service SAMBA reloaded succesfully.</text>
-    <text>Service SAMBA fails restarting.</text>
-    <text>lib nss-ldap configuration done. (/etc/ldap.conf and /etc/nsswitch.conf updated)</text>
-    <text>Error while configuring lib nss-ldap. (/etc/ldap.conf and /etc/nsswitch.conf)</text>
-    <text>smbldap-lools configuration done. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf updated)</text>
-    <text>Error while configuring smbldap-lools. (/etc/smbldap-tools/smbldap.conf and /etc/smbldap-tools/smbldap_bind.conf)</text>
-    <text>Directory populated for SAMBA.</text>
-    <text>Error while populating directory.</text>
-    <text>Service SAMBA reloaded succesfully.</text>
-    <text>Service SAMBA fails restarting.</text>
-    <text>MDS SAMBA configuration done.</text>
-    <text>Error while configuring MDS SAMBA module.</text>
-    <text>Users are now created in the Domain Users group by default. If users were created, they still remains in the users group.</text>
-    <text>Service MMC reloaded succesfully.</text>
-    <text>Service MMC fails restarting. Check /var/log/mmc/mmc-agent.log</text>
-    <text>Successfully granted rights for Domain Admins group.</text>
-    <text>Failed granted rigths for Domain Admins group</text>
-    <text>Your filesystem does not support ACL. You won't be able to set ACLs on SAMBA shares.</text>
-    <text>For ext3 filesystems you have to add the acl option in /etc/fstab.</text>
-    <text>Acls supported by filesystem.</text>
-    <text>Domain name :</text>
-    <text>Server name :</text>
-    <text>Domain administrator :</text>
-    <text>- a public share is created in /home/samba/shares/public</text>
-    <text>- you can create a logon.bat script in /home/samba/netlogon</text>
-    <text>Make sure you have enabled SAMBA services on your firewall.</text>
-    <text>You can now use the management interface to manage your Windows users and shares (https://@HOSTNAME@/mmc/).</text>
 </module>

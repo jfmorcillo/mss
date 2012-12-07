@@ -1,61 +1,60 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-06 10:55+0100\n"
+"POT-Creation-Date: 2012-12-07 20:16+0100\n"
 "PO-Revision-Date: 2012-12-10 14:36+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: classes/module.py:352
-msgid "This field can't be empty."
-msgstr "Este campo não pode ser vazio."
-
-#: classes/module.py:357
-msgid "Password mismatch."
-msgstr "Senha incorreta."
-
-#: managers/process.py:98
-msgid "Loading packages list"
-msgstr "Carregando lista de pacotes"
-
-#: managers/process.py:100
-msgid "Installing packages"
-msgstr "Instalando pacotes"
-
-#: managers/process.py:102
-msgid "Updating medias"
-msgstr "Atualizando mídias"
-
-#: managers/process.py:104
+#: managers/process.py:122
 msgid "Adding media"
 msgstr "Adicionando mídia"
 
-#: managers/process.py:106
-msgid "Running configuration"
-msgstr "Configuração em andamento"
-
-#: managers/process.py:108
+#: managers/process.py:126
 msgid "Checking network"
 msgstr "Verificando rede"
 
-#: managers/process.py:110
-msgid "Rebooting"
-msgstr ""
+#: managers/process.py:118
+msgid "Installing packages"
+msgstr "Instalando pacotes"
 
-#: managers/process.py:112
+#: managers/process.py:116
+msgid "Loading packages list"
+msgstr "Carregando lista de pacotes"
+
+#: classes/module.py:351
+msgid "Password mismatch."
+msgstr "Senha incorreta."
+
+#: managers/process.py:130
 msgid "Ready"
 msgstr "Pronto"
 
+#: managers/process.py:128
+msgid "Rebooting"
+msgstr ""
 
+#: managers/process.py:124
+msgid "Running configuration"
+msgstr "Configuração em andamento"
+
+#: classes/module.py:346
+msgid "This field can't be empty."
+msgstr "Este campo não pode ser vazio."
+
+#: managers/process.py:120
+msgid "Updating medias"
+msgstr "Atualizando mídias"

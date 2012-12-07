@@ -18,14 +18,4 @@
             <help>Specify the filesystems where you want to apply user quotas with the following format : "Device path":"Identifier string" (eg: /dev/sda1:Root)</help>
         </text>
     </config>
-    <text>Add usrquota option for</text>
-    <text>Remount</text>
-    <text>Create quota files for</text>
-    <text>Quotas activated on</text>
-    <text>Quotas configured on</text>
-    <text>Restart the system to active quotas</text>
-    <text>Quotas not supported on this filesystem :</text>
-    <text>Quota option already present for</text>
-    <text>Quota module is activated in the MDS interface.</text>
-    <text>You can now configure user quotas from the MDS interface : https://@HOSTNAME@/mmc/</text>
 </module>

@@ -25,16 +25,13 @@ cat $mds_network_template > /etc/mmc/plugins/network.ini
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/network.ini
 sed -i "s/\@HOSTNAME\@/$HOST/" /etc/mmc/plugins/network.ini
 sed -i "s/\@DHCPENABLE\@/$dhcpenable/" /etc/mmc/plugins/network.ini
-if [ $? -eq 0 ]; then echo "0MDS configuration done. (/etc/mmc/plugins/network.ini updated)";
-else echo "2Error while configuring MDS. (/etc/mmc/plugins/network.ini)"; sleep 1; exit 1
-fi
 
 # create acl file
 acl_file="/var/lib/named/etc/mss_acls.conf"
 echo 'acl "mss" {' > $acl_file
 echo "127.0.0.1/32;" >> $acl_file
 if [ -z "$networks" ]; then
-    echo "1No networks are authorized to make external queries."
+    warning $"No networks are authorized to make external queries."
 else
     for network in $networks
     do
@@ -71,13 +68,13 @@ enable_service named
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a DNS/ACCEPT -t wan
 restart_service shorewall
 
-echo "8The DNS service is running."
+info_b $"The DNS service is running."
 if [ ! -z "$forwarders" ]; then
-    echo "7Your DNS will forward external queries to : #$forwarders"
+    info $"Your DNS will forward external queries to : $forwarders"
 fi
 if [ ! -z "$networks" ]; then
-    echo "7The following networks are able to query your DNS for external domains : #$networks"
+    info $"The following networks are able to query your DNS for external domains : $networks"
 fi
-echo "7You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/"
+info $"You can now add DNS zones in the management interface : https://@HOSTNAME@/mmc/"
 
 exit 0

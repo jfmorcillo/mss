@@ -86,12 +86,9 @@ chmod 640 /etc/amavisd/amavisd.conf
 usermod -G amavis clamav
 # amavis / razor
 su - amavis -s /bin/sh -c 'razor-admin -d --create && razor-admin -register && razor-admin -discover' 2>&1 > /dev/null
-if [ $? -eq 0 ]; then echo "0Razor configured successfully."
-else
+if [ $? -ne 0 ]; then
 	su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover' 2>&1 > /dev/null
-	if [ $? -eq 0 ]; then echo "0Razor configured successfully."
-	else echo "1Failed to register razor. Try to run as root later# : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
-	fi
+	[ $? -ne 0 ] && warning $"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -discover'"
 fi
 # no pyzor on mandriva :(
 # su - amavis -s /bin/sh -c 'pyzor discover'
@@ -122,12 +119,11 @@ function add_rules() {
 [ $fw_wan == "on" ] && add_rules wan
 restart_service shorewall
 
-echo "8The mail service is configured."
-echo "8You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
-echo "7- the mail domain# $DOMAIN #has been created"
-echo "7- mails are stored in /home/vmail/user/Maildir"
-echo "7- SSL is enabled on the SMTP server"
-echo "7- @B@Non-SSL connexions are disabled by default on the IMAP/POP3 server@B@"
-echo "7- Networks authorized to send mail without authentication : #$smtpd_mynetworks"
+info_b $"The mail service is configured."
+info_b $"You can add mail addresses and aliases to your users through the management interface at https://@HOSTNAME@/mmc/."
+info $"- the mail domain $DOMAIN has been created"
+info $"- SSL is enabled on the SMTP server"
+info_b $"- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
+info $"- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 
 exit 0

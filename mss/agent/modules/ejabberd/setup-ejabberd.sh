@@ -25,7 +25,7 @@ restart_service $SERVICE
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a JabberPlain/ACCEPT -t wan
 restart_service shorewall
 
-echo "8The instant messaging service is configured."
-echo "8You can simply add users through the management interface at# https://@HOSTNAME@/mmc/. #The user's mail will be used as his Jabber ID."
-echo "7Configure clients with JID like# uid@$DOMAIN #and use# $HOST.$DOMAIN #as the server."
-echo "7If# $HOST.$DOMAIN #is setup as a Jabber server in the DNS zone# $DOMAIN #there is no need to configure the server address in clients."
+info_b $"The instant messaging service is configured."
+info $"You can simply add users through the management interface at https://@HOSTNAME@/mmc/. The user's mail will be used as his Jabber ID."
+info $"Use $HOST.$DOMAIN as the server."
+info $"If $HOST.$DOMAIN is setup as a Jabber server in the $DOMAIN DNS zone there is no need to configure the server address in client."

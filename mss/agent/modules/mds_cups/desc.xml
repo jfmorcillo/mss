@@ -28,7 +28,4 @@
                 interface from interfaces configured as 'external'</help>
         </check>
     </config>
-    <text>The printing service is running.</text>
-    <text>You can add new printers from the Cups web interface : https://@HOSTNAME@:631/admin/</text>
-    <text>Login to the Cups interface is the root account.</text>
 </module>

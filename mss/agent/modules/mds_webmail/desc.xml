@@ -33,6 +33,4 @@
                 interface from external networks</help>
         </check>
     </config>
-    <text>Webmail RoundCube is activated on your server.</text>
-    <text>You can access the webmail interface at https://@HOSTNAME@/roundcubemail/</text>
 </module>

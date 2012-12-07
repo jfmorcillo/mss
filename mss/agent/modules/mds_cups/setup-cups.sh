@@ -16,8 +16,8 @@ enable_service cups
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t wan -p tcp -P 631
 restart_service shorewall
 
-echo "8The printing service is running."
-echo "7You can add new printers from the Cups web interface : https://@HOSTNAME@:631/admin/"
-echo "7Login to the Cups interface is the root account."
+info_b $"The printing service is running."
+info $"You can add new printers from the Cups web interface : https://@HOSTNAME@:631/admin/."
+info $"Login to the Cups interface is the root account."
 
 exit 0

@@ -20,6 +20,9 @@
 # MA 02110-1301, USA.
 
 import re
+from mss.agent.managers.translation import TranslationManager
+
+_ = TranslationManager().translate
 
 def get_config_info():
     return ("setup-system.sh", ['hostname', 'domain'])
@@ -42,12 +45,12 @@ def get_domain(module):
     except:
         pass
     if not domain:
-        domain = "example.com"
+        domain = _("example.com", "system")
     return domain
 
 def valid_hostname(string):
     """ validate hostname """
     if not re.match('^[a-z]+[a-z0-9]*$', string):
-        return "Incorrect hostname."
+        return _("Incorrect hostname.", "system")
     else:
         return None

@@ -1,51 +1,64 @@
-# 
-## Translators:
+#
+# # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
-"POT-Creation-Date: 2012-12-06 10:55+0100\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-12-07 20:50+0100\n"
 "PO-Revision-Date: 2012-12-10 14:32+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: fr\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_dns/desc.xml2(name)
+#: modules/mds_dns/desc.xml:34(label)
+msgid "Allow DNS from external networks"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:29(label)
+msgid "Allow DNS from internal networks"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:35(help)
+msgid ""
+"Configure the firewall to accept DNS requests on interfaces configured as "
+"'external'"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:30(help)
+msgid ""
+"Configure the firewall to accept DNS requests on interfaces configured as "
+"'internal'"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:3(name)
 msgid "DNS service"
 msgstr ""
 
-#: modules/mds_dns/desc.xml3(desc)
-msgid "Resolve computer names on your network"
-msgstr "Résous les noms de machine sur votre réseau"
+#: modules/mds_dns/desc.xml:26(help)
+msgid "Forward external DNS queries to DNS of your choice"
+msgstr "Relaie les requêtes externes vers les serveurs DNS de votre choix."
 
-#: modules/mds_dns/desc.xml9(rpm)
-msgid "bind"
-msgstr ""
+#: modules/mds_dns/desc.xml:25(label)
+msgid "Forwarders"
+msgstr "Relais"
 
-#: modules/mds_dns/desc.xml10(rpm)
-msgid "bind-utils"
-msgstr ""
-
-#: modules/mds_dns/desc.xml11(rpm)
-msgid "mmc-web-network"
-msgstr ""
-
-#: modules/mds_dns/desc.xml12(rpm)
-msgid "python-mmc-network"
-msgstr ""
-
-#: modules/mds_dns/desc.xml16(module)
-msgid "mds_mmc"
-msgstr ""
-
-#: modules/mds_dns/desc.xml20(label)
+#: modules/mds_dns/desc.xml:21(label)
 msgid "My networks"
 msgstr "Mes réseaux"
 
-#: modules/mds_dns/desc.xml21(help)
+#: modules/mds_dns/setup-dns.sh:34
+msgid "No networks are authorized to make external queries."
+msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
+
+#: modules/mds_dns/desc.xml:4(desc)
+msgid "Resolve computer names on your network"
+msgstr "Résous les noms de machine sur votre réseau"
+
+#: modules/mds_dns/desc.xml:22(help)
 msgid ""
 "Specify which networks are authorized to resolve external queries with your "
 "DNS server (recursion). eg: 192.168.0.0/255.255.255.0."
@@ -53,82 +66,61 @@ msgstr ""
 "Spécifiez les réseaux qui sont autorisés à effectuer des requêtes externes "
 "sur votre serveur DNS (récursion). ex: 192.168.0.0/255.255.255.0"
 
-#: modules/mds_dns/desc.xml24(label)
-msgid "Forwarders"
-msgstr "Relais"
-
-#: modules/mds_dns/desc.xml25(help)
-msgid "Forward external DNS queries to DNS of your choice"
-msgstr "Relaie les requêtes externes vers les serveurs DNS de votre choix."
-
-#: modules/mds_dns/desc.xml28(label)
-msgid "Allow DNS from internal networks"
-msgstr ""
-
-#: modules/mds_dns/desc.xml29(help)
-msgid ""
-"Configure the firewall to accept DNS requests on interfaces configured as "
-"'internal'"
-msgstr ""
-
-#: modules/mds_dns/desc.xml33(label)
-msgid "Allow DNS from external networks"
-msgstr ""
-
-#: modules/mds_dns/desc.xml34(help)
-msgid ""
-"Configure the firewall to accept DNS requests on interfaces configured as "
-"'external'"
-msgstr ""
-
-#: modules/mds_dns/desc.xml38(text)
-msgid "No networks are authorized to make external queries."
-msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
-
-#: modules/mds_dns/desc.xml39(text)
-msgid "Service mmc-agent reloaded succesfully."
-msgstr ""
-
-#: modules/mds_dns/desc.xml40(text)
-msgid "Service mmc-agent fails restarting. Check /var/log/mmc/mmc-agent.log"
-msgstr ""
-
-#: modules/mds_dns/desc.xml41(text)
-msgid "Service named reloaded succesfully."
-msgstr "Le service named a redémarré."
-
-#: modules/mds_dns/desc.xml42(text)
-msgid "Service named fails restarting. Check /var/log/syslog"
-msgstr "Le service named n'a pas redémarré. Vérifiez /var/log/syslog"
-
-#: modules/mds_dns/desc.xml43(text)
+#: modules/mds_dns/setup-dns.sh:71
 msgid "The DNS service is running."
 msgstr ""
 
-#: modules/mds_dns/desc.xml44(text)
-msgid "Your DNS will forward external queries to :"
-msgstr "Votre DNS relaie les requêtes externes a :"
-
-#: modules/mds_dns/desc.xml45(text)
+#: modules/mds_dns/setup-dns.sh:76
+#, fuzzy
 msgid ""
-"The following networks are able to query your DNS for external domains :"
+"The following networks are able to query your DNS for external domains : "
+"$networks"
 msgstr ""
 "Les réseaux suivants sont autorisés à effectuer des requêtes externes :"
 
-#: modules/mds_dns/desc.xml46(text)
+#: modules/mds_dns/setup-dns.sh:78
 msgid ""
-"You can now add DNS zones in the management interface : "
-"https://@HOSTNAME@/mmc/"
+"You can now add DNS zones in the management interface : https://@HOSTNAME@/"
+"mmc/"
 msgstr ""
 
-#: modules/mds_dns/desc.xml47(text)
-msgid "Make sure you have enabled the DNS service (port 53) on your firewall."
+#: modules/mds_dns/setup-dns.sh:73
+#, fuzzy
+msgid "Your DNS will forward external queries to : $forwarders"
+msgstr "Votre DNS relaie les requêtes externes a :"
+
+#: modules/mds_dns/desc.xml:10(rpm)
+msgid "bind"
 msgstr ""
-"Assurez vous d'avoir activé le service DNS (port 53) sur votre firewall."
+
+#: modules/mds_dns/desc.xml:11(rpm)
+msgid "bind-utils"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:17(module)
+msgid "mds_mmc"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:12(rpm)
+msgid "mmc-web-network"
+msgstr ""
+
+#: modules/mds_dns/desc.xml:13(rpm)
+msgid "python-mmc-network"
+msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_dns/desc.xml0(None)
+#: modules/mds_dns/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
 
+#~ msgid ""
+#~ "Make sure you have enabled the DNS service (port 53) on your firewall."
+#~ msgstr ""
+#~ "Assurez vous d'avoir activé le service DNS (port 53) sur votre firewall."
 
+#~ msgid "Service named fails restarting. Check /var/log/syslog"
+#~ msgstr "Le service named n'a pas redémarré. Vérifiez /var/log/syslog"
+
+#~ msgid "Service named reloaded succesfully."
+#~ msgstr "Le service named a redémarré."

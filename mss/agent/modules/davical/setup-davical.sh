@@ -36,16 +36,12 @@ su postgres -c /usr/share/davical/dba/create-database.sh 2>&1
 # Get the generated password from the DB
 DAVICAL_ADMIN_PASS=`su postgres -c "psql davical -c 'select username, password from usr;'" | sed -n '/admin/s/^ *admin.*\*\*\(.*\)$/\1/p'`
 
-if [ ! $DAVICAL_ADMIN_PASS ];
-then
-    echo "1Failed to setup the database."
-    exit 1
-fi
+[ ! $DAVICAL_ADMIN_PASS ] && error $"Failed to setup the database." && exit 1
 
 ###Enable acces to Davical folder
 backup $APACHE_DAVICAL_CONF
 cat $APACHE_DAVICAL_CONF_TEMPLATE > $APACHE_DAVICAL_CONF
-#TODO check that this conf is not too much permissive 
+#TODO check that this conf is not too much permissive
 #TODO switch to a vhost
 
 ###Now the true configuration
@@ -71,9 +67,9 @@ su apache -c "/usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~
 cat $DAVICAL_CRON_TEMPLATE > $DAVICAL_CRON
 sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CRON
 
-echo "8The calendar and addressbook server is configured."
-echo "7 - Administrator :# admin"
-echo "7 - Password :# $DAVICAL_ADMIN_PASS"
-echo "7Change it using the management interface# https://@HOSTNAME@/davical/"
+info_b $"The calendar and addressbook service is configured."
+info $"- Administrator : admin"
+info $"- Password :i $DAVICAL_ADMIN_PASS"
+info $"Change it using the management interface https://@HOSTNAME@/davical/"
 
 exit 0

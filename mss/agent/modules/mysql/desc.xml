@@ -22,27 +22,4 @@
             <help>New MySQL root password. Set here the new password.</help>
         </password>
     </config>
-    <text>OK, successfully used password, moving on...</text>
-    <text>Invalid current MySQL password.</text>
-    <text>Setting the root password ensures that nobody can log into the MySQL</text>
-    <text>root user without the proper authorisation.</text>
-    <text>Password updated successfully!</text>
-    <text>Reloading privilege tables..</text>
-    <text>Password update failed!</text>
-    <text>Removing anonymous users</text>
-    <text> ... Success!</text>
-    <text> ... Failed!</text>
-    <text>Disallowing root login remotely</text>
-    <text>Remove test database and access to it</text>
-    <text> - Dropping test database...</text>
-    <text> ... Failed!  Not critical, keep moving...</text>
-    <text> - Removing privileges on test database...</text>
-    <text>Reloading the privilege tables</text>
-    <text>Aborting!</text>
-    <text>Cleaning up...</text>
-    <text>MySQL is running</text>
-    <text>- A password has been set for the root user</text>
-    <text>- Anonymous users were removed</text>
-    <text>- Test database has been removed</text>
-    <text>- Remote login for root has been disabled</text>
 </module>

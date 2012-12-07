@@ -2,8 +2,6 @@
 #
 # (c) 2010 Mandriva, http://www.mandriva.com/
 #
-# $Id$
-#
 # This file is part of Mandriva Server Setup
 #
 # MSS is free software; you can redistribute it and/or modify
@@ -24,6 +22,9 @@
 import os
 import re
 from mss.agent.lib.utils import getINIoption
+from mss.agent.managers.translation import TranslationManager
+
+_ = TranslationManager().translate
 
 def get_config_info():
     return ("setup-smb.sh", ["smbdomain", "smbnetbios", "smbadmin", "smbpasswd", "fw_lan", "fw_wan"])
@@ -35,14 +36,14 @@ def get_netbios(module):
 def valid_netbios(string):
     """ validate netbios """
     if not re.match('^[A-Z]+[A-Z0-9]*$', string):
-        return "Incorrect netbios name (only uppercase characters and digits allowed)."
+        return _("Incorrect netbios name (only uppercase characters and digits allowed).", "mds_smb")
     else:
         return None
 
 def valid_domain(string):
     """ validate domain """
     if not re.match('^[A-Z]+[A-Z0-9]*$', string):
-        return "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
+        return _("Incorrect SAMBA domain name (only uppercase characters and digits allowed).", "mds_smb")
     else:
         return None
 
