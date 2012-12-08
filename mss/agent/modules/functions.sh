@@ -2,7 +2,7 @@
 
 function check_root() {
     if [ "`id -u`" != "0" ]; then
-        echo "Error, must be root user"
+        echo "2Error, must be root user"
         exit 1
     fi
     SERVER=127.0.0.1
@@ -157,7 +157,7 @@ function mysql_cleanup() {
 function restart_service() {
     systemctl restart $1.service
     if [ $? -eq 0 ]; then
-        echo "0Service ${1} restarted succesfully."
+        echo "Service ${1} restarted succesfully."
     else
         if [ ! -z $2 ]; then
             log=$2
@@ -230,17 +230,17 @@ function https_redirect() {
 }
 
 function info_b() {
-    echo 8$1
+    echo "8$1"
 }
 
 function info() {
-    echo 7$1
+    echo "7$1"
 }
 
 function error() {
-    echo 2$1
+    echo "2$1"
 }
 
 function warning() {
-    echo 1$1
+    echo "1$1"
 }
