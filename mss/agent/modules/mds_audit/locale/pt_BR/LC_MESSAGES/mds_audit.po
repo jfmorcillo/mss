@@ -1,91 +1,95 @@
-#
-# # Translators:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 20:16+0100\n"
+"POT-Creation-Date: 2012-12-08 02:28+0100\n"
 "PO-Revision-Date: 2012-12-10 14:24+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_audit/desc.xml:34(text)
+#: modules/mds_audit/desc.xml3(name)
+msgid "Audit plugin"
+msgstr ""
+
+#: modules/mds_audit/desc.xml4(desc)
+msgid "Track any changes made in the management interface"
+msgstr ""
+
+#: modules/mds_audit/desc.xml9(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_audit/desc.xml10(module)
+msgid "mysql"
+msgstr "mysql"
+
+#: modules/mds_audit/desc.xml14(rpm)
+msgid "python-sqlalchemy"
+msgstr ""
+
+#: modules/mds_audit/desc.xml15(rpm)
+msgid "python-mysql"
+msgstr ""
+
+#: modules/mds_audit/desc.xml20(label)
+msgid "MySQL root password"
+msgstr "Senha de root do MySQL"
+
+#: modules/mds_audit/desc.xml21(help)
+msgid "Used to create the audit database"
+msgstr "Usado para criar o banco de dados de auditoria"
+
+#: modules/mds_audit/desc.xml24(label)
+msgid "MySQL audit password"
+msgstr "Senha da auditoria MySQL"
+
+#: modules/mds_audit/desc.xml25(help)
+msgid "MySQL user password for the audit database"
+msgstr "Senha do usuário MySQL para o banco de dados de auditoria"
+
+#: modules/mds_audit/desc.xml28(text)
+msgid "Cleaning up..."
+msgstr "Limpando..."
+
+#: modules/mds_audit/desc.xml29(text)
+msgid "The current MySQL password is not valid."
+msgstr "A senha atual do MySQL não é válida."
+
+#: modules/mds_audit/desc.xml30(text)
+msgid "Create audit database"
+msgstr "Criar banco de dados de auditoria"
+
+#: modules/mds_audit/desc.xml31(text)
+msgid "Grant privileges on database"
+msgstr "Conceder privilégios no banco de dados"
+
+#: modules/mds_audit/desc.xml32(text)
+msgid "Service MMC started succesfully."
+msgstr "Serviço MMC iniciado com êxito."
+
+#: modules/mds_audit/desc.xml33(text)
+msgid "Service MMC fails starting. Check"
+msgstr "Serviço MMC falhou na inicialização. Verifique"
+
+#: modules/mds_audit/desc.xml34(text)
 msgid ""
 "Audit module is activated in the MDS interface : https://@HOSTNAME@/mmc/"
 msgstr ""
 
-#: modules/mds_audit/desc.xml:3(name)
-msgid "Audit plugin"
-msgstr ""
-
-#: modules/mds_audit/desc.xml:28(text)
-msgid "Cleaning up..."
-msgstr "Limpando..."
-
-#: modules/mds_audit/desc.xml:30(text)
-msgid "Create audit database"
-msgstr "Criar banco de dados de auditoria"
-
-#: modules/mds_audit/desc.xml:31(text)
-msgid "Grant privileges on database"
-msgstr "Conceder privilégios no banco de dados"
-
-#: modules/mds_audit/desc.xml:24(label)
-msgid "MySQL audit password"
-msgstr "Senha da auditoria MySQL"
-
-#: modules/mds_audit/desc.xml:20(label)
-msgid "MySQL root password"
-msgstr "Senha de root do MySQL"
-
-#: modules/mds_audit/desc.xml:25(help)
-msgid "MySQL user password for the audit database"
-msgstr "Senha do usuário MySQL para o banco de dados de auditoria"
-
-#: modules/mds_audit/desc.xml:33(text)
-msgid "Service MMC fails starting. Check"
-msgstr "Serviço MMC falhou na inicialização. Verifique"
-
-#: modules/mds_audit/desc.xml:32(text)
-msgid "Service MMC started succesfully."
-msgstr "Serviço MMC iniciado com êxito."
-
-#: modules/mds_audit/desc.xml:29(text)
-msgid "The current MySQL password is not valid."
-msgstr "A senha atual do MySQL não é válida."
-
-#: modules/mds_audit/desc.xml:4(desc)
-msgid "Track any changes made in the management interface"
-msgstr ""
-
-#: modules/mds_audit/desc.xml:21(help)
-msgid "Used to create the audit database"
-msgstr "Usado para criar o banco de dados de auditoria"
-
-#: modules/mds_audit/desc.xml:9(module)
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: modules/mds_audit/desc.xml:10(module)
-msgid "mysql"
-msgstr "mysql"
-
-#: modules/mds_audit/desc.xml:15(rpm)
-msgid "python-mysql"
-msgstr ""
-
-#: modules/mds_audit/desc.xml:14(rpm)
-msgid "python-sqlalchemy"
-msgstr ""
-
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_audit/desc.xml:0(None)
+#: modules/mds_audit/desc.xml0(None)
 msgid "translator-credits"
 msgstr "translator-credits"
+
+

@@ -1,130 +1,62 @@
-#
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2011-07-12 19:30+0000\n"
-"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"PO-Revision-Date: 2012-12-14 17:53+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mysql/desc.xml:18(help)
-#, fuzzy
-msgid "Current MySQL root password."
-msgstr "Senha atual do MySQL incorreta."
-
-#: modules/mysql/desc.xml:17(label)
-msgid "Current password"
-msgstr "Senha atual"
-
-#: modules/mysql/desc.xml:4(name)
+#: modules/mysql/desc.xml4(name)
 msgid "MySQL database"
 msgstr "Banco de dados MySQL"
 
-#: modules/mysql/desc.xml:5(desc)
+#: modules/mysql/desc.xml5(desc)
 msgid "MySQL relational database"
 msgstr "Banco de dados relacional MySQL"
 
-#: modules/mysql/desc.xml:22(help)
-msgid "New MySQL root password. Set here the new password."
-msgstr "Nova senha de root do MySQL. Defina aqui a nova senha."
-
-#: modules/mysql/desc.xml:21(label)
-msgid "New password"
-msgstr "Nova senha"
-
-#: modules/mysql/desc.xml:8(rpm)
+#: modules/mysql/desc.xml8(rpm)
 msgid "mysql"
 msgstr "mysql"
 
-#: modules/mysql/desc.xml:9(rpm)
+#: modules/mysql/desc.xml9(rpm)
 msgid "mysql-client"
 msgstr "mysql-client"
 
-#: modules/mysql/desc.xml:13(module)
+#: modules/mysql/desc.xml13(module)
 msgid "mysqlmax"
 msgstr "mysqlmax"
 
+#: modules/mysql/desc.xml17(label)
+msgid "Current password"
+msgstr "Senha atual"
+
+#: modules/mysql/desc.xml18(help)
+msgid "Current MySQL root password."
+msgstr ""
+
+#: modules/mysql/desc.xml21(label)
+msgid "New password"
+msgstr "Nova senha"
+
+#: modules/mysql/desc.xml22(help)
+msgid "New MySQL root password. Set here the new password."
+msgstr "Nova senha de root do MySQL. Defina aqui a nova senha."
+
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mysql/desc.xml:0(None)
+#: modules/mysql/desc.xml0(None)
 msgid "translator-credits"
 msgstr "translator-credits"
 
-#~ msgid "- A password has been set for the root user"
-#~ msgstr "- Uma senha foi definida para o usuário root"
 
-#~ msgid "- Anonymous users were removed"
-#~ msgstr "- Usuários anônimos foram removidos"
-
-#~ msgid "- Dropping test database..."
-#~ msgstr "- Destruindo banco de dados de teste..."
-
-#~ msgid "- Remote login for root has been disabled"
-#~ msgstr "- Login remoto para o root foi desabilitado"
-
-#~ msgid "- Removing privileges on test database..."
-#~ msgstr "- Remoção de privilégios no banco de dados de teste..."
-
-#~ msgid "- Test database has been removed"
-#~ msgstr "- Banco de dados de teste foi removido"
-
-#~ msgid "... Failed!"
-#~ msgstr "... Falhou!"
-
-#~ msgid "... Failed! Not critical, keep moving..."
-#~ msgstr "... Falhou! Não crítico, manter ação..."
-
-#~ msgid "... Success!"
-#~ msgstr "... Sucesso!"
-
-#~ msgid "Aborting!"
-#~ msgstr "Abortar!"
-
-#~ msgid "Cleaning up..."
-#~ msgstr "Limpeza..."
-
-#~ msgid "Current MySQL root password. Leave blank for first installation."
-#~ msgstr ""
-#~ "Senha de root atual do MySQL. Deixe em branco para a primeira instalação."
-
-#~ msgid "Disallowing root login remotely"
-#~ msgstr "Não permitir login como root remotamente"
-
-#~ msgid "Invalid current MySQL password."
-#~ msgstr "Senha atual do MySQL incorreta."
-
-#~ msgid "MySQL is running"
-#~ msgstr "MySQL está executando"
-
-#~ msgid "OK, successfully used password, moving on..."
-#~ msgstr "OK, senha utilizada com sucesso, direcionando..."
-
-#~ msgid "Password update failed!"
-#~ msgstr "A atualização de senha falhou!"
-
-#~ msgid "Password updated successfully!"
-#~ msgstr "Senha atualizada com sucesso!"
-
-#~ msgid "Reloading privilege tables.."
-#~ msgstr "Recarregar as tabelas de privilégio.."
-
-#~ msgid "Reloading the privilege tables"
-#~ msgstr "Recargando as tabelas de privilégio"
-
-#~ msgid "Remove test database and access to it"
-#~ msgstr "Remova o banco de dados de teste e acesse-o"
-
-#~ msgid "Removing anonymous users"
-#~ msgstr "Removendo usuários anônimos"
-
-#~ msgid "Setting the root password ensures that nobody can log into the MySQL"
-#~ msgstr "Definir a senha de root garante que ninguém pode entrar no MySQL"
-
-#~ msgid "root user without the proper authorisation."
-#~ msgstr "usuário root sem a devida autorização."

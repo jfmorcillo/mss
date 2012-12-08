@@ -1,112 +1,138 @@
-#
-# # Translators:
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-07 20:50+0100\n"
-"PO-Revision-Date: 2012-12-10 14:32+0000\n"
+"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"PO-Revision-Date: 2012-12-14 17:52+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mail/setup-mail.sh:127
-#, fuzzy
-msgid ""
-"- Networks authorized to send mail without authentication : $smtpd_mynetworks"
-msgstr "- Redes autorizadas a enviar e-mails sem autenticação:"
-
-#: modules/mds_mail/setup-mail.sh:126
-#, fuzzy
-msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
-msgstr ""
-"- Conexões Non-SSL em interfaces externas são desativadas por padrão no "
-"servidor IMAP"
-
-#: modules/mds_mail/setup-mail.sh:125
-msgid "- SSL is enabled on the SMTP server"
+#: modules/mds_mail/desc.xml3(name)
+msgid "Mail service"
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:124
-msgid "- the mail domain $DOMAIN has been created"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:46(label)
-msgid "Allow mail services access from external networks"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:41(label)
-msgid "Allow mail services access from internal networks"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:4(desc)
+#: modules/mds_mail/desc.xml4(desc)
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:47(help)
-msgid ""
-"Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
-"configured as 'external'"
+#: modules/mds_mail/desc.xml10(rpm)
+msgid "postfix"
+msgstr "postfix"
+
+#: modules/mds_mail/desc.xml11(rpm)
+msgid "postfix-ldap"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:42(help)
+#: modules/mds_mail/desc.xml12(rpm)
+msgid "mmc-web-mail"
+msgstr "mmc-web-mail"
+
+#: modules/mds_mail/desc.xml13(rpm)
+msgid "python-mmc-mail"
+msgstr "python-mmc-mail"
+
+#: modules/mds_mail/desc.xml14(rpm)
+msgid "amavisd-new"
+msgstr "amavisd-new"
+
+#: modules/mds_mail/desc.xml15(rpm)
+msgid "spamassassin"
+msgstr "spamassassin"
+
+#: modules/mds_mail/desc.xml16(rpm)
+msgid "spamassassin-tools"
+msgstr "spamassassin-tools"
+
+#: modules/mds_mail/desc.xml17(rpm)
+msgid "clamd"
+msgstr "clamd"
+
+#: modules/mds_mail/desc.xml18(rpm)
+msgid "dovecot"
+msgstr "dovecot"
+
+#: modules/mds_mail/desc.xml19(rpm)
+msgid "dovecot-plugins-ldap"
+msgstr "dovecot-plugins-ldap"
+
+#: modules/mds_mail/desc.xml23(module)
+msgid "zarafa"
+msgstr "zarafa"
+
+#: modules/mds_mail/desc.xml26(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_mail/desc.xml30(label)
+msgid "My networks"
+msgstr "Minhas redes"
+
+#: modules/mds_mail/desc.xml31(help)
+msgid ""
+"Specify which clients are authorized to send mails through the mail server "
+"without authentication."
+msgstr ""
+
+#: modules/mds_mail/desc.xml34(label)
+msgid "Protocols supported"
+msgstr "Protocolos suportados"
+
+#: modules/mds_mail/desc.xml35(help)
+msgid "Protocols that the dovecot server will provide."
+msgstr "Os protocolos que o servidor dovecot irá fornecer."
+
+#: modules/mds_mail/desc.xml36(option)
+msgid "IMAPS and POP3S"
+msgstr "IMAPS e POP3S"
+
+#: modules/mds_mail/desc.xml37(option)
+msgid "IMAPS"
+msgstr "IMAPS"
+
+#: modules/mds_mail/desc.xml38(option)
+msgid "POP3S"
+msgstr "POP3S"
+
+#: modules/mds_mail/desc.xml41(label)
+msgid "Allow mail services access from internal networks"
+msgstr ""
+
+#: modules/mds_mail/desc.xml42(help)
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'internal'"
 msgstr ""
 
-#: modules/mds_mail/add_domain.py:16
-msgid "Default mail domain"
+#: modules/mds_mail/desc.xml46(label)
+msgid "Allow mail services access from external networks"
 msgstr ""
 
-#: modules/mds_mail/add_domain.py:20
-msgid "Failed to add the mail domain."
+#: modules/mds_mail/desc.xml47(help)
+msgid ""
+"Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
+"configured as 'external'"
 msgstr ""
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_mail/desc.xml0(None)
+msgid "translator-credits"
+msgstr "translator-credits"
 
 #: modules/mds_mail/setup-mail.sh:91
 msgid ""
-"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
-"c 'razor-admin -register && razor-admin -discover'"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:37(option)
-msgid "IMAPS"
-msgstr "IMAPS"
-
-#: modules/mds_mail/desc.xml:36(option)
-msgid "IMAPS and POP3S"
-msgstr "IMAPS e POP3S"
-
-#: modules/mds_mail/desc.xml:3(name)
-msgid "Mail service"
-msgstr ""
-
-#: modules/mds_mail/desc.xml:30(label)
-msgid "My networks"
-msgstr "Minhas redes"
-
-#: modules/mds_mail/desc.xml:38(option)
-msgid "POP3S"
-msgstr "POP3S"
-
-#: modules/mds_mail/desc.xml:34(label)
-msgid "Protocols supported"
-msgstr "Protocolos suportados"
-
-#: modules/mds_mail/desc.xml:35(help)
-msgid "Protocols that the dovecot server will provide."
-msgstr "Os protocolos que o servidor dovecot irá fornecer."
-
-#: modules/mds_mail/desc.xml:31(help)
-msgid ""
-"Specify which clients are authorized to send mails through the mail server "
-"without authentication."
+"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh "
+"-c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
 
 #: modules/mds_mail/setup-mail.sh:122
@@ -119,81 +145,30 @@ msgid ""
 "interface at https://@HOSTNAME@/mmc/."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:14(rpm)
-msgid "amavisd-new"
-msgstr "amavisd-new"
+#: modules/mds_mail/setup-mail.sh:124
+msgid "- the mail domain $DOMAIN has been created"
+msgstr ""
 
-#: modules/mds_mail/desc.xml:17(rpm)
-msgid "clamd"
-msgstr "clamd"
+#: modules/mds_mail/setup-mail.sh:125
+msgid "- SSL is enabled on the SMTP server"
+msgstr ""
 
-#: modules/mds_mail/desc.xml:18(rpm)
-msgid "dovecot"
-msgstr "dovecot"
+#: modules/mds_mail/setup-mail.sh:126
+msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
+msgstr ""
 
-#: modules/mds_mail/desc.xml:19(rpm)
-msgid "dovecot-plugins-ldap"
-msgstr "dovecot-plugins-ldap"
+#: modules/mds_mail/setup-mail.sh:127
+msgid ""
+"- Networks authorized to send mail without authentication : "
+"$smtpd_mynetworks"
+msgstr ""
 
-#: modules/mds_mail/desc.xml:26(module)
-msgid "mds_mmc"
-msgstr "mds_mmc"
+#: modules/mds_mail/add_domain.py:16
+msgid "Default mail domain"
+msgstr ""
 
-#: modules/mds_mail/desc.xml:12(rpm)
-msgid "mmc-web-mail"
-msgstr "mmc-web-mail"
+#: modules/mds_mail/add_domain.py:20
+msgid "Failed to add the mail domain."
+msgstr ""
 
-#: modules/mds_mail/desc.xml:10(rpm)
-msgid "postfix"
-msgstr "postfix"
 
-#: modules/mds_mail/desc.xml:11(rpm)
-#, fuzzy
-msgid "postfix-ldap"
-msgstr "postfix"
-
-#: modules/mds_mail/desc.xml:13(rpm)
-msgid "python-mmc-mail"
-msgstr "python-mmc-mail"
-
-#: modules/mds_mail/desc.xml:15(rpm)
-msgid "spamassassin"
-msgstr "spamassassin"
-
-#: modules/mds_mail/desc.xml:16(rpm)
-msgid "spamassassin-tools"
-msgstr "spamassassin-tools"
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_mail/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
-
-#: modules/mds_mail/desc.xml:23(module)
-msgid "zarafa"
-msgstr "zarafa"
-
-#~ msgid "- mails are stored in /home/vmail/user/Maildir"
-#~ msgstr "- Os e-mails são armazenados em /home/vmail/user/Maildir"
-
-#~ msgid "Failed to register razor. Try to run as root"
-#~ msgstr "Falha ao registrar o Razor. Tente executar como root"
-
-#~ msgid ""
-#~ "Make sure you have enabled mail services (SMTP 25, SMTPS 465, POPS 995, "
-#~ "IMAPS 993) on your firewall."
-#~ msgstr ""
-#~ "Certifique-se de ter habilitado os serviços de correio (SMTP 25, SMTPS "
-#~ "465, POPS 995, IMAPS 993) no seu firewall."
-
-#~ msgid "Razor configured successfully."
-#~ msgstr "O Razor configurado com êxito."
-
-#~ msgid "Service"
-#~ msgstr "Serviço"
-
-#~ msgid "fails restarting. Check"
-#~ msgstr "Falha ao reiniciar. Verifique"
-
-#~ msgid "reloaded succesfully."
-#~ msgstr "recarregado com sucesso."

@@ -1,6 +1,6 @@
-# SOME DESCRIPTIVE TITLE.
-# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
-# This file is distributed under the same license as the PACKAGE package.
+# MSS.
+# Copyright (C) 2011
+# This file is distributed under the same license as the mss package.
 # 
 ## Translators:
 #   <andre@mandriva.com>, 2011.
@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-02 18:01+0200\n"
-"PO-Revision-Date: 2012-12-14 16:49+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"PO-Revision-Date: 2012-12-17 18:18+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,12 +18,338 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: config.py:28
-msgid "Marketplace"
+#: transaction.py:36
+msgid "Installation summary"
 msgstr ""
 
-#: config.py:31
-msgid "Collaboration"
+#: transaction.py:38
+msgid "The folowing component will be installed."
+msgid_plural "The folowing components will be installed."
+msgstr[0] ""
+msgstr[1] ""
+
+#: transaction.py:48
+msgid "Medias authentication"
 msgstr ""
+
+#: transaction.py:49
+msgid "One or more medias need authentication"
+msgstr "Uma ou mais mídias necessitam de autenticação"
+
+#: transaction.py:55
+msgid "Medias add"
+msgstr ""
+
+#: transaction.py:62
+msgid "Installation"
+msgstr "Instalação"
+
+#: transaction.py:69
+msgid "Initial configuration"
+msgstr ""
+
+#: transaction.py:76 templates/reboot.html:14
+msgid "Reboot"
+msgstr ""
+
+#: views.py:134 templates/first_time.html:6
+msgid "Welcome"
+msgstr ""
+
+#: views.py:135
+msgid ""
+"Before you can install any services we need to setup a few things with you."
+msgstr ""
+
+#: views.py:174 templates/error.html:9
+msgid "MSS agent is unreacheable."
+msgstr ""
+
+#: templates/base.html:22
+msgid "Hide log"
+msgstr "Ocultar log"
+
+#: templates/base.html:25 templates/config_run.html:155
+#: templates/install.html:60 templates/media_add.html:86
+msgid "Show log"
+msgstr "Mostrar log"
+
+#: templates/base.html:45 templates/base.html.py:142
+msgid "Ready"
+msgstr "Pronto"
+
+#: templates/base.html:69
+msgid "The MSS interface is unreachable"
+msgstr ""
+
+#: templates/base.html:110
+msgid ""
+"You don't have the Mandriva Business Server repositories installed. Install "
+"them to get security updates."
+msgstr ""
+
+#: templates/base.html:110 templates/media_auth.html:43
+msgid "Add medias"
+msgstr "Adicionar mídias"
+
+#: templates/base.html:116
+msgid "Update packages list on your server."
+msgstr "Atualizar a lista de pacotes no seu servidor"
+
+#: templates/base.html:117
+msgid "Update medias"
+msgstr "Atualizar mídias?"
+
+#: templates/base.html:122
+msgid "Logout"
+msgstr "Sair"
+
+#: templates/config.html:111 templates/config.html.py:258
+msgid "Add"
+msgstr ""
+
+#: templates/config.html:165
+msgid "Re-enter password"
+msgstr "Digite a senha novamente"
+
+#: templates/config.html:275 templates/config_run.html:146
+msgid "No configuration for this module."
+msgstr "Nenhuma configuração para este módulo."
+
+#: templates/config.html:281
+msgid "Required field"
+msgstr "Campo obrigatório"
+
+#: templates/config.html:284 templates/config_run.html:60
+#: templates/install.html:19 templates/media_add.html:26
+#: templates/media_add.html.py:68 templates/preinst.html:36
+msgid "Continue"
+msgstr "Continuar"
+
+#: templates/config_no.html:11
+msgid "Installation & configuration was successful."
+msgstr ""
+
+#: templates/config_no.html:14 templates/config_run.html:85
+#: templates/config_run.html.py:102 templates/error.html:14
+msgid "Home page"
+msgstr "Página principal"
+
+#: templates/config_run.html:25
+msgid "Configuration summary"
+msgstr "Resumo da configuração"
+
+#: templates/config_run.html:26
+msgid "Configuration warnings"
+msgstr "Alertas de configuração"
+
+#: templates/config_run.html:27
+msgid "Configuration errors"
+msgstr "Erros de configuração"
+
+#: templates/config_run.html:57 templates/config_run.html.py:104
+msgid "Configuration terminated, details are displayed below."
+msgstr "Configuração concluída, os detalhes são apresentados abaixo."
+
+#: templates/config_run.html:74
+msgid "Configuration succeded."
+msgstr "Configuração com sucesso."
+
+#: templates/config_run.html:84
+msgid "Configuration failed."
+msgstr "A configuração falhou."
+
+#: templates/config_run.html:110
+msgid "Could not find any configuration script to execute."
+msgstr ""
+
+#: templates/config_run.html:117
+msgid "Running configuration..."
+msgstr "Executando configuração ..."
+
+#: templates/config_run.html:152 templates/media_add.html:83
+msgid "Waiting..."
+msgstr "Aguardando..."
+
+#: templates/config_run.html:166 templates/install.html:68
+#: templates/media_add.html:95
+msgid "Please wait..."
+msgstr "Por favor, aguarde..."
+
+#: templates/error.html:6
+msgid "An error has occured."
+msgstr "Ocorreu um erro."
+
+#: templates/error.html:10
+msgid ""
+"Check the service status with the <strong>service mss-agent status</strong> "
+"command."
+msgstr ""
+
+#: templates/first_time.html:8
+msgid ""
+"Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
+"setup the services you need on your server."
+msgstr ""
+
+#: templates/first_time.html:8
+msgid "Login to begin to setup your server."
+msgstr ""
+
+#: templates/first_time.html:10 templates/invalid_login.html:6
+#: templates/login.html:6
+msgid "Login"
+msgstr "Login"
+
+#: templates/install.html:17
+msgid "Installation succeded."
+msgstr "Instalação com sucesso."
+
+#: templates/install.html:28
+msgid "Installation failed. Update your medias and retry to install."
+msgstr ""
+
+#: templates/install.html:30
+msgid "Installation failed."
+msgstr "A instalação falhou."
+
+#: templates/install.html:34
+msgid "Retry"
+msgstr ""
+
+#: templates/install.html:54
+msgid "The following component is being installed"
+msgid_plural "The following components are being installed"
+msgstr[0] "Os seguintes componentes estão sendo instalados"
+msgstr[1] "Os seguintes componentes estão sendo instalados"
+
+#: templates/install.html:70 templates/media_add.html:97
+#: templates/media_auth.html:45 templates/preinst.html:39
+msgid "Back"
+msgstr "Voltar"
+
+#: templates/invalid_login.html:9
+msgid "Wrong username or password."
+msgstr ""
+
+#: templates/login_form.html:12 templates/media_auth.html:23
+msgid "Your my.mandriva.com email address."
+msgstr "Seu endereço de email no my.mandriva.com."
+
+#: templates/login_form.html:16 templates/media_auth.html:31
+msgid "Your my.mandriva.com password."
+msgstr "Sua senha no my.mandriva.com."
+
+#: templates/login_form.html:19
+msgid "Use your Mandriva account to login."
+msgstr "Use sua conta Mandriva para entrar."
+
+#: templates/login_form.html:28
+msgid "The server <strong>root</strong> password."
+msgstr ""
+
+#: templates/login_form.html:31
+msgid "No internet connection, use the root password to login."
+msgstr ""
+
+#: templates/login_form.html:46 templates/media_auth.html:18
+msgid "Username"
+msgstr "Nome de Usuário"
+
+#: templates/login_form.html:52 templates/media_auth.html:27
+msgid "Password"
+msgstr "Senha"
+
+#: templates/login_form.html:58
+msgid "Language"
+msgstr "Idioma"
+
+#: templates/login_form.html:65
+msgid "Enter"
+msgstr "Entrar"
+
+#: templates/media_add.html:37
+msgid "Adding media..."
+msgstr "Adicionando mídia ..."
+
+#: templates/media_add.html:52
+msgid "Media added."
+msgstr "Mídia adicionada."
+
+#: templates/media_add.html:58
+msgid "Media already added."
+msgstr "Mídia já foi adicionada."
+
+#: templates/media_add.html:64
+msgid "Failed to add media."
+msgstr "Falha ao adicionar mídia."
+
+#: templates/media_auth.html:16
+msgid "My authentication"
+msgstr "Minha autenticação"
+
+#: templates/media_auth.html:41
+msgid "Don't add medias"
+msgstr ""
+
+#: templates/preinst.html:14
+msgid "No component selected."
+msgstr "Nenhum componente selecionado."
+
+#: templates/preinst.html:22
+msgid "Added as a dependency"
+msgstr "Adicionado como uma dependência"
+
+#: templates/preinst.html:23
+msgid "Reinstallation"
+msgstr "Reinstalação"
+
+#: templates/preinst.html:28
+msgid ""
+"If other components requires this component they may be broken after the "
+"reinstallation."
+msgstr ""
+"Se outros componentes exigirem que este componente pode ser quebrado após a "
+"reinstalação."
+
+#: templates/reboot.html:11
+msgid "The configuration is finished. The server must be rebooted."
+msgstr ""
+
+#: templates/section.html:19
+msgid "This component can't be installed with"
+msgstr ""
+
+#: templates/section.html:163
+msgid "This component is installed and configured"
+msgstr ""
+
+#: templates/section.html:164
+msgid "This module conflicts with : "
+msgstr "Este módulo conflita com : "
+
+#: templates/section.html:167
+msgid "You have bought this component"
+msgstr ""
+
+#: templates/section.html:187
+msgid "Buy"
+msgstr "Comprar"
+
+#: templates/section.html:189 templates/section.html.py:192
+msgid "More information"
+msgstr "Mais informações"
+
+#: templates/section.html:221
+msgid "Install and configure selected components"
+msgstr ""
+
+#: templates/sections.html:36
+msgid "No modules for Mandriva Server Setup installed."
+msgstr "Nenhum módulo para instalação do servidor Mandriva foi instalado."
+
+#: templates/sections.html:37
+msgid "Check for mss-modules-* packages."
+msgstr "Verifique se há pacotes mss-modules-* ."
 
 

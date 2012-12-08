@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-10-02 17:59+0200\n"
+"POT-Creation-Date: 2012-12-08 02:25+0100\n"
 "PO-Revision-Date: 2011-06-17 07:02+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -17,58 +17,55 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: transaction.py:31
+#: transaction.py:36
 #, fuzzy
 msgid "Installation summary"
 msgstr "Installation"
 
-#: transaction.py:33
+#: transaction.py:38
 #, fuzzy
 msgid "The folowing component will be installed."
 msgid_plural "The folowing components will be installed."
 msgstr[0] "Le composant suivant est en cours d'installation"
 msgstr[1] "Les composants suivants sont en cours d'installation"
 
-#: transaction.py:43
+#: transaction.py:48
 #, fuzzy
 msgid "Medias authentication"
 msgstr "Authentification des médias"
 
-#: transaction.py:44
+#: transaction.py:49
 msgid "One or more medias need authentication"
 msgstr "Une authentification est nécessaire pour installer un des médias"
 
-#: transaction.py:50
+#: transaction.py:55
 #, fuzzy
 msgid "Medias add"
 msgstr "Le média a été ajouté."
 
-#: transaction.py:57
+#: transaction.py:62
 msgid "Installation"
 msgstr "Installation"
 
-#: transaction.py:64
+#: transaction.py:69
 #, fuzzy
 msgid "Initial configuration"
 msgstr "Lancer la configuration"
 
-#: views.py:135 templates/first_time.html:6
+#: transaction.py:76 templates/reboot.html:14
+msgid "Reboot"
+msgstr ""
+
+#: views.py:134 templates/first_time.html:6
 msgid "Welcome"
 msgstr ""
 
-#: views.py:136
+#: views.py:135
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr ""
 
-#: views.py:141
-msgid ""
-"You can add the repositories of Mandriva Business Server with your my."
-"mandriva.com account to get security updates. Repositories are not required "
-"to install server components."
-msgstr ""
-
-#: views.py:179 templates/error.html:9
+#: views.py:174 templates/error.html:9
 #, fuzzy
 msgid "MSS agent is unreacheable."
 msgstr "Le serveur XML-RPC est injoignable"
@@ -82,51 +79,56 @@ msgstr "Cacher le détail"
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:40 templates/base.html.py:129
+#: templates/base.html:45 templates/base.html.py:142
 msgid "Ready"
 msgstr "Prêt"
 
-#: templates/base.html:97
+#: templates/base.html:69
+#, fuzzy
+msgid "The MSS interface is unreachable"
+msgstr "Le serveur XML-RPC est injoignable"
+
+#: templates/base.html:110
 msgid ""
 "You don't have the Mandriva Business Server repositories installed. Install "
 "them to get security updates."
 msgstr ""
 
-#: templates/base.html:97 templates/media_auth.html:43
+#: templates/base.html:110 templates/media_auth.html:43
 msgid "Add medias"
 msgstr "Ajouter les médias"
 
-#: templates/base.html:103
+#: templates/base.html:116
 msgid "Update packages list on your server."
 msgstr "Met à jour les listes de packages sur votre serveur."
 
-#: templates/base.html:104
+#: templates/base.html:117
 msgid "Update medias"
 msgstr "Mettre à jour les médias"
 
-#: templates/base.html:109
+#: templates/base.html:122
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/config.html:108 templates/config.html.py:230
+#: templates/config.html:111 templates/config.html.py:258
 msgid "Add"
 msgstr ""
 
-#: templates/config.html:162
+#: templates/config.html:165
 msgid "Re-enter password"
 msgstr "Ré-entrez le mot de passe"
 
-#: templates/config.html:247 templates/config_run.html:146
+#: templates/config.html:275 templates/config_run.html:146
 msgid "No configuration for this module."
 msgstr "Pas de configuration pour ce module."
 
-#: templates/config.html:253
+#: templates/config.html:281
 msgid "Required field"
 msgstr "Champ obligatoire"
 
-#: templates/config.html:256 templates/install.html:19
-#: templates/media_add.html:26 templates/media_add.html.py:68
-#: templates/preinst.html:36
+#: templates/config.html:284 templates/config_run.html:60
+#: templates/install.html:19 templates/media_add.html:26
+#: templates/media_add.html.py:68 templates/preinst.html:36
 msgid "Continue"
 msgstr "Continuer"
 
@@ -135,9 +137,8 @@ msgstr "Continuer"
 msgid "Installation & configuration was successful."
 msgstr "Installation réussie."
 
-#: templates/config_no.html:14 templates/config_run.html:60
-#: templates/config_run.html.py:85 templates/config_run.html:102
-#: templates/error.html:14
+#: templates/config_no.html:14 templates/config_run.html:85
+#: templates/config_run.html.py:102 templates/error.html:14
 msgid "Home page"
 msgstr "Page d'accueil"
 
@@ -246,42 +247,42 @@ msgstr "Retour"
 msgid "Wrong username or password."
 msgstr "Erreur : Mauvais utilisateur ou mot de passe."
 
-#: templates/login_form.html:13 templates/media_auth.html:23
+#: templates/login_form.html:12 templates/media_auth.html:23
 msgid "Your my.mandriva.com email address."
 msgstr "Votre adresse mail my.mandriva.com."
 
-#: templates/login_form.html:18 templates/media_auth.html:31
+#: templates/login_form.html:16 templates/media_auth.html:31
 msgid "Your my.mandriva.com password."
 msgstr "Votre mot de passe my.mandriva.com."
 
-#: templates/login_form.html:21
+#: templates/login_form.html:19
 msgid "Use your Mandriva account to login."
 msgstr "Utilisez votre compte Mandriva pour vous connecter."
 
-#: templates/login_form.html:32
+#: templates/login_form.html:28
 msgid "The server <strong>root</strong> password."
 msgstr ""
 
-#: templates/login_form.html:35
+#: templates/login_form.html:31
 #, fuzzy
 msgid "No internet connection, use the root password to login."
 msgstr ""
 "Pas de connexion internet disponible.<br/>Utilisez le mot de passe root pour "
 "vous connecter."
 
-#: templates/login_form.html:51 templates/media_auth.html:18
+#: templates/login_form.html:46 templates/media_auth.html:18
 msgid "Username"
 msgstr "Utilisateur"
 
-#: templates/login_form.html:57 templates/media_auth.html:27
+#: templates/login_form.html:52 templates/media_auth.html:27
 msgid "Password"
 msgstr "Mot de passe"
 
-#: templates/login_form.html:63
+#: templates/login_form.html:58
 msgid "Language"
 msgstr "Langue"
 
-#: templates/login_form.html:70
+#: templates/login_form.html:65
 msgid "Enter"
 msgstr "Entrer"
 
@@ -329,6 +330,10 @@ msgid ""
 msgstr ""
 "Si d'autres composants dépendent de ce module, ils risquent de ne plus "
 "fonctionner après la ré-installation."
+
+#: templates/reboot.html:11
+msgid "The configuration is finished. The server must be rebooted."
+msgstr ""
 
 #: templates/section.html:19
 #, fuzzy
