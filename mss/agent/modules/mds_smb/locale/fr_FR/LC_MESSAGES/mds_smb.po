@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:28+0100\n"
-"PO-Revision-Date: 2012-12-14 20:11+0000\n"
+"POT-Creation-Date: 2012-12-08 02:38+0100\n"
+"PO-Revision-Date: 2012-12-17 18:29+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,81 +24,81 @@ msgstr "Gestion des utilisateurs et partages de fichiers Windows"
 
 #: modules/mds_smb/desc.xml4(desc)
 msgid ""
-"Authenticate Windows users with SAMBA, provide Windows file shares on your "
-"network"
+"Authenticate Windows users with SAMBA and provide Windows file shares on "
+"your network"
 msgstr ""
 "Authentifie les utilisateurs Windows avec SAMBA et fourni des partages de "
-"fichiers sur votre réseau"
+"fichiers sur le réseau"
 
-#: modules/mds_smb/desc.xml11(rpm)
+#: modules/mds_smb/desc.xml10(rpm)
 msgid "samba-server"
 msgstr "samba-server"
 
-#: modules/mds_smb/desc.xml12(rpm)
+#: modules/mds_smb/desc.xml11(rpm)
 msgid "samba-client"
 msgstr "samba-client"
 
-#: modules/mds_smb/desc.xml13(rpm)
+#: modules/mds_smb/desc.xml12(rpm)
 msgid "samba-common"
 msgstr "samba-common"
 
-#: modules/mds_smb/desc.xml14(rpm)
+#: modules/mds_smb/desc.xml13(rpm)
 msgid "samba-doc"
 msgstr "samba-doc"
 
-#: modules/mds_smb/desc.xml15(rpm)
+#: modules/mds_smb/desc.xml14(rpm)
 msgid "smbldap-tools"
 msgstr "smbldap-tools"
 
-#: modules/mds_smb/desc.xml16(rpm)
+#: modules/mds_smb/desc.xml15(rpm)
 msgid "mmc-web-samba"
 msgstr "mmc-web-samba"
 
-#: modules/mds_smb/desc.xml17(rpm)
+#: modules/mds_smb/desc.xml16(rpm)
 msgid "python-mmc-samba"
 msgstr "python-mmc-samba"
 
-#: modules/mds_smb/desc.xml21(module)
+#: modules/mds_smb/desc.xml20(module)
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: modules/mds_smb/desc.xml26(label)
+#: modules/mds_smb/desc.xml25(label)
 msgid "SAMBA domain name"
 msgstr "Nom de domaine SAMBA"
 
-#: modules/mds_smb/desc.xml27(help)
+#: modules/mds_smb/desc.xml26(help)
 msgid "The name of your Microsoft domain."
 msgstr "Le nom de votre domaine Microsoft."
 
-#: modules/mds_smb/desc.xml31(label)
+#: modules/mds_smb/desc.xml30(label)
 msgid "Netbios name"
 msgstr "Nom netbios"
 
-#: modules/mds_smb/desc.xml32(help)
+#: modules/mds_smb/desc.xml31(help)
 msgid "The name of your SAMBA server in the Microsoft domain."
 msgstr "Le nom de votre serveur SAMBA sur le domaine Microsoft."
 
-#: modules/mds_smb/desc.xml35(label)
+#: modules/mds_smb/desc.xml34(label)
 msgid "Administrator name"
 msgstr "Nom de l'administrateur"
 
-#: modules/mds_smb/desc.xml36(help)
+#: modules/mds_smb/desc.xml35(help)
 msgid "The name of the Microsoft domain administrator."
 msgstr "Le nom de l'administrateur du domaine"
 
-#: modules/mds_smb/desc.xml39(label)
+#: modules/mds_smb/desc.xml38(label)
 msgid "Administrator password"
 msgstr "Mot de passe de l'administrateur"
 
-#: modules/mds_smb/desc.xml40(help)
+#: modules/mds_smb/desc.xml39(help)
 msgid "Password for the Microsoft domain administrator."
 msgstr "Mot de passe pour l'administrateur du domaine"
 
-#: modules/mds_smb/desc.xml43(label)
+#: modules/mds_smb/desc.xml42(label)
 msgid "Allow connections from internal networks"
 msgstr "Autoriser les connexions depuis les réseaux internes"
 
-#: modules/mds_smb/desc.xml44(help)
+#: modules/mds_smb/desc.xml43(help)
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'internal'"
@@ -106,11 +106,11 @@ msgstr ""
 "Configurer le firewall pour accepter le traffic SAMBA sur les interfaces "
 "internes"
 
-#: modules/mds_smb/desc.xml48(label)
+#: modules/mds_smb/desc.xml47(label)
 msgid "Allow connections connections external networks"
 msgstr "Autoriser les connexions depuis les réseaux externes"
 
-#: modules/mds_smb/desc.xml49(help)
+#: modules/mds_smb/desc.xml48(help)
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'external'"

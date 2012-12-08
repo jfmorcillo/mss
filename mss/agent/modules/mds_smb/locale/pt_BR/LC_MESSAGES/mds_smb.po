@@ -1,152 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"POT-Creation-Date: 2012-12-08 02:54+0100\n"
 "PO-Revision-Date: 2012-12-14 17:52+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-
-#: modules/mds_smb/desc.xml3(name)
-msgid "Windows users and file sharing management"
-msgstr ""
-
-#: modules/mds_smb/desc.xml4(desc)
-msgid ""
-"Authenticate Windows users with SAMBA, provide Windows file shares on your "
-"network"
-msgstr ""
-
-#: modules/mds_smb/desc.xml11(rpm)
-msgid "samba-server"
-msgstr "samba-server"
-
-#: modules/mds_smb/desc.xml12(rpm)
-msgid "samba-client"
-msgstr "samba-client"
-
-#: modules/mds_smb/desc.xml13(rpm)
-msgid "samba-common"
-msgstr "samba-common"
-
-#: modules/mds_smb/desc.xml14(rpm)
-msgid "samba-doc"
-msgstr "samba-doc"
-
-#: modules/mds_smb/desc.xml15(rpm)
-msgid "smbldap-tools"
-msgstr "smbldap-tools"
-
-#: modules/mds_smb/desc.xml16(rpm)
-msgid "mmc-web-samba"
-msgstr "mmc-web-samba"
-
-#: modules/mds_smb/desc.xml17(rpm)
-msgid "python-mmc-samba"
-msgstr "python-mmc-samba"
-
-#: modules/mds_smb/desc.xml21(module)
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: modules/mds_smb/desc.xml26(label)
-msgid "SAMBA domain name"
-msgstr "Nome de domínio SAMBA"
-
-#: modules/mds_smb/desc.xml27(help)
-msgid "The name of your Microsoft domain."
-msgstr "O nome do seu domínio Microsoft."
-
-#: modules/mds_smb/desc.xml31(label)
-msgid "Netbios name"
-msgstr "Nome do Netbios"
-
-#: modules/mds_smb/desc.xml32(help)
-msgid "The name of your SAMBA server in the Microsoft domain."
-msgstr "O nome do seu servidor SAMBA no domínio Microsoft."
-
-#: modules/mds_smb/desc.xml35(label)
-msgid "Administrator name"
-msgstr "Nome do administrador"
-
-#: modules/mds_smb/desc.xml36(help)
-msgid "The name of the Microsoft domain administrator."
-msgstr "O nome do administrador de domínio Microsoft."
-
-#: modules/mds_smb/desc.xml39(label)
-msgid "Administrator password"
-msgstr ""
-
-#: modules/mds_smb/desc.xml40(help)
-msgid "Password for the Microsoft domain administrator."
-msgstr "Senha para o administrador do domínio Microsoft."
-
-#: modules/mds_smb/desc.xml43(label)
-msgid "Allow connections from internal networks"
-msgstr ""
-
-#: modules/mds_smb/desc.xml44(help)
-msgid ""
-"Configure the firewall to accept SAMBA related traffic on interfaces "
-"configured as 'internal'"
-msgstr ""
-
-#: modules/mds_smb/desc.xml48(label)
-msgid "Allow connections connections external networks"
-msgstr ""
-
-#: modules/mds_smb/desc.xml49(help)
-msgid ""
-"Configure the firewall to accept SAMBA related traffic on interfaces "
-"configured as 'external'"
-msgstr ""
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_smb/desc.xml0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
-
-#: modules/mds_smb/setup-smb.sh:32
-msgid "Error while setting SAMBA password."
-msgstr ""
-
-#: modules/mds_smb/setup-smb.sh:53
-msgid "Error while populating directory."
-msgstr "Erro ao preencher o diretório."
-
-#: modules/mds_smb/setup-smb.sh:63
-msgid ""
-"Users are now created in the Domain Users group by default. If users were "
-"created before, they still remains in the users group."
-msgstr ""
-
-#: modules/mds_smb/setup-smb.sh:66
-msgid "Failed granted rigths for Domain Admins group"
-msgstr ""
-"Falha nas permissões garantidas para o grupo do domínio de Administradores."
-
-#: modules/mds_smb/setup-smb.sh:84
-msgid "Domain name : $smbdomain"
-msgstr ""
-
-#: modules/mds_smb/setup-smb.sh:85
-msgid "Server name : $smbnetbios"
-msgstr ""
-
-#: modules/mds_smb/setup-smb.sh:86
-msgid "Domain administrator : $smbadmin"
-msgstr ""
 
 #: modules/mds_smb/setup-smb.sh:87
 msgid "- a public share is created in /home/samba/shares/public"
@@ -156,19 +27,147 @@ msgstr "- Um compartilhamento público foi criado em /home/samba/shares/public"
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr "- Você pode criar um script logon.bat em /home/samba/netlogon"
 
-#: modules/mds_smb/setup-smb.sh:89
-msgid ""
-"You can now use the management interface to manage your Windows users and "
-"shares at https://@HOSTNAME@/mmc/."
+#: modules/mds_smb/desc.xml:34(label)
+msgid "Administrator name"
+msgstr "Nome do administrador"
+
+#: modules/mds_smb/desc.xml:38(label)
+msgid "Administrator password"
 msgstr ""
 
-#: modules/mds_smb/__init__.py:39
-msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
+#: modules/mds_smb/desc.xml:47(label)
+msgid "Allow connections connections external networks"
 msgstr ""
+
+#: modules/mds_smb/desc.xml:42(label)
+msgid "Allow connections from internal networks"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:4(desc)
+msgid ""
+"Authenticate Windows users with SAMBA and provide Windows file shares on "
+"your network"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:48(help)
+msgid ""
+"Configure the firewall to accept SAMBA related traffic on interfaces "
+"configured as 'external'"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:43(help)
+msgid ""
+"Configure the firewall to accept SAMBA related traffic on interfaces "
+"configured as 'internal'"
+msgstr ""
+
+#: modules/mds_smb/setup-smb.sh:86
+msgid "Domain administrator : $smbadmin"
+msgstr ""
+
+#: modules/mds_smb/setup-smb.sh:84
+msgid "Domain name : $smbdomain"
+msgstr ""
+
+#: modules/mds_smb/setup-smb.sh:53
+msgid "Error while populating directory."
+msgstr "Erro ao preencher o diretório."
+
+#: modules/mds_smb/setup-smb.sh:32
+msgid "Error while setting SAMBA password."
+msgstr ""
+
+#: modules/mds_smb/setup-smb.sh:66
+msgid "Failed granted rigths for Domain Admins group"
+msgstr ""
+"Falha nas permissões garantidas para o grupo do domínio de Administradores."
 
 #: modules/mds_smb/__init__.py:46
 msgid ""
 "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
 msgstr ""
 
+#: modules/mds_smb/__init__.py:39
+msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
+msgstr ""
 
+#: modules/mds_smb/desc.xml:30(label)
+msgid "Netbios name"
+msgstr "Nome do Netbios"
+
+#: modules/mds_smb/desc.xml:39(help)
+msgid "Password for the Microsoft domain administrator."
+msgstr "Senha para o administrador do domínio Microsoft."
+
+#: modules/mds_smb/desc.xml:25(label)
+msgid "SAMBA domain name"
+msgstr "Nome de domínio SAMBA"
+
+#: modules/mds_smb/setup-smb.sh:85
+msgid "Server name : $smbnetbios"
+msgstr ""
+
+#: modules/mds_smb/desc.xml:35(help)
+msgid "The name of the Microsoft domain administrator."
+msgstr "O nome do administrador de domínio Microsoft."
+
+#: modules/mds_smb/desc.xml:26(help)
+msgid "The name of your Microsoft domain."
+msgstr "O nome do seu domínio Microsoft."
+
+#: modules/mds_smb/desc.xml:31(help)
+msgid "The name of your SAMBA server in the Microsoft domain."
+msgstr "O nome do seu servidor SAMBA no domínio Microsoft."
+
+#: modules/mds_smb/setup-smb.sh:63
+msgid ""
+"Users are now created in the Domain Users group by default. If users were "
+"created before, they still remains in the users group."
+msgstr ""
+
+#: modules/mds_smb/desc.xml:3(name)
+msgid "Windows users and file sharing management"
+msgstr ""
+
+#: modules/mds_smb/setup-smb.sh:89
+msgid ""
+"You can now use the management interface to manage your Windows users and "
+"shares at https://@HOSTNAME@/mmc/."
+msgstr ""
+
+#: modules/mds_smb/desc.xml:20(module)
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: modules/mds_smb/desc.xml:15(rpm)
+msgid "mmc-web-samba"
+msgstr "mmc-web-samba"
+
+#: modules/mds_smb/desc.xml:16(rpm)
+msgid "python-mmc-samba"
+msgstr "python-mmc-samba"
+
+#: modules/mds_smb/desc.xml:11(rpm)
+msgid "samba-client"
+msgstr "samba-client"
+
+#: modules/mds_smb/desc.xml:12(rpm)
+msgid "samba-common"
+msgstr "samba-common"
+
+#: modules/mds_smb/desc.xml:13(rpm)
+msgid "samba-doc"
+msgstr "samba-doc"
+
+#: modules/mds_smb/desc.xml:10(rpm)
+msgid "samba-server"
+msgstr "samba-server"
+
+#: modules/mds_smb/desc.xml:14(rpm)
+msgid "smbldap-tools"
+msgstr "smbldap-tools"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/mds_smb/desc.xml:0(None)
+msgid "translator-credits"
+msgstr "translator-credits"

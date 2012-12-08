@@ -1,8 +1,7 @@
 <module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:noNamespaceSchemaLocation="../desc.xsd" id="mds_smb">
     <name>Windows users and file sharing management</name>
-    <desc>Authenticate Windows users with SAMBA, provide Windows file shares on
-    your network</desc>
+    <desc>Authenticate Windows users with SAMBA and provide Windows file shares on your network</desc>
     <actions>
         <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/main.php" />
     </actions>
