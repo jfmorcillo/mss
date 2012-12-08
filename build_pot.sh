@@ -17,7 +17,7 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-cd mss/agent
+pushd mss/agent
 [ $? -ne 0 ] && exit 1
 
 # Agent translation
@@ -58,5 +58,17 @@ for module in modules/*; do
         done
     fi
 done
+
+popd
+pushd mss/www/wizard
+django-admin.py makemessages -l en
+
+popd
+pushd mss/www/layout/base
+django-admin.py makemessages -l en
+
+popd
+pushd mss/www/layout/commercial
+django-admin.py makemessages -l en
 
 exit 0
