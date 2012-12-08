@@ -1,16 +1,15 @@
-# MSS.
-# Copyright (C) 2011
-# This file is distributed under the same license as the mss package.
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
 #   <jpbraun@mandriva.com>, 2012.
-# Jean-Philippe Braun, 2010.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:28+0100\n"
-"PO-Revision-Date: 2012-12-17 18:19+0000\n"
+"POT-Creation-Date: 2012-12-08 02:49+0100\n"
+"PO-Revision-Date: 2012-12-17 18:20+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,349 +18,32 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: transaction.py:36
-msgid "Installation summary"
-msgstr "Résumé de l'installation"
-
-#: transaction.py:38
-msgid "The folowing component will be installed."
-msgid_plural "The folowing components will be installed."
-msgstr[0] "Le composant suivant va être installé"
-msgstr[1] "Les composants suivants vont être installés"
-
-#: transaction.py:48
-msgid "Medias authentication"
-msgstr "Authentification des médias"
-
-#: transaction.py:49
-msgid "One or more medias need authentication"
-msgstr "Une authentification est nécessaire pour installer un des médias"
-
-#: transaction.py:55
-msgid "Medias add"
-msgstr "Ajout des médias"
-
-#: transaction.py:62
-msgid "Installation"
-msgstr "Installation"
-
-#: transaction.py:69
-msgid "Initial configuration"
-msgstr "Configuration initiale"
-
-#: transaction.py:76 templates/reboot.html:14
-msgid "Reboot"
-msgstr "Redémarrage"
-
-#: views.py:134 templates/first_time.html:6
-msgid "Welcome"
-msgstr "Bienvenue"
-
-#: views.py:135
-msgid ""
-"Before you can install any services we need to setup a few things with you."
-msgstr ""
-"Avant de pouvoir installer vos services nous devons paramétrer quelques "
-"éléments avec vous."
-
-#: views.py:174 templates/error.html:9
-msgid "MSS agent is unreacheable."
-msgstr "L'agent MSS est injoignable."
-
-#: templates/base.html:22
-msgid "Hide log"
-msgstr "Cacher le détail"
-
-#: templates/base.html:25 templates/config_run.html:155
-#: templates/install.html:60 templates/media_add.html:86
-msgid "Show log"
-msgstr "Afficher le détail"
-
-#: templates/base.html:45 templates/base.html.py:142
-msgid "Ready"
-msgstr "Prêt"
-
-#: templates/base.html:69
-msgid "The MSS interface is unreachable"
-msgstr "L'interface MSS ne répond plus"
-
-#: templates/base.html:110
-msgid ""
-"You don't have the Mandriva Business Server repositories installed. Install "
-"them to get security updates."
-msgstr ""
-"Vous n'avez pas les médias de Mandriva Business Server installés. Installez-"
-"les pour recevoir les mises à jour de sécurité."
-
-#: templates/base.html:110 templates/media_auth.html:43
-msgid "Add medias"
-msgstr "Ajouter les médias"
-
-#: templates/base.html:116
-msgid "Update packages list on your server."
-msgstr "Met à jour les listes de packages sur votre serveur."
-
-#: templates/base.html:117
-msgid "Update medias"
-msgstr "Mettre à jour les médias"
-
-#: templates/base.html:122
-msgid "Logout"
-msgstr "Déconnexion"
-
-#: templates/config.html:111 templates/config.html.py:258
-msgid "Add"
-msgstr "Ajouter"
-
-#: templates/config.html:165
-msgid "Re-enter password"
-msgstr "Ré-entrez le mot de passe"
-
-#: templates/config.html:275 templates/config_run.html:146
-msgid "No configuration for this module."
-msgstr "Pas de configuration pour ce module."
-
-#: templates/config.html:281
-msgid "Required field"
-msgstr "Champ obligatoire"
-
-#: templates/config.html:284 templates/config_run.html:60
-#: templates/install.html:19 templates/media_add.html:26
-#: templates/media_add.html.py:68 templates/preinst.html:36
-msgid "Continue"
-msgstr "Continuer"
-
-#: templates/config_no.html:11
-msgid "Installation & configuration was successful."
-msgstr "Installation et configuration réussie."
-
-#: templates/config_no.html:14 templates/config_run.html:85
-#: templates/config_run.html.py:102 templates/error.html:14
-msgid "Home page"
-msgstr "Page d'accueil"
-
-#: templates/config_run.html:25
-msgid "Configuration summary"
-msgstr "Résumé de la configuration"
-
-#: templates/config_run.html:26
-msgid "Configuration warnings"
-msgstr "Avertissements de configuration"
-
-#: templates/config_run.html:27
-msgid "Configuration errors"
-msgstr "Erreurs de configuration"
-
-#: templates/config_run.html:57 templates/config_run.html.py:104
-msgid "Configuration terminated, details are displayed below."
-msgstr "La configuration est terminée. Les détails sont affichés ci-dessous."
-
-#: templates/config_run.html:74
-msgid "Configuration succeded."
-msgstr "Configuration réussie."
-
-#: templates/config_run.html:84
-msgid "Configuration failed."
-msgstr "Configuration échouée."
-
-#: templates/config_run.html:110
-msgid "Could not find any configuration script to execute."
-msgstr "Aucun script de configuration à executer."
-
-#: templates/config_run.html:117
-msgid "Running configuration..."
-msgstr "Configuration en cours..."
-
-#: templates/config_run.html:152 templates/media_add.html:83
-msgid "Waiting..."
-msgstr "En attente..."
-
-#: templates/config_run.html:166 templates/install.html:68
-#: templates/media_add.html:95
-msgid "Please wait..."
-msgstr "Patientez..."
-
-#: templates/error.html:6
-msgid "An error has occured."
-msgstr "Une erreur s'est produite."
-
-#: templates/error.html:10
-msgid ""
-"Check the service status with the <strong>service mss-agent status</strong> "
-"command."
-msgstr ""
-"Vérifiez le statut du service avec la commande <strong>service mss-agent "
-"status</strong>."
-
-#: templates/first_time.html:8
-msgid ""
-"Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
-"setup the services you need on your server."
-msgstr ""
-"Mandriva Server Setup (<em>MSS</em>) est un outil simple vous permettant de "
-"paramétrer les services dont vous avez besoin sur votre serveur."
-
-#: templates/first_time.html:8
-msgid "Login to begin to setup your server."
-msgstr "Identifiez-vous pour commencer à paramétrer le serveur."
-
-#: templates/first_time.html:10 templates/invalid_login.html:6
-#: templates/login.html:6
-msgid "Login"
-msgstr "Identification"
-
-#: templates/install.html:17
-msgid "Installation succeded."
-msgstr "Installation réussie."
-
-#: templates/install.html:28
-msgid "Installation failed. Update your medias and retry to install."
-msgstr ""
-"Installation échouée. Mettez à jour vos médias et relancez l'installation."
-
-#: templates/install.html:30
-msgid "Installation failed."
-msgstr "Installation échouée."
-
-#: templates/install.html:34
-msgid "Retry"
-msgstr "Relancer"
-
-#: templates/install.html:54
-msgid "The following component is being installed"
-msgid_plural "The following components are being installed"
-msgstr[0] "Le composant suivant est en cours d'installation"
-msgstr[1] "Les composants suivants sont en cours d'installation"
-
-#: templates/install.html:70 templates/media_add.html:97
-#: templates/media_auth.html:45 templates/preinst.html:39
-msgid "Back"
-msgstr "Retour"
-
-#: templates/invalid_login.html:9
-msgid "Wrong username or password."
-msgstr "Mauvais utilisateur ou mot de passe."
-
-#: templates/login_form.html:12 templates/media_auth.html:23
-msgid "Your my.mandriva.com email address."
-msgstr "Votre adresse mail my.mandriva.com."
-
-#: templates/login_form.html:16 templates/media_auth.html:31
-msgid "Your my.mandriva.com password."
-msgstr "Votre mot de passe my.mandriva.com."
-
-#: templates/login_form.html:19
-msgid "Use your Mandriva account to login."
-msgstr "Utilisez votre compte Mandriva pour vous connecter."
-
-#: templates/login_form.html:28
-msgid "The server <strong>root</strong> password."
-msgstr "Le mot de passe <strong>root</strong> du serveur."
-
-#: templates/login_form.html:31
-msgid "No internet connection, use the root password to login."
-msgstr ""
-"Pas de connexion internet, utilisez le mot de passe root pour vous "
-"connecter."
-
-#: templates/login_form.html:46 templates/media_auth.html:18
-msgid "Username"
-msgstr "Utilisateur"
-
-#: templates/login_form.html:52 templates/media_auth.html:27
-msgid "Password"
-msgstr "Mot de passe"
-
-#: templates/login_form.html:58
-msgid "Language"
-msgstr "Langue"
-
-#: templates/login_form.html:65
-msgid "Enter"
-msgstr "Entrer"
-
-#: templates/media_add.html:37
-msgid "Adding media..."
-msgstr "Ajout des médias..."
-
-#: templates/media_add.html:52
-msgid "Media added."
-msgstr "Le média a été ajouté."
-
-#: templates/media_add.html:58
-msgid "Media already added."
-msgstr "Le média est déja présent."
-
-#: templates/media_add.html:64
-msgid "Failed to add media."
-msgstr "Échec lors de l'ajout du média."
-
-#: templates/media_auth.html:16
-msgid "My authentication"
-msgstr "Authentification My"
-
-#: templates/media_auth.html:41
-msgid "Don't add medias"
-msgstr "Ne pas ajouter les médias"
-
-#: templates/preinst.html:14
-msgid "No component selected."
-msgstr "Aucun composant sélectionné."
-
-#: templates/preinst.html:22
-msgid "Added as a dependency"
-msgstr "Ajouté comme dépendance"
-
-#: templates/preinst.html:23
-msgid "Reinstallation"
-msgstr "Ré-installation"
-
-#: templates/preinst.html:28
-msgid ""
-"If other components requires this component they may be broken after the "
-"reinstallation."
-msgstr ""
-"Si d'autres composants dépendent de ce module, ils risquent de ne plus "
-"fonctionner après la ré-installation."
-
-#: templates/reboot.html:11
-msgid "The configuration is finished. The server must be rebooted."
-msgstr "La configuration est terminée. Le serveur doit être redémarré."
-
-#: templates/section.html:19
-msgid "This component can't be installed with"
-msgstr "Ce composant ne peux pas être installé avec"
-
-#: templates/section.html:163
-msgid "This component is installed and configured"
-msgstr "Ce composant est installé et configuré"
-
-#: templates/section.html:164
-msgid "This module conflicts with : "
-msgstr "Ce module est en conflit avec : "
-
-#: templates/section.html:167
-msgid "You have bought this component"
-msgstr "Vous avez acheté ce composant"
-
-#: templates/section.html:187
-msgid "Buy"
-msgstr "Acheter"
-
-#: templates/section.html:189 templates/section.html.py:192
-msgid "More information"
-msgstr "Plus d'informations"
-
-#: templates/section.html:221
-msgid "Install and configure selected components"
-msgstr "Installer et configurer les composants"
-
-#: templates/sections.html:36
-msgid "No modules for Mandriva Server Setup installed."
-msgstr "Aucun module installé pour Mandriva Server Setup"
-
-#: templates/sections.html:37
-msgid "Check for mss-modules-* packages."
-msgstr "Cherchez des paquets du type mss-modules-*."
+#: config.py:27
+msgid "Core Services"
+msgstr "Services essentiels"
+
+#: config.py:30
+msgid "Users"
+msgstr "Utilisateurs"
+
+#: config.py:36
+msgid "Mail"
+msgstr "Messagerie"
+
+#: config.py:42
+msgid "Network"
+msgstr "Réseau"
+
+#: config.py:48
+msgid "Other"
+msgstr "Autres"
+
+#: config.py:53
+msgid "Other Services"
+msgstr "Autre services"
+
+#: config.py:56
+msgid "Instant messaging"
+msgstr "Messagerie instantanée"
 
 
