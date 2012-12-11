@@ -8,6 +8,16 @@
             <rpm>ejabberd</rpm>
         </target>
     </packages>
+    <config>
+        <check name="fw_lan" default="on">
+            <label>Allow access from internal networks</label>
+            <help>Configure the firewall to allow access to the Instant Messaging Service from internal networks</help>
+        </check>
+        <check name="fw_wan" default="on">
+            <label>Allow access from external networks</label>
+            <help>Configure the firewall to allow access to the Instant Messaging Service from external networks</help>
+        </check>
+    </config>
     <text>The instant messaging service is configured.</text>
     <text>You can simply add users through the management interface at</text>
     <text>Configure clients with JID like</text>

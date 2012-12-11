@@ -5,6 +5,9 @@
 
 check_mmc_configured
 
+fw_lan=$1
+fw_wan=$2
+
 SERVICE="ejabberd"
 EJABBERD_CONF_TEMPLATE="templates/ejabberd.cfg.tpl"
 EJABBERD_CONF="/etc/ejabberd/ejabberd.cfg"
@@ -16,6 +19,11 @@ sed -i "s/\@DOMAIN\@/$DOMAIN/" $EJABBERD_CONF
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $EJABBERD_CONF
 
 restart_service $SERVICE
+
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t lan -p tcp -P 5222
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a ACCEPT -t wan -p tcp -P 5222
+restart_service shorewall
 
 echo "8The instant messaging service is configured."
 echo "8You can simply add users through the management interface at# https://@HOSTNAME@/mmc/. #The user's mail will be used as his Jabber ID."
