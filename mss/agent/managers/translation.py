@@ -27,6 +27,7 @@ import locale
 
 from mss.agent.lib.utils import Singleton
 
+
 class TranslationManager:
     __metaclass__ = Singleton
 
@@ -44,16 +45,17 @@ class TranslationManager:
 
     def set_catalog(self, name, path=''):
         try:
-            translation = gettext.translation(
-                    name,
-                    os.path.join(path, "locale"),
-                    languages=[self.lang],
-                    )
+            translation = gettext.translation(name,
+                                              os.path.join(path, "locale"),
+                                              languages=[self.lang])
         except AttributeError:
-            translation = gettext.NullTranslations()        
+            translation = gettext.NullTranslations()
         except IOError:
             translation = gettext.NullTranslations()
         self.catalogs[name] = (path, translation)
+
+    def get_catalog(self, name):
+        return self.catalogs[name]
 
     def translate(self, string, catalog):
         """Translate a given string to the language of the application."""
@@ -63,4 +65,4 @@ class TranslationManager:
         except KeyError:
             return unicode(string)
         else:
-            return self.catalogs[catalog][1].ugettext(string)    
+            return self.catalogs[catalog][1].ugettext(string)

@@ -25,8 +25,10 @@ from gettext import gettext as _
 
 from mss.agent.lib.utils import Singleton
 from mss.agent.classes.process import ProcessThread
+from mss.agent.manager.translation import TranslationManager
 
 logger = logging.getLogger(__name__)
+
 
 class ProcessManager:
     """ Class managing running tasks """
@@ -39,7 +41,7 @@ class ProcessManager:
     def load_packages(self, callback):
         """ get all installed packages """
         self.launch("load", ["rpm", "-qa", "--queryformat", "%{NAME}#"],
-            callback=callback)
+                    callback=callback)
 
     def install_packages(self, packages):
         """ launch installation of packages list """
@@ -48,7 +50,7 @@ class ProcessManager:
     def run_script(self, script, args, cwd, module):
         """ launch configuration script for module """
         env = {'TEXTDOMAIN': module,
-               'TEXTDOMAINDIR': '/usr/lib/python2.7/site-packages/mss/agent/modules/%s/locale/' % module}
+               'TEXTDOMAINDIR': os.path.join(TranslationManager.get_catalog(module), 'locale')}
         if os.path.exists(os.path.join(cwd, script)):
             self.launch("config", ["bash", script] + args, cwd=cwd,
                         module=module, env=env)
@@ -85,6 +87,10 @@ class ProcessManager:
             # remove previoud thread
             if thread:
                 self.threads.remove(thread)
+            if not env:
+                env = {}
+            if not 'LC_ALL' in env:
+                env['LC_ALL'] = TranslationManager().lang
             thread = ProcessThread(type, module, command, cwd, callback, shell, env)
             self.threads.append(thread)
             logger.debug("Create %s thread for module %s" % (type, module))
