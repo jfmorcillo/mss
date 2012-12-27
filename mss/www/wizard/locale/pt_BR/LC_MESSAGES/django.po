@@ -1,56 +1,52 @@
 # MSS.
 # Copyright (C) 2011
 # This file is distributed under the same license as the mss package.
-#
+# 
+## Translators:
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:25+0100\n"
-"PO-Revision-Date: 2011-06-21 15:24+0000\n"
-"Last-Translator: Andre Paulo Machado <andre@mandriva.com>\n"
-"Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"PO-Revision-Date: 2012-12-17 18:18+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: transaction.py:36
-#, fuzzy
 msgid "Installation summary"
-msgstr "Instalação"
+msgstr ""
 
 #: transaction.py:38
-#, fuzzy
 msgid "The folowing component will be installed."
 msgid_plural "The folowing components will be installed."
-msgstr[0] "Os seguintes componentes estão sendo instalados"
-msgstr[1] "Os seguintes componentes estão sendo instalados"
+msgstr[0] ""
+msgstr[1] ""
 
 #: transaction.py:48
-#, fuzzy
 msgid "Medias authentication"
-msgstr "Autenticação de mídia"
+msgstr ""
 
 #: transaction.py:49
 msgid "One or more medias need authentication"
 msgstr "Uma ou mais mídias necessitam de autenticação"
 
 #: transaction.py:55
-#, fuzzy
 msgid "Medias add"
-msgstr "Mídia adicionada."
+msgstr ""
 
 #: transaction.py:62
 msgid "Installation"
 msgstr "Instalação"
 
 #: transaction.py:69
-#, fuzzy
 msgid "Initial configuration"
-msgstr "Executar configuração"
+msgstr ""
 
 #: transaction.py:76 templates/reboot.html:14
 msgid "Reboot"
@@ -66,9 +62,8 @@ msgid ""
 msgstr ""
 
 #: views.py:174 templates/error.html:9
-#, fuzzy
 msgid "MSS agent is unreacheable."
-msgstr "O servidor XML-RPC está indisponível."
+msgstr ""
 
 #: templates/base.html:22
 msgid "Hide log"
@@ -84,9 +79,8 @@ msgid "Ready"
 msgstr "Pronto"
 
 #: templates/base.html:69
-#, fuzzy
 msgid "The MSS interface is unreachable"
-msgstr "O servidor XML-RPC está indisponível."
+msgstr ""
 
 #: templates/base.html:110
 msgid ""
@@ -133,9 +127,8 @@ msgid "Continue"
 msgstr "Continuar"
 
 #: templates/config_no.html:11
-#, fuzzy
 msgid "Installation & configuration was successful."
-msgstr "Instalação com sucesso."
+msgstr ""
 
 #: templates/config_no.html:14 templates/config_run.html:85
 #: templates/config_run.html.py:102 templates/error.html:14
@@ -167,11 +160,8 @@ msgid "Configuration failed."
 msgstr "A configuração falhou."
 
 #: templates/config_run.html:110
-#, fuzzy
 msgid "Could not find any configuration script to execute."
 msgstr ""
-"Erro: Não foi possível encontrar qualquer script de configuração para "
-"executar."
 
 #: templates/config_run.html:117
 msgid "Running configuration..."
@@ -191,12 +181,10 @@ msgid "An error has occured."
 msgstr "Ocorreu um erro."
 
 #: templates/error.html:10
-#, fuzzy
 msgid ""
 "Check the service status with the <strong>service mss-agent status</strong> "
 "command."
 msgstr ""
-"Verificar o status do serviço com o comando <strong>service mss-rpc.</strong>"
 
 #: templates/first_time.html:8
 msgid ""
@@ -218,11 +206,8 @@ msgid "Installation succeded."
 msgstr "Instalação com sucesso."
 
 #: templates/install.html:28
-#, fuzzy
 msgid "Installation failed. Update your medias and retry to install."
 msgstr ""
-"A instalação falhou. Você deve atualizar as suas mídias de atualização. "
-"(urpmi.update-a)."
 
 #: templates/install.html:30
 msgid "Installation failed."
@@ -244,9 +229,8 @@ msgid "Back"
 msgstr "Voltar"
 
 #: templates/invalid_login.html:9
-#, fuzzy
 msgid "Wrong username or password."
-msgstr "Erro: nome de usuário ou senha errada."
+msgstr ""
 
 #: templates/login_form.html:12 templates/media_auth.html:23
 msgid "Your my.mandriva.com email address."
@@ -265,9 +249,8 @@ msgid "The server <strong>root</strong> password."
 msgstr ""
 
 #: templates/login_form.html:31
-#, fuzzy
 msgid "No internet connection, use the root password to login."
-msgstr "Sem conexão à Internet. <br/> Use a senha root para entrar."
+msgstr ""
 
 #: templates/login_form.html:46 templates/media_auth.html:18
 msgid "Username"
@@ -306,9 +289,8 @@ msgid "My authentication"
 msgstr "Minha autenticação"
 
 #: templates/media_auth.html:41
-#, fuzzy
 msgid "Don't add medias"
-msgstr "Adicionar mídias"
+msgstr ""
 
 #: templates/preinst.html:14
 msgid "No component selected."
@@ -335,23 +317,20 @@ msgid "The configuration is finished. The server must be rebooted."
 msgstr ""
 
 #: templates/section.html:19
-#, fuzzy
 msgid "This component can't be installed with"
-msgstr "Os seguintes componentes estão sendo instalados"
+msgstr ""
 
 #: templates/section.html:163
-#, fuzzy
 msgid "This component is installed and configured"
-msgstr "Os seguintes componentes serão configurados."
+msgstr ""
 
 #: templates/section.html:164
 msgid "This module conflicts with : "
 msgstr "Este módulo conflita com : "
 
 #: templates/section.html:167
-#, fuzzy
 msgid "You have bought this component"
-msgstr "Você comprou este módulo."
+msgstr ""
 
 #: templates/section.html:187
 msgid "Buy"
@@ -362,9 +341,8 @@ msgid "More information"
 msgstr "Mais informações"
 
 #: templates/section.html:221
-#, fuzzy
 msgid "Install and configure selected components"
-msgstr "Instalar componentes"
+msgstr ""
 
 #: templates/sections.html:36
 msgid "No modules for Mandriva Server Setup installed."
@@ -374,106 +352,4 @@ msgstr "Nenhum módulo para instalação do servidor Mandriva foi instalado."
 msgid "Check for mss-modules-* packages."
 msgstr "Verifique se há pacotes mss-modules-* ."
 
-#~ msgid "The XML-RPC server is not responding"
-#~ msgstr "O servidor XML-RPC não está respondendo"
 
-#~ msgid ""
-#~ "You don't have the Mandriva Enterprise Server medias. Please add the "
-#~ "medias before using Mandriva Server Setup."
-#~ msgstr ""
-#~ "Você não tem as mídias do Mandriva Enterprise Server. Por favor, adicione-"
-#~ "as antes de usar o Configurador do Mandriva Server."
-
-#~ msgid "Remove network"
-#~ msgstr "Remover rede"
-
-#~ msgid "Remove field"
-#~ msgstr "Remover campo"
-
-#~ msgid "Preinstallation"
-#~ msgstr "Pré-instalação"
-
-#~ msgid "Medias"
-#~ msgstr "Mídias"
-
-#~ msgid "Configuration"
-#~ msgstr "Configuração"
-
-#~ msgid "Add field"
-#~ msgstr "Adicionar campo"
-
-#~ msgid "Add network"
-#~ msgstr "Adicionar rede"
-
-#~ msgid "The selected components doesn't have any configuration script."
-#~ msgstr "Os componentes selecionados não têm nenhum script de configuração."
-
-#~ msgid "Please wait during the configuration process."
-#~ msgstr "Por favor, aguarde durante o processo de configuração."
-
-#~ msgid ""
-#~ "To run the configuration, click on the &laquo;Run configuration&raquo; "
-#~ "button below."
-#~ msgstr ""
-#~ "Para executar a configuração, clique no botão «Executar configuração» "
-#~ "abaixo."
-
-#~ msgid "Configuration in progress..."
-#~ msgstr "Configuração em andamento ..."
-
-#~ msgid "Mandriva Server Setup"
-#~ msgstr "Configuração do Servidor Mandriva"
-
-#~ msgid ""
-#~ "Welcome on the Mandriva Server Setup. MSS aims to help system "
-#~ "administrators to setup quickly system services such as DNS and OpenLDAP. "
-#~ "Moreother, MSS allows you to setup <a href=\"http://mds.mandriva.org"
-#~ "\">Mandriva Directory Server</a> and <a href=\"http://pulse2.mandriva.org"
-#~ "\">Pulse 2</a> products easily."
-#~ msgstr ""
-#~ "Bem-vindo à configuração do Servidor Mandriva. O MSS visa ajudar os "
-#~ "administradores do sistema para configurar rapidamente os serviços do "
-#~ "sistema, como DNS e OpenLDAP. Além disso, MSS permite que você configure "
-#~ "facilmente os produtos <a href=\"http://mds.mandriva.org\">Mandriva "
-#~ "Directory Server</a> e <a href=\"http://pulse2.mandriva.org\">Pulse 2</a>."
-
-#~ msgid ""
-#~ "You have to use your Mandriva account to log in unless there is no "
-#~ "network connectivity. Only your Mandriva account will be able to log in "
-#~ "after your first connection."
-#~ msgstr ""
-#~ "Você tem que usar a sua conta Mandriva para fazer o login, a não ser que "
-#~ "uma conectividade de rede não esteja ativa. A sua conta Mandriva será o "
-#~ "único acesso após a sua primeira conexão."
-
-#~ msgid "Can't continue"
-#~ msgstr "Não pode continuar"
-
-#~ msgid "You have selected the following module."
-#~ msgid_plural "You have selected the following modules."
-#~ msgstr[0] "Você selecionou os seguintes módulos."
-#~ msgstr[1] "Você selecionou os seguintes módulos."
-
-#~ msgid "Modules"
-#~ msgstr "Módulos"
-
-#~ msgid "This is a commercial module."
-#~ msgstr "Este é um módulo comercial."
-
-#~ msgid "Packages for this module are installed."
-#~ msgstr "Os pacotes para este módulo são instalados."
-
-#~ msgid "This module was configured by MSS."
-#~ msgstr "Este módulo foi configurado pelo MSS."
-
-#~ msgid "Actions"
-#~ msgstr "Ações"
-
-#~ msgid "Reinstall and reconfigure"
-#~ msgstr "Reinstalar e reconfigurar"
-
-#~ msgid "Reconfigure"
-#~ msgstr "Reconfigurar"
-
-#~ msgid "Reconfigure this module."
-#~ msgstr "Reconfigurar este módulo."
