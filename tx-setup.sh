@@ -17,36 +17,25 @@ fi
 
 test -d .tx || tx init --host=https://transifex.mandriva.com
 
-cwd=`pwd`
+tx set --execute --auto-local -r mss.agent -s en -f mss/agent/locale/agent.pot "mss/agent/locale/<lang>/LC_MESSAGES/agent.po"
 
-cd mss/agent
-tx set --execute --auto-local -r mss.agent -s en -f locale/agent.pot "locale/<lang>/LC_MESSAGES/agent.po"
-
-cd $cwd
-
-
-cd mss/agent/modules
-for mod in *
+for mod in mss/agent/modules/*
 do
     if [ -d ${mod} ]; then
-        tx set --execute --auto-local -r mss.module-${mod} -s en -f ${mod}/locale/${mod}.pot "${mod}/locale/<lang>/LC_MESSAGES/${mod}.po"
+        name=`basename ${mod}`
+        tx set --execute --auto-local -r mss.module-${name} -s en -f ${mod}/locale/${name}.pot "${mod}/locale/<lang>/LC_MESSAGES/${name}.po"
     fi
 done
 
-cd $cwd
+tx set --execute --auto-local -r mss.wizard -s en "mss/www/wizard/locale/<lang>/LC_MESSAGES/django.po"
 
-cd mss/www/layout
-for layout in *
+for layout in mss/www/layout/*
 do
     if [ -d ${layout} ]; then
-        tx set --execute --auto-local -r mss.layout-${layout} -s en "${layout}/locale/<lang>/LC_MESSAGES/django.po"
+        name=`basename ${layout}`
+        tx set --execute --auto-local -r mss.layout-${name} -s en "${layout}/locale/<lang>/LC_MESSAGES/django.po"
     fi
 done
-
-cd $cwd
-
-cd mss/www/wizard
-tx set --execute --auto-local -r mss.wizard -s en "locale/<lang>/LC_MESSAGES/django.po"
 
 echo ""
 echo "Setup complete. You can now push/pull translations from transifex."
