@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2012 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -79,8 +77,6 @@ LANGUAGES = (
   ('pt_BR', 'Português do Brasil'),
 )
 
-SECRET_KEY = ''
-
 TEMPLATE_LOADERS = (
     'django.template.loaders.filesystem.load_template_source',
     'django.template.loaders.app_directories.load_template_source',
@@ -143,3 +139,8 @@ BETTER_500_LOG_DIR = os.path.join('/var', 'log', 'mss', '500')
 BETTER_500_UNCAUGHT_DIR = ""
 BETTER_500_AJAX_URL = "callback/"
 BETTER_500_POST_URL = "save/"
+
+try:
+    from local_settings import *
+except ImportError:
+    pass

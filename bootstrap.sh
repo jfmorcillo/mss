@@ -32,17 +32,17 @@ function generate_salt() {
 	echo $salt
 }
 
-mkdir -p /var/log/mss/
+mkdir -p /var/log/mss/500/
 mkdir -p /var/lib/mss/
 touch /var/log/mss/mss-agent.log
 touch /var/log/mss/mss-www.log
 chown $user.$user /var/log/mss/mss-www.log
-if [ ! -f ${path}/mss/www/settings.py ]; then
-    echo Creating settings.py file....
-    cp ${path}/mss/www/settings.py.example ${path}/mss/www/settings.py
-    chown $user.$user ${path}/mss/www/settings.py
+if [ ! -f ${path}/mss/www/local_settings.py ]; then
+    echo Creating local_settings.py file....
+    cp ${path}/mss/www/local_settings.py.example ${path}/mss/www/local_settings.py
+    chown $user.$user ${path}/mss/www/local_settings.py
     salt=`generate_salt`
-    sed -i "s!^SECRET_KEY.*!SECRET_KEY = \"${salt}\"!" ${path}/mss/www/settings.py
+    sed -i "s!^SECRET_KEY.*!SECRET_KEY = \"${salt}\"!" ${path}/mss/www/local_settings.py
 fi
 sh manage.sh todev
 [ -h $link ] && rm -f $link
