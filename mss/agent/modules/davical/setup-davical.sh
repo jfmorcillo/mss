@@ -69,7 +69,7 @@ sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CRON
 
 info_b $"The calendar and addressbook service is configured."
 info $"- Administrator : admin"
-info $"- Password :i $DAVICAL_ADMIN_PASS"
+info $"- Password : $DAVICAL_ADMIN_PASS"
 info $"Change it using the management interface https://@HOSTNAME@/davical/"
 
 exit 0
