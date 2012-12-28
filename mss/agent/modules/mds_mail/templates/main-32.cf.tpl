@@ -11,33 +11,33 @@ alias_database = hash:/etc/postfix/aliases
 mydomain = @FQDN@
 myorigin = @FQDN@
 mydestination = @FQDN@, @HOSTNAME@, localhost.localdomain, localhost
-relayhost = 
+relayhost =
 mynetworks = @MYNETWORKS@
 mailbox_size_limit = 0
 recipient_delimiter = +
 inet_interfaces = all
-luser_relay = 
+luser_relay =
 
-delay_warning_time = 4h 
-maximal_queue_lifetime = 10d 
-mailbox_size_limit = 0 
+delay_warning_time = 4h
+maximal_queue_lifetime = 10d
+mailbox_size_limit = 0
 message_size_limit = 15728640
 
-# LDAP Transport 
-transport_map = ldap:/etc/postfix/ldap-transport.cf 
+# LDAP Transport
+transport_map = ldap:/etc/postfix/ldap-transport.cf
 
 # Virtual Domains Control
 virtual_mailbox_domains = ldap:/etc/postfix/ldap-domains.cf
 virtual_mailbox_maps = ldap:/etc/postfix/ldap-accounts.cf
-virtual_mailbox_base = 
-virtual_alias_maps = ldap:/etc/postfix/ldap-aliases.cf, ldap:/etc/postfix/ldap-maildrop.cf
+virtual_mailbox_base =
+virtual_alias_maps = ldap:/etc/postfix/ldap-aliases.cf, ldap:/etc/postfix/ldap-maildrop.cf, ldap:/etc/postfix/ldap-valiases.cf
 virtual_alias_domains =
 virtual_minimum_uid = 100
-virtual_uid_maps = static:vmail 
+virtual_uid_maps = static:vmail
 virtual_gid_maps = static:mail
 
-# Dovecot LDA 
-virtual_transport = dovecot 
+# Dovecot LDA
+virtual_transport = dovecot
 dovecot_destination_recipient_limit = 1
 
 # TLS parameters
@@ -56,12 +56,12 @@ broken_sasl_auth_clients = yes
 smtpd_sasl_security_options = noanonymous
 smtpd_sasl_local_domain =
 
-# Wait until the RCPT TO command before evaluating restrictions 
-smtpd_delay_reject = yes 
+# Wait until the RCPT TO command before evaluating restrictions
+smtpd_delay_reject = yes
 
-# Basics Restrictions 
-smtpd_helo_required = yes 
-strict_rfc821_envelopes = yes 
+# Basics Restrictions
+smtpd_helo_required = yes
+strict_rfc821_envelopes = yes
 
 content_filter = amavis:[127.0.0.1]:10025
 
@@ -91,10 +91,10 @@ smtpd_sender_restrictions =
 smtpd_client_restrictions =
     permit_mynetworks,
     permit_sasl_authenticated,
-    reject_rbl_client bl.spamcop.net, 
-    reject_rbl_client dnsbl.njabl.org, 
-    reject_rbl_client cbl.abuseat.org, 
-    reject_rbl_client sbl-xbl.spamhaus.org, 
+    reject_rbl_client bl.spamcop.net,
+    reject_rbl_client dnsbl.njabl.org,
+    reject_rbl_client cbl.abuseat.org,
+    reject_rbl_client sbl-xbl.spamhaus.org,
     permit
 
 smtpd_data_restrictions =

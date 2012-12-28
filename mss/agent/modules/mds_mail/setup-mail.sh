@@ -18,6 +18,7 @@ dovecot_ldap_template="templates/dovecot-ldap.conf.tpl"
 dovecot_template="templates/dovecot.conf.tpl"
 ldap_accounts_cf="templates/ldap-accounts.cf"
 ldap_aliases_cf="templates/ldap-aliases.cf"
+ldap_valiases_cf="templates/ldap-valiases.cf"
 ldap_domains_cf="templates/ldap-domains.cf"
 ldap_maildrop_cf="templates/ldap-maildrop.cf"
 ldap_transport_cf="templates/ldap-transport.cf"
@@ -45,7 +46,7 @@ sed -i "s!\@MYNETWORKS\@!$smtpd_mynetworks!" /etc/postfix/main.cf
 backup /etc/postfix/master.cf
 cat $master_cf_template > /etc/postfix/master.cf
 
-for template in $ldap_accounts_cf $ldap_aliases_cf $ldap_domains_cf $ldap_maildrop_cf $ldap_transport_cf
+for template in $ldap_accounts_cf $ldap_aliases_cf $ldap_valiases_cf $ldap_domains_cf $ldap_maildrop_cf $ldap_transport_cf
 do
     newfile="/etc/postfix/`basename $template`"
     cat $template > $newfile
@@ -72,7 +73,6 @@ chown vmail:mail /home/vmail
 # mmc conf
 backup /etc/mmc/plugins/mail.ini
 cat $mail_ini_template > /etc/mmc/plugins/mail.ini
-sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/mail.ini
 
 # amavis configuration
 backup /etc/amavisd/amavisd.conf
