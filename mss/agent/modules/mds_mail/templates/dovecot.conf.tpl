@@ -21,14 +21,14 @@
 
 # Protocols we want to be serving: imap imaps pop3 pop3s managesieve
 # If you only want to use dovecot-auth, you can set this to "none".
-protocols = @PROTOCOLS@
+protocols = @PROTOCOLS@ managesieve
 
 # A space separated list of IP or host addresses where to listen in for
 # connections. "*" listens in all IPv4 interfaces. "[::]" listens in all IPv6
 # interfaces. Use "*, [::]" for listening both IPv4 and IPv6.
 #
 # If you want to specify ports for each service, you will need to configure
-# these settings inside the protocol imap/pop3/managesieve { ... } section, 
+# these settings inside the protocol imap/pop3/managesieve { ... } section,
 # so you can specify different ports for IMAP/POP3/MANAGESIEVE. For example:
 #   protocol imap {
 #     listen = *:10143
@@ -65,11 +65,11 @@ listen = *
 
 # Log file to use for error messages, instead of sending them to syslog.
 # /dev/stderr can be used to log into stderr.
-#log_path = 
+#log_path =
 
 # Log file to use for informational and debug messages.
 # Default is the same as log_path.
-#info_log_path = 
+#info_log_path =
 
 # Prefix for each line written to log file. % codes are in strftime(3)
 # format.
@@ -108,7 +108,7 @@ ssl_key_file = /etc/pki/tls/private/dovecot.pem
 # File containing trusted SSL certificate authorities. Set this only if you
 # intend to use ssl_verify_client_cert=yes. The CAfile should contain the
 # CA-certificate(s) followed by the matching CRL(s).
-#ssl_ca_file = 
+#ssl_ca_file =
 
 # Request client to send a certificate. If you also want to require it, set
 # ssl_require_client_cert=yes in auth section.
@@ -225,7 +225,7 @@ ssl_key_file = /etc/pki/tls/private/dovecot.pem
 #
 # <doc/wiki/MailLocation.txt>
 #
-mail_location = maildir:~/Maildir
+mail_location = maildir:~/
 
 # If you need to set multiple mailbox locations or want to change default
 # namespace settings, you can do it by defining namespace sections.
@@ -246,11 +246,11 @@ mail_location = maildir:~/Maildir
    # Hierarchy separator to use. You should use the same separator for all
    # namespaces or some clients get confused. '/' is usually a good one.
    # The default however depends on the underlying mail storage format.
-   #separator = 
+   #separator =
 
    # Prefix required to access this namespace. This needs to be different for
    # all namespaces. For example "Public/".
-   #prefix = 
+   #prefix =
 
    # Physical location of the mailbox. This is in same format as
    # mail_location, which is also the default for it.
@@ -408,7 +408,7 @@ first_valid_gid = 1
 # WARNING: Never add directories here which local users can modify, that
 # may lead to root exploit. Usually this should be done only if you don't
 # allow shell access for users. <doc/wiki/Chrooting.txt>
-#valid_chroot_dirs = 
+#valid_chroot_dirs =
 
 # Default chroot directory for mail processes. This can be overridden for
 # specific users in user database by giving /./ in user's home directory
@@ -416,7 +416,7 @@ first_valid_gid = 1
 # need to do chrooting, Dovecot doesn't allow users to access files outside
 # their mail directory anyway. If your home directories are prefixed with
 # the chroot directory, append "/." to mail_chroot. <doc/wiki/Chrooting.txt>
-#mail_chroot = 
+#mail_chroot =
 
 ##
 ## Mailbox handling optimizations
@@ -502,7 +502,7 @@ first_valid_gid = 1
 # fallbacks to re-reading the whole mbox file whenever something in mbox isn't
 # how it's expected to be. The only real downside to this setting is that if
 # some other MUA changes message flags, Dovecot doesn't notice it immediately.
-# Note that a full sync is done with SELECT, EXAMINE, EXPUNGE and CHECK 
+# Note that a full sync is done with SELECT, EXAMINE, EXPUNGE and CHECK
 # commands.
 #mbox_dirty_syncs = yes
 
@@ -568,7 +568,7 @@ protocol imap {
 
   # Support for dynamically loadable plugins. mail_plugins is a space separated
   # list of plugins to load.
-  mail_plugins = quota imap_quota 
+  mail_plugins = quota imap_quota
   #mail_plugin_dir = /usr/lib/dovecot/imap
 
   # IMAP logout format string:
@@ -577,7 +577,7 @@ protocol imap {
   #imap_logout_format = bytes=%i/%o
 
   # Override the IMAP CAPABILITY response.
-  #imap_capability = 
+  #imap_capability =
 
   # How many seconds to wait between "OK Still here" notifications when
   # client is IDLEing.
@@ -586,7 +586,7 @@ protocol imap {
   # ID field names and values to send to clients. Using * as the value makes
   # Dovecot use the default value. The following fields have default values
   # currently: name, version, os, os-version, support-url, support-email.
-  #imap_id_send = 
+  #imap_id_send =
 
   # ID fields sent by client to log. * means everything.
   #imap_id_log =
@@ -610,9 +610,9 @@ protocol imap {
   #     but not both. Thunderbird separates these two by forcing server to
   #     accept '/' suffix in mailbox names in subscriptions list.
   # The list is space-separated.
-  #imap_client_workarounds = 
+  #imap_client_workarounds =
 }
-  
+
 ##
 ## POP3 specific settings
 ##
@@ -686,7 +686,7 @@ protocol pop3 {
 
   # Support for dynamically loadable plugins. mail_plugins is a space separated
   # list of plugins to load.
-  #mail_plugins = 
+  #mail_plugins =
   #mail_plugin_dir = /usr/lib/dovecot/pop3
 
   # Workarounds for various client bugs:
@@ -697,7 +697,7 @@ protocol pop3 {
   #     Outlook Express and Netscape Mail breaks if end of headers-line is
   #     missing. This option simply sends it if it's missing.
   # The list is space-separated.
-  #pop3_client_workarounds = 
+  #pop3_client_workarounds =
 }
 
 ##
@@ -708,13 +708,13 @@ protocol managesieve {
   # Login executable location.
   #login_executable = /usr/libexec/dovecot/managesieve-login
 
-  # ManageSieve executable location. See IMAP's mail_executable above for 
+  # ManageSieve executable location. See IMAP's mail_executable above for
   # examples how this could be changed.
   #mail_executable = /usr/libexec/dovecot/managesieve
 
-  # Maximum ManageSieve command line length in bytes. This setting is 
+  # Maximum ManageSieve command line length in bytes. This setting is
   # directly borrowed from IMAP. But, since long command lines are very
-  # unlikely with ManageSieve, changing this will not be very useful.  
+  # unlikely with ManageSieve, changing this will not be very useful.
   #managesieve_max_line_length = 65536
 
   # ManageSieve logout format string:
@@ -722,16 +722,16 @@ protocol managesieve {
   #  %o - total number of bytes sent to client
   #managesieve_logout_format = bytes=%i/%o
 
-  # If, for some inobvious reason, the sieve_storage remains unset, the 
-  # ManageSieve daemon uses the specification of the mail_location to find out 
-  # where to store the sieve files (see explaination in README.managesieve). 
-  # The example below, when uncommented, overrides any global mail_location 
-  # specification and stores all the scripts in '~/mail/sieve' if sieve_storage 
+  # If, for some inobvious reason, the sieve_storage remains unset, the
+  # ManageSieve daemon uses the specification of the mail_location to find out
+  # where to store the sieve files (see explaination in README.managesieve).
+  # The example below, when uncommented, overrides any global mail_location
+  # specification and stores all the scripts in '~/mail/sieve' if sieve_storage
   # is unset. However, you should always use the sieve_storage setting.
   # mail_location = mbox:~/mail
 
   # To fool ManageSieve clients that are focused on timesieved you can
-  # specify the IMPLEMENTATION capability that the dovecot reports to clients 
+  # specify the IMPLEMENTATION capability that the dovecot reports to clients
   # (default: "dovecot").
   #managesieve_implementation_string = Cyrus timsieved v2.2.13
 }
@@ -746,11 +746,11 @@ protocol lda {
 
   # Hostname to use in various parts of sent mails, eg. in Message-Id.
   # Default is the system's real hostname.
-  #hostname = 
+  #hostname =
 
   # Support for dynamically loadable plugins. mail_plugins is a space separated
   # list of plugins to load.
-  mail_plugins = quota 
+  mail_plugins = sieve quota
   #mail_plugin_dir = /usr/lib/dovecot/lda
 
   # If user is over quota, return with temporary failure instead of
@@ -811,7 +811,7 @@ protocol lda {
 
 # Default realm/domain to use if none was specified. This is used for both
 # SASL realms and appending @domain to username in plaintext logins.
-#auth_default_realm = 
+#auth_default_realm =
 
 # List of allowed characters in username. If the user-given username contains
 # a character not listed in here, the login automatically fails. This is just
@@ -861,9 +861,9 @@ protocol lda {
 # name returned by gethostname(). Use "$ALL" to allow all keytab entries.
 #auth_gssapi_hostname =
 
-# Kerberos keytab to use for the GSSAPI mechanism. Will use the system 
+# Kerberos keytab to use for the GSSAPI mechanism. Will use the system
 # default (usually /etc/krb5.keytab) if not specified.
-#auth_krb5_keytab = 
+#auth_krb5_keytab =
 
 # Do NTLM and GSS-SPNEGO authentication using Samba's winbind daemon and
 # ntlm_auth helper. <doc/wiki/Authentication/Mechanisms/Winbind.txt>
@@ -907,7 +907,7 @@ auth default {
     #deny = yes
   #}
 
-  # PAM authentication. Preferred nowadays by most systems. 
+  # PAM authentication. Preferred nowadays by most systems.
   # Note that PAM can only be used to verify if user's password is correct,
   # so it can't be used as userdb. If you don't want to use a separate user
   # database (passwd usually), you can use static userdb.
@@ -938,7 +938,7 @@ auth default {
     #   %u - Username must match. Probably sufficient for most uses.
     #   %u%r - Username and remote IP address must match.
     #   %u%s - Username and service (ie. IMAP, POP3) must match.
-    # 
+    #
     # The service name can contain variables, for example %Ls expands to
     # pop3 or imap.
     #
@@ -953,7 +953,7 @@ auth default {
   # configured in /etc/nsswitch.conf. <doc/wiki/AuthDatabase.Passwd.txt>
   #passdb passwd {
     # [blocking=yes] - See userdb passwd for explanation
-    #args = 
+    #args =
   #}
 
   # Shadow passwords for system users (NSS, /etc/shadow or similiar).
@@ -961,7 +961,7 @@ auth default {
   # <doc/wiki/PasswordDatabase.Shadow.txt>
   #passdb shadow {
     # [blocking=yes] - See userdb passwd for explanation
-    #args = 
+    #args =
   #}
 
   # PAM-like authentication for OpenBSD.
@@ -976,7 +976,7 @@ auth default {
   #passdb passwd-file {
     # [scheme=<default password scheme>] [username_format=<format>]
     # <Path for passwd-file>
-    #args = 
+    #args =
   #}
 
   # checkpassword executable authentication
@@ -984,13 +984,13 @@ auth default {
   # <doc/wiki/AuthDatabase.CheckPassword.txt>
   #passdb checkpassword {
     # Path for checkpassword binary
-    #args = 
+    #args =
   #}
 
   # SQL database <doc/wiki/AuthDatabase.SQL.txt>
   #passdb sql {
     # Path for SQL configuration file, see doc/dovecot-sql-example.conf
-    #args = 
+    #args =
   #}
 
   # LDAP database <doc/wiki/AuthDatabase.LDAP.txt>
@@ -1031,7 +1031,7 @@ auth default {
     # proceses. Useful with remote NSS lookups that may block.
     # NOTE: Be sure to use this setting with nss_ldap or users might get
     # logged in as each others!
-    #args = 
+    #args =
   #}
 
   # passwd-like file with specified location
@@ -1045,7 +1045,7 @@ auth default {
   # <doc/wiki/AuthDatabase.CheckPassword.txt>
   #userdb checkpassword {
     # Path for checkpassword binary
-    #args = 
+    #args =
   #}
 
   # static settings generated from template <doc/wiki/UserDatabase.Static.txt>
@@ -1068,13 +1068,13 @@ auth default {
   # SQL database <doc/wiki/AuthDatabase.SQL.txt>
   #userdb sql {
     # Path for SQL configuration file, see doc/dovecot-sql-example.conf
-    #args = 
+    #args =
   #}
 
   # LDAP database <doc/wiki/AuthDatabase.LDAP.txt>
   userdb ldap {
     # Path for LDAP configuration file, see doc/dovecot-ldap-example.conf
-    args = /etc/dovecot-ldap.conf 
+    args = /etc/dovecot-ldap.conf
   }
 
   # vpopmail <doc/wiki/AuthDatabase.VPopMail.txt>
@@ -1092,7 +1092,7 @@ auth default {
   # Directory where to chroot the process. Most authentication backends don't
   # work if this is set, and there's no point chrooting if auth_user is root.
   # Note that valid_chroot_dirs isn't needed to use this setting.
-  #chroot = 
+  #chroot =
 
   # Number of authentication processes to create
   #count = 1
@@ -1100,9 +1100,9 @@ auth default {
   # Require a valid SSL client certificate or the authentication fails.
   #ssl_require_client_cert = no
 
-  # Take the username from client's SSL certificate, using 
+  # Take the username from client's SSL certificate, using
   # X509_NAME_get_text_by_NID() which returns the subject's DN's
-  # CommonName. 
+  # CommonName.
   #ssl_username_from_cert = no
 
   # It's possible to export the authentication interface to other programs:
@@ -1153,12 +1153,12 @@ auth default {
 # format "proxy::<name>".
 
 dict {
-  #quota = mysql:/etc/dovecot-dict-quota.conf 
+  #quota = mysql:/etc/dovecot-dict-quota.conf
   #expire = db:/var/lib/dovecot/expire.db
 }
 
 # Path to Berkeley DB's configuration file. See doc/dovecot-db-example.conf
-#dict_db_config = 
+#dict_db_config =
 
 ##
 ## Plugin settings
@@ -1256,14 +1256,14 @@ plugin {
   #mail_log_fields = uid box msgid size
 
   # Sieve plugin (http://wiki.dovecot.org/LDA/Sieve) and ManageSieve service
-  # 
-  # Location of the active script. When ManageSieve is used this is actually 
-  # a symlink pointing to the active script in the sieve storage directory. 
-  #sieve=~/.dovecot.sieve
   #
-  # The path to the directory where the personal Sieve scripts are stored. For 
+  # Location of the active script. When ManageSieve is used this is actually
+  # a symlink pointing to the active script in the sieve storage directory.
+  sieve=~/.dovecot.sieve
+  #
+  # The path to the directory where the personal Sieve scripts are stored. For
   # ManageSieve this is where the uploaded scripts are stored.
-  #sieve_dir=~/sieve
+  sieve_dir=~/sieve
 }
 
 # Config files can also be included. deliver doesn't support them currently.

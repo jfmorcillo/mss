@@ -17,6 +17,8 @@
             <rpm>clamd</rpm>
             <rpm>dovecot</rpm>
             <rpm>dovecot-plugins-ldap</rpm>
+            <rpm>dovecot-plugins-sieve</rpm>
+            <rpm>dovecot-plugins-managesieve</rpm>
         </target>
     </packages>
     <conflicts>
