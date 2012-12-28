@@ -28,13 +28,8 @@ urlpatterns = patterns('django.views.generic.simple',
 
 urlpatterns += patterns('',
     (r'^mss/', include('mss.www.wizard.urls')),
-)
-
-urlpatterns += patterns('',
+    (r'^errors/', include('mss.www.errors.urls')),
+    (r'^404/', 'django.views.generic.simple.direct_to_template', {'template': 'errors/404.html'}),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
 
-urlpatterns += patterns('',
-    (r'^errors/', include('mss.www.better500s.urls')),
-    (r'^404/', 'django.views.generic.simple.direct_to_template', {'template': 'better500s/404.html'}),
-)

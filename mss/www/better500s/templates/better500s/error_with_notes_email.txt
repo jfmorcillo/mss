@@ -1,9 +1,0 @@
-{% autoescape off %}User error report:
-
-Exception Type: {{error_obj.exception_type}}
-Page Url: {{error_obj.page_url}}
-Error time: {{error_obj.error_time|date:"M j Y, fa"}}
-Notes: {{error_obj.user_notes}}
-
-{{error_obj.simple_traceback}}
-{% endautoescape %}

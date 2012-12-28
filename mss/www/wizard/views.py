@@ -201,7 +201,7 @@ def has_net(request, has_net):
 def sections(request):
     """ sections list """
     # render the main page with all sections
-    return render_to_response('sections.html',
+    return render_to_resonse('sections.html',
         {'sections': CM.get_sections()},
         context_instance=RequestContext(request))
 

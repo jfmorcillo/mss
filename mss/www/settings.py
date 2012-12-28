@@ -99,7 +99,7 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'mss.www.better500s.middleware.Better500s',
+    'mss.www.errors.middleware.CatchExceptions',
 )
 
 ROOT_URLCONF = 'mss.www.urls'
@@ -118,7 +118,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'mss.www.wizard',
     'mss.www.cpserver',
-    'mss.www.better500s',
+    'mss.www.errors',
 ]
 
 for layout in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "__init__.py")):
@@ -135,10 +135,8 @@ AUTHENTICATION_BACKENDS = (
 if not os.path.abspath(os.path.join(PROJECT_DIR, 'lib')) in sys.path:
     sys.path.append(os.path.abspath(os.path.join(PROJECT_DIR, 'lib')))
 
-BETTER_500_LOG_DIR = os.path.join('/var', 'log', 'mss', '500')
-BETTER_500_UNCAUGHT_DIR = ""
-BETTER_500_AJAX_URL = "callback/"
-BETTER_500_POST_URL = "save/"
+
+TRACEBACK_API_URL = "http://mbs-reports.mandriva.com/api/mss/traceback/add/"
 
 try:
     from local_settings import *

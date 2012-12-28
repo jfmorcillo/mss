@@ -18,13 +18,12 @@
                 </div>
             </div>
         {% endif %}
-        {% comment %}
-		{% if epoch and request.session.has_net %}
+		{% if request.session.has_net %}
             <p class="alert alert-info">{% trans "To help us solve this problem, can you explain what you were trying to do just now ?" %}</p>
-            <form action="/errors/{{ post_url }}" method="post" class="form-inline">
+            <form action="{% url user_error_submit %}" method="post" class="form-inline">
                 {% csrf_token %}
-                <input type="hidden" name="epoch" value="{{ epoch }}" />
-                <input type="hidden" id="simple_traceback" name="simple_traceback" value="{{ simple_traceback }}" />
+                <input type="hidden" name="error" value="{{ exception_value|escape }}" />
+                <input type="hidden" id="simple_traceback" name="simple_traceback" value="{{ simple_traceback|escape }}" />
                 <div class="control-group">
                     <textarea id="user_notes" name="user_notes" value="" rows="3" style="width: 95%"></textarea>
                 </div>
@@ -33,7 +32,6 @@
                 </div>
             </form>
         {% endif %}
-        {% endcomment %}
 
         <div class="form-actions">
             <div class="pull-right">
@@ -41,21 +39,9 @@
             </div>
         </div>
     </section>
-
-    {% comment %}
 	<script type="text/javascript" charset="utf-8">
 		$(function() {
-		  {% if ajax_url %}
-			$.ajax({
-			  url: "/errors/{{ ajax_url }}",
-			  type: "POST",
-			  dataType: "json",
-			  data: {'epoch': '{{ epoch }}', 'simple_traceback': $("input[name=simple_traceback]").val()},
-			});
-		  {% endif %}
 		  $("#user_notes").focus()
 		});
     </script>
-    {% endcomment %}
-
 {% endblock %}
