@@ -10,6 +10,10 @@ fw_wan=$2
 
 roundcube_db_conf_template="templates/db.inc.php.tpl"
 roundcube_main_conf_template="templates/main.inc.php.tpl"
+mbs_logo="templates/mbs_logo.png"
+
+# copy the logo
+cp -f $mbs_logo /usr/share/roundcubemail/skins/
 
 # copy the db config
 backup /etc/roundcubemail/db.inc.php
