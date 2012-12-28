@@ -33,9 +33,10 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.translation import ugettext as _, activate
 
+from mss.www.xmlrpc import XmlRpc
+
 from lib.jsonui.response import JSONResponse
 from config import ConfigManager
-from xmlrpc import XmlRpc
 from transaction import Transaction, Steps
 
 xmlrpc = XmlRpc()

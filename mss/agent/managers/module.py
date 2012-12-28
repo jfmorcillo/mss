@@ -81,6 +81,10 @@ class ModuleManager:
         # logging
         self.load_packages()
         self.load_modules()
+        # Get machine-id
+        machine_id = open('/etc/machine-id', 'r').read().strip()
+        logger.info("Machine id is %s" % machine_id)
+        self.set_option("machine-id", machine_id)
 
     @expose
     def set_lang(self, lang):

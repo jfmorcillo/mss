@@ -1,6 +1,7 @@
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _, ungettext
-from xmlrpc import XmlRpc
+
+from mss.www.xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
 
