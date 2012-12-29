@@ -47,16 +47,18 @@ formatLog = function(JSONoutput) {
         for (i=0; i<JSONoutput.length; i++) {
             code = JSONoutput[i].code;
             text = JSONoutput[i].text;
-            css="";
+            css = "";
             if (code == 1)
-                css="warning";
+                css = "warning";
             else if(code == 2)
-                css="error";
+                css = "error";
             else if(code == 7)
-                css="info";
-            else if(code == 8)
-                css="info";
-            output += '<span class="'+css+'">'+text+'</span>';
+                css = "info";
+            else if(code == 8) {
+                css = "info";
+                text = "<strong>" + text + "</strong>";
+            }
+            output += '<span class="'+css+'">' + text + '</span>';
         }
     }
     return output;
