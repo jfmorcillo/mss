@@ -47,6 +47,9 @@ class ProcessThread(threading.Thread):
             self.env.update(env)
         threading.Thread.__init__(self)
 
+    def __repr__(self):
+        return "<%s(%s, %s)>" % (self.__class__.__name__, self.module, self.command)
+
     @property
     def output(self):
         try:

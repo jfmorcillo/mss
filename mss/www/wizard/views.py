@@ -450,9 +450,10 @@ def config_valid(request):
 def config_run(request, module):
     """ run configuration script for module """
     transaction = Transaction(request)
-    for module in transaction.modules_info:
-        if not module['configured']:
-            xmlrpc.call('run_config', module['id'])
+    for m in transaction.modules_info:
+        if m['id'] == module and not m['configured']:
+            xmlrpc.call('run_config', module)
+            break
     return HttpResponse("")
 
 @login_required

@@ -112,6 +112,8 @@ class ProcessManager:
         thread = self.get_thread(type, module)
         if thread:
             return (thread.code, thread.output)
+        else:
+            raise Exception("No process found for %s %s" % (module, type))
 
     def pm_state(self):
         """ get execution manager status """
