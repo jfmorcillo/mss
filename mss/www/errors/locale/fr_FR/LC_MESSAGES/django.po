@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
-#   <jpbraun@mandriva.com>, 2012.
+#   <jpbraun@mandriva.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-27 16:50+0100\n"
-"PO-Revision-Date: 2012-12-27 15:54+0000\n"
+"POT-Creation-Date: 2012-12-29 17:44+0100\n"
+"PO-Revision-Date: 2013-01-07 15:32+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,41 +18,53 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: templates/better500s/404.html:6
+#: templates/errors/404.html:6
 msgid "Page not found"
 msgstr "Page non trouvée"
 
-#: templates/better500s/404.html:8
+#: templates/errors/404.html:8
 msgid "This page doesn't exists."
 msgstr "Cette page n'existe pas."
 
-#: templates/better500s/404.html:11 templates/better500s/500_handler.html:41
-#: templates/better500s/feedback_saved.html:12
+#: templates/errors/404.html:11 templates/errors/500.html:38
+#: templates/errors/traceback_sent.html:12
 msgid "Home"
 msgstr "Page d'accueil"
 
-#: templates/better500s/500_handler.html:6
+#: templates/errors/500.html:6
 msgid "An unexpected error occured"
 msgstr "Une erreur inatendue s'est produite"
 
-#: templates/better500s/500_handler.html:9
+#: templates/errors/500.html:9
 msgid "The error message is"
 msgstr "Le message d'erreur est"
 
-#: templates/better500s/500_handler.html:13
+#: templates/errors/500.html:13
 msgid "Show details"
 msgstr "Voir les détails"
 
-#: templates/better500s/feedback_saved.html:6
+#: templates/errors/500.html:22
+msgid ""
+"To help us solve this problem, can you explain what you were trying to do "
+"just now ?"
+msgstr ""
+"Pour nous aider à rédoudre ce problème, pouvez-vous expliquer ce que vous "
+"étiez entrain de faire ?"
+
+#: templates/errors/500.html:31
+msgid "Send"
+msgstr "Envoyer"
+
+#: templates/errors/traceback_sent.html:6
 msgid "Thanks for your feedback!"
 msgstr "Merci pour votre retour!"
 
-#: templates/better500s/feedback_saved.html:8
+#: templates/errors/traceback_sent.html:8
 msgid "Developers have been notified and will take care of the issue."
 msgstr ""
 "Les développeurs ont étés notifiés et prendront en charge le problème."
 
-#: templates/better500s/feedback_saved.html:9
+#: templates/errors/traceback_sent.html:9
 msgid "Sorry for the inconvenience."
 msgstr "Désolé pour le dérangement."
 

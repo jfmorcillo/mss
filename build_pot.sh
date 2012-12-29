@@ -64,6 +64,10 @@ pushd mss/www/wizard
 django-admin.py makemessages -l en
 
 popd
+pushd mss/www/errors
+django-admin.py makemessages -l en
+
+popd
 pushd mss/www/layout/base
 django-admin.py makemessages -l en
 

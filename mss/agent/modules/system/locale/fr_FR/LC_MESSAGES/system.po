@@ -1,62 +1,61 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <jpbraun@mandriva.com>, 2012.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"POT-Creation-Date: 2012-12-29 17:40+0100\n"
 "PO-Revision-Date: 2012-12-17 17:57+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
+"team/fr_FR/)\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/system/desc.xml3(name)
-msgid "System setup"
-msgstr "Configuration système"
-
-#: modules/system/desc.xml4(desc)
+#: modules/system/desc.xml:4(desc)
 msgid "General system configuration"
 msgstr "Configuration générale du système"
-
-#: modules/system/desc.xml7(label)
-msgid "The server hostname"
-msgstr "Nom d'hôte du serveur"
-
-#: modules/system/desc.xml8(help)
-msgid "Hostname without the domain name"
-msgstr "Nom de la machine sans le domaine"
-
-#: modules/system/desc.xml11(label)
-msgid "Your domain name"
-msgstr "Domaine"
-
-#: modules/system/desc.xml12(help)
-msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr "Le domaine utilisé pour votre organisation (ex: mandriva.com)"
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/system/desc.xml0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
 
 #: modules/system/setup-system.sh:18
 msgid "Hostname and domain name configured."
 msgstr "Nom d'hôte et domaine configurés."
 
-#: modules/system/__init__.py:48
-msgid "example.com"
-msgstr "exemple.com"
+#: modules/system/desc.xml:8(help)
+msgid "Hostname without the domain name"
+msgstr "Nom de la machine sans le domaine"
 
 #: modules/system/__init__.py:54
 msgid "Incorrect hostname."
 msgstr "Nom d'hôte incorrect."
 
+#: modules/system/desc.xml:3(name)
+msgid "System setup"
+msgstr "Configuration système"
 
+#: modules/system/desc.xml:12(help)
+msgid "The domain name used in your organization (eg: mandriva.com)."
+msgstr "Le domaine utilisé pour votre organisation (ex: mandriva.com)"
+
+#: modules/system/desc.xml:7(label)
+msgid "The server hostname"
+msgstr "Nom d'hôte du serveur"
+
+#: modules/system/desc.xml:11(label)
+msgid "Your domain name"
+msgstr "Domaine"
+
+#: modules/system/__init__.py:48
+msgid "example.com"
+msgstr "exemple.com"
+
+#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
+#: modules/system/desc.xml:0(None)
+msgid "translator-credits"
+msgstr "translator-credits"

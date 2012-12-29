@@ -1,37 +1,36 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:28+0100\n"
+"POT-Creation-Date: 2012-12-29 17:40+0100\n"
 "PO-Revision-Date: 2012-12-27 13:31+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mbs_repo/desc.xml3(name)
-msgid "Mandriva Business Server repositories"
-msgstr ""
-
-#: modules/mbs_repo/desc.xml4(desc)
+#: modules/mbs_repo/desc.xml:4(desc)
 msgid "Get security updates through MBS repositories"
 msgstr ""
 
-#: modules/mbs_repo/desc.xml6(url)
+#: modules/mbs_repo/desc.xml:3(name)
+msgid "Mandriva Business Server repositories"
+msgstr ""
+
+#: modules/mbs_repo/desc.xml:6(url)
 msgid "mes5devel.mandriva.com/BIG/mbs/2/@ARCH@/"
 msgstr ""
 
 #. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mbs_repo/desc.xml0(None)
+#: modules/mbs_repo/desc.xml:0(None)
 msgid "translator-credits"
 msgstr ""
-
-

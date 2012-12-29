@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:54+0100\n"
+"POT-Creation-Date: 2012-12-29 17:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -17,50 +17,50 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: transaction.py:36
+#: transaction.py:37
 msgid "Installation summary"
 msgstr ""
 
-#: transaction.py:38
+#: transaction.py:39
 msgid "The folowing component will be installed."
 msgid_plural "The folowing components will be installed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: transaction.py:48
+#: transaction.py:49
 msgid "Medias authentication"
 msgstr ""
 
-#: transaction.py:49
+#: transaction.py:50
 msgid "One or more medias need authentication"
 msgstr ""
 
-#: transaction.py:55
+#: transaction.py:56
 msgid "Medias add"
 msgstr ""
 
-#: transaction.py:62
+#: transaction.py:63
 msgid "Installation"
 msgstr ""
 
-#: transaction.py:69
+#: transaction.py:70
 msgid "Initial configuration"
 msgstr ""
 
-#: transaction.py:76 templates/reboot.html:14
+#: transaction.py:77 templates/reboot.html:14
 msgid "Reboot"
 msgstr ""
 
-#: views.py:134 templates/first_time.html:6
+#: views.py:135 templates/first_time.html:6
 msgid "Welcome"
 msgstr ""
 
-#: views.py:135
+#: views.py:136
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr ""
 
-#: views.py:174 templates/error.html:9
+#: views.py:175 templates/error.html:9
 msgid "MSS agent is unreacheable."
 msgstr ""
 
@@ -68,38 +68,38 @@ msgstr ""
 msgid "Hide log"
 msgstr ""
 
-#: templates/base.html:25 templates/config_run.html:155
-#: templates/install.html:60 templates/media_add.html:86
+#: templates/base.html:25 templates/config_run.html:165
+#: templates/install.html:66 templates/media_add.html:92
 msgid "Show log"
 msgstr ""
 
-#: templates/base.html:45 templates/base.html.py:142
+#: templates/base.html:51 templates/base.html.py:150
 msgid "Ready"
 msgstr ""
 
-#: templates/base.html:69
+#: templates/base.html:75
 msgid "The MSS interface is unreachable"
 msgstr ""
 
-#: templates/base.html:110
+#: templates/base.html:118
 msgid ""
 "You don't have the Mandriva Business Server repositories installed. Install "
 "them to get security updates."
 msgstr ""
 
-#: templates/base.html:110 templates/media_auth.html:43
+#: templates/base.html:118 templates/media_auth.html:43
 msgid "Add medias"
 msgstr ""
 
-#: templates/base.html:116
+#: templates/base.html:124
 msgid "Update packages list on your server."
 msgstr ""
 
-#: templates/base.html:117
+#: templates/base.html:125
 msgid "Update medias"
 msgstr ""
 
-#: templates/base.html:122
+#: templates/base.html:130
 msgid "Logout"
 msgstr ""
 
@@ -111,7 +111,7 @@ msgstr ""
 msgid "Re-enter password"
 msgstr ""
 
-#: templates/config.html:275 templates/config_run.html:146
+#: templates/config.html:275 templates/config_run.html:153
 msgid "No configuration for this module."
 msgstr ""
 
@@ -121,7 +121,7 @@ msgstr ""
 
 #: templates/config.html:284 templates/config_run.html:60
 #: templates/install.html:19 templates/media_add.html:26
-#: templates/media_add.html.py:68 templates/preinst.html:36
+#: templates/media_add.html.py:71 templates/preinst.html:36
 msgid "Continue"
 msgstr ""
 
@@ -129,8 +129,8 @@ msgstr ""
 msgid "Installation & configuration was successful."
 msgstr ""
 
-#: templates/config_no.html:14 templates/config_run.html:85
-#: templates/config_run.html.py:102 templates/error.html:14
+#: templates/config_no.html:14 templates/config_run.html:88
+#: templates/config_run.html.py:108 templates/error.html:14
 msgid "Home page"
 msgstr ""
 
@@ -146,7 +146,7 @@ msgstr ""
 msgid "Configuration errors"
 msgstr ""
 
-#: templates/config_run.html:57 templates/config_run.html.py:104
+#: templates/config_run.html:57 templates/config_run.html.py:110
 msgid "Configuration terminated, details are displayed below."
 msgstr ""
 
@@ -154,24 +154,24 @@ msgstr ""
 msgid "Configuration succeded."
 msgstr ""
 
-#: templates/config_run.html:84
+#: templates/config_run.html:87
 msgid "Configuration failed."
 msgstr ""
 
-#: templates/config_run.html:110
+#: templates/config_run.html:116
 msgid "Could not find any configuration script to execute."
 msgstr ""
 
-#: templates/config_run.html:117
+#: templates/config_run.html:123
 msgid "Running configuration..."
 msgstr ""
 
-#: templates/config_run.html:152 templates/media_add.html:83
+#: templates/config_run.html:162 templates/media_add.html:89
 msgid "Waiting..."
 msgstr ""
 
-#: templates/config_run.html:166 templates/install.html:68
-#: templates/media_add.html:95
+#: templates/config_run.html:176 templates/install.html:74
+#: templates/media_add.html:101
 msgid "Please wait..."
 msgstr ""
 
@@ -204,25 +204,25 @@ msgstr ""
 msgid "Installation succeded."
 msgstr ""
 
-#: templates/install.html:28
+#: templates/install.html:31
 msgid "Installation failed. Update your medias and retry to install."
 msgstr ""
 
-#: templates/install.html:30
+#: templates/install.html:33
 msgid "Installation failed."
 msgstr ""
 
-#: templates/install.html:34
+#: templates/install.html:37
 msgid "Retry"
 msgstr ""
 
-#: templates/install.html:54
+#: templates/install.html:60
 msgid "The following component is being installed"
 msgid_plural "The following components are being installed"
 msgstr[0] ""
 msgstr[1] ""
 
-#: templates/install.html:70 templates/media_add.html:97
+#: templates/install.html:76 templates/media_add.html:103
 #: templates/media_auth.html:45 templates/preinst.html:39
 msgid "Back"
 msgstr ""
@@ -251,19 +251,19 @@ msgstr ""
 msgid "No internet connection, use the root password to login."
 msgstr ""
 
-#: templates/login_form.html:46 templates/media_auth.html:18
+#: templates/login_form.html:52 templates/media_auth.html:18
 msgid "Username"
 msgstr ""
 
-#: templates/login_form.html:52 templates/media_auth.html:27
+#: templates/login_form.html:58 templates/media_auth.html:27
 msgid "Password"
 msgstr ""
 
-#: templates/login_form.html:58
+#: templates/login_form.html:64
 msgid "Language"
 msgstr ""
 
-#: templates/login_form.html:65
+#: templates/login_form.html:71
 msgid "Enter"
 msgstr ""
 
@@ -271,15 +271,15 @@ msgstr ""
 msgid "Adding media..."
 msgstr ""
 
-#: templates/media_add.html:52
+#: templates/media_add.html:55
 msgid "Media added."
 msgstr ""
 
-#: templates/media_add.html:58
+#: templates/media_add.html:61
 msgid "Media already added."
 msgstr ""
 
-#: templates/media_add.html:64
+#: templates/media_add.html:67
 msgid "Failed to add media."
 msgstr ""
 
@@ -341,10 +341,10 @@ msgstr ""
 msgid "Install and configure selected components"
 msgstr ""
 
-#: templates/sections.html:36
+#: templates/sections.html:42
 msgid "No modules for Mandriva Server Setup installed."
 msgstr ""
 
-#: templates/sections.html:37
+#: templates/sections.html:43
 msgid "Check for mss-modules-* packages."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:54+0100\n"
+"POT-Creation-Date: 2012-12-29 17:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,59 +65,67 @@ msgstr ""
 msgid "dovecot-plugins-ldap"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:23(module)
+#: modules/mds_mail/desc.xml:20(rpm)
+msgid "dovecot-plugins-sieve"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:21(rpm)
+msgid "dovecot-plugins-managesieve"
+msgstr ""
+
+#: modules/mds_mail/desc.xml:25(module)
 msgid "zarafa"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:26(module)
+#: modules/mds_mail/desc.xml:28(module)
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:30(label)
+#: modules/mds_mail/desc.xml:32(label)
 msgid "My networks"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:31(help)
+#: modules/mds_mail/desc.xml:33(help)
 msgid ""
 "Specify which clients are authorized to send mails through the mail server "
 "without authentication."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:34(label)
+#: modules/mds_mail/desc.xml:36(label)
 msgid "Protocols supported"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:35(help)
+#: modules/mds_mail/desc.xml:37(help)
 msgid "Protocols that the dovecot server will provide."
 msgstr ""
 
-#: modules/mds_mail/desc.xml:36(option)
+#: modules/mds_mail/desc.xml:38(option)
 msgid "IMAPS and POP3S"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:37(option)
+#: modules/mds_mail/desc.xml:39(option)
 msgid "IMAPS"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:38(option)
+#: modules/mds_mail/desc.xml:40(option)
 msgid "POP3S"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:41(label)
+#: modules/mds_mail/desc.xml:43(label)
 msgid "Allow mail services access from internal networks"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:42(help)
+#: modules/mds_mail/desc.xml:44(help)
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'internal'"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:46(label)
+#: modules/mds_mail/desc.xml:48(label)
 msgid "Allow mail services access from external networks"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:47(help)
+#: modules/mds_mail/desc.xml:49(help)
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'external'"

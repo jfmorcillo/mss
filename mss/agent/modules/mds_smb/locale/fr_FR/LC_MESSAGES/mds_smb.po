@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
-#   <jpbraun@mandriva.com>, 2012.
+#   <jpbraun@mandriva.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-08 02:38+0100\n"
-"PO-Revision-Date: 2012-12-17 18:29+0000\n"
+"POT-Creation-Date: 2012-12-29 17:44+0100\n"
+"PO-Revision-Date: 2013-01-07 15:35+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -140,33 +140,33 @@ msgstr ""
 "Users. Si des utilisateurs ont étés créés précédement ils appartiennent "
 "toujours au groupe users."
 
-#: modules/mds_smb/setup-smb.sh:66
-msgid "Failed granted rigths for Domain Admins group"
-msgstr "Echec lors du changement de droits sur le groupe \"Domain Admins\"."
+#: modules/mds_smb/setup-smb.sh:70
+msgid "Failed to grant rights to the Domain Admins group"
+msgstr "Impossible de donner les droits nécessaires au groupe Domain Admins."
 
-#: modules/mds_smb/setup-smb.sh:84
+#: modules/mds_smb/setup-smb.sh:89
 msgid "Domain name : $smbdomain"
 msgstr "Domaine SAMBA : $smbdomain"
 
-#: modules/mds_smb/setup-smb.sh:85
+#: modules/mds_smb/setup-smb.sh:90
 msgid "Server name : $smbnetbios"
 msgstr "Nom du serveur SAMBA : $smbnetbios"
 
-#: modules/mds_smb/setup-smb.sh:86
+#: modules/mds_smb/setup-smb.sh:91
 msgid "Domain administrator : $smbadmin"
-msgstr "Administrateur du domaine SAMBA : "
+msgstr "Administrateur du domaine SAMBA : $smbadmin"
 
-#: modules/mds_smb/setup-smb.sh:87
+#: modules/mds_smb/setup-smb.sh:92
 msgid "- a public share is created in /home/samba/shares/public"
 msgstr "- un partage public est créé dans /home/samba/shares/public"
 
-#: modules/mds_smb/setup-smb.sh:88
+#: modules/mds_smb/setup-smb.sh:93
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr ""
 "- vous pouvez créer un script de logon \"logon.bat\" dans "
 "/home/samba/netlogon"
 
-#: modules/mds_smb/setup-smb.sh:89
+#: modules/mds_smb/setup-smb.sh:94
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
