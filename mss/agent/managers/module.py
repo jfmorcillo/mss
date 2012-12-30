@@ -31,7 +31,7 @@ import json
 from mss.agent.lib.utils import grep, Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.classes.module import Module
-from mss.agent.managers.process import ProcessManager, ProcessManagerStateDoesntExists
+from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
 
 LSB_FILENAME = '/etc/os-release'
@@ -294,8 +294,9 @@ class ModuleManager:
                 if set_index:
                     module[2] = cnt
 
-        # make 3 pass to determine indexes
-        if(cnt < 4):
+        # make 10 pass to determine indexes
+        # FIXME! this limits the nb max of the modules list
+        if(cnt < 10):
             cnt += 1
             modules = self.order_deps(modules, cnt)
         # calcule module list from indexes
