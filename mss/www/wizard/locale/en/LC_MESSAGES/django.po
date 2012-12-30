@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
+"POT-Creation-Date: 2012-12-30 07:52+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -125,6 +125,12 @@ msgstr ""
 msgid "Continue"
 msgstr ""
 
+#: templates/config.html:286 templates/install.html:76
+#: templates/media_add.html:103 templates/media_auth.html:45
+#: templates/preinst.html:39
+msgid "Back"
+msgstr ""
+
 #: templates/config_no.html:11
 msgid "Installation & configuration was successful."
 msgstr ""
@@ -221,11 +227,6 @@ msgid "The following component is being installed"
 msgid_plural "The following components are being installed"
 msgstr[0] ""
 msgstr[1] ""
-
-#: templates/install.html:76 templates/media_add.html:103
-#: templates/media_auth.html:45 templates/preinst.html:39
-msgid "Back"
-msgstr ""
 
 #: templates/invalid_login.html:9
 msgid "Wrong username or password."
