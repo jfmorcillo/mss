@@ -21,7 +21,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from mss.www.wizard.xmlrpc import XmlRpc
+from mss.www.xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
 

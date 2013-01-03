@@ -22,7 +22,7 @@
 # MA 02110-1301, USA.
 
 from django.contrib.auth.models import User
-from mss.www.wizard.xmlrpc import XmlRpc
+from mss.www.xmlrpc import XmlRpc
 from httplib import HTTPSConnection
 from lib.PHPUnserialize import PHPUnserialize
 import urllib
