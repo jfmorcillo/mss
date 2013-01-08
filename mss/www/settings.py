@@ -136,7 +136,7 @@ if not os.path.abspath(os.path.join(PROJECT_DIR, 'lib')) in sys.path:
     sys.path.append(os.path.abspath(os.path.join(PROJECT_DIR, 'lib')))
 
 
-TRACEBACK_API_URL = "http://mbs-reports.mandriva.com/api/mss/traceback/add/"
+TRACEBACK_API_URL = "https://mbs-reports.mandriva.com/api/mss/traceback/"
 
 try:
     from local_settings import *
