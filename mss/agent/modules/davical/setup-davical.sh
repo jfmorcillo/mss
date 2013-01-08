@@ -27,7 +27,7 @@ restart_service postgresql
 
 # Wait postgres to be up
 # TODO replace with somthing smarter
-for (( i=20 ; i ; i-=1 )); do sleep 1; echo -n '.'; done
+for (( i=10 ; i ; i-=1 )); do sleep 1; echo -n '.'; done
 
 # Drop any Davical DB
 su postgres -c 'dropdb davical' 2>/dev/null

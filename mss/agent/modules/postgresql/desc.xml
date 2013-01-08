@@ -5,7 +5,7 @@
     <desc>PostgreSQL relational database</desc>
     <packages>
         <target name="all">
-            <rpm>postgresql9.1-server</rpm>
+            <rpm>postgresql9.2-server</rpm>
         </target>
     </packages>
 </module>
