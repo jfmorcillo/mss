@@ -325,7 +325,7 @@ $c->authenticate_hook['config'] = array(
     'protocolVersion' => 3,
     'filterUsers' => 'objectClass=inetOrgPerson',
     'filterGroups' => 'objectClass=posixGroup',
-    'mapping_field' => array("username" => "uid",
+    'mapping_field' => array("username" => "mail",
                              "updated" => "modifyTimestamp",
                              "fullname" => "cn" ,
                              "email" => "mail",

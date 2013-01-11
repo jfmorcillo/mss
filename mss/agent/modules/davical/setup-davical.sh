@@ -72,4 +72,5 @@ info $"- Administrator : admin"
 info $"- Password : $DAVICAL_ADMIN_PASS"
 info $"Change it using the management interface https://@HOSTNAME@/davical/"
 
+info $"Use https://$HOST.$DOMAIN/davical/caldav.php/[user_email]/calendar/ to add calendar into caldav clients"
 exit 0
