@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-29 17:44+0100\n"
+"POT-Creation-Date: 2013-01-15 11:06+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -160,19 +160,19 @@ msgstr ""
 msgid "Error while configuring lib nss-ldap."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:132
+#: modules/mds_mmc/setup-mmc.sh:134
 msgid "The MBS administration web interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:133
+#: modules/mds_mmc/setup-mmc.sh:135
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:134
+#: modules/mds_mmc/setup-mmc.sh:136
 msgid "Administrator name : root"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:135
+#: modules/mds_mmc/setup-mmc.sh:137
 msgid "Administrator password : $mypass"
 msgstr ""

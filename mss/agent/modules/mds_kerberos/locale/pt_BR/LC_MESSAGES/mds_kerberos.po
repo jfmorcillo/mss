@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-29 17:40+0100\n"
+"POT-Creation-Date: 2013-01-15 11:06+0100\n"
 "PO-Revision-Date: 2012-12-14 17:52+0000\n"
 "Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -250,8 +250,9 @@ msgid "Kerberos authentication with MDS backend"
 msgstr "Autenticação Kerberos com MDS backend"
 
 #: modules/mds_kerberos/desc.xml:165(text)
+#, fuzzy
 msgid "Kerberos module is activated in the MDS interface"
-msgstr ""
+msgstr "Autenticação Kerberos com MDS backend"
 
 #: modules/mds_kerberos/desc.xml:34(help)
 msgid ""

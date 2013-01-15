@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-29 17:40+0100\n"
+"POT-Creation-Date: 2013-01-15 11:06+0100\n"
 "PO-Revision-Date: 2012-12-14 15:57+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mmc/setup-mmc.sh:134
+#: modules/mds_mmc/setup-mmc.sh:136
 msgid "Administrator name : root"
 msgstr ""
 
@@ -27,7 +27,7 @@ msgstr ""
 msgid "Administrator password"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:135
+#: modules/mds_mmc/setup-mmc.sh:137
 msgid "Administrator password : $mypass"
 msgstr ""
 
@@ -75,7 +75,7 @@ msgstr ""
 msgid "OpenLDAP configuration has errors."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:132
+#: modules/mds_mmc/setup-mmc.sh:134
 msgid "The MBS administration web interface is configured."
 msgstr ""
 
@@ -89,7 +89,7 @@ msgstr ""
 msgid "Users and groups management"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:133
+#: modules/mds_mmc/setup-mmc.sh:135
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
@@ -107,20 +107,24 @@ msgid "mmc-web-base"
 msgstr "mmc-web-base"
 
 #: modules/mds_mmc/desc.xml:11(rpm)
+#, fuzzy
 msgid "mmc-web-bulkimport"
-msgstr ""
+msgstr "mmc-web-base"
 
 #: modules/mds_mmc/desc.xml:13(rpm)
+#, fuzzy
 msgid "mmc-web-dashboard"
-msgstr ""
+msgstr "mmc-web-base"
 
 #: modules/mds_mmc/desc.xml:12(rpm)
+#, fuzzy
 msgid "mmc-web-services"
-msgstr ""
+msgstr "mmc-web-base"
 
 #: modules/mds_mmc/desc.xml:14(rpm)
+#, fuzzy
 msgid "mmc-web-shorewall"
-msgstr ""
+msgstr "mmc-web-base"
 
 #: modules/mds_mmc/desc.xml:50(module)
 msgid "network"
@@ -151,20 +155,24 @@ msgid "python-mmc-base"
 msgstr "python-mmc-base"
 
 #: modules/mds_mmc/desc.xml:16(rpm)
+#, fuzzy
 msgid "python-mmc-bulkimport"
-msgstr ""
+msgstr "python-mmc-base"
 
 #: modules/mds_mmc/desc.xml:18(rpm)
+#, fuzzy
 msgid "python-mmc-dashboard"
-msgstr ""
+msgstr "python-mmc-base"
 
 #: modules/mds_mmc/desc.xml:17(rpm)
+#, fuzzy
 msgid "python-mmc-services"
-msgstr ""
+msgstr "python-mmc-base"
 
 #: modules/mds_mmc/desc.xml:19(rpm)
+#, fuzzy
 msgid "python-mmc-shorewall"
-msgstr ""
+msgstr "python-mmc-base"
 
 #: modules/mds_mmc/desc.xml:49(module)
 msgid "system"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-29 17:40+0100\n"
+"POT-Creation-Date: 2013-01-15 11:06+0100\n"
 "PO-Revision-Date: 2012-12-14 18:37+0000\n"
 "Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -23,15 +23,15 @@ msgstr ""
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
 msgstr "Un serveur Jabber/XMPP distribué et tolérant aux pannes"
 
-#: modules/ejabberd/desc.xml:17(label)
+#: modules/ejabberd/desc.xml:20(label)
 msgid "Allow access from external networks"
 msgstr "Permettre l'accès depuis les réseaux externes"
 
-#: modules/ejabberd/desc.xml:13(label)
+#: modules/ejabberd/desc.xml:16(label)
 msgid "Allow access from internal networks"
 msgstr "Permettre l'accès depuis les réseaux internes"
 
-#: modules/ejabberd/desc.xml:18(help)
+#: modules/ejabberd/desc.xml:21(help)
 msgid ""
 "Configure the firewall to allow access to the Instant Messaging Service from "
 "external networks"
@@ -39,7 +39,7 @@ msgstr ""
 "Configurer le firewall pour permettre l'accès au service de messagerie "
 "instantanée depuis les réseaux externes"
 
-#: modules/ejabberd/desc.xml:14(help)
+#: modules/ejabberd/desc.xml:17(help)
 msgid ""
 "Configure the firewall to allow access to the Instant Messaging Service from "
 "internal networks"
@@ -76,7 +76,7 @@ msgstr ""
 "gestion à https://@HOSTNAME@/mmc/. L'adresse e-mail de l'utilisateur sera "
 "utilisé pour son identifiant Jabber."
 
-#: modules/ejabberd/desc.xml:8(rpm)
+#: modules/ejabberd/desc.xml:11(rpm)
 msgid "ejabberd"
 msgstr "ejabberd"
 

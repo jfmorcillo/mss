@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-29 17:40+0100\n"
+"POT-Creation-Date: 2013-01-15 11:06+0100\n"
 "PO-Revision-Date: 2012-12-14 16:56+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -45,8 +45,9 @@ msgstr ""
 "http://@HOSTNAME@:8080/ical, ou sur le port 8443 en https"
 
 #: modules/zarafa/desc.xml:68(label)
+#, fuzzy
 msgid "ActiveSync support"
-msgstr ""
+msgstr "- Le support ActiveSync est activé"
 
 #: modules/zarafa/desc.xml:49(label)
 msgid "Attachments directory"

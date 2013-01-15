@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-29 17:40+0100\n"
+"POT-Creation-Date: 2013-01-15 10:52+0100\n"
 "PO-Revision-Date: 2012-12-14 17:01+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -19,19 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: managers/process.py:128
+#: managers/process.py:130
 msgid "Adding media"
 msgstr "Ajout des médias"
 
-#: managers/process.py:132
+#: managers/process.py:134
 msgid "Checking network"
 msgstr "Vérification du réseau"
 
-#: managers/process.py:124
+#: managers/process.py:126
 msgid "Installing packages"
 msgstr "Installation des packages"
 
-#: managers/process.py:122
+#: managers/process.py:124
 msgid "Loading packages list"
 msgstr "Chargement de la liste de packages"
 
@@ -39,15 +39,15 @@ msgstr "Chargement de la liste de packages"
 msgid "Password mismatch."
 msgstr "Les mots de passe ne sont pas identiques."
 
-#: managers/process.py:136
+#: managers/process.py:138
 msgid "Ready"
 msgstr "Prêt"
 
-#: managers/process.py:134
+#: managers/process.py:136
 msgid "Rebooting"
 msgstr "Redémarrage"
 
-#: managers/process.py:130
+#: managers/process.py:132
 msgid "Running configuration"
 msgstr "Exécution de la configuration"
 
@@ -55,6 +55,6 @@ msgstr "Exécution de la configuration"
 msgid "This field can't be empty."
 msgstr "Ce champ ne peut pas être vide."
 
-#: managers/process.py:126
+#: managers/process.py:128
 msgid "Updating medias"
 msgstr "Mise à jour des médias"
