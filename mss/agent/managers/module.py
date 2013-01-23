@@ -38,10 +38,12 @@ LSB_FILENAME = '/etc/os-release'
 _ = TranslationManager().translate
 logger = logging.getLogger(__name__)
 
+
 def expose(f):
     "Decorator to set exposed flag on a function."
     f.exposed = True
     return f
+
 
 def is_exposed(f):
     "Test whether another function should be publicly exposed."
@@ -143,14 +145,15 @@ class ModuleManager:
 
     @expose
     def check_distribution(self, distribution):
-	""" Allow to check which distribution we are using"""
-	if os.path.exists(LSB_FILENAME):
-	    for line in open(LSB_FILENAME):
-	        if line.startswith("PRETTY_NAME"):
+        """
+        Allow to check which distribution we are using
+        """
+        if os.path.exists(LSB_FILENAME):
+            for line in open(LSB_FILENAME):
+                if line.startswith("PRETTY_NAME"):
                     if distribution in line:
-	                return True
-
-	return False
+                        return True
+        return False
 
     def load_modules(self):
         """
@@ -168,7 +171,7 @@ class ModuleManager:
     def get_available_modules(self):
         ret = []
         for item in glob.glob(os.path.join(self.modulesDirectory,
-            "*", "__init__.py")):
+                                           "*", "__init__.py")):
             ret.append(item.split("/")[-2])
         return ret
 
@@ -221,17 +224,17 @@ class ModuleManager:
             'preinst': module.preinst, 'installed': module.installed,
             'configured': module.configured, 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps, 'reboot': module.reboot}
-        logger.debug("Module info : %s" % str(result))
+        logger.debug("Module info: %s" % str(result))
         return result
 
     @expose
     def get_modules(self, modules):
         """ return basic info for modules """
-        logger.info("Get modules info : %s" % str(modules))
+        logger.info("Get modules info: %s" % str(modules))
         result = []
         for m in modules:
             if m in self.modules:
-                logger.debug("Get module info : %s" % str(m))
+                logger.debug("Get module info: %s" % str(m))
                 result.append(self.get_module(m))
         return result
 
@@ -247,11 +250,12 @@ class ModuleManager:
         return modules infos
         """
         # force module re-installation
+        # (not-used for now)
         force_modules = []
         for m in modules:
             if m.startswith("force-"):
                 force_modules.append(m.replace("force-", ""))
-        modules = [ m.replace("force-","") for m in modules ]
+        modules = [m.replace("force-", "") for m in modules]
         # store old modules list
         old = modules
         # get deps for modules
@@ -262,7 +266,7 @@ class ModuleManager:
         # get modules info (modules + deps)
         modules = self.get_modules(modules)
         # remove already configured modules unless force
-        modules = [ m for m in modules if not m['configured'] or m['id'] in force_modules ]
+        modules = [m for m in modules if not m['configured'] or m['id'] in force_modules]
         # tell if the module is an dependency of selected modules
         # or if we reinstall it
         for m in modules:
@@ -342,7 +346,7 @@ class ModuleManager:
     def get_medias(self, modules):
         """ get medias for modules """
         logger.info("Get medias for modules : %s" % str(modules))
-        medias = [ self.modules[module].medias for module in modules if not self.check_media(module) and self.modules[module].medias ]
+        medias = [self.modules[module].medias for module in modules if not self.check_media(module) and self.modules[module].medias]
         logger.debug("Media list : %s" % str(medias))
         return medias
 
@@ -430,7 +434,7 @@ class ModuleManager:
         # format output
         tmp = output.splitlines()
         output = []
-    	if tmp:
+        if tmp:
             for line in tmp:
                 try:
                     if int(line[0]) in range(9):
@@ -457,8 +461,8 @@ class ModuleManager:
     @expose
     def get_status(self):
         """ return current agent status """
-        status = ""
+        status = []
         statuses = ProcessManager().pm_state()
         for sts in statuses:
-            status += _(sts, "agent")+', '
-        return status[:-2]
+            status.append(_(sts, "agent"))
+        return ', '.join(status)
