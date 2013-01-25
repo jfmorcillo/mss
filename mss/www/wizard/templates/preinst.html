@@ -21,9 +21,6 @@
                 <p class="help-block">{{ module.desc }}
                 {% if module.dep %}(<strong>{% trans "Added as a dependency" %}</strong>){% endif %}
                 {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
-                {% if module.preinst %}
-                <p class="help-block">{{ module.preinst }}</p>
-                {% endif %}
                 {% if module.force %}
                 <p class="alert alert-error">{% trans "If other components requires this component they may be broken after the reinstallation." %}</p>
                 {% endif %}

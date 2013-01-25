@@ -89,11 +89,6 @@ class Module(object):
         self._deps = [m.text for m in self.root.findall("deps/module")]
         # get module conflicts
         self._conflicts = [m.text for m in self.root.findall("conflicts/module")]
-        # get preinst text
-        if self.root.findtext("preinst/text"):
-            self._preinst = self.root.findtext("preinst/text")
-        else:
-            self._preinst = " "
         # reboot after configuration ?
         if self.root.findtext("postinstall/reboot") == "yes":
             self._reboot = True
@@ -126,10 +121,6 @@ class Module(object):
     @property
     def conflicts(self):
         return self._conflicts
-
-    @property
-    def preinst(self):
-        return _(self._preinst, self.id).strip()
 
     @property
     def reboot(self):

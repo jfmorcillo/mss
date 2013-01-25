@@ -221,7 +221,7 @@ class ModuleManager:
         result = {
             'id': module.id, 'name': module.name,
             'actions': module.actions, 'desc': module.desc, 'market': module.market,
-            'preinst': module.preinst, 'installed': module.installed,
+            'installed': module.installed,
             'configured': module.configured, 'conflict': conflicts,
             'conflicts': module.conflicts, 'deps': module.deps, 'reboot': module.reboot}
         logger.debug("Module info: %s" % str(result))
