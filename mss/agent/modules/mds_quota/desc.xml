@@ -9,9 +9,9 @@
             <rpm>mmc-web-userquota</rpm>
         </target>
     </packages>
-    <deps>
+    <dependencies>
         <module>mds_mmc</module>
-    </deps>
+    </dependencies>
     <config>
         <text name="filesystems" require="yes" default="get_filesystems" multi="yes">
             <label>Filesystems</label>

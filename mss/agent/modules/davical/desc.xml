@@ -15,7 +15,7 @@
             <rpm>php-ldap</rpm>
         </target>
     </packages>
-    <deps>
+    <dependencies>
         <module>postgresql</module>
-    </deps>
+    </dependencies>
 </module>

@@ -16,9 +16,9 @@
             <rpm>python-mmc-samba</rpm>
         </target>
     </packages>
-    <deps>
+    <dependencies>
         <module>mds_mmc</module>
-    </deps>
+    </dependencies>
     <config>
         <text name="smbdomain" require="yes" default="MBSDOMAIN"
             validation="valid_domain">

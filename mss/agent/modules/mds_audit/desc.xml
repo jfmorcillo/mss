@@ -5,10 +5,10 @@
     <actions>
         <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/main.php" />
     </actions>
-    <deps>
+    <dependencies>
         <module>mds_mmc</module>
         <module>mysql</module>
-    </deps>
+    </dependencies>
     <packages>
         <target name="all">
             <rpm>python-sqlalchemy</rpm>

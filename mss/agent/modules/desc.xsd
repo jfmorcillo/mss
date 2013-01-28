@@ -177,7 +177,7 @@
                         </xs:sequence>
                     </xs:complexType>
                 </xs:element>
-                <xs:element minOccurs="0" maxOccurs="1" name="deps" type="depsComplexType"></xs:element>
+                <xs:element minOccurs="0" maxOccurs="1" name="dependencies" type="dependenciesComplexType"></xs:element>
                 <xs:element minOccurs="0" ref="conflicts"></xs:element>
                 <xs:element minOccurs="0" maxOccurs="unbounded" ref="config"></xs:element>
                 <xs:element minOccurs="0" maxOccurs="unbounded" name="text" type="xs:string"></xs:element>
@@ -247,7 +247,7 @@
         <xs:attribute name="name" type="xs:string" use="required"></xs:attribute>
         <xs:attribute name="value" type="xs:anyURI" use="required"></xs:attribute>
     </xs:complexType>
-    <xs:complexType name="depsComplexType">
+    <xs:complexType name="dependenciesComplexType">
         <xs:sequence>
             <xs:element name="module" type="xs:string" maxOccurs="unbounded" minOccurs="1"></xs:element>
         </xs:sequence>

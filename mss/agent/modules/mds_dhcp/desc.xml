@@ -12,9 +12,9 @@
             <rpm>python-mmc-network</rpm>
         </target>
     </packages>
-    <deps>
+    <dependencies>
         <module>mds_mmc</module>
-    </deps>
+    </dependencies>
     <config>
         <check name="fw_lan" default="on">
             <label>Allow DHCP requests from internal networks</label>

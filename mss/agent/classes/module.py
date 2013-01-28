@@ -85,8 +85,8 @@ class Module(object):
             self._market['info_url'] = self.root.findtext("market/info_url")
             self._market['info_file'] = self.root.findtext("market/info_file")
             self._market['info_title'] = self.root.find("market/info_file").attrib["title"]
-        # get module deps
-        self._deps = [m.text for m in self.root.findall("deps/module")]
+        # get module dependencies
+        self._dependencies = [m.text for m in self.root.findall("dependencies/module")]
         # get module conflicts
         self._conflicts = [m.text for m in self.root.findall("conflicts/module")]
         # reboot after configuration ?
@@ -115,8 +115,8 @@ class Module(object):
         return self._market
 
     @property
-    def deps(self):
-        return self._deps
+    def dependencies(self):
+        return self._dependencies
 
     @property
     def conflicts(self):

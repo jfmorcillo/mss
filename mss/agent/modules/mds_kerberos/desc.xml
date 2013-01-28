@@ -24,10 +24,10 @@
             <rpm>lib64sasl2-plug-gssapi</rpm>
         </target>
     </packages>
-    <deps>
+    <dependencies>
         <module>mds_mmc</module>
         <module>mds_dns</module>
-    </deps>
+    </dependencies>
     <config>
         <text name="realm" require="yes" edit_if_unconfigured = "Yes" default = "get_default_realm" validation = "check_realm" >
             <label>Realm</label>

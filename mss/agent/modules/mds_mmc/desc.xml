@@ -45,8 +45,8 @@
     <postinstall>
         <reboot>yes</reboot>
     </postinstall>
-    <deps>
+    <dependencies>
         <module>system</module>
         <module>network</module>
-    </deps>
+    </dependencies>
 </module>

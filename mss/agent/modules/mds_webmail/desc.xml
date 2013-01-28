@@ -15,9 +15,9 @@
             <rpm>php-pear-MDB2_Driver_sqlite</rpm>
         </target>
     </packages>
-    <deps>
+    <dependencies>
         <module>mds_mail</module>
-    </deps>
+    </dependencies>
     <conflicts>
         <module>zarafa</module>
     </conflicts>

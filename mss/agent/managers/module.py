@@ -198,7 +198,7 @@ class ModuleManager:
                     conflicts = self.get_conflicts(conflicts, m)
             except KeyError:
                 pass
-        for m in module.deps:
+        for m in module.dependencies:
             try:
                 m = self.modules[m]
                 for m1 in m.conflicts:
@@ -223,7 +223,7 @@ class ModuleManager:
             'actions': module.actions, 'desc': module.desc, 'market': module.market,
             'installed': module.installed,
             'configured': module.configured, 'conflict': conflicts,
-            'conflicts': module.conflicts, 'deps': module.deps, 'reboot': module.reboot}
+            'conflicts': module.conflicts, 'dependencies': module.dependencies, 'reboot': module.reboot}
         logger.debug("Module info: %s" % str(result))
         return result
 
@@ -246,7 +246,7 @@ class ModuleManager:
     @expose
     def preinstall_modules(self, modules):
         """
-        get deps for modules to install
+        get dependencies for modules to install
         return modules infos
         """
         # force module re-installation
@@ -258,12 +258,12 @@ class ModuleManager:
         modules = [m.replace("force-", "") for m in modules]
         # store old modules list
         old = modules
-        # get deps for modules
-        modules = self.check_deps(modules, [])
-        modules = self.order_deps(modules)
+        # get dependencies for modules
+        modules = self.check_dependencies(modules, [])
+        modules = self.order_dependencies(modules)
         # get difference for dep list
         deps = list(set(modules).difference(old))
-        # get modules info (modules + deps)
+        # get modules info (modules + dependencies)
         modules = self.get_modules(modules)
         # remove already configured modules unless force
         modules = [m for m in modules if not m['configured'] or m['id'] in force_modules]
@@ -281,9 +281,9 @@ class ModuleManager:
         logger.info("Pre-install modules : %s" % str(modules))
         return modules
 
-    def order_deps(self, modules, cnt=1):
+    def order_dependencies(self, modules, cnt=1):
         for module in modules:
-            # if the module has deps and is not indexed
+            # if the module has dependencies and is not indexed
             if module[1] and module[2] == -1:
                 # for each dep of current module
                 set_index = True
@@ -294,7 +294,7 @@ class ModuleManager:
                         if m1 == m2[0] and not m2[2] >= 0:
                             set_index = False
                 # set the current module index to cnt
-                # if all deps are indexed
+                # if all dependencies are indexed
                 if set_index:
                     module[2] = cnt
 
@@ -302,7 +302,7 @@ class ModuleManager:
         # FIXME! this limits the nb max of the modules list
         if(cnt < 10):
             cnt += 1
-            modules = self.order_deps(modules, cnt)
+            modules = self.order_dependencies(modules, cnt)
         # calcule module list from indexes
         else:
             result = []
@@ -314,26 +314,27 @@ class ModuleManager:
             modules = result
         return modules
 
-    def check_deps(self, modules, dependencies):
-        """ get deps for modules
-            create a list with the form : [ [ module, [deps], index ],... ]
+    def check_dependencies(self, modules, dependencies):
+        """ get dependencies for modules
+            create a list with the form : [ [ module, [dependencies], index ],... ]
         """
         for module in modules:
-            deps = self.get_deps(module)
+            deps = self.get_dependencies(module)
+            print deps
             if deps:
                 # set the index a -1 to calculate index
                 dependencies.append([module, deps, -1])
-                dependencies = self.check_deps(deps, dependencies)
+                dependencies = self.check_dependencies(deps, dependencies)
             else:
-                # set the index at 0 as the module has no deps
+                # set the index at 0 as the module has no dependencies
                 dependencies.append([module, None, 0])
         return dependencies
 
-    def get_deps(self, module):
-        """ get deps for module """
-        if getattr(self.modules[module], 'deps' or None):
+    def get_dependencies(self, module):
+        """ get dependencies for module """
+        if getattr(self.modules[module], 'dependencies' or None):
             deps = []
-            for dep in self.modules[module].deps:
+            for dep in self.modules[module].dependencies:
                 try:
                     if self.modules[dep]:
                         deps.append(dep)

@@ -24,9 +24,9 @@
     <conflicts>
         <module>zarafa</module>
     </conflicts>
-    <deps>
+    <dependencies>
         <module>mds_mmc</module>
-    </deps>
+    </dependencies>
     <config>
         <network name="smtpd_mynetworks" format="short" validation="network" default="get_networks">
             <label>My networks</label>
