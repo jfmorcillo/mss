@@ -1,0 +1,35 @@
+{
+    "id":   "mds_dhcp",
+    "name": "DHCP Service",
+    "desc": "Configure automatically your client computers IP settings",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["dhcp-server", "mmc-web-network", "python-mmc-network"]
+        }
+    ],
+    "dependencies": ["mds_mmc"],
+    "config": [
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow DHCP requests from internal networks",
+            "help": "Configure the firewall to accept DHCP requests on interfaces configured as 'internal'"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow DHCP requests from external networks",
+            "help": "Configure the firewall to accept DHCP requests on interfaces configured as 'external'"
+        }
+    ]
+}

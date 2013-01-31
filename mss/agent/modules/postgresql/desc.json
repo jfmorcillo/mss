@@ -1,0 +1,11 @@
+{
+    "id": "postgresql",
+    "name": "PostgreSQL database",
+    "desc": "PostgreSQL relational database",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["postgresql9.2-server"]
+        }
+    ]
+}

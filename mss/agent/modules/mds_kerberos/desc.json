@@ -1,0 +1,142 @@
+{
+    "id":   "mds_kerberos",
+    "name": "Kerberos authentication with MDS backend",
+    "desc": "Install and configure Kerberos authentication",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["krb5-server",
+                         "krb5-workstation",
+                         "openldap-servers",
+                         "nss_ldap",
+                         "openldap-clients",
+                         "pam_ldap",
+                         "openldap-mandriva-dit",
+                         "python-mmc-kerberos",
+                         "mmc-web-kerberos"]
+        },
+        {
+            "name": "x86_64",
+            "rpms": "lib64sasl2-plug-gssapi"
+        },
+        {
+            "name": "i586",
+            "rpms": "libsasl2-plug-gssapi"
+        }
+    ],
+    "dependencies": ["mds_mmc", "mds_dns"],
+    "config": [
+        {
+            "type": "text",
+            "name": "realm",
+            "require": "yes",
+            "edit_if_unconfigured": "yes",
+            "default": "get_default_realm",
+            "validation": "check_realm",
+            "label": "Realm",
+            "help": "Kerberos realm (e.g., REALM.COM). Attention! It can be set only when the module is unconfigured)"
+        },
+        {
+            "type": "text",
+            "name": "kdc_host_name",
+            "require": "yes",
+            "default": "get_default_host_name",
+            "validation": "check_kdc_host_name",
+            "label": "KDC host name",
+            "help": "Host name of the KDC server without DNS domain name (e.g., server)"
+        },
+        {
+            "type": "text",
+            "name": "dns_domain_name",
+            "require": "yes",
+            "default": "get_default_domain_name",
+            "validation": "fqdn",
+            "label": "DNS domain name",
+            "help": "DNS Domain name (e.g., example.com)"
+        },
+        {
+            "type": "text",
+            "name": "kdc_port",
+            "require": "yes",
+            "default": "88",
+            "validation": "check_port",
+            "label": "KDC port",
+            "help": "Default port of the KDC server (e.g., 88)"
+        },
+        {
+            "type": "text",
+            "name": "kadmin_port",
+            "require": "yes",
+            "default": "749",
+            "validation": "check_port",
+            "label": "Administrator server port",
+            "help": "Default port of the administrator server (e.g., 749)"
+        },
+        {
+            "type": "password",
+            "name": "kdc_key_passwd",
+            "require": "yes",
+            "show_if_unconfigured": "yes",
+            "label": "KDC database master key",
+            "help": "Master key for the KDC server. Attention! It can be set only when the module is unconfigured"
+        },
+        {
+            "type": "check",
+            "name": "dns_lookup_kdc",
+            "default": "on",
+            "label": "DNS lookup for KDC",
+            "help": "Indicates whether DNS SRV records should be used to locate the KDCs and other servers for a realm, if they are not listed in the information for the realm"
+        },
+        {
+            "type": "check",
+            "name": "dns_lookup_realm",
+            "label": "DNS lookup for realm",
+            "help": "Indicates whether DNS TXT records should be used to determine the Kerberos realm of a host"
+        },
+        {
+            "type": "text",
+            "name": "clock_skew",
+            "default": "300",
+            "label": "Clock skew",
+            "help": "Maximum allowable amount of clockskew in seconds that the library will tolerate before assuming that a Kerberos message is invalid (e.g., 300)"
+        },
+        {
+            "type": "text",
+            "name": "tgs_enctypes",
+            "default": "des3-cbc-sha1-kd des-cbc-crc",
+            "size": "50",
+            "label": "TGS encryption types",
+            "help": "Supported list of session key encryption types that should be returned by the KDC (Values of list devided by whitespace or comma from each other, e.g., des3-cbc-sha1-kd des-cbc-crc)"
+        },
+        {
+            "type": "text",
+            "name": "tkt_enctypes",
+            "default": "des3-cbc-sha1-kd des-cbc-crc",
+            "size": "50",
+            "label": "TKT encryption types",
+            "help": "Supported list of session key encryption types that should be requested by the client (Values of list devided by whitespace or comma from each other, e.g., des3-cbc-sha1-kd des-cbc-crc)"
+        },
+        {
+            "type": "text",
+            "name": "permitted_enctypes",
+            "default": "des3-cbc-sha1-kd des-cbc-crc",
+            "size": "50",
+            "label": "Permitted encryption types",
+            "help": "All encryption types that are permitted for use in session key encryption (Values of list devided by whitespace or comma from each other, e.g., des3-cbc-sha1-kd des-cbc-crc)"
+        },
+        {
+            "type": "check",
+            "name": "allow_weak_enctypes",
+            "default": "on",
+            "label": "Allow weak encryption types",
+            "help": "Indicates whether weak encryption types should be filtered out"
+        }
+    ]
+}

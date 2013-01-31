@@ -1,0 +1,28 @@
+{
+    "id": "mysql",
+    "name": "MySQL database",
+    "desc": "MySQL relational database",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["mysql", "mysql-client"]
+        }
+    ],
+    "conflict": ["mysqlmax"],
+    "config": [
+        {
+            "type": "password",
+            "name": "current_mypasswd",
+            "show": "configured",
+            "label": "Current password",
+            "help": "Current MySQL root password."
+        },
+        {
+            "type": "password",
+            "name": "mypasswd",
+            "require": "yes",
+            "label": "New password",
+            "help": "New MySQL root password. Set here the new password"
+        }
+    ]
+}

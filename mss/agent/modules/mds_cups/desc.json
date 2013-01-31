@@ -1,0 +1,40 @@
+{
+    "id":   "mds_cups",
+    "name": "Printing service",
+    "desc": "Network printers management",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Printers management",
+            "value": "http://@HOSTNAME@:631/admin/"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["cups",
+                         "cups-drivers",
+                         "cups-windows",
+                         "foomatic-filters",
+                         "hplip-hpijs-ppds",
+                         "postscript-ppds",
+                         "hplip"]
+        }
+    ],
+    "config": [
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "n",
+            "label": "Allow connections to the management interface from internal networks",
+            "help": "Configure the firewall to allow access to the Printer Management Service from internal networks"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow connections to the management interface from external networks",
+            "help": "Configure the firewall to allow access to the Printer Management Service from external networks"
+        }
+    ]
+}

@@ -1,0 +1,63 @@
+{
+    "id": "mds_mmc",
+    "name": "MBS administration web interface",
+    "desc": "Users and groups management",
+    "actions": [
+        {
+            "type": "link",
+             "name": "Management interface",
+             "value": "https://@HOSTNAME@/mmc/main.php"
+         }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "mmc-web-base",
+                "mmc-web-bulkimport",
+                "mmc-web-services",
+                "mmc-web-dashboard",
+                "mmc-web-shorewall",
+                "python-mmc-base",
+                "python-mmc-bulkimport",
+                "python-mmc-services",
+                "python-mmc-dashboard",
+                "python-mmc-shorewall",
+                "mmc-agent",
+                "openldap-servers",
+                "nss_ldap",
+                "openldap-clients",
+                "pam_ldap",
+                "openldap-mandriva-dit",
+                "apache-mod_ssl"
+            ]
+        }
+    ],
+    "dependencies": ["system", "network"],
+    "config": [
+        {
+            "type": "password",
+            "name": "mdspasswd",
+            "require": "yes",
+            "label": "Administrator password",
+            "help": "The administrator password of the web interface for managing MBS users and services."
+        },
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow access from internal networks",
+            "help": "Configure the firewall to allow access to the web interface from internal networks"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow access from external networks",
+            "help": "Configure the firewall to allow access to the web interface from external networks"
+        }
+    ],
+    "postinstall": {
+        "reboot": "yes"
+    }
+}

@@ -1,0 +1,52 @@
+{
+    "id":   "mds_dns",
+    "name": "DNS Service",
+    "desc": "Resolve computer names on your network",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["bind", "bind-utils", "mmc-web-network", "python-mmc-network"]
+        }
+    ],
+    "dependencies": ["mds_mmc"],
+    "config": [
+        {
+            "type": "network",
+            "name": "bind_networks",
+            "format": "short",
+            "validation": "network",
+            "default": "get_networks",
+            "label": "My networks",
+            "help": "Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0."
+        },
+        {
+            "type": "text",
+            "name": "bind_forwarders",
+            "multi": "yes",
+            "validation": "ip",
+            "label": "Forwarders",
+            "help": "Forward external DNS queries to DNS of your choice"
+        },
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow DNS requests from internal networks",
+            "help": "Configure the firewall to accept DNS requests on interfaces configured as 'internal'"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow DNS requests from external networks",
+            "help": "Configure the firewall to accept DNS requests on interfaces configured as 'external'"
+        }
+    ]
+}

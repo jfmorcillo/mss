@@ -1,0 +1,35 @@
+{
+    "id":   "mds_audit",
+    "name": "AUDIT plugin",
+    "desc": "Track any changes made in the management interface",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["python-sqlalchemy", "python-mysql"]
+        }
+    ],
+    "dependencies": ["mds_mmc", "mysql"],
+    "config": [
+        {
+            "type": "password",
+            "name": "myrootpasswd",
+            "require": "yes",
+            "label": "MySQL root password",
+            "help": "Used to create the audit database"
+        },
+        {
+            "type": "password",
+            "name": "myauditpasswd",
+            "require": "yes",
+            "label": "MySQL audit password",
+            "help": "MySQL user password for the audit database"
+        }
+    ]
+}

@@ -1,0 +1,16 @@
+{
+    "id": "mbs_repo",
+    "name": "Mandriva Business Server repositories",
+    "desc": "Get security updates through MBS repositories",
+    "medias": [
+        {
+            "name": "mbs",
+            "verbose_name": "MBS repositories",
+            "proto": "http",
+            "mode": "distrib",
+            "url": [
+                "mes5devel.mandriva.com/BIG/mbs/1/@ARCH@/"
+                ]
+        }
+    ]
+}

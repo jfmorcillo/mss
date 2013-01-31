@@ -1,0 +1,17 @@
+{
+    "id": "network",
+    "name": "Network setup",
+    "desc": "Configure network interfaces",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["shorewall"]
+        }
+    ],
+    "config": [
+        {
+            "type": "custom",
+            "name": "interfaces"
+        }
+    ]
+}

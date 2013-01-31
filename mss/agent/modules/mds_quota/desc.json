@@ -1,0 +1,23 @@
+{
+    "id": "mds_quota",
+    "name": "User quota management",
+    "desc": "Set file quotas on the server",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["quota", "python-mmc-userquota", "mmc-web-userquota"]
+        }
+    ],
+    "dependencies": ["mds_mmc"],
+    "config": [
+        {
+            "type": "text",
+            "name": "filesystems",
+            "require": "yes",
+            "default": "get_filesystems",
+            "multi": "yes",
+            "label": "Filesystems",
+            "help": "Specify the filesystems where you want to apply user quotas with the following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
+        }
+    ]
+}
