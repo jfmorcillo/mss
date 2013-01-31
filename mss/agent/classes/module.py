@@ -25,7 +25,7 @@ import re
 import imp
 import copy
 import logging
-import xml.etree.ElementTree as ET
+import json
 from datetime import datetime
 from IPy import IP
 
@@ -47,11 +47,9 @@ class Module(object):
         self.MM = MM
         self.path = path
         self.arch = arch
-        try:
-            tree = ET.parse(os.path.join(self.path, "desc.xml"))
-        except:
-            raise Exception("Syntax error in desc.xml (%s)" % self.path)
-        self.root = tree.getroot()
+        desc_json_fp = open(os.path.join(self.path, "desc.json"))
+        self.root = json.load(desc_json_fp)
+        desc_json_fp.close()
         # BDD access
         self.session = Session()
         # load module info
@@ -71,26 +69,29 @@ class Module(object):
     def load(self):
         """ load module basic infos """
         # get common info
-        self.id = self.root.attrib.get("id")
+        self.id = self.root.get("id", '')
         TranslationManager().set_catalog(self.id, self.path)
-        self._name = self.root.findtext("name")
-        self._desc = self.root.findtext("desc")
+        self._name = self.root.get("name", '')
+        self._desc = self.root.get("desc", self._name)
         self._actions = []
-        for action in self.root.findall("actions/action"):
-            self._actions.append(action.attrib)
-        self._market = False
-        if self.root.findtext("market/buy_url"):
+        self._actions = self.root.get("actions", [])
+        if "market" in self.root:
             self._market = {}
-            self._market['buy_url'] = self.root.findtext("market/buy_url")
-            self._market['info_url'] = self.root.findtext("market/info_url")
-            self._market['info_file'] = self.root.findtext("market/info_file")
-            self._market['info_title'] = self.root.find("market/info_file").attrib["title"]
+            self._market['buy_url'] = self.root['market'].get('buy_url', '')
+            self._market['info_url'] = self.root['market'].get('info_url', '')
+            self._market['info_file'] = self.root['market'].get('info_file', '')
+            if 'info_title' in self.root['market']:
+                self._market['info_title'] = self.root['market']['info_file'].get('title', '')
+        else:
+            self._market = False
         # get module dependencies
-        self._dependencies = [m.text for m in self.root.findall("dependencies/module")]
+        self._dependencies = self.root.get("dependencies", [])
         # get module conflicts
-        self._conflicts = [m.text for m in self.root.findall("conflicts/module")]
+        self._conflicts = self.root.get("conflict", [])
         # reboot after configuration ?
-        if self.root.findtext("postinstall/reboot") == "yes":
+        if 'postinstall' in self.root \
+            and 'reboot' in self.root['postinstall'] \
+                and self.root['postinstall']['reboot'] == "yes":
             self._reboot = True
         else:
             self._reboot = False
@@ -177,28 +178,28 @@ class Module(object):
         if not getattr(self, "_packages", None):
             # get packages for current arch
             self._packages = []
-            targets = self.root.findall("packages/target")
+            targets = self.root.get("packages", [])
             for target in targets:
-                if target.attrib['name'] == "all" or \
-                   target.attrib['name'] == self.arch:
-                    self._packages += [rpm.text for rpm in target.findall("rpm")]
+                if target['name'] == "all" or \
+                    target['name'] == self.arch:
+                    self._packages = target.get("rpms", [])
         return self._packages
 
     @property
     def medias(self):
         """ get medias for module """
-        media = self.root.find("medias")
+        media = self.root.get("medias", None)
         if media is not None:
             name = self.id
-            verbose_name = media.attrib.get("verbose_name", name)
-            auth = media.attrib.get("auth", None)
-            can_skip = media.attrib.get("can_skip", False)
+            verbose_name = media.get("verbose_name", name)
+            auth = media.get("auth", None)
+            can_skip = media.get("can_skip", False)
             urls = []
             # format media URL with correct arch
-            for url in media.findall("url"):
+            for url in media.get("url", []):
                 urls.append(re.sub('@ARCH@', self.arch, url.text))
-            proto = media.attrib.get("proto", "http")
-            mode = media.attrib.get("mode", None)
+            proto = media.get("proto", "http")
+            mode = media.get("mode", None)
             return Media(name, verbose_name, urls, auth, proto, mode, can_skip)
         else:
             return None
@@ -232,27 +233,13 @@ class Module(object):
         else:
             self.config.append({'id': self.id, 'skip_config': False, 'do_config': False})
             # get XML config
-            fields = self.root.findall("config/*")
-            if fields:
+            fields = self.root.get("config", [])
+            if fields != []:
                 # if we have fields, show the configuration page
                 self.config[0]['do_config'] = True
                 self.config[0]['configured'] = self.configured
-            for field in fields:
-                field_config = field.attrib
-                field_help = field.findtext("help")
-                field_label = field.findtext("label")
+            for field_config in fields:
                 field_config["id"] = self.id
-                field_config["help"] = _(field_help, self.id)
-                field_config["label"] = _(field_label, self.id)
-                field_config["type"] = field.tag
-                if field_config["type"] == "options":
-                    options = field.findall("option")
-                    field_config["options"] = []
-                    for option in options:
-                        field_config["options"].append(
-                            {'name': option.text,
-                             'value': option.attrib.get('value')}
-                        )
                 if field_config["type"] == "custom":
                     self.config = getattr(self.module, 'get_%s_config' % field_config['name'])(self.config)
                 # add current value if module is configured
