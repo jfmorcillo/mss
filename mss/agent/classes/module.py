@@ -48,7 +48,7 @@ class Module(object):
         self.path = path
         self.arch = arch
         desc_json_fp = open(os.path.join(self.path, "desc.json"))
-        self.root = json.load(desc_json_fp)
+        self._conf = json.load(desc_json_fp)
         desc_json_fp.close()
         # BDD access
         self.session = Session()
@@ -69,29 +69,28 @@ class Module(object):
     def load(self):
         """ load module basic infos """
         # get common info
-        self.id = self.root.get("id", '')
+        self.id = self._conf.get("id", '')
         TranslationManager().set_catalog(self.id, self.path)
-        self._name = self.root.get("name", '')
-        self._desc = self.root.get("desc", self._name)
-        self._actions = []
-        self._actions = self.root.get("actions", [])
-        if "market" in self.root:
+        self._name = self._conf.get("name", '')
+        self._desc = self._conf.get("desc", self._name)
+        self._actions = self._conf.get("actions", [])
+        if "market" in self._conf:
             self._market = {}
-            self._market['buy_url'] = self.root['market'].get('buy_url', '')
-            self._market['info_url'] = self.root['market'].get('info_url', '')
-            self._market['info_file'] = self.root['market'].get('info_file', '')
-            if 'info_title' in self.root['market']:
-                self._market['info_title'] = self.root['market']['info_file'].get('title', '')
+            self._market['buy_url'] = self._conf['market'].get('buy_url', '')
+            self._market['info_url'] = self._conf['market'].get('info_url', '')
+            self._market['info_file'] = self._conf['market'].get('info_file', '')
+            if 'info_title' in self._conf['market']:
+                self._market['info_title'] = self._conf['market']['info_file'].get('title', '')
         else:
             self._market = False
         # get module dependencies
-        self._dependencies = self.root.get("dependencies", [])
+        self._dependencies = self._conf.get("dependencies", [])
         # get module conflicts
-        self._conflicts = self.root.get("conflict", [])
+        self._conflicts = self._conf.get("conflict", [])
         # reboot after configuration ?
-        if 'postinstall' in self.root \
-            and 'reboot' in self.root['postinstall'] \
-                and self.root['postinstall']['reboot'] == "yes":
+        if 'postinstall' in self._conf \
+            and 'reboot' in self._conf['postinstall'] \
+                and self._conf['postinstall']['reboot'] == "yes":
             self._reboot = True
         else:
             self._reboot = False
@@ -178,7 +177,7 @@ class Module(object):
         if not getattr(self, "_packages", None):
             # get packages for current arch
             self._packages = []
-            targets = self.root.get("packages", [])
+            targets = self._conf.get("packages", [])
             for target in targets:
                 if target['name'] == "all" or \
                     target['name'] == self.arch:
@@ -188,7 +187,7 @@ class Module(object):
     @property
     def medias(self):
         """ get medias for module """
-        media = self.root.get("medias", None)
+        media = self._conf.get("medias", None)
         if media is not None:
             name = self.id
             verbose_name = media.get("verbose_name", name)
@@ -233,8 +232,8 @@ class Module(object):
         else:
             self.config.append({'id': self.id, 'skip_config': False, 'do_config': False})
             # get XML config
-            fields = self.root.get("config", [])
-            if fields != []:
+            fields = self._conf.get("config", [])
+            if fields:
                 # if we have fields, show the configuration page
                 self.config[0]['do_config'] = True
                 self.config[0]['configured'] = self.configured
