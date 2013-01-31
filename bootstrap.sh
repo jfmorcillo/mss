@@ -33,7 +33,7 @@ function generate_salt() {
 }
 
 mkdir -p /var/log/mss/500/
-mkdir -p /var/lib/mss/
+mkdir -p /var/lib/mss/local
 touch /var/log/mss/mss-agent.log
 touch /var/log/mss/mss-www.log
 chown $user.$user /var/log/mss/mss-www.log
@@ -56,4 +56,6 @@ ln -s ${path}/bin/mss-add-shorewall-rule $mss_shorewall_rules
 python mss/www/manage.py syncdb --noinput
 chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db
+ln -s ${path}/etc/agent.ini /etc/mss/agent.ini
+ln -s ${path}/mss/agent/modules /var/lib/mss/local/addons
 su -c 'sh build_mo.sh' $user

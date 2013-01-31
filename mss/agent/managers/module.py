@@ -27,6 +27,7 @@ import logging
 import platform
 import traceback
 import json
+import ConfigParser
 
 from mss.agent.lib.utils import grep, Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
@@ -73,7 +74,10 @@ class ModuleManager:
             self.arch = 'x86_64'
         else:
             self.arch = 'i586'
-        self.modulesDirectory = os.path.join(os.path.dirname(__file__), "..", "modules")
+        self.mssAgentConfig = ConfigParser.ConfigParser();
+        self.mssAgentConfig.readfp(open("/etc/mss/agent.ini"))
+        self.modulesDirectory = self.mssAgentConfig.get("addons", "localPath")
+        logger.warning("Looking for modules inside %s" % self.modulesDirectory)
         self.modules = {}
         self.packages = []
         # translation manager
