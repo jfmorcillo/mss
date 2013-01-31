@@ -1,8 +1,0 @@
-<module xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:noNamespaceSchemaLocation="../desc.xsd" id="mbs_repo">
-    <name>Mandriva Business Server repositories</name>
-    <desc>Get security updates through MBS repositories</desc>
-    <medias verbose_name="MBS repositories" name="mbs" proto="http" mode="distrib">
-        <url>mes5devel.mandriva.com/BIG/mbs/2/@ARCH@/</url>
-    </medias>
-</module>
