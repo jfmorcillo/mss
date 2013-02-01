@@ -3,8 +3,8 @@
 
 {% block sidebar %}
     {% for section in sections %}
-    <li {% ifequal section.id "core" %}class="active"{% endifequal %}>
-        <a href="#{{ section.id }}" data-target="{{ section.id }}">{% trans section.name %}</a>
+    <li {% ifequal section.key "core" %}class="active"{% endifequal %}>
+        <a href="#{{ section.key }}" data-target="{{ section.key }}">{% trans section.name %}</a>
     </li>
     {% endfor %}
     <script type="text/javascript">

@@ -36,11 +36,9 @@ from django.utils.translation import ugettext as _, activate
 from mss.www.xmlrpc import XmlRpc
 
 from lib.jsonui.response import JSONResponse
-from config import ConfigManager
 from transaction import Transaction, Steps
 
 xmlrpc = XmlRpc()
-CM = ConfigManager()
 output = {"status": ""}
 
 # used to change interface + agent lang
@@ -201,19 +199,38 @@ def has_net(request, has_net):
 @login_required
 def sections(request):
     """ sections list """
+    sections = []
+    # get section list
+    err, result = xmlrpc.call('get_sections')
+    if err:
+        return err
+    sections = result
+
+    # Translate section name
+    for section in sections:
+        section["name"] = _(section["name"])
+
     # render the main page with all sections
     return render_to_response('sections.html',
-        {'sections': CM.get_sections()},
+        {'sections': sections},
         context_instance=RequestContext(request))
 
 @first_time_required
 @login_required
 def section(request, section):
     """ render section page """
-    # get section
-    section_info = CM.get_section(section)
-    # get modules info for modules list
-    err, result = xmlrpc.call('get_modules', CM.get_section_modules(section))
+    print section
+    err, result = xmlrpc.call('get_section', section)
+    if err:
+        return err
+    section_info = result
+
+    section_modules = []
+    for bundle in section_info["bundles"]:
+        for module in bundle["modules"]:
+            section_modules.append(module)
+
+    err, result = xmlrpc.call('get_modules', section_modules)
     if err:
         return err
     else:
@@ -222,6 +239,7 @@ def section(request, section):
         # check module access
         # format management url
         for module in modules:
+            module["name"] = _(module["name"])
             for action in module['actions']:
                 if action['type'] == "link":
                     action['value'] = toHtml(request, action['value'], False)
@@ -237,8 +255,17 @@ def section(request, section):
                 if module not in modules_list:
                     bundle["modules"].remove(module)
 
+        err, result = xmlrpc.call('get_sections')
+        if err:
+            return err
+        sections = result
+
+    # Translate section name
+    for section in sections:
+        section["name"] = _(section["name"])
+
         return render_to_response('section.html',
-            {'sections': CM.get_sections(), 'section': section_info,
+            {'sections': sections, 'section': section_info,
             'modules': modules },
             context_instance=RequestContext(request))
 
