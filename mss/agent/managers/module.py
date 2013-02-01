@@ -471,3 +471,23 @@ class ModuleManager:
         for sts in statuses:
             status.append(_(sts, "agent"))
         return ', '.join(status)
+
+    @expose
+    def get_sections(self):
+        """ return list of sections """
+        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "sections.json"))
+        sections = json.load(sections_json_fp)
+        sections_json_fp.close()
+        return sections
+
+    @expose
+    def get_section(self, section):
+        """ return modules belonging to section """
+        print section
+        bundles_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "bundles.json"))
+        sections = json.load(bundles_json_fp)
+        bundles_json_fp.close()
+        for sec in sections:
+            if sec["key"] == section:
+                return sec
+        return []

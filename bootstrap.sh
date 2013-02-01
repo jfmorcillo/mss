@@ -58,4 +58,6 @@ chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db
 ln -s ${path}/etc/agent.ini /etc/mss/agent.ini
 ln -s ${path}/mss/agent/modules /var/lib/mss/local/addons
+ln -s ${path}/var/sections.json /var/lib/mss/local/sections.json
+ln -s ${path}/var/bundles.json /var/lib/mss/local/bundles.json
 su -c 'sh build_mo.sh' $user
