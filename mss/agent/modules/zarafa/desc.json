@@ -16,11 +16,6 @@
             "value": "http://@HOSTNAME@/webaccess/"
         }
     ],
-    "market": {
-        "info_file": "zarafa.html",
-        "title": "Zarafa on MBS",
-        "buy_url": "http://store.mandriva.com"
-    },
     "medias": [
         {
             "verbose_name": "Zarafa",

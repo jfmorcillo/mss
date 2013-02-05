@@ -73,7 +73,7 @@
     {% for module in config %}
         <fieldset>
             {% for m in transaction.modules_info %}
-                {% ifequal module.0.id m.id %}
+                {% ifequal module.0.id m.key %}
             <legend>{{ m.name }}</legend>
                 {% endifequal %}
             {% endfor %}

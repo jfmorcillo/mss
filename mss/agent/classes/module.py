@@ -74,15 +74,6 @@ class Module(object):
         self._name = self._conf.get("name", '')
         self._desc = self._conf.get("desc", self._name)
         self._actions = self._conf.get("actions", [])
-        if "market" in self._conf:
-            self._market = {}
-            self._market['buy_url'] = self._conf['market'].get('buy_url', '')
-            self._market['info_url'] = self._conf['market'].get('info_url', '')
-            self._market['info_file'] = self._conf['market'].get('info_file', '')
-            if 'info_title' in self._conf['market']:
-                self._market['info_title'] = self._conf['market']['info_file'].get('title', '')
-        else:
-            self._market = False
         # get module dependencies
         self._dependencies = self._conf.get("dependencies", [])
         # get module conflicts
@@ -109,10 +100,6 @@ class Module(object):
     @property
     def actions(self):
         return self._actions
-
-    @property
-    def market(self):
-        return self._market
 
     @property
     def dependencies(self):

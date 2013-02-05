@@ -219,7 +219,6 @@ def sections(request):
 @login_required
 def section(request, section):
     """ render section page """
-    print section
     err, result = xmlrpc.call('get_section', section)
     if err:
         return err
@@ -239,30 +238,27 @@ def section(request, section):
         # check module access
         # format management url
         for module in modules:
+            # Translate module name
             module["name"] = _(module["name"])
-            for action in module['actions']:
+            module["desc"] = _(module["desc"])
+            # Check if modules is already installer
+            err, result = xmlrpc.call('get_module_details', module["key"])
+            if err:
+                return err
+            details = result
+            module["actions"] = details["actions"]
+            module["configured"] = details["configured"]
+            for action in module["actions"]:
                 if action['type'] == "link":
                     action['value'] = toHtml(request, action['value'], False)
-            if module['market']:
-                module['market']['access'] = False
-                if request.user.profile.has_family('mes5-get-%s' % module['id']):
-                    module['market']['access'] = True
-        # create simple modules list
-        modules_list = [m.get('id') for m in modules]
-        # remove modules not present server side
-        for bundle in section_info["bundles"]:
-            for module in bundle["modules"][:]:
-                if module not in modules_list:
-                    bundle["modules"].remove(module)
 
         err, result = xmlrpc.call('get_sections')
         if err:
             return err
         sections = result
-
-    # Translate section name
-    for section in sections:
-        section["name"] = _(section["name"])
+        # Translate section name
+        for section in sections:
+            section["name"] = _(section["name"])
 
         return render_to_response('section.html',
             {'sections': sections, 'section': section_info,
@@ -415,7 +411,8 @@ def config(request):
     skip_config = True
     for m1 in config:
         for m2 in transaction.modules_info:
-            if m1[0]['id'] == m2['id']:
+            if m1[0]['id'] == m2['key']:
+                m2['do_config'] = m1[0].get('do_config')
                 if m1[0].get('do_config'):
                     do_config = True
                 if not m1[0].get('skip_config'):
@@ -478,7 +475,7 @@ def config_run(request, module):
     """ run configuration script for module """
     transaction = Transaction(request)
     for m in transaction.modules_info:
-        if m['id'] == module and not m['configured']:
+        if m['key'] == module and not m['configured']:
             xmlrpc.call('run_config', module)
             break
     return HttpResponse("")
