@@ -110,29 +110,29 @@
     {% for bundle in section.bundles %}
     <div class="bundle" id="{{ bundle.id }}">
         <div class="page-header">
-            <a name="{{ bundle.key }}"></a>
+            <a name="{{ bundle.slug }}"></a>
             <h1>{% if bundle.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" /> {% endif %}{% trans bundle.name %}{% if bundle.desc %}&nbsp;<small>{% trans bundle.desc %}</small>{% endif %}</h1>
         </div>
             {% for module in bundle.modules %}
                 {% for m in modules %}
-                    {% ifequal m.key module %}
+                    {% ifequal m.slug module %}
                 
         <script type="text/javascript">
             {% if m.conflicts %}
                 {% for conflict in m.conflicts %}
             if (! conflicts.{{ conflict }})
                 conflicts.{{ conflict }} = new Array();
-            conflicts.{{ conflict }}.push("{{ m.key }}");
+            conflicts.{{ conflict }}.push("{{ m.slug }}");
                 {% endfor %}
             {% endif %}
             {% if m.configured %}
-            installs.{{ m.key }} = true;
+            installs.{{ m.slug }} = true;
             {% else %}
-            installs.{{ m.key }} = false;
+            installs.{{ m.slug }} = false;
             {% endif %}
         </script>
 
-        <div class="module control-group" id="{{ m.key }}">
+        <div class="module control-group" id="{{ m.slug }}">
             <label class="{% if not m.configured and not m.conflict %}checkbox{% endif %}">
                 {% if m.configured %}
                     <i class="icon-ok icon-blue"></i>
@@ -140,7 +140,7 @@
                     {% if m.conflict %}
                         <i class="icon-ban-circle"></i>
                     {% else %}
-                        <input type="checkbox" name="{{ m.key }}" class="module-checkbox">
+                        <input type="checkbox" name="{{ m.slug }}" class="module-checkbox">
                     {% endif %}
                 {% endif %}
                 <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
@@ -173,7 +173,7 @@
             <span class="actions">{% trans "Actions" %}
                 <div class="actions" style="display: none">
                     <div class="action">
-                        <input class="action" type="checkbox" name="force-{{ m.key }}" id="force-{{ m.key }}" /><label for="force-{{ m.key }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
+                        <input class="action" type="checkbox" name="force-{{ m.slug }}" id="force-{{ m.slug }}" /><label for="force-{{ m.slug }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
                     </div>
                 </div>
             </span>

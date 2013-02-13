@@ -57,20 +57,20 @@ class Module(object):
         # get module config object
         self.module = None
         # get current module config
-        f, p, d = imp.find_module(self.id)
+        f, p, d = imp.find_module(self.slug)
         try:
             # load module
-            self.module = imp.load_module(self.id, f, p, d)
+            self.module = imp.load_module(self.slug, f, p, d)
         except Exception, err:
-            logger.error("Can't load module %s __init__.py :" % self.id)
+            logger.error("Can't load module %s __init__.py :" % self.slug)
             logger.error("%s" % err)
         self.check_configured()
 
     def load(self):
         """ load module basic infos """
         # get common info
-        self.id = self._conf.get("id", '')
-        TranslationManager().set_catalog(self.id, self.path)
+        self.slug = self._conf.get("slug", '')
+        TranslationManager().set_catalog(self.slug, self.path)
         self._name = self._conf.get("name", '')
         self._desc = self._conf.get("desc", self._name)
         self._actions = self._conf.get("actions", [])
@@ -88,12 +88,12 @@ class Module(object):
 
     @property
     def name(self):
-        return _(self._name, self.id)
+        return _(self._name, self.slug)
 
     @property
     def desc(self):
         if self._desc:
-            return _(self._desc, self.id)
+            return _(self._desc, self.slug)
         else:
             return ""
 
@@ -124,7 +124,7 @@ class Module(object):
                 except:
                     pass
     	# check if module is configured from database
-        module = self.session.query(ModuleTable).filter(ModuleTable.name == self.id).first()
+        module = self.session.query(ModuleTable).filter(ModuleTable.name == self.slug).first()
         if module and module.configured:
             self._configured = True
         else:
@@ -145,7 +145,7 @@ class Module(object):
     def configured(self, value):
         self._configured = value
         if value:
-            module = ModuleTable(self.id)
+            module = ModuleTable(self.slug)
             module.configured = datetime.now()
             self.session.merge(module)
             self.session.commit()
@@ -176,7 +176,7 @@ class Module(object):
         """ get medias for module """
         media = self._conf.get("medias", None)
         if media is not None:
-            name = self.id
+            name = self.slug
             verbose_name = media.get("verbose_name", name)
             auth = media.get("auth", None)
             can_skip = media.get("can_skip", False)
@@ -199,7 +199,7 @@ class Module(object):
         except AttributeError:
             current_config = {}
         except Exception, err:
-            logger.error("Error in get_current_config in %s module : " % self.id)
+            logger.error("Error in get_current_config in %s module : " % self.slug)
             logger.error(str(err))
             logger.error("Can't get module current config")
             current_config = {}
@@ -214,10 +214,10 @@ class Module(object):
 
         # no config script we skip the configuration
         if not script:
-            self.config.append({'id': self.id, 'skip_config': True, 'do_config': False})
+            self.config.append({'slug': self.slug, 'skip_config': True, 'do_config': False})
         # we have a config script
         else:
-            self.config.append({'id': self.id, 'skip_config': False, 'do_config': False})
+            self.config.append({'slug': self.slug, 'skip_config': False, 'do_config': False})
             # get XML config
             fields = self._conf.get("config", [])
             if fields:
@@ -225,7 +225,7 @@ class Module(object):
                 self.config[0]['do_config'] = True
                 self.config[0]['configured'] = self.configured
             for field_config in fields:
-                field_config["id"] = self.id
+                field_config["slug"] = self.slug
                 if field_config["type"] == "custom":
                     self.config = getattr(self.module, 'get_%s_config' % field_config['name'])(self.config)
                 # add current value if module is configured
@@ -245,7 +245,7 @@ class Module(object):
                                 default = field_config["default"].split(";")
                                 field_config["default"] = default
                     except Exception, err:
-                        logger.error("Error in %s() in %s module : " % (field_config["default"], self.id))
+                        logger.error("Error in %s() in %s module : " % (field_config["default"], self.slug))
                         logger.error(str(err))
                         logger.error("Can't calculate default field value")
                         field_config["default"] = ""
@@ -277,28 +277,28 @@ class Module(object):
                 if field_type == "network":
                     field_value = []
                     for user_field, user_value in user_config.items():
-                        ip = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_ip$", user_field)
+                        ip = re.match("^"+self.slug+"_"+field_name+"_([0-9]?)_ip$", user_field)
                         if ip:
                             net = ip.group(1)
-                            ip = user_config.get(self.id+"_"+field_name+"_"+net+"_ip")
-                            mask = user_config.get(self.id+"_"+field_name+"_"+net+"_mask")
+                            ip = user_config.get(self.slug+"_"+field_name+"_"+net+"_ip")
+                            mask = user_config.get(self.slug+"_"+field_name+"_"+net+"_mask")
                             field_value.append((ip, mask))
                 # handle multi text fields
                 elif "multi" in field:
                     field_value = []
                     for user_field, user_value in user_config.items():
-                        f = re.match("^"+self.id+"_"+field_name+"_([0-9]?)_field$", user_field)
+                        f = re.match("^"+self.slug+"_"+field_name+"_([0-9]?)_field$", user_field)
                         if f:
                             nb = f.group(1)
-                            value = user_config.get(self.id+"_"+field_name+"_"+nb+"_field")
+                            value = user_config.get(self.slug+"_"+field_name+"_"+nb+"_field")
                             field_value.append(value)
                 # handle checkboxes
                 elif field_type == "check":
                     # if box uncheck, set default to off otherwise value is None
-                    field_value = user_config.get(self.id+"_"+field_name, "off")
+                    field_value = user_config.get(self.slug+"_"+field_name, "off")
                 # set values for text,password,options fields
                 else:
-                    field_value = user_config.get(self.id+"_"+field_name)
+                    field_value = user_config.get(self.slug+"_"+field_name)
 
                 # set default value
                 field["default"] = field_value
@@ -309,7 +309,7 @@ class Module(object):
                         errors = True
                         field["error"] = _("This field can't be empty.", "agent")
                     elif field_name.endswith("passwd"):
-                        field_value2 = user_config.get(self.id+"_"+field_name+"2")
+                        field_value2 = user_config.get(self.slug+"_"+field_name+"2")
                         if field_value != field_value2:
                             errors = True
                             field["error"] = _("Password mismatch.", "agent")
@@ -325,7 +325,7 @@ class Module(object):
                     if not method:
                         # get module validation method
                         method = getattr(self.module, field.get("validation"), None)
-                        module = self.id
+                        module = self.slug
                     # run the validation method
                     if method and field_value:
                         result = method(field_value)

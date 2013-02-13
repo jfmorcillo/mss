@@ -1,5 +1,5 @@
 {
-    "id":   "ejabberd",
+    "slug":   "ejabberd",
     "name": "Jabber/XMPP instant messaging server",
     "desc": "A distributed, fault-tolerant Jabber/XMPP server",
     "actions": [

@@ -1,5 +1,5 @@
 {
-    "id": "zarafa",
+    "slug": "zarafa",
     "name": "Zarafa Collaboration Platform",
     "desc": "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface",
     "dependencies": ["mds_mmc", "mysql"],

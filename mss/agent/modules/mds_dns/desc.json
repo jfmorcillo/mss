@@ -1,5 +1,5 @@
 {
-    "id":   "mds_dns",
+    "slug":   "mds_dns",
     "name": "DNS Service",
     "desc": "Resolve computer names on your network",
     "actions": [

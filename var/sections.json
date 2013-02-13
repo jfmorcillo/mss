@@ -1,4 +1,4 @@
 [
-    {"key": "core", "name": "Core Services"}, 
-    {"key": "other", "name": "Other Services"}
+    {"slug": "core", "name": "Core Services"}, 
+    {"slug": "other", "name": "Other Services"}
 ]

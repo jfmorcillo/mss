@@ -1,5 +1,5 @@
 {
-    "id":   "davical",
+    "slug":   "davical",
     "name": "Calendar and Addressbook",
     "desc": "DAViCal a service for calendar and addressbook sharing.",
     "actions": [

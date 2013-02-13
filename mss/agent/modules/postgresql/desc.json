@@ -1,5 +1,5 @@
 {
-    "id": "postgresql",
+    "slug": "postgresql",
     "name": "PostgreSQL database",
     "desc": "PostgreSQL relational database",
     "packages": [

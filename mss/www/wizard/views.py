@@ -69,6 +69,7 @@ def mylogin(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
+                xmlrpc.call('load')
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
         else:
@@ -242,13 +243,7 @@ def section(request, section):
             module["name"] = _(module["name"])
             module["desc"] = _(module["desc"])
             # Check if modules is already installer
-            err, result = xmlrpc.call('get_module_details', module["key"])
-            if err:
-                return err
-            details = result
-            module["actions"] = details["actions"]
-            module["configured"] = details["configured"]
-            for action in module["actions"]:
+            for action in module['actions']:
                 if action['type'] == "link":
                     action['value'] = toHtml(request, action['value'], False)
 
@@ -256,6 +251,7 @@ def section(request, section):
         if err:
             return err
         sections = result
+
         # Translate section name
         for section in sections:
             section["name"] = _(section["name"])
@@ -411,8 +407,7 @@ def config(request):
     skip_config = True
     for m1 in config:
         for m2 in transaction.modules_info:
-            if m1[0]['id'] == m2['key']:
-                m2['do_config'] = m1[0].get('do_config')
+            if m1[0]['slug'] == m2['slug']:
                 if m1[0].get('do_config'):
                     do_config = True
                 if not m1[0].get('skip_config'):
@@ -475,7 +470,8 @@ def config_run(request, module):
     """ run configuration script for module """
     transaction = Transaction(request)
     for m in transaction.modules_info:
-        if m['key'] == module and not m['configured']:
+        if m['slug'] == module and not m['configured']:
+            print module
             xmlrpc.call('run_config', module)
             break
     return HttpResponse("")

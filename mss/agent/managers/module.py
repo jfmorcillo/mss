@@ -78,20 +78,15 @@ class ModuleManager:
         self.mssAgentConfig.readfp(open("/etc/mss/agent.ini"))
         self.modulesDirectory = self.mssAgentConfig.get("addons", "localPath")
         logger.warning("Looking for modules inside %s" % self.modulesDirectory)
-
         self.modules = {}
         self.packages = []
-         # logging
-        self.load_packages()
-        #self.load_modules()
 
-       # translation manager
+        # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
         # BDD access
         self.session = Session()
-        
-        self.load()
-        
+        # logging
+        self.load_packages()
         # Get machine-id
         machine_id = open('/etc/machine-id', 'r').read().strip()
         logger.info("Machine id is %s" % machine_id)
@@ -103,10 +98,10 @@ class ModuleManager:
         addons_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "addons.json"))
         addons = json.load(addons_json_fp)
         addons_json_fp.close()
-        
+
         hAddons = {}
         for addon in addons:
-            hAddons[addon["key"]] = addon
+            hAddons[addon["slug"]] = addon
         return [addons, hAddons]
 
     def load_sections(self):
@@ -121,31 +116,34 @@ class ModuleManager:
         """ return categories per section """
         categories = {}
         for section in sections:
-            categories[section["key"]] = []
+            categories[section["slug"]] = []
 
+        categories["hidden"] = []
         for addon in addons:
-            section = addon["section"]["key"]
-            for category in addon["categories"]:
-                category["id"] = category["key"]
-                category["modules"] = []
-                notFound = True
-                for cat in categories[section]:
-                    if cat["key"] == category["key"]:
-                        notFound = False
-                if notFound:
-                    categories[section].append(category)
+            if "sections" in addon:
+                for section in addon["sections"]:
+                    for category in addon["categories"]:
+                        category["modules"] = []
+                        notFound = True
+                        for cat in categories[section]:
+                            if cat["slug"] == category["slug"]:
+                                notFound = False
+                        if notFound:
+                            categories[section].append(category)
         return categories
 
     def load_modules2(self, addons):
         """ Dispatch modules in categories """
         # Add modules to categories
         for addon in addons:
-            addon["id"] = addon["key"]
-            section = addon["section"]["key"]
-            for category in addon["categories"]:
-                for cat in self._categories[section]:
-                    if cat["key"] == category["key"]:
-                        cat["modules"].append(addon["key"])
+                if "sections" in addon: 
+                    for section in addon["sections"]:
+                        for category in addon["categories"]:
+                            for cat in self._categories[section]:
+                                if cat["slug"] == category["slug"]:
+                                    cat["modules"].append(addon["slug"])
+                else:
+                    self._categories["hidden"].append(addon["slug"])
 
     @expose
     def load_module(self, module):
@@ -156,8 +154,7 @@ class ModuleManager:
         if module in modules and module not in self.modules:
             logger.debug("Loading %s" % module)
             m = Module(os.path.join(self.modulesDirectory, module), self, self.arch)
-            self.modules[m.id] = m
-            self._hAddons['config'] = m.get_config()
+            self.modules[m.slug] = m
             logger.info(m)
             for mod in m.dependencies:
                 self.load_module(mod)
@@ -182,16 +179,16 @@ class ModuleManager:
         TranslationManager().set_lang(lang)
 
     @expose
-    def set_option(self, key, value):
+    def set_option(self, slug, value):
         """ add an option in the DB """
-        option = OptionTable(key, value)
+        option = OptionTable(slug, value)
         self.session.merge(option)
         self.session.commit()
 
     @expose
-    def get_option(self, key):
+    def get_option(self, slug):
         """ get an option from the BDD """
-        option = self.session.query(OptionTable).get(key)
+        option = self.session.query(OptionTable).get(slug)
         if option:
             return json.loads(option.value)
         else:
@@ -251,71 +248,70 @@ class ModuleManager:
 
     def check_installed(self, module):
         """ check if module is installed """
-        
-        if module["id"] not in self.modules:
-            return False
-        packages = set(self.modules[module["id"]].packages)
+        packages = set(module.packages)
         # check if packages are installed
         if len(packages) == len(packages.intersection(self.packages)):
-            module["installed"] = True
+            module.installed = True
             return True
         else:
-            module["installed"] = False
+            module.installed = False
             return False
 
     def get_conflicts(self, conflicts, module):
         """ return a module list of current conflicts
             with module """
-        for m in module["conflicts"]:
+        if module in self.modules:
+            module = self.modules[module]
+            _conflicts = module.conflicts
+            _dependencies = module.dependencies
+            _configured = module.configured
+        else:
+            module = self._hAddons[module]
+            _conflicts = module['package'].get('conflicts', [])
+            _dependencies = module['package'].get('dependencies', [])
+            _configured = module['package'].get('configured', False)
+        for m in _conflicts:
             try:
-                m = self.modules[m]
-                if not m in conflicts and m.configured:
+                if not m in conflicts and _configured:
                     conflicts.append(m)
-                    logger.debug("Conflict with : %s" % str(m.id))
+                    logger.debug("Conflict with : %s" % str(m.slug))
                     conflicts = self.get_conflicts(conflicts, m)
             except KeyError:
                 pass
-        for m in module["dependencies"]:
-            try:
-                m = self.modules[m]
-                for m1 in m.conflicts:
-                    m1 = self.modules[m1]
-                    if not m1 in conflicts and m1.configured:
-                        conflicts.append(m1)
-                        logger.debug("Conflict with : %s" % str(m1.key))
-            except KeyError:
-                pass
+        for m in _dependencies:
+            conflicts = self.get_conflicts(conflicts, m)
         return conflicts
 
     def get_module(self, m):
         """ return basic info for one module """
-        module = self._hAddons[m]
-        installed = self.check_installed(module)
-        # get current conflicts for module
-        conflicts = self.get_conflicts([], module["version"])
-        conflicts = [conflict.name for conflict in conflicts]
-        mod = self.session.query(ModuleTable).filter(ModuleTable.name == module["key"]).first()
-        if mod and mod.configured:
-            configured = True
+        if m in self.modules:
+            module = self.modules[m]
+            self.check_installed(module)
+            
+            configured = module.configured
+            installed = module.installed
+            actions = module.actions
         else:
-            configured = False
+            details = self.get_module_details(m)
+            configured = details['configured']
+            installed = details['installed']
+            actions = details['actions']
 
-        if 'config' in self._hAddons[m]:
-            config = self._hAddons[m]['config']
-        else:
-            if m in self.modules:
-                config = self.modules[m].get_config()
-            else:
-                config = []
+        # get current conflicts for module
+        conflicts = self.get_conflicts([], m)
+        #conflicts = [conflict.name for conflict in conflicts]
+
+        mod = self._hAddons.get(m, {})
         # return result
         result = {
-            'key': module["key"], 'name': module["name"],
-            'actions': [], 'desc': module["description"],
-            'url': module["url"], 'configured': configured, 'installed': installed,
-            'conflict': conflicts, 'conflicts': module["version"]["conflicts"],
-            'purchased': module["purchased"], 'price': module["price"],
-            'dependencies': module["version"]["dependencies"],
-            'version': module['version'], 'config': config}
+            'slug': mod['slug'], 'name': mod['name'],
+            'actions': actions, 'desc': mod.get('description'),
+            'purchased': mod.get("purchased", False), 'price': mod.get("price", 0),
+            'installed': installed,
+            'configured': configured, 'conflict': conflicts,
+            'conflicts': mod['package'].get('conflicts', []),
+            'dependencies': mod['package'].get('dependencies', []),
+            'reboot': mod['package'].get('reboot', False)}
         logger.debug("Module info: %s" % str(result))
         return result
 
@@ -325,9 +321,8 @@ class ModuleManager:
         logger.info("Get modules info: %s" % str(modules))
         result = []
         for m in modules:
-            if m in self._hAddons:
-                logger.debug("Get module info: %s" % str(m))
-                result.append(self.get_module(m))
+            logger.debug("Get module info: %s" % str(m))
+            result.append(self.get_module(m))
         return result
 
     @expose
@@ -342,7 +337,8 @@ class ModuleManager:
         return modules infos
         """
         for module in modules:
-            self.load_module(module)
+            if module not in self.modules:
+                self.load_module(module)
         # force module re-installation
         # (not-used for now)
         force_modules = []
@@ -360,15 +356,15 @@ class ModuleManager:
         # get modules info (modules + dependencies)
         modules = self.get_modules(modules)
         # remove already configured modules unless force
-        modules = [m for m in modules if not m.get("configured", False) or m['key'] in force_modules]
+        modules = [m for m in modules if not m['configured'] or m['slug'] in force_modules]
         # tell if the module is an dependency of selected modules
         # or if we reinstall it
         for m in modules:
-            if m['key'] in deps:
+            if m['slug'] in deps:
                 m['dep'] = True
             else:
                 m['dep'] = False
-            if m['key'] in force_modules:
+            if m['slug'] in force_modules:
                 m['force'] = True
             else:
                 m['force'] = False
@@ -488,7 +484,6 @@ class ModuleManager:
             config.append(module_config)
             if module_errors:
                 errors = True
-            self._hAddons[module]['config'] = module_config
         return (errors, config)
 
     @expose
@@ -579,9 +574,9 @@ class ModuleManager:
         """ return modules belonging to section """
         # Init a section structure to be sent to mss-www view.py
         _section = {}
-        _section["key"] = section
+        _section["slug"] = section
         for sec in self._sections:
-            if sec["key"] == section:
+            if sec["slug"] == section:
                 _section["name"] = sec["name"]
 
         # Set bundles list
@@ -603,5 +598,7 @@ class ModuleManager:
             actions = []
             installed = False
             configured = False
-        details = { "installed": installed, "configured": configured, "actions": actions}
+        self._hAddons[module]['package']['installed'] = installed
+        self._hAddons[module]['package']['configured'] = configured
+        details = {"actions": actions, "installed": installed, "configured": configured}
         return details

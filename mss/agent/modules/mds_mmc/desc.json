@@ -1,5 +1,5 @@
 {
-    "id": "mds_mmc",
+    "slug": "mds_mmc",
     "name": "MBS administration web interface",
     "desc": "Users and groups management",
     "actions": [

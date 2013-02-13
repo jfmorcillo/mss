@@ -1,5 +1,5 @@
 {
-    "id":   "mds_dhcp",
+    "slug":   "mds_dhcp",
     "name": "DHCP Service",
     "desc": "Configure automatically your client computers IP settings",
     "actions": [

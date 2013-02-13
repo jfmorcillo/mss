@@ -1,5 +1,5 @@
 {
-    "id": "mds_quota",
+    "slug": "mds_quota",
     "name": "User quota management",
     "desc": "Set file quotas on the server",
     "packages": [

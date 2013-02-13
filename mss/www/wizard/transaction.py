@@ -29,7 +29,7 @@ class Transaction:
             else:
                 self.modules_info = result
                 # update with depedencies
-                self.modules = [ m['key'] for m in self.modules_info ]
+                self.modules = [ m['slug'] for m in self.modules_info ]
                 self.transaction = [
                     {
                         'id': Steps.PREINST,
@@ -116,7 +116,7 @@ class Transaction:
         for module in result:
             if not module['installed']:
                 self.enable_step(Steps.INSTALL);
-            if module['version']['reboot']:
+            if module['reboot']:
                 self.enable_step(Steps.REBOOT);
 
         err, result = xmlrpc.call('get_config', self.modules)

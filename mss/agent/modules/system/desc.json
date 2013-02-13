@@ -1,5 +1,5 @@
 {
-    "id": "system",
+    "slug": "system",
     "name": "System setup",
     "desc": "General system configuration",
     "config": [

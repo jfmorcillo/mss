@@ -1,5 +1,5 @@
 {
-    "id":   "mds_audit",
+    "slug":   "mds_audit",
     "name": "AUDIT plugin",
     "desc": "Track any changes made in the management interface",
     "actions": [

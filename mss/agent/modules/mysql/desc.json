@@ -1,5 +1,5 @@
 {
-    "id": "mysql",
+    "slug": "mysql",
     "name": "MySQL database",
     "desc": "MySQL relational database",
     "packages": [

@@ -1,5 +1,5 @@
 {
-    "id": "mds_proxy",
+    "slug": "mds_proxy",
     "name": "Proxy service",
     "desc": "Control your Internet connection with content filters",
     "actions": [

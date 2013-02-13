@@ -1,5 +1,5 @@
 {
-    "id":   "mds_kerberos",
+    "slug":   "mds_kerberos",
     "name": "Kerberos authentication with MDS backend",
     "desc": "Install and configure Kerberos authentication",
     "actions": [

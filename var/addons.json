@@ -1,383 +1,367 @@
 [
     {
-        "key": "mds_mmc",
+        "slug": "mds_mmc",
         "name": "MBS administration web interface",
         "description": "Users and groups management",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_mmc",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "users",
+                "slug": "users",
                 "name": "Users"
             }
         ],
         "repositories": [],
         "price": 0,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["system", "network"],
             "conflicts": [],
-            "reboot": true,
-            "active": true
+            "reboot": true
         },
         "purchased": true
     },
     {
-        "key": "mds_smb",
+        "slug": "network",
+        "name": "Network setup",
+        "desc": "Configure network interfaces",
+        "repositories": [],
+        "price": 0,
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/7/",
+            "version": 1,
+            "changelog": "v1",
+            "dependencies": [],
+            "conflicts": [],
+            "reboot": false
+        },
+        "purchased": true
+    },
+    {
+        "slug": "system",
+        "name": "System setup",
+        "desc": "General system configuration",
+        "repositories": [],
+        "price": 0,
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/8/",
+            "version": 1,
+            "changelog": "v1",
+            "dependencies": [],
+            "conflicts": [],
+            "reboot": false
+        },
+        "purchased": true
+    },
+    {
+        "slug": "mds_smb",
         "name": "Windows users and file sharing management",
         "description": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_smb",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "users",
+                "slug": "users",
                 "name": "Users"
             }
         ],
         "repositories": [],
         "price": 0,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false,
-            "active": true
+            "reboot": false
         },
         "purchased": true
     },
     {
-        "key": "mds_quota",
+        "slug": "mds_quota",
         "name": "User quota management",
         "description": "Set file quotas on the server",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_quota",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "users",
+                "slug": "users",
                 "name": "Users"
             }
         ],
         "repositories": [],
         "price": 0,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false,
-            "active": false
+            "reboot": false
         },
         "purchased": false
     },
     {
-        "key": "mds_mail",
+        "slug": "mds_mail",
         "name": "Mail Service",
         "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_mail",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "mail",
+                "slug": "mail",
                 "name": "Mail"
             }
         ],
         "repositories": [],
         "price": 100,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
             "conflicts": ["zarafa"],
-            "reboot": false,
-            "active": false
+            "reboot": false
         },
         "purchased": true
     },
     {
-        "key": "mds_webmail",
+        "slug": "mds_webmail",
         "name": "Webmail",
         "description": "Roundcube, a complete webmail solution for your mail service",
-                "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_webmail",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_webmail",
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "mail",
+                "slug": "mail",
                 "name": "Mail"
             }
         ],
         "repositories": [],
         "price": 0,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mail"],
             "conflicts": ["zarafa"],
-            "reboot": false,
-            "active": false
+            "reboot": false
         },
         "purchased": false
     },
     {
-        "key": "davical",
+        "slug": "davical",
         "name": "Calendar and Addressbook",
         "description": "DAViCal a service for calendar and addressbook sharing.",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/davical",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "mail",
+                "slug": "mail",
                 "name": "Mail"
             }
         ],
         "repositories": [],
         "price": 100,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["postgresql"],
             "conflicts": [],
-            "reboot": false,
-            "active": true
+            "reboot": false
         },
         "purchased": true
     },
     {
-        "key": "ejabberd",
+        "slug": "ejabberd",
         "name": "Jabber/XMPP instant messaging server",
         "description": "A distributed, fault-tolerant Jabber/XMPP server",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/ejabberd",
-        "section": {
-            "key": "other",
-            "name": "Other Services"
-        },
+        "sections": [
+            "other"
+        ],
         "categories": [
             {
-                "key": "im",
+                "slug": "im",
                 "name": "Instant Messaging"
             }
         ],
         "repositories": [],
         "price": 100,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false,
-            "active": true
+            "reboot": false
         },
         "purchased": true
     },
     {
-        "key":   "mds_cups",
+        "slug":   "mds_cups",
         "name": "Printing service",
         "description": "Network printers management",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_cups",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "other",
+                "slug": "other",
                 "name": "Other"
             }
         ],
         "repositories": [],
         "price": 100,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false,
-            "active": false
+            "reboot": false
         },
         "purchased": false
     },
     {
-        "key":   "mds_dhcp",
+        "slug":   "mds_dhcp",
         "name": "DHCP Service",
         "description": "Configure automatically your client computers IP settings",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_dhcp",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "net",
+                "slug": "net",
                 "name": "Network"
             }
         ],
         "repositories": [],
         "price": 100,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false,
-            "active": true
+            "reboot": false
         },
         "purchased": true
     },
     {
-        "key": "mds_dns",
+        "slug": "mds_dns",
         "name": "DNS Service",
         "description": "Resolve computer names on your network",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_dns",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "net",
+                "slug": "net",
                 "name": "Network"
             }
         ],
         "repositories": [],
         "price": 100,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false,
-            "active": true
+            "reboot": false
         },
         "purchased": true
     },
     {
-        "key": "mysql",
+        "slug": "mysql",
         "name": "Mysql",
         "description": "Relationnal database",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mysql/",
-        "section": {
-            "key": "core",
-            "name": "Core Services"
-        },
+        "sections": [
+            "core"
+        ],
         "categories": [
             {
-                "key": "bdd",
+                "slug": "bdd",
                 "name": "Database"
             }
         ],
         "repositories": [
             {
                 "active": true,
-                "key": "plop",
+                "slug": "plop",
                 "name": "Plop",
                 "url": "https://download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/",
                 "restricted": true
             }
         ],
         "price": 50,
-        "version": {
-            "package": {
-                "sha1": "4dea0353748f3cfd43c3a1909ecd03c056420c14",
-                "file": "http://127.0.0.1:8000/api/package/1/"
-            },
+        "package": {
+            "sha1": "4dea0353748f3cfd43c3a1909ecd03c056420c14",
+            "file": "http://127.0.0.1:8000/api/package/1/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false,
-            "active": false
+            "reboot": false
         },
         "purchased": false
     },
     {
-        "key": "postgresql",
+        "slug": "postgresql",
         "name": "Postgresql",
         "description": "Relationnal database",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/postgresql/",
-        "section": {
-            "key": "other",
-            "name": "Other Services"
-        },
+        "sections": [
+            "other"
+        ],
         "categories": [
             {
-                "key": "bdd",
+                "slug": "bdd",
                 "name": "Database"
             }
         ], 
         "repositories": [],
         "price": 0,
-        "version": {
-            "package": {
-                "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-                "file": "http://127.0.0.1:8000/api/package/3/"
-            },
+        "package": {
+            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file": "http://127.0.0.1:8000/api/package/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
-            "conflicts": [
-                "mysql"
-            ],
-            "reboot": false,
-            "active": true
+            "conflicts": ["mysql"],
+            "reboot": false
         },
         "purchased": true
     }

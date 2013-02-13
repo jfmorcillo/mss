@@ -1,5 +1,5 @@
 {
-    "id": "mbs_repo",
+    "slug": "mbs_repo",
     "name": "Mandriva Business Server repositories",
     "desc": "Get security updates through MBS repositories",
     "medias": [

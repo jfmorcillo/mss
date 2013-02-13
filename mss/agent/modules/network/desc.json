@@ -1,5 +1,5 @@
 {
-    "id": "network",
+    "slug": "network",
     "name": "Network setup",
     "desc": "Configure network interfaces",
     "packages": [

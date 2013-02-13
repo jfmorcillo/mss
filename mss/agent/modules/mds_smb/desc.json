@@ -1,5 +1,5 @@
 {
-    "id": "mds_smb",
+    "slug": "mds_smb",
     "name": "Windows users and file sharing management",
     "desc": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
     "actions": [
