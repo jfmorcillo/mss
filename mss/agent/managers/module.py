@@ -274,7 +274,7 @@ class ModuleManager:
             try:
                 if not m in conflicts and _configured:
                     conflicts.append(m)
-                    logger.debug("Conflict with : %s" % str(m.slug))
+                    logger.debug("Conflict with : %s" % m)
                     conflicts = self.get_conflicts(conflicts, m)
             except KeyError:
                 pass
