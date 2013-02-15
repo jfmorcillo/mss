@@ -160,14 +160,14 @@ class ModuleManager:
         """ Dispatch modules in categories """
         # Add modules to categories
         for addon in addons:
-                if "sections" in addon: 
-                    for section in addon["sections"]:
-                        for category in addon["categories"]:
-                            for cat in self._categories[section]:
-                                if cat["slug"] == category["slug"]:
-                                    cat["modules"].append(addon["slug"])
-                else:
-                    self._categories["hidden"].append(addon["slug"])
+            if "sections" in addon:
+                for section in addon["sections"]:
+                    for category in addon["categories"]:
+                        for cat in self._categories[section]:
+                            if cat["slug"] == category["slug"]:
+                                cat["modules"].append(addon["slug"])
+            else:
+                self._categories["hidden"].append(addon["slug"])
 
     @expose
     def load_module(self, module):
