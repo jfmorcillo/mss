@@ -12,6 +12,7 @@
         ],
         "repositories": [],
         "price": 0,
+        "standalone": true,
         "module": {
             "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
@@ -32,6 +33,7 @@
         "desc": "Configure network interfaces",
         "repositories": [],
         "price": 0,
+        "standalone": false,
         "module": {
             "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/7/",
@@ -51,6 +53,7 @@
         "desc": "General system configuration",
         "repositories": [],
         "price": 0,
+        "standalone": false,
         "module": {
             "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/8/",
@@ -69,6 +72,7 @@
         "name": "Windows users and file sharing management",
         "description": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_smb",
+        "standalone": true,
         "categories": [
             {
                 "slug": "users",
@@ -96,6 +100,7 @@
         "name": "User quota management",
         "description": "Set file quotas on the server",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_quota",
+        "standalone": true,
         "categories": [
             {
                 "slug": "users",
@@ -123,6 +128,7 @@
         "name": "Mail Service",
         "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_mail",
+        "standalone": true,
         "categories": [
             {
                 "slug": "mail",
@@ -150,6 +156,7 @@
         "name": "Webmail",
         "description": "Roundcube, a complete webmail solution for your mail service",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_webmail",
+        "standalone": true,
         "categories": [
             {
                 "slug": "mail",
@@ -177,6 +184,7 @@
         "name": "Calendar and Addressbook",
         "description": "DAViCal a service for calendar and addressbook sharing.",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/davical",
+        "standalone": true,
         "categories": [
             {
                 "slug": "mail",
@@ -204,6 +212,7 @@
         "name": "Jabber/XMPP instant messaging server",
         "description": "A distributed, fault-tolerant Jabber/XMPP server",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/ejabberd",
+        "standalone": true,
         "categories": [
             {
                 "slug": "im",
@@ -231,6 +240,7 @@
         "name": "Printing service",
         "description": "Network printers management",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_cups",
+        "standalone": true,
         "categories": [
             {
                 "slug": "other",
@@ -258,6 +268,7 @@
         "name": "DHCP Service",
         "description": "Configure automatically your client computers IP settings",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_dhcp",
+        "standalone": true,
         "categories": [
             {
                 "slug": "net",
@@ -285,6 +296,7 @@
         "name": "DNS Service",
         "description": "Resolve computer names on your network",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_dns",
+        "standalone": true,
         "categories": [
             {
                 "slug": "net",
@@ -312,6 +324,7 @@
         "name": "Mysql",
         "description": "Relationnal database",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mysql/",
+        "standalone": true,
         "categories": [
             {
                 "slug": "bdd",
@@ -347,6 +360,7 @@
         "name": "Postgresql",
         "description": "Relationnal database",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/postgresql/",
+        "standalone": true,
         "categories": [
             {
                 "slug": "bdd",

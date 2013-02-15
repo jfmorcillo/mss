@@ -144,7 +144,7 @@ class ModuleManager:
 
         categories["hidden"] = []
         for addon in addons:
-            if "sections" in addon["module"]:
+            if addon["standalone"]:
                 section = addon["module"]["sections"]
                 for category in addon["categories"]:
                     category["modules"] = []
@@ -160,7 +160,7 @@ class ModuleManager:
         """ Dispatch modules in categories """
         # Add modules to categories
         for addon in addons:
-            if "sections" in addon["module"]:
+            if addon["standalone"]:
                 section = addon["module"]["sections"]
                 for category in addon["categories"]:
                     for cat in self._categories[section]:
