@@ -20,7 +20,8 @@
             "sections": "core",
             "dependencies": ["system", "network"],
             "conflicts": [],
-            "reboot": true
+            "reboot": true,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -38,7 +39,8 @@
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -56,7 +58,8 @@
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -82,7 +85,8 @@
             "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -108,7 +112,8 @@
             "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": false,
         "can_download": true
@@ -134,7 +139,8 @@
             "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": ["zarafa"],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -160,7 +166,8 @@
             "sections": "core",
             "dependencies": ["mds_mail"],
             "conflicts": ["zarafa"],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": false,
         "can_download": true
@@ -186,7 +193,8 @@
             "sections": "core",
             "dependencies": ["postgresql"],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -212,7 +220,8 @@
             "sections": "other",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -238,7 +247,8 @@
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": false,
         "can_download": true
@@ -264,7 +274,8 @@
             "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -290,7 +301,8 @@
             "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
@@ -324,7 +336,8 @@
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": false,
         "can_download": true
@@ -350,7 +363,8 @@
             "changelog": "v1",
             "dependencies": [],
             "conflicts": ["mysql"],
-            "reboot": false
+            "reboot": false,
+            "active": true
         },
         "purchased": true,
         "can_download": true
