@@ -14,7 +14,7 @@
             "mds_dns",
             "mysql"
         ]
-    },
+    }, 
     {
         "slug": "other",
         "name": "Other Services",
