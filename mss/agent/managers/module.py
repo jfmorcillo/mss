@@ -28,6 +28,7 @@ import platform
 import traceback
 import json
 import ConfigParser
+from urllib2 import urlopen, URLError, HTTPError
 
 from mss.agent.lib.utils import grep, Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
@@ -94,8 +95,19 @@ class ModuleManager:
 
     def load_addons(self):
         """ return addons list """
+        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("addons", "localPath"), "addons.json"), "w")
         # Load modules description
-        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "addons.json"))
+        try:
+            f_addons = urlopen(os.path.join(self.mssAgentConfig.get("addons", "remotePath"), "addons.json"))
+            addons_json_fp.write(f_addons.read())
+        #handle errors
+        except HTTPError, e:
+            print "HTTP Error:", e.code, url
+        except URLError, e:
+            print "URL Error:", e.reason, url
+        addons_json_fp.close()
+
+        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("addons", "localPath"), "addons.json"), "r")
         addons = json.load(addons_json_fp)
         addons_json_fp.close()
 
@@ -106,6 +118,18 @@ class ModuleManager:
 
     def load_sections(self):
         """ return section list """
+        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "sections.json"), "w")
+        # Load modules description
+        try:
+            f_sections = urlopen(os.path.join(self.mssAgentConfig.get("sections", "remotePath"), "sections.json"))
+            sections_json_fp.write(f_sections.read())
+        #handle errors
+        except HTTPError, e:
+            print "HTTP Error:", e.code, url
+        except URLError, e:
+            print "URL Error:", e.reason, url
+        sections_json_fp.close()
+
         # Load sections
         sections_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "sections.json"))
         sections = json.load(sections_json_fp)
