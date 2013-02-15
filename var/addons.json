@@ -16,7 +16,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -24,7 +24,8 @@
             "conflicts": [],
             "reboot": true
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "network",
@@ -33,7 +34,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/7/",
             "version": 1,
             "changelog": "v1",
@@ -41,7 +42,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "system",
@@ -50,7 +52,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/8/",
             "version": 1,
             "changelog": "v1",
@@ -58,7 +60,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "mds_smb",
@@ -77,7 +80,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -85,7 +88,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "mds_quota",
@@ -104,7 +108,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -112,7 +116,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": false
+        "purchased": false,
+        "can_download": true
     },
     {
         "slug": "mds_mail",
@@ -131,7 +136,7 @@
         "repositories": [],
         "price": 100,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -139,7 +144,8 @@
             "conflicts": ["zarafa"],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "mds_webmail",
@@ -158,7 +164,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -166,7 +172,8 @@
             "conflicts": ["zarafa"],
             "reboot": false
         },
-        "purchased": false
+        "purchased": false,
+        "can_download": true
     },
     {
         "slug": "davical",
@@ -185,7 +192,7 @@
         "repositories": [],
         "price": 100,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -193,7 +200,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "ejabberd",
@@ -212,7 +220,7 @@
         "repositories": [],
         "price": 100,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -220,7 +228,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug":   "mds_cups",
@@ -239,7 +248,7 @@
         "repositories": [],
         "price": 100,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -247,7 +256,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": false
+        "purchased": false,
+        "can_download": true
     },
     {
         "slug":   "mds_dhcp",
@@ -266,7 +276,7 @@
         "repositories": [],
         "price": 100,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -274,7 +284,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "mds_dns",
@@ -293,7 +304,7 @@
         "repositories": [],
         "price": 100,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -301,7 +312,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     },
     {
         "slug": "mysql",
@@ -328,7 +340,7 @@
         ],
         "price": 50,
         "module": {
-            "sha1": "4dea0353748f3cfd43c3a1909ecd03c056420c14",
+            "file_sha1": "4dea0353748f3cfd43c3a1909ecd03c056420c14",
             "file": "http://127.0.0.1:8000/api/module/1/",
             "version": 1,
             "changelog": "v1",
@@ -336,7 +348,8 @@
             "conflicts": [],
             "reboot": false
         },
-        "purchased": false
+        "purchased": false,
+        "can_download": true
     },
     {
         "slug": "postgresql",
@@ -355,7 +368,7 @@
         "repositories": [],
         "price": 0,
         "module": {
-            "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
+            "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
@@ -363,6 +376,7 @@
             "conflicts": ["mysql"],
             "reboot": false
         },
-        "purchased": true
+        "purchased": true,
+        "can_download": true
     }
 ]
