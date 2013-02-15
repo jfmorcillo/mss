@@ -291,9 +291,9 @@ class ModuleManager:
             _configured = module.configured
         else:
             module = self._hAddons[module]
-            _conflicts = module['package'].get('conflicts', [])
-            _dependencies = module['package'].get('dependencies', [])
-            _configured = module['package'].get('configured', False)
+            _conflicts = module['module'].get('conflicts', [])
+            _dependencies = module['module'].get('dependencies', [])
+            _configured = module['module'].get('configured', False)
         for m in _conflicts:
             try:
                 if not m in conflicts and _configured:
@@ -333,9 +333,9 @@ class ModuleManager:
             'purchased': mod.get("purchased", False), 'price': mod.get("price", 0),
             'installed': installed,
             'configured': configured, 'conflict': conflicts,
-            'conflicts': mod['package'].get('conflicts', []),
-            'dependencies': mod['package'].get('dependencies', []),
-            'reboot': mod['package'].get('reboot', False)}
+            'conflicts': mod['module'].get('conflicts', []),
+            'dependencies': mod['module'].get('dependencies', []),
+            'reboot': mod['module'].get('reboot', False)}
         logger.debug("Module info: %s" % str(result))
         return result
 
@@ -622,7 +622,7 @@ class ModuleManager:
             actions = []
             installed = False
             configured = False
-        self._hAddons[module]['package']['installed'] = installed
-        self._hAddons[module]['package']['configured'] = configured
+        self._hAddons[module]['module']['installed'] = installed
+        self._hAddons[module]['module']['configured'] = configured
         details = {"actions": actions, "installed": installed, "configured": configured}
         return details

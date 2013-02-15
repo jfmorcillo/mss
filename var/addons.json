@@ -15,9 +15,9 @@
         ],
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["system", "network"],
@@ -32,9 +32,9 @@
         "desc": "Configure network interfaces",
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/7/",
+            "file": "http://127.0.0.1:8000/api/module/7/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
@@ -49,9 +49,9 @@
         "desc": "General system configuration",
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/8/",
+            "file": "http://127.0.0.1:8000/api/module/8/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
@@ -76,9 +76,9 @@
         ],
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
@@ -103,9 +103,9 @@
         ],
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
@@ -130,9 +130,9 @@
         ],
         "repositories": [],
         "price": 100,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
@@ -157,9 +157,9 @@
         ],
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mail"],
@@ -184,9 +184,9 @@
         ],
         "repositories": [],
         "price": 100,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["postgresql"],
@@ -211,9 +211,9 @@
         ],
         "repositories": [],
         "price": 100,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
@@ -238,9 +238,9 @@
         ],
         "repositories": [],
         "price": 100,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
@@ -265,9 +265,9 @@
         ],
         "repositories": [],
         "price": 100,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
@@ -292,9 +292,9 @@
         ],
         "repositories": [],
         "price": 100,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": ["mds_mmc"],
@@ -327,9 +327,9 @@
             }
         ],
         "price": 50,
-        "package": {
+        "module": {
             "sha1": "4dea0353748f3cfd43c3a1909ecd03c056420c14",
-            "file": "http://127.0.0.1:8000/api/package/1/",
+            "file": "http://127.0.0.1:8000/api/module/1/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
@@ -354,9 +354,9 @@
         ], 
         "repositories": [],
         "price": 0,
-        "package": {
+        "module": {
             "sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
-            "file": "http://127.0.0.1:8000/api/package/3/",
+            "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
             "dependencies": [],
