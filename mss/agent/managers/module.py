@@ -144,28 +144,28 @@ class ModuleManager:
 
         categories["hidden"] = []
         for addon in addons:
-            if "sections" in addon:
-                for section in addon["sections"]:
-                    for category in addon["categories"]:
-                        category["modules"] = []
-                        notFound = True
-                        for cat in categories[section]:
-                            if cat["slug"] == category["slug"]:
-                                notFound = False
-                        if notFound:
-                            categories[section].append(category)
+            if "sections" in addon["module"]:
+                section = addon["module"]["sections"]
+                for category in addon["categories"]:
+                    category["modules"] = []
+                    notFound = True
+                    for cat in categories[section]:
+                        if cat["slug"] == category["slug"]:
+                            notFound = False
+                    if notFound:
+                        categories[section].append(category)
         return categories
 
     def load_modules2(self, addons):
         """ Dispatch modules in categories """
         # Add modules to categories
         for addon in addons:
-            if "sections" in addon:
-                for section in addon["sections"]:
-                    for category in addon["categories"]:
-                        for cat in self._categories[section]:
-                            if cat["slug"] == category["slug"]:
-                                cat["modules"].append(addon["slug"])
+            if "sections" in addon["module"]:
+                section = addon["module"]["sections"]
+                for category in addon["categories"]:
+                    for cat in self._categories[section]:
+                        if cat["slug"] == category["slug"]:
+                            cat["modules"].append(addon["slug"])
             else:
                 self._categories["hidden"].append(addon["slug"])
 

@@ -4,9 +4,6 @@
         "name": "MBS administration web interface",
         "description": "Users and groups management",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_mmc",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "users",
@@ -20,6 +17,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["system", "network"],
             "conflicts": [],
             "reboot": true
@@ -68,9 +66,6 @@
         "name": "Windows users and file sharing management",
         "description": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_smb",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "users",
@@ -84,6 +79,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
             "reboot": false
@@ -96,9 +92,6 @@
         "name": "User quota management",
         "description": "Set file quotas on the server",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_quota",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "users",
@@ -112,6 +105,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
             "reboot": false
@@ -124,9 +118,6 @@
         "name": "Mail Service",
         "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_mail",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "mail",
@@ -140,6 +131,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": ["zarafa"],
             "reboot": false
@@ -152,9 +144,6 @@
         "name": "Webmail",
         "description": "Roundcube, a complete webmail solution for your mail service",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_webmail",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "mail",
@@ -168,6 +157,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["mds_mail"],
             "conflicts": ["zarafa"],
             "reboot": false
@@ -180,9 +170,6 @@
         "name": "Calendar and Addressbook",
         "description": "DAViCal a service for calendar and addressbook sharing.",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/davical",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "mail",
@@ -196,6 +183,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["postgresql"],
             "conflicts": [],
             "reboot": false
@@ -208,9 +196,6 @@
         "name": "Jabber/XMPP instant messaging server",
         "description": "A distributed, fault-tolerant Jabber/XMPP server",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/ejabberd",
-        "sections": [
-            "other"
-        ],
         "categories": [
             {
                 "slug": "im",
@@ -224,6 +209,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "other",
             "dependencies": [],
             "conflicts": [],
             "reboot": false
@@ -236,9 +222,6 @@
         "name": "Printing service",
         "description": "Network printers management",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_cups",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "other",
@@ -251,6 +234,7 @@
             "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
+            "sections": "core",
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
@@ -264,9 +248,6 @@
         "name": "DHCP Service",
         "description": "Configure automatically your client computers IP settings",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_dhcp",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "net",
@@ -280,6 +261,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
             "reboot": false
@@ -292,9 +274,6 @@
         "name": "DNS Service",
         "description": "Resolve computer names on your network",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mds_dns",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "net",
@@ -308,6 +287,7 @@
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
             "changelog": "v1",
+            "sections": "core",
             "dependencies": ["mds_mmc"],
             "conflicts": [],
             "reboot": false
@@ -320,9 +300,6 @@
         "name": "Mysql",
         "description": "Relationnal database",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/mysql/",
-        "sections": [
-            "core"
-        ],
         "categories": [
             {
                 "slug": "bdd",
@@ -343,6 +320,7 @@
             "file_sha1": "4dea0353748f3cfd43c3a1909ecd03c056420c14",
             "file": "http://127.0.0.1:8000/api/module/1/",
             "version": 1,
+            "sections": "core",
             "changelog": "v1",
             "dependencies": [],
             "conflicts": [],
@@ -356,9 +334,6 @@
         "name": "Postgresql",
         "description": "Relationnal database",
         "url": "http://127.0.0.1:8000/api/addons/mbs/1.0/postgresql/",
-        "sections": [
-            "other"
-        ],
         "categories": [
             {
                 "slug": "bdd",
@@ -371,6 +346,7 @@
             "file_sha1": "d29eb74c4d9546b03b467065cc487db6d7b14428",
             "file": "http://127.0.0.1:8000/api/module/3/",
             "version": 1,
+            "sections": "other",
             "changelog": "v1",
             "dependencies": [],
             "conflicts": ["mysql"],
