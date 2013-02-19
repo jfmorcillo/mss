@@ -119,9 +119,14 @@ class ModuleManager:
             status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("addons", "url")
         addons_json_fp.close()
 
-        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "addons.json"), "r")
-        self._addons = json.load(addons_json_fp)
-        addons_json_fp.close()
+        if not err:
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "addons.json"), "r")
+            self._addons = json.load(addons_json_fp)
+            addons_json_fp.close()
+        else:
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addons"), "addons.json"), "r")
+            self._addons = json.load(addons_json_fp)
+            addons_json_fp.close()
 
         self._hAddons = {}
         for addon in self._addons:
@@ -155,6 +160,11 @@ class ModuleManager:
             sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "sections.json"))
             self._sections = json.load(sections_json_fp)
             sections_json_fp.close()
+        else:
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addons"), "sections.json"))
+            self._sections = json.load(sections_json_fp)
+            sections_json_fp.close()
+
         return (err, status)
 
     def load_categories(self):
@@ -299,9 +309,13 @@ class ModuleManager:
 
     def get_available_modules(self):
         ret = []
-        for item in glob.glob(os.path.join(self.modulesDirectory,
+        for item in glob.glob(os.path.join(self.mssAgentConfig.get("local", "cache"),
                                            "*", "__init__.py")):
             ret.append(item.split("/")[-2])
+        for item in glob.glob(os.path.join(self.modulesDirectory,
+                                           "*", "__init__.py")):
+            if item.split("/")[-2] not in ret:
+                ret.append(item.split("/")[-2])
         return ret
 
     def check_installed(self, module):
@@ -516,7 +530,7 @@ class ModuleManager:
         """ Download modules if not already present on disk """
         logger.info("Download modules : %s" % str(modules))
         for module in modules:
-            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "addons"), module)):
+            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "cache"), module)):
                 logger.info("Download module : %s" % str(module))
                 # Download
                 f_mod = open(os.path.join("/tmp", module+".zip"), "wb")
@@ -537,25 +551,26 @@ class ModuleManager:
                     status = "URL Error: " + str(e.reason) + ": " + self._hAddons[module]['module']['file']
                 f_mod.close()
 
-                # Verify sha1
-                logger.info("Unzip module: %s" % os.path.join("/tmp", module+".zip"))
-                f_mod = open(os.path.join("/tmp", module+".zip"), "rb")
-                sha1 = hashlib.sha1()
-                try:
-                    sha1.update(f_mod.read())
-                finally:
-                    f_mod.close()
-
-                logger.info("Process sha1sum: %s" % sha1.hexdigest())
-                if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
-                    logger.info("Zip file is valid: unzip...")
-                    os.mkdir(os.path.join(self.mssAgentConfig.get("local", "addons"), module))
-                    zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
-                    zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "addons"), module))
-                else:
-                    logger.info("Zip file is invalid...")
-                    err = True
-                    status = "sha1sum invalid"
+                if not err:
+                    # Verify sha1
+                    logger.info("Unzip module: %s" % os.path.join("/tmp", module+".zip"))
+                    f_mod = open(os.path.join("/tmp", module+".zip"), "rb")
+                    sha1 = hashlib.sha1()
+                    try:
+                        sha1.update(f_mod.read())
+                    finally:
+                        f_mod.close()
+    
+                    logger.info("Process sha1sum: %s" % sha1.hexdigest())
+                    if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
+                        logger.info("Zip file is valid: unzip...")
+                        os.mkdir(os.path.join(self.mssAgentConfig.get("local", "cache"), module))
+                        zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
+                        zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "cache"), module))
+                    else:
+                        logger.info("Zip file is invalid...")
+                        err = True
+                        status = "sha1sum invalid"
 
                 return (err, status)
 
