@@ -108,7 +108,7 @@
 </script>
 <form name="mss" action="{% url prepare %}" method="post">
     {% for bundle in section.bundles %}
-    <div class="bundle" id="{{ bundle.id }}">
+    <div class="bundle" id="{{ bundle.slug }}">
         <div class="page-header">
             <a name="{{ bundle.slug }}"></a>
             <h1>{% if bundle.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" /> {% endif %}{% trans bundle.name %}{% if bundle.desc %}&nbsp;<small>{% trans bundle.desc %}</small>{% endif %}</h1>

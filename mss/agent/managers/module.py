@@ -28,7 +28,9 @@ import platform
 import traceback
 import json
 import ConfigParser
-from urllib2 import urlopen, URLError, HTTPError
+import urllib2
+import hashlib
+import zipfile
 
 from mss.agent.lib.utils import grep, Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
@@ -77,10 +79,14 @@ class ModuleManager:
             self.arch = 'i586'
         self.mssAgentConfig = ConfigParser.ConfigParser();
         self.mssAgentConfig.readfp(open("/etc/mss/agent.ini"))
-        self.modulesDirectory = self.mssAgentConfig.get("addons", "localPath")
+        self.modulesDirectory = self.mssAgentConfig.get("local", "addons")
         logger.warning("Looking for modules inside %s" % self.modulesDirectory)
         self.modules = {}
+        self._sections = []
+        self._hAddons = {}
+        self._addons = []
         self.packages = []
+        sel._lang = 'en,fr'
 
         # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
@@ -95,73 +101,91 @@ class ModuleManager:
 
     def load_addons(self):
         """ return addons list """
-        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("addons", "localPath"), "addons.json"), "w")
+        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "addons.json"), "w")
         # Load modules description
+        err = False
+        status = "OK"
         try:
-            f_addons = urlopen(os.path.join(self.mssAgentConfig.get("addons", "remotePath"), "addons.json"))
+            req = urllib2.Request(self.mssAgentConfig.get("addons", "url"))
+            req.add_header('Authorization', 'Token ' + self._token)
+            req.add_header('Accept-Language', self._lang)
+            f_addons = urllib2.urlopen(req)
             addons_json_fp.write(f_addons.read())
-        #handle errors
-        except HTTPError, e:
-            print "HTTP Error:", e.code, url
-        except URLError, e:
-            print "URL Error:", e.reason, url
+        except urllib2.HTTPError, e:
+            err = True
+            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("addons", "url")
+        except urllib2.URLError, e:
+            err = True
+            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("addons", "url")
         addons_json_fp.close()
 
-        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("addons", "localPath"), "addons.json"), "r")
-        addons = json.load(addons_json_fp)
+        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "addons.json"), "r")
+        self._addons = json.load(addons_json_fp)
         addons_json_fp.close()
 
-        hAddons = {}
-        for addon in addons:
-            hAddons[addon["slug"]] = addon
-        return [addons, hAddons]
+        self._hAddons = {}
+        for addon in self._addons:
+            self._hAddons[addon["slug"]] = addon
+
+        return (err, status)
 
     def load_sections(self):
         """ return section list """
-        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "sections.json"), "w")
+        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "sections.json"), "w")
         # Load modules description
+        err = False
+        status = "OK"
         try:
-            f_sections = urlopen(os.path.join(self.mssAgentConfig.get("sections", "remotePath"), "sections.json"))
+            req = urllib2.Request(self.mssAgentConfig.get("sections", "url"))
+            req.add_header('Authorization', 'Token ' + self._token)
+            req.add_header('Accept-Language', self._lang)
+            f_sections = urllib2.urlopen(req)
             sections_json_fp.write(f_sections.read())
         #handle errors
-        except HTTPError, e:
-            print "HTTP Error:", e.code, url
-        except URLError, e:
-            print "URL Error:", e.reason, url
+        except urllib2.HTTPError, e:
+            err = True
+            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("sections", "url")
+        except urllib2.URLError, e:
+            err = True
+            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("sections", "url")
         sections_json_fp.close()
 
         # Load sections
-        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("sections", "localPath"), "sections.json"))
-        sections = json.load(sections_json_fp)
-        sections_json_fp.close()
-        return sections
+        if not err:
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "sections.json"))
+            self._sections = json.load(sections_json_fp)
+            sections_json_fp.close()
+        return (err, status)
 
-    def load_categories(self, sections, addons):
+    def load_categories(self):
         """ return categories per section """
-        categories = {}
-        for section in sections:
-            categories[section["slug"]] = []
+        self._categories = {}
+        for section in self._sections:
+            self._categories[section["slug"]] = [{'slug': 'others', 'name': 'Addons', 'modules': []}]
 
-        categories["hidden"] = []
-        for addon in addons:
+        self._categories["hidden"] = []
+        for addon in self._addons:
             if addon["standalone"]:
-                section = addon["module"]["sections"]
+                section = addon["module"]["section"]
+                if addon["categories"] == []:
+                    addon['categories'].append({'slug': 'others', 'name': 'Addons'})
                 for category in addon["categories"]:
                     category["modules"] = []
                     notFound = True
-                    for cat in categories[section]:
+                    for cat in self._categories[section]:
                         if cat["slug"] == category["slug"]:
                             notFound = False
                     if notFound:
-                        categories[section].append(category)
-        return categories
+                        self._categories[section].append(category)
 
-    def load_modules2(self, addons):
+    def load_modules2(self):
         """ Dispatch modules in categories """
         # Add modules to categories
-        for addon in addons:
+        for addon in self._addons:
             if addon["standalone"]:
-                section = addon["module"]["sections"]
+                section = addon["module"]["section"]
+                if addon["categories"] == []:
+                    addon['categories'].append({'slug': 'others', 'name': 'Addons'})
                 for category in addon["categories"]:
                     for cat in self._categories[section]:
                         if cat["slug"] == category["slug"]:
@@ -175,6 +199,11 @@ class ModuleManager:
         sys.path.append(self.modulesDirectory)
         modules = self.get_available_modules()
         logger.info("Get available mss modules : ")
+
+        if module not in modules:
+            self.download_modules([module])
+            modules.append(module)
+
         if module in modules and module not in self.modules:
             logger.debug("Loading %s" % module)
             m = Module(os.path.join(self.modulesDirectory, module), self, self.arch)
@@ -187,20 +216,25 @@ class ModuleManager:
     def load(self):
         """ Load sections/modules after logging successfully """
                 # Load section info
-        self._sections = self.load_sections()
-
-        # Load addon list
-        [self._addons, self._hAddons] = self.load_addons()
-
-        # Load categories
-        self._categories = self.load_categories(self._sections, self._addons)
-        self.load_modules2(self._addons)
+        err, status = self.load_sections()
+        if not err:
+            # Load addon list
+            err, status = self.load_addons()
+            if not err:
+                # Load categories
+                self.load_categories()
+                self.load_modules2()
+        return (err, status)
 
     @expose
     def set_lang(self, lang):
         """ change lang during execution """
         logger.info("Lang changed to %s" % lang)
         TranslationManager().set_lang(lang)
+        if lang == 'fr_FR':
+            self._lang = 'fr,en'
+        else:
+            self._lang = 'en,fr'
 
     @expose
     def set_option(self, slug, value):
@@ -360,9 +394,12 @@ class ModuleManager:
         get dependencies for modules to install
         return modules infos
         """
+        self.download_modules(modules)
+        
         for module in modules:
             if module not in self.modules:
                 self.load_module(module)
+
         # force module re-installation
         # (not-used for now)
         force_modules = []
@@ -445,11 +482,11 @@ class ModuleManager:
 
     def get_dependencies(self, module):
         """ get dependencies for module """
-        if getattr(self.modules[module], 'dependencies' or None):
+        if self._hAddons[module]['module'].get('dependencies', None):
             deps = []
-            for dep in self.modules[module].dependencies:
+            for dep in self._hAddons[module]['module']['dependencies']:
                 try:
-                    if self.modules[dep]:
+                    if self._hAddons[dep]:
                         deps.append(dep)
                 except KeyError:
                     logger.error("Module %s doesn't exists !" % dep)
@@ -459,9 +496,9 @@ class ModuleManager:
     @expose
     def get_medias(self, modules):
         """ get medias for modules """
-        logger.info("Get medias for modules : %s" % str(modules))
-        medias = [self.modules[module].medias for module in modules if not self.check_media(module) and self.modules[module].medias]
-        logger.debug("Media list : %s" % str(medias))
+        logger.info("Get medias for modules: %s" % str(modules))
+        medias = [self._hAddons[module]['repositories'] for module in modules if not self.check_media(module) and self._hAddons[module]['repositories']]
+        logger.debug("Repository list: %s" % str(medias))
         return medias
 
     @expose
@@ -473,6 +510,54 @@ class ModuleManager:
         command = media.get_command(login, passwd)
         logger.debug("Execute: %s" % str(command))
         ProcessManager().add_media(command)
+
+    @expose
+    def download_modules(self, modules):
+        """ Download modules if not already present on disk """
+        logger.info("Download modules : %s" % str(modules))
+        for module in modules:
+            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "addons"), module)):
+                logger.info("Download module : %s" % str(module))
+                # Download
+                f_mod = open(os.path.join("/tmp", module+".zip"), "wb")
+                err = False
+                status = "OK"
+                try:
+                    req = urllib2.Request(self._hAddons[module]['module']['file'])
+                    req.add_header('Authorization', 'Token ' + self._token)
+                    req.add_header('Accept-Language', self._lang)
+                    f = urllib2.urlopen(req)
+                    f_mod.write(f.read())
+                    #handle errors
+                except urllib2.HTTPError, e:
+                    err = True
+                    status = "HTTP Error: " + str(e.code) + ": " + self._hAddons[module]['module']['file']
+                except urllib2.URLError, e:
+                    err= True
+                    status = "URL Error: " + str(e.reason) + ": " + self._hAddons[module]['module']['file']
+                f_mod.close()
+
+                # Verify sha1
+                logger.info("Unzip module: %s" % os.path.join("/tmp", module+".zip"))
+                f_mod = open(os.path.join("/tmp", module+".zip"), "rb")
+                sha1 = hashlib.sha1()
+                try:
+                    sha1.update(f_mod.read())
+                finally:
+                    f_mod.close()
+
+                logger.info("Process sha1sum: %s" % sha1.hexdigest())
+                if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
+                    logger.info("Zip file is valid: unzip...")
+                    os.mkdir(os.path.join(self.mssAgentConfig.get("local", "addons"), module))
+                    zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
+                    zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "addons"), module))
+                else:
+                    logger.info("Zip file is invalid...")
+                    err = True
+                    status = "sha1sum invalid"
+
+                return (err, status)
 
     @expose
     def install_modules(self, modules):
@@ -586,7 +671,7 @@ class ModuleManager:
         """ return list of sections """
         return self._sections
 
-    def get_categories(self, addons, section):
+    def get_categories(self, section):
         """ return list of categories """
         if section in self._categories:
             return self._categories[section]
@@ -602,8 +687,7 @@ class ModuleManager:
         for sec in self._sections:
             if sec["slug"] == section:
                 _section["name"] = sec["name"]
-
-        # Set bundles list
+        # Set addons list
         _section["bundles"] = self._categories[section]
         return _section
 
@@ -626,3 +710,30 @@ class ModuleManager:
         self._hAddons[module]['module']['configured'] = configured
         details = {"actions": actions, "installed": installed, "configured": configured}
         return details
+
+    @expose
+    def get_authentication_token(self, login, password):
+        """ return status of authentication to API """
+        data = 'username=' + login + '&password=' + password
+        url = self.mssAgentConfig.get("api", "url") + 'token/'
+        self._token = ""
+        err = False
+        status = "OK"
+        try:
+            result = urllib2.urlopen(url, data)
+            info = json.loads(result.read())
+            if 'token' in info:
+                self._token = info['token']
+            elif 'non_field_errors' in info:
+                err = True
+                status = info['non_field_errors']
+            else:
+                err = True
+                status = "unknown"
+        except urllib2.HTTPError, e:
+            err = True
+            status = "HTTP Error:" + str(e.code) + " " + url
+        except urllib2.URLError, e:
+            err = True
+            status = "URL Error:" + str(e.reason) + " " + url
+        return (err, status)

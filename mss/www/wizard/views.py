@@ -64,12 +64,20 @@ def set_lang(request, lang):
 
 def mylogin(request):
     if request.method == "POST":
+        username=username=request.POST['username']
+        password=request.POST['password']
         user = authenticate(username=request.POST['username'],
-            password=request.POST['password'])
+                            password=request.POST['password'])
         if user is not None:
             if user.is_active:
                 login(request, user)
-                xmlrpc.call('load')
+                err, status = xmlrpc.call('get_authentication_token', username, password)
+                if err:
+                    return direct_to_template(request, 'invalid_login.html')
+                err, status = xmlrpc.call('load')
+                if err:
+                    return direct_to_template(request, 'invalid_login.html')
+
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
         else:
@@ -207,10 +215,6 @@ def sections(request):
         return err
     sections = result
 
-    # Translate section name
-    for section in sections:
-        section["name"] = _(section["name"])
-
     # render the main page with all sections
     return render_to_response('sections.html',
         {'sections': sections},
@@ -226,9 +230,9 @@ def section(request, section):
     section_info = result
 
     section_modules = []
-    for bundle in section_info["bundles"]:
+    for bundle in section_info['bundles']:
         for module in bundle["modules"]:
-            section_modules.append(module)
+             section_modules.append(module)
 
     err, result = xmlrpc.call('get_modules', section_modules)
     if err:
@@ -239,9 +243,6 @@ def section(request, section):
         # check module access
         # format management url
         for module in modules:
-            # Translate module name
-            module["name"] = _(module["name"])
-            module["desc"] = _(module["desc"])
             # Check if modules is already installer
             for action in module['actions']:
                 if action['type'] == "link":
@@ -471,7 +472,6 @@ def config_run(request, module):
     transaction = Transaction(request)
     for m in transaction.modules_info:
         if m['slug'] == module and not m['configured']:
-            print module
             xmlrpc.call('run_config', module)
             break
     return HttpResponse("")
