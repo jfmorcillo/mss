@@ -54,6 +54,9 @@ sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/base.ini
 sed -i "s/\@PASSWORD\@/$mypass_e/" /etc/mmc/plugins/base.ini
 mkdir /home/archives > /dev/null 2>&1
 
+### Run mbs-setup to apply subscription infos in base.ini
+mbs-setup
+
 # now, /etc/openldap/ldap.conf
 myldapconf=`make_temp`
 cat /etc/openldap/ldap.conf | \
