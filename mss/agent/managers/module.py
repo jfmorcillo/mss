@@ -124,7 +124,7 @@ class ModuleManager:
             self._addons = json.load(addons_json_fp)
             addons_json_fp.close()
         else:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addonsDir"), "addons.json"), "r")
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "addons.json"), "r")
             self._addons = json.load(addons_json_fp)
             addons_json_fp.close()
 
@@ -161,7 +161,7 @@ class ModuleManager:
             self._sections = json.load(sections_json_fp)
             sections_json_fp.close()
         else:
-            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addonsDir"), "sections.json"))
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "sections.json"))
             self._sections = json.load(sections_json_fp)
             sections_json_fp.close()
 
