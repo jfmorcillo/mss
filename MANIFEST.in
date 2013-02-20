@@ -5,3 +5,5 @@ recursive-exclude mss/ *.po
 recursive-exclude doc/ *
 recursive-exclude dist/ *
 recursive-exclude mss.egg-info/ *
+recursive-include var/ *
+recursive-include etc/ *
