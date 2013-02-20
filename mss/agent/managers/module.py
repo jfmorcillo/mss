@@ -79,14 +79,14 @@ class ModuleManager:
             self.arch = 'i586'
         self.mssAgentConfig = ConfigParser.ConfigParser();
         self.mssAgentConfig.readfp(open("/etc/mss/agent.ini"))
-        self.modulesDirectory = self.mssAgentConfig.get("local", "addons")
+        self.modulesDirectory = self.mssAgentConfig.get("local", "addonsDir")
         logger.warning("Looking for modules inside %s" % self.modulesDirectory)
         self.modules = {}
         self._sections = []
         self._hAddons = {}
         self._addons = []
         self.packages = []
-        self._lang = 'en,fr'
+        self._lang = 'en'
 
         # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
@@ -101,30 +101,30 @@ class ModuleManager:
 
     def load_addons(self):
         """ return addons list """
-        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "addons.json"), "w")
+        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "w")
         # Load modules description
         err = False
         status = "OK"
         try:
-            req = urllib2.Request(self.mssAgentConfig.get("addons", "url"))
+            req = urllib2.Request(self.mssAgentConfig.get("api", "addonsUrl"))
             req.add_header('Authorization', 'Token ' + self._token)
             req.add_header('Accept-Language', self._lang)
             f_addons = urllib2.urlopen(req)
             addons_json_fp.write(f_addons.read())
         except urllib2.HTTPError, e:
             err = True
-            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("addons", "url")
+            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
         except urllib2.URLError, e:
             err = True
-            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("addons", "url")
+            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
         addons_json_fp.close()
 
         if not err:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "addons.json"), "r")
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "r")
             self._addons = json.load(addons_json_fp)
             addons_json_fp.close()
         else:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addons"), "addons.json"), "r")
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addonsDir"), "addons.json"), "r")
             self._addons = json.load(addons_json_fp)
             addons_json_fp.close()
 
@@ -136,12 +136,12 @@ class ModuleManager:
 
     def load_sections(self):
         """ return section list """
-        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "sections.json"), "w")
+        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"), "w")
         # Load modules description
         err = False
         status = "OK"
         try:
-            req = urllib2.Request(self.mssAgentConfig.get("sections", "url"))
+            req = urllib2.Request(self.mssAgentConfig.get("api", "sectionsUrl"))
             req.add_header('Authorization', 'Token ' + self._token)
             req.add_header('Accept-Language', self._lang)
             f_sections = urllib2.urlopen(req)
@@ -149,19 +149,19 @@ class ModuleManager:
         #handle errors
         except urllib2.HTTPError, e:
             err = True
-            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("sections", "url")
+            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
         except urllib2.URLError, e:
             err = True
-            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("sections", "url")
+            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
         sections_json_fp.close()
 
         # Load sections
         if not err:
-            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cache"), "sections.json"))
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"))
             self._sections = json.load(sections_json_fp)
             sections_json_fp.close()
         else:
-            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addons"), "sections.json"))
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "addonsDir"), "sections.json"))
             self._sections = json.load(sections_json_fp)
             sections_json_fp.close()
 
@@ -245,6 +245,7 @@ class ModuleManager:
             self._lang = 'fr,en'
         else:
             self._lang = 'en,fr'
+        self._lang = lang.lower().replace("_", "-") + ",en"
 
     @expose
     def set_option(self, slug, value):
@@ -309,7 +310,7 @@ class ModuleManager:
 
     def get_available_modules(self):
         ret = []
-        for item in glob.glob(os.path.join(self.mssAgentConfig.get("local", "cache"),
+        for item in glob.glob(os.path.join(self.mssAgentConfig.get("local", "cacheDir"),
                                            "*", "__init__.py")):
             ret.append(item.split("/")[-2])
         for item in glob.glob(os.path.join(self.modulesDirectory,
@@ -530,7 +531,7 @@ class ModuleManager:
         """ Download modules if not already present on disk """
         logger.info("Download modules : %s" % str(modules))
         for module in modules:
-            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "cache"), module)):
+            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module)):
                 logger.info("Download module : %s" % str(module))
                 # Download
                 f_mod = open(os.path.join("/tmp", module+".zip"), "wb")
@@ -564,9 +565,9 @@ class ModuleManager:
                     logger.info("Process sha1sum: %s" % sha1.hexdigest())
                     if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
                         logger.info("Zip file is valid: unzip...")
-                        os.mkdir(os.path.join(self.mssAgentConfig.get("local", "cache"), module))
+                        os.mkdir(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
                         zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
-                        zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "cache"), module))
+                        zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
                     else:
                         logger.info("Zip file is invalid...")
                         err = True
@@ -730,7 +731,7 @@ class ModuleManager:
     def get_authentication_token(self, login, password):
         """ return status of authentication to API """
         data = 'username=' + login + '&password=' + password
-        url = self.mssAgentConfig.get("api", "url") + 'token/'
+        url = self.mssAgentConfig.get("api", "tokenUrl")
         self._token = ""
         err = False
         status = "OK"
