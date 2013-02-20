@@ -122,6 +122,7 @@ https_redirect mmc /etc/httpd/conf/webapps.d/mmc.conf
 
 # copy MBS logo
 cp mbs_logo.png /usr/share/mmc/img/logo/
+chmod 644 /usr/share/mmc/img/logo/mbs_logo.png
 
 sed -i 's/ENABLE=no/ENABLE=yes/' /etc/default/mmc-agent
 
