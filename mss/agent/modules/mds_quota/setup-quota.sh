@@ -8,6 +8,8 @@ userquota_tpl="templates/userquota.ini.tpl"
 
 fss=$1
 
+add_schema /usr/share/doc/python-mmc-base/contrib/ldap/quota.schema
+
 backup /etc/fstab
 for f in $fss; do
     # get UUID
@@ -37,13 +39,16 @@ for f in $fss; do
         echo "Quota option already present for $mountpoint"
     fi
     tmp=`echo $f | sed "s/:/:1024:/"`
-    filesystems=${filesystems}${tmp}";"
+    filesystems=${filesystems}${tmp}","
 done
 
 # install template
 backup /etc/mmc/plugins/userquota.ini
 cat $userquota_tpl > /etc/mmc/plugins/userquota.ini
-sed -i "s!\@FILESYSTEMS\@!${filesystems}!" /etc/mmc/plugins/userquota.ini
+sed -i "s!\@FILESYSTEMS\@!${filesystems%?}!" /etc/mmc/plugins/userquota.ini
+
+restart_service ldap
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 info_b $"Quota module is activated in the management interface."
 info $"You can now configure user quotas from the management interface : https://@HOSTNAME@/mmc/."
