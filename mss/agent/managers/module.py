@@ -245,11 +245,7 @@ class ModuleManager:
         """ change lang during execution """
         logger.info("Lang changed to %s" % lang)
         TranslationManager().set_lang(lang)
-        if lang == 'fr_FR':
-            self._lang = 'fr,en'
-        else:
-            self._lang = 'en,fr'
-        self._lang = lang.lower().replace("_", "-") + ",en"
+        self._lang = lang.lower().split('_')[0] + ',en'
 
     @expose
     def set_option(self, slug, value):
