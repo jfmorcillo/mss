@@ -13,6 +13,7 @@ APACHE_DAVICAL_CONF_TEMPLATE="templates/davical.conf.tpl"
 APACHE_DAVICAL_CONF="/etc/httpd/conf/webapps.d/davical.conf"
 DAVICAL_CRON_TEMPLATE="templates/davical.cron.tpl"
 DAVICAL_CRON="/etc/cron.d/davical"
+roundcube_db_conf_template="templates/config.inc.php.tpl"
 
 ###Give Davical access to the Postgre DB
 backup $PG_CONF_FILE
@@ -51,6 +52,14 @@ sed -i "s/\@MDSSERVER\@/$MDSSERVER/" $DAVICAL_CONF
 sed -i "s/\@DOMAIN\@/$DOMAIN/" $DAVICAL_CONF
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" $DAVICAL_CONF
 sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CONF
+
+
+backup /usr/share/roundcubemail/plugins/calendar/config.inc.php
+cat $roundcube_db_conf_template > /usr/share/roundcubemail/plugins/calendar/config.inc.php
+sed -i "s/\@MDSSERVER\@/$MDSSERVER/" /usr/share/roundcubemail/plugins/calendar/config.inc.php
+sed -i "s/^\$rcmail_config\['plugins'\].*/\$rcmail_config['plugins'] = array('managesieve', 'subscriptions_option', 'calendar');/" /etc/roundcubemail/main.inc.php
+
+sqlite /var/lib/roundcubemail/sqlite.db < /usr/share/roundcubemail/plugins/calendar/SQL/sqlite.sql
 
 # http -> https redirection
 https_redirect davical $APACHE_DAVICAL_CONF

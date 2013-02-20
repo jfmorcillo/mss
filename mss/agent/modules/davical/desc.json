@@ -12,8 +12,8 @@
     "packages": [
         {
             "name": "all",
-            "rpms": ["davical", "php-pdo_pgsql", "php-calendar", "php-ldap"]
+            "rpms": ["davical", "php-pdo_pgsql", "php-calendar", "php-ldap", "roundcubemail-plugins"]
         }
     ],
-    "dependencies": ["postgresql"]
+    "dependencies": ["postgresql", "mds_webmail"]
 }
