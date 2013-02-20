@@ -110,7 +110,11 @@ class ModuleManager:
             req.add_header('Authorization', 'Token ' + self._token)
             req.add_header('Accept-Language', self._lang)
             f_addons = urllib2.urlopen(req)
-            addons_json_fp.write(f_addons.read())
+            if f_addons.getcode() == 401:
+                err = True
+                status = "Wrong credentials"
+            else:
+                addons_json_fp.write(f_addons.read())
         except urllib2.HTTPError, e:
             err = True
             status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
@@ -145,7 +149,11 @@ class ModuleManager:
             req.add_header('Authorization', 'Token ' + self._token)
             req.add_header('Accept-Language', self._lang)
             f_sections = urllib2.urlopen(req)
-            sections_json_fp.write(f_sections.read())
+            if f_sections.getcode() == 401:
+                err = True
+                status = "Wrong credentials"
+            else:
+                sections_json_fp.write(f_sections.read())
         #handle errors
         except urllib2.HTTPError, e:
             err = True
@@ -231,13 +239,9 @@ class ModuleManager:
         """ Load sections/modules after logging successfully """
                 # Load section info
         err, status = self.load_sections()
-        if not err:
-            # Load addon list
-            err, status = self.load_addons()
-            if not err:
-                # Load categories
-                self.load_categories()
-                self.load_modules2()
+        err, status = self.load_addons()
+        self.load_categories()
+        self.load_modules2()
         return (err, status)
 
     @expose
@@ -542,7 +546,11 @@ class ModuleManager:
                     req.add_header('Authorization', 'Token ' + self._token)
                     req.add_header('Accept-Language', self._lang)
                     f = urllib2.urlopen(req)
-                    f_mod.write(f.read())
+                    if f.getcode() == 401:
+                        err = True
+                        status = "Wrong credentials"
+                    else:
+                        f_mod.write(f.read())
                     #handle errors
                 except urllib2.HTTPError, e:
                     err = True
