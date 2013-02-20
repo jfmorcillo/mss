@@ -176,17 +176,21 @@ class ModuleManager:
         self._categories["hidden"] = []
         for addon in self._addons:
             if addon["standalone"]:
-                section = addon["module"]["section"]
-                if addon["categories"] == []:
-                    addon['categories'].append({'slug': 'others', 'name': 'Addons'})
-                for category in addon["categories"]:
-                    category["modules"] = []
-                    notFound = True
-                    for cat in self._categories[section]:
-                        if cat["slug"] == category["slug"]:
-                            notFound = False
-                    if notFound:
-                        self._categories[section].append(category)
+                if 'module' in addon:
+                    section = addon["module"]["section"]
+                    if addon["categories"] == []:
+                        addon['categories'].append({'slug': 'others', 'name': 'Addons'})
+                    for category in addon["categories"]:
+                        category["modules"] = []
+                        notFound = True
+                        for cat in self._categories[section]:
+                            if cat["slug"] == category["slug"]:
+                                notFound = False
+                        if notFound:
+                            self._categories[section].append(category)
+                else:
+                    addon["module"] = {}
+                    addon["standalone"] = False
 
     def load_modules2(self):
         """ Dispatch modules in categories """
