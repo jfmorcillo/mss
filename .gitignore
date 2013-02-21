@@ -7,3 +7,4 @@ doc/build
 .tx
 mss/www/local_settings.py
 setup.cfg
+requirements/no_dep
