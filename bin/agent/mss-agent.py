@@ -27,7 +27,6 @@ import logging.handlers
 import os
 
 from mss.agent.managers.module import ModuleManager
-from mss.agent.lib.auth import authenticate
 from mss.agent.lib.db import Base, engine
 
 if __name__ == "__main__":
@@ -69,7 +68,6 @@ if __name__ == "__main__":
 
     server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
     server.register_instance(MM)
-    server.register_function(authenticate)
 
     try:
         print 'This is MSS XML-RPC agent'

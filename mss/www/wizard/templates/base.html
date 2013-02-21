@@ -71,9 +71,7 @@
                     // requests are also aborted when the user changes pages
                     setTimeout(function() {
                         // request aborted
-                        if (xhr.status == 0 && xhr.statusText == "error")
-                            $('#status-text').html("{% trans "The MSS interface is unreachable" %}");
-                        else if (xhr.status == 500)
+                        if (xhr.status == 500)
                             $('body').html(xhr.responseText);
                         else
                             $('#status-text').html(xhr.responseText);
@@ -84,7 +82,7 @@
                         // refresh every 2s on error
                         setTimeout('updateStatus(false)', 2000);
                         $("#status").slideDown();
-                    }, 500);
+                    }, 100);
                 });
             }
 

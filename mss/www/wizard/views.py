@@ -64,20 +64,15 @@ def set_lang(request, lang):
 
 def mylogin(request):
     if request.method == "POST":
-        username=username=request.POST['username']
-        password=request.POST['password']
         user = authenticate(username=request.POST['username'],
                             password=request.POST['password'])
-        if user is not None:
-            if user.is_active:
+        print user
+        if user is not None and user.is_active:
                 login(request, user)
-                err, status = xmlrpc.call('get_authentication_token', username, password)
-                if err:
-                    return direct_to_template(request, 'invalid_login.html')
                 err, status = xmlrpc.call('load')
                 if err:
+                    xmlrpc.call('check_net')
                     return direct_to_template(request, 'invalid_login.html')
-
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
         else:

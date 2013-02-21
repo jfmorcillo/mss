@@ -32,7 +32,7 @@ import urllib2
 import hashlib
 import zipfile
 
-from mss.agent.lib.utils import grep, Singleton
+from mss.agent.lib.utils import grep, Singleton, request
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.classes.module import Module
 from mss.agent.managers.process import ProcessManager
@@ -87,6 +87,7 @@ class ModuleManager:
         self._addons = []
         self.packages = []
         self._lang = TranslationManager().lang.lower().split('_')[0] + ',en'
+        self._token = False
 
         # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
@@ -101,38 +102,41 @@ class ModuleManager:
 
     def load_addons(self):
         """ return addons list """
-        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "w")
-        # Load modules description
         err = False
         status = "OK"
-        try:
-            req = urllib2.Request(self.mssAgentConfig.get("api", "addonsUrl"))
-            req.add_header('Authorization', 'Token ' + self._token)
-            req.add_header('Accept-Language', self._lang)
-            f_addons = urllib2.urlopen(req)
-            if f_addons.getcode() == 401:
-                err = True
-                status = "Wrong credentials"
-            else:
-                addons_json_fp.write(f_addons.read())
-        except urllib2.HTTPError, e:
-            err = True
-            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
-            logger.error(status)
-        except urllib2.URLError, e:
-            err = True
-            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
-            logger.error(status)
-        addons_json_fp.close()
 
-        if not err:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "r")
-            self._addons = json.load(addons_json_fp)
-            addons_json_fp.close()
-        else:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "addons.json"), "r")
-            self._addons = json.load(addons_json_fp)
-            addons_json_fp.close()
+        # Load modules description
+        if self._token:
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "w")
+            try:
+                req = urllib2.Request(self.mssAgentConfig.get("api", "addonsUrl"))
+                req.add_header('Authorization', 'Token ' + self._token)
+                req.add_header('Accept-Language', self._lang)
+                f_addons = urllib2.urlopen(req)
+                if f_addons.getcode() == 401:
+                    err = True
+                    status = "Wrong credentials"
+                else:
+                    addons_json_fp.write(f_addons.read())
+            except urllib2.HTTPError, e:
+                err = True
+                status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
+                logger.error(status)
+                addons_json_fp.close()
+            except urllib2.URLError, e:
+                err = True
+                status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
+                logger.error(status)
+                addons_json_fp.close()
+            else:
+                addons_json_fp.close()
+                addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"))
+
+        if not self._token or err:
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "addons.json"))
+
+        self._addons = json.load(addons_json_fp)
+        addons_json_fp.close()
 
         self._hAddons = {}
         for addon in self._addons:
@@ -142,40 +146,43 @@ class ModuleManager:
 
     def load_sections(self):
         """ return section list """
-        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"), "w")
-        # Load modules description
         err = False
         status = "OK"
-        try:
-            req = urllib2.Request(self.mssAgentConfig.get("api", "sectionsUrl"))
-            req.add_header('Authorization', 'Token ' + self._token)
-            req.add_header('Accept-Language', self._lang)
-            f_sections = urllib2.urlopen(req)
-            if f_sections.getcode() == 401:
-                err = True
-                status = "Wrong credentials"
-            else:
-                sections_json_fp.write(f_sections.read())
-        #handle errors
-        except urllib2.HTTPError, e:
-            err = True
-            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
-            logger.error(status)
-        except urllib2.URLError, e:
-            err = True
-            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
-            logger.error(status)
-        sections_json_fp.close()
 
-        # Load sections
-        if not err:
-            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"))
-            self._sections = json.load(sections_json_fp)
-            sections_json_fp.close()
-        else:
+        # Load modules description from the ServicePlace
+        if self._token:
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"), "w")
+            try:
+                req = urllib2.Request(self.mssAgentConfig.get("api", "sectionsUrl"))
+                req.add_header('Authorization', 'Token ' + self._token)
+                req.add_header('Accept-Language', self._lang)
+                f_sections = urllib2.urlopen(req)
+                if f_sections.getcode() == 401:
+                    err = True
+                    status = "Wrong credentials"
+                else:
+                    sections_json_fp.write(f_sections.read())
+            #handle errors
+            except urllib2.HTTPError, e:
+                err = True
+                status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
+                logger.error(status)
+                sections_json_fp.close()
+            except urllib2.URLError, e:
+                err = True
+                status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
+                logger.error(status)
+                sections_json_fp.close()
+            else:
+                sections_json_fp.close()
+                sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"))
+
+        # Offline, use local json files
+        if not self._token or err:
             sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "sections.json"))
-            self._sections = json.load(sections_json_fp)
-            sections_json_fp.close()
+
+        self._sections = json.load(sections_json_fp)
+        sections_json_fp.close()
 
         return (err, status)
 
@@ -183,15 +190,13 @@ class ModuleManager:
         """ return categories per section """
         self._categories = {}
         for section in self._sections:
-            self._categories[section["slug"]] = [{'slug': 'others', 'name': 'Addons', 'modules': []}]
+            self._categories[section["slug"]] = []
 
         self._categories["hidden"] = []
         for addon in self._addons:
             if addon["standalone"]:
                 if 'module' in addon:
                     section = addon["module"]["section"]
-                    if addon["categories"] == []:
-                        addon['categories'].append({'slug': 'others', 'name': 'Addons'})
                     for category in addon["categories"]:
                         category["modules"] = []
                         notFound = True
@@ -241,9 +246,12 @@ class ModuleManager:
     @expose
     def load(self):
         """ Load sections/modules after logging successfully """
-                # Load section info
+        logger.debug("Loading sections")
         err, status = self.load_sections()
+        logger.debug(status)
+        logger.debug("Loading addons")
         err, status = self.load_addons()
+        logger.debug(status)
         self.load_categories()
         self.load_modules2()
         return (err, status)
@@ -742,32 +750,28 @@ class ModuleManager:
         return details
 
     @expose
-    def get_authentication_token(self, login, password):
-        """ return status of authentication to API """
-        logger.debug("Getting ServicePlace token")
-        data = 'username=' + login + '&password=' + password
-        url = self.mssAgentConfig.get("api", "tokenUrl")
-        self._token = ""
-        err = False
-        status = "OK"
-        try:
-            result = urllib2.urlopen(url, data)
-            info = json.loads(result.read())
-            if 'token' in info:
-                self._token = info['token']
-            elif 'non_field_errors' in info:
-                err = True
-                status = info['non_field_errors']
-            else:
-                err = True
-                status = "unknown"
-        except urllib2.HTTPError, e:
-            err = True
-            status = "HTTP Error:" + str(e.code) + " " + url
-            logger.error(status)
-        except urllib2.URLError, e:
-            err = True
-            status = "URL Error:" + str(e.reason) + " " + url
-            logger.error(status)
-        logger.debug("Token: %s" % self._token)
-        return (err, status)
+    def authenticate(self, user, password):
+        """ Authenticate mss-www to the agent """
+        self._token = False
+        if not user or not password:
+            return False
+        # Local auth with PAM
+        if user == "root":
+            logger.debug("PAM authentication")
+            from mss.agent.lib import pam
+            result = pam.authenticate(user, password, service="passwd")
+            if result:
+                logger.debug("Logged with PAM.")
+            return result
+        # API auth
+        else:
+            logger.debug("ServicePlace authentication")
+            url = self.mssAgentConfig.get("api", "tokenUrl")
+            result, code = request(url, {'username': user, 'password': password})
+            if code == 200:
+                if 'token' in result:
+                    self._token = result['token']
+                    logger.debug("Logged with the ServicePlace !")
+                    return True
+            logger.error("Login failed against the ServicePlace.")
+            return False
