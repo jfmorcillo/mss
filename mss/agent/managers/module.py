@@ -118,9 +118,11 @@ class ModuleManager:
         except urllib2.HTTPError, e:
             err = True
             status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
+            logger.error(status)
         except urllib2.URLError, e:
             err = True
             status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
+            logger.error(status)
         addons_json_fp.close()
 
         if not err:
@@ -158,9 +160,11 @@ class ModuleManager:
         except urllib2.HTTPError, e:
             err = True
             status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
+            logger.error(status)
         except urllib2.URLError, e:
             err = True
             status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
+            logger.error(status)
         sections_json_fp.close()
 
         # Load sections
@@ -364,7 +368,7 @@ class ModuleManager:
         if m in self.modules:
             module = self.modules[m]
             self.check_installed(module)
-            
+
             configured = module.configured
             installed = module.installed
             actions = module.actions
@@ -414,7 +418,7 @@ class ModuleManager:
         return modules infos
         """
         self.download_modules(modules)
-        
+
         for module in modules:
             if module not in self.modules:
                 self.load_module(module)
@@ -555,9 +559,11 @@ class ModuleManager:
                 except urllib2.HTTPError, e:
                     err = True
                     status = "HTTP Error: " + str(e.code) + ": " + self._hAddons[module]['module']['file']
+                    logger.error(status)
                 except urllib2.URLError, e:
                     err= True
                     status = "URL Error: " + str(e.reason) + ": " + self._hAddons[module]['module']['file']
+                    logger.error(status)
                 f_mod.close()
 
                 if not err:
@@ -569,15 +575,15 @@ class ModuleManager:
                         sha1.update(f_mod.read())
                     finally:
                         f_mod.close()
-    
+
                     logger.info("Process sha1sum: %s" % sha1.hexdigest())
                     if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
-                        logger.info("Zip file is valid: unzip...")
+                        logger.debug("Zip file is valid: unzip...")
                         os.mkdir(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
                         zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
                         zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
                     else:
-                        logger.info("Zip file is invalid...")
+                        logger.error("Zip file is invalid...")
                         err = True
                         status = "sha1sum invalid"
 
@@ -738,6 +744,7 @@ class ModuleManager:
     @expose
     def get_authentication_token(self, login, password):
         """ return status of authentication to API """
+        logger.debug("Getting ServicePlace token")
         data = 'username=' + login + '&password=' + password
         url = self.mssAgentConfig.get("api", "tokenUrl")
         self._token = ""
@@ -757,7 +764,10 @@ class ModuleManager:
         except urllib2.HTTPError, e:
             err = True
             status = "HTTP Error:" + str(e.code) + " " + url
+            logger.error(status)
         except urllib2.URLError, e:
             err = True
             status = "URL Error:" + str(e.reason) + " " + url
+            logger.error(status)
+        logger.debug("Token: %s" % self._token)
         return (err, status)
