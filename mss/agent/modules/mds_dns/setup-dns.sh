@@ -24,7 +24,7 @@ backup /etc/mmc/plugins/network.ini
 cat $mds_network_template > /etc/mmc/plugins/network.ini
 sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/mmc/plugins/network.ini
 sed -i "s/\@HOSTNAME\@/$HOST/" /etc/mmc/plugins/network.ini
-sed -i "s/\@DHCPENABLE\@/$dhcpenable/" /etc/mmc/plugins/network.ini
+sed -i "s/\@DHCPENABLE\@/$dhcp_enable/" /etc/mmc/plugins/network.ini
 
 # create acl file
 acl_file="/var/lib/named/etc/mss_acls.conf"
