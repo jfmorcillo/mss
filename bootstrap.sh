@@ -32,8 +32,10 @@ function generate_salt() {
 	echo $salt
 }
 
-mkdir -p /var/log/mss/500/
+sh manage.sh todev
 mkdir -p /var/lib/mss/local
+mkdir -p /var/lib/mss/cache
+mkdir -p /etc/mss
 touch /var/log/mss/mss-agent.log
 touch /var/log/mss/mss-www.log
 chown $user.$user /var/log/mss/mss-www.log
@@ -44,7 +46,6 @@ if [ ! -f ${path}/mss/www/local_settings.py ]; then
     salt=`generate_salt`
     sed -i "s!^SECRET_KEY.*!SECRET_KEY = \"${salt}\"!" ${path}/mss/www/local_settings.py
 fi
-sh manage.sh todev
 [ -h $link ] && rm -f $link
 ln -s ${path}/mss $link
 [ -f $agent ] && rm -f $agent
@@ -56,8 +57,12 @@ ln -s ${path}/bin/mss-add-shorewall-rule $mss_shorewall_rules
 python mss/www/manage.py syncdb --noinput
 chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db
+[ -h /etc/mss/agent.ini ] && rm -f /etc/mss/agent.ini
 ln -s ${path}/etc/agent.ini /etc/mss/agent.ini
+[ -h /var/lib/mss/local/addons ] && rm -f /var/lib/mss/local/addons
 ln -s ${path}/mss/agent/modules /var/lib/mss/local/addons
+[ -h /var/lib/mss/local/sections.json ] && rm -f /var/lib/mss/local/sections.json
 ln -s ${path}/var/sections.json /var/lib/mss/local/sections.json
-ln -s ${path}/var/bundles.json /var/lib/mss/local/bundles.json
+[ -h /var/lib/mss/local/addons.json ] && rm -f /var/lib/mss/local/addons.json
+ln -s ${path}/var/addons.json /var/lib/mss/local/addons.json
 su -c 'sh build_mo.sh' $user
