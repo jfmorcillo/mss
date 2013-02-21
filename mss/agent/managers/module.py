@@ -86,7 +86,7 @@ class ModuleManager:
         self._hAddons = {}
         self._addons = []
         self.packages = []
-        self._lang = 'en'
+        self._lang = TranslationManager().lang.lower().split('_')[0] + ',en'
 
         # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
