@@ -106,23 +106,12 @@
                     <div class="nav-collapse">
                         {% if user.is_authenticated %}
                         <ul class="nav pull-right">
-                            {% if is_mbs and not main_media and request.session.has_net %}
-                            <li>
-                                <form id="mbs-repositories" method="post" action="{% url prepare %}">
-                                    <input type="hidden" name="mbs_repo" value="mbs_repo" />
-                                </form>
-                                <a href="#" onclick="$('#mbs-repositories')[0].submit()" class="error"
-                                   data-placement="bottom" rel="tooltip"
-                                   data-original-title="{% trans "You don't have the Mandriva Business Server repositories installed. Install them to get security updates." %}"><i class="icon-warning-sign icon-gray"></i>&nbsp;{% trans "Add medias" %}</a>
-                            </li>
-                            {% else %}
-                                {% if request.session.has_net %}
+                            {% if request.session.has_net %}
                             <li>
                                 <a href="#" data-placement="bottom" rel="tooltip"
                                    data-original-title="{% trans "Update packages list on your server." %}"
                                    onclick="updateMedias(); return false;"><i class="icon-refresh icon-gray"></i>&nbsp;{% trans "Update medias" %}</a>
                             </li>
-                               {% endif %}
                             {% endif %}
                             <li>
                                 <a href="{% url logout %}"><i class="icon-off icon-gray"></i>&nbsp;{% trans "Logout" %}</a>

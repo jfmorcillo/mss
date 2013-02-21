@@ -38,7 +38,6 @@ from mss.agent.classes.module import Module
 from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
 
-LSB_FILENAME = '/etc/os-release'
 _ = TranslationManager().translate
 logger = logging.getLogger(__name__)
 
@@ -311,18 +310,6 @@ class ModuleManager:
     def check_media(self, search):
         """ check if media exist """
         return grep(search, '/etc/urpmi/urpmi.cfg')
-
-    @expose
-    def check_distribution(self, distribution):
-        """
-        Allow to check which distribution we are using
-        """
-        if os.path.exists(LSB_FILENAME):
-            for line in open(LSB_FILENAME):
-                if line.startswith("PRETTY_NAME"):
-                    if distribution in line:
-                        return True
-        return False
 
     def get_available_modules(self):
         ret = []

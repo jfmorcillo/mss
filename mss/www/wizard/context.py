@@ -21,21 +21,6 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from mss.www.xmlrpc import XmlRpc
-
-xmlrpc = XmlRpc()
-
-def main_media(request):
-    err, result = xmlrpc.call("check_media", "mes5devel\.mandriva\.com\/BIG\/mbs\/")
-    if err:
-        return {'main_media': False}
-    else:
-        return {'main_media': result}
-
-def is_mbs(request):
-    err, result = xmlrpc.call("check_distribution", "MBS")
-    return {'is_mbs': result}
-
 def current_lang(request):
     from django.conf import settings
     return {'current_lang': settings.DEFAULT_LANGUAGE}

@@ -32,7 +32,7 @@ ADMINS = (('root', 'root@localhost'),)
 MANAGERS = ADMINS
 PROJECT_DIR = os.path.dirname(__file__)
 
-DEBUG = True
+DEBUG = False
 TEMPLATE_DEBUG = DEBUG
 
 EMAIL_SUBJECT_PREFIX = "[MSS]"
@@ -89,9 +89,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.debug",
     "django.core.context_processors.request",
     "django.core.context_processors.media",
-    "mss.www.wizard.context.current_lang",
-    "mss.www.wizard.context.main_media",
-    "mss.www.wizard.context.is_mbs",
+    "mss.www.wizard.context.current_lang"
 )
 
 MIDDLEWARE_CLASSES = (
