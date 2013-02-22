@@ -31,6 +31,7 @@ import ConfigParser
 import urllib2
 import hashlib
 import zipfile
+import time
 
 from mss.agent.lib.utils import grep, Singleton, request
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
@@ -76,9 +77,9 @@ class ModuleManager:
             self.arch = 'x86_64'
         else:
             self.arch = 'i586'
-        self.mssAgentConfig = ConfigParser.ConfigParser();
-        self.mssAgentConfig.readfp(open("/etc/mss/agent.ini"))
-        self.modulesDirectory = self.mssAgentConfig.get("local", "addonsDir")
+        self.config = ConfigParser.ConfigParser();
+        self.config.readfp(open("/etc/mss/agent.ini"))
+        self.modulesDirectory = self.config.get("local", "addonsDir")
         logger.warning("Looking for modules inside %s" % self.modulesDirectory)
         self.modules = {}
         self._sections = []
@@ -101,38 +102,50 @@ class ModuleManager:
 
     def load_addons(self):
         """ return addons list """
+        cache_path = os.path.join(self.config.get("local", "cacheDir"), "addons.json")
+        local_path = os.path.join(self.config.get("local", "localDir"), "addons.json")
         err = False
         status = "OK"
 
         # Load modules description
         if self._token:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "w")
             try:
-                req = urllib2.Request(self.mssAgentConfig.get("api", "addonsUrl"))
-                req.add_header('Authorization', 'Token ' + self._token)
-                req.add_header('Accept-Language', self._lang)
-                f_addons = urllib2.urlopen(req)
-                if f_addons.getcode() == 401:
+                mtime = os.path.getmtime(cache_path)
+            except OSError:
+                mtime = 0
+            # Cache 6 hours
+            if int(time.time()) - mtime > 21600:
+                logger.debug("Getting new version of %s" % cache_path)
+                addons_json_fp = open(cache_path, "w")
+                try:
+                    req = urllib2.Request(self.config.get("api", "addonsUrl"))
+                    req.add_header('Authorization', 'Token ' + self._token)
+                    req.add_header('Accept-Language', self._lang)
+                    f_addons = urllib2.urlopen(req)
+                    if f_addons.getcode() == 401:
+                        err = True
+                        status = "Wrong credentials"
+                    else:
+                        addons_json_fp.write(f_addons.read())
+                except urllib2.HTTPError, e:
                     err = True
-                    status = "Wrong credentials"
+                    status = "HTTP Error: " + str(e.code) + ": " + self.config.get("api", "addonsUrl")
+                    logger.error(status)
+                    addons_json_fp.close()
+                except urllib2.URLError, e:
+                    err = True
+                    status = "URL Error: " + str(e.reason) + ": " + self.config.get("api", "addonsUrl")
+                    logger.error(status)
+                    addons_json_fp.close()
                 else:
-                    addons_json_fp.write(f_addons.read())
-            except urllib2.HTTPError, e:
-                err = True
-                status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
-                logger.error(status)
-                addons_json_fp.close()
-            except urllib2.URLError, e:
-                err = True
-                status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
-                logger.error(status)
-                addons_json_fp.close()
+                    addons_json_fp.close()
+                    addons_json_fp = open(cache_path)
             else:
-                addons_json_fp.close()
-                addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"))
+                logger.debug("Using cache version of %s" % cache_path)
+                addons_json_fp = open(cache_path)
 
         if not self._token or err:
-            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "addons.json"))
+            addons_json_fp = open(local_path)
 
         self._addons = json.load(addons_json_fp)
         addons_json_fp.close()
@@ -145,40 +158,52 @@ class ModuleManager:
 
     def load_sections(self):
         """ return section list """
+        cache_path = os.path.join(self.config.get("local", "cacheDir"), "sections.json")
+        local_path = os.path.join(self.config.get("local", "localDir"), "sections.json")
         err = False
         status = "OK"
 
         # Load modules description from the ServicePlace
         if self._token:
-            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"), "w")
             try:
-                req = urllib2.Request(self.mssAgentConfig.get("api", "sectionsUrl"))
-                req.add_header('Authorization', 'Token ' + self._token)
-                req.add_header('Accept-Language', self._lang)
-                f_sections = urllib2.urlopen(req)
-                if f_sections.getcode() == 401:
+                mtime = os.path.getmtime(cache_path)
+            except OSError:
+                mtime = 0
+            # Cache 6 hours
+            if int(time.time()) - mtime > 21600:
+                logger.debug("Getting new version of %s" % cache_path)
+                sections_json_fp = open(cache_path, "w")
+                try:
+                    req = urllib2.Request(self.config.get("api", "sectionsUrl"))
+                    req.add_header('Authorization', 'Token ' + self._token)
+                    req.add_header('Accept-Language', self._lang)
+                    f_sections = urllib2.urlopen(req)
+                    if f_sections.getcode() == 401:
+                        err = True
+                        status = "Wrong credentials"
+                    else:
+                        sections_json_fp.write(f_sections.read())
+                #handle errors
+                except urllib2.HTTPError, e:
                     err = True
-                    status = "Wrong credentials"
+                    status = "HTTP Error: " + str(e.code) + ": " + self.config.get("api", "sectionsUrl")
+                    logger.error(status)
+                    sections_json_fp.close()
+                except urllib2.URLError, e:
+                    err = True
+                    status = "URL Error: " + str(e.reason) + ": " + self.config.get("api", "sectionsUrl")
+                    logger.error(status)
+                    sections_json_fp.close()
                 else:
-                    sections_json_fp.write(f_sections.read())
-            #handle errors
-            except urllib2.HTTPError, e:
-                err = True
-                status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
-                logger.error(status)
-                sections_json_fp.close()
-            except urllib2.URLError, e:
-                err = True
-                status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
-                logger.error(status)
-                sections_json_fp.close()
+                    sections_json_fp.close()
+                    sections_json_fp = open(cache_path)
             else:
-                sections_json_fp.close()
-                sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"))
+                logger.debug("Using cache version of %s" % cache_path)
+                sections_json_fp = open(cache_path)
 
         # Offline, use local json files
         if not self._token or err:
-            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "sections.json"))
+            sections_json_fp = open(local_path)
 
         self._sections = json.load(sections_json_fp)
         sections_json_fp.close()
@@ -313,7 +338,7 @@ class ModuleManager:
 
     def get_available_modules(self):
         ret = []
-        for item in glob.glob(os.path.join(self.mssAgentConfig.get("local", "cacheDir"),
+        for item in glob.glob(os.path.join(self.config.get("local", "cacheDir"),
                                            "*", "__init__.py")):
             ret.append(item.split("/")[-2])
         for item in glob.glob(os.path.join(self.modulesDirectory,
@@ -534,7 +559,7 @@ class ModuleManager:
         """ Download modules if not already present on disk """
         logger.info("Download modules : %s" % str(modules))
         for module in modules:
-            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module)):
+            if not os.path.exists(os.path.join(self.config.get("local", "cacheDir"), module)):
                 logger.info("Download module : %s" % str(module))
                 # Download
                 f_mod = open(os.path.join("/tmp", module+".zip"), "wb")
@@ -574,9 +599,9 @@ class ModuleManager:
                     logger.info("Process sha1sum: %s" % sha1.hexdigest())
                     if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
                         logger.debug("Zip file is valid: unzip...")
-                        os.mkdir(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
+                        os.mkdir(os.path.join(self.config.get("local", "cacheDir"), module))
                         zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
-                        zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
+                        zip.extractall(path=os.path.join(self.config.get("local", "cacheDir"), module))
                     else:
                         logger.error("Zip file is invalid...")
                         err = True
@@ -753,7 +778,7 @@ class ModuleManager:
         # API auth
         else:
             logger.debug("ServicePlace authentication")
-            url = self.mssAgentConfig.get("api", "tokenUrl")
+            url = self.config.get("api", "tokenUrl")
             result, code = request(url, {'username': user, 'password': password})
             if code == 200:
                 if 'token' in result:
