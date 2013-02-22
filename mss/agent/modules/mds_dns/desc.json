@@ -12,7 +12,7 @@
     "packages": [
         {
             "name": "all",
-            "rpms": ["bind", "bind-utils", "mmc-web-network", "python-mmc-network"]
+            "rpms": ["bind", "bind-utils", "bind-sdb", "mmc-web-network", "python-mmc-network"]
         }
     ],
     "dependencies": ["mds_mmc"],
