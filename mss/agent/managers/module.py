@@ -28,12 +28,13 @@ import platform
 import traceback
 import json
 import ConfigParser
+import urllib
 import urllib2
 import hashlib
 import zipfile
 import time
 
-from mss.agent.lib.utils import grep, Singleton, request
+from mss.agent.lib.utils import grep, Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.classes.module import Module
 from mss.agent.managers.process import ProcessManager
@@ -105,7 +106,6 @@ class ModuleManager:
         cache_path = os.path.join(self.config.get("local", "cacheDir"), "addons.json")
         local_path = os.path.join(self.config.get("local", "localDir"), "addons.json")
         err = False
-        status = "OK"
 
         # Load modules description
         if self._token:
@@ -114,32 +114,18 @@ class ModuleManager:
             except OSError:
                 mtime = 0
             # Cache 6 hours
-            if int(time.time()) - mtime > 21600:
+            if int(time.time()) - mtime > self.config.getint("local", "cache"):
                 logger.debug("Getting new version of %s" % cache_path)
-                addons_json_fp = open(cache_path, "w")
-                try:
-                    req = urllib2.Request(self.config.get("api", "addonsUrl"))
-                    req.add_header('Authorization', 'Token ' + self._token)
-                    req.add_header('Accept-Language', self._lang)
-                    f_addons = urllib2.urlopen(req)
-                    if f_addons.getcode() == 401:
-                        err = True
-                        status = "Wrong credentials"
-                    else:
-                        addons_json_fp.write(f_addons.read())
-                except urllib2.HTTPError, e:
-                    err = True
-                    status = "HTTP Error: " + str(e.code) + ": " + self.config.get("api", "addonsUrl")
-                    logger.error(status)
-                    addons_json_fp.close()
-                except urllib2.URLError, e:
-                    err = True
-                    status = "URL Error: " + str(e.reason) + ": " + self.config.get("api", "addonsUrl")
-                    logger.error(status)
-                    addons_json_fp.close()
-                else:
+
+                result, code = self.request(self.config.get("api", "addonsUrl"))
+                if code == 200:
+                    addons_json_fp = open(cache_path, "w")
+                    json.dump(result, addons_json_fp)
                     addons_json_fp.close()
                     addons_json_fp = open(cache_path)
+                else:
+                    err = True
+
             else:
                 logger.debug("Using cache version of %s" % cache_path)
                 addons_json_fp = open(cache_path)
@@ -154,61 +140,43 @@ class ModuleManager:
         for addon in self._addons:
             self._hAddons[addon["slug"]] = addon
 
-        return (err, status)
+        return err
 
     def load_sections(self):
         """ return section list """
         cache_path = os.path.join(self.config.get("local", "cacheDir"), "sections.json")
         local_path = os.path.join(self.config.get("local", "localDir"), "sections.json")
         err = False
-        status = "OK"
 
-        # Load modules description from the ServicePlace
         if self._token:
             try:
                 mtime = os.path.getmtime(cache_path)
             except OSError:
                 mtime = 0
             # Cache 6 hours
-            if int(time.time()) - mtime > 21600:
+            if int(time.time()) - mtime > self.config.getint("local", "cache"):
                 logger.debug("Getting new version of %s" % cache_path)
-                sections_json_fp = open(cache_path, "w")
-                try:
-                    req = urllib2.Request(self.config.get("api", "sectionsUrl"))
-                    req.add_header('Authorization', 'Token ' + self._token)
-                    req.add_header('Accept-Language', self._lang)
-                    f_sections = urllib2.urlopen(req)
-                    if f_sections.getcode() == 401:
-                        err = True
-                        status = "Wrong credentials"
-                    else:
-                        sections_json_fp.write(f_sections.read())
-                #handle errors
-                except urllib2.HTTPError, e:
-                    err = True
-                    status = "HTTP Error: " + str(e.code) + ": " + self.config.get("api", "sectionsUrl")
-                    logger.error(status)
-                    sections_json_fp.close()
-                except urllib2.URLError, e:
-                    err = True
-                    status = "URL Error: " + str(e.reason) + ": " + self.config.get("api", "sectionsUrl")
-                    logger.error(status)
-                    sections_json_fp.close()
-                else:
+
+                result, code = self.request(self.config.get("api", "sectionsUrl"))
+                if code == 200:
+                    sections_json_fp = open(cache_path, "w")
+                    json.dump(result, sections_json_fp)
                     sections_json_fp.close()
                     sections_json_fp = open(cache_path)
+                else:
+                    err = True
+
             else:
                 logger.debug("Using cache version of %s" % cache_path)
                 sections_json_fp = open(cache_path)
 
-        # Offline, use local json files
         if not self._token or err:
             sections_json_fp = open(local_path)
 
         self._sections = json.load(sections_json_fp)
         sections_json_fp.close()
 
-        return (err, status)
+        return err
 
     def load_categories(self):
         """ return categories per section """
@@ -271,14 +239,12 @@ class ModuleManager:
     def load(self):
         """ Load sections/modules after logging successfully """
         logger.debug("Loading sections")
-        err, status = self.load_sections()
-        logger.debug(status)
+        err = self.load_sections()
         logger.debug("Loading addons")
-        err, status = self.load_addons()
-        logger.debug(status)
+        err = self.load_addons()
         self.load_categories()
         self.load_modules2()
-        return (err, status)
+        return err
 
     @expose
     def set_lang(self, lang):
@@ -560,54 +526,41 @@ class ModuleManager:
         logger.info("Download modules : %s" % str(modules))
         for module in modules:
             if not os.path.exists(os.path.join(self.config.get("local", "cacheDir"), module)):
-                logger.info("Download module : %s" % str(module))
                 # Download
-                f_mod = open(os.path.join("/tmp", module+".zip"), "wb")
                 err = False
-                status = "OK"
-                try:
-                    req = urllib2.Request(self._hAddons[module]['module']['file'])
-                    req.add_header('Authorization', 'Token ' + self._token)
-                    req.add_header('Accept-Language', self._lang)
-                    f = urllib2.urlopen(req)
-                    if f.getcode() == 401:
-                        err = True
-                        status = "Wrong credentials"
-                    else:
-                        f_mod.write(f.read())
-                    #handle errors
-                except urllib2.HTTPError, e:
+                dest_dir = os.path.join(self.config.get("local", "cacheDir"), module)
+                temp_path = os.path.join("/tmp", module + ".zip")
+
+                logger.info("Download module : %s" % str(module))
+                result, code = self.request(self._hAddons[module]['module']['file'])
+                if code == 200:
+                    f_mod = open(temp_path, "wb")
+                    f_mod.write(result)
+                    f_mod.close()
+                else:
                     err = True
-                    status = "HTTP Error: " + str(e.code) + ": " + self._hAddons[module]['module']['file']
-                    logger.error(status)
-                except urllib2.URLError, e:
-                    err= True
-                    status = "URL Error: " + str(e.reason) + ": " + self._hAddons[module]['module']['file']
-                    logger.error(status)
-                f_mod.close()
 
                 if not err:
                     # Verify sha1
-                    logger.info("Unzip module: %s" % os.path.join("/tmp", module+".zip"))
-                    f_mod = open(os.path.join("/tmp", module+".zip"), "rb")
+                    logger.debug("Unzip module: %s" % temp_path)
+                    f_mod = open(temp_path, "rb")
                     sha1 = hashlib.sha1()
                     try:
                         sha1.update(f_mod.read())
                     finally:
                         f_mod.close()
-
-                    logger.info("Process sha1sum: %s" % sha1.hexdigest())
+                    logger.debug("Process sha1sum: %s" % sha1.hexdigest())
                     if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
                         logger.debug("Zip file is valid: unzip...")
-                        os.mkdir(os.path.join(self.config.get("local", "cacheDir"), module))
-                        zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
-                        zip.extractall(path=os.path.join(self.config.get("local", "cacheDir"), module))
+                        os.mkdir(dest_dir)
+                        zip = zipfile.ZipFile(temp_path)
+                        zip.extractall(path=dest_dir)
+                        os.unlink(temp_path)
                     else:
-                        logger.error("Zip file is invalid...")
                         err = True
-                        status = "sha1sum invalid"
+                        logger.error("Zip file is invalid...")
 
-                return (err, status)
+                return err
 
     @expose
     def install_modules(self, modules):
@@ -779,7 +732,7 @@ class ModuleManager:
         else:
             logger.debug("ServicePlace authentication")
             url = self.config.get("api", "tokenUrl")
-            result, code = request(url, {'username': user, 'password': password})
+            result, code = self.request(url, {'username': user, 'password': password})
             if code == 200:
                 if 'token' in result:
                     self._token = result['token']
@@ -787,3 +740,28 @@ class ModuleManager:
                     return True
             logger.error("Login failed against the ServicePlace.")
             return False
+
+    def request(self, url, params=None):
+        """
+        Used to query the ServicePlace API
+
+        Handles token and language headers
+        """
+        if params:
+            params = urllib.urlencode(params)
+        request = urllib2.Request(url, params)
+        if self._token:
+            request.add_header('Authorization', 'Token ' + self._token)
+        request.add_header('Accept-Language', self._lang)
+        try:
+            response = urllib2.urlopen(request)
+            if response.info().gettype() == "application/json":
+                result = json.loads(response.read())
+            else:
+                result = response.read()
+        except urllib2.HTTPError as e:
+            result = "URL Error:" + str(e.reason) + " " + url
+        except urllib2.URLError as e:
+            result = "URL Error:" + str(e.reason) + " " + url
+
+        return (result, response.getcode())

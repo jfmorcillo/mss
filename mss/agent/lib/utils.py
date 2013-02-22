@@ -101,18 +101,3 @@ class Singleton(type):
         if cls.instance is None:
             cls.instance = super(Singleton, cls).__call__(*args, **kw)
         return cls.instance
-
-
-def request(url, params=None):
-    if params:
-        params = urllib.urlencode(params)
-    try:
-        request = urllib2.urlopen(url, params)
-        result = json.loads(request.read())
-    except urllib2.HTTPError as e:
-        result = "URL Error:" + str(e.reason) + " " + url
-    except urllib2.URLError as e:
-        result = "URL Error:" + str(e.reason) + " " + url
-
-    return (result, request.getcode())
-
