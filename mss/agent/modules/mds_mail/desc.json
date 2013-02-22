@@ -31,7 +31,7 @@
     "config": [
         {
             "type": "network",
-            "name": "mtpd_mynetworks",
+            "name": "smtp_mynetworks",
             "format": "short",
             "validation": "network",
             "default": "get_networks",
