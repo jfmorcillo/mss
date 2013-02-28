@@ -14,7 +14,7 @@ hostname = @HOSTNAME@
 enable = @DNSENABLE@
 dn = ou=DNS,@SUFFIX@
 pidfile = /var/lib/named/var/run/named.pid
-init = /etc/rc.d/init.d/named
+init = /etc/rc.d/init.d/named-sdb
 logfile = /var/log/messages
 bindroot = /var/named
 bindgroup = named
