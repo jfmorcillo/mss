@@ -59,9 +59,9 @@ fi
 backup $bind_conf
 cp $bind_template $bind_conf
 
-restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service named-sdb
 enable_service named-sdb
+restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 # configure the Firewall
 [ $fw_lan == "on" ] && mss-add-shorewall-rule -a DNS/ACCEPT -t lan
