@@ -1,0 +1,130 @@
+{
+    "slug": "zarafa",
+    "name": "Zarafa Collaboration Platform",
+    "desc": "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface",
+    "dependencies": ["mds_mmc", "mysql"],
+    "conflict": ["mds_mail", "mds_webmail"],
+    "actions": [
+        {
+            "type": "link",
+            "name": "Users and groups management",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        },
+        {
+            "type": "link",
+            "name": "Zarafa webmail interface",
+            "value": "http://@HOSTNAME@/webaccess/"
+        }
+    ],
+    "medias": [
+        {
+            "verbose_name": "Zarafa",
+            "name": "zarafa",
+            "auth": "my",
+            "proto": "https",
+            "url": [
+                "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
+            ]
+        }
+    ],
+   "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "zarafa",
+                "zarafa-webaccess",
+                "php-xml",
+                "python-mmc-mail",
+                "mmc-web-mail",
+                "postfix",
+                "postfix-ldap",
+                "amavisd-new",
+                "spamassassin",
+                "spamassassin-tools",
+                "clamd"
+            ]
+        }
+    ],
+    "config": [
+        {
+            "type": "password",
+            "name": "mysql_rootpasswd",
+            "require": "yes",
+            "label": "MySQL root password",
+            "help": "Used to create the zarafa database"
+        },
+        {
+            "type": "password",
+            "name": "mysql_zarafapasswd",
+            "require": "yes",
+            "label": "MySQL zarafa password",
+            "help": "MySQL user password for the zarafa database"
+        },
+        {
+            "type": "text",
+            "name": "zarafa_attachments",
+            "require": "yes",
+            "default": "/home/zarafa/attachments",
+            "label": "Attachments directory",
+            "help": "Where do you want to store mail attachments ?"
+        },
+        {
+            "type": "options",
+            "name": "zarafa_lang",
+            "require": "yes",
+            "label": "Default language for Zarafa folders",
+            "help": "Create default folders for users in the selected language",
+            "options": [
+                {
+                    "name": "English",
+                    "value": "C"
+                },
+                {
+                    "name": "Français",
+                    "value": "fr_FR.UTF-8"
+                },
+                {
+                    "name": "Deutsch",
+                    "value": "de_DE.UTF-8"
+                }
+            ]
+        },
+        {
+            "type": "check",
+            "name": "zarafa_imap",
+            "default": "on",
+            "label": "IMAP/IMAPS support",
+            "help": "Enable IMAP and IMAPS on the Zarafa server"
+        },
+        {
+            "type": "check",
+            "name": "zarafa_ical",
+            "default": "on",
+            "label": "CalDAV/iCal support",
+            "help": "Export calendars in CalDAV/iCal format for mail clients (thunderbird, evolution...)"
+        },
+        {
+            "type": "check",
+            "name": "zarafa_zpush",
+            "default": "on",
+            "label": "ActiveSync support",
+            "help": "Enable ActiveSync for mobile phones synchronisation (mail, contacts, calendars)"
+        },
+        {
+            "type": "text",
+            "name": "smtpd_myhostname",
+            "require": "yes",
+            "validation": "fqdn",
+            "label": "My hostname",
+            "help": "The host FQDN (eg: smtp.domain.com)"
+        },
+        {
+            "type": "network",
+            "name": "smtpd_mynetworks",
+            "format": "short",
+            "validation": "network",
+            "label": "My networks",
+            "help": "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
+        }
+    ]
+}

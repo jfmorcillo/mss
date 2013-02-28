@@ -73,15 +73,15 @@
     {% for module in config %}
         <fieldset>
             {% for m in transaction.modules_info %}
-                {% ifequal module.0.id m.id %}
+                {% ifequal module.0.slug m.slug %}
             <legend>{{ m.name }}</legend>
                 {% endifequal %}
             {% endfor %}
             {% for field in module %}
             {% if module.0.configured and field.show_if_unconfigured %}
                 <input
-                    id="{{ field.id }}_{{ field.name }}"
-                    name="{{ field.id }}_{{ field.name }}"
+                    id="{{ field.slug }}_{{ field.name }}"
+                    name="{{ field.slug }}_{{ field.name }}"
                     value="{{ field.default }}"
                     type="hidden"
             	/>
@@ -92,44 +92,44 @@
                 {% endifequal %}
         	    {% ifequal field.type "text" %}
                     {% if field.hidden %}
-                    <input type="hidden" id="{{ field.id }}_{{ field.name }}"
-                           name="{{ field.id }}_{{ field.name }}"
+                    <input type="hidden" id="{{ field.slug }}_{{ field.name }}"
+                           name="{{ field.slug }}_{{ field.name }}"
                            value="{{ field.default }}"
                     />
                     {% else %}
                     <div class="control-group {% if field.error %}error{% endif %}">
-                        <label for="{{ field.id }}_{{ field.name }}" class="control-label">
+                        <label for="{{ field.slug }}_{{ field.name }}" class="control-label">
                             {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                         </label>
                         <div class="controls">
                         {% if field.multi %}
-                            <span id="{{ field.id }}_{{ field.name }}"
-                                  name="{{ field.id }}_{{ field.name }}"
+                            <span id="{{ field.slug }}_{{ field.name }}"
+                                  name="{{ field.slug }}_{{ field.name }}"
                                   data-placement="right" rel="tooltip"
                                   data-original-title="{{ field.help }}"></span>
-                            <p><a class="btn btn-small" onclick="addField('{{ field.id }}', '{{ field.name }}', '')">
+                            <p><a class="btn btn-small" onclick="addField('{{ field.slug }}', '{{ field.name }}', '')">
                                 <i class="icon-plus-sign"></i> {% trans "Add" %}
                             </a></p>
                             {% if field.default %}
                             <script type="text/javascript">
                             {% for text in field.default %}
-                                addField('{{ field.id }}', '{{ field.name }}', '{{ text }}');
+                                addField('{{ field.slug }}', '{{ field.name }}', '{{ text }}');
                             {% endfor %}
                             </script>
                             {% endif %}
                         {% else %}
                             {% if module.0.configured and field.edit_if_unconfigured %}
                                 <input
-                                    id="{{ field.id }}_{{ field.name }}"
-                                    name="{{ field.id }}_{{ field.name }}"
+                                    id="{{ field.slug }}_{{ field.name }}"
+                                    name="{{ field.slug }}_{{ field.name }}"
                                     value="{{ field.default }}"
                                     type="hidden"
                                 />
                                 {{ field.default }}
                             {% else %}
                                 <input
-                                    id="{{ field.id }}_{{ field.name }}"
-                                    name="{{ field.id }}_{{ field.name }}"
+                                    id="{{ field.slug }}_{{ field.name }}"
+                                    name="{{ field.slug }}_{{ field.name }}"
                                     value="{{ field.default }}"
                                     type="text"
                                     data-placement="right" rel="tooltip"
@@ -146,13 +146,13 @@
         	    {% endifequal %}
         	    {% ifequal field.type "password" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
-            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            	        <label class="control-label" for="{{ field.slug }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
             		</label>
                     <div class="controls">
                         <input
-                            id="{{ field.id }}_{{ field.name }}"
-                            name="{{ field.id }}_{{ field.name }}"
+                            id="{{ field.slug }}_{{ field.name }}"
+                            name="{{ field.slug }}_{{ field.name }}"
                             type="password"
                             value="{{ field.default }}"
                             data-placement="right" rel="tooltip"
@@ -161,13 +161,13 @@
                     </div>
                 </div>
                 <div class="control-group {% if field.error %}error{% endif %}">
-                    <label class="control-label" for="{{ field.id }}_{{ field.name }}2">
+                    <label class="control-label" for="{{ field.slug }}_{{ field.name }}2">
                         {% trans "Re-enter password" %}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                     </label>
                     <div class="controls">
                         <input
-                            id="{{ field.id }}_{{ field.name }}2"
-                            name="{{ field.id }}_{{ field.name }}2"
+                            id="{{ field.slug }}_{{ field.name }}2"
+                            name="{{ field.slug }}_{{ field.name }}2"
                             type="password"
                             data-placement="right" rel="tooltip"
                             data-original-title="{{ field.help }}"
@@ -177,16 +177,16 @@
                         {% endif %}
                     </div>
                 </div>
-        	    {% endifequal %}
+                {% endifequal %}
         	    {% ifequal field.type "options" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
-            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            		<label class="control-label" for="{{ field.slug }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                     </label>
                     <div class="controls">
                         <select {% if field.error %}class="error"{% endif %}
-                            id="{{ field.id }}_{{ field.name }}"
-                            name="{{ field.id }}_{{ field.name }}"
+                            id="{{ field.slug }}_{{ field.name }}"
+                            name="{{ field.slug }}_{{ field.name }}"
                             data-placement="right" rel="tooltip"
                             data-original-title="{{ field.help }}">
                         {% for option in field.options %}
@@ -196,19 +196,19 @@
                             </option>
                             {% if option.toggle %}
                             <script type="text/javascript">
-                                $('#{{ field.id }}_{{ field.name }}').change(function() {
+                                $('#{{ field.slug }}_{{ field.name }}').change(function() {
                                     if ("{{ option.value }}" == $(this).val()) {
-                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().show();{% endfor %}
+                                    {% for f in option.toggle %}$('#{{ field.slug }}_{{ f }}').parent().parent().show();{% endfor %}
                                     }
                                     else {
-                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().hide();
-                                    $('#{{ field.id }}_{{ f }}').val("");{% endfor %}
+                                    {% for f in option.toggle %}$('#{{ field.slug }}_{{ f }}').parent().parent().hide();
+                                    $('#{{ field.slug }}_{{ f }}').val("");{% endfor %}
                                     }
                                 });
                                 {% ifnotequal option.value field.default %}
                                 $(document).ready(function() {
-                                    {% for f in option.toggle %}$('#{{ field.id }}_{{ f }}').parent().parent().hide();
-                                    $('#{{ field.id }}_{{ f }}').val("");{% endfor %}
+                                    {% for f in option.toggle %}$('#{{ field.slug }}_{{ f }}').parent().parent().hide();
+                                    $('#{{ field.slug }}_{{ f }}').val("");{% endfor %}
                                 });
                                 {% endifnotequal %}
                             </script>
@@ -225,8 +225,8 @@
                 <div class="control-group {% if field.error %}error{% endif %}">
                     <div class="controls">
                         <input
-                            id="{{ field.id }}_{{ field.name }}"
-                            name="{{ field.id }}_{{ field.name }}"
+                            id="{{ field.slug }}_{{ field.name }}"
+                            name="{{ field.slug }}_{{ field.name }}"
                             type="checkbox"
                             {% ifequal field.default "on" %} checked="checked" {% endifequal %}
                             data-placement="left" rel="tooltip"
@@ -234,7 +234,7 @@
                             style="vertical-align: top"
                         />
                         <label
-                            for="{{ field.id }}_{{ field.name }}"
+                            for="{{ field.slug }}_{{ field.name }}"
                             data-placement="right" rel="tooltip"
                             data-original-title="{{ field.help }}"
                             style="display: inline"
@@ -246,15 +246,15 @@
         	    {% endifequal %}
         	    {% ifequal field.type "network" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
-            		<label class="control-label" for="{{ field.id }}_{{ field.name }}">
+            		<label class="control-label" for="{{ field.slug }}_{{ field.name }}">
             		    {{ field.label }}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
                     </label>
                     <div class="controls">
-                        <span id="{{ field.id }}_{{ field.name }}"
-                              name="{{ field.id }}_{{ field.name }}"
+                        <span id="{{ field.slug }}_{{ field.name }}"
+                              name="{{ field.slug }}_{{ field.name }}"
                               data-placement="right" rel="tooltip"
                               data-original-title="{{ field.help }}"></span>
-                        <p><a class="btn btn-small" onclick="addNetwork('{{ field.id }}', '{{ field.name }}', '', '')" >
+                        <p><a class="btn btn-small" onclick="addNetwork('{{ field.slug }}', '{{ field.name }}', '', '')" >
                             <i class="icon-plus-sign"></i> {% trans "Add" %}
                         </a></p>
                         {% if field.error %}
@@ -264,7 +264,7 @@
             		{% if field.default %}
                     <script type="text/javascript">
                     {% for network in field.default %}
-                        addNetwork('{{ field.id }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
+                        addNetwork('{{ field.slug }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
                     {% endfor %}
                     </script>
             		{% endif %}

@@ -27,6 +27,10 @@ import logging
 import platform
 import traceback
 import json
+import ConfigParser
+import urllib2
+import hashlib
+import zipfile
 
 from mss.agent.lib.utils import grep, Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
@@ -73,38 +77,191 @@ class ModuleManager:
             self.arch = 'x86_64'
         else:
             self.arch = 'i586'
-        self.modulesDirectory = os.path.join(os.path.dirname(__file__), "..", "modules")
+        self.mssAgentConfig = ConfigParser.ConfigParser();
+        self.mssAgentConfig.readfp(open("/etc/mss/agent.ini"))
+        self.modulesDirectory = self.mssAgentConfig.get("local", "addonsDir")
+        logger.warning("Looking for modules inside %s" % self.modulesDirectory)
         self.modules = {}
+        self._sections = []
+        self._hAddons = {}
+        self._addons = []
         self.packages = []
+        self._lang = TranslationManager().lang.lower().split('_')[0] + ',en'
+
         # translation manager
         TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
         # BDD access
         self.session = Session()
         # logging
         self.load_packages()
-        self.load_modules()
         # Get machine-id
         machine_id = open('/etc/machine-id', 'r').read().strip()
         logger.info("Machine id is %s" % machine_id)
         self.set_option("machine-id", machine_id)
+
+    def load_addons(self):
+        """ return addons list """
+        addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "w")
+        # Load modules description
+        err = False
+        status = "OK"
+        try:
+            req = urllib2.Request(self.mssAgentConfig.get("api", "addonsUrl"))
+            req.add_header('Authorization', 'Token ' + self._token)
+            req.add_header('Accept-Language', self._lang)
+            f_addons = urllib2.urlopen(req)
+            if f_addons.getcode() == 401:
+                err = True
+                status = "Wrong credentials"
+            else:
+                addons_json_fp.write(f_addons.read())
+        except urllib2.HTTPError, e:
+            err = True
+            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
+        except urllib2.URLError, e:
+            err = True
+            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "addonsUrl")
+        addons_json_fp.close()
+
+        if not err:
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "addons.json"), "r")
+            self._addons = json.load(addons_json_fp)
+            addons_json_fp.close()
+        else:
+            addons_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "addons.json"), "r")
+            self._addons = json.load(addons_json_fp)
+            addons_json_fp.close()
+
+        self._hAddons = {}
+        for addon in self._addons:
+            self._hAddons[addon["slug"]] = addon
+
+        return (err, status)
+
+    def load_sections(self):
+        """ return section list """
+        sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"), "w")
+        # Load modules description
+        err = False
+        status = "OK"
+        try:
+            req = urllib2.Request(self.mssAgentConfig.get("api", "sectionsUrl"))
+            req.add_header('Authorization', 'Token ' + self._token)
+            req.add_header('Accept-Language', self._lang)
+            f_sections = urllib2.urlopen(req)
+            if f_sections.getcode() == 401:
+                err = True
+                status = "Wrong credentials"
+            else:
+                sections_json_fp.write(f_sections.read())
+        #handle errors
+        except urllib2.HTTPError, e:
+            err = True
+            status = "HTTP Error: " + str(e.code) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
+        except urllib2.URLError, e:
+            err = True
+            status = "URL Error: " + str(e.reason) + ": " + self.mssAgentConfig.get("api", "sectionsUrl")
+        sections_json_fp.close()
+
+        # Load sections
+        if not err:
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), "sections.json"))
+            self._sections = json.load(sections_json_fp)
+            sections_json_fp.close()
+        else:
+            sections_json_fp = open(os.path.join(self.mssAgentConfig.get("local", "localDir"), "sections.json"))
+            self._sections = json.load(sections_json_fp)
+            sections_json_fp.close()
+
+        return (err, status)
+
+    def load_categories(self):
+        """ return categories per section """
+        self._categories = {}
+        for section in self._sections:
+            self._categories[section["slug"]] = [{'slug': 'others', 'name': 'Addons', 'modules': []}]
+
+        self._categories["hidden"] = []
+        for addon in self._addons:
+            if addon["standalone"]:
+                if 'module' in addon:
+                    section = addon["module"]["section"]
+                    if addon["categories"] == []:
+                        addon['categories'].append({'slug': 'others', 'name': 'Addons'})
+                    for category in addon["categories"]:
+                        category["modules"] = []
+                        notFound = True
+                        for cat in self._categories[section]:
+                            if cat["slug"] == category["slug"]:
+                                notFound = False
+                        if notFound:
+                            self._categories[section].append(category)
+                else:
+                    addon["module"] = {}
+                    addon["standalone"] = False
+
+    def load_modules2(self):
+        """ Dispatch modules in categories """
+        # Add modules to categories
+        for addon in self._addons:
+            if addon["standalone"]:
+                section = addon["module"]["section"]
+                if addon["categories"] == []:
+                    addon['categories'].append({'slug': 'others', 'name': 'Addons'})
+                for category in addon["categories"]:
+                    for cat in self._categories[section]:
+                        if cat["slug"] == category["slug"]:
+                            cat["modules"].append(addon["slug"])
+            else:
+                self._categories["hidden"].append(addon["slug"])
+
+    @expose
+    def load_module(self, module):
+        """ Load one module """
+        sys.path.append(self.modulesDirectory)
+        modules = self.get_available_modules()
+        logger.info("Get available mss modules : ")
+
+        if module not in modules:
+            self.download_modules([module])
+            modules.append(module)
+
+        if module in modules and module not in self.modules:
+            logger.debug("Loading %s" % module)
+            m = Module(os.path.join(self.modulesDirectory, module), self, self.arch)
+            self.modules[m.slug] = m
+            logger.info(m)
+            for mod in m.dependencies:
+                self.load_module(mod)
+
+    @expose
+    def load(self):
+        """ Load sections/modules after logging successfully """
+                # Load section info
+        err, status = self.load_sections()
+        err, status = self.load_addons()
+        self.load_categories()
+        self.load_modules2()
+        return (err, status)
 
     @expose
     def set_lang(self, lang):
         """ change lang during execution """
         logger.info("Lang changed to %s" % lang)
         TranslationManager().set_lang(lang)
+        self._lang = lang.lower().split('_')[0] + ',en'
 
     @expose
-    def set_option(self, key, value):
+    def set_option(self, slug, value):
         """ add an option in the DB """
-        option = OptionTable(key, value)
+        option = OptionTable(slug, value)
         self.session.merge(option)
         self.session.commit()
 
     @expose
-    def get_option(self, key):
+    def get_option(self, slug):
         """ get an option from the BDD """
-        option = self.session.query(OptionTable).get(key)
+        option = self.session.query(OptionTable).get(slug)
         if option:
             return json.loads(option.value)
         else:
@@ -155,24 +312,15 @@ class ModuleManager:
                         return True
         return False
 
-    def load_modules(self):
-        """
-        Load all modules at start up
-        """
-        sys.path.append(self.modulesDirectory)
-        modules = self.get_available_modules()
-        logger.info("Get available mss modules : ")
-        for module in modules:
-            logger.debug("Loading %s" % module)
-            m = Module(os.path.join(self.modulesDirectory, module), self, self.arch)
-            self.modules[m.id] = m
-            logger.info(m)
-
     def get_available_modules(self):
         ret = []
-        for item in glob.glob(os.path.join(self.modulesDirectory,
+        for item in glob.glob(os.path.join(self.mssAgentConfig.get("local", "cacheDir"),
                                            "*", "__init__.py")):
             ret.append(item.split("/")[-2])
+        for item in glob.glob(os.path.join(self.modulesDirectory,
+                                           "*", "__init__.py")):
+            if item.split("/")[-2] not in ret:
+                ret.append(item.split("/")[-2])
         return ret
 
     def check_installed(self, module):
@@ -189,41 +337,58 @@ class ModuleManager:
     def get_conflicts(self, conflicts, module):
         """ return a module list of current conflicts
             with module """
-        for m in module.conflicts:
+        if module in self.modules:
+            module = self.modules[module]
+            _conflicts = module.conflicts
+            _dependencies = module.dependencies
+            _configured = module.configured
+        else:
+            module = self._hAddons[module]
+            _conflicts = module['module'].get('conflicts', [])
+            _dependencies = module['module'].get('dependencies', [])
+            _configured = module['module'].get('configured', False)
+        for m in _conflicts:
             try:
-                m = self.modules[m]
-                if not m in conflicts and m.configured:
+                if not m in conflicts and _configured:
                     conflicts.append(m)
-                    logger.debug("Conflict with : %s" % str(m.id))
+                    logger.debug("Conflict with : %s" % m)
                     conflicts = self.get_conflicts(conflicts, m)
             except KeyError:
                 pass
-        for m in module.deps:
-            try:
-                m = self.modules[m]
-                for m1 in m.conflicts:
-                    m1 = self.modules[m1]
-                    if not m1 in conflicts and m1.configured:
-                        conflicts.append(m1)
-                        logger.debug("Conflict with : %s" % str(m1.id))
-            except KeyError:
-                pass
+        for m in _dependencies:
+            conflicts = self.get_conflicts(conflicts, m)
         return conflicts
 
     def get_module(self, m):
         """ return basic info for one module """
-        module = self.modules[m]
-        self.check_installed(module)
+        if m in self.modules:
+            module = self.modules[m]
+            self.check_installed(module)
+            
+            configured = module.configured
+            installed = module.installed
+            actions = module.actions
+        else:
+            details = self.get_module_details(m)
+            configured = details['configured']
+            installed = details['installed']
+            actions = details['actions']
+
         # get current conflicts for module
-        conflicts = self.get_conflicts([], module)
-        conflicts = [conflict.name for conflict in conflicts]
+        conflicts = self.get_conflicts([], m)
+        #conflicts = [conflict.name for conflict in conflicts]
+
+        mod = self._hAddons.get(m, {})
         # return result
         result = {
-            'id': module.id, 'name': module.name,
-            'actions': module.actions, 'desc': module.desc, 'market': module.market,
-            'preinst': module.preinst, 'installed': module.installed,
-            'configured': module.configured, 'conflict': conflicts,
-            'conflicts': module.conflicts, 'deps': module.deps, 'reboot': module.reboot}
+            'slug': mod['slug'], 'name': mod['name'],
+            'actions': actions, 'desc': mod.get('description').split("\n")[0],
+            'purchased': mod.get("purchased", False), 'price': mod.get("price", 0),
+            'installed': installed,
+            'configured': configured, 'conflict': conflicts,
+            'conflicts': mod['module'].get('conflicts', []),
+            'dependencies': mod['module'].get('dependencies', []),
+            'reboot': mod['module'].get('reboot', False)}
         logger.debug("Module info: %s" % str(result))
         return result
 
@@ -233,9 +398,8 @@ class ModuleManager:
         logger.info("Get modules info: %s" % str(modules))
         result = []
         for m in modules:
-            if m in self.modules:
-                logger.debug("Get module info: %s" % str(m))
-                result.append(self.get_module(m))
+            logger.debug("Get module info: %s" % str(m))
+            result.append(self.get_module(m))
         return result
 
     @expose
@@ -246,9 +410,15 @@ class ModuleManager:
     @expose
     def preinstall_modules(self, modules):
         """
-        get deps for modules to install
+        get dependencies for modules to install
         return modules infos
         """
+        self.download_modules(modules)
+        
+        for module in modules:
+            if module not in self.modules:
+                self.load_module(module)
+
         # force module re-installation
         # (not-used for now)
         force_modules = []
@@ -258,32 +428,32 @@ class ModuleManager:
         modules = [m.replace("force-", "") for m in modules]
         # store old modules list
         old = modules
-        # get deps for modules
-        modules = self.check_deps(modules, [])
-        modules = self.order_deps(modules)
+        # get dependencies for modules
+        modules = self.check_dependencies(modules, [])
+        modules = self.order_dependencies(modules)
         # get difference for dep list
         deps = list(set(modules).difference(old))
-        # get modules info (modules + deps)
+        # get modules info (modules + dependencies)
         modules = self.get_modules(modules)
         # remove already configured modules unless force
-        modules = [m for m in modules if not m['configured'] or m['id'] in force_modules]
+        modules = [m for m in modules if not m['configured'] or m['slug'] in force_modules]
         # tell if the module is an dependency of selected modules
         # or if we reinstall it
         for m in modules:
-            if m['id'] in deps:
+            if m['slug'] in deps:
                 m['dep'] = True
             else:
                 m['dep'] = False
-            if m['id'] in force_modules:
+            if m['slug'] in force_modules:
                 m['force'] = True
             else:
                 m['force'] = False
         logger.info("Pre-install modules : %s" % str(modules))
         return modules
 
-    def order_deps(self, modules, cnt=1):
+    def order_dependencies(self, modules, cnt=1):
         for module in modules:
-            # if the module has deps and is not indexed
+            # if the module has dependencies and is not indexed
             if module[1] and module[2] == -1:
                 # for each dep of current module
                 set_index = True
@@ -294,7 +464,7 @@ class ModuleManager:
                         if m1 == m2[0] and not m2[2] >= 0:
                             set_index = False
                 # set the current module index to cnt
-                # if all deps are indexed
+                # if all dependencies are indexed
                 if set_index:
                     module[2] = cnt
 
@@ -302,7 +472,7 @@ class ModuleManager:
         # FIXME! this limits the nb max of the modules list
         if(cnt < 10):
             cnt += 1
-            modules = self.order_deps(modules, cnt)
+            modules = self.order_dependencies(modules, cnt)
         # calcule module list from indexes
         else:
             result = []
@@ -314,28 +484,28 @@ class ModuleManager:
             modules = result
         return modules
 
-    def check_deps(self, modules, dependencies):
-        """ get deps for modules
-            create a list with the form : [ [ module, [deps], index ],... ]
+    def check_dependencies(self, modules, dependencies):
+        """ get dependencies for modules
+            create a list with the form : [ [ module, [dependencies], index ],... ]
         """
         for module in modules:
-            deps = self.get_deps(module)
+            deps = self.get_dependencies(module)
             if deps:
                 # set the index a -1 to calculate index
                 dependencies.append([module, deps, -1])
-                dependencies = self.check_deps(deps, dependencies)
+                dependencies = self.check_dependencies(deps, dependencies)
             else:
-                # set the index at 0 as the module has no deps
+                # set the index at 0 as the module has no dependencies
                 dependencies.append([module, None, 0])
         return dependencies
 
-    def get_deps(self, module):
-        """ get deps for module """
-        if getattr(self.modules[module], 'deps' or None):
+    def get_dependencies(self, module):
+        """ get dependencies for module """
+        if self._hAddons[module]['module'].get('dependencies', None):
             deps = []
-            for dep in self.modules[module].deps:
+            for dep in self._hAddons[module]['module']['dependencies']:
                 try:
-                    if self.modules[dep]:
+                    if self._hAddons[dep]:
                         deps.append(dep)
                 except KeyError:
                     logger.error("Module %s doesn't exists !" % dep)
@@ -345,9 +515,9 @@ class ModuleManager:
     @expose
     def get_medias(self, modules):
         """ get medias for modules """
-        logger.info("Get medias for modules : %s" % str(modules))
-        medias = [self.modules[module].medias for module in modules if not self.check_media(module) and self.modules[module].medias]
-        logger.debug("Media list : %s" % str(medias))
+        logger.info("Get medias for modules: %s" % str(modules))
+        medias = [self._hAddons[module]['repositories'] for module in modules if not self.check_media(module) and self._hAddons[module]['repositories']]
+        logger.debug("Repository list: %s" % str(medias))
         return medias
 
     @expose
@@ -359,6 +529,59 @@ class ModuleManager:
         command = media.get_command(login, passwd)
         logger.debug("Execute: %s" % str(command))
         ProcessManager().add_media(command)
+
+    @expose
+    def download_modules(self, modules):
+        """ Download modules if not already present on disk """
+        logger.info("Download modules : %s" % str(modules))
+        for module in modules:
+            if not os.path.exists(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module)):
+                logger.info("Download module : %s" % str(module))
+                # Download
+                f_mod = open(os.path.join("/tmp", module+".zip"), "wb")
+                err = False
+                status = "OK"
+                try:
+                    req = urllib2.Request(self._hAddons[module]['module']['file'])
+                    req.add_header('Authorization', 'Token ' + self._token)
+                    req.add_header('Accept-Language', self._lang)
+                    f = urllib2.urlopen(req)
+                    if f.getcode() == 401:
+                        err = True
+                        status = "Wrong credentials"
+                    else:
+                        f_mod.write(f.read())
+                    #handle errors
+                except urllib2.HTTPError, e:
+                    err = True
+                    status = "HTTP Error: " + str(e.code) + ": " + self._hAddons[module]['module']['file']
+                except urllib2.URLError, e:
+                    err= True
+                    status = "URL Error: " + str(e.reason) + ": " + self._hAddons[module]['module']['file']
+                f_mod.close()
+
+                if not err:
+                    # Verify sha1
+                    logger.info("Unzip module: %s" % os.path.join("/tmp", module+".zip"))
+                    f_mod = open(os.path.join("/tmp", module+".zip"), "rb")
+                    sha1 = hashlib.sha1()
+                    try:
+                        sha1.update(f_mod.read())
+                    finally:
+                        f_mod.close()
+    
+                    logger.info("Process sha1sum: %s" % sha1.hexdigest())
+                    if sha1.hexdigest() == self._hAddons[module]['module']['file_sha1']:
+                        logger.info("Zip file is valid: unzip...")
+                        os.mkdir(os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
+                        zip = zipfile.ZipFile(os.path.join("/tmp", module+".zip"))
+                        zip.extractall(path=os.path.join(self.mssAgentConfig.get("local", "cacheDir"), module))
+                    else:
+                        logger.info("Zip file is invalid...")
+                        err = True
+                        status = "sha1sum invalid"
+
+                return (err, status)
 
     @expose
     def install_modules(self, modules):
@@ -466,3 +689,75 @@ class ModuleManager:
         for sts in statuses:
             status.append(_(sts, "agent"))
         return ', '.join(status)
+
+    @expose
+    def get_sections(self):
+        """ return list of sections """
+        return self._sections
+
+    def get_categories(self, section):
+        """ return list of categories """
+        if section in self._categories:
+            return self._categories[section]
+        else:
+            return []
+
+    @expose
+    def get_section(self, section):
+        """ return modules belonging to section """
+        # Init a section structure to be sent to mss-www view.py
+        _section = {}
+        _section["slug"] = section
+        for sec in self._sections:
+            if sec["slug"] == section:
+                _section["name"] = sec["name"]
+        # Set addons list
+        _section["bundles"] = self._categories[section]
+        return _section
+
+    @expose
+    def get_module_details(self, module):
+        """ return the detailed description on a module if it exist """
+        mod = self.session.query(ModuleTable).filter(ModuleTable.name == module).first()
+        if mod and mod.configured:
+            desc_json_fp = open(os.path.join(self.modulesDirectory, module, "desc.json"))
+            conf = json.load(desc_json_fp)
+            desc_json_fp.close()
+            actions = conf.get("actions", [])
+            installed = True
+            configured = True
+        else:
+            actions = []
+            installed = False
+            configured = False
+        self._hAddons[module]['module']['installed'] = installed
+        self._hAddons[module]['module']['configured'] = configured
+        details = {"actions": actions, "installed": installed, "configured": configured}
+        return details
+
+    @expose
+    def get_authentication_token(self, login, password):
+        """ return status of authentication to API """
+        data = 'username=' + login + '&password=' + password
+        url = self.mssAgentConfig.get("api", "tokenUrl")
+        self._token = ""
+        err = False
+        status = "OK"
+        try:
+            result = urllib2.urlopen(url, data)
+            info = json.loads(result.read())
+            if 'token' in info:
+                self._token = info['token']
+            elif 'non_field_errors' in info:
+                err = True
+                status = info['non_field_errors']
+            else:
+                err = True
+                status = "unknown"
+        except urllib2.HTTPError, e:
+            err = True
+            status = "HTTP Error:" + str(e.code) + " " + url
+        except urllib2.URLError, e:
+            err = True
+            status = "URL Error:" + str(e.reason) + " " + url
+        return (err, status)

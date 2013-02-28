@@ -29,7 +29,7 @@ class Transaction:
             else:
                 self.modules_info = result
                 # update with depedencies
-                self.modules = [ m['id'] for m in self.modules_info ]
+                self.modules = [ m['slug'] for m in self.modules_info ]
                 self.transaction = [
                     {
                         'id': Steps.PREINST,

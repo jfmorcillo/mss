@@ -72,11 +72,11 @@ def get_interfaces_config(config):
                 domain = get_config_option(if_file, "DOMAIN")
                 gateway = get_config_option(if_file, "GATEWAY")
 
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'type': 'subtitle', 'label': interface})
-            config.append({'id': 'network', 'name': interface + '_name',
+            config.append({'slug': 'network', 'name': interface + '_name',
                            'type': 'text', 'hidden': 'yes', 'default': interface})
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_type',
                            'require': 'yes',
                            'label': _('Interface type', 'network'),
@@ -87,7 +87,7 @@ def get_interfaces_config(config):
                                {'name': _('External network', 'network'), 'value': 'wan' + interface[-1]}
                             ]
                            })
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_method',
                            'default': method, 'require': 'yes',
                            'label': _('Configuration method', 'network'),
@@ -100,55 +100,55 @@ def get_interfaces_config(config):
                                            interface + '_dns2', interface + '_domain', interface + '_gateway']}
                             ]
                            })
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_addr',
                            'default': addr,
                            'label': _('IP Address', 'network'),
                            'type': 'text', 'validation': 'ip'})
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_netmask',
                            'default': netmask,
                            'label': _('Netmask', 'network'),
                            'type': 'text', 'validation': 'ip'})
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_dns1',
                            'default': dns1,
                            'label': _('First DNS server', 'network'),
                            'type': 'text', 'validation': 'ip'})
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_dns2',
                            'default': dns2,
                            'label': _('Second DNS server', 'network'),
                            'type': 'text', 'validation': 'ip'})
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_domain',
                            'default': domain,
                            'label': _('Domain search', 'network'),
                            'type': 'text', 'validation': 'fqdn'})
-            config.append({'id': 'network',
+            config.append({'slug': 'network',
                            'name': interface + '_gateway',
                            'default': gateway,
                            'label': _('Gateway', 'network'),
                            'type': 'text', 'validation': 'ip'})
 
-    config.append({'id': 'network',
+    config.append({'slug': 'network',
                    'type': 'subtitle', 'label': _('Firewall configuration', 'network')})
-    config.append({'id': 'network',
+    config.append({'slug': 'network',
                    'name': 'fw_mss_lan',
                    'default': 'on',
                    'label': _('Allow access to Mandriva Server Setup from internal networks', 'network'),
                    'type': 'check'})
-    config.append({'id': 'network',
+    config.append({'slug': 'network',
                    'name': 'fw_ssh_lan',
                    'default': 'on',
                    'label': _('Allow SSH access from internal networks', 'network'),
                    'type': 'check'})
-    config.append({'id': 'network',
+    config.append({'slug': 'network',
                    'name': 'fw_mss_wan',
                    'default': 'off',
                    'label': _('Allow access to Mandriva Server Setup from external networks', 'network'),
                    'type': 'check'})
-    config.append({'id': 'network',
+    config.append({'slug': 'network',
                    'name': 'fw_ssh_wan',
                    'default': 'on',
                    'label': _('Allow SSH access from external networks', 'network'),

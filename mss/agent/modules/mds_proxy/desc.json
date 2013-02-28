@@ -1,0 +1,18 @@
+{
+    "slug": "mds_proxy",
+    "name": "Proxy service",
+    "desc": "Control your Internet connection with content filters",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+           }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["squid", "sarg", "python-mmc-squid", "mmc-web-squid"]
+        }
+    ]
+}

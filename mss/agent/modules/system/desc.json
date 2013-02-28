@@ -1,0 +1,27 @@
+{
+    "slug": "system",
+    "name": "System setup",
+    "desc": "General system configuration",
+    "config": [
+        {
+            "type": "text",
+            "name": "hostname",
+            "require": "yes",
+            "default": "get_hostname",
+            "validation": "valid_hostname",
+            "store": "yes",
+            "label": "The server hostname",
+            "help": "Hostname without the domain name"
+        },
+        {
+            "type": "text",
+            "name": "domain",
+            "require": "yes",
+            "default": "get_domain",
+            "validation": "fqdn",
+            "store": "yes",
+            "label": "Your domain name",
+            "help": "The domain name used in your organization (eg: mandriva.com)."
+        }
+    ]
+}

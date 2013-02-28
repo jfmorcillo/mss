@@ -36,11 +36,9 @@ from django.utils.translation import ugettext as _, activate
 from mss.www.xmlrpc import XmlRpc
 
 from lib.jsonui.response import JSONResponse
-from config import ConfigManager
 from transaction import Transaction, Steps
 
 xmlrpc = XmlRpc()
-CM = ConfigManager()
 output = {"status": ""}
 
 # used to change interface + agent lang
@@ -66,11 +64,20 @@ def set_lang(request, lang):
 
 def mylogin(request):
     if request.method == "POST":
+        username=username=request.POST['username']
+        password=request.POST['password']
         user = authenticate(username=request.POST['username'],
-            password=request.POST['password'])
+                            password=request.POST['password'])
         if user is not None:
             if user.is_active:
                 login(request, user)
+                err, status = xmlrpc.call('get_authentication_token', username, password)
+                if err:
+                    return direct_to_template(request, 'invalid_login.html')
+                err, status = xmlrpc.call('load')
+                if err:
+                    return direct_to_template(request, 'invalid_login.html')
+
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
         else:
@@ -201,19 +208,33 @@ def has_net(request, has_net):
 @login_required
 def sections(request):
     """ sections list """
+    sections = []
+    # get section list
+    err, result = xmlrpc.call('get_sections')
+    if err:
+        return err
+    sections = result
+
     # render the main page with all sections
     return render_to_response('sections.html',
-        {'sections': CM.get_sections()},
+        {'sections': sections},
         context_instance=RequestContext(request))
 
 @first_time_required
 @login_required
 def section(request, section):
     """ render section page """
-    # get section
-    section_info = CM.get_section(section)
-    # get modules info for modules list
-    err, result = xmlrpc.call('get_modules', CM.get_section_modules(section))
+    err, result = xmlrpc.call('get_section', section)
+    if err:
+        return err
+    section_info = result
+
+    section_modules = []
+    for bundle in section_info['bundles']:
+        for module in bundle["modules"]:
+             section_modules.append(module)
+
+    err, result = xmlrpc.call('get_modules', section_modules)
     if err:
         return err
     else:
@@ -222,23 +243,22 @@ def section(request, section):
         # check module access
         # format management url
         for module in modules:
+            # Check if modules is already installer
             for action in module['actions']:
                 if action['type'] == "link":
                     action['value'] = toHtml(request, action['value'], False)
-            if module['market']:
-                module['market']['access'] = False
-                if request.user.profile.has_family('mes5-get-%s' % module['id']):
-                    module['market']['access'] = True
-        # create simple modules list
-        modules_list = [m.get('id') for m in modules]
-        # remove modules not present server side
-        for bundle in section_info["bundles"]:
-            for module in bundle["modules"][:]:
-                if module not in modules_list:
-                    bundle["modules"].remove(module)
+
+        err, result = xmlrpc.call('get_sections')
+        if err:
+            return err
+        sections = result
+
+        # Translate section name
+        for section in sections:
+            section["name"] = _(section["name"])
 
         return render_to_response('section.html',
-            {'sections': CM.get_sections(), 'section': section_info,
+            {'sections': sections, 'section': section_info,
             'modules': modules },
             context_instance=RequestContext(request))
 
@@ -388,7 +408,7 @@ def config(request):
     skip_config = True
     for m1 in config:
         for m2 in transaction.modules_info:
-            if m1[0]['id'] == m2['id']:
+            if m1[0]['slug'] == m2['slug']:
                 if m1[0].get('do_config'):
                     do_config = True
                 if not m1[0].get('skip_config'):
@@ -451,7 +471,7 @@ def config_run(request, module):
     """ run configuration script for module """
     transaction = Transaction(request)
     for m in transaction.modules_info:
-        if m['id'] == module and not m['configured']:
+        if m['slug'] == module and not m['configured']:
             xmlrpc.call('run_config', module)
             break
     return HttpResponse("")
