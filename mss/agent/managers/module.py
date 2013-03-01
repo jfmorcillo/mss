@@ -749,6 +749,7 @@ class ModuleManager:
 
         Handles token and language headers
         """
+        code = 500
         if params:
             params = urllib.urlencode(params)
         request = urllib2.Request(url, params)
@@ -761,9 +762,11 @@ class ModuleManager:
                 result = json.loads(response.read())
             else:
                 result = response.read()
+            code = response.getcode()
         except urllib2.HTTPError as e:
             result = "URL Error:" + str(e.reason) + " " + url
+            code = e.code
         except urllib2.URLError as e:
             result = "URL Error:" + str(e.reason) + " " + url
 
-        return (result, response.getcode())
+        return (result, code)
