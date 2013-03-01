@@ -27,6 +27,7 @@ for f in $fss; do
             mount -o remount,usrquota $mountpoint
             echo "Create quota files for $mountpoint"
             quotacheck -cum $mountpoint
+            quotaon -u $mountpoint
             echo "Quotas activated on $mountpoint"
         elif [ "$fs" == "xfs" ]; then
             echo "Quotas configured on $mountpoint"
