@@ -522,6 +522,8 @@ class ModuleManager:
 
     @expose
     def download_modules(self, modules):
+        if not self._token:
+            return
         """ Download modules if not already present on disk """
         logger.info("Download modules : %s" % str(modules))
         for module in modules:
