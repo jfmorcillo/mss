@@ -59,6 +59,8 @@ fi
 backup $bind_conf
 cp $bind_template $bind_conf
 
+touch /var/named/named.conf.ldap
+
 restart_service named-sdb
 enable_service named-sdb
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
