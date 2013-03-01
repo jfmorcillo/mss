@@ -42,7 +42,7 @@ class MSSBackend:
                 user.save()
             except User.DoesNotExist:
                 # check if there is no other my account in DB
-                if len(User.objects.exclude(username="root")) > 0:
+                if not username == "root" and len(User.objects.exclude(username="root")) > 0:
                     return None
                 # create a new django user
                 user = User(username=username)
