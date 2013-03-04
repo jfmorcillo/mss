@@ -764,9 +764,12 @@ class ModuleManager:
                 result = response.read()
             code = response.getcode()
         except urllib2.HTTPError as e:
-            result = "URL Error:" + str(e.reason) + " " + url
+            result = "HTTP Error:" + str(e.reason) + " " + url
+            logger.error(result)
             code = e.code
         except urllib2.URLError as e:
             result = "URL Error:" + str(e.reason) + " " + url
+            logger.error(result)
 
+        logger.debug("Return code %s" % code)
         return (result, code)
