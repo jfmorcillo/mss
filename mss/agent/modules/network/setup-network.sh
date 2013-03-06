@@ -24,7 +24,6 @@ function build_net_conf() {
         echo BOOTPROTO=none >> $conf
     fi
     # Write the conf
-    backup /etc/sysconfig/network-scripts/ifcfg-$1
     mv $conf /etc/sysconfig/network-scripts/ifcfg-$1
 }
 
