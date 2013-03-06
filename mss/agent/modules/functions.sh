@@ -190,6 +190,10 @@ function enable_service() {
     systemctl enable $1.service
 }
 
+function disable_service() {
+    systemctl disable $1.service
+}
+
 # escapestr_sed()
 # read a stream from stdin and escape characters in text that could be interpreted as
 # special characters by sed

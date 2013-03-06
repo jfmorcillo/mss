@@ -107,6 +107,9 @@ restart_service clamd
 restart_service postfix
 restart_service dovecot
 
+# spamassassin is run by amavis
+disable_service spamassassin
+
 function add_rules() {
     mss-add-shorewall-rule -a SMTP/ACCEPT -t $1
     mss-add-shorewall-rule -a SMTPS/ACCEPT -t $1
