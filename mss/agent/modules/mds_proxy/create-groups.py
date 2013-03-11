@@ -1,11 +1,14 @@
 #!/usr/bin/python
 
 from mmc.plugins.base import createGroup, changeGroupDescription
+from mss.agent.managers.translation import TranslationManager
+
+
+_ = TranslationManager().translate
 
 groups = {
-    "Internet Master": "Free access to Internet and downloads",
-    "Internet Filtered": "Filtered access to Internet and downloads",
-    "Internet Time": "Access to Internet in specific hours"
+    "InternetMaster": _("Full access to Internet", "mds_proxy"),
+    "InternetFiltered": _("Filtered access to Internet", "mds_proxy"),
 }
 
 for group, desc in groups.items():

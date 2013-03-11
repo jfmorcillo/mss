@@ -35,10 +35,8 @@ check_mmc_configured
 
 proxy_template="templates/squid.conf.tpl"
 sarg_template="templates/sarg.conf.tpl"
-squidnow_template="templates/squidnow.pl"
 proxy_conf="/etc/squid/squid.conf"
 sarg_conf="/etc/sarg/sarg.conf"
-proxy_rules="/etc/squid/rules"
 
 echo "0Configuring squid..."
 backup $proxy_conf
@@ -54,30 +52,20 @@ cat $sarg_template > $sarg_conf
 sed -i "s/\@DN\@/$MDSSUFFIX/" $sarg_conf
 sed -i "s/\@PASS\@/$MDSPASS_E/" $sarg_conf
 
-echo "0Creating groups..."
+echo "Creating groups..."
 python create-groups.py
 if [ $? -ne 0 ]; then
-	echo "2Something went wrong while creating the user groups."
+	error $"Something went wrong while creating the user groups."
 	exit 1
 else
-	echo "0Groups created successfully."
+	echo "Groups created successfully."
 fi
 
-echo "0Creating files and directories... "
-# create a new directory
-if [ ! -d $proxy_rules ]; then
-    mkdir -p $proxy_rules
-fi
-/bin/cp -rf templates/rules/* $proxy_rules
-/bin/chmod -R 664 $proxy_rules
-
-/bin/cp -f $squidnow_template /vaw/www/cgi-bin/
-/bin/chmod 666 /var/log/squid/access.log
-
-restart_service squid
 enable_service squid
+restart_service squid
+restart_service mmc-agent
 
-echo 8The Proxy service is running
-echo 7You can now configure your Internet rules from the management interface : https://@HOSTNAME@/mmc/
+info_b $"The Proxy service is running"
+info $"You can manage the proxy rules from the management interface : https://@HOSTNAME@/mmc/"
 
 exit 0

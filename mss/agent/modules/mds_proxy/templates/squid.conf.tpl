@@ -51,42 +51,30 @@ acl auth proxy_auth REQUIRED
 #
 ######################################## MASTER GROUP ACLs ####################
 #
-acl master_group external ldap_auth "Internet Master"
+acl master_group external ldap_auth "InternetMaster"
 #
-#########################################  NORMAL GROUP ACLs #################
+#########################################  Filtered GROUP ACLs #################
 #
-acl normal_group external ldap_auth "Internet Filtered"
+acl filtered_group external ldap_auth "InternetFiltered"
 
-acl normal_bad_ext urlpath_regex -i "/etc/squid/rules/group_internet/normal_blacklist_ext.txt"
-acl normal_blacklist url_regex -i "/etc/squid/rules/group_internet/normal_blacklist.txt"
-acl normal_whitelist url_regex -i "/etc/squid/rules/group_internet/normal_whitelist.txt"
-#
-################################ TIME ACLS ###################################
-#
-acl time_group external ldap_auth "Internet Time"
+acl blacklist url_regex -i "/etc/squid/rules/blacklist.txt"
+acl blacklist_ext urlpath_regex -i "/etc/squid/rules/blacklist_ext.txt"
+acl whitelist url_regex -i "/etc/squid/rules/whitelist.txt"
+acl timeranges time MTWHF "/etc/squid/rules/timeranges.txt"
+acl machines src "/etc/squid/rules/machines.txt"
 
-acl time_day       time MTWHF   "/etc/squid/rules/group_internet/time_day.txt"
-#
-################################# MACHINE ACL ###############################
-#
-acl machines src "/etc/squid/rules/group_internet/allow_machines.txt"
-#
 ##############################################################################
 http_access allow manager localhost
 http_access deny manager
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
-#
-##############################################################################
-# INSERT YOUR OWN RULE(S) HERE TO ALLOW ACCESS FROM YOUR CLIENTS
-##############################################################################
-#
+
 http_access allow master_group all
-http_access allow machines all
-http_access deny normal_group normal_bad_ext
-http_access allow normal_group !normal_blacklist
-http_access allow time_group normal_whitelist
-http_access allow normal_group normal_whitelist
+http_access deny filtered_group blacklist_ext
+http_access deny filtered_group blacklist
+http_access allow filtered_group whitelist
+http_access allow filtered_group timeranges
+http_access allow filtered_group machines
 #
 #################################################################################
 #
