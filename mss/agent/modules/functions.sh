@@ -248,3 +248,19 @@ function error() {
 function warning() {
     echo "1$1"
 }
+
+function handle64bits() {
+    [ -f $1 ] && [ -d /usr/lib64 ] && sed -i "s!/usr/lib!/usr/lib64!g" $1
+}
+
+function replace() {
+    [ ! -z "$1" ] && pattern=$1 || echo Missing 1st argument
+    [ -z "$pattern" ] && exit 1
+    [ ! -z "$2" ] && replacement=$2 || echo Missing 2nd argument
+    [ -z "$replacement" ] && exit 1
+    [ -f $3 ] && path=$3 || echo File $3 does not exists
+    [ -z $path ] && exit 1
+    #echo Replace $pattern by $replacement in $path
+    #replacement=`escape_sed $replacement`
+    sed -i "s|$pattern|$replacement|" $path
+}
