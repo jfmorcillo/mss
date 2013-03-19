@@ -213,6 +213,7 @@ function add_schema() {
         echo "include /etc/openldap/schema/${schema}" >> /etc/openldap/schema/local.schema
     fi
     cp -f $1 /etc/openldap/schema/
+    chmod 644 /etc/openldap/schema/${schema}
     echo Schema ${schema} added to OpenLDAP.
 }
 
