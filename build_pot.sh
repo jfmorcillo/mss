@@ -17,8 +17,10 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
+[ ! -f /usr/bin/xgettext ] && echo "Please install gettext" && exit 1
+[ ! -f /usr/bin/json2po ] && echo "Please install json2po" && exit 1
+
 pushd mss/agent
-[ $? -ne 0 ] && exit 1
 
 # Agent translation
 pot="locale/agent.pot"
@@ -35,7 +37,7 @@ done
 for module in modules/*; do
     if [ -d $module ]; then
         mod=`basename $module`
-        xml=modules/${mod}/desc.xml
+        json=modules/${mod}/desc.json
         pot=modules/${mod}/locale/${mod}.pot
         for lang in $langs; do
             [ ! -d modules/${mod}/locale/$lang/LC_MESSAGES ] && mkdir -p modules/${mod}/locale/$lang/LC_MESSAGES
@@ -43,9 +45,9 @@ for module in modules/*; do
         done
         rm -f ${pot}
         touch ${pot}
-        if [ -f $xml ]; then
+        if [ -f $json ]; then
             echo -n "creating ${pot}"
-            xml2po -o ${pot} ${xml}
+            json2po ${json} --pot ${pot}
             bash --dump-po-strings modules/${mod}/*.sh >> ${pot}
             find modules/${mod} -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
             echo "....done."
