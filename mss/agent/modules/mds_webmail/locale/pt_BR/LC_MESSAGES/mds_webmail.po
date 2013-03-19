@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -19,72 +20,135 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_webmail/desc.xml:31(label)
+#: .config[1].label
 msgid "Allow access from external networks"
-msgstr ""
+msgstr "Permitir o acesso de redes externas"
 
-#: modules/mds_webmail/desc.xml:26(label)
+#: .config[0].label
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "Permitir o acesso de redes internas"
 
-#: modules/mds_webmail/desc.xml:32(help)
+#: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "external networks"
 msgstr ""
+"Configure o firewall para permitir o acesso à interface de webmail de redes "
+"externas"
 
-#: modules/mds_webmail/desc.xml:27(help)
+#: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "internal networks"
 msgstr ""
+"Configure o firewall para permitir o acesso à interface de webmail de redes "
+"internas"
 
-#: modules/mds_webmail/desc.xml:4(desc)
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .desc
 msgid "Roundcube, a complete webmail solution for your mail service"
-msgstr ""
+msgstr "Roundcube, uma solução de webmail completa para serviços de correio"
 
-#: modules/mds_webmail/desc.xml:3(name)
+#: .name
 msgid "Webmail"
-msgstr ""
+msgstr "Webmail"
 
 #: modules/mds_webmail/setup-webmail.sh:50
 msgid "Webmail Roundcube is installed on your server."
+msgstr "Webmail Roundcube está instalado no seu servidor."
+
+#: .actions[1].name
+msgid "Webmail interface"
 msgstr ""
 
 #: modules/mds_webmail/setup-webmail.sh:51
 msgid ""
 "You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
 msgstr ""
+"Você pode acessar a interface de webmail em https://@HOSTNAME@/"
+"roundcubemail/."
 
-#: modules/mds_webmail/desc.xml:19(module)
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr ""
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .actions[1].value
+msgid "https://@HOSTNAME@/roundcubemail/"
+msgstr ""
+
+#: .actions[0].type
+msgctxt ".actions[0].type"
+msgid "link"
+msgstr ""
+
+#: .actions[1].type
+msgctxt ".actions[1].type"
+msgid "link"
+msgstr ""
+
+#: .dependencies[0]
 msgid "mds_mail"
 msgstr "mds_mail"
 
-#: modules/mds_webmail/desc.xml:13(rpm)
+#: .slug
+msgid "mds_webmail"
+msgstr ""
+
+#: .config[0].default
+msgctxt ".config[0].default"
+msgid "on"
+msgstr ""
+
+#: .config[1].default
+msgctxt ".config[1].default"
+msgid "on"
+msgstr ""
+
+#: .packages[0].rpms[2]
 msgid "php-fileinfo"
 msgstr "php-fileinfo"
 
-#: modules/mds_webmail/desc.xml:14(rpm)
+#: .packages[0].rpms[3]
 msgid "php-mcrypt"
 msgstr "php-mcrypt"
 
-#: modules/mds_webmail/desc.xml:15(rpm)
+#: .packages[0].rpms[4]
 msgid "php-pear-MDB2_Driver_sqlite"
 msgstr "php-pear-MDB2_Driver_sqlite"
 
-#: modules/mds_webmail/desc.xml:11(rpm)
+#: .packages[0].rpms[0]
 msgid "roundcubemail"
 msgstr "roundcubemail"
 
-#: modules/mds_webmail/desc.xml:12(rpm)
+#: .packages[0].rpms[1]
 msgid "sqlite-tools"
 msgstr "sqlite-tools"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_webmail/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
-
-#: modules/mds_webmail/desc.xml:22(module)
+#: .conflicts[0]
 msgid "zarafa"
 msgstr "zarafa"

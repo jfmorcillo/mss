@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,65 +17,106 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mds_cups/desc.xml:3(name)
+#: .name
 msgid "Printing service"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:4(desc)
-msgid "Network printers management"
+#: .actions[0].type
+msgid "link"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:10(rpm)
+#: .actions[0].name
+msgid "Printers management"
+msgstr ""
+
+#: .actions[0].value
+msgid "http://@HOSTNAME@:631/admin/"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "cups"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:11(rpm)
+#: .packages[0].rpms[1]
 msgid "cups-drivers"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:12(rpm)
+#: .packages[0].rpms[2]
 msgid "cups-windows"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:13(rpm)
+#: .packages[0].rpms[3]
 msgid "foomatic-filters"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:14(rpm)
+#: .packages[0].rpms[4]
 msgid "hplip-hpijs-ppds"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:15(rpm)
+#: .packages[0].rpms[5]
 msgid "postscript-ppds"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:16(rpm)
+#: .packages[0].rpms[6]
 msgid "hplip"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:21(label)
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].default
+msgid "n"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the Printer Management Service "
+"from internal networks"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr ""
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[0].label
 msgid "Allow connections to the management interface from internal networks"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:22(help)
-msgid ""
-"Configure the firewall to accept connections on the Cups interface from "
-"interfaces configured as 'internal'"
+#: .config[1].default
+msgid "off"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:26(label)
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the Printer Management Service "
+"from external networks"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[1].label
 msgid "Allow connections to the management interface from external networks"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:27(help)
-msgid ""
-"Configure the firewall to accept connections on the Cups interface from "
-"interfaces configured as 'external'"
+#: .slug
+msgid "mds_cups"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_cups/desc.xml:0(None)
-msgid "translator-credits"
+#: .desc
+msgid "Network printers management"
 msgstr ""
 
 #: modules/mds_cups/setup-cups.sh:19

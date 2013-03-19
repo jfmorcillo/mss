@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,103 +17,219 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mds_smb/desc.xml:3(name)
+#: .name
 msgid "Windows users and file sharing management"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:4(desc)
-msgid ""
-"Authenticate Windows users with SAMBA and provide Windows file shares on "
-"your network"
+#: .actions[0].type
+msgid "link"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:10(rpm)
-msgid "samba-server"
+#: .actions[0].name
+msgid "Management interface"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:11(rpm)
-msgid "samba-client"
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:12(rpm)
-msgid "samba-common"
-msgstr ""
-
-#: modules/mds_smb/desc.xml:13(rpm)
-msgid "samba-doc"
-msgstr ""
-
-#: modules/mds_smb/desc.xml:14(rpm)
-msgid "smbldap-tools"
-msgstr ""
-
-#: modules/mds_smb/desc.xml:15(rpm)
-msgid "mmc-web-samba"
-msgstr ""
-
-#: modules/mds_smb/desc.xml:16(rpm)
-msgid "python-mmc-samba"
-msgstr ""
-
-#: modules/mds_smb/desc.xml:20(module)
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:25(label)
+#: .packages[0].rpms[0]
+msgid "samba-server"
+msgstr ""
+
+#: .packages[0].rpms[1]
+msgid "samba-client"
+msgstr ""
+
+#: .packages[0].rpms[2]
+msgid "samba-common"
+msgstr ""
+
+#: .packages[0].rpms[3]
+msgid "samba-doc"
+msgstr ""
+
+#: .packages[0].rpms[4]
+msgid "smbldap-tools"
+msgstr ""
+
+#: .packages[0].rpms[5]
+msgid "mmc-web-samba"
+msgstr ""
+
+#: .packages[0].rpms[6]
+msgid "python-mmc-samba"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].name
+msgid "smbdomain"
+msgstr ""
+
+#: .config[0].default
+msgid "MBSDOMAIN"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[0].label
 msgid "SAMBA domain name"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:26(help)
+#: .config[0].validation
+msgid "valid_domain"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "text"
+msgstr ""
+
+#: .config[0].help
 msgid "The name of your Microsoft domain."
 msgstr ""
 
-#: modules/mds_smb/desc.xml:30(label)
+#: .config[1].name
+msgid "smbnetbios"
+msgstr ""
+
+#: .config[1].default
+msgid "get_netbios"
+msgstr ""
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr ""
+
+#: .config[1].label
 msgid "Netbios name"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:31(help)
+#: .config[1].validation
+msgid "valid_netbios"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "text"
+msgstr ""
+
+#: .config[1].help
 msgid "The name of your SAMBA server in the Microsoft domain."
 msgstr ""
 
-#: modules/mds_smb/desc.xml:34(label)
-msgid "Administrator name"
-msgstr ""
-
-#: modules/mds_smb/desc.xml:35(help)
+#: .config[2].help
 msgid "The name of the Microsoft domain administrator."
 msgstr ""
 
-#: modules/mds_smb/desc.xml:38(label)
-msgid "Administrator password"
+#: .config[2].default
+msgid "admin"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:39(help)
+#: .config[2].require
+msgctxt ".config[2].require"
+msgid "yes"
+msgstr ""
+
+#: .config[2].label
+msgid "Administrator name"
+msgstr ""
+
+#: .config[2].type
+msgctxt ".config[2].type"
+msgid "text"
+msgstr ""
+
+#: .config[2].name
+msgid "smbadmin"
+msgstr ""
+
+#: .config[3].help
 msgid "Password for the Microsoft domain administrator."
 msgstr ""
 
-#: modules/mds_smb/desc.xml:42(label)
-msgid "Allow connections from internal networks"
+#: .config[3].require
+msgctxt ".config[3].require"
+msgid "yes"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:43(help)
+#: .config[3].type
+msgid "password"
+msgstr ""
+
+#: .config[3].name
+msgid "smbpasswd"
+msgstr ""
+
+#: .config[3].label
+msgid "Administrator password"
+msgstr ""
+
+#: .config[4].default
+msgid "on"
+msgstr ""
+
+#: .config[4].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'internal'"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:47(label)
-msgid "Allow connections connections external networks"
+#: .config[4].type
+msgctxt ".config[4].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:48(help)
+#: .config[4].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[4].label
+msgid "Allow connections from internal networks"
+msgstr ""
+
+#: .config[5].default
+msgid "off"
+msgstr ""
+
+#: .config[5].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'external'"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_smb/desc.xml:0(None)
-msgid "translator-credits"
+#: .config[5].type
+msgctxt ".config[5].type"
+msgid "check"
+msgstr ""
+
+#: .config[5].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[5].label
+msgid "Allow connections from external networks"
+msgstr ""
+
+#: .slug
+msgid "mds_smb"
+msgstr ""
+
+#: .desc
+msgid ""
+"Authenticate Windows users with SAMBA and provide Windows file shares on "
+"your network"
 msgstr ""
 
 #: modules/mds_smb/setup-smb.sh:32

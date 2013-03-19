@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-14 15:57+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -19,170 +20,222 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mmc/setup-mmc.sh:136
-msgid "Administrator name : root"
-msgstr ""
-
-#: modules/mds_mmc/desc.xml:31(label)
-msgid "Administrator password"
-msgstr ""
-
 #: modules/mds_mmc/setup-mmc.sh:137
+msgid "Administrator name : root"
+msgstr "Nome do Administrador : root"
+
+#: .config[0].label
+msgid "Administrator password"
+msgstr "Senha de Administrador"
+
+#: modules/mds_mmc/setup-mmc.sh:138
 msgid "Administrator password : $mypass"
-msgstr ""
+msgstr "Senha do Administrador : $mypass"
 
-#: modules/mds_mmc/desc.xml:40(label)
+#: .config[2].label
 msgid "Allow access from external networks"
-msgstr ""
+msgstr "Permitir o acesso de redes externas"
 
-#: modules/mds_mmc/desc.xml:35(label)
+#: .config[1].label
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "Permitir o acesso de redes internas"
 
-#: modules/mds_mmc/desc.xml:41(help)
+#: .config[2].help
 msgid ""
 "Configure the firewall to allow access to the web interface from external "
 "networks"
 msgstr ""
+"Configure o firewall para permitir o acesso à interface web de redes externas"
 
-#: modules/mds_mmc/desc.xml:36(help)
+#: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the web interface from internal "
 "networks"
 msgstr ""
+"Configure o firewall para permitir o acesso à interface web de redes internas"
 
 #: modules/mds_mmc/setup-mmc.sh:90
 msgid "Database load test failed."
-msgstr ""
+msgstr "Teste de carga do banco de dados falhou."
 
 #: modules/mds_mmc/setup-mmc.sh:112
 msgid "Error while configuring lib nss-ldap."
-msgstr ""
+msgstr "Erro ao configurar lib nss-ldap."
 
-#: modules/mds_mmc/setup-mmc.sh:41
+#: modules/mds_mmc/setup-mmc.sh:38
 msgid "Error while generating the password."
-msgstr ""
+msgstr "Erro ao gerar a senha."
 
 #: modules/mds_mmc/setup-mmc.sh:104
 msgid "Failed to initialize the database."
-msgstr ""
+msgstr "Falha ao inicializar o banco de dados."
 
-#: modules/mds_mmc/desc.xml:3(name)
+#: .name
 msgid "MBS administration web interface"
+msgstr "Interface Web de Administração do MBS"
+
+#: .actions[0].name
+msgid "Management interface"
 msgstr ""
 
 #: modules/mds_mmc/setup-mmc.sh:78
 msgid "OpenLDAP configuration has errors."
-msgstr ""
+msgstr "Configuração do OpenLDAP  tem erros."
 
-#: modules/mds_mmc/setup-mmc.sh:134
+#: modules/mds_mmc/setup-mmc.sh:135
 msgid "The MBS administration web interface is configured."
-msgstr ""
+msgstr "A interface web de administração do MBS está configurada."
 
-#: modules/mds_mmc/desc.xml:32(help)
+#: .config[0].help
 msgid ""
 "The administrator password of the web interface for managing MBS users and "
 "services."
 msgstr ""
+"A senha de administrador da interface web para gerenciar usuários e serviços."
 
-#: modules/mds_mmc/desc.xml:4(desc)
+#: .desc
 msgid "Users and groups management"
-msgstr ""
+msgstr "Gerenciamento de usuários e grupos"
 
-#: modules/mds_mmc/setup-mmc.sh:135
+#: modules/mds_mmc/setup-mmc.sh:136
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
+"Você pode fazer login na interface em https://@host@/mmc/ após a "
+"reinicialização."
 
-#: modules/mds_mmc/desc.xml:26(rpm)
-msgid "apache-mod_ssl"
+#: .packages[0].name
+msgid "all"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:20(rpm)
+#: .packages[0].rpms[16]
+msgid "apache-mod_ssl"
+msgstr "apache-mod_ssl"
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr ""
+
+#: .config[2].type
+msgctxt ".config[2].type"
+msgid "check"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[2].name
+msgid "fw_wan"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .slug
+msgid "mds_mmc"
+msgstr ""
+
+#: .config[0].name
+msgid "mdspasswd"
+msgstr ""
+
+#: .packages[0].rpms[10]
 msgid "mmc-agent"
 msgstr "mmc-agent"
 
-#: modules/mds_mmc/desc.xml:10(rpm)
+#: .packages[0].rpms[0]
 msgid "mmc-web-base"
 msgstr "mmc-web-base"
 
-#: modules/mds_mmc/desc.xml:11(rpm)
-#, fuzzy
+#: .packages[0].rpms[1]
 msgid "mmc-web-bulkimport"
-msgstr "mmc-web-base"
+msgstr "mmc-web-bulkimport"
 
-#: modules/mds_mmc/desc.xml:13(rpm)
-#, fuzzy
+#: .packages[0].rpms[3]
 msgid "mmc-web-dashboard"
-msgstr "mmc-web-base"
+msgstr "mmc-web-dashboard"
 
-#: modules/mds_mmc/desc.xml:12(rpm)
-#, fuzzy
+#: .packages[0].rpms[2]
 msgid "mmc-web-services"
-msgstr "mmc-web-base"
+msgstr "mmc-web-services"
 
-#: modules/mds_mmc/desc.xml:14(rpm)
-#, fuzzy
+#: .packages[0].rpms[4]
 msgid "mmc-web-shorewall"
-msgstr "mmc-web-base"
+msgstr "mmc-web-shorewall"
 
-#: modules/mds_mmc/desc.xml:50(module)
+#: .dependencies[1]
 msgid "network"
-msgstr ""
+msgstr "rede"
 
-#: modules/mds_mmc/desc.xml:22(rpm)
+#: .packages[0].rpms[12]
 msgid "nss_ldap"
 msgstr "nss_ldap"
 
-#: modules/mds_mmc/desc.xml:23(rpm)
+#: .config[2].default
+msgid "off"
+msgstr ""
+
+#: .config[1].default
+msgid "on"
+msgstr ""
+
+#: .packages[0].rpms[13]
 msgid "openldap-clients"
 msgstr "openldap-clients"
 
-#: modules/mds_mmc/desc.xml:25(rpm)
+#: .packages[0].rpms[15]
 msgid "openldap-mandriva-dit"
 msgstr "openldap-mandriva-dit"
 
-#: modules/mds_mmc/desc.xml:21(rpm)
+#: .packages[0].rpms[11]
 msgid "openldap-servers"
 msgstr "openldap-servers"
 
-#: modules/mds_mmc/desc.xml:24(rpm)
+#: .packages[0].rpms[14]
 msgid "pam_ldap"
 msgstr "pam_ldap"
 
-#: modules/mds_mmc/desc.xml:15(rpm)
+#: .config[0].type
+msgid "password"
+msgstr ""
+
+#: .packages[0].rpms[5]
 msgid "python-mmc-base"
 msgstr "python-mmc-base"
 
-#: modules/mds_mmc/desc.xml:16(rpm)
-#, fuzzy
+#: .packages[0].rpms[6]
 msgid "python-mmc-bulkimport"
-msgstr "python-mmc-base"
+msgstr "python-mmc-bulkimport"
 
-#: modules/mds_mmc/desc.xml:18(rpm)
-#, fuzzy
+#: .packages[0].rpms[8]
 msgid "python-mmc-dashboard"
-msgstr "python-mmc-base"
+msgstr "python-mmc-dashboard"
 
-#: modules/mds_mmc/desc.xml:17(rpm)
-#, fuzzy
+#: .packages[0].rpms[7]
 msgid "python-mmc-services"
-msgstr "python-mmc-base"
+msgstr "python-mmc-services"
 
-#: modules/mds_mmc/desc.xml:19(rpm)
-#, fuzzy
+#: .packages[0].rpms[9]
 msgid "python-mmc-shorewall"
-msgstr "python-mmc-base"
+msgstr "python-mmc-shorewall"
 
-#: modules/mds_mmc/desc.xml:49(module)
+#: .dependencies[0]
 msgid "system"
+msgstr "sistema"
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_mmc/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
-
-#: modules/mds_mmc/desc.xml:46(reboot)
+#: .postinstall.reboot
+msgctxt ".postinstall.reboot"
 msgid "yes"
 msgstr ""

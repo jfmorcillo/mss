@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,33 +17,86 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/system/desc.xml:3(name)
-msgid "System setup"
-msgstr ""
-
-#: modules/system/desc.xml:4(desc)
+#: .desc
 msgid "General system configuration"
 msgstr ""
 
-#: modules/system/desc.xml:7(label)
+#: .config[0].name
+msgid "hostname"
+msgstr ""
+
+#: .config[0].default
+msgid "get_hostname"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[0].label
 msgid "The server hostname"
 msgstr ""
 
-#: modules/system/desc.xml:8(help)
+#: .config[0].validation
+msgid "valid_hostname"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "text"
+msgstr ""
+
+#: .config[0].store
+msgctxt ".config[0].store"
+msgid "yes"
+msgstr ""
+
+#: .config[0].help
 msgid "Hostname without the domain name"
 msgstr ""
 
-#: modules/system/desc.xml:11(label)
+#: .config[1].name
+msgid "domain"
+msgstr ""
+
+#: .config[1].default
+msgid "get_domain"
+msgstr ""
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr ""
+
+#: .config[1].label
 msgid "Your domain name"
 msgstr ""
 
-#: modules/system/desc.xml:12(help)
+#: .config[1].validation
+msgid "fqdn"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "text"
+msgstr ""
+
+#: .config[1].store
+msgctxt ".config[1].store"
+msgid "yes"
+msgstr ""
+
+#: .config[1].help
 msgid "The domain name used in your organization (eg: mandriva.com)."
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/system/desc.xml:0(None)
-msgid "translator-credits"
+#: .slug
+msgid "system"
+msgstr ""
+
+#: .name
+msgid "System setup"
 msgstr ""
 
 #: modules/system/setup-system.sh:18

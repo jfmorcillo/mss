@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -19,58 +20,82 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_quota/desc.xml:17(label)
+#: .config[0].label
 msgid "Filesystems"
 msgstr "Sistemas de arquivos"
 
-#: modules/mds_quota/setup-quota.sh:48
+#: modules/mds_quota/setup-quota.sh:54
 msgid "Quota module is activated in the management interface."
-msgstr ""
+msgstr "Módulo cota é ativado na interface de gerenciamento."
 
-#: modules/mds_quota/setup-quota.sh:33
+#: modules/mds_quota/setup-quota.sh:36
 msgid "Quotas not supported on this filesystem : $fs"
-msgstr ""
+msgstr "O sistema de arquivos não suporta cotas: $fs"
 
-#: modules/mds_quota/desc.xml:4(desc)
+#: .desc
 msgid "Set file quotas on the server"
-msgstr ""
+msgstr "Configure o arquivo de cota no servidor"
 
-#: modules/mds_quota/desc.xml:18(help)
+#: .config[0].help
 msgid ""
 "Specify the filesystems where you want to apply user quotas with the "
-"following format : \"Device path\":\"Identifier string\" (eg: /dev/sda1:Root)"
+"following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
 msgstr ""
-"Especifique os sistemas de arquivos onde você deseja aplicar as quotas de "
-"usuários com o seguinte formato: \"Caminho do dispositivo\":\"Identificador"
-"\" (por exemplo: /dev/sda1:Root)"
 
-#: modules/mds_quota/desc.xml:3(name)
+#: .name
 msgid "User quota management"
-msgstr ""
+msgstr "Gerenciamento de cota de usuário"
 
-#: modules/mds_quota/setup-quota.sh:49
+#: modules/mds_quota/setup-quota.sh:55
 msgid ""
 "You can now configure user quotas from the management interface : https://"
 "@HOSTNAME@/mmc/."
 msgstr ""
+"Agora você pode configurar cotas de usuário através da interface de "
+"gerenciamento: https://@HOSTNAME@/mmc/."
 
-#: modules/mds_quota/desc.xml:13(module)
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].name
+msgid "filesystems"
+msgstr ""
+
+#: .config[0].default
+msgid "get_filesystems"
+msgstr ""
+
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: modules/mds_quota/desc.xml:9(rpm)
+#: .slug
+msgid "mds_quota"
+msgstr ""
+
+#: .packages[0].rpms[2]
 msgid "mmc-web-userquota"
 msgstr "mmc-web-userquota"
 
-#: modules/mds_quota/desc.xml:8(rpm)
+#: .packages[0].rpms[1]
 msgid "python-mmc-userquota"
 msgstr "python-mmc-userquota"
 
-#: modules/mds_quota/desc.xml:7(rpm)
+#: .packages[0].rpms[0]
 msgid "quota"
 msgstr "quota"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_quota/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
+#: .config[0].type
+msgid "text"
+msgstr ""
+
+#: .config[0].multi
+msgctxt ".config[0].multi"
+msgid "yes"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""

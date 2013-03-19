@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-17 17:57+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
 "team/fr_FR/)\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/system/desc.xml:4(desc)
+#: .desc
 msgid "General system configuration"
 msgstr "Configuration générale du système"
 
@@ -27,7 +27,7 @@ msgstr "Configuration générale du système"
 msgid "Hostname and domain name configured."
 msgstr "Nom d'hôte et domaine configurés."
 
-#: modules/system/desc.xml:8(help)
+#: .config[0].help
 msgid "Hostname without the domain name"
 msgstr "Nom de la machine sans le domaine"
 
@@ -35,27 +35,80 @@ msgstr "Nom de la machine sans le domaine"
 msgid "Incorrect hostname."
 msgstr "Nom d'hôte incorrect."
 
-#: modules/system/desc.xml:3(name)
+#: .name
 msgid "System setup"
 msgstr "Configuration système"
 
-#: modules/system/desc.xml:12(help)
+#: .config[1].help
 msgid "The domain name used in your organization (eg: mandriva.com)."
 msgstr "Le domaine utilisé pour votre organisation (ex: mandriva.com)"
 
-#: modules/system/desc.xml:7(label)
+#: .config[0].label
 msgid "The server hostname"
 msgstr "Nom d'hôte du serveur"
 
-#: modules/system/desc.xml:11(label)
+#: .config[1].label
 msgid "Your domain name"
 msgstr "Domaine"
+
+#: .config[1].name
+msgid "domain"
+msgstr ""
 
 #: modules/system/__init__.py:48
 msgid "example.com"
 msgstr "exemple.com"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/system/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
+#: .config[1].validation
+msgid "fqdn"
+msgstr ""
+
+#: .config[1].default
+msgid "get_domain"
+msgstr ""
+
+#: .config[0].default
+msgid "get_hostname"
+msgstr ""
+
+#: .config[0].name
+msgid "hostname"
+msgstr ""
+
+#: .slug
+msgid "system"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "text"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "text"
+msgstr ""
+
+#: .config[0].validation
+msgid "valid_hostname"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[0].store
+msgctxt ".config[0].store"
+msgid "yes"
+msgstr ""
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr ""
+
+#: .config[1].store
+msgctxt ".config[1].store"
+msgid "yes"
+msgstr ""

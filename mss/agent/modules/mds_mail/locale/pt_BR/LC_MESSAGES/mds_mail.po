@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -19,165 +20,261 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mail/setup-mail.sh:127
+#: modules/mds_mail/setup-mail.sh:133
 msgid ""
 "- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""
+"- Redes autorizados a enviar e-mails sem autenticação: $ smtpd_mynetworks"
 
-#: modules/mds_mail/setup-mail.sh:126
+#: modules/mds_mail/setup-mail.sh:132
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
-msgstr ""
+msgstr "- Não-SSL conexões são desabilitados por padrão no servidor IMAP/POP3"
 
-#: modules/mds_mail/setup-mail.sh:125
+#: modules/mds_mail/setup-mail.sh:131
 msgid "- SSL is enabled on the SMTP server"
-msgstr ""
+msgstr "- SSL está habilitado no servidor SMTP"
 
-#: modules/mds_mail/setup-mail.sh:124
+#: modules/mds_mail/setup-mail.sh:130
 msgid "- the mail domain $DOMAIN has been created"
-msgstr ""
+msgstr "- o domínio de e-mail $DOMAIN foi criado."
 
-#: modules/mds_mail/desc.xml:48(label)
+#: .config[3].label
 msgid "Allow mail services access from external networks"
-msgstr ""
+msgstr "Permitir acesso aos serviços de correio de redes externas"
 
-#: modules/mds_mail/desc.xml:43(label)
+#: .config[2].label
 msgid "Allow mail services access from internal networks"
-msgstr ""
+msgstr "Permitir acesso aos serviços de correio de redes internas"
 
-#: modules/mds_mail/desc.xml:4(desc)
+#: .desc
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
+"Serviço de e-mail completo com POP/IMAP, anti-vírus e anti-spam toolkits"
 
-#: modules/mds_mail/desc.xml:49(help)
+#: .config[3].help
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'external'"
 msgstr ""
+"Configure o firewall para aceitar conexões smtp/imap/pop3 em interfaces "
+"configuradas como 'externo'"
 
-#: modules/mds_mail/desc.xml:44(help)
+#: .config[2].help
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'internal'"
 msgstr ""
+"Configure o firewall para aceitar conexões smtp/imap/pop3 em interfaces "
+"configuradas como 'interno'"
 
 #: modules/mds_mail/add_domain.py:16
 msgid "Default mail domain"
-msgstr ""
+msgstr "Domínio de e-mail padrão"
 
 #: modules/mds_mail/add_domain.py:20
 msgid "Failed to add the mail domain."
-msgstr ""
+msgstr "Falhou para adiconar o domínio de e-mail"
 
-#: modules/mds_mail/setup-mail.sh:91
+#: modules/mds_mail/setup-mail.sh:94
 msgid ""
 "Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
 "c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
+"Falha ao registrar razor. Tente executar como root depois: su - amavis-s / "
+"bin / sh-c 'razor-admin-register && razor-admin-discover'"
 
-#: modules/mds_mail/desc.xml:39(option)
+#: .config[1].options[1].name
 msgid "IMAPS"
 msgstr "IMAPS"
 
-#: modules/mds_mail/desc.xml:38(option)
+#: .config[1].options[0].name
 msgid "IMAPS and POP3S"
 msgstr "IMAPS e POP3S"
 
-#: modules/mds_mail/desc.xml:3(name)
-msgid "Mail service"
+#: .name
+msgid "Mail Service"
 msgstr ""
 
-#: modules/mds_mail/desc.xml:32(label)
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .config[0].label
 msgid "My networks"
 msgstr "Minhas redes"
 
-#: modules/mds_mail/desc.xml:40(option)
+#: .config[1].options[2].name
 msgid "POP3S"
 msgstr "POP3S"
 
-#: modules/mds_mail/desc.xml:36(label)
+#: .config[1].label
 msgid "Protocols supported"
 msgstr "Protocolos suportados"
 
-#: modules/mds_mail/desc.xml:37(help)
+#: .config[1].help
 msgid "Protocols that the dovecot server will provide."
 msgstr "Os protocolos que o servidor dovecot irá fornecer."
 
-#: modules/mds_mail/desc.xml:33(help)
+#: .config[0].help
 msgid ""
 "Specify which clients are authorized to send mails through the mail server "
 "without authentication."
 msgstr ""
+"Especificar quais clientes são autorizados a enviar e-mails através do "
+"servidor de email sem autenticação."
 
-#: modules/mds_mail/setup-mail.sh:122
+#: modules/mds_mail/setup-mail.sh:128
 msgid "The mail service is configured."
-msgstr ""
+msgstr "O serviço de e-mail correio está configurado."
 
-#: modules/mds_mail/setup-mail.sh:123
+#: modules/mds_mail/setup-mail.sh:129
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
 msgstr ""
+"Você pode adicionar endereços de e-mail e apelidos para seus usuários "
+"através da interface de gerenciamento em https://@HOSTNAME@/mmc/."
 
-#: modules/mds_mail/desc.xml:14(rpm)
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .packages[0].rpms[4]
 msgid "amavisd-new"
 msgstr "amavisd-new"
 
-#: modules/mds_mail/desc.xml:17(rpm)
+#: .config[2].type
+msgctxt ".config[2].type"
+msgid "check"
+msgstr ""
+
+#: .config[3].type
+msgctxt ".config[3].type"
+msgid "check"
+msgstr ""
+
+#: .packages[0].rpms[7]
 msgid "clamd"
 msgstr "clamd"
 
-#: modules/mds_mail/desc.xml:18(rpm)
+#: .packages[0].rpms[8]
 msgid "dovecot"
 msgstr "dovecot"
 
-#: modules/mds_mail/desc.xml:19(rpm)
+#: .packages[0].rpms[9]
 msgid "dovecot-plugins-ldap"
 msgstr "dovecot-plugins-ldap"
 
-#: modules/mds_mail/desc.xml:21(rpm)
-#, fuzzy
+#: .packages[0].rpms[11]
 msgid "dovecot-plugins-managesieve"
-msgstr "dovecot-plugins-ldap"
+msgstr "dovecot-plugins-managesieve"
 
-#: modules/mds_mail/desc.xml:20(rpm)
-#, fuzzy
+#: .packages[0].rpms[10]
 msgid "dovecot-plugins-sieve"
-msgstr "dovecot-plugins-ldap"
+msgstr "dovecot-plugins-sieve"
 
-#: modules/mds_mail/desc.xml:28(module)
+#: .config[2].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[3].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[0].default
+msgid "get_networks"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .config[1].options[0].value
+msgid "imap imaps pop3 pop3s"
+msgstr ""
+
+#: .config[1].options[1].value
+msgid "imaps imap"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .slug
+msgid "mds_mail"
+msgstr ""
+
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: modules/mds_mail/desc.xml:12(rpm)
+#: .packages[0].rpms[2]
 msgid "mmc-web-mail"
 msgstr "mmc-web-mail"
 
-#: modules/mds_mail/desc.xml:10(rpm)
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "network"
+msgstr ""
+
+#: .config[0].validation
+msgctxt ".config[0].validation"
+msgid "network"
+msgstr ""
+
+#: .config[3].default
+msgid "off"
+msgstr ""
+
+#: .config[2].default
+msgid "on"
+msgstr ""
+
+#: .config[1].type
+msgid "options"
+msgstr ""
+
+#: .config[1].options[2].value
+msgid "pop3s pop3"
+msgstr ""
+
+#: .config[1].name
+msgid "popimap_proto"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "postfix"
 msgstr "postfix"
 
-#: modules/mds_mail/desc.xml:11(rpm)
-#, fuzzy
+#: .packages[0].rpms[1]
 msgid "postfix-ldap"
-msgstr "postfix"
+msgstr "postfix-ldap"
 
-#: modules/mds_mail/desc.xml:13(rpm)
+#: .packages[0].rpms[3]
 msgid "python-mmc-mail"
 msgstr "python-mmc-mail"
 
-#: modules/mds_mail/desc.xml:15(rpm)
+#: .config[0].format
+msgid "short"
+msgstr ""
+
+#: .config[0].name
+msgid "smtpd_mynetworks"
+msgstr ""
+
+#: .packages[0].rpms[5]
 msgid "spamassassin"
 msgstr "spamassassin"
 
-#: modules/mds_mail/desc.xml:16(rpm)
+#: .packages[0].rpms[6]
 msgid "spamassassin-tools"
 msgstr "spamassassin-tools"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_mail/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
+#: .config[1].require
+msgid "yes"
+msgstr ""
 
-#: modules/mds_mail/desc.xml:25(module)
+#: .conflict[0]
 msgid "zarafa"
 msgstr "zarafa"

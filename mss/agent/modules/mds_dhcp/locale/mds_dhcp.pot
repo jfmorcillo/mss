@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,60 +17,101 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mds_dhcp/desc.xml:3(name)
-msgid "DHCP service"
+#: .name
+msgid "DHCP Service"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:4(desc)
-msgid "Configure automatically your client computers IP settings"
+#: .actions[0].type
+msgid "link"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:10(rpm)
-msgid "dhcp-server"
+#: .actions[0].name
+msgid "Management interface"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:11(rpm)
-msgid "mmc-web-network"
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:12(rpm)
-msgid "python-mmc-network"
-msgstr ""
-
-#: modules/mds_dhcp/desc.xml:16(module)
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:20(label)
-msgid "Allow DHCP requests from internal networks"
+#: .packages[0].rpms[0]
+msgid "dhcp-server"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:21(help)
+#: .packages[0].rpms[1]
+msgid "mmc-web-network"
+msgstr ""
+
+#: .packages[0].rpms[2]
+msgid "python-mmc-network"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].default
+msgid "on"
+msgstr ""
+
+#: .config[0].help
 msgid ""
 "Configure the firewall to accept DHCP requests on interfaces configured as "
 "'internal'"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:25(label)
-msgid "Allow DHCP requests from external networks"
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_dhcp/desc.xml:26(help)
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[0].label
+msgid "Allow DHCP requests from internal networks"
+msgstr ""
+
+#: .config[1].default
+msgid "off"
+msgstr ""
+
+#: .config[1].help
 msgid ""
 "Configure the firewall to accept DHCP requests on interfaces configured as "
 "'external'"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_dhcp/desc.xml:0(None)
-msgid "translator-credits"
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_dhcp/setup-dhcp.sh:41
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[1].label
+msgid "Allow DHCP requests from external networks"
+msgstr ""
+
+#: .slug
+msgid "mds_dhcp"
+msgstr ""
+
+#: .desc
+msgid "Configure automatically your client computers IP settings"
+msgstr ""
+
+#: modules/mds_dhcp/setup-dhcp.sh:44
 msgid "The DHCP service is installed."
 msgstr ""
 
-#: modules/mds_dhcp/setup-dhcp.sh:42
+#: modules/mds_dhcp/setup-dhcp.sh:45
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"

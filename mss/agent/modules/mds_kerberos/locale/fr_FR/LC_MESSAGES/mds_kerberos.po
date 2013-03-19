@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-27 13:28+0000\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:39+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
 "team/fr_FR/)\n"
 "Language: fr_FR\n"
@@ -18,524 +18,456 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_kerberos/desc.xml:89(text)
-msgid "Aborting"
+#: .config[8].default
+msgid "300"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:100(text)
-msgid "Aborting. File used was"
+#: .config[10].size
+msgctxt ".config[10].size"
+msgid "50"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:133(text)
-msgid "Adding kerberos LDAP ACLs in"
+#: .config[11].size
+msgctxt ".config[11].size"
+msgid "50"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:94(text)
-msgid "Administration server port number is empty. Default port, 749, is used"
+#: .config[9].size
+msgctxt ".config[9].size"
+msgid "50"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:49(label)
+#: .config[4].default
+msgid "749"
+msgstr ""
+
+#: .config[3].default
+msgid "88"
+msgstr ""
+
+#: .config[4].label
 msgid "Administrator server port"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:78(help)
+#: .config[11].help
 msgid ""
 "All encryption types that are permitted for use in session key encryption "
 "(Values of list devided by whitespace or comma from each other, e.g., des3-"
 "cbc-sha1-kd des-cbc-crc)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:81(label)
+#: .config[12].label
 msgid "Allow weak encryption types"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:65(label)
+#: .config[8].label
 msgid "Clock skew"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:96(text)
-msgid "Configuring kerberos..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:149(text)
-msgid "Creating principal for KDC host"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:141(text)
-msgid "Creating realm..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:42(help)
+#: .config[2].help
 msgid "DNS Domain name (e.g., example.com)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:41(label)
+#: .config[2].label
 msgid "DNS domain name"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:91(text)
-msgid "DNS domain name is empty"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:57(label)
+#: .config[6].label
 msgid "DNS lookup for KDC"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:61(label)
+#: .config[7].label
 msgid "DNS lookup for realm"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:110(text)
-msgid "DNS zone is found in database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:108(text)
-msgid "DNS zone is not found in database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:46(help)
+#: .config[3].help
 msgid "Default port of the KDC server (e.g., 88)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:50(help)
+#: .config[4].help
 msgid "Default port of the administrator server (e.g., 749)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:150(text)
-msgid "Error creating principal for KDC host"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:142(text)
-msgid "Error creating realm"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:99(text)
-msgid "Error generating OpenLDAP configuration file"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:103(text)
-msgid "Error loading kdc and kadmin data into database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:119(text)
-msgid "Error loading kerberos DNS data into database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:151(text)
-msgid "Error stashing password for KDC host principal"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:145(text)
-msgid "Error stashing password for kadmin"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:144(text)
-msgid "Error stashing password for kdc"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:147(text)
-msgid ""
-"Error stashing password for system principals kadmin/admin and kadmin/"
-"changepw"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:122(text)
-msgid "Error updating kerberos DNS data in database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:162(text)
-msgid "Error while configuring MDS"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:98(text)
-msgid "Error while copying kerberos.schema in"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:113(text)
-msgid "Host checked:"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:38(help)
+#: .config[1].help
 msgid "Host name of the KDC server without DNS domain name (e.g., server)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:86(text)
-msgid "Incorrect host name."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:87(text)
-msgid "Incorrect port number."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:85(text)
-msgid "Incorrect realm."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:58(help)
+#: .config[6].help
 msgid ""
 "Indicates whether DNS SRV records should be used to locate the KDCs and "
 "other servers for a realm, if they are not listed in the information for the "
 "realm"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:62(help)
+#: .config[7].help
 msgid ""
 "Indicates whether DNS TXT records should be used to determine the Kerberos "
 "realm of a host"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:82(help)
+#: .config[12].help
 msgid "Indicates whether weak encryption types should be filtered out"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:4(desc)
+#: .desc
 msgid "Install and configure Kerberos authentication"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:53(label)
+#: .config[5].label
 msgid "KDC database master key"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:95(text)
-msgid "KDC database master key is empty"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:117(text)
-msgid "KDC host IP address cannot be resolved to host name"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:115(text)
-msgid "KDC host is found in DNS zone in database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:112(text)
-msgid "KDC host is not found in DNS zone in database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:37(label)
+#: .config[1].label
 msgid "KDC host name"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:116(text)
-msgid "KDC host name cannot be resolved in IP address"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:92(text)
-msgid "KDC host name is empty"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:45(label)
+#: .config[3].label
 msgid "KDC port"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:93(text)
-msgid "KDC port number is empty. Default port, 88, is used"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:120(text)
-msgid "Kerberos DNS data is loaded into database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:123(text)
-msgid "Kerberos DNS data is updated in database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:134(text)
-msgid "Kerberos LDAP ACLs are added in"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:3(name)
+#: .name
 msgid "Kerberos authentication with MDS backend"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:165(text)
-msgid "Kerberos module is activated in the MDS interface"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:34(help)
+#: .config[0].help
 msgid ""
 "Kerberos realm (e.g., REALM.COM). Attention! It can be set only when the "
 "module is unconfigured)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:104(text)
-msgid "Ldif file used:"
+#: .actions[0].name
+msgid "Management interface"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:102(text)
-msgid "Loading kdc and kadmin data into database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:128(text)
-msgid "Loading kdc and kadmin data into database..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:118(text)
-msgid "Loading kerberos DNS data into database"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:135(text)
-msgid "Loading kerberos DNS data into database..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:161(text)
-msgid "MDS configuring done"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:88(text)
-msgid "MMC interface is not installed"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:54(help)
+#: .config[5].help
 msgid ""
 "Master key for the KDC server. Attention! It can be set only when the module "
 "is unconfigured"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:66(help)
+#: .config[8].help
 msgid ""
 "Maximum allowable amount of clockskew in seconds that the library will "
 "tolerate before assuming that a Kerberos message is invalid (e.g., 300)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:101(text)
-msgid "OpenLDAP configuration file is generated successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:146(text)
-msgid "Passwords for kdc and kadmin are stashed"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:148(text)
-msgid ""
-"Passwords for system principals kadmin/admin and kadmin/changepw are stashed"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:77(label)
+#: .config[11].label
 msgid "Permitted encryption types"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:152(text)
-msgid "Principal for KDC host is created"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:33(label)
+#: .config[0].label
 msgid "Realm"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:143(text)
-msgid "Realm is created"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:90(text)
-msgid "Realm name is empty"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:97(text)
-msgid "Reconfiguring kerberos..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:107(text)
-msgid "Searching DNS zone in database..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:111(text)
-msgid "Searching KDC host record in DNS zone..."
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:160(text)
-msgid "Service kadmin fails restarting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:156(text)
-msgid "Service kadmin fails starting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:159(text)
-msgid "Service kadmin restarted successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:155(text)
-msgid "Service kadmin started successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:158(text)
-msgid "Service krb5kdc fails restarting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:154(text)
-msgid "Service krb5kdc fails starting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:157(text)
-msgid "Service krb5kdc restarted successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:153(text)
-msgid "Service krb5kdc started successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:137(text)
-msgid "Service ldap fails starting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:125(text)
-msgid "Service ldap fails stopping. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:136(text)
-msgid "Service ldap started successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:124(text)
-msgid "Service ldap stopped successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:164(text)
-msgid "Service mmc-agent fails starting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:127(text)
-msgid "Service mmc-agent fails stopping. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:163(text)
-msgid "Service mmc-agent started successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:126(text)
-msgid "Service mmc-agent stopped successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:140(text)
-msgid "Service named fails restarting. Check"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:139(text)
-msgid "Service named restarted successfully"
-msgstr ""
-
-#: modules/mds_kerberos/desc.xml:74(help)
+#: .config[10].help
 msgid ""
 "Supported list of session key encryption types that should be requested by "
 "the client (Values of list devided by whitespace or comma from each other, e."
 "g., des3-cbc-sha1-kd des-cbc-crc)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:70(help)
+#: .config[9].help
 msgid ""
 "Supported list of session key encryption types that should be returned by "
 "the KDC (Values of list devided by whitespace or comma from each other, e."
 "g., des3-cbc-sha1-kd des-cbc-crc)"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:69(label)
+#: .config[9].label
 msgid "TGS encryption types"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:73(label)
+#: .config[10].label
 msgid "TKT encryption types"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:121(text)
-msgid "Updating kerberos DNS data in database"
+#: .packages[0].name
+msgid "all"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:138(text)
-msgid "Updating kerberos DNS data in database..."
+#: .config[12].name
+msgid "allow_weak_enctypes"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:166(text)
-msgid ""
-"You can add Kerberos principals from the MDS interface: https://@HOSTNAME@/"
-"mmc/"
+#: .config[12].type
+msgctxt ".config[12].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:130(text)
-msgid "Your original /etc/openldap/slapd.conf file was backed up as"
+#: .config[6].type
+msgctxt ".config[6].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:131(text)
-msgid "Your original /etc/sysconfig/ldap file was backed up as"
+#: .config[7].type
+msgctxt ".config[7].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:132(text)
-msgid "Your previous database directory was backed up as"
+#: .config[1].validation
+msgid "check_kdc_host_name"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:129(text)
-msgid "Your previous database is at"
+#: .config[3].validation
+msgctxt ".config[3].validation"
+msgid "check_port"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:114(text)
-msgid "Zone containing the host:"
+#: .config[4].validation
+msgctxt ".config[4].validation"
+msgid "check_port"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:109(text)
-msgid "Zone searched:"
+#: .config[0].validation
+msgid "check_realm"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:106(text)
-msgid "kdc and kadmin data is loaded into database"
+#: .config[8].name
+msgid "clock_skew"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:10(rpm)
+#: .config[10].default
+msgctxt ".config[10].default"
+msgid "des3-cbc-sha1-kd des-cbc-crc"
+msgstr ""
+
+#: .config[11].default
+msgctxt ".config[11].default"
+msgid "des3-cbc-sha1-kd des-cbc-crc"
+msgstr ""
+
+#: .config[9].default
+msgctxt ".config[9].default"
+msgid "des3-cbc-sha1-kd des-cbc-crc"
+msgstr ""
+
+#: .config[2].name
+msgid "dns_domain_name"
+msgstr ""
+
+#: .config[6].name
+msgid "dns_lookup_kdc"
+msgstr ""
+
+#: .config[7].name
+msgid "dns_lookup_realm"
+msgstr ""
+
+#: .config[2].validation
+msgid "fqdn"
+msgstr ""
+
+#: .config[2].default
+msgid "get_default_domain_name"
+msgstr ""
+
+#: .config[1].default
+msgid "get_default_host_name"
+msgstr ""
+
+#: .config[0].default
+msgid "get_default_realm"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .packages[2].name
+msgid "i586"
+msgstr ""
+
+#: .config[4].name
+msgid "kadmin_port"
+msgstr ""
+
+#: .config[1].name
+msgid "kdc_host_name"
+msgstr ""
+
+#: .config[5].name
+msgid "kdc_key_passwd"
+msgstr ""
+
+#: .config[3].name
+msgid "kdc_port"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "krb5-server"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:11(rpm)
+#: .packages[0].rpms[1]
 msgid "krb5-workstation"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:24(rpm)
+#: .packages[1].rpms
 msgid "lib64sasl2-plug-gssapi"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:21(rpm)
+#: .packages[2].rpms
 msgid "libsasl2-plug-gssapi"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:29(module)
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .dependencies[1]
 msgid "mds_dns"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:28(module)
+#: .slug
+msgid "mds_kerberos"
+msgstr ""
+
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:18(rpm)
+#: .packages[0].rpms[8]
 msgid "mmc-web-kerberos"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:13(rpm)
+#: .packages[0].rpms[3]
 msgid "nss_ldap"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:14(rpm)
+#: .config[12].default
+msgctxt ".config[12].default"
+msgid "on"
+msgstr ""
+
+#: .config[6].default
+msgctxt ".config[6].default"
+msgid "on"
+msgstr ""
+
+#: .packages[0].rpms[4]
 msgid "openldap-clients"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:16(rpm)
+#: .packages[0].rpms[6]
 msgid "openldap-mandriva-dit"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:12(rpm)
+#: .packages[0].rpms[2]
 msgid "openldap-servers"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:15(rpm)
+#: .packages[0].rpms[5]
 msgid "pam_ldap"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:17(rpm)
+#: .config[5].type
+msgid "password"
+msgstr ""
+
+#: .config[11].name
+msgid "permitted_enctypes"
+msgstr ""
+
+#: .packages[0].rpms[7]
 msgid "python-mmc-kerberos"
 msgstr ""
 
-#: modules/mds_kerberos/desc.xml:105(text)
-msgid "slapd.conf file used:"
+#: .config[0].name
+msgid "realm"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_kerberos/desc.xml:0(None)
-msgid "translator-credits"
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "text"
+msgstr ""
+
+#: .config[10].type
+msgctxt ".config[10].type"
+msgid "text"
+msgstr ""
+
+#: .config[11].type
+msgctxt ".config[11].type"
+msgid "text"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "text"
+msgstr ""
+
+#: .config[2].type
+msgctxt ".config[2].type"
+msgid "text"
+msgstr ""
+
+#: .config[3].type
+msgctxt ".config[3].type"
+msgid "text"
+msgstr ""
+
+#: .config[4].type
+msgctxt ".config[4].type"
+msgid "text"
+msgstr ""
+
+#: .config[8].type
+msgctxt ".config[8].type"
+msgid "text"
+msgstr ""
+
+#: .config[9].type
+msgctxt ".config[9].type"
+msgid "text"
+msgstr ""
+
+#: .config[9].name
+msgid "tgs_enctypes"
+msgstr ""
+
+#: .config[10].name
+msgid "tkt_enctypes"
+msgstr ""
+
+#: .packages[1].name
+msgid "x86_64"
+msgstr ""
+
+#: .config[0].edit_if_unconfigured
+msgctxt ".config[0].edit_if_unconfigured"
+msgid "yes"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr ""
+
+#: .config[2].require
+msgctxt ".config[2].require"
+msgid "yes"
+msgstr ""
+
+#: .config[3].require
+msgctxt ".config[3].require"
+msgid "yes"
+msgstr ""
+
+#: .config[4].require
+msgctxt ".config[4].require"
+msgid "yes"
+msgstr ""
+
+#: .config[5].require
+msgctxt ".config[5].require"
+msgid "yes"
+msgstr ""
+
+#: .config[5].show_if_unconfigured
+msgctxt ".config[5].show_if_unconfigured"
+msgid "yes"
 msgstr ""

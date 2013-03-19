@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-17 18:27+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -27,48 +28,53 @@ msgstr "- Um compartilhamento público foi criado em /home/samba/shares/public"
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr "- Você pode criar um script logon.bat em /home/samba/netlogon"
 
-#: modules/mds_smb/desc.xml:34(label)
+#: .config[2].label
 msgid "Administrator name"
 msgstr "Nome do administrador"
 
-#: modules/mds_smb/desc.xml:38(label)
-#, fuzzy
+#: .config[3].label
 msgid "Administrator password"
-msgstr "Nome do administrador"
+msgstr "Senha do Administrador"
 
-#: modules/mds_smb/desc.xml:47(label)
-msgid "Allow connections connections external networks"
+#: .config[5].label
+msgid "Allow connections from external networks"
 msgstr ""
 
-#: modules/mds_smb/desc.xml:42(label)
+#: .config[4].label
 msgid "Allow connections from internal networks"
-msgstr ""
+msgstr "Permite conexões de redes internas"
 
-#: modules/mds_smb/desc.xml:4(desc)
+#: .desc
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
 msgstr ""
+"Autenticar usuários do Windows com SAMBA e fornecer compartilhamentos de "
+"arquivos do Windows em sua rede"
 
-#: modules/mds_smb/desc.xml:48(help)
+#: .config[5].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'external'"
 msgstr ""
+"Configure o firewall para aceitar tráfego SAMBA nas interfaces configuradas "
+"como 'externa'"
 
-#: modules/mds_smb/desc.xml:43(help)
+#: .config[4].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'internal'"
 msgstr ""
+"Configure o firewall para aceitar tráfego SAMBA nas interfaces configuradas "
+"como 'interna'"
 
 #: modules/mds_smb/setup-smb.sh:91
 msgid "Domain administrator : $smbadmin"
-msgstr ""
+msgstr "Administrador do domínio : $smbadmin"
 
 #: modules/mds_smb/setup-smb.sh:89
 msgid "Domain name : $smbdomain"
-msgstr ""
+msgstr "Nome do Domínio : $smbdomain"
 
 #: modules/mds_smb/setup-smb.sh:53
 msgid "Error while populating directory."
@@ -76,48 +82,58 @@ msgstr "Erro ao preencher o diretório."
 
 #: modules/mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
-msgstr ""
+msgstr "Erro ao configurar senha do SAMBA"
 
 #: modules/mds_smb/setup-smb.sh:70
-#, fuzzy
 msgid "Failed to grant rights to the Domain Admins group"
-msgstr ""
-"Falha nas permissões garantidas para o grupo do domínio de Administradores."
+msgstr "Falha ao conceder direitos ao grupo Administradores de domínio"
 
 #: modules/mds_smb/__init__.py:46
 msgid ""
 "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
 msgstr ""
+"Nome de domínio incorreto SAMBA (apenas caracteres maiúsculos e dígitos são "
+"permitido)."
 
 #: modules/mds_smb/__init__.py:39
 msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
 msgstr ""
+"Nome netbios incorreto (apenas caracteres maiúsculos e dígitos são "
+"permitido)."
 
-#: modules/mds_smb/desc.xml:30(label)
+#: .config[0].default
+msgid "MBSDOMAIN"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .config[1].label
 msgid "Netbios name"
 msgstr "Nome do Netbios"
 
-#: modules/mds_smb/desc.xml:39(help)
+#: .config[3].help
 msgid "Password for the Microsoft domain administrator."
 msgstr "Senha para o administrador do domínio Microsoft."
 
-#: modules/mds_smb/desc.xml:25(label)
+#: .config[0].label
 msgid "SAMBA domain name"
 msgstr "Nome de domínio SAMBA"
 
 #: modules/mds_smb/setup-smb.sh:90
 msgid "Server name : $smbnetbios"
-msgstr ""
+msgstr "Nome do Servidor : $smbnetbios"
 
-#: modules/mds_smb/desc.xml:35(help)
+#: .config[2].help
 msgid "The name of the Microsoft domain administrator."
 msgstr "O nome do administrador de domínio Microsoft."
 
-#: modules/mds_smb/desc.xml:26(help)
+#: .config[0].help
 msgid "The name of your Microsoft domain."
 msgstr "O nome do seu domínio Microsoft."
 
-#: modules/mds_smb/desc.xml:31(help)
+#: .config[1].help
 msgid "The name of your SAMBA server in the Microsoft domain."
 msgstr "O nome do seu servidor SAMBA no domínio Microsoft."
 
@@ -126,50 +142,163 @@ msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created before, they still remains in the users group."
 msgstr ""
+"Os usuários agora são criados no grupo de utilizadores do domínio por "
+"padrão. Se os usuários foram criados antes, que ainda permanece no grupo de "
+"usuários."
 
-#: modules/mds_smb/desc.xml:3(name)
+#: .name
 msgid "Windows users and file sharing management"
-msgstr ""
+msgstr "Gerenciamento de Usuários e compartilhamento de arquivos Windows "
 
 #: modules/mds_smb/setup-smb.sh:94
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
 msgstr ""
+"Agora você pode usar a interface de gerenciamento para gerenciar os usuários "
+"do Windows e compartilhamentos em https://@HOSTNAME@/mmc/."
 
-#: modules/mds_smb/desc.xml:20(module)
+#: .config[2].default
+msgid "admin"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[4].type
+msgctxt ".config[4].type"
+msgid "check"
+msgstr ""
+
+#: .config[5].type
+msgctxt ".config[5].type"
+msgid "check"
+msgstr ""
+
+#: .config[4].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[5].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[1].default
+msgid "get_netbios"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: modules/mds_smb/desc.xml:15(rpm)
+#: .slug
+msgid "mds_smb"
+msgstr ""
+
+#: .packages[0].rpms[5]
 msgid "mmc-web-samba"
 msgstr "mmc-web-samba"
 
-#: modules/mds_smb/desc.xml:16(rpm)
+#: .config[5].default
+msgid "off"
+msgstr ""
+
+#: .config[4].default
+msgid "on"
+msgstr ""
+
+#: .config[3].type
+msgid "password"
+msgstr ""
+
+#: .packages[0].rpms[6]
 msgid "python-mmc-samba"
 msgstr "python-mmc-samba"
 
-#: modules/mds_smb/desc.xml:11(rpm)
+#: .packages[0].rpms[1]
 msgid "samba-client"
 msgstr "samba-client"
 
-#: modules/mds_smb/desc.xml:12(rpm)
+#: .packages[0].rpms[2]
 msgid "samba-common"
 msgstr "samba-common"
 
-#: modules/mds_smb/desc.xml:13(rpm)
+#: .packages[0].rpms[3]
 msgid "samba-doc"
 msgstr "samba-doc"
 
-#: modules/mds_smb/desc.xml:10(rpm)
+#: .packages[0].rpms[0]
 msgid "samba-server"
 msgstr "samba-server"
 
-#: modules/mds_smb/desc.xml:14(rpm)
+#: .config[2].name
+msgid "smbadmin"
+msgstr ""
+
+#: .config[0].name
+msgid "smbdomain"
+msgstr ""
+
+#: .packages[0].rpms[4]
 msgid "smbldap-tools"
 msgstr "smbldap-tools"
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_smb/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"
+#: .config[1].name
+msgid "smbnetbios"
+msgstr ""
+
+#: .config[3].name
+msgid "smbpasswd"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "text"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "text"
+msgstr ""
+
+#: .config[2].type
+msgctxt ".config[2].type"
+msgid "text"
+msgstr ""
+
+#: .config[0].validation
+msgid "valid_domain"
+msgstr ""
+
+#: .config[1].validation
+msgid "valid_netbios"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr ""
+
+#: .config[2].require
+msgctxt ".config[2].require"
+msgid "yes"
+msgstr ""
+
+#: .config[3].require
+msgctxt ".config[3].require"
+msgid "yes"
+msgstr ""

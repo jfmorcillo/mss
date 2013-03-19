@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-14 17:52+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -19,77 +20,121 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_cups/desc.xml:26(label)
+#: .config[1].label
 msgid "Allow connections to the management interface from external networks"
-msgstr ""
+msgstr "Permitir conexões para a interface de gerenciamento de redes externas"
 
-#: modules/mds_cups/desc.xml:21(label)
+#: .config[0].label
 msgid "Allow connections to the management interface from internal networks"
 msgstr ""
+"Permite conexões na interface de gerenciamento vindas de redes externas"
 
-#: modules/mds_cups/desc.xml:27(help)
+#: .config[1].help
 msgid ""
-"Configure the firewall to accept connections on the Cups interface from "
-"interfaces configured as 'external'"
+"Configure the firewall to allow access to the Printer Management Service "
+"from external networks"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:22(help)
+#: .config[0].help
 msgid ""
-"Configure the firewall to accept connections on the Cups interface from "
-"interfaces configured as 'internal'"
+"Configure the firewall to allow access to the Printer Management Service "
+"from internal networks"
 msgstr ""
 
 #: modules/mds_cups/setup-cups.sh:21
 msgid "Login to the Cups interface is the root account."
-msgstr ""
+msgstr "O login para a interface do Cups é a conta de root"
 
-#: modules/mds_cups/desc.xml:4(desc)
+#: .desc
 msgid "Network printers management"
+msgstr "Gerenciamento de Impressoras de rede"
+
+#: .actions[0].name
+msgid "Printers management"
 msgstr ""
 
-#: modules/mds_cups/desc.xml:3(name)
+#: .name
 msgid "Printing service"
-msgstr ""
+msgstr "Serviço de Impressão"
 
 #: modules/mds_cups/setup-cups.sh:19
 msgid "The printing service is running."
-msgstr ""
+msgstr "O serviço de impressão está rodando."
 
 #: modules/mds_cups/setup-cups.sh:20
 msgid ""
 "You can add new printers from the Cups web interface : https://"
 "@HOSTNAME@:631/admin/."
 msgstr ""
+"Você pode adicionar impressoras pela interface de gerencimento web do Cups:\n"
+"https://@HOSTNAME@:631/admin/."
 
-#: modules/mds_cups/desc.xml:10(rpm)
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "cups"
 msgstr "cups"
 
-#: modules/mds_cups/desc.xml:11(rpm)
+#: .packages[0].rpms[1]
 msgid "cups-drivers"
 msgstr "cups-drivers"
 
-#: modules/mds_cups/desc.xml:12(rpm)
+#: .packages[0].rpms[2]
 msgid "cups-windows"
 msgstr "cups-windows"
 
-#: modules/mds_cups/desc.xml:13(rpm)
+#: .packages[0].rpms[3]
 msgid "foomatic-filters"
 msgstr "foomatic-filters"
 
-#: modules/mds_cups/desc.xml:16(rpm)
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .packages[0].rpms[6]
 msgid "hplip"
 msgstr "hplip"
 
-#: modules/mds_cups/desc.xml:14(rpm)
+#: .packages[0].rpms[4]
 msgid "hplip-hpijs-ppds"
 msgstr "hplip-hpijs-ppds"
 
-#: modules/mds_cups/desc.xml:15(rpm)
+#: .actions[0].value
+msgid "http://@HOSTNAME@:631/admin/"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .slug
+msgid "mds_cups"
+msgstr ""
+
+#: .config[0].default
+msgid "n"
+msgstr ""
+
+#: .config[1].default
+msgid "off"
+msgstr ""
+
+#: .packages[0].rpms[5]
 msgid "postscript-ppds"
 msgstr "postscript-ppds"
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_cups/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"

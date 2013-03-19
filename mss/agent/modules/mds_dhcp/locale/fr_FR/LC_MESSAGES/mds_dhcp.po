@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2013-01-07 13:21+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
 "team/fr_FR/)\n"
@@ -19,19 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_dhcp/desc.xml:25(label)
+#: .config[1].label
 msgid "Allow DHCP requests from external networks"
 msgstr "Autoriser les requêtes DHCP depuis les réseaux externes"
 
-#: modules/mds_dhcp/desc.xml:20(label)
+#: .config[0].label
 msgid "Allow DHCP requests from internal networks"
 msgstr "Autoriser les requêtes DHCP depuis les réseaux internes"
 
-#: modules/mds_dhcp/desc.xml:4(desc)
+#: .desc
 msgid "Configure automatically your client computers IP settings"
 msgstr "Configuration réseau automatique de vos clients"
 
-#: modules/mds_dhcp/desc.xml:26(help)
+#: .config[1].help
 msgid ""
 "Configure the firewall to accept DHCP requests on interfaces configured as "
 "'external'"
@@ -39,7 +39,7 @@ msgstr ""
 "Configure le firewall pour accepter les requêtes DHCP sur les interfaces "
 "externes"
 
-#: modules/mds_dhcp/desc.xml:21(help)
+#: .config[0].help
 msgid ""
 "Configure the firewall to accept DHCP requests on interfaces configured as "
 "'internal'"
@@ -47,15 +47,19 @@ msgstr ""
 "Configure le firewall pour accepter les requêtes DHCP sur les interfaces "
 "internes"
 
-#: modules/mds_dhcp/desc.xml:3(name)
-msgid "DHCP service"
-msgstr "Service DHCP"
+#: .name
+msgid "DHCP Service"
+msgstr ""
 
-#: modules/mds_dhcp/setup-dhcp.sh:41
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: modules/mds_dhcp/setup-dhcp.sh:44
 msgid "The DHCP service is installed."
 msgstr "Le service DHCP est installé."
 
-#: modules/mds_dhcp/setup-dhcp.sh:42
+#: modules/mds_dhcp/setup-dhcp.sh:45
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"
@@ -63,23 +67,60 @@ msgstr ""
 "Vous pouvez maintenant configurer vos paramètres DHCP depuis l'interface de "
 "gestion: https://@HOSTNAME@/mmc/"
 
-#: modules/mds_dhcp/desc.xml:10(rpm)
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "dhcp-server"
 msgstr "dhcp-server"
 
-#: modules/mds_dhcp/desc.xml:16(module)
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .slug
+msgid "mds_dhcp"
+msgstr ""
+
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: modules/mds_dhcp/desc.xml:11(rpm)
+#: .packages[0].rpms[1]
 msgid "mmc-web-network"
 msgstr "mmc-web-network"
 
-#: modules/mds_dhcp/desc.xml:12(rpm)
+#: .config[1].default
+msgid "off"
+msgstr ""
+
+#: .config[0].default
+msgid "on"
+msgstr ""
+
+#: .packages[0].rpms[2]
 msgid "python-mmc-network"
 msgstr "python-mmc-network"
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_dhcp/desc.xml:0(None)
-msgid "translator-credits"
-msgstr "translator-credits"

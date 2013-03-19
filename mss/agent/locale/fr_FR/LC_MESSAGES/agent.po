@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 10:52+0100\n"
+"POT-Creation-Date: 2013-03-19 18:39+0100\n"
 "PO-Revision-Date: 2012-12-14 17:01+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -35,7 +35,7 @@ msgstr "Installation des packages"
 msgid "Loading packages list"
 msgstr "Chargement de la liste de packages"
 
-#: classes/module.py:351
+#: classes/module.py:315
 msgid "Password mismatch."
 msgstr "Les mots de passe ne sont pas identiques."
 
@@ -51,7 +51,7 @@ msgstr "Redémarrage"
 msgid "Running configuration"
 msgstr "Exécution de la configuration"
 
-#: classes/module.py:346
+#: classes/module.py:310
 msgid "This field can't be empty."
 msgstr "Ce champ ne peut pas être vide."
 

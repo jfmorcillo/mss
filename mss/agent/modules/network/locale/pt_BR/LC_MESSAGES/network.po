@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 #
 # # Translators:
+#   <alexandre@mandriva.com.br>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-01-15 11:06+0100\n"
-"PO-Revision-Date: 2012-12-14 16:32+0000\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
 "projects/p/mss/team/pt_BR/)\n"
@@ -20,99 +21,114 @@ msgstr ""
 
 #: modules/network/__init__.py:154
 msgid "Allow SSH access from external networks"
-msgstr ""
+msgstr "Permitir o acesso SSH a partir de redes externas"
 
 #: modules/network/__init__.py:144
 msgid "Allow SSH access from internal networks"
-msgstr ""
+msgstr "Permitir o acesso SSH a partir de redes internas"
 
 #: modules/network/__init__.py:149
 msgid "Allow access to Mandriva Server Setup from external networks"
 msgstr ""
+"Permitir o acesso a Mandriva Configuração do Servidor de redes externas"
 
 #: modules/network/__init__.py:139
 msgid "Allow access to Mandriva Server Setup from internal networks"
 msgstr ""
+"Permitir o acesso a Mandriva Configuração do Servidor de redes internas"
 
 #: modules/network/__init__.py:83
 msgid ""
 "Choose \"External\" if the interface is connected to the Internet. If the "
 "interface is connected to an internal network, choose \"Internal\""
 msgstr ""
+"Escolha \"externo\" se a interface está conectada à Internet. Se a interface "
+"está conectado a uma rede interna, escolha \"interno\""
 
 #: modules/network/__init__.py:93
 msgid "Configuration method"
-msgstr ""
+msgstr "Metodo de configuração"
 
-#: modules/network/desc.xml:4(desc)
+#: .desc
 msgid "Configure network interfaces"
-msgstr ""
+msgstr "Configuração de interfaces de rede"
 
 #: modules/network/__init__.py:97
 msgid "DHCP configuration"
-msgstr ""
+msgstr "Configuração DHCP"
 
 #: modules/network/__init__.py:126
 msgid "Domain search"
-msgstr ""
+msgstr "Domínio de pesquisa"
 
 #: modules/network/__init__.py:87
 msgid "External network"
-msgstr ""
+msgstr "Rede externa"
 
 #: modules/network/__init__.py:135
 msgid "Firewall configuration"
-msgstr ""
+msgstr "Configuração do Firewall"
 
 #: modules/network/__init__.py:116
 msgid "First DNS server"
-msgstr ""
+msgstr "Servidor DNS primário"
 
 #: modules/network/__init__.py:131
 msgid "Gateway"
-msgstr ""
+msgstr "Gateway"
 
 #: modules/network/__init__.py:106
 msgid "IP Address"
-msgstr ""
+msgstr "Endereço IP"
 
 #: modules/network/__init__.py:82
 msgid "Interface type"
-msgstr ""
+msgstr "Tipo de interface"
 
 #: modules/network/__init__.py:86
 msgid "Internal network"
-msgstr ""
+msgstr "Rede interna"
 
 #: modules/network/__init__.py:98
 msgid "Manual configuration"
-msgstr ""
+msgstr "Configuração manual"
 
 #: modules/network/__init__.py:111
 msgid "Netmask"
-msgstr ""
+msgstr "Mascara"
 
-#: modules/network/setup-network.sh:109
+#: modules/network/setup-network.sh:108
 msgid "Network and firewall configured."
-msgstr ""
+msgstr "Rede e Firewall configurados."
 
-#: modules/network/desc.xml:3(name)
+#: .name
 msgid "Network setup"
-msgstr ""
+msgstr "Configuração de rede"
 
 #: modules/network/__init__.py:96
 msgid "No configuration"
-msgstr ""
+msgstr "Sem configuração"
 
 #: modules/network/__init__.py:121
 msgid "Second DNS server"
+msgstr "Servidor DNS secundário"
+
+#: .packages[0].name
+msgid "all"
 msgstr ""
 
-#: modules/network/desc.xml:7(rpm)
+#: .config[0].type
+msgid "custom"
+msgstr ""
+
+#: .config[0].name
+msgid "interfaces"
+msgstr ""
+
+#: .slug
+msgid "network"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "shorewall"
-msgstr ""
-
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/network/desc.xml:0(None)
-msgid "translator-credits"
-msgstr ""
+msgstr "shorewall"

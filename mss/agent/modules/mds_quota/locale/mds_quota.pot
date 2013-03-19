@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,54 +17,79 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mds_quota/desc.xml:3(name)
+#: .name
 msgid "User quota management"
 msgstr ""
 
-#: modules/mds_quota/desc.xml:4(desc)
-msgid "Set file quotas on the server"
-msgstr ""
-
-#: modules/mds_quota/desc.xml:7(rpm)
-msgid "quota"
-msgstr ""
-
-#: modules/mds_quota/desc.xml:8(rpm)
-msgid "python-mmc-userquota"
-msgstr ""
-
-#: modules/mds_quota/desc.xml:9(rpm)
-msgid "mmc-web-userquota"
-msgstr ""
-
-#: modules/mds_quota/desc.xml:13(module)
+#: .dependencies[0]
 msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_quota/desc.xml:17(label)
+#: .packages[0].rpms[0]
+msgid "quota"
+msgstr ""
+
+#: .packages[0].rpms[1]
+msgid "python-mmc-userquota"
+msgstr ""
+
+#: .packages[0].rpms[2]
+msgid "mmc-web-userquota"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].multi
+msgctxt ".config[0].multi"
+msgid "yes"
+msgstr ""
+
+#: .config[0].name
+msgid "filesystems"
+msgstr ""
+
+#: .config[0].default
+msgid "get_filesystems"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[0].label
 msgid "Filesystems"
 msgstr ""
 
-#: modules/mds_quota/desc.xml:18(help)
+#: .config[0].type
+msgid "text"
+msgstr ""
+
+#: .config[0].help
 msgid ""
 "Specify the filesystems where you want to apply user quotas with the "
-"following format : \"Device path\":\"Identifier string\" (eg: /dev/sda1:Root)"
+"following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_quota/desc.xml:0(None)
-msgid "translator-credits"
+#: .slug
+msgid "mds_quota"
 msgstr ""
 
-#: modules/mds_quota/setup-quota.sh:33
+#: .desc
+msgid "Set file quotas on the server"
+msgstr ""
+
+#: modules/mds_quota/setup-quota.sh:36
 msgid "Quotas not supported on this filesystem : $fs"
 msgstr ""
 
-#: modules/mds_quota/setup-quota.sh:48
+#: modules/mds_quota/setup-quota.sh:54
 msgid "Quota module is activated in the management interface."
 msgstr ""
 
-#: modules/mds_quota/setup-quota.sh:49
+#: modules/mds_quota/setup-quota.sh:55
 msgid ""
 "You can now configure user quotas from the management interface : https://"
 "@HOSTNAME@/mmc/."

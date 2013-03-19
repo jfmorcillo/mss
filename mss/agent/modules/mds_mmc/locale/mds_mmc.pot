@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,130 +17,185 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mds_mmc/desc.xml:3(name)
+#: .name
 msgid "MBS administration web interface"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:4(desc)
-msgid "Users and groups management"
+#: .postinstall.reboot
+msgctxt ".postinstall.reboot"
+msgid "yes"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:10(rpm)
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .dependencies[0]
+msgid "system"
+msgstr ""
+
+#: .dependencies[1]
+msgid "network"
+msgstr ""
+
+#: .packages[0].rpms[0]
 msgid "mmc-web-base"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:11(rpm)
+#: .packages[0].rpms[1]
 msgid "mmc-web-bulkimport"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:12(rpm)
+#: .packages[0].rpms[2]
 msgid "mmc-web-services"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:13(rpm)
+#: .packages[0].rpms[3]
 msgid "mmc-web-dashboard"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:14(rpm)
+#: .packages[0].rpms[4]
 msgid "mmc-web-shorewall"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:15(rpm)
+#: .packages[0].rpms[5]
 msgid "python-mmc-base"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:16(rpm)
+#: .packages[0].rpms[6]
 msgid "python-mmc-bulkimport"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:17(rpm)
+#: .packages[0].rpms[7]
 msgid "python-mmc-services"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:18(rpm)
+#: .packages[0].rpms[8]
 msgid "python-mmc-dashboard"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:19(rpm)
+#: .packages[0].rpms[9]
 msgid "python-mmc-shorewall"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:20(rpm)
+#: .packages[0].rpms[10]
 msgid "mmc-agent"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:21(rpm)
+#: .packages[0].rpms[11]
 msgid "openldap-servers"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:22(rpm)
+#: .packages[0].rpms[12]
 msgid "nss_ldap"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:23(rpm)
+#: .packages[0].rpms[13]
 msgid "openldap-clients"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:24(rpm)
+#: .packages[0].rpms[14]
 msgid "pam_ldap"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:25(rpm)
+#: .packages[0].rpms[15]
 msgid "openldap-mandriva-dit"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:26(rpm)
+#: .packages[0].rpms[16]
 msgid "apache-mod_ssl"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:31(label)
-msgid "Administrator password"
+#: .packages[0].name
+msgid "all"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:32(help)
+#: .config[0].help
 msgid ""
 "The administrator password of the web interface for managing MBS users and "
 "services."
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:35(label)
-msgid "Allow access from internal networks"
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:36(help)
+#: .config[0].type
+msgid "password"
+msgstr ""
+
+#: .config[0].name
+msgid "mdspasswd"
+msgstr ""
+
+#: .config[0].label
+msgid "Administrator password"
+msgstr ""
+
+#: .config[1].default
+msgid "on"
+msgstr ""
+
+#: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the web interface from internal "
 "networks"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:40(label)
-msgid "Allow access from external networks"
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:41(help)
+#: .config[1].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[1].label
+msgid "Allow access from internal networks"
+msgstr ""
+
+#: .config[2].default
+msgid "off"
+msgstr ""
+
+#: .config[2].help
 msgid ""
 "Configure the firewall to allow access to the web interface from external "
 "networks"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:46(reboot)
-msgid "yes"
+#: .config[2].type
+msgctxt ".config[2].type"
+msgid "check"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:49(module)
-msgid "system"
+#: .config[2].name
+msgid "fw_wan"
 msgstr ""
 
-#: modules/mds_mmc/desc.xml:50(module)
-msgid "network"
+#: .config[2].label
+msgid "Allow access from external networks"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mds_mmc/desc.xml:0(None)
-msgid "translator-credits"
+#: .slug
+msgid "mds_mmc"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:41
+#: .desc
+msgid "Users and groups management"
+msgstr ""
+
+#: modules/mds_mmc/setup-mmc.sh:38
 msgid "Error while generating the password."
 msgstr ""
 
@@ -160,19 +215,19 @@ msgstr ""
 msgid "Error while configuring lib nss-ldap."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:134
+#: modules/mds_mmc/setup-mmc.sh:135
 msgid "The MBS administration web interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:135
+#: modules/mds_mmc/setup-mmc.sh:136
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:136
+#: modules/mds_mmc/setup-mmc.sh:137
 msgid "Administrator name : root"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:137
+#: modules/mds_mmc/setup-mmc.sh:138
 msgid "Administrator password : $mypass"
 msgstr ""

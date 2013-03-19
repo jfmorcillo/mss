@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2012-12-30 07:52+0100\n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,19 +17,34 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: modules/mbs_repo/desc.xml:3(name)
-msgid "Mandriva Business Server repositories"
+#: .medias[0].url[0]
+msgid "mes5devel.mandriva.com/BIG/mbs/1/@ARCH@/"
 msgstr ""
 
-#: modules/mbs_repo/desc.xml:4(desc)
+#: .medias[0].mode
+msgid "distrib"
+msgstr ""
+
+#: .medias[0].verbose_name
+msgid "MBS repositories"
+msgstr ""
+
+#: .medias[0].name
+msgid "mbs"
+msgstr ""
+
+#: .medias[0].proto
+msgid "http"
+msgstr ""
+
+#: .desc
 msgid "Get security updates through MBS repositories"
 msgstr ""
 
-#: modules/mbs_repo/desc.xml:6(url)
-msgid "mes5devel.mandriva.com/BIG/mbs/2/@ARCH@/"
+#: .slug
+msgid "mbs_repo"
 msgstr ""
 
-#. Put one translator per line, in the form of NAME <EMAIL>, YEAR1, YEAR2
-#: modules/mbs_repo/desc.xml:0(None)
-msgid "translator-credits"
+#: .name
+msgid "Mandriva Business Server repositories"
 msgstr ""
