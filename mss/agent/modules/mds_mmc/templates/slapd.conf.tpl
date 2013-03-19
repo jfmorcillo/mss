@@ -15,6 +15,8 @@ include /usr/share/openldap/schema/calendar.schema
 include /usr/share/openldap/schema/sudo.schema
 include /usr/share/openldap/schema/dyngroup.schema
 include /usr/share/openldap/schema/ppolicy.schema
+include /usr/share/openldap/schema/dnszone.schema
+include /usr/share/openldap/schema/dhcp.schema
 
 include	/etc/openldap/schema/local.schema
 

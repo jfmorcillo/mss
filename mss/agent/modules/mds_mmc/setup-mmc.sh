@@ -9,14 +9,8 @@ SLAPTEST="/usr/sbin/slaptest"
 SLAPADD="/usr/sbin/slapadd"
 SLAPPASSWD="/usr/sbin/slappasswd"
 
-if [ "`uname -m`" != "x86_64" ]; then
-	slapd_conf_template="templates/slapd-32.conf.tpl"
-    base_mds_template="templates/base-32.ini.tpl"
-else
-	slapd_conf_template="templates/slapd-64.conf.tpl"
-    base_mds_template="templates/base-64.ini.tpl"
-fi
-
+slapd_conf_template="templates/slapd.conf.tpl"
+base_mds_template="templates/base.ini.tpl"
 ppolicy_template="templates/ppolicy.ini.tpl"
 base_ldif_template="templates/init.ldif.tpl"
 acl_template="templates/mandriva-dit-access.conf.tpl"
@@ -39,6 +33,7 @@ pass=`$SLAPPASSWD -h {SSHA} -s "$mypass"`
 
 myslapdconf=`make_temp`
 cat $slapd_conf_template > $myslapdconf
+handle64bits $myslapdconf
 sed -i "s/\@SUFFIX\@/$mysuffix/" $myslapdconf
 chmod 0640 $myslapdconf
 chgrp ldap $myslapdconf
@@ -47,6 +42,7 @@ backup /etc/mmc/plugins/base.ini
 
 #### Now /etc/mmc/plugins/base.ini
 cat $base_mds_template > /etc/mmc/plugins/base.ini
+handle64bits /etc/mmc/plugins/base.ini
 sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/mmc/plugins/base.ini
 sed -i "s/\@PASSWORD\@/$mypass_e/" /etc/mmc/plugins/base.ini
 mkdir /home/archives > /dev/null 2>&1
