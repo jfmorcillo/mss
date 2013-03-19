@@ -637,8 +637,10 @@ class ModuleManager:
         code, output = ProcessManager().p_state(type, module)
         # format output
         tmp = output.splitlines()
-        output = []
-        if tmp:
+        if not tmp:
+            output = [{'code': 0, 'text': u''}]
+        else:
+            output = []
             for line in tmp:
                 try:
                     if int(line[0]) in range(9):
@@ -656,9 +658,6 @@ class ModuleManager:
                 # no char in line
                 except IndexError:
                     pass
-        else:
-            code = 2000
-            output = [{'code': 0, 'text': u''}]
 
         return (code, output)
 
