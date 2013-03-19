@@ -1,7 +1,7 @@
 {
-    "slug": "mds_proxy",
-    "name": "Proxy service",
-    "desc": "Control your Internet connection with content filters",
+    "slug": "squid",
+    "name": "Proxy-cache service",
+    "desc": "Restrict and cache internet access",
     "actions": [
         {
             "type": "link",

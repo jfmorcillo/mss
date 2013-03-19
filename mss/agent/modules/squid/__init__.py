@@ -20,4 +20,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ("setup-proxy.sh", [])
+    return ("setup-squid.sh", [])

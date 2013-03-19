@@ -41,16 +41,13 @@ sarg_conf="/etc/sarg/sarg.conf"
 echo "0Configuring squid..."
 backup $proxy_conf
 cat $proxy_template > $proxy_conf
-sed -i "s/\@DN\@/$MDSSUFFIX/" $proxy_conf
-# handle 64bit
-if [ -d /usr/lib64 ]; then
-    sed -i "s!/usr/lib!/usr/lib64!g" $proxy_conf
-fi
+replace @SUFFIX@ "$MDSSUFFIX" $proxy_conf
+handle64bits $proxy_conf
 
 backup $sarg_conf
 cat $sarg_template > $sarg_conf
-sed -i "s/\@DN\@/$MDSSUFFIX/" $sarg_conf
-sed -i "s/\@PASS\@/$MDSPASS_E/" $sarg_conf
+replace @SUFFIX@ "$MDSSUFFIX" $sarg_conf
+replace @PASS@ "$MDSPASS_E" $sarg_conf
 
 echo "Creating groups..."
 python create-groups.py
@@ -65,7 +62,7 @@ enable_service squid
 restart_service squid
 restart_service mmc-agent
 
-info_b $"The Proxy service is running"
-info $"You can manage the proxy rules from the management interface : https://@HOSTNAME@/mmc/"
+info_b $"The proxy service is running"
+info $"You can manage proxy rules from the management interface : https://@HOSTNAME@/mmc/"
 
 exit 0

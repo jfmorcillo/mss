@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .packages[0].rpms[0]
+msgctxt ".packages[0].rpms[0]"
+msgid "squid"
+msgstr ""
+
+#: .packages[0].rpms[1]
+msgid "sarg"
+msgstr ""
+
+#: .packages[0].rpms[2]
+msgid "python-mmc-squid"
+msgstr ""
+
+#: .packages[0].rpms[3]
+msgid "mmc-web-squid"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .desc
+msgid "Restrict and cache internet access"
+msgstr ""
+
+#: .slug
+msgctxt ".slug"
+msgid "squid"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .name
+msgid "Proxy-cache service"
+msgstr ""
+
+#: modules/squid/setup-squid.sh:55
+msgid "Something went wrong while creating the user groups."
+msgstr ""
+
+#: modules/squid/setup-squid.sh:65
+msgid "The proxy service is running"
+msgstr ""
+
+#: modules/squid/setup-squid.sh:66
+msgid ""
+"You can manage proxy rules from the management interface : https://"
+"@HOSTNAME@/mmc/"
+msgstr ""
+
+#: modules/squid/create-groups.py:11
+msgid "Full access to Internet"
+msgstr ""
+
+#: modules/squid/create-groups.py:12
+msgid "Filtered access to Internet"
+msgstr ""
