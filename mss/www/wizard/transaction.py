@@ -12,6 +12,7 @@ class Steps:
     INSTALL = "install"
     CONFIG = "config"
     REBOOT = "reboot"
+    END = "end"
 
 class Transaction:
 
@@ -76,6 +77,12 @@ class Transaction:
                         'disabled': True,
                         'title': _("Reboot"),
                         'current': False
+                    },
+                    {
+                        'id': Steps.END,
+                        'disabled': False,
+                        'title': _("End of installation"),
+                        'current': False
                     }
                 ]
                 self.prepare()
@@ -108,22 +115,23 @@ class Transaction:
         err, result = xmlrpc.call('get_medias', self.modules)
         for media in result:
             if 'auth' in media and media['auth']:
-                self.enable_step(Steps.MEDIAS);
+                self.enable_step(Steps.MEDIAS)
         if len(result) > 0:
-            self.enable_step(Steps.MEDIAS_ADD);
+            self.enable_step(Steps.MEDIAS_ADD)
 
         err, result = xmlrpc.call('get_modules', self.modules)
         for module in result:
             if not module['installed']:
-                self.enable_step(Steps.INSTALL);
+                self.enable_step(Steps.INSTALL)
             if module['reboot']:
-                self.enable_step(Steps.REBOOT);
+                self.enable_step(Steps.REBOOT)
+                self.disable_step(Steps.END)
 
         err, result = xmlrpc.call('get_config', self.modules)
         for module in result:
             infos = module[0]
             if not infos['skip_config']:
-                self.enable_step(Steps.CONFIG);
+                self.enable_step(Steps.CONFIG)
 
     def update_module_info(self):
         err, result = xmlrpc.call('preinstall_modules', self.modules)

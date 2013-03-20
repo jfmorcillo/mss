@@ -498,6 +498,22 @@ def reboot_run(request):
     xmlrpc.call('reboot')
     return HttpResponse("")
 
+@login_required
+def end(request):
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.END)
+
+    for module in transaction.modules:
+        xmlrpc.call('end_config', module)
+        if module == "mds_mmc":
+            xmlrpc.call('set_option', 'first-time', 'yes')
+            request.session['first-time'] = True;
+
+    return render_to_response('end.html',
+            {'transaction': transaction},
+            context_instance=RequestContext(request))
+
+
 def toHtml(request, text, links = True):
     # replace hostname tag with server name
     text = re.sub('@HOSTNAME@', request.META['HTTP_HOST'].replace(':8000', ''), text);

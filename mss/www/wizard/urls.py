@@ -48,4 +48,5 @@ urlpatterns = patterns('mss.www.wizard.views',
     url(r'^config/end/(?P<module>[\w-]+)/$', 'config_end', name="config_end"),
     url(r'^reboot/$', 'reboot', name="reboot"),
     url(r'^reboot/run/$', 'reboot_run', name="reboot_run"),
+    url(r'^end/$', 'end', name="end"),
 )

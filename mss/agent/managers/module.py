@@ -612,17 +612,20 @@ class ModuleManager:
         if not self.modules[module].configured:
             logger.debug("Set %s as configured" % str(module))
             self.modules[module].configured = True
-            # store the config log
-            logger.debug("Saving %s configuration log in the DB" % str(module))
-            log_type = self.session.query(LogTypeTable).filter(LogTypeTable.name == "config").first()
-            if not log_type:
-                log_type = LogTypeTable("config")
-                self.session.add(log_type)
+            # try to store the config log
+            try:
+                log_type = self.session.query(LogTypeTable).filter(LogTypeTable.name == "config").first()
+                if not log_type:
+                    log_type = LogTypeTable("config")
+                    self.session.add(log_type)
+                    self.session.commit()
+                module_obj = self.session.query(ModuleTable).filter(ModuleTable.name == module).first()
+                config_log = LogTable(log_type.id, module_obj.id, self.get_state("config", module))
+                logger.debug("Saving %s configuration log in the DB" % str(module))
+                self.session.add(config_log)
                 self.session.commit()
-            module_obj = self.session.query(ModuleTable).filter(ModuleTable.name == module).first()
-            config_log = LogTable(log_type.id, module_obj.id, self.get_state("config", module))
-            self.session.add(config_log)
-            self.session.commit()
+            except:
+                pass
         return 0
 
     def clean_output(self, string):
