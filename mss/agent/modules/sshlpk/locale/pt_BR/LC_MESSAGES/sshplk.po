@@ -1,0 +1,39 @@
+#: .desc
+msgid "Manage your user's SSH keys using LDAP as a backend"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "SSH keys management"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr ""
+
+#: .actions[0].type
+msgid "link"
+msgstr ""
+
+#: .dependencies[0]
+msgid "mds_mmc"
+msgstr ""
+
+#: .packages[0].rpms[1]
+msgid "mmc-web-sshlpk"
+msgstr ""
+
+#: .packages[0].rpms[0]
+msgid "python-mmc-sshlpk"
+msgstr ""
+
+#: .slug
+msgid "sshlpk"
+msgstr ""
