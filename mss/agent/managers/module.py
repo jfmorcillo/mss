@@ -286,7 +286,7 @@ class ModuleManager:
     def reboot(self):
         ProcessManager().reboot()
 
-    def set_packages(self, code, output):
+    def set_packages(self, module, code, output):
         if code == 0:
             packages = output.split('#')
             if not packages:
@@ -605,13 +605,19 @@ class ModuleManager:
         logger.debug("Run configuration for %s" % str(module))
         path, script, args = self.modules[module].info_config()
         logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
-        return ProcessManager().run_script(script, args, path, module)
+        return ProcessManager().run_script(script, args, path, module, self.end_config)
 
     @expose
-    def end_config(self, module):
-        if not self.modules[module].configured:
+    def end_config(self, module, code, output):
+        """
+        Callback after run script
+        """
+        if code == 0 and not self.modules[module].configured:
             logger.debug("Set %s as configured" % str(module))
             self.modules[module].configured = True
+            # FIXME
+            if module == "mds_mmc":
+                self.set_option("first-time", "yes")
             # try to store the config log
             try:
                 log_type = self.session.query(LogTypeTable).filter(LogTypeTable.name == "config").first()

@@ -474,10 +474,8 @@ def config_run(request, module):
 @login_required
 def config_end(request, module):
     """ tells the agent the module has been configured """
-    xmlrpc.call('end_config', module)
     # FIXME
     if module == "mds_mmc":
-        xmlrpc.call('set_option', 'first-time', 'yes')
         request.session['first-time'] = True;
     return HttpResponse("")
 
@@ -504,10 +502,7 @@ def end(request):
     transaction.set_current_step(Steps.END)
 
     for module in transaction.modules:
-        xmlrpc.call('end_config', module)
-        if module == "mds_mmc":
-            xmlrpc.call('set_option', 'first-time', 'yes')
-            request.session['first-time'] = True;
+        xmlrpc.call('end_config', module, 0, "")
 
     return render_to_response('end.html',
             {'transaction': transaction},

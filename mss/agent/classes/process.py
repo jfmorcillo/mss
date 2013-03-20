@@ -112,6 +112,6 @@ class ProcessThread(threading.Thread):
                     self.lock.release()
                 self._code = self.process.returncode
                 if self.callback:
-                    self.callback(self._code, self._output)
+                    self.callback(self.module, self._code, self._output)
                 logger.debug("Finished %s command" % self.type)
                 break

@@ -47,13 +47,13 @@ class ProcessManager:
         """ launch installation of packages list """
         self.launch("install", ["urpmi", "--auto", "--no-suggests"] + packages)
 
-    def run_script(self, script, args, cwd, module):
+    def run_script(self, script, args, cwd, module, callback):
         """ launch configuration script for module """
         env = {'TEXTDOMAIN': module,
                'TEXTDOMAINDIR': os.path.join(TranslationManager().get_catalog_path(module), 'locale')}
         if os.path.exists(os.path.join(cwd, script)):
             self.launch("config", ["bash", script] + args, cwd=cwd,
-                        module=module, env=env)
+                        module=module, env=env, callback=callback)
             return True
         else:
             return False

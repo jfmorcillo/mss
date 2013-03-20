@@ -51,8 +51,6 @@ class Module(object):
         desc_json_fp = open(os.path.join(self.path, "desc.json"))
         self._conf = json.load(desc_json_fp)
         desc_json_fp.close()
-        # BDD access
-        self.session = Session()
         # load module info
         self.load()
         # get module config object
@@ -125,7 +123,8 @@ class Module(object):
                 except:
                     pass
     	# check if module is configured from database
-        module = self.session.query(ModuleTable).filter(ModuleTable.name == self.slug).first()
+        session = Session()
+        module = session.query(ModuleTable).filter(ModuleTable.name == self.slug).first()
         if module and module.configured:
             self._configured = True
         else:
@@ -148,8 +147,9 @@ class Module(object):
         if value:
             module = ModuleTable(self.slug)
             module.configured = datetime.now()
-            self.session.merge(module)
-            self.session.commit()
+            session = Session()
+            session.merge(module)
+            session.commit()
 
     @property
     def installed(self):

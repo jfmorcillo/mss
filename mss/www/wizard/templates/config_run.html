@@ -72,10 +72,6 @@
                     current_task.removeClass("alert-info");
                     current_task.addClass("alert-success");
                     current_task.html('<i class="icon-ok"></i> {% trans "Configuration succeded." %}');
-                    $.get('/mss/config/end/'+modules[current]+'/')
-                     .error(function(xhr) {
-                        if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
-                     });
                     install_summary = current_task.next();
                     log = new collectLog();
                     install_summary.html(log.toString());
