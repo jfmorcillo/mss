@@ -15,6 +15,7 @@
             "rpms": ["squid", "sarg", "python-mmc-squid", "mmc-web-squid"]
         }
     ],
+    "dependencies": ["mds_mmc"],
     "config": [
         {
             "type": "check",

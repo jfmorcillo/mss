@@ -366,14 +366,19 @@ class ModuleManager:
         mod = self._hAddons.get(m, {})
         # return result
         result = {
-            'slug': mod['slug'], 'name': mod['name'],
-            'actions': actions, 'desc': mod.get('description').split("\n")[0],
-            'purchased': mod.get("purchased", False), 'price': mod.get("price", 0),
+            'slug': mod['slug'],
+            'name': mod['name'],
+            'actions': actions,
+            'desc': mod.get('description').split("\n")[0],
+            'purchased': mod.get("purchased", False),
+            'price': mod.get("price", 0),
             'installed': installed,
-            'configured': configured, 'conflict': conflicts,
+            'configured': configured,
+            'conflict': conflicts,
             'conflicts': mod['module'].get('conflicts', []),
             'dependencies': mod['module'].get('dependencies', []),
-            'reboot': mod['module'].get('reboot', False)}
+            'reboot': mod['module'].get('reboot', False)
+        }
         logger.debug("Module info: %s" % str(result))
         return result
 
