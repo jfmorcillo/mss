@@ -30,6 +30,7 @@ from datetime import datetime
 from IPy import IP
 
 from mss.agent.lib.db import Session, ModuleTable
+from mss.agent.lib.utils import grep
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
 from mss.agent.managers.translation import TranslationManager
@@ -174,21 +175,27 @@ class Module(object):
     @property
     def medias(self):
         """ get medias for module """
-        media = self._conf.get("medias", None)
-        if media is not None:
-            name = self.slug
-            verbose_name = media.get("verbose_name", name)
-            auth = media.get("auth", None)
-            can_skip = media.get("can_skip", False)
-            urls = []
-            # format media URL with correct arch
-            for url in media.get("url", []):
-                urls.append(re.sub('@ARCH@', self.arch, url.text))
-            proto = media.get("proto", "http")
-            mode = media.get("mode", None)
-            return Media(name, verbose_name, urls, auth, proto, mode, can_skip)
-        else:
-            return None
+        result = []
+        medias = self._conf.get("medias", None)
+        if medias is not None:
+            for media in medias:
+                name = self.slug
+                verbose_name = media.get("verbose_name", name)
+                auth = media.get("auth", None)
+                can_skip = media.get("can_skip", False)
+                urls = []
+                # format media URL with correct arch
+                for url in media.get("url", []):
+                    urls.append(re.sub('@ARCH@', self.arch, url))
+                proto = media.get("proto", "http")
+                mode = media.get("mode", None)
+                if url and not self.check_media(url[0]):
+                    result.append(Media(name, verbose_name, urls, auth, proto, mode, can_skip))
+        return result
+
+    def check_media(self, search):
+        """ check if media exist """
+        return grep(search, '/etc/urpmi/urpmi.cfg')
 
     def get_config(self):
         """ get module current config """

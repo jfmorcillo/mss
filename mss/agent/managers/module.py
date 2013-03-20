@@ -34,7 +34,7 @@ import hashlib
 import zipfile
 import time
 
-from mss.agent.lib.utils import grep, Singleton
+from mss.agent.lib.utils import Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.classes.module import Module
 from mss.agent.managers.process import ProcessManager
@@ -297,11 +297,6 @@ class ModuleManager:
         else:
             logger.error("Can't load packages.")
 
-    @expose
-    def check_media(self, search):
-        """ check if media exist """
-        return grep(search, '/etc/urpmi/urpmi.cfg')
-
     def get_available_modules(self):
         ret = []
         for item in glob.glob(os.path.join(self.config.get("local", "cacheDir"),
@@ -506,19 +501,23 @@ class ModuleManager:
     def get_medias(self, modules):
         """ get medias for modules """
         logger.info("Get medias for modules: %s" % str(modules))
-        medias = [self._hAddons[module]['repositories'] for module in modules if not self.check_media(module) and self._hAddons[module]['repositories']]
-        logger.debug("Repository list: %s" % str(medias))
+        medias = []
+        for module in modules:
+            if self.modules[module].medias:
+                medias = medias + self.modules[module].medias
+        logger.debug("Medias list: %s" % str(medias))
         return medias
 
     @expose
     def add_media(self, module, login=None, passwd=None):
         """ add all medias for module """
-        media = self.modules[module].medias
-        logger.info("Add media : %s" % media.name)
-        # get add commands for media
-        command = media.get_command(login, passwd)
-        logger.debug("Execute: %s" % str(command))
-        ProcessManager().add_media(command)
+        medias = self.modules[module].medias
+        for media in medias:
+            logger.info("Add media : %s" % media.name)
+            # get add commands for media
+            command = media.get_command(login, passwd)
+            logger.debug("Execute: %s" % str(command))
+            ProcessManager().add_media(command)
 
     @expose
     def download_modules(self, modules):

@@ -1,7 +1,7 @@
 {
     "slug": "mbs_repo",
     "name": "Mandriva Business Server repositories",
-    "desc": "Get security updates through MBS repositories",
+    "desc": "Access software from MBS public repositories",
     "medias": [
         {
             "name": "mbs",
@@ -9,7 +9,7 @@
             "proto": "http",
             "mode": "distrib",
             "url": [
-                "mes5devel.mandriva.com/BIG/mbs/1/@ARCH@/"
+                "mirror.mandriva.com/mbs1/@ARCH@/"
                 ]
         }
     ]
