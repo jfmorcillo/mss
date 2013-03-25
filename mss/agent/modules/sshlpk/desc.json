@@ -1,0 +1,18 @@
+{
+    "slug": "sshlpk",
+    "name": "SSH key management",
+    "desc": "Manage your user's SSH key using LDAP as a backend",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["python-mmc-sshlpk", "mmc-web-sslpk"]
+        }
+    ]
+}
