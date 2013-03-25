@@ -30,11 +30,8 @@ mysuffix=`calc_suffix $DOMAIN`
 fw_lan=$2
 fw_wan=$3
 
-# MDS schemas
-add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dhcp.schema
-add_schema /usr/share/doc/python-mmc-base/contrib/ldap/dnszone.schema
-add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mail.schema
-add_schema /usr/share/doc/python-mmc-base/contrib/ldap/mmc.schema
+# LDAP schema
+add_schema templates/mmc.schema
 
 # Generate LDAP password
 pass=`$SLAPPASSWD -h {SSHA} -s "$mypass"`

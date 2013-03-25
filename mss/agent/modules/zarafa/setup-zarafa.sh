@@ -206,7 +206,7 @@ rm -f /tmp/openssl.cnf
 chmod 600 /etc/mss/ssl/smtpd.key
 
 # add zarafa schema in LDAP
-add_schema /usr/share/doc/python-mmc-base/contrib/ldap/zarafa.schema
+add_schema templates/zarafa.schema
 
 # mmc conf
 backup /etc/mmc/plugins/mail.ini

@@ -8,7 +8,7 @@ userquota_tpl="templates/userquota.ini.tpl"
 
 fss=$1
 
-add_schema /usr/share/doc/python-mmc-base/contrib/ldap/quota.schema
+add_schema templates/quota.schema
 
 backup /etc/fstab
 for f in $fss; do

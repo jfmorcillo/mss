@@ -11,6 +11,9 @@ fw_wan="$2"
 base_reseau_template="templates/network.ini.tpl"
 base_dhcpd_template="templates/dhcpd.conf.tpl"
 
+# LDAP schma
+add_schema templates/dhcp.schema
+
 # check if DNS module is enabled
 dns_enable=1
 [ ! -f /var/lib/named/etc/named.conf ] && dns_enable=0

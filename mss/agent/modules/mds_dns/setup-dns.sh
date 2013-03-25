@@ -14,6 +14,9 @@ forwarders="$2"
 fw_lan="$3"
 fw_wan="$4"
 
+# LDAP schema
+add_schema templates/dnszone.schema
+
 ln -sf /var/lib/named/var/named/ /var/named
 
 # check if DHCP module is enabled

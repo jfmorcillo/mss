@@ -36,6 +36,9 @@ popimap_proto="$2"
 fw_lan="$3"
 fw_wan="$4"
 
+# LDAP schema
+add_schema temapltes/mail.schema
+
 # postfix
 backup /etc/postfix/main.cf
 cat $main_cf_template > /etc/postfix/main.cf
