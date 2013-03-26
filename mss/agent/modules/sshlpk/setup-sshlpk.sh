@@ -9,8 +9,8 @@ check_mmc_configured
 # Import LDAP schema
 add_schema ldap/openssh-lpk.schema
 
-# Restart mmc agent
+# Restart services
+restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
-
 
 exit 0
