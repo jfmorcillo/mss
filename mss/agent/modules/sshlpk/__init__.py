@@ -20,4 +20,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ('setup-sshplk.sh')
+    return ('setup-sshlpk.sh')
