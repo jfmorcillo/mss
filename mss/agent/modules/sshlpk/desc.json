@@ -9,6 +9,7 @@
             "value": "https://@HOSTNAME@/mmc/main.php"
         }
     ],
+    "dependencies": ["mds_mmc"],
     "packages": [
         {
             "name": "all",
