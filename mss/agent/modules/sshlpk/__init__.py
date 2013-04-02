@@ -20,4 +20,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ('setup-sshlpk.sh')
+    return ('setup-sshlpk.sh', ["fw_lan", "fw_wan"])
