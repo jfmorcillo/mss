@@ -180,7 +180,7 @@ class Module(object):
         if repositories:
             for repository in repositories:
                 repository['url'] = repository['url'].replace('@ARCH@', self.arch)
-                if 'url' in repository and not grep(repository['url'], '/etc/urpmi/urpmi.cfg'):
+                if 'url' in repository and not grep(repository['url'].split('://')[1], '/etc/urpmi/urpmi.cfg'):
                     repository['module_slug'] = self.slug
                     self._repositories.append(Media(**repository))
         return self._repositories

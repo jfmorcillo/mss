@@ -15,8 +15,8 @@
         {% for repository in transaction.repositories %}
         repositories.push({"slug": "{{ repository.slug }}",
                            "module_slug": "{{ repository.module_slug }}",
-                           "username": "{{ repository.username }}",
-                           "password": "{{ repository.password }}"});
+                           "username": "{{ username }}",
+                           "password": "{{ password }}"});
         {% endfor %}
 
         next = function() {
