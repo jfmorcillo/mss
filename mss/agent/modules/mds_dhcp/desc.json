@@ -1,7 +1,7 @@
 {
     "slug":   "mds_dhcp",
     "name": "DHCP Service",
-    "desc": "Configure automatically your client computers IP settings",
+    "description": "Configure automatically your client computers IP settings",
     "actions": [
         {
             "type": "link",

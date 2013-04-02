@@ -1,7 +1,7 @@
 {
     "slug": "system",
     "name": "System setup",
-    "desc": "General system configuration",
+    "description": "General system configuration",
     "config": [
         {
             "type": "text",

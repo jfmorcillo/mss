@@ -1,7 +1,7 @@
 {
     "slug":   "mds_kerberos",
     "name": "Kerberos authentication with MDS backend",
-    "desc": "Install and configure Kerberos authentication",
+    "description": "Install and configure Kerberos authentication",
     "actions": [
         {
             "type": "link",

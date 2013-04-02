@@ -369,7 +369,7 @@ class ModuleManager:
             'slug': mod['slug'],
             'name': mod['name'],
             'actions': actions,
-            'desc': mod.get('description').split("\n")[0],
+            'description': mod.get('description').split("\n")[0],
             'purchased': mod.get("purchased", False),
             'price': mod.get("price", 0),
             'installed': installed,

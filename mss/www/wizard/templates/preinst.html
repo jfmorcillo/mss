@@ -18,7 +18,7 @@
             {% for module in transaction.modules_info %}
             <div class="module">
                 <h2>{{ module.name }}</h2>
-                <p class="help-block">{{ module.desc }}
+                <p class="help-block">{{ module.description }}
                 {% if module.dep %}(<strong>{% trans "Added as a dependency" %}</strong>){% endif %}
                 {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
                 {% if module.force %}

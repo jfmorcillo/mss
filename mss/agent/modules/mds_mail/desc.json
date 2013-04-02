@@ -1,7 +1,7 @@
 {
     "slug":   "mds_mail",
     "name": "Mail Service",
-    "desc": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
+    "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
     "actions": [
         {
             "type": "link",

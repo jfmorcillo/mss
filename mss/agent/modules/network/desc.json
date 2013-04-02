@@ -1,7 +1,7 @@
 {
     "slug": "network",
     "name": "Network setup",
-    "desc": "Configure network interfaces",
+    "description": "Configure network interfaces",
     "packages": [
         {
             "name": "all",

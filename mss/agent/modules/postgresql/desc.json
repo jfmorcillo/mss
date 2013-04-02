@@ -1,7 +1,7 @@
 {
     "slug": "postgresql",
     "name": "PostgreSQL database",
-    "desc": "PostgreSQL relational database",
+    "description": "PostgreSQL relational database",
     "packages": [
         {
             "name": "all",

@@ -1,7 +1,7 @@
 {
     "slug": "sshlpk",
     "name": "SSH keys management",
-    "desc": "Manage your user's SSH keys using LDAP as a backend",
+    "description": "Manage your user's SSH keys using LDAP as a backend",
     "actions": [
         {
             "type": "link",

@@ -72,9 +72,9 @@ class Module(object):
         return _(self._conf.get('name', self.slug), self.slug)
 
     @property
-    def desc(self):
-        if self._conf.get('desc', False):
-            return _(self._conf['desc'], self.slug)
+    def description(self):
+        if self._conf.get('description', False):
+            return _(self._conf['description'], self.slug)
         else:
             return ""
 
@@ -362,4 +362,4 @@ class Module(object):
         return (self.path, script, args_values)
 
     def __str__(self):
-        return "%s : %s" % (self.name, self.desc)
+        return "%s : %s" % (self.name, self.description)

@@ -1,7 +1,7 @@
 {
     "slug": "mds_webmail",
     "name": "Webmail",
-    "desc": "Roundcube, a complete webmail solution for your mail service",
+    "description": "Roundcube, a complete webmail solution for your mail service",
     "actions": [
         {
             "type": "link",

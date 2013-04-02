@@ -1,7 +1,7 @@
 {
     "slug": "mbs_repo",
     "name": "Mandriva Business Server repositories",
-    "desc": "Access software from MBS public repositories",
+    "description": "Access software from MBS public repositories",
     "repositories": [
         {
             "slug": "mbs",
