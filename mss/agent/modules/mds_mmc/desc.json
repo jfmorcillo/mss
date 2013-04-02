@@ -36,6 +36,9 @@
         }
     ],
     "dependencies": ["system", "network", "mbs_repo"],
+    "module": {
+        "reboot": true
+    },
     "config": [
         {
             "type": "password",
@@ -58,8 +61,5 @@
             "label": "Allow access from external networks",
             "help": "Configure the firewall to allow access to the web interface from external networks"
         }
-    ],
-    "postinstall": {
-        "reboot": "yes"
-    }
+    ]
 }

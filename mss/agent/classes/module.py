@@ -52,7 +52,9 @@ class Module(object):
         self._conf = json.load(desc_json_fp)
         desc_json_fp.close()
         # load module info
-        self.load()
+        self.slug = self._conf.get("slug", '')
+        # Setup translations catalog
+        TranslationManager().set_catalog(self.slug, self.path)
         # get module config object
         self.module = None
         # get current module config
@@ -65,52 +67,34 @@ class Module(object):
             logger.error("%s" % err)
         self.check_configured()
 
-    def load(self):
-        """ load module basic infos """
-        # get common info
-        self.slug = self._conf.get("slug", '')
-        TranslationManager().set_catalog(self.slug, self.path)
-        self._name = self._conf.get("name", '')
-        self._desc = self._conf.get("desc", self._name)
-        self._actions = self._conf.get("actions", [])
-        # get module dependencies
-        self._dependencies = self._conf.get("dependencies", [])
-        # get module conflicts
-        self._conflicts = self._conf.get("conflict", [])
-        # reboot after configuration ?
-        if 'postinstall' in self._conf \
-            and 'reboot' in self._conf['postinstall'] \
-                and self._conf['postinstall']['reboot'] == "yes":
-            self._reboot = True
-        else:
-            self._reboot = False
-
     @property
     def name(self):
-        return _(self._name, self.slug)
+        return _(self._conf.get('name', self.slug), self.slug)
 
     @property
     def desc(self):
-        if self._desc:
-            return _(self._desc, self.slug)
+        if self._conf.get('desc', False):
+            return _(self._conf['desc'], self.slug)
         else:
             return ""
 
     @property
     def actions(self):
-        return self._actions
+        return self._conf.get("actions", [])
 
     @property
     def dependencies(self):
-        return self._dependencies
+        return self._conf.get("dependencies", [])
 
     @property
     def conflicts(self):
-        return self._conflicts
+        return self._conf.get("conflict", [])
 
     @property
     def reboot(self):
-        return self._reboot
+        if self._conf.get("module", False):
+            return self._conf["module"].get("reboot", False)
+        return False
 
     def check_configured(self):
         # check if module is configured by calling module method
