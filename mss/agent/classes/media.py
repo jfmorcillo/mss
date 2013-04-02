@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2013 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -25,37 +23,27 @@ import urllib
 
 class Media:
 
-    def __init__(self, name, verbose_name, urls, auth=None, proto="https", mode="default", can_skip=False):
+    def __init__(self, module_slug="", slug="", name="", url="", options="", restricted=False, required=False):
+        self.module_slug = module_slug
+        self.slug = slug
         self.name = name
-        self.verbose_name = verbose_name
-        self.auth = auth
-        self.urls = urls
-        self.proto = proto
-        self.mode = mode
-        self.can_skip = can_skip
-
-    def need_auth(self):
-        if self.auth:
-            return True
-        else:
-            return False
+        self.url = url
+        self.options = options.split()
+        self.restricted = restricted
+        self.required = required
 
     def get_command(self, login=None, password=None):
+        options = []
+        url = self.url
 
-        command = []
-        self.options = []
-
-        if self.mode == "distrib":
-            self.options.append('--distrib')
-        elif self.mode == "updates":
-            self.options.append('--updates')
+        if not u'--distrib' in self.options and not u'--updates' in self.options:
+            options.append(self.slug)
         else:
-            self.options.append(self.name)
+            options = self.options
 
-        for url in self.urls:
-            if login and password:
-                command += ['urpmi.addmedia'] + self.options + [ self.proto+"://"+urllib.quote(login)+":"+password+"@"+url, ';']
-            else:
-                command += ['urpmi.addmedia'] + self.options + [ self.proto+"://"+url, ';']
+        if self.restricted:
+            assert login
+            assert password
+            url = url.replace("://", "://%s:%s@" % (urllib.quote(login), urllib.quote(password)), 1)
 
-        return " ".join(command)
+        return ['urpmi.addmedia'] + options + [ url ]

@@ -162,7 +162,7 @@ class Module(object):
     @property
     def packages(self):
         """ get packages for module """
-        if not getattr(self, "_packages", None):
+        if getattr(self, "_packages", None) is None:
             # get packages for current arch
             self._packages = []
             targets = self._conf.get("packages", [])
@@ -173,29 +173,17 @@ class Module(object):
         return self._packages
 
     @property
-    def medias(self):
-        """ get medias for module """
-        result = []
-        medias = self._conf.get("medias", None)
-        if medias is not None:
-            for media in medias:
-                name = self.slug
-                verbose_name = media.get("verbose_name", name)
-                auth = media.get("auth", None)
-                can_skip = media.get("can_skip", False)
-                urls = []
-                # format media URL with correct arch
-                for url in media.get("url", []):
-                    urls.append(re.sub('@ARCH@', self.arch, url))
-                proto = media.get("proto", "http")
-                mode = media.get("mode", None)
-                if url and not self.check_media(url[0]):
-                    result.append(Media(name, verbose_name, urls, auth, proto, mode, can_skip))
-        return result
-
-    def check_media(self, search):
-        """ check if media exist """
-        return grep(search, '/etc/urpmi/urpmi.cfg')
+    def repositories(self):
+        """ get module repositories """
+        self._repositories = []
+        repositories = self._conf.get("repositories", [])
+        if repositories:
+            for repository in repositories:
+                repository['url'] = repository['url'].replace('@ARCH@', self.arch)
+                if 'url' in repository and not grep(repository['url'], '/etc/urpmi/urpmi.cfg'):
+                    repository['module_slug'] = self.slug
+                    self._repositories.append(Media(**repository))
+        return self._repositories
 
     def get_config(self):
         """ get module current config """

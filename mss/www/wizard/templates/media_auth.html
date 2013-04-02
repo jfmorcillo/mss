@@ -10,34 +10,29 @@
     </div>
     <p class="alert">{{ transaction.current_step.info }}</p>
     <form name="media-authentication" class="form-horizontal" action="{{ transaction.next_step_url }}" method="post">
-    {% for auth in auths %}
-        {% ifequal auth "my" %}
         <fieldset>
             <legend>{% trans "My authentication" %}</legend>
             <div class="control-group">
-                <label class="control-label" for="{{ auth }}_username">{% trans "Username" %} : </label>
+                <label class="control-label" for="username">{% trans "Username" %} : </label>
                 <div class="controls">
-                    <input name="{{ auth }}_username" id="{{ auth }}_username" 
+                    <input name="username" id="username"
                            type="text" value="{% if user.profile %}{{ user.username }}{% endif %}"
-                           data-placement="right" rel="tooltip" 
+                           data-placement="right" rel="tooltip"
                            data-original-title="{% trans "Your my.mandriva.com email address." %}" />
                 </div>
             </div>
-            <div class="control-group">                
-                <label class="control-label" for="{{ auth}}_password">{% trans "Password" %} : </label>
+            <div class="control-group">
+                <label class="control-label" for="password">{% trans "Password" %} : </label>
                 <div class="controls">
-                    <input name="{{ auth}}_password" id="{{ auth}}_password" type="password"
-                           data-placement="right" rel="tooltip" 
+                    <input name="password" id="password" type="password"
+                           data-placement="right" rel="tooltip"
                            data-original-title="{% trans "Your my.mandriva.com password." %}" />
                 </div>
             </div>
         </fieldset>
-        {% endifequal %}
-    {% endfor %}
-                {{ medias }}
         <div class="form-actions">
             <div class="pull-right">
-                {% if can_skip %}
+                {% if required %}
                 <a href="{% url install %}">{% trans "Don't add medias" %}</a>&nbsp;<span class="separator"></span>
                 {% endif %}
                 <button type="submit">{% trans "Add medias" %}</button>

@@ -503,26 +503,23 @@ class ModuleManager:
         return None
 
     @expose
-    def get_medias(self, modules):
-        """ get medias for modules """
-        logger.info("Get medias for modules: %s" % str(modules))
-        medias = []
+    def get_repositories(self, modules):
+        """ get repositories for modules """
+        logger.debug("Get packages repositories for modules: %s" % ", ".join(modules))
+        repositories = []
         for module in modules:
-            if self.modules[module].medias:
-                medias = medias + self.modules[module].medias
-        logger.debug("Medias list: %s" % str(medias))
-        return medias
+            repositories = repositories + self.modules[module].repositories
+        logger.debug("Result: %s" % repositories)
+        return repositories
 
     @expose
-    def add_media(self, module, login=None, passwd=None):
-        """ add all medias for module """
-        medias = self.modules[module].medias
-        for media in medias:
-            logger.info("Add media : %s" % media.name)
-            # get add commands for media
-            command = media.get_command(login, passwd)
-            logger.debug("Execute: %s" % str(command))
-            ProcessManager().add_media(command)
+    def add_repository(self, module_slug, repo_slug, login=None, passwd=None):
+        """ add repository of a module """
+        repositories = self.modules[module_slug].repositories
+        for repository in repositories:
+            if repository.slug == repo_slug:
+                logger.info("Add repository: %s" % repository.name)
+                ProcessManager().add_repository(repository.get_command(login, passwd))
 
     @expose
     def download_modules(self, modules):

@@ -70,10 +70,9 @@ class ProcessManager:
         """ check if net is available """
         self.launch("net", ["wget", "-T", "2", "http://api.mandriva.com", "-O", "/dev/null"], replace=True, env={'LC_ALL': 'C'})
 
-    def add_media(self, command):
-        """ add media """
-        self.launch("media", command, shell=True)
-        #return (self.threads['media'].code, self.threads['media'].output)
+    def add_repository(self, command):
+        """ add repository """
+        self.launch("repository", command)
 
     def launch(self, type, command, cwd=None, callback=None, shell=False,
                replace=False, env=None, module="agent"):
@@ -126,7 +125,7 @@ class ProcessManager:
                     status.append(_("Installing packages"))
                 if thread.type == "update":
                     status.append(_("Updating medias"))
-                if thread.type == "media":
+                if thread.type == "repository":
                     status.append(_("Adding media"))
                 if thread.type == "config":
                     status.append(_("Running configuration"))

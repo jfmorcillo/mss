@@ -11,14 +11,17 @@
     <script type="text/javascript">
         var updater = "";
         var current = 0;
-        var medias = [];
-        {% for media in medias %}
-            medias.push({"name": "{{ media.name }}", "auth": "{{ media.auth }}", "username": "{{ media.username }}", "password": "{{ media.password }}"});
+        var repositories = [];
+        {% for repository in transaction.repositories %}
+        repositories.push({"slug": "{{ repository.slug }}",
+                           "module_slug": "{{ repository.module_slug }}",
+                           "username": "{{ repository.username }}",
+                           "password": "{{ repository.password }}"});
         {% endfor %}
 
         next = function() {
             current++;
-            if(medias[current]) {
+            if(repositories[current]) {
                 show_log = false;
                 run();
             }
@@ -30,13 +33,13 @@
         }
 
         run = function() {
-            current_log_btn = $($("#"+medias[current].name+" .log-button .btn")[0]);
-            current_log = $($("#"+medias[current].name+" .log")[0]);
-            current_task = $($("#"+medias[current].name+" .alert")[0]);
+            current_log_btn = $($("#"+repositories[current].slug+" .log-button .btn")[0]);
+            current_log = $($("#"+repositories[current].slug+" .log")[0]);
+            current_task = $($("#"+repositories[current].slug+" .alert")[0]);
             current_task.addClass('alert-info');
             current_task.html('{% trans "Adding media..." %}');
-            $.post('/mss/media/add/'+medias[current].name+'/',
-                   {'username': medias[current].username, 'password': medias[current].password})
+            $.post('/mss/media/add/'+repositories[current].module_slug+'/'+repositories[current].slug+'/',
+                   {'username': repositories[current].username, 'password': repositories[current].password})
              .success(check)
              .error(function(xhr) {
                 if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
@@ -44,7 +47,7 @@
         };
 
         check = function() {
-            $.get("{% url state "media" %}")
+            $.get("{% url state "repository" %}")
              .success(function(r) {
                 current_log.html(formatLog(r.output));
                 scrollLog();
@@ -67,7 +70,7 @@
                         current_task.html("{% trans "Failed to add media." %}");
                         if (current_log.css("display") == "none")
                             current_log_btn.click();
-                       $('#back').removeClass("disabled");
+                        $('#back').removeClass("disabled");
                         $("#next").html("{% trans "Continue" %} →");
                     }
                 }
@@ -83,9 +86,9 @@
             run();
         });
     </script>
-    {% for media in medias %}
-    <fieldset id="{{ media.name }}">
-        <legend>{{ media.verbose_name}}</legend>
+    {% for repository in transaction.repositories %}
+    <fieldset id="{{ repository.slug }}">
+        <legend>{{ repository.name }}</legend>
         <p class="alert">{% trans "Waiting..." %}</p>
         <div class="install">
             <div class="log-button pull-right">
@@ -100,7 +103,7 @@
         <div class="pull-right">
             <a id="next" href="{{ transaction.next_step_url }}" class="disabled">{% trans "Please wait..." %}</a>
         </div>
-        <a id="back" href="{% url medias %}" class="disabled">{% trans "Back" %}</a>
+        <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
     </div>
 </section>
 {% endblock %}

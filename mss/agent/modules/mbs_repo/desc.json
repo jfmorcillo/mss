@@ -2,15 +2,13 @@
     "slug": "mbs_repo",
     "name": "Mandriva Business Server repositories",
     "desc": "Access software from MBS public repositories",
-    "medias": [
+    "repositories": [
         {
-            "name": "mbs",
-            "verbose_name": "MBS repositories",
-            "proto": "http",
-            "mode": "distrib",
-            "url": [
-                "mirror.mandriva.com/mbs1/@ARCH@/"
-                ]
+            "slug": "mbs",
+            "name": "Mandriva Business Server repositories",
+            "url": "http://mirror.mandriva.com/mbs1/@ARCH@/",
+            "restricted": false,
+            "options": "--distrib"
         }
     ]
 }

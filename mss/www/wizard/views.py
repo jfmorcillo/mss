@@ -285,72 +285,44 @@ def preinst(request):
                               context_instance=RequestContext(request))
 
 @login_required
-def medias(request):
+def medias_auth(request):
     """ media auth page """
     transaction = Transaction(request)
-    transaction.set_current_step(Steps.MEDIAS)
+    transaction.set_current_step(Steps.MEDIAS_AUTH)
+
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    err, result = xmlrpc.call('get_medias', transaction.modules)
-    if err:
-        return err
-    else:
-        medias = result
-        if medias:
-            # check if we need authentication
-            auths = Set()
-            can_skip = False
-            for media in medias:
-                if 'auth' in media and media['auth']:
-                    auths.add(media['auth'])
-                if 'can_skip' in media and media['can_skip']:
-                    can_skip = True
-            if auths:
-                return render_to_response('media_auth.html',
-                        {'can_skip': can_skip, 'auths': auths,
-                         'transaction': transaction},
-                        context_instance=RequestContext(request))
-            else:
-                return render_to_response('media_add.html',
-                        {'medias': medias, 'transaction': transaction},
-                        context_instance=RequestContext(request))
-        else:
-            return HttpResponseRedirect(transaction.next_step_url())
+    return render_to_response('media_auth.html',
+            {'transaction': transaction},
+            context_instance=RequestContext(request))
 
 @login_required
 def medias_add(request):
     """ media add page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.MEDIAS_ADD)
+
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    err, result = xmlrpc.call('get_medias', transaction.modules)
-    if err:
-        return err
+    if request.method == "POST":
+        username = request.POST.get('username', None)
+        password = request.POST.get('password', None)
     else:
-        medias = result
-        if request.method == "POST":
-            for media in medias:
-                if media["auth"]:
-                    media['username'] = request.POST[media['auth']+'_username']
-                    media['password'] = request.POST[media['auth']+'_password']
+        username = None
+        password = None
 
-        return render_to_response('media_add.html',
-                {'medias': medias, 'transaction': transaction},
-                context_instance=RequestContext(request))
+    return render_to_response('media_add.html',
+            {'transaction': transaction,
+             'username': username, 'password': password},
+            context_instance=RequestContext(request))
 
 @login_required
-def add_media(request, module):
-    if request.method == "POST":
-        if 'username' in request.POST:
-            username = request.POST["username"]
-            password = request.POST["password"]
-        else:
-            username = None
-            password = None
-        xmlrpc.call("add_media", module, username, password)
+def add_media(request, module, repository):
+    username = request.POST.get('username', None)
+    password = request.POST.get('password', None)
+    xmlrpc.call("add_repository", module, repository, username, password)
     return HttpResponse("")
 
 @login_required

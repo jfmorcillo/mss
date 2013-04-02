@@ -7,7 +7,7 @@ xmlrpc = XmlRpc()
 
 class Steps:
     PREINST = "preinst"
-    MEDIAS = "medias"
+    MEDIAS_AUTH = "medias_auth"
     MEDIAS_ADD = "medias_add"
     INSTALL = "install"
     CONFIG = "config"
@@ -22,6 +22,7 @@ class Transaction:
             self.transaction = request.session['transaction']
             self.modules = request.session['modules_list']
             self.modules_info = request.session['modules_info']
+            self.repositories = request.session['repositories']
             self.update_module_info()
         else:
             err, result = xmlrpc.call('preinstall_modules', modules)
@@ -31,6 +32,7 @@ class Transaction:
                 self.modules_info = result
                 # update with depedencies
                 self.modules = [ m['slug'] for m in self.modules_info ]
+                self.repositories = []
                 self.transaction = [
                     {
                         'id': Steps.PREINST,
@@ -45,7 +47,7 @@ class Transaction:
                         'current': False
                     },
                     {
-                        'id': Steps.MEDIAS,
+                        'id': Steps.MEDIAS_AUTH,
                         'disabled': True,
                         'title': _("Medias authentication"),
                         'info': _("One or more medias need authentication"),
@@ -92,6 +94,7 @@ class Transaction:
         request.session['transaction'] = self.transaction
         request.session['modules_list'] = self.modules
         request.session['modules_info'] = self.modules_info
+        request.session['repositories'] = self.repositories
 
     def find_step(self, step):
         for s in self.transaction:
@@ -112,11 +115,14 @@ class Transaction:
                     s[key] = value
 
     def prepare(self):
-        err, result = xmlrpc.call('get_medias', self.modules)
-        for media in result:
-            if 'auth' in media and media['auth']:
-                self.enable_step(Steps.MEDIAS)
-        if len(result) > 0:
+        err, result = xmlrpc.call('get_repositories', self.modules)
+        if not err:
+            self.repositories = result
+        for repository in self.repositories:
+            if repository['restricted']:
+                self.enable_step(Steps.MEDIAS_AUTH)
+                break
+        if self.repositories:
             self.enable_step(Steps.MEDIAS_ADD)
 
         err, result = xmlrpc.call('get_modules', self.modules)
