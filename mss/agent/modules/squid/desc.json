@@ -14,5 +14,21 @@
             "name": "all",
             "rpms": ["squid", "sarg", "python-mmc-squid", "mmc-web-squid"]
         }
+    ],
+    "config": [
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow access from internal networks",
+            "help": "Configure the firewall to allow access to the proxy service from internal networks"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow access from external networks",
+            "help": "Configure the firewall to allow access to the proxy service from external networks"
+        }
     ]
 }

@@ -33,6 +33,9 @@
 
 check_mmc_configured
 
+fw_lan=$1
+fw_wan=$2
+
 proxy_template="templates/squid.conf.tpl"
 sarg_template="templates/sarg.conf.tpl"
 proxy_conf="/etc/squid/squid.conf"
@@ -62,7 +65,15 @@ enable_service squid
 restart_service squid
 restart_service mmc-agent
 
-info_b $"The proxy service is running"
+# configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a Squid/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a Squid/ACCEPT -t wan
+restart_service shorewall
+
+info_b $"The proxy service is running."
+info_b $""
+info_b $"Configure your clients to access the proxy service at @HOSTNAME@:3128"
+info_b $""
 info $"You can manage proxy rules from the management interface : https://@HOSTNAME@/mmc/"
 
 exit 0
