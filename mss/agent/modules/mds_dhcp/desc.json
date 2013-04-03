@@ -2,6 +2,7 @@
     "slug":   "mds_dhcp",
     "name": "DHCP Service",
     "description": "Configure automatically your client computers IP settings",
+    "desc": "Configure automatically your client computers IP settings",
     "actions": [
         {
             "type": "link",
@@ -15,7 +16,6 @@
             "rpms": ["dhcp-server", "mmc-web-network", "python-mmc-network"]
         }
     ],
-    "dependencies": ["mds_mmc"],
     "config": [
         {
             "type": "check",
@@ -32,7 +32,9 @@
             "help": "Configure the firewall to accept DHCP requests on interfaces configured as 'external'"
         }
     ],
+    "dependencies": ["mds_mmc"],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mds_mmc"]
     }
 }

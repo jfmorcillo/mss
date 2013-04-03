@@ -2,6 +2,7 @@
     "slug":   "mds_mail",
     "name": "Mail Service",
     "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
+    "desc": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
     "actions": [
         {
             "type": "link",
@@ -26,8 +27,6 @@
                          "dovecot-plugins-managesieve"]
         }
     ],
-    "dependencies": ["mds_mmc"],
-    "conflict": ["zarafa"],
     "config": [
         {
             "type": "network",
@@ -65,7 +64,11 @@
             "help": "Configure the firewall to accept smtp/imap/pop3 connections on interfaces configured as 'external'"
         }
     ],
+    "dependencies": ["mds_mmc"],
+    "conflicts": ["zarafa"],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mds_mmc"],
+        "conflicts": ["zarafa"]
     }
 }

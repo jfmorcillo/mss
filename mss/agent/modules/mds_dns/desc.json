@@ -2,6 +2,7 @@
     "slug":   "mds_dns",
     "name": "DNS Service",
     "description": "Resolve computer names on your network",
+    "desc": "Resolve computer names on your network",
     "actions": [
         {
             "type": "link",
@@ -15,7 +16,6 @@
             "rpms": ["bind", "bind-utils", "bind-sdb", "mmc-web-network", "python-mmc-network"]
         }
     ],
-    "dependencies": ["mds_mmc"],
     "config": [
         {
             "type": "network",
@@ -49,7 +49,9 @@
             "help": "Configure the firewall to accept DNS requests on interfaces configured as 'external'"
         }
     ],
+    "dependencies": ["mds_mmc"],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mds_mmc"]
     }
 }

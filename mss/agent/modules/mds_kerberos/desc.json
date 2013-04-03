@@ -2,6 +2,7 @@
     "slug":   "mds_kerberos",
     "name": "Kerberos authentication with MDS backend",
     "description": "Install and configure Kerberos authentication",
+    "desc": "Install and configure Kerberos authentication",
     "actions": [
         {
             "type": "link",
@@ -31,7 +32,6 @@
             "rpms": "libsasl2-plug-gssapi"
         }
     ],
-    "dependencies": ["mds_mmc", "mds_dns"],
     "config": [
         {
             "type": "text",
@@ -139,8 +139,10 @@
             "help": "Indicates whether weak encryption types should be filtered out"
         }
     ],
+    "dependencies": ["mds_mmc", "mds_dns"],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mds_mmc", "mds_dns"]
     },
     "standalone": false
 }

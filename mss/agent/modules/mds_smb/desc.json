@@ -2,6 +2,7 @@
     "slug": "mds_smb",
     "name": "Windows users and file sharing management",
     "description": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
+    "desc": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
     "actions": [
         {
             "type": "link",
@@ -23,7 +24,6 @@
             ]
         }
     ],
-    "dependencies": ["mds_mmc"],
     "config": [
         {
             "type": "text",
@@ -73,7 +73,9 @@
             "help": "Configure the firewall to accept SAMBA related traffic on interfaces configured as 'external'"
         }
     ],
+    "dependencies": ["mds_mmc"],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mds_mmc"]
     }
 }

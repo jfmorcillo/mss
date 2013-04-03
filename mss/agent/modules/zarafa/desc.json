@@ -2,8 +2,7 @@
     "slug": "zarafa",
     "name": "Zarafa Collaboration Platform",
     "description": "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface",
-    "dependencies": ["mds_mmc", "mysql"],
-    "conflict": ["mds_mail", "mds_webmail"],
+    "desc": "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface",
     "actions": [
         {
             "type": "link",
@@ -14,17 +13,6 @@
             "type": "link",
             "name": "Zarafa webmail interface",
             "value": "http://@HOSTNAME@/webaccess/"
-        }
-    ],
-    "medias": [
-        {
-            "verbose_name": "Zarafa",
-            "name": "zarafa",
-            "auth": "my",
-            "proto": "https",
-            "url": [
-                "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-            ]
         }
     ],
    "packages": [
@@ -127,5 +115,11 @@
             "help": "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
         }
     ],
-    "standalone": false
+    "dependencies": ["mds_mmc", "mysql"],
+    "conflicts": ["mds_mail", "mds_webmail"],
+    "standalone": false,
+    "module": {
+        "dependencies": ["mds_mmc", "mysql"],
+        "conflicts": ["mds_mail", "mds_webmail"]
+    }
 }

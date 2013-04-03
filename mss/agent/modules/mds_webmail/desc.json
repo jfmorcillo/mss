@@ -2,6 +2,7 @@
     "slug": "mds_webmail",
     "name": "Webmail",
     "description": "Roundcube, a complete webmail solution for your mail service",
+    "desc": "Roundcube, a complete webmail solution for your mail service",
     "actions": [
         {
             "type": "link",
@@ -26,8 +27,6 @@
             ]
         }
     ],
-    "dependencies": ["mds_mail"],
-    "conflicts": ["zarafa"],
     "config": [
         {
             "type": "check",
@@ -44,7 +43,11 @@
             "help": "Configure the firewall to allow access to the webmail interface from external networks"
         }
     ],
+    "dependencies": ["mds_mail"],
+    "conflicts": ["zarafa"],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mds_mail"],
+        "conflicts": ["zarafa"]
     }
 }
