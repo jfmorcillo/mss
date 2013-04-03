@@ -13,5 +13,6 @@
             "type": "custom",
             "name": "interfaces"
         }
-    ]
+    ],
+    "standalone": false
 }

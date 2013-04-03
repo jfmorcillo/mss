@@ -23,5 +23,6 @@
             "label": "Your domain name",
             "help": "The domain name used in your organization (eg: mandriva.com)."
         }
-    ]
+    ],
+    "standalone": false
 }

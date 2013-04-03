@@ -11,7 +11,5 @@
             "options": "--distrib"
         }
     ],
-    "module": {
-        "section": "core"
-    }
+    "standalone": false
 }

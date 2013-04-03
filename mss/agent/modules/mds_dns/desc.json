@@ -48,5 +48,8 @@
             "label": "Allow DNS requests from external networks",
             "help": "Configure the firewall to accept DNS requests on interfaces configured as 'external'"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

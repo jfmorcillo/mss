@@ -36,5 +36,8 @@
             "label": "Allow connections to the management interface from external networks",
             "help": "Configure the firewall to allow access to the Printer Management Service from external networks"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

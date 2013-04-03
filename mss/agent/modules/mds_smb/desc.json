@@ -72,5 +72,8 @@
             "label": "Allow connections from external networks",
             "help": "Configure the firewall to accept SAMBA related traffic on interfaces configured as 'external'"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

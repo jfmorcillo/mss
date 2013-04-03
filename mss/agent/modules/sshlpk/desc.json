@@ -15,5 +15,8 @@
             "name": "all",
             "rpms": ["python-mmc-sshlpk", "mmc-web-sshlpk"]
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

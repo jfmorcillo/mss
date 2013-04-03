@@ -64,5 +64,8 @@
             "label": "Allow mail services access from external networks",
             "help": "Configure the firewall to accept smtp/imap/pop3 connections on interfaces configured as 'external'"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

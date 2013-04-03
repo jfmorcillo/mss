@@ -24,5 +24,6 @@
             "label": "New password",
             "help": "New MySQL root password. Set here the new password"
         }
-    ]
+    ],
+    "standalone": false
 }

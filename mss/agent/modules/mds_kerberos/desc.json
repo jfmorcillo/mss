@@ -138,5 +138,9 @@
             "label": "Allow weak encryption types",
             "help": "Indicates whether weak encryption types should be filtered out"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    },
+    "standalone": false
 }

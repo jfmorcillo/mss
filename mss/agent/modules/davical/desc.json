@@ -15,5 +15,8 @@
             "rpms": ["davical", "php-pdo_pgsql", "php-calendar", "php-ldap", "roundcubemail-plugins"]
         }
     ],
-    "dependencies": ["postgresql", "mds_webmail"]
+    "dependencies": ["postgresql", "mds_webmail"],
+    "module": {
+        "section": "core"
+    }
 }

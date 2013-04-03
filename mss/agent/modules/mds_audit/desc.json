@@ -31,5 +31,6 @@
             "label": "MySQL audit password",
             "help": "MySQL user password for the audit database"
         }
-    ]
+    ],
+    "standalone": false
 }

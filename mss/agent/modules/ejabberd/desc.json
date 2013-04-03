@@ -30,5 +30,8 @@
             "label": "Allow access from external networks",
             "help": "Configure the firewall to allow access to the Instant Messaging Service from external networks"
         }
-    ]
+    ],
+    "module": {
+        "section": "other"
+    }
 }

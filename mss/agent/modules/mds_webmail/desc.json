@@ -43,5 +43,8 @@
             "label": "Allow access from external networks",
             "help": "Configure the firewall to allow access to the webmail interface from external networks"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

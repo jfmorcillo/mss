@@ -31,5 +31,8 @@
             "label": "Allow DHCP requests from external networks",
             "help": "Configure the firewall to accept DHCP requests on interfaces configured as 'external'"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }
