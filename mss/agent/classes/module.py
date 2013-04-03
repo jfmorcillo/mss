@@ -131,6 +131,9 @@ class Module(object):
 
     @property
     def reboot(self):
+        if "postinstall" in self._desc:
+            logger.warning("deprecated: reboot must be stored in the module key (%s)" % self.slug)
+            return self._desc["postinstall"].get("reboot", False)
         if self._desc.get("module", False):
             return self._desc["module"].get("reboot", False)
         return False
