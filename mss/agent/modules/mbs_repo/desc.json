@@ -10,5 +10,8 @@
             "restricted": false,
             "options": "--distrib"
         }
-    ]
+    ],
+    "module": {
+        "section": "core"
+    }
 }

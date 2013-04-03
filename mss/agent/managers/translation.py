@@ -42,6 +42,9 @@ class TranslationManager:
             (path, catalog) = infos
             self.set_catalog(name, path)
 
+    def get_lang(self):
+        return self.lang
+
     def set_catalog(self, name, path=''):
         try:
             translation = gettext.translation(name,

@@ -25,7 +25,9 @@ import re
 import imp
 import copy
 import logging
+import hashlib
 import json
+import zipfile
 from datetime import datetime
 from IPy import IP
 
@@ -44,62 +46,87 @@ class Module(object):
 
     """
 
-    def __init__(self, path, MM, arch):
+    def __init__(self, desc, MM):
         self.MM = MM
-        self.path = path
-        self.arch = arch
-        desc_json_fp = open(os.path.join(self.path, "desc.json"))
-        self._conf = json.load(desc_json_fp)
-        desc_json_fp.close()
-        # load module info
-        self.slug = self._conf.get("slug", '')
-        # Setup translations catalog
-        TranslationManager().set_catalog(self.slug, self.path)
-        # get module config object
-        self.module = None
-        # get current module config
-        f, p, d = imp.find_module(self.slug)
-        try:
-            # load module
-            self.module = imp.load_module(self.slug, f, p, d)
-        except Exception, err:
-            logger.error("Can't load module %s __init__.py :" % self.slug)
-            logger.error("%s" % err)
+        self.arch = MM.arch
+        self._desc = desc
+        self._path = desc["module"]["path"]
+        self._module = None
+        if self.downloaded:
+            self.load_module()
+            self.load_translations()
         self.check_configured()
+        self.check_installed()
+
+    @property
+    def details(self):
+        return {'slug': self.slug,
+                'name': self.name,
+                'description': self.description,
+                'actions': self.actions,
+                'downloaded': self.downloaded,
+                'installed': self.installed,
+                'configured': self.configured,
+                'conflicts': self.conflicts,
+                'dependencies': self.dependencies,
+                'standalone': self.standalone,
+                'price': self.price,
+                'purshased': self.purshased,
+                'reboot': self.reboot,
+                'module': self._desc.get("module", {})}
+
+    @property
+    def slug(self):
+        return self._desc.get("slug")
 
     @property
     def name(self):
-        return _(self._conf.get('name', self.slug), self.slug)
+        return _(self._desc.get('name', self.slug), self.slug)
 
     @property
     def description(self):
-        if self._conf.get('description', False):
-            return _(self._conf['description'], self.slug)
+        if self._desc.get('description', False):
+            return _(self._desc['description'].split("\n")[0], self.slug)
+        # Support old attribute
+        elif self._desc.get('desc', False):
+            return _(self._desc['desc'].split("\n")[0], self.slug)
         else:
             return ""
 
     @property
     def actions(self):
-        return self._conf.get("actions", [])
+        return self._desc.get("actions", [])
 
     @property
     def dependencies(self):
-        return self._conf.get("dependencies", [])
+        return self._desc.get("dependencies", [])
 
     @property
     def conflicts(self):
-        return self._conf.get("conflict", [])
+        return self._desc.get("conflict", [])
+
+    @property
+    def price(self):
+        return self._desc.get("price", 0)
+
+    @property
+    def purshased(self):
+        return self._desc.get("purshased", False)
+
+    @property
+    def standalone(self):
+        return self._desc.get("standalone", True)
 
     @property
     def reboot(self):
-        if self._conf.get("module", False):
-            return self._conf["module"].get("reboot", False)
+        if self._desc.get("module", False):
+            return self._desc["module"].get("reboot", False)
         return False
 
     def check_configured(self):
         # check if module is configured by calling module method
-        if self.module:
-            method = getattr(self.module, "check_configured", None)
+        if self._module:
+            method = getattr(self._module, "check_configured", None)
             if method:
                 try:
                     self._configured = method()
@@ -114,12 +141,13 @@ class Module(object):
         else:
             self._configured = False
         # if the module has no configuration consider it is configured
-        try:
-            script, args = getattr(self.module, 'get_config_info')()
-        except AttributeError:
-            script, args = (None, [])
-        if script == None:
-            self._configured = True
+        if self._module:
+            try:
+                script, args = getattr(self._module, 'get_config_info')()
+            except AttributeError:
+                script, args = (None, [])
+            if script == None:
+                self._configured = True
 
     @property
     def configured(self):
@@ -135,6 +163,18 @@ class Module(object):
             session.merge(module)
             session.commit()
 
+    def check_installed(self):
+        """ check if module is installed """
+        if not self.downloaded:
+            self.installed = False
+            return
+        packages = set(self.packages)
+        # check if packages are installed
+        if len(packages) == len(packages.intersection(self.MM.packages)):
+            self.installed = True
+        else:
+            self.installed = False
+
     @property
     def installed(self):
         return self._installed
@@ -144,12 +184,16 @@ class Module(object):
         self._installed = value
 
     @property
+    def downloaded(self):
+        return os.path.exists(os.path.join(self._path, "__init__.py"))
+
+    @property
     def packages(self):
         """ get packages for module """
         if getattr(self, "_packages", None) is None:
             # get packages for current arch
             self._packages = []
-            targets = self._conf.get("packages", [])
+            targets = self._desc.get("packages", [])
             for target in targets:
                 if target['name'] == "all" or \
                     target['name'] == self.arch:
@@ -160,7 +204,7 @@ class Module(object):
     def repositories(self):
         """ get module repositories """
         self._repositories = []
-        repositories = self._conf.get("repositories", [])
+        repositories = self._desc.get("repositories", [])
         if repositories:
             for repository in repositories:
                 repository['url'] = repository['url'].replace('@ARCH@', self.arch)
@@ -171,10 +215,11 @@ class Module(object):
 
     def get_config(self):
         """ get module current config """
-        reload(self.module)
+        assert self._module
+        reload(self._module)
         # get current module config
         try:
-            current_config = getattr(self.module, 'get_current_config')(self)
+            current_config = getattr(self._module, 'get_current_config')(self)
         except AttributeError:
             current_config = {}
         except Exception, err:
@@ -184,7 +229,7 @@ class Module(object):
             current_config = {}
         # get script name and args order
         try:
-            script, args = getattr(self.module, 'get_config_info')()
+            script, args = getattr(self._module, 'get_config_info')()
         except AttributeError:
             script, args = (None, [])
 
@@ -198,7 +243,7 @@ class Module(object):
         else:
             self.config.append({'slug': self.slug, 'skip_config': False, 'do_config': False})
             # get XML config
-            fields = self._conf.get("config", [])
+            fields = self._desc.get("config", [])
             if fields:
                 # if we have fields, show the configuration page
                 self.config[0]['do_config'] = True
@@ -206,7 +251,7 @@ class Module(object):
             for field_config in fields:
                 field_config["slug"] = self.slug
                 if field_config["type"] == "custom":
-                    self.config = getattr(self.module, 'get_%s_config' % field_config['name'])(self.config)
+                    self.config = getattr(self._module, 'get_%s_config' % field_config['name'])(self.config)
                 # add current value if module is configured
                 if self.configured and current_config.get(field_config['name']):
                     field_config['default'] = current_config.get(field_config['name'])
@@ -215,7 +260,7 @@ class Module(object):
                     # check if the default value is a module's method
                     try:
                         if isinstance(field_config["default"], basestring):
-                            field_config["default"] = getattr(self.module, field_config["default"])(self)
+                            field_config["default"] = getattr(self._module, field_config["default"])(self)
                     except AttributeError:
                         # not a method
                         # get default value for multi fields
@@ -303,7 +348,7 @@ class Module(object):
                     module = "agent"
                     if not method:
                         # get module validation method
-                        method = getattr(self.module, field.get("validation"), None)
+                        method = getattr(self._module, field.get("validation"), None)
                         module = self.slug
                     # run the validation method
                     if method and field_value:
@@ -327,7 +372,7 @@ class Module(object):
     def info_config(self):
         # get script name and args order
         try:
-            script, args = getattr(self.module, 'get_config_info')()
+            script, args = getattr(self._module, 'get_config_info')()
         except AttributeError:
             script, args = (None, [])
         # get args values
@@ -359,7 +404,65 @@ class Module(object):
                     else:
                         args_values.append(field.get('default'))
 
-        return (self.path, script, args_values)
+        return (self._path, script, args_values)
+
+    def download(self):
+        """ Download module if not present on disk """
+        if not self.downloaded:
+            assert self._desc['module']['file']
+            logger.info("Download module: %s" % self.slug)
+            temp_path = os.path.join("/tmp", self.slug + ".zip")
+
+            result, code = self.MM.request(self._desc['module']['file'])
+            if code == 200:
+                h = open(temp_path, "wb")
+                h.write(result)
+                h.close()
+            else:
+                logger.error("Error while downloading %s module" % self.slug)
+
+            if code == 200:
+                # Verify sha1
+                logger.debug("Unzip module: %s" % temp_path)
+                h = open(temp_path, "rb")
+                sha1 = hashlib.sha1()
+                try:
+                    sha1.update(h.read())
+                finally:
+                    h.close()
+                logger.debug("Process sha1sum: %s" % sha1.hexdigest())
+                if sha1.hexdigest() == self._desc['module']['file_sha1']:
+                    logger.debug("Zip file is valid: unzip...")
+                    os.mkdir(self._path)
+                    zip = zipfile.ZipFile(temp_path)
+                    zip.extractall(path=self._path)
+                    os.unlink(temp_path)
+                    self.load_desc()
+                    self.load_module()
+                    self.load_translations()
+                    self.check_configured()
+                    self.check_installed()
+                else:
+                    logger.error("Zip file is invalid...")
+
+    def load_desc(self):
+        if self.downloaded:
+            logger.debug("Reloading %s desc.json" % self.slug)
+            h = open(os.path.join(self._path, "desc.json"))
+            self._desc = json.load(h)
+            h.close()
+
+    def load_module(self):
+        logger.debug("Loading %s python module" % self.slug)
+        f, p, d = imp.find_module(self.slug)
+        try:
+            self._module = imp.load_module(self.slug, f, p, d)
+        except Exception, err:
+            logger.error("Can't load module %s __init__.py :" % self.slug)
+            logger.error("%s" % err)
+
+    def load_translations(self):
+        TranslationManager().set_catalog(self.slug, self._path)
 
     def __str__(self):
         return "%s : %s" % (self.name, self.description)

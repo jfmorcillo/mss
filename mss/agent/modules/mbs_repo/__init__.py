@@ -22,4 +22,4 @@
 from mss.agent.lib.utils import grep
 
 def check_configured():
-    return grep('download\.mandriva\.com\/EnterpriseServer', '/etc/urpmi/urpmi.cfg')
+    return grep('mirror.mandriva.com/mbs1/', '/etc/urpmi/urpmi.cfg')

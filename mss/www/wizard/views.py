@@ -219,43 +219,27 @@ def sections(request):
 @login_required
 def section(request, section):
     """ render section page """
-    err, result = xmlrpc.call('get_section', section)
+    err, sections = xmlrpc.call('get_sections')
     if err:
         return err
-    section_info = result
 
-    section_modules = []
-    for bundle in section_info['bundles']:
-        for module in bundle["modules"]:
-             section_modules.append(module)
-
-    err, result = xmlrpc.call('get_modules', section_modules)
+    err, modules_list = xmlrpc.call('get_section', section)
     if err:
         return err
-    else:
-        # detailed modules list
-        modules = result
-        # check module access
-        # format management url
-        for module in modules:
-            # Check if modules is already installer
-            for action in module['actions']:
-                if action['type'] == "link":
-                    action['value'] = toHtml(request, action['value'], False)
 
-        err, result = xmlrpc.call('get_sections')
-        if err:
-            return err
-        sections = result
+    err, modules_info = xmlrpc.call('get_modules', modules_list)
+    if err:
+        return err
 
-        # Translate section name
-        for section in sections:
-            section["name"] = _(section["name"])
+    # format management url
+    for module in modules_info:
+        for action in module['actions']:
+            if action['type'] == "link":
+                action['value'] = toHtml(request, action['value'], False)
 
-        return render_to_response('section.html',
-            {'sections': sections, 'section': section_info,
-            'modules': modules },
-            context_instance=RequestContext(request))
+    return render_to_response('section.html',
+        {'sections': sections, 'modules': modules_info},
+        context_instance=RequestContext(request))
 
 @login_required
 def prepare(request):
@@ -282,6 +266,25 @@ def preinst(request):
         return HttpResponseRedirect(transaction.next_step_url())
 
     return render_to_response('preinst.html', {'transaction': transaction},
+                              context_instance=RequestContext(request))
+
+@login_required
+def download(request):
+    transaction = Transaction(request)
+    transaction.set_current_step(Steps.DOWNLOAD)
+    if transaction.current_step()['disabled']:
+        return HttpResponseRedirect(transaction.next_step_url())
+
+    err, result = xmlrpc.call("download_modules", transaction.modules)
+    if err:
+        return err
+
+    print "reload transaction"
+    transaction.prepare()
+    print transaction.transaction
+    transaction.save(request)
+
+    return render_to_response('download.html', {'transaction': transaction},
                               context_instance=RequestContext(request))
 
 @login_required

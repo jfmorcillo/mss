@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n %}
+{% block sidebar %}
+{% include 'sidebar.html' %}
+{% endblock %}
+{% block content %}
+<section id="preinst">
+    <div class="page-header">
+        <h1>{{ transaction.current_step.title }}</h1>
+    </div>
+    <p class="alert">{% trans "Addons downloaded." %}</p>
+    <form name="mss" action="{{ transaction.next_step_url }}" method="post">
+        <div class="form-actions">
+            <div class="pull-right">
+                <button class="btn btn-primary" type="submit">{% trans "Continue" %} →</button>
+            </div>
+            <a class="btn" href="{% url preinst %}" id="back">{% trans "Back" %}</a>
+        </div>
+    </form>
+</section>
+{% endblock %}

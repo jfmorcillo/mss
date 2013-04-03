@@ -38,21 +38,68 @@ TEMPLATE_DEBUG = DEBUG
 EMAIL_SUBJECT_PREFIX = "[MSS]"
 SERVER_EMAIL = "mss+mbs@mandriva.com"
 
+LOG_FILENAME = '/var/log/mss/mss-www.log'
+os.chmod(LOG_FILENAME, 0600)
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-    format = '%(asctime)s|%(name)s|%(levelname)s: %(message)s'
-    formatter = logging.Formatter(format)
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
-    ch.setFormatter(formatter)
-    logger.addHandler(ch)
+    LOGGING = {
+        'version': 1,
+        'handlers': {
+            'file': {
+                'level': 'DEBUG',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'formatter': 'verbose',
+                'filename': LOG_FILENAME
+            },
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+            }
+        },
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            }
+        },
+        'loggers': {
+            'mss': {
+                'handlers': ['file', 'console'],
+                'level': 'DEBUG',
+                'propagate': True
+            }
+        }
+    }
 else:
-    LOG_FILENAME = '/var/log/mss/mss-www.log'
-    os.chmod(LOG_FILENAME, 0600)
-    fh = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10485760, backupCount=5)
-    fh.setLevel(logging.ERROR)
-    logger.addHandler(fh)
-
+    LOGGING = {
+        'version': 1,
+        'handlers': {
+            'file': {
+                'level': 'ERROR',
+                'class': 'logging.handlers.RotatingFileHandler',
+                'formatter': 'verbose',
+                'filename': LOG_FILENAME
+            },
+            'console': {
+                'level': 'ERROR',
+                'class': 'logging.StreamHandler',
+                'formatter': 'verbose'
+            }
+        },
+        'formatters': {
+            'verbose': {
+                'format': '%(levelname)s %(asctime)s %(module)s %(process)d %(thread)d %(message)s'
+            }
+        },
+        'loggers': {
+            'mss': {
+                'handlers': ['file', 'console'],
+                'level': 'ERROR',
+                'propagate': True
+            }
+        }
+    }
 
 DATABASES = {
     'default': {

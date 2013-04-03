@@ -37,6 +37,7 @@
     ],
     "dependencies": ["system", "network", "mbs_repo"],
     "module": {
+        "section": "core",
         "reboot": true
     },
     "config": [

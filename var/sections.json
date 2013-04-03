@@ -1,1 +1,2 @@
-[{"slug": "core", "name": "Core Services", "addons": ["mds_mmc", "mds_smb", "mds_cups", "mds_quota", "sshlpk", "mysql", "mds_mail", "mds_dhcp", "mds_dns", "mds_webmail", "davical", "squid"]}, {"slug": "other", "name": "Other Services", "addons": ["postgresql", "ejabberd"]}]
+[{"slug": "core", "name": "Core Services"},
+ {"slug": "other", "name": "Other Services"}]

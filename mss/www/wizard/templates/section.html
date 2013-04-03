@@ -46,7 +46,7 @@
                     $(this).popover({
                         html: true,
                         trigger: 'hover',
-                        template: '<div class="popover module-popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',                    
+                        template: '<div class="popover module-popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
                         content: content,
                     });
                 }
@@ -107,16 +107,14 @@
     });
 </script>
 <form name="mss" action="{% url prepare %}" method="post">
-    {% for bundle in section.bundles %}
     <div class="bundle" id="{{ bundle.slug }}">
         <div class="page-header">
             <a name="{{ bundle.slug }}"></a>
             <h1>{% if bundle.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" /> {% endif %}{% trans bundle.name %}{% if bundle.desc %}&nbsp;<small>{% trans bundle.desc %}</small>{% endif %}</h1>
         </div>
-            {% for module in bundle.modules %}
-                {% for m in modules %}
-                    {% ifequal m.slug module %}
-                
+        {% for m in modules %}
+            {% if m.standalone %}
+
         <script type="text/javascript">
             {% if m.conflicts %}
                 {% for conflict in m.conflicts %}
@@ -190,13 +188,10 @@
             </p>
 
         </div> <!-- /module -->
-
-                {% endifequal %}
-            {% endfor %}
+            {% endif %}
         {% endfor %}
     </div> <!-- /bundle -->
-    {% endfor %}
-    
+
     <div class="form-actions">
             <div class="pull-right">
                 <button class="btn btn-primary" type="submit">{% trans "Install and configure selected components" %}&nbsp;→</button>

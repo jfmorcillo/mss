@@ -1,12 +1,16 @@
+import logging
+
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _, ungettext
 
 from mss.www.xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
+logger = logging.getLogger(__name__)
 
 class Steps:
     PREINST = "preinst"
+    DOWNLOAD = "download"
     MEDIAS_AUTH = "medias_auth"
     MEDIAS_ADD = "medias_add"
     INSTALL = "install"
@@ -45,6 +49,13 @@ class Transaction:
                                 ),
                         'show_modules': True,
                         'current': False
+                    },
+                    {
+                        'id': Steps.DOWNLOAD,
+                        'disabled': True,
+                        'title': _("Addon download"),
+                        'info': _("Download addons from the ServicePlace"),
+                        'current': False,
                     },
                     {
                         'id': Steps.MEDIAS_AUTH,
@@ -90,6 +101,50 @@ class Transaction:
                 self.prepare()
                 self.save(request)
 
+    def prepare(self):
+        err, result = xmlrpc.call('get_repositories', self.modules)
+        if not err:
+            self.repositories = result
+        for repository in self.repositories:
+            if repository['restricted']:
+                self.enable_step(Steps.MEDIAS_AUTH)
+                break
+        if self.repositories:
+            self.enable_step(Steps.MEDIAS_ADD)
+
+        err, result = xmlrpc.call('get_modules', self.modules)
+        for module in result:
+            if not module['installed'] or not module["downloaded"]:
+                self.enable_step(Steps.INSTALL)
+                logger.debug("Module %s is not installed or not downloaded: enabling install step" % module["slug"])
+            if module['installed']:
+                self.disable_step(Steps.INSTALL)
+                logger.debug("Module %s is installed: disabling install step" % module["slug"])
+            if not module["downloaded"]:
+                self.enable_step(Steps.DOWNLOAD)
+                logger.debug("Module %s is not downloaded: enabling download step" % module["slug"])
+            else:
+                self.disable_step(Steps.DOWNLOAD)
+                logger.debug("Module %s is downloaded: disabling download step" % module["slug"])
+            if module['reboot']:
+                logger.debug("Module %s need to reboot the system: enabling reboot step" % module["slug"])
+                self.enable_step(Steps.REBOOT)
+                self.disable_step(Steps.END)
+
+        if self.find_step(Steps.DOWNLOAD)['disabled']:
+            err, result = xmlrpc.call('get_config', self.modules)
+            for module in result:
+                infos = module[0]
+                if not infos['skip_config']:
+                    logger.debug("Module %s needs configuration: enabling config step" % infos['slug'])
+                    self.enable_step(Steps.CONFIG)
+                else:
+                    logger.debug("Module %s doesn't need configuration: disabling config step" % infos["slug"])
+                    self.disable_step(Steps.CONFIG)
+        else:
+            logger.debug("Some module is not downloaded: enabling config step")
+            self.enable_step(Steps.CONFIG)
+
     def save(self, request):
         request.session['transaction'] = self.transaction
         request.session['modules_list'] = self.modules
@@ -113,31 +168,6 @@ class Transaction:
             if s['id'] == step['id']:
                 for key, value in step.items():
                     s[key] = value
-
-    def prepare(self):
-        err, result = xmlrpc.call('get_repositories', self.modules)
-        if not err:
-            self.repositories = result
-        for repository in self.repositories:
-            if repository['restricted']:
-                self.enable_step(Steps.MEDIAS_AUTH)
-                break
-        if self.repositories:
-            self.enable_step(Steps.MEDIAS_ADD)
-
-        err, result = xmlrpc.call('get_modules', self.modules)
-        for module in result:
-            if not module['installed']:
-                self.enable_step(Steps.INSTALL)
-            if module['reboot']:
-                self.enable_step(Steps.REBOOT)
-                self.disable_step(Steps.END)
-
-        err, result = xmlrpc.call('get_config', self.modules)
-        for module in result:
-            infos = module[0]
-            if not infos['skip_config']:
-                self.enable_step(Steps.CONFIG)
 
     def update_module_info(self):
         err, result = xmlrpc.call('preinstall_modules', self.modules)
