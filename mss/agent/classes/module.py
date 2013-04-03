@@ -86,7 +86,7 @@ class Module(object):
     @property
     def description(self):
         if self._desc.get('desc', False):
-            logger.warning("deprecated: desc must be renamed in description")
+            logger.warning("deprecated: desc must be renamed in description (%s)" % self.slug)
             return _(self._desc['desc'].split("\n")[0], self.slug)
         elif self._desc.get('description', False):
             return _(self._desc['description'].split("\n")[0], self.slug)
@@ -100,7 +100,7 @@ class Module(object):
     @property
     def dependencies(self):
         if "dependencies" in self._desc:
-            logger.warning("deprecated: dependencies list must be stored in the module key")
+            logger.warning("deprecated: dependencies list must be stored in the module key (%s)" % self.slug)
             return self._desc.get("dependencies", [])
         elif self._desc.get("module", False):
             return self._desc["module"].get("dependencies", [])
@@ -110,7 +110,7 @@ class Module(object):
     @property
     def conflicts(self):
         if "conflicts" in self._desc:
-            logger.warning("deprecated: conflicts list must be stored in the module key")
+            logger.warning("deprecated: conflicts list must be stored in the module key (%s)" % self.slug)
             return self._desc.get("conflicts", [])
         elif self._desc.get("module", False):
             return self._desc["module"].get("conflicts", [])
