@@ -140,12 +140,17 @@ class ModuleManager:
 
         for path in paths:
             h = open(os.path.join(path, "desc.json"))
-            desc = json.load(h)
-            h.close()
-            if not "module" in desc:
-                desc["module"] = {}
-            desc["module"]["path"] = path
-            result.append(desc)
+            try:
+                desc = json.load(h)
+            except ValueError as e:
+                logger.error("Failed to load %s: %s" % (path, str(e)))
+            else:
+                if not "module" in desc:
+                    desc["module"] = {}
+                desc["module"]["path"] = path
+                result.append(desc)
+            finally:
+                h.close()
         return result
 
     def get_api_addons(self):
