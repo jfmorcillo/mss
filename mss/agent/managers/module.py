@@ -97,39 +97,39 @@ class ModuleManager:
     @expose
     def load(self):
         """ Load data in the agent """
-        self.addons = {}
-        self.sections_addons = {}
+        self.modules = {}
+        self.sections_modules = {}
         self.sections = {}
 
         if self._token:
             self.get_api_sections()
         else:
             self.get_local_sections()
-        self.load_addons()
-        logger.debug("Addons loaded.")
+        self.load_modules()
+        logger.debug("Modules loaded.")
 
-    def load_addons(self):
-        """ load addons """
+    def load_modules(self):
+        """ load modules """
         if not self._token:
-            logger.debug("Using local addons")
+            logger.debug("Using local modules")
             sys.path.append(os.path.join(self.config.get("local", "localDir"), "addons"))
-            addons_list = self.get_local_addons()
+            modules_list = self.get_local_modules()
         else:
-            logger.debug("Using API addons")
+            logger.debug("Using API modules")
             sys.path.append(self.config.get("local", "cacheDir"))
-            addons_list = self.get_api_addons()
+            modules_list = self.get_api_modules()
 
-        for addon in addons_list:
-            if "module" in addon:
-                if not "path" in addon["module"]:
-                    addon["module"]["path"] = os.path.join(self.config.get("local", "cacheDir"), addon["slug"])
-                self.addons[addon['slug']] = Module(addon, self)
-                section = self.addons[addon['slug']].section
-                if not section in self.sections_addons:
-                    self.sections_addons[section] = []
-                self.sections_addons[section].append(addon["slug"])
+        for module in modules_list:
+            if "module" in module:
+                if not "path" in module["module"]:
+                    module["module"]["path"] = os.path.join(self.config.get("local", "cacheDir"), module["slug"])
+                self.modules[module['slug']] = Module(module, self)
+                section = self.modules[module['slug']].section
+                if not section in self.sections_modules:
+                    self.sections_modules[section] = []
+                self.sections_modules[section].append(module["slug"])
 
-    def get_local_addons(self):
+    def get_local_modules(self):
         paths = []
         result = []
 
@@ -154,8 +154,8 @@ class ModuleManager:
                 h.close()
         return result
 
-    def get_api_addons(self):
-        """ return list of addons from the API """
+    def get_api_modules(self):
+        """ return list of modules from the API """
         cache_path = os.path.join(self.config.get("local", "cacheDir"), "addons.json")
 
         try:
@@ -172,13 +172,13 @@ class ModuleManager:
                 json.dump(result, h)
                 h.close()
             else:
-                logger.error("Failed to retrieve addons from the API.")
+                logger.error("Failed to retrieve modules from the API.")
 
         h = open(cache_path)
-        addons_list = json.load(h)
+        modules_list = json.load(h)
         h.close()
 
-        return addons_list
+        return modules_list
 
     def get_local_sections(self):
         """ return local section list """
@@ -296,7 +296,7 @@ class ModuleManager:
     def get_modules(self):
         """ return all available modules details """
         logger.info("Get all available modules")
-        result = [addon.details for addon in self.addons]
+        result = [module.details for module in self.modules]
         logger.debug("Result: %s" % str(result))
         return result
 
@@ -304,14 +304,14 @@ class ModuleManager:
     def get_modules_details(self, modules):
         """ return modules info """
         logger.info("Get modules details: %s" % str(modules))
-        result = [self.addons[slug].details for slug in modules]
+        result = [self.modules[slug].details for slug in modules]
         logger.debug("Result: %s" % str(result))
         return result
 
     @expose
     def get_packages(self, module):
         """ returns package list for module """
-        return self.addons[module].packages
+        return self.modules[module].packages
 
     @expose
     def preinstall_modules(self, modules):
@@ -397,14 +397,14 @@ class ModuleManager:
 
     def get_dependencies(self, module):
         """ get dependencies for module """
-        return [d for d in self.addons[module].dependencies if d in self.addons]
+        return [d for d in self.modules[module].dependencies if d in self.modules]
 
     @expose
     def download_modules(self, modules):
         """ download modules from the API """
         logger.debug("Download modules: %s" % ", ".join(modules))
         for module in modules:
-            self.addons[module].download()
+            self.modules[module].download()
 
     @expose
     def get_repositories(self, modules):
@@ -412,14 +412,14 @@ class ModuleManager:
         logger.debug("Get packages repositories for modules: %s" % ", ".join(modules))
         repositories = []
         for module in modules:
-            repositories = repositories + self.addons[module].repositories
+            repositories = repositories + self.modules[module].repositories
         logger.debug("Result: %s" % repositories)
         return repositories
 
     @expose
     def add_repository(self, module_slug, repo_slug, login=None, passwd=None):
         """ add repository of a module """
-        repositories = self.addons[module_slug].repositories
+        repositories = self.modules[module_slug].repositories
         for repository in repositories:
             if repository.slug == repo_slug:
                 logger.info("Add repository: %s" % repository.name)
@@ -431,7 +431,7 @@ class ModuleManager:
         logger.info("Install modules: %s" % str(modules))
         packages = []
         for module in modules:
-            packages += self.addons[module].packages
+            packages += self.modules[module].packages
         if packages:
             logger.debug("Install packages: %s" % str(packages))
             ProcessManager().install_packages(packages)
@@ -446,7 +446,7 @@ class ModuleManager:
         logger.info("Get config for modules : %s" % str(modules))
         config = []
         for module in modules:
-            config.append(self.addons[module].get_config())
+            config.append(self.modules[module].get_config())
         logger.debug("Result: %s" % str(config))
         return config
 
@@ -456,7 +456,7 @@ class ModuleManager:
         config = []
         errors = False
         for module in modules:
-            module_errors, module_config = self.addons[module].valid_config(modules_config)
+            module_errors, module_config = self.modules[module].valid_config(modules_config)
             config.append(module_config)
             if module_errors:
                 errors = True
@@ -466,7 +466,7 @@ class ModuleManager:
     def run_config(self, module):
         """ run configuration for module """
         logger.debug("Run configuration for %s" % str(module))
-        path, script, args = self.addons[module].info_config()
+        path, script, args = self.modules[module].info_config()
         logger.debug("Run script: %s, args: %s" % (str(script), str(args)))
         logger.debug("Path is: %s" % path)
         return ProcessManager().run_script(script, args, path, module, self.end_config)
@@ -476,9 +476,9 @@ class ModuleManager:
         """
         Callback after run script
         """
-        if code == 0 and not self.addons[module].configured:
+        if code == 0 and not self.modules[module].configured:
             logger.debug("Set %s as configured" % str(module))
-            self.addons[module].configured = True
+            self.modules[module].configured = True
             # FIXME
             if module == "mds_mmc":
                 self.set_option("first-time", "yes")
@@ -552,13 +552,14 @@ class ModuleManager:
         """ return modules belonging to section
             organized by category
         """
-        logger.info("Getting section %s addons" % section)
+        logger.info("Getting section %s modules" % section)
         result = []
-        if section in self.sections_addons:
-            addons = self.sections_addons[section]
-            for addon in addons:
-                if self.addons[addon].standalone:
-                    category = copy.deepcopy(self.addons[addon].category)
+        if section in self.sections_modules:
+            modules_list = self.sections_modules[section]
+            for module_slug in modules_list:
+                if self.modules[module_slug].standalone:
+                    category = copy.deepcopy(self.modules[module_slug].category)
+                    details = self.modules[module_slug].details
                     exist = False
                     for cat in result:
                         if category["slug"] == cat["slug"]:
@@ -568,9 +569,9 @@ class ModuleManager:
                         result.append(category)
                     for i, cat in enumerate(result[:]):
                         if category["slug"] == cat["slug"]:
-                            if not "addons" in cat:
-                                result[i]["addons"] = []
-                            result[i]["addons"].append(self.addons[addon].details)
+                            if not "modules" in cat:
+                                result[i]["modules"] = []
+                            result[i]["modules"].append(details)
                             break
             logger.debug("Result: %s" % str(result))
         return result

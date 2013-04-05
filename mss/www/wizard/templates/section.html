@@ -116,7 +116,7 @@
             <a name="{{ c.slug }}"></a>
             <h1>{% if c.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ c.icon }}" /> {% endif %}{{ c.name }}</h1>
         </div>
-            {% for m in c.addons %}
+            {% for m in c.modules %}
             {% if m.standalone %}
 
         <script type="text/javascript">
@@ -191,7 +191,7 @@
                 {% endif %}
             </p>
 
-        </div> <!-- /addon -->
+        </div> <!-- /modules -->
             {% endif %}
             {% endfor %}
         {% endfor %}

@@ -222,9 +222,9 @@ def section(request, section):
 
     # format management url
     for category in categories:
-        for addon in category["addons"]:
-            if "actions" in addon:
-                for action in addon["actions"]:
+        for module in category["modules"]:
+            if "actions" in module:
+                for action in module["actions"]:
                     if action['type'] == "link":
                         action['value'] = toHtml(request, action['value'], False)
 
