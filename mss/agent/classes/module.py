@@ -88,15 +88,18 @@ class Module(object):
     def description(self):
         if self._desc.get('desc', False):
             logger.warning("deprecated: desc must be renamed in description (%s)" % self.slug)
-            return _(self._desc['desc'].split("\n")[0], self.slug)
+            return _(self._desc['desc'], self.slug).split("\n")[0]
         elif self._desc.get('description', False):
-            return _(self._desc['description'].split("\n")[0], self.slug)
+            return _(self._desc['description'], self.slug).split("\n")[0]
         else:
             return ""
 
     @property
     def actions(self):
-        return self._desc.get("actions", [])
+        actions = self._desc.get("actions", [])
+        for action in actions:
+            action["name"] = _(action["name"], self.slug)
+        return actions
 
     @property
     def dependencies(self):
