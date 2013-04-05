@@ -30,13 +30,14 @@ logger = logging.getLogger(__name__)
 class ProcessThread(threading.Thread):
     """ Base class for running tasks """
 
-    def __init__(self, type, module, command, cwd, callback, shell, env):
+    def __init__(self, type, status, module, command, cwd, callback, shell, env):
         self.process = None
         self._code = 2000
         self._output = ""
         self.lock = threading.RLock()
         # thread type (config, install...)
         self.type = type
+        self.status = status
         self.module = module
         self.command = command
         self.cwd = cwd

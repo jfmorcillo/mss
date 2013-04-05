@@ -41,19 +41,24 @@ class ProcessManager:
 
     def load_packages(self, callback):
         """ get all installed packages """
-        self.launch("load", ["rpm", "-qa", "--queryformat", "%{NAME}#"],
+        self.launch("load", _("Loading packages list"),
+                    ["rpm", "-qa", "--queryformat", "%{NAME}#"],
                     callback=callback)
 
     def install_packages(self, packages):
         """ launch installation of packages list """
-        self.launch("install", ["urpmi", "--auto", "--no-suggests"] + packages)
+        self.launch("install",
+                    _('Installing packages...'),
+                    ["urpmi", "--auto", "--no-suggests"] + packages)
 
     def run_script(self, script, args, cwd, module, callback):
         """ launch configuration script for module """
         env = {'TEXTDOMAIN': module,
                'TEXTDOMAINDIR': os.path.join(TranslationManager().get_catalog_path(module), 'locale')}
         if os.path.exists(os.path.join(cwd, script)):
-            self.launch("config", ["bash", script] + args, cwd=cwd,
+            self.launch("config",
+                        _("Running configuration"),
+                        ["bash", script] + args, cwd=cwd,
                         module=module, env=env, callback=callback)
             return True
         else:
@@ -61,25 +66,35 @@ class ProcessManager:
 
     def reboot(self):
         """ reboot the server """
-        self.launch("reboot", "sleep 3 && reboot", shell=True)
+        self.launch("reboot",
+                    _('Rebooting...'),
+                    "sleep 3 && reboot", shell=True)
 
     def update_medias(self):
         """ update medias lists """
-        self.launch("update", ["urpmi.update", "-a"])
+        self.launch("update",
+                    _('Updating medias'),
+                    ["urpmi.update", "-a"])
 
     def check_net(self):
         """ check if net is available """
-        self.launch("net", ["wget", "-T", "2", "http://api.mandriva.com", "-O", "/dev/null"], replace=True, env={'LC_ALL': 'C'})
+        self.launch("net",
+                    _('Checking network'),
+                    ["wget", "-T", "2", "http://api.mandriva.com", "-O", "/dev/null"], replace=True, env={'LC_ALL': 'C'})
 
     def add_repository(self, command):
         """ add repository """
-        self.launch("repository", command)
+        self.launch("repository", _("Adding media"), command)
 
-    def download_module(self, url, params=None, headers=None, callback=None):
+    def download_module(self, url, params=None, headers=None, module=None, callback=None):
         """ download module """
-        self.request("download_module", url, params, headers, callback=callback, replace=True)
+        if module:
+            status = _("Downloading %s addon..." % module)
+        else:
+            status = _("Downloading addon...")
+        self.request("download_module", status, url, params, headers, callback=callback, replace=True)
 
-    def launch(self, type, command, cwd=None, callback=None, shell=False,
+    def launch(self, type, status, command, cwd=None, callback=None, shell=False,
                replace=False, env=None, module="agent"):
         """ wrapper to run non blocking shell commands """
         thread = self.get_thread(type, module)
@@ -95,7 +110,7 @@ class ProcessManager:
                 env = {}
             if not 'LC_ALL' in env:
                 env['LC_ALL'] = TranslationManager().lang
-            thread = ProcessThread(type, module, command, cwd, callback, shell, env)
+            thread = ProcessThread(type, status, module, command, cwd, callback, shell, env)
             self.threads.append(thread)
             logger.debug("Create %s thread for module %s" % (type, module))
             logger.debug("Command is: %s" % " ".join(command))
@@ -104,7 +119,7 @@ class ProcessManager:
             # let the thread finish
             pass
 
-    def request(self, type, url, params=None, headers=None,
+    def request(self, type, status, url, params=None, headers=None,
                 callback=None, module="agent", replace=False):
         """ wrapper to make non blocking http requests """
         thread = self.get_thread(type, module)
@@ -116,7 +131,7 @@ class ProcessManager:
             # remove previoud thread
             if thread:
                 self.threads.remove(thread)
-            thread = RequestThread(type, module, url, params, headers, callback)
+            thread = RequestThread(type, status, module, url, params, headers, callback)
             self.threads.append(thread)
             logger.debug("Create %s thread for module %s" % (type, module))
             logger.debug("URL: %s" % url)
@@ -147,22 +162,7 @@ class ProcessManager:
         status = []
         for thread in self.threads:
             if thread.isAlive():
-                if thread.type == "load":
-                    status.append(_("Loading packages list"))
-                if thread.type == "install":
-                    status.append(_("Installing packages"))
-                if thread.type == "update":
-                    status.append(_("Updating medias"))
-                if thread.type == "repository":
-                    status.append(_("Adding media"))
-                if thread.type == "config":
-                    status.append(_("Running configuration"))
-                if thread.type == "net":
-                    status.append(_("Checking network"))
-                if thread.type == "reboot":
-                    status.append(_("Rebooting"))
-                if thread.type == "download_module":
-                    status.append(_("Downloading addon"))
+                status.append(thread.status)
         if not status:
             status.append(_("Ready"))
         return status

@@ -35,12 +35,13 @@ logger = logging.getLogger(__name__)
 class RequestThread(threading.Thread):
     """ Base class for running HTTP requests """
 
-    def __init__(self, type, module, url, params, headers, callback):
+    def __init__(self, type, status, module, url, params, headers, callback):
         self._code = 2000
         self._progress = 0
         self._result = None
         # thread type (config, install...)
         self.type = type
+        self.status = status
         self.module = module
         self.url = url
         self.params = params
