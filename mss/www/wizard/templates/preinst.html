@@ -11,7 +11,7 @@
     {% if transaction.modules %}
     <p class="alert">{{ transaction.current_step.info }}</p>
     {% else %}
-    <p class="alert alert-error">{% trans "No component selected." %}</p>
+    <p class="alert alert-error">{% trans "No addon selected." %}</p>
     {% endif %}
     <form name="mss" action="{{ transaction.next_step_url }}" method="post">
         {% if transaction.current_step.show_modules %}
@@ -22,7 +22,7 @@
                 {% if module.dep %}(<strong>{% trans "Added as a dependency" %}</strong>){% endif %}
                 {% if module.force %}(<strong>{% trans "Reinstallation" %}</strong>){% endif %}</p>
                 {% if module.force %}
-                <p class="alert alert-error">{% trans "If other components requires this component they may be broken after the reinstallation." %}</p>
+                <p class="alert alert-error">{% trans "If other addons requires this addon they may be broken after the reinstallation." %}</p>
                 {% endif %}
             </div>
             {% endfor %}

@@ -16,7 +16,7 @@
 
                     module.addClass("error");
                     checkbox.disabled = true;
-                    setModulePopup(id, "icon-ban-circle", "{% trans "This component can't be installed with" %} <strong>" + name + "</strong>");
+                    setModulePopup(id, "icon-ban-circle", "{% trans "This addon can't be installed with" %} <strong>" + name + "</strong>");
                 }
             }
         }
@@ -162,11 +162,11 @@
                 </span>
                 {% endif %}
                 <div class="popover-content" style="display: none">
-                    {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This component is installed and configured" %}</p>{% endif %}
+                    {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This addon is installed and configured" %}</p>{% endif %}
                     {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
                         {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                     {% endif %}
-                    {% if m.purchased %}<p><i class="icon-shopping-cart"></i> {% trans "You have bought this component" %}</p>{% endif %}
+                    {% if m.purchased %}<p><i class="icon-shopping-cart"></i> {% trans "You have purshased this addon" %}</p>{% endif %}
                 </div>
             </label>
 
@@ -199,7 +199,7 @@
 
     <div class="form-actions">
             <div class="pull-right">
-                <button class="btn btn-primary" type="submit">{% trans "Install and configure selected components" %}&nbsp;→</button>
+                <button class="btn btn-primary" type="submit">{% trans "Install and configure selected addons" %}&nbsp;→</button>
             </div>
         </div>
     </div>

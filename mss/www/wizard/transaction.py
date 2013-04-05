@@ -48,8 +48,8 @@ class Transaction:
                 'disabled': False,
                 'title': _("Installation summary"),
                 'info': ungettext(
-                            "The folowing component will be installed.",
-                            "The folowing components will be installed.",
+                            "The folowing addon will be installed.",
+                            "The folowing addons will be installed.",
                             len(self.modules)
                         ),
                 'show_modules': True,
