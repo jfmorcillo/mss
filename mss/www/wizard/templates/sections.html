@@ -39,8 +39,12 @@
     </script>
 {% else %}
     <section>
-        <p class="alert alert-error">{% trans "No modules for Mandriva Server Setup installed." %}</p>
-        <p class="alter">{% trans "Check for mss-modules-* packages." %}</p>
+        <p class="alert">{% trans "No addon for Mandriva Server Setup available. Try to login again." %}</p>
+        <div class="form-actions">
+            <div class="pull-right">
+                <a href="{% url logout %}">{% trans "Logout" %}</a>
+            </div>
+        </div>
     </section>
 {% endif %}
 {% endblock %}

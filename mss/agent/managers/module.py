@@ -80,6 +80,9 @@ class ModuleManager:
         self.config.readfp(open("/etc/mss/agent.ini"))
 
         self._token = False
+        self.modules = {}
+        self.sections_modules = {}
+        self.sections = {}
         self.packages = []
 
         # Translation manager
