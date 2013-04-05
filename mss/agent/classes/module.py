@@ -37,9 +37,11 @@ from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
 from mss.agent.managers.translation import TranslationManager
 from mss.agent.managers.process import ProcessManager
+from mss.agent.managers.module import ModuleManager
 
 _ = TranslationManager().translate
 logger = logging.getLogger(__name__)
+
 
 class Module(object):
     """
@@ -47,9 +49,7 @@ class Module(object):
 
     """
 
-    def __init__(self, desc, MM):
-        self.MM = MM
-        self.arch = MM.arch
+    def __init__(self, desc):
         self._desc = desc
         self._path = desc["module"]["path"]
         self._module = None
@@ -202,7 +202,7 @@ class Module(object):
             return
         packages = set(self.packages)
         # check if packages are installed
-        if len(packages) == len(packages.intersection(self.MM.packages)):
+        if len(packages) == len(packages.intersection(ModuleManager().packages)):
             self.installed = True
         else:
             self.installed = False
@@ -228,7 +228,7 @@ class Module(object):
             targets = self._desc.get("packages", [])
             for target in targets:
                 if target['name'] == "all" or \
-                    target['name'] == self.arch:
+                    target['name'] == ModuleManager().arch:
                     self._packages = target.get("rpms", [])
         return self._packages
 
@@ -239,7 +239,7 @@ class Module(object):
         repositories = self._desc.get("repositories", [])
         if repositories:
             for repository in repositories:
-                repository['url'] = repository['url'].replace('@ARCH@', self.arch)
+                repository['url'] = repository['url'].replace('@ARCH@', ModuleManager().arch)
                 if 'url' in repository and not grep(repository['url'].split('://')[1], '/etc/urpmi/urpmi.cfg'):
                     repository['module_slug'] = self.slug
                     self._repositories.append(Media(**repository))
@@ -393,7 +393,7 @@ class Module(object):
 
                 # store the field value in the DB
                 if not 'error' in field and 'store' in field:
-                    self.MM.set_option(field["name"], field["default"])
+                    ModuleManager().set_option(field["name"], field["default"])
 
         # store config if no errors
         if not errors:
@@ -443,8 +443,8 @@ class Module(object):
         if not self.downloaded:
             assert self._desc['module']['file']
             logger.info("Download module: %s" % self.slug)
-
-            headers = [('Authorization', 'Token ' + self.MM._token)]
+            if ModuleManager()._token:
+                headers = [('Authorization', 'Token ' + ModuleManager()._token)]
             url = self._desc['module']['file']
             ProcessManager().download_module(url, headers=headers, callback=self.end_download)
 

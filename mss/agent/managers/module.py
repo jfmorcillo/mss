@@ -35,7 +35,6 @@ import time
 
 from mss.agent.lib.utils import Singleton
 from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
-from mss.agent.classes.module import Module
 from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
 
@@ -119,15 +118,18 @@ class ModuleManager:
             sys.path.append(self.config.get("local", "cacheDir"))
             modules_list = self.get_api_modules()
 
-        for module in modules_list:
-            if "module" in module:
-                if not "path" in module["module"]:
-                    module["module"]["path"] = os.path.join(self.config.get("local", "cacheDir"), module["slug"])
-                self.modules[module['slug']] = Module(module, self)
-                section = self.modules[module['slug']].section
+        from mss.agent.classes.module import Module
+
+        for module_desc in modules_list:
+            if "module" in module_desc:
+                if not "path" in module_desc["module"]:
+                    module_desc["module"]["path"] = os.path.join(self.config.get("local", "cacheDir"),
+                                                                 module_desc["slug"])
+                self.modules[module_desc['slug']] = Module(module_desc)
+                section = self.modules[module_desc['slug']].section
                 if not section in self.sections_modules:
                     self.sections_modules[section] = []
-                self.sections_modules[section].append(module["slug"])
+                self.sections_modules[section].append(module_desc["slug"])
 
     def get_local_modules(self):
         paths = []
