@@ -230,11 +230,14 @@ class ModuleManager:
     @expose
     def get_option(self, slug):
         """ get an option from the BDD """
+        logger.debug("Get option %s" % slug)
         option = self.session.query(OptionTable).get(slug)
         if option:
-            return json.loads(option.value)
+            result = json.loads(option.value)
         else:
-            return False
+            result = False
+        logger.debug("Result: %s" % result)
+        return result
 
     @expose
     def load_packages(self):
