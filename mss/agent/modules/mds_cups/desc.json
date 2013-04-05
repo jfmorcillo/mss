@@ -1,6 +1,7 @@
 {
     "slug":   "mds_cups",
     "name": "Printing service",
+    "desc": "Network printers management",
     "description": "Network printers management",
     "actions": [
         {
@@ -13,12 +14,12 @@
         {
             "name": "all",
             "rpms": ["cups",
-                         "cups-drivers",
-                         "cups-windows",
-                         "foomatic-filters",
-                         "hplip-hpijs-ppds",
-                         "postscript-ppds",
-                         "hplip"]
+                     "cups-drivers",
+                     "cups-windows",
+                     "foomatic-filters",
+                     "hplip-hpijs-ppds",
+                     "postscript-ppds",
+                     "hplip"]
         }
     ],
     "config": [
