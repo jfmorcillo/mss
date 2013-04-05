@@ -153,10 +153,6 @@ TEMPLATE_DIRS = [
     os.path.join(PROJECT_DIR, 'wizard', 'templates'),
 ]
 
-for templates in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "templates")):
-    if os.path.exists(templates):
-        TEMPLATE_DIRS.append(templates)
-
 INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -165,11 +161,6 @@ INSTALLED_APPS = [
     'mss.www.cpserver',
     'mss.www.errors',
 ]
-
-for layout in glob.glob(os.path.join(PROJECT_DIR, "layout", "*", "__init__.py")):
-    app = 'mss.www.layout.'+layout.split("/")[-2]
-    if not app in INSTALLED_APPS:
-        INSTALLED_APPS.append(app)
 
 AUTHENTICATION_BACKENDS = (
     'mss.www.backends.MSSBackend',
