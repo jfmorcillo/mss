@@ -103,22 +103,37 @@ class ModuleManager:
         self.sections_modules = {}
         self.sections = {}
 
-        if self._token:
-            self.get_api_sections()
-        else:
-            self.get_local_sections()
+        self.load_sections()
+        logger.debug("Sections loaded.")
         self.load_modules()
         logger.debug("Modules loaded.")
+
+    def setup_python_path(self, local=False):
+        """
+        Setup the python path to load modules
+        """
+        local_path = os.path.join(self.config.get("local", "localDir"), "addons")
+        cache_path = self.config.get("local", "cacheDir")
+        if local:
+            try:
+                sys.path.remove(cache_path)
+            except ValueError:
+                pass
+            sys.path.append(local_path)
+        else:
+            try:
+                sys.path.remove(local_path)
+            except ValueError:
+                pass
+            sys.path.append(cache_path)
 
     def load_modules(self):
         """ load modules """
         if not self._token:
             logger.debug("Using local modules")
-            sys.path.append(os.path.join(self.config.get("local", "localDir"), "addons"))
             modules_list = self.get_local_modules()
         else:
             logger.debug("Using API modules")
-            sys.path.append(self.config.get("local", "cacheDir"))
             modules_list = self.get_api_modules()
 
         from mss.agent.classes.module import Module
@@ -157,6 +172,9 @@ class ModuleManager:
                 result.append(desc)
             finally:
                 h.close()
+
+        self.setup_python_path(local=True)
+
         return result
 
     def get_api_modules(self):
@@ -176,27 +194,43 @@ class ModuleManager:
                 h = open(cache_path, "w")
                 json.dump(result, h)
                 h.close()
+                h = open(cache_path)
+                modules_list = json.load(h)
+                h.close()
+                self.setup_python_path(local=False)
             else:
                 logger.error("Failed to retrieve modules from the API.")
-
-        h = open(cache_path)
-        modules_list = json.load(h)
-        h.close()
+                logger.error("Using local modules.")
+                modules_list = self.get_local_modules()
+        else:
+            h = open(cache_path)
+            modules_list = json.load(h)
+            h.close()
+            self.setup_python_path(local=False)
 
         return modules_list
 
+    def load_sections(self):
+        """ load sections """
+        if not self._token:
+            logger.debug("Using local sections")
+            sections = self.get_local_sections()
+        else:
+            logger.debug("Using API sections")
+            sections = self.get_api_sections()
+        self.sections = sections
+
     def get_local_sections(self):
         """ return local section list """
-        logger.debug("Using local sections")
         path = os.path.join(self.config.get("local", "localDir"), "sections.json")
         h = open(path)
         sections = json.load(h)
         h.close()
-        self.sections = sections
+
+        return sections
 
     def get_api_sections(self):
         """ return section list from API """
-        logger.debug("Using API sections")
         cache_path = os.path.join(self.config.get("local", "cacheDir"), "sections.json")
 
         try:
@@ -212,12 +246,19 @@ class ModuleManager:
                 h = open(cache_path, "w")
                 json.dump(result, h)
                 h.close()
+                h = open(cache_path)
+                sections = json.load(h)
+                h.close()
             else:
                 logger.error("Failed to retrieve sections from the API.")
+                logger.error("Using local sections.")
+                sections = self.get_local_sections()
+        else:
+            h = open(cache_path)
+            sections = json.load(h)
+            h.close()
 
-        h = open(cache_path)
-        self.sections = json.load(h)
-        h.close()
+        return sections
 
     @expose
     def set_lang(self, lang):
