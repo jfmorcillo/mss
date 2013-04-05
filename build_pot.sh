@@ -29,12 +29,11 @@ langs="fr_FR pt_BR"
 rm -f ${pot}
 echo -n "creating ${pot}"
 touch ${pot}
-json2po ${json} --pot ${pot}
+json2po --filter=name,desc,description,label,help --progress=none ${json} --pot ${pot}
 find . -name modules -prune -o -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
-for name in `find locale -type f -name *.po`; do
-	echo -n "updating ${name}..."
-	msgmerge --update --add-location --sort-output ${name} ${pot}
-done
+# Remove duplicates
+sed '/msgctxt/d' ${pot} | msguniq > ${pot}.tmp
+mv ${pot}.tmp ${pot}
 
 # Modules translation
 for module in modules/*; do
@@ -50,17 +49,14 @@ for module in modules/*; do
         touch ${pot}
         if [ -f $json ]; then
             echo -n "creating ${pot}"
-            json2po ${json} --pot ${pot}
+            json2po --filter=name,desc,description,label,help --progress=none ${json} --pot ${pot}
             bash --dump-po-strings modules/${mod}/*.sh >> ${pot}
             find modules/${mod} -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
+            # Remove duplicates
+            sed '/msgctxt/d' ${pot} | msguniq > ${pot}.tmp
+            mv ${pot}.tmp ${pot}
             echo "....done."
         fi
-        for po in `find modules/${mod}/locale -type f -name *.po`; do
-            if [ -f $po ]; then
-                echo -n "updating ${po}..."
-                msgmerge --update --add-location --sort-output ${po} ${pot}
-            fi
-        done
     fi
 done
 
