@@ -144,9 +144,11 @@ class Module(object):
         # return first category of the list
         categories = self._desc.get("categories", [])
         if categories:
-            return categories[0]
+            category = copy.deepcopy(categories[0])
+            category["name"] = _(category["name"], self.slug)
+            return category
         else:
-            return {u"slug": u"other", u"name": u"Other"}
+            return {u"slug": u"other", u"name": _("Other", "agent")}
 
     @property
     def section(self):

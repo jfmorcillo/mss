@@ -579,7 +579,7 @@ class ModuleManager:
             modules_list = self.sections_modules[section]
             for module_slug in modules_list:
                 if self.modules[module_slug].standalone:
-                    category = copy.deepcopy(self.modules[module_slug].category)
+                    category = self.modules[module_slug].category
                     details = self.modules[module_slug].details
                     exist = False
                     for cat in result:
