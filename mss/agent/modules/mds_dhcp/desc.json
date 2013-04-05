@@ -3,6 +3,12 @@
     "name": "DHCP Service",
     "description": "Configure automatically your client computers IP settings",
     "desc": "Configure automatically your client computers IP settings",
+    "categories": [
+        {
+            "slug": "network",
+            "name": "Network"
+        }
+    ],
     "actions": [
         {
             "type": "link",

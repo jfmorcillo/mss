@@ -139,7 +139,7 @@ h3 {
     padding-top: 9px;
 }
 
-.module ~ .module {
+.module + .module {
     border-top: 2px solid #E5E5E5;
 }
 

@@ -3,6 +3,12 @@
     "name": "Windows users and file sharing management",
     "description": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
     "desc": "Authenticate Windows users with SAMBA and provide Windows file shares on your network",
+    "categories": [
+        {
+            "slug": "users",
+            "name": "Users"
+        }
+    ],
     "actions": [
         {
             "type": "link",

@@ -20,6 +20,7 @@
 # MA 02110-1301, USA.
 
 import os
+import copy
 import re
 import glob
 import sys
@@ -123,7 +124,7 @@ class ModuleManager:
                 if not "path" in addon["module"]:
                     addon["module"]["path"] = os.path.join(self.config.get("local", "cacheDir"), addon["slug"])
                 self.addons[addon['slug']] = Module(addon, self)
-                section = addon["module"].get("section", "other")
+                section = self.addons[addon['slug']].section
                 if not section in self.sections_addons:
                     self.sections_addons[section] = []
                 self.sections_addons[section].append(addon["slug"])
@@ -289,9 +290,17 @@ class ModuleManager:
         return conflicts
 
     @expose
-    def get_modules(self, modules):
-        """ return basic info for modules """
-        logger.info("Get modules info: %s" % str(modules))
+    def get_modules(self):
+        """ return all available modules details """
+        logger.info("Get all available modules")
+        result = [addon.details for addon in self.addons]
+        logger.debug("Result: %s" % str(result))
+        return result
+
+    @expose
+    def get_modules_details(self, modules):
+        """ return modules info """
+        logger.info("Get modules details: %s" % str(modules))
         result = [self.addons[slug].details for slug in modules]
         logger.debug("Result: %s" % str(result))
         return result
@@ -299,7 +308,7 @@ class ModuleManager:
     @expose
     def get_packages(self, module):
         """ returns package list for module """
-        return self.modules[module].packages
+        return self.addons[module].packages
 
     @expose
     def preinstall_modules(self, modules):
@@ -323,7 +332,7 @@ class ModuleManager:
         # get difference for dep list
         deps = list(set(modules).difference(old))
         # get modules info (modules + dependencies)
-        modules = self.get_modules(modules)
+        modules = self.get_modules_details(modules)
         # remove already configured modules
         modules = [m for m in modules if not m['configured']]
         # tell if the module is an dependency of selected modules
@@ -537,8 +546,31 @@ class ModuleManager:
 
     @expose
     def get_section(self, section):
-        """ return modules belonging to section """
-        return self.sections_addons[section]
+        """ return modules belonging to section
+            organized by category
+        """
+        logger.info("Getting section %s addons" % section)
+        result = []
+        if section in self.sections_addons:
+            addons = self.sections_addons[section]
+            for addon in addons:
+                if self.addons[addon].standalone:
+                    category = copy.deepcopy(self.addons[addon].category)
+                    exist = False
+                    for cat in result:
+                        if category["slug"] == cat["slug"]:
+                            exist = True
+                            break
+                    if not exist:
+                        result.append(category)
+                    for i, cat in enumerate(result[:]):
+                        if category["slug"] == cat["slug"]:
+                            if not "addons" in cat:
+                                result[i]["addons"] = []
+                            result[i]["addons"].append(self.addons[addon].details)
+                            break
+            logger.debug("Result: %s" % str(result))
+        return result
 
     @expose
     def authenticate(self, user, password):

@@ -3,6 +3,12 @@
     "name": "Webmail",
     "description": "Roundcube, a complete webmail solution for your mail service",
     "desc": "Roundcube, a complete webmail solution for your mail service",
+    "categories": [
+        {
+            "slug": "mail",
+            "name": "Mail"
+        }
+    ],
     "actions": [
         {
             "type": "link",

@@ -21,7 +21,6 @@
 
 import re
 import time
-from sets import Set
 
 from django.shortcuts import render_to_response
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
@@ -203,12 +202,10 @@ def has_net(request, has_net):
 @login_required
 def sections(request):
     """ sections list """
-    sections = []
     # get section list
-    err, result = xmlrpc.call('get_sections')
+    err, sections = xmlrpc.call('get_sections')
     if err:
         return err
-    sections = result
 
     # render the main page with all sections
     return render_to_response('sections.html',
@@ -219,27 +216,21 @@ def sections(request):
 @login_required
 def section(request, section):
     """ render section page """
-    err, sections = xmlrpc.call('get_sections')
-    if err:
-        return err
-
-    err, modules_list = xmlrpc.call('get_section', section)
-    if err:
-        return err
-
-    err, modules_info = xmlrpc.call('get_modules', modules_list)
+    err, categories = xmlrpc.call('get_section', section)
     if err:
         return err
 
     # format management url
-    for module in modules_info:
-        for action in module['actions']:
-            if action['type'] == "link":
-                action['value'] = toHtml(request, action['value'], False)
+    for category in categories:
+        for addon in category["addons"]:
+            if "actions" in addon:
+                for action in addon["actions"]:
+                    if action['type'] == "link":
+                        action['value'] = toHtml(request, action['value'], False)
 
     return render_to_response('section.html',
-        {'sections': sections, 'modules': modules_info},
-        context_instance=RequestContext(request))
+                              {'categories': categories},
+                              context_instance=RequestContext(request))
 
 @login_required
 def prepare(request):

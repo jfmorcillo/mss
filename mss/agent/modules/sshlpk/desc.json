@@ -3,6 +3,12 @@
     "name": "SSH keys management",
     "description": "Manage your user's SSH keys using LDAP as a backend",
     "desc": "Manage your user's SSH keys using LDAP as a backend",
+    "categories": [
+        {
+            "slug": "other",
+            "name": "Other"
+        }
+    ]
     "actions": [
         {
             "type": "link",

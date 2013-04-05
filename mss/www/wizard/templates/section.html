@@ -108,11 +108,15 @@
 </script>
 <form name="mss" action="{% url prepare %}" method="post">
     <div class="bundle" id="{{ bundle.slug }}">
+        {% if not categories %}
+        <p class="alert alert-error">{% trans "No addon available in this section." %}</p>
+        {% endif %}
+        {% for c in  categories %}
         <div class="page-header">
-            <a name="{{ bundle.slug }}"></a>
-            <h1>{% if bundle.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ bundle.icon }}" /> {% endif %}{% trans bundle.name %}{% if bundle.desc %}&nbsp;<small>{% trans bundle.desc %}</small>{% endif %}</h1>
+            <a name="{{ c.slug }}"></a>
+            <h1>{% if c.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ c.icon }}" /> {% endif %}{{ c.name }}</h1>
         </div>
-        {% for m in modules %}
+            {% for m in c.addons %}
             {% if m.standalone %}
 
         <script type="text/javascript">
@@ -187,10 +191,11 @@
                 {% endif %}
             </p>
 
-        </div> <!-- /module -->
+        </div> <!-- /addon -->
             {% endif %}
+            {% endfor %}
         {% endfor %}
-    </div> <!-- /bundle -->
+    </div> <!-- /category -->
 
     <div class="form-actions">
             <div class="pull-right">

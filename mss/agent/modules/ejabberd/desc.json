@@ -2,6 +2,12 @@
     "slug":   "ejabberd",
     "name": "Jabber/XMPP instant messaging server",
     "description": "A distributed, fault-tolerant Jabber/XMPP server",
+    "categories": [
+        {
+            "slug": "collaboration",
+            "name": "Collaboration"
+        }
+    ],
     "actions": [
         {
             "type": "link",

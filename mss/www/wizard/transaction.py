@@ -112,7 +112,7 @@ class Transaction:
         if self.repositories:
             self.enable_step(Steps.MEDIAS_ADD)
 
-        err, result = xmlrpc.call('get_modules', self.modules)
+        err, result = xmlrpc.call('get_modules_details', self.modules)
         for module in result:
             if not module['installed'] or not module["downloaded"]:
                 self.enable_step(Steps.INSTALL)

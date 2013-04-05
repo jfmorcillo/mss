@@ -138,6 +138,22 @@ class Module(object):
             return self._desc["module"].get("reboot", False)
         return False
 
+    @property
+    def category(self):
+        # return first category of the list
+        categories = self._desc.get("categories", [])
+        if categories:
+            return categories[0]
+        else:
+            return {u"slug": u"other", u"name": u"Other"}
+
+    @property
+    def section(self):
+        if self._desc.get("module", False):
+            return self._desc["module"].get("section", "other")
+        else:
+            return "other"
+
     def check_configured(self):
         # check if module is configured by calling module method
         if self._module:

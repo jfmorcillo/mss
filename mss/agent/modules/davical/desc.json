@@ -3,6 +3,12 @@
     "name": "Calendar and Addressbook",
     "description": "DAViCal a service for calendar and addressbook sharing.",
     "desc": "DAViCal a service for calendar and addressbook sharing.",
+    "categories": [
+        {
+            "slug": "collaboration",
+            "name": "Collaboration"
+        }
+    ],
     "actions": [
         {
             "type": "link",

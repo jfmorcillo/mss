@@ -3,6 +3,12 @@
     "name": "DNS Service",
     "description": "Resolve computer names on your network",
     "desc": "Resolve computer names on your network",
+    "categories": [
+        {
+            "slug": "network",
+            "name": "Network"
+        }
+    ],
     "actions": [
         {
             "type": "link",

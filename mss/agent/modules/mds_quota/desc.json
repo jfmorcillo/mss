@@ -3,6 +3,12 @@
     "name": "User quota management",
     "description": "Set file quotas on the server",
     "desc": "Set file quotas on the server",
+    "categories": [
+        {
+            "slug": "users",
+            "name": "Users"
+        }
+    ],
     "packages": [
         {
             "name": "all",

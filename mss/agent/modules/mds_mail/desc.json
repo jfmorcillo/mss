@@ -3,6 +3,12 @@
     "name": "Mail Service",
     "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
     "desc": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
+    "categories": [
+        {
+            "slug": "mail",
+            "name": "Mail"
+        }
+    ],
     "actions": [
         {
             "type": "link",
