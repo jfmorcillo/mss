@@ -36,6 +36,7 @@ from mss.agent.lib.utils import grep
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
 from mss.agent.managers.translation import TranslationManager
+from mss.agent.managers.process import ProcessManager
 
 _ = TranslationManager().translate
 logger = logging.getLogger(__name__)
@@ -442,39 +443,43 @@ class Module(object):
         if not self.downloaded:
             assert self._desc['module']['file']
             logger.info("Download module: %s" % self.slug)
+
+            headers = [('Authorization', 'Token ' + self.MM._token)]
+            url = self._desc['module']['file']
+            ProcessManager().download_module(url, headers=headers, callback=self.end_download)
+
+    def end_download(self, module, code, result):
+        if code == 200:
             temp_path = os.path.join("/tmp", self.slug + ".zip")
+            h = open(temp_path, "wb")
+            h.write(result)
+            h.close()
+        else:
+            logger.error("Error while downloading %s module" % self.slug)
 
-            result, code = self.MM.request(self._desc['module']['file'])
-            if code == 200:
-                h = open(temp_path, "wb")
-                h.write(result)
+        if code == 200:
+            # Verify sha1
+            logger.debug("Unzip module: %s" % temp_path)
+            h = open(temp_path, "rb")
+            sha1 = hashlib.sha1()
+            try:
+                sha1.update(h.read())
+            finally:
                 h.close()
+            logger.debug("Process sha1sum: %s" % sha1.hexdigest())
+            if sha1.hexdigest() == self._desc['module']['file_sha1']:
+                logger.debug("Zip file is valid: unzip...")
+                os.mkdir(self._path)
+                zip = zipfile.ZipFile(temp_path)
+                zip.extractall(path=self._path)
+                os.unlink(temp_path)
+                self.load_desc()
+                self.load_module()
+                self.load_translations()
+                self.check_configured()
+                self.check_installed()
             else:
-                logger.error("Error while downloading %s module" % self.slug)
-
-            if code == 200:
-                # Verify sha1
-                logger.debug("Unzip module: %s" % temp_path)
-                h = open(temp_path, "rb")
-                sha1 = hashlib.sha1()
-                try:
-                    sha1.update(h.read())
-                finally:
-                    h.close()
-                logger.debug("Process sha1sum: %s" % sha1.hexdigest())
-                if sha1.hexdigest() == self._desc['module']['file_sha1']:
-                    logger.debug("Zip file is valid: unzip...")
-                    os.mkdir(self._path)
-                    zip = zipfile.ZipFile(temp_path)
-                    zip.extractall(path=self._path)
-                    os.unlink(temp_path)
-                    self.load_desc()
-                    self.load_module()
-                    self.load_translations()
-                    self.check_configured()
-                    self.check_installed()
-                else:
-                    logger.error("Zip file is invalid...")
+                logger.error("Zip file is invalid...")
 
     def load_desc(self):
         if self.downloaded:

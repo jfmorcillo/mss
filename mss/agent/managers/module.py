@@ -309,6 +309,14 @@ class ModuleManager:
         return result
 
     @expose
+    def get_module_details(self, module):
+        """ return module info """
+        logger.info("Get module detail: %s" % module)
+        result = self.modules[module]
+        logger.debug("Result: %s" % str(result))
+        return result
+
+    @expose
     def get_packages(self, module):
         """ returns package list for module """
         return self.modules[module].packages
@@ -402,9 +410,13 @@ class ModuleManager:
     @expose
     def download_modules(self, modules):
         """ download modules from the API """
-        logger.debug("Download modules: %s" % ", ".join(modules))
         for module in modules:
-            self.modules[module].download()
+            self.download_module(module)
+
+    @expose
+    def download_module(self, module):
+        logger.debug("Download module: %s" % module)
+        self.modules[module].download()
 
     @expose
     def get_repositories(self, modules):
@@ -531,6 +543,7 @@ class ModuleManager:
                 except IndexError:
                     pass
 
+        logger.debug("Get state: %s - %s" % (code, output))
         return (code, output)
 
     @expose

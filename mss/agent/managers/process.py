@@ -25,6 +25,7 @@ from gettext import gettext as _
 
 from mss.agent.lib.utils import Singleton
 from mss.agent.classes.process import ProcessThread
+from mss.agent.classes.request import RequestThread
 from mss.agent.managers.translation import TranslationManager
 
 logger = logging.getLogger(__name__)
@@ -74,9 +75,13 @@ class ProcessManager:
         """ add repository """
         self.launch("repository", command)
 
+    def download_module(self, url, params=None, headers=None, callback=None):
+        """ download module """
+        self.request("download_module", url, params, headers, callback=callback, replace=True)
+
     def launch(self, type, command, cwd=None, callback=None, shell=False,
                replace=False, env=None, module="agent"):
-        """ launch wrapper """
+        """ wrapper to run non blocking shell commands """
         thread = self.get_thread(type, module)
         # stop the current thread if replace is True
         if replace and thread:
@@ -94,6 +99,29 @@ class ProcessManager:
             self.threads.append(thread)
             logger.debug("Create %s thread for module %s" % (type, module))
             logger.debug("Command is: %s" % " ".join(command))
+            thread.start()
+        else:
+            # let the thread finish
+            pass
+
+    def request(self, type, url, params=None, headers=None,
+                callback=None, module="agent", replace=False):
+        """ wrapper to make non blocking http requests """
+        thread = self.get_thread(type, module)
+        # stop the current thread if replace is True
+        if replace and thread:
+            thread.stop()
+            logger.debug("Stopping %s thread of module %s" % (type, module))
+        if not thread or not thread.isAlive():
+            # remove previoud thread
+            if thread:
+                self.threads.remove(thread)
+            thread = RequestThread(type, module, url, params, headers, callback)
+            self.threads.append(thread)
+            logger.debug("Create %s thread for module %s" % (type, module))
+            logger.debug("URL: %s" % url)
+            logger.debug("Headers: %s" % str(headers))
+            logger.debug("Params: %s" % str(params))
             thread.start()
         else:
             # let the thread finish
@@ -133,6 +161,8 @@ class ProcessManager:
                     status.append(_("Checking network"))
                 if thread.type == "reboot":
                     status.append(_("Rebooting"))
+                if thread.type == "download_module":
+                    status.append(_("Downloading addon"))
         if not status:
             status.append(_("Ready"))
         return status

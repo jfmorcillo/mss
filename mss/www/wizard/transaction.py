@@ -36,100 +36,100 @@ class Transaction:
                 self.modules_info = result
                 # update with depedencies
                 self.modules = [ m['slug'] for m in self.modules_info ]
-                self.repositories = []
-                self.transaction = [
-                    {
-                        'id': Steps.PREINST,
-                        'disabled': False,
-                        'title': _("Installation summary"),
-                        'info': ungettext(
-                                    "The folowing component will be installed.",
-                                    "The folowing components will be installed.",
-                                    len(self.modules)
-                                ),
-                        'show_modules': True,
-                        'current': False
-                    },
-                    {
-                        'id': Steps.DOWNLOAD,
-                        'disabled': True,
-                        'title': _("Addon download"),
-                        'info': _("Download addons from the ServicePlace"),
-                        'current': False,
-                    },
-                    {
-                        'id': Steps.MEDIAS_AUTH,
-                        'disabled': True,
-                        'title': _("Medias authentication"),
-                        'info': _("One or more medias need authentication"),
-                        'current': False,
-                    },
-                    {
-                        'id': Steps.MEDIAS_ADD,
-                        'disabled': True,
-                        'title': _("Medias add"),
-                        'info': "",
-                        'current': False,
-                    },
-                    {
-                        'id': Steps.INSTALL,
-                        'disabled': True,
-                        'title': _("Installation"),
-                        'info': "",
-                        'current': False,
-                    },
-                    {
-                        'id': Steps.CONFIG,
-                        'disabled': True,
-                        'title': _("Initial configuration"),
-                        'info': "",
-                        'current': False
-                    },
-                    {
-                        'id': Steps.REBOOT,
-                        'disabled': True,
-                        'title': _("Reboot"),
-                        'current': False
-                    },
-                    {
-                        'id': Steps.END,
-                        'disabled': False,
-                        'title': _("End of installation"),
-                        'current': False
-                    }
-                ]
+                self.reset()
                 self.prepare()
                 self.save(request)
+
+    def reset(self):
+        self.repositories = []
+        self.transaction = [
+            {
+                'id': Steps.PREINST,
+                'disabled': False,
+                'title': _("Installation summary"),
+                'info': ungettext(
+                            "The folowing component will be installed.",
+                            "The folowing components will be installed.",
+                            len(self.modules)
+                        ),
+                'show_modules': True,
+                'current': False
+            },
+            {
+                'id': Steps.DOWNLOAD,
+                'disabled': True,
+                'title': _("Addon download"),
+                'info': _("Download addons from the ServicePlace"),
+                'current': False,
+            },
+            {
+                'id': Steps.MEDIAS_AUTH,
+                'disabled': True,
+                'title': _("Medias authentication"),
+                'info': _("One or more medias need authentication"),
+                'current': False,
+            },
+            {
+                'id': Steps.MEDIAS_ADD,
+                'disabled': True,
+                'title': _("Medias add"),
+                'info': "",
+                'current': False,
+            },
+            {
+                'id': Steps.INSTALL,
+                'disabled': True,
+                'title': _("Installation"),
+                'info': "",
+                'current': False,
+            },
+            {
+                'id': Steps.CONFIG,
+                'disabled': True,
+                'title': _("Initial configuration"),
+                'info': "",
+                'current': False
+            },
+            {
+                'id': Steps.REBOOT,
+                'disabled': True,
+                'title': _("Reboot"),
+                'current': False
+            },
+            {
+                'id': Steps.END,
+                'disabled': True,
+                'title': _("End of installation"),
+                'current': False
+            }
+        ]
 
     def prepare(self):
         err, result = xmlrpc.call('get_repositories', self.modules)
         if not err:
             self.repositories = result
-        for repository in self.repositories:
-            if repository['restricted']:
-                self.enable_step(Steps.MEDIAS_AUTH)
-                break
-        if self.repositories:
-            self.enable_step(Steps.MEDIAS_ADD)
+            for repository in self.repositories:
+                if repository['restricted']:
+                    self.enable_step(Steps.MEDIAS_AUTH)
+                    break
+            if self.repositories:
+                self.enable_step(Steps.MEDIAS_ADD)
 
         err, result = xmlrpc.call('get_modules_details', self.modules)
-        for module in result:
-            if not module['installed'] or not module["downloaded"]:
-                self.enable_step(Steps.INSTALL)
-                logger.debug("Module %s is not installed or not downloaded: enabling install step" % module["slug"])
-            if module['installed']:
-                self.disable_step(Steps.INSTALL)
-                logger.debug("Module %s is installed: disabling install step" % module["slug"])
-            if not module["downloaded"]:
-                self.enable_step(Steps.DOWNLOAD)
-                logger.debug("Module %s is not downloaded: enabling download step" % module["slug"])
-            else:
-                self.disable_step(Steps.DOWNLOAD)
-                logger.debug("Module %s is downloaded: disabling download step" % module["slug"])
-            if module['reboot']:
-                logger.debug("Module %s need to reboot the system: enabling reboot step" % module["slug"])
-                self.enable_step(Steps.REBOOT)
-                self.disable_step(Steps.END)
+        if not err:
+            self.modules_info = result
+            for module in self.modules_info:
+                if not module['installed'] or not module["downloaded"]:
+                    self.enable_step(Steps.INSTALL)
+                    logger.debug("Module %s is not installed or not downloaded: enabling install step" % module["slug"])
+                if not module["downloaded"]:
+                    self.enable_step(Steps.DOWNLOAD)
+                    logger.debug("Module %s is not downloaded: enabling download step" % module["slug"])
+                if module['reboot']:
+                    logger.debug("Module %s need to reboot the system: enabling reboot step" % module["slug"])
+                    self.enable_step(Steps.REBOOT)
+                else:
+                    self.enable_step(Steps.END)
 
         if self.find_step(Steps.DOWNLOAD)['disabled']:
             err, result = xmlrpc.call('get_config', self.modules)
@@ -138,9 +138,7 @@ class Transaction:
                 if not infos['skip_config']:
                     logger.debug("Module %s needs configuration: enabling config step" % infos['slug'])
                     self.enable_step(Steps.CONFIG)
-                else:
-                    logger.debug("Module %s doesn't need configuration: disabling config step" % infos["slug"])
-                    self.disable_step(Steps.CONFIG)
+                    break
         else:
             logger.debug("Some module is not downloaded: enabling config step")
             self.enable_step(Steps.CONFIG)

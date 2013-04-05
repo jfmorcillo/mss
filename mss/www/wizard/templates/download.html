@@ -8,14 +8,89 @@
     <div class="page-header">
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
-    <p class="alert">{% trans "Addons downloaded." %}</p>
-    <form name="mss" action="{{ transaction.next_step_url }}" method="post">
-        <div class="form-actions">
-            <div class="pull-right">
-                <button class="btn btn-primary" type="submit">{% trans "Continue" %} →</button>
-            </div>
-            <a class="btn" href="{% url preinst %}" id="back">{% trans "Back" %}</a>
+    <script type="text/javascript">
+        var updater = "";
+        var current = 0;
+        var modules = [];
+        var task = "";
+        var progress = "";
+        var box = "";
+        {% for module in transaction.modules_info %}
+            {% if not module.downloaded %}
+        modules.push({"slug": "{{ module.slug }}", "name": "{{ module.name }}"});
+            {% endif %}
+        {% endfor %}
+
+        next = function() {
+            current++;
+            if(modules[current])
+                run();
+            else {
+                $.get('{% url download_end %}');
+                $("#next").html("{% trans "Continue" %} →");
+                $('#next').removeClass("disabled");
+                $('#back').removeClass("disabled");
+            }
+        }
+
+        run = function() {
+            box = $('<div class="alert alert-info" style="position: relative;"></div>');
+            box.appendTo(".downloads");
+            task = $('<div style="position: relative; z-index: 1;"></div>');
+            task.appendTo(box);
+            progress = $('<div style="position: absolute; top: 0; left: 0; background: #DFF0D8; width: 0; height: 100%"></div>');
+            progress.appendTo(box);
+            $.get('/mss/download/module/' + modules[current].slug + '/')
+             .success(check)
+             .error(function(xhr) {
+                if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+             });
+        };
+
+        check = function() {
+            $.get("{% url state "download_module" %}")
+            .success(function(r) {
+                percent = Math.round(parseFloat(r.output[0].text.trim())) + "%";
+                task.html("{% trans "Downloading <strong>{0}</strong>: {1}..." %}".format(modules[current].name, percent));
+                progress.animate({width: percent}, 300, function() {
+                    if (r.code != 2000) {
+                        if (r.code == 200) {
+                            box.removeClass("alert-info");
+                            box.addClass("alert-success");
+                            task.removeClass("alert-info");
+                            task.addClass("alert-success");
+                            task.html("{% trans "Addon <strong>{0}</strong> downloaded." %}".format(modules[current].name));
+                            setTimeout(next, 1000);
+                        }
+                        else {
+                            box.removeClass("alert-info");
+                            task.removeClass("alert-info");
+                            task.addClass("alert-error");
+                            task.html("{% trans "Failed to download <strong>{0}</strong> addon." %}".format(modules[current].name));
+                            $('#back').removeClass("disabled");
+                            $("#next").html("{% trans "Continue" %} →");
+                        }
+                    }
+                    else {
+                        check();
+                    }
+                });
+             })
+             .error(function(xhr) {
+                if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+             });
+        };
+
+        $(document).ready(function() {
+            run();
+        });
+    </script>
+    <div class="downloads"></div>
+    <div class="form-actions">
+        <div class="pull-right">
+            <a id="next" href="{{ transaction.next_step_url }}" class="disabled">{% trans "Please wait..." %}</a>
         </div>
-    </form>
+        <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
+    </div>
 </section>
 {% endblock %}

@@ -266,17 +266,30 @@ def download(request):
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    err, result = xmlrpc.call("download_modules", transaction.modules)
-    if err:
-        return err
+    # Verify if we still need to download something
+    download = False
+    for module in transaction.modules_info:
+        if not module["downloaded"]:
+            download = True
 
-    print "reload transaction"
-    transaction.prepare()
-    print transaction.transaction
-    transaction.save(request)
+    if not download:
+        return HttpResponseRedirect(transaction.next_step_url())
 
     return render_to_response('download.html', {'transaction': transaction},
                               context_instance=RequestContext(request))
+
+@login_required
+def download_module(request, module):
+    xmlrpc.call("download_module", module)
+    return HttpResponse("")
+
+@login_required
+def download_end(request):
+    transaction = Transaction(request)
+    transaction.reset()
+    transaction.prepare()
+    transaction.save(request)
+    return HttpResponse("")
 
 @login_required
 def medias_auth(request):
