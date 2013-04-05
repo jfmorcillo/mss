@@ -563,7 +563,10 @@ class ModuleManager:
     @expose
     def get_sections(self):
         """ return list of sections """
-        return self.sections
+        sections = copy.deepcopy(self.sections)
+        for section in sections:
+            section["name"] = _(section["name"], "agent")
+        return sections
 
     @expose
     def get_section(self, section):
