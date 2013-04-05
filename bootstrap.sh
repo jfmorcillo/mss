@@ -63,6 +63,4 @@ ln -s ${path}/etc/agent.ini /etc/mss/agent.ini
 ln -s ${path}/mss/agent/modules /var/lib/mss/local/addons
 [ -h /var/lib/mss/local/sections.json ] && rm -f /var/lib/mss/local/sections.json
 ln -s ${path}/var/sections.json /var/lib/mss/local/sections.json
-[ -h /var/lib/mss/local/addons.json ] && rm -f /var/lib/mss/local/addons.json
-ln -s ${path}/var/addons.json /var/lib/mss/local/addons.json
 su -c 'sh build_mo.sh' $user
