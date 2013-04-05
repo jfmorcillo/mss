@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -17,6 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr ""
+
+#: .config[0].label
+msgid "Allow access from internal networks"
+msgstr ""
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the proxy service from external "
+"networks"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the proxy service from internal "
+"networks"
+msgstr ""
+
+#: modules/squid/setup-squid.sh:75
+msgid "Configure your clients to access the proxy service at @HOSTNAME@:3128"
+msgstr ""
 
 #: modules/squid/create-groups.py:12
 msgid "Filtered access to Internet"
@@ -35,18 +59,24 @@ msgid "Proxy-cache service"
 msgstr ""
 
 #: .desc
+msgctxt ".desc"
 msgid "Restrict and cache internet access"
 msgstr ""
 
-#: modules/squid/setup-squid.sh:55
+#: .description
+msgctxt ".description"
+msgid "Restrict and cache internet access"
+msgstr ""
+
+#: modules/squid/setup-squid.sh:58
 msgid "Something went wrong while creating the user groups."
 msgstr ""
 
-#: modules/squid/setup-squid.sh:65
-msgid "The proxy service is running"
+#: modules/squid/setup-squid.sh:73
+msgid "The proxy service is running."
 msgstr ""
 
-#: modules/squid/setup-squid.sh:66
+#: modules/squid/setup-squid.sh:77
 msgid ""
 "You can manage proxy rules from the management interface : https://"
 "@HOSTNAME@/mmc/"
@@ -54,6 +84,28 @@ msgstr ""
 
 #: .packages[0].name
 msgid "all"
+msgstr ""
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr ""
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
 msgstr ""
 
 #: .actions[0].value
@@ -64,8 +116,26 @@ msgstr ""
 msgid "link"
 msgstr ""
 
+#: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
 #: .packages[0].rpms[3]
 msgid "mmc-web-squid"
+msgstr ""
+
+#: .config[1].default
+msgid "off"
+msgstr ""
+
+#: .config[0].default
+msgid "on"
 msgstr ""
 
 #: .packages[0].rpms[2]

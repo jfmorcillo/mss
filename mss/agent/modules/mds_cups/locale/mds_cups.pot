@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,8 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "Printing service"
+#: .description
+msgid "Network printers management"
 msgstr ""
 
 #: .actions[0].type
@@ -31,6 +31,10 @@ msgstr ""
 
 #: .actions[0].value
 msgid "http://@HOSTNAME@:631/admin/"
+msgstr ""
+
+#: .module.section
+msgid "core"
 msgstr ""
 
 #: .packages[0].rpms[0]
@@ -115,8 +119,8 @@ msgstr ""
 msgid "mds_cups"
 msgstr ""
 
-#: .desc
-msgid "Network printers management"
+#: .name
+msgid "Printing service"
 msgstr ""
 
 #: modules/mds_cups/setup-cups.sh:19

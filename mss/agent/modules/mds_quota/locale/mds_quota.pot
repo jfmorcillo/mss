@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,11 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
+#: .description
+msgctxt ".description"
+msgid "Set file quotas on the server"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
 #: .name
 msgid "User quota management"
 msgstr ""
 
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
 msgid "mds_mmc"
 msgstr ""
 
@@ -77,7 +92,16 @@ msgstr ""
 msgid "mds_quota"
 msgstr ""
 
+#: .categories[0].slug
+msgid "users"
+msgstr ""
+
+#: .categories[0].name
+msgid "Users"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid "Set file quotas on the server"
 msgstr ""
 

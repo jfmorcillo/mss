@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .name
-msgid "AUDIT plugin"
+msgid "Audit plugin"
 msgstr ""
 
 #: .actions[0].name
@@ -41,8 +41,20 @@ msgid "MySQL user password for the audit database"
 msgstr "Senha do usuário MySQL para o banco de dados de auditoria"
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
 msgid "Track any changes made in the management interface"
 msgstr "Acompanhe qualquer mudança feita na interface de gerenciamento"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
+msgid "Track any changes made in the management interface"
+msgstr "Acompanhe qualquer mudança feita na interface de gerenciamento"
+
+#: .standalone
+msgid "True"
+msgstr ""
 
 #: .config[0].help
 msgid "Used to create the audit database"
@@ -65,6 +77,14 @@ msgid "mds_audit"
 msgstr ""
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
@@ -77,6 +97,14 @@ msgid "myrootpasswd"
 msgstr ""
 
 #: .dependencies[1]
+#, fuzzy
+msgctxt ".dependencies[1]"
+msgid "mysql"
+msgstr "mysql"
+
+#: .module.dependencies[1]
+#, fuzzy
+msgctxt ".module.dependencies[1]"
 msgid "mysql"
 msgstr "mysql"
 

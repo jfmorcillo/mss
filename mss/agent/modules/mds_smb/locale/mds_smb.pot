@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,11 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "Windows users and file sharing management"
+#: .description
+msgctxt ".description"
+msgid ""
+"Authenticate Windows users with SAMBA and provide Windows file shares on "
+"your network"
 msgstr ""
 
 #: .actions[0].type
@@ -33,7 +36,21 @@ msgstr ""
 msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
+#: .name
+msgid "Windows users and file sharing management"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr ""
 
@@ -226,7 +243,16 @@ msgstr ""
 msgid "mds_smb"
 msgstr ""
 
+#: .categories[0].slug
+msgid "users"
+msgstr ""
+
+#: .categories[0].name
+msgid "Users"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"

@@ -1,51 +1,136 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <jfmorcillo@mandriva.com>, 2012.
+#   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:38+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 08:21+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .desc
+#: .description
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
 msgstr "Un serveur Jabber/XMPP distribué et tolérant aux pannes"
 
-#: .config[1].label
-msgid "Allow access from external networks"
-msgstr "Permettre l'accès depuis les réseaux externes"
+#: .actions[0].type
+msgid "link"
+msgstr "link"
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr "Interface d'administration"
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr "https://@HOSTNAME@/mmc/main.php"
+
+#: .module.section
+msgid "other"
+msgstr "other"
+
+#: .packages[0].rpms[0]
+msgctxt ".packages[0].rpms[0]"
+msgid "ejabberd"
+msgstr "ejabberd"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].default
+msgid "on"
+msgstr "on"
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the Instant Messaging Service from"
+" internal networks"
+msgstr ""
+"Configurer le firewall pour permettre l'accès au service de messagerie "
+"instantanée depuis les réseaux internes"
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr "check"
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
 msgstr "Permettre l'accès depuis les réseaux internes"
 
+#: .config[1].default
+msgid "off"
+msgstr "off"
+
 #: .config[1].help
 msgid ""
-"Configure the firewall to allow access to the Instant Messaging Service from "
-"external networks"
+"Configure the firewall to allow access to the Instant Messaging Service from"
+" external networks"
 msgstr ""
 "Configurer le firewall pour permettre l'accès au service de messagerie "
 "instantanée depuis les réseaux externes"
 
-#: .config[0].help
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr "check"
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr "Permettre l'accès depuis les réseaux externes"
+
+#: .slug
+msgctxt ".slug"
+msgid "ejabberd"
+msgstr "ejabberd"
+
+#: .categories[0].slug
+msgid "collaboration"
+msgstr "collaboration"
+
+#: .categories[0].name
+msgid "Collaboration"
+msgstr "Collaboration"
+
+#: .name
+msgid "Jabber/XMPP instant messaging server"
+msgstr "Jabber/XMPP serveur de messagerie instantanée"
+
+#: modules/ejabberd/setup-ejabberd.sh:28
+msgid "The instant messaging service is configured."
+msgstr "The service de messagerie instantanée est configuré."
+
+#: modules/ejabberd/setup-ejabberd.sh:29
 msgid ""
-"Configure the firewall to allow access to the Instant Messaging Service from "
-"internal networks"
+"You can simply add users through the management interface at "
+"https://@HOSTNAME@/mmc/. The user's mail will be used as his Jabber ID."
 msgstr ""
-"Configurer le firewall pour permettre l'accès au service de messagerie "
-"instantanée depuis les réseaux internes"
+"Vous pouvez simplement ajouter des utilisateurs à travers l'interface de "
+"gestion à https://@HOSTNAME@/mmc/. L'adresse e-mail de l'utilisateur sera "
+"utilisé pour son identifiant Jabber."
+
+#: modules/ejabberd/setup-ejabberd.sh:30
+msgid "Use $HOST.$DOMAIN as the server."
+msgstr "Utiliser $HOST.$DOMAIN comme serveur."
 
 #: modules/ejabberd/setup-ejabberd.sh:31
 msgid ""
@@ -55,75 +140,4 @@ msgstr ""
 "Si $HOST.$DOMAIN est configuré comme un serveur Jabber dans la zone DNS, il "
 "n'est pas nécessaire de configurer l'adresse du serveur dans le client."
 
-#: .name
-msgid "Jabber/XMPP instant messaging server"
-msgstr "Jabber/XMPP serveur de messagerie instantanée"
 
-#: .actions[0].name
-msgid "Management interface"
-msgstr ""
-
-#: modules/ejabberd/setup-ejabberd.sh:28
-msgid "The instant messaging service is configured."
-msgstr "The service de messagerie instantanée est configuré."
-
-#: modules/ejabberd/setup-ejabberd.sh:30
-msgid "Use $HOST.$DOMAIN as the server."
-msgstr "Utiliser $HOST.$DOMAIN comme serveur."
-
-#: modules/ejabberd/setup-ejabberd.sh:29
-msgid ""
-"You can simply add users through the management interface at https://"
-"@HOSTNAME@/mmc/. The user's mail will be used as his Jabber ID."
-msgstr ""
-"Vous pouvez simplement ajouter des utilisateurs à travers l'interface de "
-"gestion à https://@HOSTNAME@/mmc/. L'adresse e-mail de l'utilisateur sera "
-"utilisé pour son identifiant Jabber."
-
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgctxt ".packages[0].rpms[0]"
-msgid "ejabberd"
-msgstr ""
-
-#: .slug
-msgctxt ".slug"
-msgid "ejabberd"
-msgstr ""
-
-#: .config[0].name
-msgid "fw_lan"
-msgstr ""
-
-#: .config[1].name
-msgid "fw_wan"
-msgstr ""
-
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .config[1].default
-msgid "off"
-msgstr ""
-
-#: .config[0].default
-msgid "on"
-msgstr ""

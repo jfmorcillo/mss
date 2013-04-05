@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "DNS Service"
+#: .description
+msgctxt ".description"
+msgid "Resolve computer names on your network"
 msgstr ""
 
 #: .actions[0].type
@@ -33,7 +34,21 @@ msgstr ""
 msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
+#: .name
+msgid "DNS Service"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr ""
 
@@ -167,29 +182,39 @@ msgstr ""
 msgid "mds_dns"
 msgstr ""
 
+#: .categories[0].slug
+msgctxt ".categories[0].slug"
+msgid "network"
+msgstr ""
+
+#: .categories[0].name
+msgid "Network"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid "Resolve computer names on your network"
 msgstr ""
 
-#: modules/mds_dns/setup-dns.sh:37
+#: modules/mds_dns/setup-dns.sh:34
 msgid "No networks are authorized to make external queries."
 msgstr ""
 
-#: modules/mds_dns/setup-dns.sh:76
+#: modules/mds_dns/setup-dns.sh:73
 msgid "The DNS service is running."
 msgstr ""
 
-#: modules/mds_dns/setup-dns.sh:78
+#: modules/mds_dns/setup-dns.sh:75
 msgid "Your DNS will forward external queries to : $forwarders"
 msgstr ""
 
-#: modules/mds_dns/setup-dns.sh:81
+#: modules/mds_dns/setup-dns.sh:78
 msgid ""
 "The following networks are able to query your DNS for external domains : "
 "$networks"
 msgstr ""
 
-#: modules/mds_dns/setup-dns.sh:83
+#: modules/mds_dns/setup-dns.sh:80
 msgid ""
 "You can now add DNS zones in the management interface : https://@HOSTNAME@/"
 "mmc/"

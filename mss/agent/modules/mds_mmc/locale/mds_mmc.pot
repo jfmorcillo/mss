@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "MBS administration web interface"
+#: .description
+msgctxt ".description"
+msgid "Users and groups management"
 msgstr ""
 
 #: .postinstall.reboot
@@ -38,12 +39,46 @@ msgstr ""
 msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
+#: .name
+msgid "MBS administration web interface"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
 msgid "system"
 msgstr ""
 
 #: .dependencies[1]
+msgctxt ".dependencies[1]"
 msgid "network"
+msgstr ""
+
+#: .dependencies[2]
+msgctxt ".dependencies[2]"
+msgid "mbs_repo"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "system"
+msgstr ""
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
+msgid "network"
+msgstr ""
+
+#: .module.dependencies[2]
+msgctxt ".module.dependencies[2]"
+msgid "mbs_repo"
+msgstr ""
+
+#: .module.reboot
+msgid "True"
 msgstr ""
 
 #: .packages[0].rpms[0]
@@ -67,50 +102,58 @@ msgid "mmc-web-shorewall"
 msgstr ""
 
 #: .packages[0].rpms[5]
-msgid "python-mmc-base"
+msgid "mmc-web-packages"
 msgstr ""
 
 #: .packages[0].rpms[6]
-msgid "python-mmc-bulkimport"
+msgid "python-mmc-base"
 msgstr ""
 
 #: .packages[0].rpms[7]
-msgid "python-mmc-services"
+msgid "python-mmc-bulkimport"
 msgstr ""
 
 #: .packages[0].rpms[8]
-msgid "python-mmc-dashboard"
+msgid "python-mmc-services"
 msgstr ""
 
 #: .packages[0].rpms[9]
-msgid "python-mmc-shorewall"
+msgid "python-mmc-dashboard"
 msgstr ""
 
 #: .packages[0].rpms[10]
-msgid "mmc-agent"
+msgid "python-mmc-shorewall"
 msgstr ""
 
 #: .packages[0].rpms[11]
-msgid "openldap-servers"
+msgid "python-mmc-packages"
 msgstr ""
 
 #: .packages[0].rpms[12]
-msgid "nss_ldap"
+msgid "mmc-agent"
 msgstr ""
 
 #: .packages[0].rpms[13]
-msgid "openldap-clients"
+msgid "openldap-servers"
 msgstr ""
 
 #: .packages[0].rpms[14]
-msgid "pam_ldap"
+msgid "nss_ldap"
 msgstr ""
 
 #: .packages[0].rpms[15]
-msgid "openldap-mandriva-dit"
+msgid "openldap-clients"
 msgstr ""
 
 #: .packages[0].rpms[16]
+msgid "pam_ldap"
+msgstr ""
+
+#: .packages[0].rpms[17]
+msgid "openldap-mandriva-dit"
+msgstr ""
+
+#: .packages[0].rpms[18]
 msgid "apache-mod_ssl"
 msgstr ""
 
@@ -191,43 +234,52 @@ msgstr ""
 msgid "mds_mmc"
 msgstr ""
 
+#: .categories[0].slug
+msgid "users"
+msgstr ""
+
+#: .categories[0].name
+msgid "Users"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid "Users and groups management"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:38
+#: modules/mds_mmc/setup-mmc.sh:32
 msgid "Error while generating the password."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:78
+#: modules/mds_mmc/setup-mmc.sh:74
 msgid "OpenLDAP configuration has errors."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:90
+#: modules/mds_mmc/setup-mmc.sh:86
 msgid "Database load test failed."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:104
+#: modules/mds_mmc/setup-mmc.sh:100
 msgid "Failed to initialize the database."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:112
+#: modules/mds_mmc/setup-mmc.sh:108
 msgid "Error while configuring lib nss-ldap."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:135
+#: modules/mds_mmc/setup-mmc.sh:131
 msgid "The MBS administration web interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:136
+#: modules/mds_mmc/setup-mmc.sh:132
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:137
+#: modules/mds_mmc/setup-mmc.sh:133
 msgid "Administrator name : root"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:138
+#: modules/mds_mmc/setup-mmc.sh:134
 msgid "Administrator password : $mypass"
 msgstr ""

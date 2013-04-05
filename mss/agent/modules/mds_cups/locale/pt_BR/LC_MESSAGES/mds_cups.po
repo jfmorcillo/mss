@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -45,7 +45,7 @@ msgstr ""
 msgid "Login to the Cups interface is the root account."
 msgstr "O login para a interface do Cups é a conta de root"
 
-#: .desc
+#: .description
 msgid "Network printers management"
 msgstr "Gerenciamento de Impressoras de rede"
 
@@ -81,6 +81,10 @@ msgstr ""
 #: .config[1].type
 msgctxt ".config[1].type"
 msgid "check"
+msgstr ""
+
+#: .module.section
+msgid "core"
 msgstr ""
 
 #: .packages[0].rpms[0]

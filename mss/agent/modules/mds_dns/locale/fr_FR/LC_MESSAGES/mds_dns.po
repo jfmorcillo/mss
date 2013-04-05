@@ -1,75 +1,108 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <jfmorcillo@mandriva.com>, 2012.
+#   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:39+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 09:30+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[3].label
-msgid "Allow DNS requests from external networks"
-msgstr ""
+#: .description
+msgctxt ".description"
+msgid "Resolve computer names on your network"
+msgstr "Résous les noms de machine sur votre réseau"
 
-#: .config[2].label
-msgid "Allow DNS requests from internal networks"
-msgstr ""
-
-#: .config[3].help
-msgid ""
-"Configure the firewall to accept DNS requests on interfaces configured as "
-"'external'"
-msgstr ""
-"Configure le firewall pour accepter les requêtes DNS provenant des "
-"interfaces réseaux configurées comme  «externe»"
-
-#: .config[2].help
-msgid ""
-"Configure the firewall to accept DNS requests on interfaces configured as "
-"'internal'"
-msgstr ""
-"Configure le firewall pour accepter les requêtes DNS provenant des "
-"interfaces réseaux configurées comme  «interne»"
-
-#: .name
-msgid "DNS Service"
-msgstr ""
-
-#: .config[1].help
-msgid "Forward external DNS queries to DNS of your choice"
-msgstr "Relaie les requêtes externes vers les serveurs DNS de votre choix."
-
-#: .config[1].label
-msgid "Forwarders"
-msgstr "Relais"
+#: .actions[0].type
+msgid "link"
+msgstr "link"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "Interface d'administration"
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr "https://@HOSTNAME@/mmc/main.php"
+
+#: .name
+msgid "DNS Service"
+msgstr "Service DNS"
+
+#: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .module.section
+msgid "core"
+msgstr "core"
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .packages[0].rpms[0]
+msgid "bind"
+msgstr "bind"
+
+#: .packages[0].rpms[1]
+msgid "bind-utils"
+msgstr "bind-utils"
+
+#: .packages[0].rpms[2]
+msgid "bind-sdb"
+msgstr "bind-sdb"
+
+#: .packages[0].rpms[3]
+msgid "mmc-web-network"
+msgstr "mmc-web-network"
+
+#: .packages[0].rpms[4]
+msgid "python-mmc-network"
+msgstr "python-mmc-network"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].name
+msgid "bind_networks"
+msgstr "bind_networks"
+
+#: .config[0].format
+msgid "short"
+msgstr "short"
+
+#: .config[0].default
+msgid "get_networks"
+msgstr "get_networks"
 
 #: .config[0].label
 msgid "My networks"
 msgstr "Mes réseaux"
 
-#: modules/mds_dns/setup-dns.sh:37
-msgid "No networks are authorized to make external queries."
-msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
+#: .config[0].validation
+msgctxt ".config[0].validation"
+msgid "network"
+msgstr "network"
 
-#: .desc
-msgid "Resolve computer names on your network"
-msgstr "Résous les noms de machine sur votre réseau"
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "network"
+msgstr "network"
 
 #: .config[0].help
 msgid ""
@@ -79,130 +112,124 @@ msgstr ""
 "Spécifiez les réseaux qui sont autorisés à effectuer des requêtes externes "
 "sur votre serveur DNS (récursion). ex: 192.168.0.0/255.255.255.0"
 
-#: modules/mds_dns/setup-dns.sh:76
-msgid "The DNS service is running."
-msgstr "Le service DNS fonctionne."
+#: .config[1].multi
+msgid "yes"
+msgstr "yes"
 
-#: modules/mds_dns/setup-dns.sh:81
-msgid ""
-"The following networks are able to query your DNS for external domains : "
-"$networks"
-msgstr ""
-"Les réseaux suivants peuvent interroger votre DNS pour les domaines "
-"externes : $networks"
+#: .config[1].help
+msgid "Forward external DNS queries to DNS of your choice"
+msgstr "Relaie les requêtes externes vers les serveurs DNS de votre choix."
 
-#: modules/mds_dns/setup-dns.sh:83
-msgid ""
-"You can now add DNS zones in the management interface : https://@HOSTNAME@/"
-"mmc/"
-msgstr ""
-"Vous pouvez maintenant ajouter des zones DNS à partir de l'interface de "
-"gestion : https://@HOSTNAME@/mmc/"
+#: .config[1].label
+msgid "Forwarders"
+msgstr "Relais"
 
-#: modules/mds_dns/setup-dns.sh:78
-msgid "Your DNS will forward external queries to : $forwarders"
-msgstr "Votre DNS transférera les requêtes externes à : $forwarders"
+#: .config[1].validation
+msgid "ip"
+msgstr "ip"
 
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "bind"
-msgstr "bind"
-
-#: .packages[0].rpms[2]
-msgid "bind-sdb"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "bind-utils"
-msgstr "bind-utils"
+#: .config[1].type
+msgid "text"
+msgstr "text"
 
 #: .config[1].name
 msgid "bind_forwarders"
-msgstr ""
+msgstr "bind_forwarders"
 
-#: .config[0].name
-msgid "bind_networks"
+#: .config[2].default
+msgid "on"
+msgstr "on"
+
+#: .config[2].help
+msgid ""
+"Configure the firewall to accept DNS requests on interfaces configured as "
+"'internal'"
 msgstr ""
+"Configure le firewall pour accepter les requêtes DNS provenant des "
+"interfaces réseaux configurées comme  «interne»"
 
 #: .config[2].type
 msgctxt ".config[2].type"
 msgid "check"
+msgstr "check"
+
+#: .config[2].name
+msgid "fw_lan"
+msgstr "fw_lan"
+
+#: .config[2].label
+msgid "Allow DNS requests from internal networks"
+msgstr "Autoriser les requêtes depuis les réseaux internes"
+
+#: .config[3].default
+msgid "off"
+msgstr "off"
+
+#: .config[3].help
+msgid ""
+"Configure the firewall to accept DNS requests on interfaces configured as "
+"'external'"
 msgstr ""
+"Configure le firewall pour accepter les requêtes DNS provenant des "
+"interfaces réseaux configurées comme  «externe»"
 
 #: .config[3].type
 msgctxt ".config[3].type"
 msgid "check"
-msgstr ""
-
-#: .config[2].name
-msgid "fw_lan"
-msgstr ""
+msgstr "check"
 
 #: .config[3].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
-#: .config[0].default
-msgid "get_networks"
-msgstr ""
-
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .config[1].validation
-msgid "ip"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
+#: .config[3].label
+msgid "Allow DNS requests from external networks"
+msgstr "Autoriser les requêtes depuis les réseaux externes"
 
 #: .slug
 msgid "mds_dns"
-msgstr ""
+msgstr "mds_dns"
 
-#: .dependencies[0]
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .packages[0].rpms[3]
-msgid "mmc-web-network"
-msgstr "mmc-web-network"
-
-#: .config[0].type
-msgctxt ".config[0].type"
+#: .categories[0].slug
+msgctxt ".categories[0].slug"
 msgid "network"
-msgstr ""
+msgstr "network"
 
-#: .config[0].validation
-msgctxt ".config[0].validation"
-msgid "network"
-msgstr ""
+#: .categories[0].name
+msgid "Network"
+msgstr "Réseau"
 
-#: .config[3].default
-msgid "off"
-msgstr ""
+#: .desc
+msgctxt ".desc"
+msgid "Resolve computer names on your network"
+msgstr "Résous les noms de machine sur votre réseau"
 
-#: .config[2].default
-msgid "on"
-msgstr ""
+#: modules/mds_dns/setup-dns.sh:34
+msgid "No networks are authorized to make external queries."
+msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
 
-#: .packages[0].rpms[4]
-msgid "python-mmc-network"
-msgstr "python-mmc-network"
+#: modules/mds_dns/setup-dns.sh:73
+msgid "The DNS service is running."
+msgstr "Le service DNS fonctionne."
 
-#: .config[0].format
-msgid "short"
-msgstr ""
+#: modules/mds_dns/setup-dns.sh:75
+msgid "Your DNS will forward external queries to : $forwarders"
+msgstr "Votre DNS transférera les requêtes externes à : $forwarders"
 
-#: .config[1].type
-msgid "text"
+#: modules/mds_dns/setup-dns.sh:78
+msgid ""
+"The following networks are able to query your DNS for external domains : "
+"$networks"
 msgstr ""
+"Les réseaux suivants peuvent interroger votre DNS pour les domaines externes"
+" : $networks"
 
-#: .config[1].multi
-msgid "yes"
+#: modules/mds_dns/setup-dns.sh:80
+msgid ""
+"You can now add DNS zones in the management interface : "
+"https://@HOSTNAME@/mmc/"
 msgstr ""
+"Vous pouvez maintenant ajouter des zones DNS à partir de l'interface de "
+"gestion : https://@HOSTNAME@/mmc/"
+
+

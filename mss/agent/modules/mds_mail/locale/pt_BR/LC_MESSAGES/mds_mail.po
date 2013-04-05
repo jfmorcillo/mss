@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -47,6 +47,15 @@ msgid "Allow mail services access from internal networks"
 msgstr "Permitir acesso aos serviços de correio de redes internas"
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
+msgstr ""
+"Serviço de e-mail completo com POP/IMAP, anti-vírus e anti-spam toolkits"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 "Serviço de e-mail completo com POP/IMAP, anti-vírus e anti-spam toolkits"
@@ -90,6 +99,10 @@ msgstr "IMAPS"
 #: .config[1].options[0].name
 msgid "IMAPS and POP3S"
 msgstr "IMAPS e POP3S"
+
+#: .categories[0].name
+msgid "Mail"
+msgstr ""
 
 #: .name
 msgid "Mail Service"
@@ -157,6 +170,10 @@ msgstr ""
 msgid "clamd"
 msgstr "clamd"
 
+#: .module.section
+msgid "core"
+msgstr ""
+
 #: .packages[0].rpms[8]
 msgid "dovecot"
 msgstr "dovecot"
@@ -201,11 +218,23 @@ msgstr ""
 msgid "link"
 msgstr ""
 
+#: .categories[0].slug
+msgid "mail"
+msgstr ""
+
 #: .slug
 msgid "mds_mail"
 msgstr ""
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
@@ -275,6 +304,14 @@ msgstr "spamassassin-tools"
 msgid "yes"
 msgstr ""
 
-#: .conflict[0]
+#: .conflicts[0]
+#, fuzzy
+msgctxt ".conflicts[0]"
+msgid "zarafa"
+msgstr "zarafa"
+
+#: .module.conflicts[0]
+#, fuzzy
+msgctxt ".module.conflicts[0]"
 msgid "zarafa"
 msgstr "zarafa"

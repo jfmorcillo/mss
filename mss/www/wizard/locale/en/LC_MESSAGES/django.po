@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -17,50 +17,62 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: transaction.py:37
+#: transaction.py:49
 msgid "Installation summary"
 msgstr ""
 
-#: transaction.py:39
-msgid "The folowing component will be installed."
-msgid_plural "The folowing components will be installed."
+#: transaction.py:51
+msgid "The folowing addon will be installed."
+msgid_plural "The folowing addons will be installed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: transaction.py:49
+#: transaction.py:61
+msgid "Addon download"
+msgstr ""
+
+#: transaction.py:62
+msgid "Download addons from the ServicePlace"
+msgstr ""
+
+#: transaction.py:68
 msgid "Medias authentication"
 msgstr ""
 
-#: transaction.py:50
+#: transaction.py:69
 msgid "One or more medias need authentication"
 msgstr ""
 
-#: transaction.py:56
+#: transaction.py:75
 msgid "Medias add"
 msgstr ""
 
-#: transaction.py:63
+#: transaction.py:82
 msgid "Installation"
 msgstr ""
 
-#: transaction.py:70
+#: transaction.py:89
 msgid "Initial configuration"
 msgstr ""
 
-#: transaction.py:77 templates/reboot.html:14
+#: transaction.py:96 templates/reboot.html:14
 msgid "Reboot"
 msgstr ""
 
-#: views.py:137 templates/first_time.html:6
+#: transaction.py:102
+msgid "End of installation"
+msgstr ""
+
+#: views.py:136 templates/first_time.html:6
 msgid "Welcome"
 msgstr ""
 
-#: views.py:138
+#: views.py:137
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr ""
 
-#: views.py:177 templates/error.html:9
+#: views.py:176 templates/error.html:9
 msgid "MSS agent is unreacheable."
 msgstr ""
 
@@ -68,8 +80,8 @@ msgstr ""
 msgid "Hide log"
 msgstr ""
 
-#: templates/base.html:25 templates/config_run.html:165
-#: templates/install.html:66 templates/media_add.html:92
+#: templates/base.html:25 templates/config_run.html:161
+#: templates/install.html:66 templates/media_add.html:95
 msgid "Show log"
 msgstr ""
 
@@ -85,7 +97,7 @@ msgstr ""
 msgid "Update medias"
 msgstr ""
 
-#: templates/base.html:117
+#: templates/base.html:117 templates/sections.html:45
 msgid "Logout"
 msgstr ""
 
@@ -97,7 +109,7 @@ msgstr ""
 msgid "Re-enter password"
 msgstr ""
 
-#: templates/config.html:275 templates/config_run.html:153
+#: templates/config.html:275 templates/config_run.html:149
 msgid "No configuration for this module."
 msgstr ""
 
@@ -106,14 +118,15 @@ msgid "Required field"
 msgstr ""
 
 #: templates/config.html:284 templates/config_run.html:60
-#: templates/install.html:19 templates/media_add.html:26
-#: templates/media_add.html.py:71 templates/preinst.html:33
+#: templates/download.html:30 templates/download.html.py:71
+#: templates/install.html:19 templates/media_add.html:29
+#: templates/media_add.html.py:74 templates/preinst.html:33
 msgid "Continue"
 msgstr ""
 
-#: templates/config.html:286 templates/install.html:76
-#: templates/media_add.html:103 templates/media_auth.html:45
-#: templates/preinst.html:36
+#: templates/config.html:286 templates/download.html:93
+#: templates/install.html:76 templates/media_add.html:106
+#: templates/media_auth.html:40 templates/preinst.html:36
 msgid "Back"
 msgstr ""
 
@@ -121,8 +134,8 @@ msgstr ""
 msgid "Installation & configuration was successful."
 msgstr ""
 
-#: templates/config_no.html:14 templates/config_run.html:88
-#: templates/config_run.html.py:108 templates/error.html:14
+#: templates/config_no.html:14 templates/config_run.html:84
+#: templates/config_run.html.py:104 templates/error.html:14
 msgid "Home page"
 msgstr ""
 
@@ -138,7 +151,7 @@ msgstr ""
 msgid "Configuration errors"
 msgstr ""
 
-#: templates/config_run.html:57 templates/config_run.html.py:110
+#: templates/config_run.html:57 templates/config_run.html.py:106
 msgid "Configuration terminated, details are displayed below."
 msgstr ""
 
@@ -146,25 +159,45 @@ msgstr ""
 msgid "Configuration succeded."
 msgstr ""
 
-#: templates/config_run.html:87
+#: templates/config_run.html:83
 msgid "Configuration failed."
 msgstr ""
 
-#: templates/config_run.html:116
+#: templates/config_run.html:112
 msgid "Could not find any configuration script to execute."
 msgstr ""
 
-#: templates/config_run.html:123
+#: templates/config_run.html:119
 msgid "Running configuration..."
 msgstr ""
 
-#: templates/config_run.html:162 templates/media_add.html:89
+#: templates/config_run.html:158 templates/media_add.html:92
 msgid "Waiting..."
 msgstr ""
 
-#: templates/config_run.html:176 templates/install.html:74
-#: templates/media_add.html:101
+#: templates/config_run.html:172 templates/download.html:91
+#: templates/install.html:74 templates/media_add.html:104
 msgid "Please wait..."
+msgstr ""
+
+#: templates/download.html:54
+msgid "Downloading <strong>{0}</strong>: {1}..."
+msgstr ""
+
+#: templates/download.html:62
+msgid "Addon <strong>{0}</strong> downloaded."
+msgstr ""
+
+#: templates/download.html:69
+msgid "Failed to download <strong>{0}</strong> addon."
+msgstr ""
+
+#: templates/end.html:11
+msgid "The installation is finished."
+msgstr ""
+
+#: templates/end.html:14
+msgid "Home"
 msgstr ""
 
 #: templates/error.html:6
@@ -209,8 +242,8 @@ msgid "Retry"
 msgstr ""
 
 #: templates/install.html:60
-msgid "The following component is being installed"
-msgid_plural "The following components are being installed"
+msgid "The following addon is being installed"
+msgid_plural "The following addons are being installed"
 msgstr[0] ""
 msgstr[1] ""
 
@@ -218,11 +251,11 @@ msgstr[1] ""
 msgid "Wrong username or password."
 msgstr ""
 
-#: templates/login_form.html:12 templates/media_auth.html:23
+#: templates/login_form.html:12 templates/media_auth.html:21
 msgid "Your my.mandriva.com email address."
 msgstr ""
 
-#: templates/login_form.html:16 templates/media_auth.html:31
+#: templates/login_form.html:16 templates/media_auth.html:29
 msgid "Your my.mandriva.com password."
 msgstr ""
 
@@ -238,11 +271,11 @@ msgstr ""
 msgid "No internet connection, use the root password to login."
 msgstr ""
 
-#: templates/login_form.html:52 templates/media_auth.html:18
+#: templates/login_form.html:52 templates/media_auth.html:16
 msgid "Username"
 msgstr ""
 
-#: templates/login_form.html:58 templates/media_auth.html:27
+#: templates/login_form.html:58 templates/media_auth.html:25
 msgid "Password"
 msgstr ""
 
@@ -254,36 +287,36 @@ msgstr ""
 msgid "Enter"
 msgstr ""
 
-#: templates/media_add.html:37
+#: templates/media_add.html:40
 msgid "Adding media..."
 msgstr ""
 
-#: templates/media_add.html:55
+#: templates/media_add.html:58
 msgid "Media added."
 msgstr ""
 
-#: templates/media_add.html:61
+#: templates/media_add.html:64
 msgid "Media already added."
 msgstr ""
 
-#: templates/media_add.html:67
+#: templates/media_add.html:70
 msgid "Failed to add media."
 msgstr ""
 
-#: templates/media_auth.html:16
+#: templates/media_auth.html:14
 msgid "My authentication"
 msgstr ""
 
-#: templates/media_auth.html:41
+#: templates/media_auth.html:36
 msgid "Don't add medias"
 msgstr ""
 
-#: templates/media_auth.html:43
+#: templates/media_auth.html:38
 msgid "Add medias"
 msgstr ""
 
 #: templates/preinst.html:14
-msgid "No component selected."
+msgid "No addon selected."
 msgstr ""
 
 #: templates/preinst.html:22
@@ -296,7 +329,7 @@ msgstr ""
 
 #: templates/preinst.html:25
 msgid ""
-"If other components requires this component they may be broken after the "
+"If other addons requires this addon they may be broken after the "
 "reinstallation."
 msgstr ""
 
@@ -305,33 +338,33 @@ msgid "The configuration is finished. The server must be rebooted."
 msgstr ""
 
 #: templates/section.html:19
-msgid "This component can't be installed with"
+msgid "This addon can't be installed with"
 msgstr ""
 
-#: templates/section.html:163
-msgid "This component is installed and configured"
+#: templates/section.html:112
+msgid "No addon available in this section."
 msgstr ""
 
-#: templates/section.html:164
+#: templates/section.html:165
+msgid "This addon is installed and configured"
+msgstr ""
+
+#: templates/section.html:166
 msgid "This module conflicts with : "
 msgstr ""
 
-#: templates/section.html:167
-msgid "You have bought this component"
+#: templates/section.html:169
+msgid "You have purshased this addon"
 msgstr ""
 
-#: templates/section.html:188
+#: templates/section.html:190
 msgid "Buy"
 msgstr ""
 
 #: templates/section.html:203
-msgid "Install and configure selected components"
+msgid "Install and configure selected addons"
 msgstr ""
 
 #: templates/sections.html:42
-msgid "No modules for Mandriva Server Setup installed."
-msgstr ""
-
-#: templates/sections.html:43
-msgid "Check for mss-modules-* packages."
+msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""

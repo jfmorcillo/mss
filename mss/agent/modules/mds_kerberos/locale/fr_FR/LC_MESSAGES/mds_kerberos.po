@@ -1,296 +1,69 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:39+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 08:09+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[8].default
-msgid "300"
-msgstr ""
-
-#: .config[10].size
-msgctxt ".config[10].size"
-msgid "50"
-msgstr ""
-
-#: .config[11].size
-msgctxt ".config[11].size"
-msgid "50"
-msgstr ""
-
-#: .config[9].size
-msgctxt ".config[9].size"
-msgid "50"
-msgstr ""
-
-#: .config[4].default
-msgid "749"
-msgstr ""
-
-#: .config[3].default
-msgid "88"
-msgstr ""
-
-#: .config[4].label
-msgid "Administrator server port"
-msgstr ""
-
-#: .config[11].help
-msgid ""
-"All encryption types that are permitted for use in session key encryption "
-"(Values of list devided by whitespace or comma from each other, e.g., des3-"
-"cbc-sha1-kd des-cbc-crc)"
-msgstr ""
-
-#: .config[12].label
-msgid "Allow weak encryption types"
-msgstr ""
-
-#: .config[8].label
-msgid "Clock skew"
-msgstr ""
-
-#: .config[2].help
-msgid "DNS Domain name (e.g., example.com)"
-msgstr ""
-
-#: .config[2].label
-msgid "DNS domain name"
-msgstr ""
-
-#: .config[6].label
-msgid "DNS lookup for KDC"
-msgstr ""
-
-#: .config[7].label
-msgid "DNS lookup for realm"
-msgstr ""
-
-#: .config[3].help
-msgid "Default port of the KDC server (e.g., 88)"
-msgstr ""
-
-#: .config[4].help
-msgid "Default port of the administrator server (e.g., 749)"
-msgstr ""
-
-#: .config[1].help
-msgid "Host name of the KDC server without DNS domain name (e.g., server)"
-msgstr ""
-
-#: .config[6].help
-msgid ""
-"Indicates whether DNS SRV records should be used to locate the KDCs and "
-"other servers for a realm, if they are not listed in the information for the "
-"realm"
-msgstr ""
-
-#: .config[7].help
-msgid ""
-"Indicates whether DNS TXT records should be used to determine the Kerberos "
-"realm of a host"
-msgstr ""
-
-#: .config[12].help
-msgid "Indicates whether weak encryption types should be filtered out"
-msgstr ""
-
-#: .desc
+#: .description
+msgctxt ".description"
 msgid "Install and configure Kerberos authentication"
 msgstr ""
 
-#: .config[5].label
-msgid "KDC database master key"
+#: .standalone
+msgid "True"
 msgstr ""
 
-#: .config[1].label
-msgid "KDC host name"
-msgstr ""
-
-#: .config[3].label
-msgid "KDC port"
-msgstr ""
-
-#: .name
-msgid "Kerberos authentication with MDS backend"
-msgstr ""
-
-#: .config[0].help
-msgid ""
-"Kerberos realm (e.g., REALM.COM). Attention! It can be set only when the "
-"module is unconfigured)"
+#: .actions[0].type
+msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .config[5].help
-msgid ""
-"Master key for the KDC server. Attention! It can be set only when the module "
-"is unconfigured"
-msgstr ""
-
-#: .config[8].help
-msgid ""
-"Maximum allowable amount of clockskew in seconds that the library will "
-"tolerate before assuming that a Kerberos message is invalid (e.g., 300)"
-msgstr ""
-
-#: .config[11].label
-msgid "Permitted encryption types"
-msgstr ""
-
-#: .config[0].label
-msgid "Realm"
-msgstr ""
-
-#: .config[10].help
-msgid ""
-"Supported list of session key encryption types that should be requested by "
-"the client (Values of list devided by whitespace or comma from each other, e."
-"g., des3-cbc-sha1-kd des-cbc-crc)"
-msgstr ""
-
-#: .config[9].help
-msgid ""
-"Supported list of session key encryption types that should be returned by "
-"the KDC (Values of list devided by whitespace or comma from each other, e."
-"g., des3-cbc-sha1-kd des-cbc-crc)"
-msgstr ""
-
-#: .config[9].label
-msgid "TGS encryption types"
-msgstr ""
-
-#: .config[10].label
-msgid "TKT encryption types"
-msgstr ""
-
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .config[12].name
-msgid "allow_weak_enctypes"
-msgstr ""
-
-#: .config[12].type
-msgctxt ".config[12].type"
-msgid "check"
-msgstr ""
-
-#: .config[6].type
-msgctxt ".config[6].type"
-msgid "check"
-msgstr ""
-
-#: .config[7].type
-msgctxt ".config[7].type"
-msgid "check"
-msgstr ""
-
-#: .config[1].validation
-msgid "check_kdc_host_name"
-msgstr ""
-
-#: .config[3].validation
-msgctxt ".config[3].validation"
-msgid "check_port"
-msgstr ""
-
-#: .config[4].validation
-msgctxt ".config[4].validation"
-msgid "check_port"
-msgstr ""
-
-#: .config[0].validation
-msgid "check_realm"
-msgstr ""
-
-#: .config[8].name
-msgid "clock_skew"
-msgstr ""
-
-#: .config[10].default
-msgctxt ".config[10].default"
-msgid "des3-cbc-sha1-kd des-cbc-crc"
-msgstr ""
-
-#: .config[11].default
-msgctxt ".config[11].default"
-msgid "des3-cbc-sha1-kd des-cbc-crc"
-msgstr ""
-
-#: .config[9].default
-msgctxt ".config[9].default"
-msgid "des3-cbc-sha1-kd des-cbc-crc"
-msgstr ""
-
-#: .config[2].name
-msgid "dns_domain_name"
-msgstr ""
-
-#: .config[6].name
-msgid "dns_lookup_kdc"
-msgstr ""
-
-#: .config[7].name
-msgid "dns_lookup_realm"
-msgstr ""
-
-#: .config[2].validation
-msgid "fqdn"
-msgstr ""
-
-#: .config[2].default
-msgid "get_default_domain_name"
-msgstr ""
-
-#: .config[1].default
-msgid "get_default_host_name"
-msgstr ""
-
-#: .config[0].default
-msgid "get_default_realm"
-msgstr ""
-
 #: .actions[0].value
 msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
-#: .packages[2].name
-msgid "i586"
+#: .name
+msgid "Kerberos authentication with MDS backend"
 msgstr ""
 
-#: .config[4].name
-msgid "kadmin_port"
+#: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
 msgstr ""
 
-#: .config[1].name
-msgid "kdc_host_name"
+#: .dependencies[1]
+msgctxt ".dependencies[1]"
+msgid "mds_dns"
 msgstr ""
 
-#: .config[5].name
-msgid "kdc_key_passwd"
+#: .module.section
+msgid "core"
 msgstr ""
 
-#: .config[3].name
-msgid "kdc_port"
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
+msgid "mds_dns"
 msgstr ""
 
 #: .packages[0].rpms[0]
@@ -301,78 +74,78 @@ msgstr ""
 msgid "krb5-workstation"
 msgstr ""
 
-#: .packages[1].rpms
-msgid "lib64sasl2-plug-gssapi"
-msgstr ""
-
-#: .packages[2].rpms
-msgid "libsasl2-plug-gssapi"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .dependencies[1]
-msgid "mds_dns"
-msgstr ""
-
-#: .slug
-msgid "mds_kerberos"
-msgstr ""
-
-#: .dependencies[0]
-msgid "mds_mmc"
-msgstr ""
-
-#: .packages[0].rpms[8]
-msgid "mmc-web-kerberos"
+#: .packages[0].rpms[2]
+msgid "openldap-servers"
 msgstr ""
 
 #: .packages[0].rpms[3]
 msgid "nss_ldap"
 msgstr ""
 
-#: .config[12].default
-msgctxt ".config[12].default"
-msgid "on"
-msgstr ""
-
-#: .config[6].default
-msgctxt ".config[6].default"
-msgid "on"
-msgstr ""
-
 #: .packages[0].rpms[4]
 msgid "openldap-clients"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "openldap-mandriva-dit"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "openldap-servers"
 msgstr ""
 
 #: .packages[0].rpms[5]
 msgid "pam_ldap"
 msgstr ""
 
-#: .config[5].type
-msgid "password"
-msgstr ""
-
-#: .config[11].name
-msgid "permitted_enctypes"
+#: .packages[0].rpms[6]
+msgid "openldap-mandriva-dit"
 msgstr ""
 
 #: .packages[0].rpms[7]
 msgid "python-mmc-kerberos"
 msgstr ""
 
+#: .packages[0].rpms[8]
+msgid "mmc-web-kerberos"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .packages[1].rpms
+msgid "lib64sasl2-plug-gssapi"
+msgstr ""
+
+#: .packages[1].name
+msgid "x86_64"
+msgstr ""
+
+#: .packages[2].rpms
+msgid "libsasl2-plug-gssapi"
+msgstr ""
+
+#: .packages[2].name
+msgid "i586"
+msgstr ""
+
+#: .config[0].edit_if_unconfigured
+msgctxt ".config[0].edit_if_unconfigured"
+msgid "yes"
+msgstr ""
+
 #: .config[0].name
 msgid "realm"
+msgstr ""
+
+#: .config[0].default
+msgid "get_default_realm"
+msgstr ""
+
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr ""
+
+#: .config[0].label
+msgid "Realm"
+msgstr ""
+
+#: .config[0].validation
+msgid "check_realm"
 msgstr ""
 
 #: .config[0].type
@@ -380,14 +153,31 @@ msgctxt ".config[0].type"
 msgid "text"
 msgstr ""
 
-#: .config[10].type
-msgctxt ".config[10].type"
-msgid "text"
+#: .config[0].help
+msgid ""
+"Kerberos realm (e.g., REALM.COM). Attention! It can be set only when the "
+"module is unconfigured)"
 msgstr ""
 
-#: .config[11].type
-msgctxt ".config[11].type"
-msgid "text"
+#: .config[1].name
+msgid "kdc_host_name"
+msgstr ""
+
+#: .config[1].default
+msgid "get_default_host_name"
+msgstr ""
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr ""
+
+#: .config[1].label
+msgid "KDC host name"
+msgstr ""
+
+#: .config[1].validation
+msgid "check_kdc_host_name"
 msgstr ""
 
 #: .config[1].type
@@ -395,9 +185,60 @@ msgctxt ".config[1].type"
 msgid "text"
 msgstr ""
 
+#: .config[1].help
+msgid "Host name of the KDC server without DNS domain name (e.g., server)"
+msgstr ""
+
+#: .config[2].name
+msgid "dns_domain_name"
+msgstr ""
+
+#: .config[2].default
+msgid "get_default_domain_name"
+msgstr ""
+
+#: .config[2].require
+msgctxt ".config[2].require"
+msgid "yes"
+msgstr ""
+
+#: .config[2].label
+msgid "DNS domain name"
+msgstr ""
+
+#: .config[2].validation
+msgid "fqdn"
+msgstr ""
+
 #: .config[2].type
 msgctxt ".config[2].type"
 msgid "text"
+msgstr ""
+
+#: .config[2].help
+msgid "DNS Domain name (e.g., example.com)"
+msgstr ""
+
+#: .config[3].name
+msgid "kdc_port"
+msgstr ""
+
+#: .config[3].default
+msgid "88"
+msgstr ""
+
+#: .config[3].require
+msgctxt ".config[3].require"
+msgid "yes"
+msgstr ""
+
+#: .config[3].label
+msgid "KDC port"
+msgstr ""
+
+#: .config[3].validation
+msgctxt ".config[3].validation"
+msgid "check_port"
 msgstr ""
 
 #: .config[3].type
@@ -405,14 +246,155 @@ msgctxt ".config[3].type"
 msgid "text"
 msgstr ""
 
+#: .config[3].help
+msgid "Default port of the KDC server (e.g., 88)"
+msgstr ""
+
+#: .config[4].name
+msgid "kadmin_port"
+msgstr ""
+
+#: .config[4].default
+msgid "749"
+msgstr ""
+
+#: .config[4].require
+msgctxt ".config[4].require"
+msgid "yes"
+msgstr ""
+
+#: .config[4].label
+msgid "Administrator server port"
+msgstr ""
+
+#: .config[4].validation
+msgctxt ".config[4].validation"
+msgid "check_port"
+msgstr ""
+
 #: .config[4].type
 msgctxt ".config[4].type"
 msgid "text"
 msgstr ""
 
+#: .config[4].help
+msgid "Default port of the administrator server (e.g., 749)"
+msgstr ""
+
+#: .config[5].help
+msgid ""
+"Master key for the KDC server. Attention! It can be set only when the module"
+" is unconfigured"
+msgstr ""
+
+#: .config[5].require
+msgctxt ".config[5].require"
+msgid "yes"
+msgstr ""
+
+#: .config[5].label
+msgid "KDC database master key"
+msgstr ""
+
+#: .config[5].show_if_unconfigured
+msgctxt ".config[5].show_if_unconfigured"
+msgid "yes"
+msgstr ""
+
+#: .config[5].type
+msgid "password"
+msgstr ""
+
+#: .config[5].name
+msgid "kdc_key_passwd"
+msgstr ""
+
+#: .config[6].default
+msgctxt ".config[6].default"
+msgid "on"
+msgstr ""
+
+#: .config[6].help
+msgid ""
+"Indicates whether DNS SRV records should be used to locate the KDCs and "
+"other servers for a realm, if they are not listed in the information for the"
+" realm"
+msgstr ""
+
+#: .config[6].type
+msgctxt ".config[6].type"
+msgid "check"
+msgstr ""
+
+#: .config[6].name
+msgid "dns_lookup_kdc"
+msgstr ""
+
+#: .config[6].label
+msgid "DNS lookup for KDC"
+msgstr ""
+
+#: .config[7].help
+msgid ""
+"Indicates whether DNS TXT records should be used to determine the Kerberos "
+"realm of a host"
+msgstr ""
+
+#: .config[7].type
+msgctxt ".config[7].type"
+msgid "check"
+msgstr ""
+
+#: .config[7].name
+msgid "dns_lookup_realm"
+msgstr ""
+
+#: .config[7].label
+msgid "DNS lookup for realm"
+msgstr ""
+
+#: .config[8].default
+msgid "300"
+msgstr ""
+
+#: .config[8].help
+msgid ""
+"Maximum allowable amount of clockskew in seconds that the library will "
+"tolerate before assuming that a Kerberos message is invalid (e.g., 300)"
+msgstr ""
+
 #: .config[8].type
 msgctxt ".config[8].type"
 msgid "text"
+msgstr ""
+
+#: .config[8].name
+msgid "clock_skew"
+msgstr ""
+
+#: .config[8].label
+msgid "Clock skew"
+msgstr ""
+
+#: .config[9].help
+msgid ""
+"Supported list of session key encryption types that should be returned by "
+"the KDC (Values of list devided by whitespace or comma from each other, "
+"e.g., des3-cbc-sha1-kd des-cbc-crc)"
+msgstr ""
+
+#: .config[9].default
+msgctxt ".config[9].default"
+msgid "des3-cbc-sha1-kd des-cbc-crc"
+msgstr ""
+
+#: .config[9].label
+msgid "TGS encryption types"
+msgstr ""
+
+#: .config[9].size
+msgctxt ".config[9].size"
+msgid "50"
 msgstr ""
 
 #: .config[9].type
@@ -424,50 +406,95 @@ msgstr ""
 msgid "tgs_enctypes"
 msgstr ""
 
+#: .config[10].help
+msgid ""
+"Supported list of session key encryption types that should be requested by "
+"the client (Values of list devided by whitespace or comma from each other, "
+"e.g., des3-cbc-sha1-kd des-cbc-crc)"
+msgstr ""
+
+#: .config[10].default
+msgctxt ".config[10].default"
+msgid "des3-cbc-sha1-kd des-cbc-crc"
+msgstr ""
+
+#: .config[10].label
+msgid "TKT encryption types"
+msgstr ""
+
+#: .config[10].size
+msgctxt ".config[10].size"
+msgid "50"
+msgstr ""
+
+#: .config[10].type
+msgctxt ".config[10].type"
+msgid "text"
+msgstr ""
+
 #: .config[10].name
 msgid "tkt_enctypes"
 msgstr ""
 
-#: .packages[1].name
-msgid "x86_64"
+#: .config[11].help
+msgid ""
+"All encryption types that are permitted for use in session key encryption "
+"(Values of list devided by whitespace or comma from each other, e.g., des3"
+"-cbc-sha1-kd des-cbc-crc)"
 msgstr ""
 
-#: .config[0].edit_if_unconfigured
-msgctxt ".config[0].edit_if_unconfigured"
-msgid "yes"
+#: .config[11].default
+msgctxt ".config[11].default"
+msgid "des3-cbc-sha1-kd des-cbc-crc"
 msgstr ""
 
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
+#: .config[11].label
+msgid "Permitted encryption types"
 msgstr ""
 
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
+#: .config[11].size
+msgctxt ".config[11].size"
+msgid "50"
 msgstr ""
 
-#: .config[2].require
-msgctxt ".config[2].require"
-msgid "yes"
+#: .config[11].type
+msgctxt ".config[11].type"
+msgid "text"
 msgstr ""
 
-#: .config[3].require
-msgctxt ".config[3].require"
-msgid "yes"
+#: .config[11].name
+msgid "permitted_enctypes"
 msgstr ""
 
-#: .config[4].require
-msgctxt ".config[4].require"
-msgid "yes"
+#: .config[12].default
+msgctxt ".config[12].default"
+msgid "on"
 msgstr ""
 
-#: .config[5].require
-msgctxt ".config[5].require"
-msgid "yes"
+#: .config[12].help
+msgid "Indicates whether weak encryption types should be filtered out"
 msgstr ""
 
-#: .config[5].show_if_unconfigured
-msgctxt ".config[5].show_if_unconfigured"
-msgid "yes"
+#: .config[12].type
+msgctxt ".config[12].type"
+msgid "check"
 msgstr ""
+
+#: .config[12].name
+msgid "allow_weak_enctypes"
+msgstr ""
+
+#: .config[12].label
+msgid "Allow weak encryption types"
+msgstr ""
+
+#: .slug
+msgid "mds_kerberos"
+msgstr ""
+
+#: .desc
+msgctxt ".desc"
+msgid "Install and configure Kerberos authentication"
+msgstr ""
+
+

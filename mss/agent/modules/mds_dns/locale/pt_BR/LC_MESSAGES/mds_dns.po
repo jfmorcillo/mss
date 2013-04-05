@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -64,11 +64,24 @@ msgstr ""
 msgid "My networks"
 msgstr "Minhas redes"
 
-#: modules/mds_dns/setup-dns.sh:37
+#: .categories[0].name
+#, fuzzy
+msgid "Network"
+msgstr "Minhas redes"
+
+#: modules/mds_dns/setup-dns.sh:34
 msgid "No networks are authorized to make external queries."
 msgstr "Nenhuma rede está autorizada a fazer consultas externas."
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid "Resolve computer names on your network"
+msgstr "Resolver nomes de computador em sua rede"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid "Resolve computer names on your network"
 msgstr "Resolver nomes de computador em sua rede"
 
@@ -80,11 +93,11 @@ msgstr ""
 "Especificar quais redes estão autorizadas a resolver consultas externas com "
 "o seu servidor DNS (recursão). por exemplo: 192.168.0.0/255.255.255.0."
 
-#: modules/mds_dns/setup-dns.sh:76
+#: modules/mds_dns/setup-dns.sh:73
 msgid "The DNS service is running."
 msgstr "O serviço de DNS está rodando."
 
-#: modules/mds_dns/setup-dns.sh:81
+#: modules/mds_dns/setup-dns.sh:78
 msgid ""
 "The following networks are able to query your DNS for external domains : "
 "$networks"
@@ -92,7 +105,7 @@ msgstr ""
 "As seguintes redes estão hábeis para consultar seu DNS por dominios "
 "externos : $networks"
 
-#: modules/mds_dns/setup-dns.sh:83
+#: modules/mds_dns/setup-dns.sh:80
 msgid ""
 "You can now add DNS zones in the management interface : https://@HOSTNAME@/"
 "mmc/"
@@ -100,7 +113,7 @@ msgstr ""
 "Agora você pode fazer suas configurações de Zonas DNS na interface de "
 "gestão: https://@host@/mmc/"
 
-#: modules/mds_dns/setup-dns.sh:78
+#: modules/mds_dns/setup-dns.sh:75
 msgid "Your DNS will forward external queries to : $forwarders"
 msgstr "Seu DNS irá encaminhar consultas externas para : $forwarders"
 
@@ -138,6 +151,10 @@ msgctxt ".config[3].type"
 msgid "check"
 msgstr ""
 
+#: .module.section
+msgid "core"
+msgstr ""
+
 #: .config[2].name
 msgid "fw_lan"
 msgstr ""
@@ -167,12 +184,26 @@ msgid "mds_dns"
 msgstr ""
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
 #: .packages[0].rpms[3]
 msgid "mmc-web-network"
 msgstr "mmc-web-network"
+
+#: .categories[0].slug
+#, fuzzy
+msgctxt ".categories[0].slug"
+msgid "network"
+msgstr "Minhas redes"
 
 #: .config[0].type
 msgctxt ".config[0].type"

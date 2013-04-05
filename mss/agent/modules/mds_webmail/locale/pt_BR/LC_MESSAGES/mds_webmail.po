@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -44,11 +44,23 @@ msgstr ""
 "Configure o firewall para permitir o acesso à interface de webmail de redes "
 "internas"
 
+#: .categories[0].name
+msgid "Mail"
+msgstr ""
+
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid "Roundcube, a complete webmail solution for your mail service"
+msgstr "Roundcube, uma solução de webmail completa para serviços de correio"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr "Roundcube, uma solução de webmail completa para serviços de correio"
 
@@ -85,6 +97,10 @@ msgctxt ".config[1].type"
 msgid "check"
 msgstr ""
 
+#: .module.section
+msgid "core"
+msgstr ""
+
 #: .config[0].name
 msgid "fw_lan"
 msgstr ""
@@ -111,7 +127,20 @@ msgctxt ".actions[1].type"
 msgid "link"
 msgstr ""
 
+#: .categories[0].slug
+#, fuzzy
+msgid "mail"
+msgstr "Webmail"
+
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "mds_mail"
+msgstr "mds_mail"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "mds_mail"
 msgstr "mds_mail"
 
@@ -150,5 +179,13 @@ msgid "sqlite-tools"
 msgstr "sqlite-tools"
 
 #: .conflicts[0]
+#, fuzzy
+msgctxt ".conflicts[0]"
+msgid "zarafa"
+msgstr "zarafa"
+
+#: .module.conflicts[0]
+#, fuzzy
+msgctxt ".module.conflicts[0]"
 msgid "zarafa"
 msgstr "zarafa"

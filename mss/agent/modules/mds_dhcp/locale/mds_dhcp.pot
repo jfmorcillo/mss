@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "DHCP Service"
+#: .description
+msgctxt ".description"
+msgid "Configure automatically your client computers IP settings"
 msgstr ""
 
 #: .actions[0].type
@@ -33,7 +34,21 @@ msgstr ""
 msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
+#: .name
+msgid "DHCP Service"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr ""
 
@@ -103,15 +118,24 @@ msgstr ""
 msgid "mds_dhcp"
 msgstr ""
 
+#: .categories[0].slug
+msgid "network"
+msgstr ""
+
+#: .categories[0].name
+msgid "Network"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid "Configure automatically your client computers IP settings"
 msgstr ""
 
-#: modules/mds_dhcp/setup-dhcp.sh:44
+#: modules/mds_dhcp/setup-dhcp.sh:41
 msgid "The DHCP service is installed."
 msgstr ""
 
-#: modules/mds_dhcp/setup-dhcp.sh:45
+#: modules/mds_dhcp/setup-dhcp.sh:42
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"

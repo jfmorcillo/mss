@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,28 +17,35 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .medias[0].url[0]
-msgid "mes5devel.mandriva.com/BIG/mbs/1/@ARCH@/"
+#: .description
+msgid "Access software from MBS public repositories"
 msgstr ""
 
-#: .medias[0].mode
-msgid "distrib"
+#: .standalone
+msgctxt ".standalone"
+msgid "True"
 msgstr ""
 
-#: .medias[0].verbose_name
-msgid "MBS repositories"
+#: .repositories[0].url
+msgid "http://mirror.mandriva.com/mbs1/@ARCH@/"
 msgstr ""
 
-#: .medias[0].name
+#: .repositories[0].restricted
+msgctxt ".repositories[0].restricted"
+msgid "True"
+msgstr ""
+
+#: .repositories[0].options
+msgid "--distrib"
+msgstr ""
+
+#: .repositories[0].slug
 msgid "mbs"
 msgstr ""
 
-#: .medias[0].proto
-msgid "http"
-msgstr ""
-
-#: .desc
-msgid "Get security updates through MBS repositories"
+#: .repositories[0].name
+msgctxt ".repositories[0].name"
+msgid "Mandriva Business Server repositories"
 msgstr ""
 
 #: .slug
@@ -46,5 +53,6 @@ msgid "mbs_repo"
 msgstr ""
 
 #: .name
+msgctxt ".name"
 msgid "Mandriva Business Server repositories"
 msgstr ""

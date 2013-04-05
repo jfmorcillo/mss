@@ -1,51 +1,61 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:38+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 09:14+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .desc
-msgid "Get security updates through MBS repositories"
-msgstr ""
+#: .description
+msgid "Access software from MBS public repositories"
+msgstr "Accès aux dépôts de paquetages MBS"
 
-#: .medias[0].verbose_name
-msgid "MBS repositories"
-msgstr ""
+#: .standalone
+msgctxt ".standalone"
+msgid "True"
+msgstr "True"
 
-#: .name
-msgid "Mandriva Business Server repositories"
-msgstr ""
+#: .repositories[0].url
+msgid "http://mirror.mandriva.com/mbs1/@ARCH@/"
+msgstr "http://mirror.mandriva.com/mbs1/@ARCH@/"
 
-#: .medias[0].mode
-msgid "distrib"
-msgstr ""
+#: .repositories[0].restricted
+msgctxt ".repositories[0].restricted"
+msgid "True"
+msgstr "True"
 
-#: .medias[0].proto
-msgid "http"
-msgstr ""
+#: .repositories[0].options
+msgid "--distrib"
+msgstr "--distrib"
 
-#: .medias[0].name
+#: .repositories[0].slug
 msgid "mbs"
-msgstr ""
+msgstr "mbs"
+
+#: .repositories[0].name
+msgctxt ".repositories[0].name"
+msgid "Mandriva Business Server repositories"
+msgstr "Dépôt de paquets de Mandriva Business Server"
 
 #: .slug
 msgid "mbs_repo"
-msgstr ""
+msgstr "mbs_repo"
 
-#: .medias[0].url[0]
-msgid "mes5devel.mandriva.com/BIG/mbs/1/@ARCH@/"
-msgstr ""
+#: .name
+msgctxt ".name"
+msgid "Mandriva Business Server repositories"
+msgstr "Dépôt de paquets de Mandriva Business Server"
+
+

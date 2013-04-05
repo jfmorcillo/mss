@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,13 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "Kerberos authentication with MDS backend"
+#: .description
+msgctxt ".description"
+msgid "Install and configure Kerberos authentication"
+msgstr ""
+
+#: .standalone
+msgid "True"
 msgstr ""
 
 #: .actions[0].type
@@ -33,11 +38,31 @@ msgstr ""
 msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
+#: .name
+msgid "Kerberos authentication with MDS backend"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
 msgid "mds_mmc"
 msgstr ""
 
 #: .dependencies[1]
+msgctxt ".dependencies[1]"
+msgid "mds_dns"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
 msgid "mds_dns"
 msgstr ""
 
@@ -468,5 +493,6 @@ msgid "mds_kerberos"
 msgstr ""
 
 #: .desc
+msgctxt ".desc"
 msgid "Install and configure Kerberos authentication"
 msgstr ""

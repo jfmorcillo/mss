@@ -1,131 +1,89 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
-#   <jpbraun@mandriva.com>, 2012.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:40+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 09:23+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[1].label
-msgid "Allow access from external networks"
-msgstr "Autoriser l'accès depuis les réseaux externes"
+#: .description
+msgctxt ".description"
+msgid "Roundcube, a complete webmail solution for your mail service"
+msgstr "RoundCube, un webmail complet pour votre serveur de mail"
 
-#: .config[0].label
-msgid "Allow access from internal networks"
-msgstr "Autoriser l'accès depuis les réseaux internes"
-
-#: .config[1].help
-msgid ""
-"Configure the firewall to allow access to the webmail interface from "
-"external networks"
-msgstr ""
-"Configurer le firewall pour autoriser l'accès à l'interface du webmail "
-"depuis les réseaux externes"
-
-#: .config[0].help
-msgid ""
-"Configure the firewall to allow access to the webmail interface from "
-"internal networks"
-msgstr ""
-"Configurer le firewall pour autoriser l'accès à l'interface du webmail "
-"depuis les réseaux internes"
+#: .actions[0].type
+msgctxt ".actions[0].type"
+msgid "link"
+msgstr "link"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "Interface d'administration"
 
-#: .desc
-msgid "Roundcube, a complete webmail solution for your mail service"
-msgstr "RoundCube, un webmail complet pour votre serveur de mail"
+#: .actions[0].value
+msgid "https://@HOSTNAME@/mmc/main.php"
+msgstr "https://@HOSTNAME@/mmc/main.php"
+
+#: .actions[1].type
+msgctxt ".actions[1].type"
+msgid "link"
+msgstr "link"
+
+#: .actions[1].name
+msgid "Webmail interface"
+msgstr "Interface du Webmail"
+
+#: .actions[1].value
+msgid "https://@HOSTNAME@/roundcubemail/"
+msgstr "https://@HOSTNAME@/roundcubemail/"
 
 #: .name
 msgid "Webmail"
 msgstr "Webmail"
 
-#: modules/mds_webmail/setup-webmail.sh:50
-msgid "Webmail Roundcube is installed on your server."
-msgstr "Le webmail Roundcube est installé sur votre serveur."
-
-#: .actions[1].name
-msgid "Webmail interface"
-msgstr ""
-
-#: modules/mds_webmail/setup-webmail.sh:51
-msgid ""
-"You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
-msgstr ""
-"Vous pouvez accéder à l'interface sur https://@HOSTNAME@/roundcubemail/."
-
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
-msgstr ""
-
-#: .config[0].name
-msgid "fw_lan"
-msgstr ""
-
-#: .config[1].name
-msgid "fw_wan"
-msgstr ""
-
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[1].value
-msgid "https://@HOSTNAME@/roundcubemail/"
-msgstr ""
-
-#: .actions[0].type
-msgctxt ".actions[0].type"
-msgid "link"
-msgstr ""
-
-#: .actions[1].type
-msgctxt ".actions[1].type"
-msgid "link"
-msgstr ""
-
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
 msgid "mds_mail"
 msgstr "mds_mail"
 
-#: .slug
-msgid "mds_webmail"
-msgstr ""
+#: .module.conflicts[0]
+msgctxt ".module.conflicts[0]"
+msgid "zarafa"
+msgstr "zarafa"
 
-#: .config[0].default
-msgctxt ".config[0].default"
-msgid "on"
-msgstr ""
+#: .module.section
+msgid "core"
+msgstr "core"
 
-#: .config[1].default
-msgctxt ".config[1].default"
-msgid "on"
-msgstr ""
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mail"
+msgstr "mds_mail"
+
+#: .conflicts[0]
+msgctxt ".conflicts[0]"
+msgid "zarafa"
+msgstr "zarafa"
+
+#: .packages[0].rpms[0]
+msgid "roundcubemail"
+msgstr "roundcubemail"
+
+#: .packages[0].rpms[1]
+msgid "sqlite-tools"
+msgstr "sqlite-tools"
 
 #: .packages[0].rpms[2]
 msgid "php-fileinfo"
@@ -139,14 +97,87 @@ msgstr "php-mcrypt"
 msgid "php-pear-MDB2_Driver_sqlite"
 msgstr "php-pear-MDB2_Driver_sqlite"
 
-#: .packages[0].rpms[0]
-msgid "roundcubemail"
-msgstr "roundcubemail"
+#: .packages[0].name
+msgid "all"
+msgstr "all"
 
-#: .packages[0].rpms[1]
-msgid "sqlite-tools"
-msgstr "sqlite-tools"
+#: .config[0].default
+msgctxt ".config[0].default"
+msgid "on"
+msgstr "on"
 
-#: .conflicts[0]
-msgid "zarafa"
-msgstr "zarafa"
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the webmail interface from "
+"internal networks"
+msgstr ""
+"Configurer le firewall pour autoriser l'accès à l'interface du webmail "
+"depuis les réseaux internes"
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "check"
+msgstr "check"
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr "fw_lan"
+
+#: .config[0].label
+msgid "Allow access from internal networks"
+msgstr "Autoriser l'accès depuis les réseaux internes"
+
+#: .config[1].default
+msgctxt ".config[1].default"
+msgid "on"
+msgstr "on"
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the webmail interface from "
+"external networks"
+msgstr ""
+"Configurer le firewall pour autoriser l'accès à l'interface du webmail "
+"depuis les réseaux externes"
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "check"
+msgstr "check"
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr "Autoriser l'accès depuis les réseaux externes"
+
+#: .slug
+msgid "mds_webmail"
+msgstr "mds_webmail"
+
+#: .categories[0].slug
+msgid "mail"
+msgstr "mail"
+
+#: .categories[0].name
+msgid "Mail"
+msgstr "E-mail"
+
+#: .desc
+msgctxt ".desc"
+msgid "Roundcube, a complete webmail solution for your mail service"
+msgstr "RoundCube, un webmail complet pour votre serveur de mail"
+
+#: modules/mds_webmail/setup-webmail.sh:50
+msgid "Webmail Roundcube is installed on your server."
+msgstr "Le webmail Roundcube est installé sur votre serveur."
+
+#: modules/mds_webmail/setup-webmail.sh:51
+msgid ""
+"You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
+msgstr ""
+"Vous pouvez accéder à l'interface sur https://@HOSTNAME@/roundcubemail/."
+
+

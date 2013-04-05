@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "Calendar and Addressbook"
+#: .description
+msgctxt ".description"
+msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr ""
 
 #: .actions[0].type
@@ -33,11 +34,31 @@ msgstr ""
 msgid "https://@HOSTNAME@/davical/"
 msgstr ""
 
+#: .name
+msgid "Calendar and Addressbook"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
 msgid "postgresql"
 msgstr ""
 
 #: .dependencies[1]
+msgctxt ".dependencies[1]"
+msgid "mds_webmail"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "postgresql"
+msgstr ""
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
 msgid "mds_webmail"
 msgstr ""
 
@@ -71,7 +92,16 @@ msgctxt ".slug"
 msgid "davical"
 msgstr ""
 
+#: .categories[0].slug
+msgid "collaboration"
+msgstr ""
+
+#: .categories[0].name
+msgid "Collaboration"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr ""
 

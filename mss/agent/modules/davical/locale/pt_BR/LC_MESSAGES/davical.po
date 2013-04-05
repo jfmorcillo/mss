@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:38+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -36,7 +36,19 @@ msgid "Change it using the management interface https://@HOSTNAME@/davical/"
 msgstr ""
 "Mude isso usando a interface de gerenciamento https://@HOSTNAME@/davical/"
 
+#: .categories[0].name
+msgid "Collaboration"
+msgstr ""
+
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid "DAViCal a service for calendar and addressbook sharing."
+msgstr "DAViCal um serviço de compartilhamento de calendário e agenda."
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr "DAViCal um serviço de compartilhamento de calendário e agenda."
 
@@ -62,6 +74,14 @@ msgstr ""
 msgid "all"
 msgstr ""
 
+#: .categories[0].slug
+msgid "collaboration"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
 #: .packages[0].rpms[0]
 msgctxt ".packages[0].rpms[0]"
 msgid "davical"
@@ -81,6 +101,12 @@ msgid "link"
 msgstr ""
 
 #: .dependencies[1]
+msgctxt ".dependencies[1]"
+msgid "mds_webmail"
+msgstr ""
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
 msgid "mds_webmail"
 msgstr ""
 
@@ -97,6 +123,14 @@ msgid "php-pdo_pgsql"
 msgstr "php-pdo_pgsql"
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "postgresql"
+msgstr "postgresql"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "postgresql"
 msgstr "postgresql"
 

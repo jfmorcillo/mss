@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -45,6 +45,18 @@ msgid "Allow connections from internal networks"
 msgstr "Permite conexões de redes internas"
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid ""
+"Authenticate Windows users with SAMBA and provide Windows file shares on "
+"your network"
+msgstr ""
+"Autenticar usuários do Windows com SAMBA e fornecer compartilhamentos de "
+"arquivos do Windows em sua rede"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
@@ -137,6 +149,10 @@ msgstr "O nome do seu domínio Microsoft."
 msgid "The name of your SAMBA server in the Microsoft domain."
 msgstr "O nome do seu servidor SAMBA no domínio Microsoft."
 
+#: .categories[0].name
+msgid "Users"
+msgstr ""
+
 #: modules/mds_smb/setup-smb.sh:63
 msgid ""
 "Users are now created in the Domain Users group by default. If users were "
@@ -176,6 +192,10 @@ msgctxt ".config[5].type"
 msgid "check"
 msgstr ""
 
+#: .module.section
+msgid "core"
+msgstr ""
+
 #: .config[4].name
 msgid "fw_lan"
 msgstr ""
@@ -197,6 +217,14 @@ msgid "link"
 msgstr ""
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
@@ -273,6 +301,10 @@ msgstr ""
 #: .config[2].type
 msgctxt ".config[2].type"
 msgid "text"
+msgstr ""
+
+#: .categories[0].slug
+msgid "users"
 msgstr ""
 
 #: .config[0].validation

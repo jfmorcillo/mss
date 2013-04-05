@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -119,6 +119,14 @@ msgid "Indicates whether weak encryption types should be filtered out"
 msgstr "Indica se os tipos de criptografia fracos devem ser filtrados"
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid "Install and configure Kerberos authentication"
+msgstr "Instalar e configurar atutenticação Kerberos"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid "Install and configure Kerberos authentication"
 msgstr "Instalar e configurar atutenticação Kerberos"
 
@@ -202,6 +210,10 @@ msgstr "Tipos de criptografia TGS"
 msgid "TKT encryption types"
 msgstr "Tipos de criptografia TKT"
 
+#: .standalone
+msgid "True"
+msgstr ""
+
 #: .packages[0].name
 msgid "all"
 msgstr ""
@@ -245,6 +257,10 @@ msgstr ""
 
 #: .config[8].name
 msgid "clock_skew"
+msgstr ""
+
+#: .module.section
+msgid "core"
 msgstr ""
 
 #: .config[10].default
@@ -335,6 +351,14 @@ msgid "link"
 msgstr ""
 
 #: .dependencies[1]
+#, fuzzy
+msgctxt ".dependencies[1]"
+msgid "mds_dns"
+msgstr "mds_dns"
+
+#: .module.dependencies[1]
+#, fuzzy
+msgctxt ".module.dependencies[1]"
 msgid "mds_dns"
 msgstr "mds_dns"
 
@@ -343,6 +367,14 @@ msgid "mds_kerberos"
 msgstr ""
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
 msgid "mds_mmc"
 msgstr "mds_mmc"
 

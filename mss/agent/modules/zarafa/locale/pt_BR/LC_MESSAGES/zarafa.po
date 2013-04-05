@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -117,6 +117,10 @@ msgstr ""
 msgid "The host FQDN (eg: smtp.domain.com)"
 msgstr "O FQDN do host (por exemplo: smtp.domain.com)"
 
+#: .standalone
+msgid "True"
+msgstr ""
+
 #: .config[0].help
 msgid "Used to create the zarafa database"
 msgstr "Usado para criar o banco de dados Zarafa"
@@ -129,15 +133,26 @@ msgstr ""
 msgid "Where do you want to store mail attachments ?"
 msgstr "Onde você deseja armazenar os anexos de email?"
 
-#: .medias[0].verbose_name
-msgid "Zarafa"
-msgstr ""
-
 #: .name
 msgid "Zarafa Collaboration Platform"
 msgstr "Zarafa Plataforma de Configuração"
 
 #: .desc
+#, fuzzy
+msgctxt ".desc"
+msgid ""
+"Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
+"compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
+"and groups are managed in the MBS management interface"
+msgstr ""
+"Zarafa é uma substituição para o Microsoft Exchange. Possui total "
+"compatibilidade MS Outlook, suporte ActiveSync e uma interface de webmail "
+"rica. Zarafa usuários e grupos são gerenciados na interface de gerenciamento "
+"MBS"
+
+#: .description
+#, fuzzy
+msgctxt ".description"
 msgid ""
 "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
 "compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
@@ -183,11 +198,6 @@ msgstr "clamd"
 msgid "de_DE.UTF-8"
 msgstr ""
 
-#: .medias[0].url[0]
-msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-msgstr ""
-"download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-
 #: .config[7].validation
 msgid "fqdn"
 msgstr ""
@@ -198,10 +208,6 @@ msgstr ""
 
 #: .actions[1].value
 msgid "http://@HOSTNAME@/webaccess/"
-msgstr ""
-
-#: .medias[0].proto
-msgid "https"
 msgstr ""
 
 #: .actions[0].value
@@ -218,15 +224,39 @@ msgctxt ".actions[1].type"
 msgid "link"
 msgstr ""
 
-#: .conflict[0]
+#: .conflicts[0]
+#, fuzzy
+msgctxt ".conflicts[0]"
+msgid "mds_mail"
+msgstr "mds_mail"
+
+#: .module.conflicts[0]
+#, fuzzy
+msgctxt ".module.conflicts[0]"
 msgid "mds_mail"
 msgstr "mds_mail"
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
 msgid "mds_mmc"
 msgstr "mds_mmc"
 
-#: .conflict[1]
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr "mds_mmc"
+
+#: .conflicts[1]
+#, fuzzy
+msgctxt ".conflicts[1]"
+msgid "mds_webmail"
+msgstr "mds_webmail"
+
+#: .module.conflicts[1]
+#, fuzzy
+msgctxt ".module.conflicts[1]"
 msgid "mds_webmail"
 msgstr "mds_webmail"
 
@@ -234,11 +264,15 @@ msgstr "mds_webmail"
 msgid "mmc-web-mail"
 msgstr "mmc-web-mail"
 
-#: .medias[0].auth
-msgid "my"
-msgstr ""
-
 #: .dependencies[1]
+#, fuzzy
+msgctxt ".dependencies[1]"
+msgid "mysql"
+msgstr "mysql"
+
+#: .module.dependencies[1]
+#, fuzzy
+msgctxt ".module.dependencies[1]"
 msgid "mysql"
 msgstr "mysql"
 
@@ -360,11 +394,6 @@ msgctxt ".config[7].require"
 msgid "yes"
 msgstr ""
 
-#: .medias[0].name
-msgctxt ".medias[0].name"
-msgid "zarafa"
-msgstr ""
-
 #: .packages[0].rpms[0]
 msgctxt ".packages[0].rpms[0]"
 msgid "zarafa"
@@ -398,3 +427,8 @@ msgstr ""
 #: .config[6].name
 msgid "zarafa_zpush"
 msgstr ""
+
+#~ msgid ""
+#~ "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
+#~ msgstr ""
+#~ "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"

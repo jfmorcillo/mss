@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:38+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .desc
+#: .description
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
 msgstr "Um servidor Jabber/XMPP distribuído, tolerante a falhas "
 
@@ -30,6 +30,10 @@ msgstr "Permitir o acesso a partir de redes externas"
 #: .config[0].label
 msgid "Allow access from internal networks"
 msgstr "Permite acesso a partir da rede interna"
+
+#: .categories[0].name
+msgid "Collaboration"
+msgstr ""
 
 #: .config[1].help
 msgid ""
@@ -95,6 +99,10 @@ msgctxt ".config[1].type"
 msgid "check"
 msgstr ""
 
+#: .categories[0].slug
+msgid "collaboration"
+msgstr ""
+
 #: .packages[0].rpms[0]
 msgctxt ".packages[0].rpms[0]"
 msgid "ejabberd"
@@ -127,4 +135,8 @@ msgstr ""
 
 #: .config[0].default
 msgid "on"
+msgstr ""
+
+#: .module.section
+msgid "other"
 msgstr ""

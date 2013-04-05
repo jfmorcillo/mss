@@ -30,14 +30,6 @@ done
 tx set --execute --auto-local -r mss.wizard -s en "mss/www/wizard/locale/<lang>/LC_MESSAGES/django.po"
 tx set --execute --auto-local -r mss.errors -s en "mss/www/errors/locale/<lang>/LC_MESSAGES/django.po"
 
-for layout in mss/www/layout/*
-do
-    if [ -d ${layout} ]; then
-        name=`basename ${layout}`
-        tx set --execute --auto-local -r mss.layout-${name} -s en "${layout}/locale/<lang>/LC_MESSAGES/django.po"
-    fi
-done
-
 echo ""
 echo "Setup complete. You can now push/pull translations from transifex."
 echo "See help.transifex.net/features/client/index.html for details."

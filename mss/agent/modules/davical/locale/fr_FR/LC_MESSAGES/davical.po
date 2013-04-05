@@ -1,49 +1,111 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <jfmorcillo@mandriva.com>, 2012, 2013.
 #   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:38+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 09:19+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/davical/setup-davical.sh:80
-msgid "- Administrator : admin"
-msgstr "- Administrateur : admin"
+#: .description
+msgctxt ".description"
+msgid "DAViCal a service for calendar and addressbook sharing."
+msgstr "DAViCal un service de partage de calendrier et de carnet d'adresses."
 
-#: modules/davical/setup-davical.sh:81
-msgid "- Password : $DAVICAL_ADMIN_PASS"
-msgstr "- Mot de passe: $DAVICAL_ADMIN_PASS"
+#: .actions[0].type
+msgid "link"
+msgstr "link"
+
+#: .actions[0].name
+msgid "DAViCal administration"
+msgstr "Administration de DAViCal"
+
+#: .actions[0].value
+msgid "https://@HOSTNAME@/davical/"
+msgstr "https://@HOSTNAME@/davical/"
 
 #: .name
 msgid "Calendar and Addressbook"
 msgstr "Calendrier et Carnet d'adresses"
 
-#: modules/davical/setup-davical.sh:82
-msgid "Change it using the management interface https://@HOSTNAME@/davical/"
-msgstr ""
-"Changez le utilisant l'interface de gestion https://@HOSTNAME@/davical/"
+#: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "postgresql"
+msgstr "postgresql"
+
+#: .dependencies[1]
+msgctxt ".dependencies[1]"
+msgid "mds_webmail"
+msgstr "mds_webmail"
+
+#: .module.section
+msgid "core"
+msgstr "core"
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "postgresql"
+msgstr "postgresql"
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
+msgid "mds_webmail"
+msgstr "mds_webmail"
+
+#: .packages[0].rpms[0]
+msgctxt ".packages[0].rpms[0]"
+msgid "davical"
+msgstr "davical"
+
+#: .packages[0].rpms[1]
+msgid "php-pdo_pgsql"
+msgstr "php-pdo_pgsql"
+
+#: .packages[0].rpms[2]
+msgid "php-calendar"
+msgstr "php-calendar"
+
+#: .packages[0].rpms[3]
+msgid "php-ldap"
+msgstr "php-ldap"
+
+#: .packages[0].rpms[4]
+msgid "roundcubemail-plugins"
+msgstr "roundcubemail-plugins"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .slug
+msgctxt ".slug"
+msgid "davical"
+msgstr "davical"
+
+#: .categories[0].slug
+msgid "collaboration"
+msgstr "collaboration"
+
+#: .categories[0].name
+msgid "Collaboration"
+msgstr "Collaboration"
 
 #: .desc
+msgctxt ".desc"
 msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr "DAViCal un service de partage de calendrier et de carnet d'adresses."
-
-#: .actions[0].name
-msgid "DAViCal administration"
-msgstr ""
 
 #: modules/davical/setup-davical.sh:40
 msgid "Failed to setup the database."
@@ -54,54 +116,25 @@ msgid "The calendar and addressbook service is configured."
 msgstr ""
 "Le service de partage de calendrier et de carnet d'adresse est configuré."
 
+#: modules/davical/setup-davical.sh:80
+msgid "- Administrator : admin"
+msgstr "- Administrateur : admin"
+
+#: modules/davical/setup-davical.sh:81
+msgid "- Password : $DAVICAL_ADMIN_PASS"
+msgstr "- Mot de passe: $DAVICAL_ADMIN_PASS"
+
+#: modules/davical/setup-davical.sh:82
+msgid "Change it using the management interface https://@HOSTNAME@/davical/"
+msgstr ""
+"Changez le utilisant l'interface de gestion https://@HOSTNAME@/davical/"
+
 #: modules/davical/setup-davical.sh:84
 msgid ""
 "Use https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ to add "
 "calendar into caldav clients."
 msgstr ""
+"Utilisez l'url https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ "
+"pour ajouter les calendriers utilisateurs sur les clients."
 
-#: .packages[0].name
-msgid "all"
-msgstr ""
 
-#: .packages[0].rpms[0]
-msgctxt ".packages[0].rpms[0]"
-msgid "davical"
-msgstr ""
-
-#: .slug
-msgctxt ".slug"
-msgid "davical"
-msgstr ""
-
-#: .actions[0].value
-msgid "https://@HOSTNAME@/davical/"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .dependencies[1]
-msgid "mds_webmail"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "php-calendar"
-msgstr "php-calendar"
-
-#: .packages[0].rpms[3]
-msgid "php-ldap"
-msgstr "php-ldap"
-
-#: .packages[0].rpms[1]
-msgid "php-pdo_pgsql"
-msgstr "php-pdo_pgsql"
-
-#: .dependencies[0]
-msgid "postgresql"
-msgstr "postgresql"
-
-#: .packages[0].rpms[4]
-msgid "roundcubemail-plugins"
-msgstr ""

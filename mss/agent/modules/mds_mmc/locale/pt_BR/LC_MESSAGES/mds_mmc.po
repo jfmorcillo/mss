@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: modules/mds_mmc/setup-mmc.sh:137
+#: modules/mds_mmc/setup-mmc.sh:133
 msgid "Administrator name : root"
 msgstr "Nome do Administrador : root"
 
@@ -28,7 +28,7 @@ msgstr "Nome do Administrador : root"
 msgid "Administrator password"
 msgstr "Senha de Administrador"
 
-#: modules/mds_mmc/setup-mmc.sh:138
+#: modules/mds_mmc/setup-mmc.sh:134
 msgid "Administrator password : $mypass"
 msgstr "Senha do Administrador : $mypass"
 
@@ -54,19 +54,19 @@ msgid ""
 msgstr ""
 "Configure o firewall para permitir o acesso à interface web de redes internas"
 
-#: modules/mds_mmc/setup-mmc.sh:90
+#: modules/mds_mmc/setup-mmc.sh:86
 msgid "Database load test failed."
 msgstr "Teste de carga do banco de dados falhou."
 
-#: modules/mds_mmc/setup-mmc.sh:112
+#: modules/mds_mmc/setup-mmc.sh:108
 msgid "Error while configuring lib nss-ldap."
 msgstr "Erro ao configurar lib nss-ldap."
 
-#: modules/mds_mmc/setup-mmc.sh:38
+#: modules/mds_mmc/setup-mmc.sh:32
 msgid "Error while generating the password."
 msgstr "Erro ao gerar a senha."
 
-#: modules/mds_mmc/setup-mmc.sh:104
+#: modules/mds_mmc/setup-mmc.sh:100
 msgid "Failed to initialize the database."
 msgstr "Falha ao inicializar o banco de dados."
 
@@ -78,11 +78,11 @@ msgstr "Interface Web de Administração do MBS"
 msgid "Management interface"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:78
+#: modules/mds_mmc/setup-mmc.sh:74
 msgid "OpenLDAP configuration has errors."
 msgstr "Configuração do OpenLDAP  tem erros."
 
-#: modules/mds_mmc/setup-mmc.sh:135
+#: modules/mds_mmc/setup-mmc.sh:131
 msgid "The MBS administration web interface is configured."
 msgstr "A interface web de administração do MBS está configurada."
 
@@ -93,11 +93,27 @@ msgid ""
 msgstr ""
 "A senha de administrador da interface web para gerenciar usuários e serviços."
 
+#: .module.reboot
+msgid "True"
+msgstr ""
+
+#: .categories[0].name
+msgid "Users"
+msgstr ""
+
 #: .desc
+#, fuzzy
+msgctxt ".desc"
 msgid "Users and groups management"
 msgstr "Gerenciamento de usuários e grupos"
 
-#: modules/mds_mmc/setup-mmc.sh:136
+#: .description
+#, fuzzy
+msgctxt ".description"
+msgid "Users and groups management"
+msgstr "Gerenciamento de usuários e grupos"
+
+#: modules/mds_mmc/setup-mmc.sh:132
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
@@ -108,7 +124,7 @@ msgstr ""
 msgid "all"
 msgstr ""
 
-#: .packages[0].rpms[16]
+#: .packages[0].rpms[18]
 msgid "apache-mod_ssl"
 msgstr "apache-mod_ssl"
 
@@ -120,6 +136,10 @@ msgstr ""
 #: .config[2].type
 msgctxt ".config[2].type"
 msgid "check"
+msgstr ""
+
+#: .module.section
+msgid "core"
 msgstr ""
 
 #: .config[1].name
@@ -138,6 +158,16 @@ msgstr ""
 msgid "link"
 msgstr ""
 
+#: .dependencies[2]
+msgctxt ".dependencies[2]"
+msgid "mbs_repo"
+msgstr ""
+
+#: .module.dependencies[2]
+msgctxt ".module.dependencies[2]"
+msgid "mbs_repo"
+msgstr ""
+
 #: .slug
 msgid "mds_mmc"
 msgstr ""
@@ -146,7 +176,7 @@ msgstr ""
 msgid "mdspasswd"
 msgstr ""
 
-#: .packages[0].rpms[10]
+#: .packages[0].rpms[12]
 msgid "mmc-agent"
 msgstr "mmc-agent"
 
@@ -162,6 +192,11 @@ msgstr "mmc-web-bulkimport"
 msgid "mmc-web-dashboard"
 msgstr "mmc-web-dashboard"
 
+#: .packages[0].rpms[5]
+#, fuzzy
+msgid "mmc-web-packages"
+msgstr "mmc-web-base"
+
 #: .packages[0].rpms[2]
 msgid "mmc-web-services"
 msgstr "mmc-web-services"
@@ -171,10 +206,18 @@ msgid "mmc-web-shorewall"
 msgstr "mmc-web-shorewall"
 
 #: .dependencies[1]
+#, fuzzy
+msgctxt ".dependencies[1]"
 msgid "network"
 msgstr "rede"
 
-#: .packages[0].rpms[12]
+#: .module.dependencies[1]
+#, fuzzy
+msgctxt ".module.dependencies[1]"
+msgid "network"
+msgstr "rede"
+
+#: .packages[0].rpms[14]
 msgid "nss_ldap"
 msgstr "nss_ldap"
 
@@ -186,19 +229,19 @@ msgstr ""
 msgid "on"
 msgstr ""
 
-#: .packages[0].rpms[13]
+#: .packages[0].rpms[15]
 msgid "openldap-clients"
 msgstr "openldap-clients"
 
-#: .packages[0].rpms[15]
+#: .packages[0].rpms[17]
 msgid "openldap-mandriva-dit"
 msgstr "openldap-mandriva-dit"
 
-#: .packages[0].rpms[11]
+#: .packages[0].rpms[13]
 msgid "openldap-servers"
 msgstr "openldap-servers"
 
-#: .packages[0].rpms[14]
+#: .packages[0].rpms[16]
 msgid "pam_ldap"
 msgstr "pam_ldap"
 
@@ -206,29 +249,46 @@ msgstr "pam_ldap"
 msgid "password"
 msgstr ""
 
-#: .packages[0].rpms[5]
+#: .packages[0].rpms[6]
 msgid "python-mmc-base"
 msgstr "python-mmc-base"
 
-#: .packages[0].rpms[6]
+#: .packages[0].rpms[7]
 msgid "python-mmc-bulkimport"
 msgstr "python-mmc-bulkimport"
 
-#: .packages[0].rpms[8]
+#: .packages[0].rpms[9]
 msgid "python-mmc-dashboard"
 msgstr "python-mmc-dashboard"
 
-#: .packages[0].rpms[7]
+#: .packages[0].rpms[11]
+#, fuzzy
+msgid "python-mmc-packages"
+msgstr "python-mmc-base"
+
+#: .packages[0].rpms[8]
 msgid "python-mmc-services"
 msgstr "python-mmc-services"
 
-#: .packages[0].rpms[9]
+#: .packages[0].rpms[10]
 msgid "python-mmc-shorewall"
 msgstr "python-mmc-shorewall"
 
 #: .dependencies[0]
+#, fuzzy
+msgctxt ".dependencies[0]"
 msgid "system"
 msgstr "sistema"
+
+#: .module.dependencies[0]
+#, fuzzy
+msgctxt ".module.dependencies[0]"
+msgid "system"
+msgstr "sistema"
+
+#: .categories[0].slug
+msgid "users"
+msgstr ""
 
 #: .config[0].require
 msgctxt ".config[0].require"

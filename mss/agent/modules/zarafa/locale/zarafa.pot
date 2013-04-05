@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "Zarafa Collaboration Platform"
+#: .description
+msgctxt ".description"
+msgid ""
+"Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
+"compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
+"and groups are managed in the MBS management interface"
+msgstr ""
+
+#: .standalone
+msgid "True"
 msgstr ""
 
 #: .actions[0].type
@@ -47,33 +55,48 @@ msgstr ""
 msgid "http://@HOSTNAME@/webaccess/"
 msgstr ""
 
-#: .medias[0].url[0]
-msgid "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-msgstr ""
-
-#: .medias[0].verbose_name
-msgid "Zarafa"
-msgstr ""
-
-#: .medias[0].name
-msgctxt ".medias[0].name"
-msgid "zarafa"
-msgstr ""
-
-#: .medias[0].auth
-msgid "my"
-msgstr ""
-
-#: .medias[0].proto
-msgid "https"
+#: .name
+msgid "Zarafa Collaboration Platform"
 msgstr ""
 
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
 msgid "mds_mmc"
 msgstr ""
 
 #: .dependencies[1]
+msgctxt ".dependencies[1]"
 msgid "mysql"
+msgstr ""
+
+#: .module.conflicts[0]
+msgctxt ".module.conflicts[0]"
+msgid "mds_mail"
+msgstr ""
+
+#: .module.conflicts[1]
+msgctxt ".module.conflicts[1]"
+msgid "mds_webmail"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
+msgid "mds_mmc"
+msgstr ""
+
+#: .module.dependencies[1]
+msgctxt ".module.dependencies[1]"
+msgid "mysql"
+msgstr ""
+
+#: .conflicts[0]
+msgctxt ".conflicts[0]"
+msgid "mds_mail"
+msgstr ""
+
+#: .conflicts[1]
+msgctxt ".conflicts[1]"
+msgid "mds_webmail"
 msgstr ""
 
 #: .packages[0].rpms[0]
@@ -369,15 +392,8 @@ msgctxt ".slug"
 msgid "zarafa"
 msgstr ""
 
-#: .conflict[0]
-msgid "mds_mail"
-msgstr ""
-
-#: .conflict[1]
-msgid "mds_webmail"
-msgstr ""
-
 #: .desc
+msgctxt ".desc"
 msgid ""
 "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
 "compatibility, ActiveSync support and a rich webmail interface. Zarafa users "

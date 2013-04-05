@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 19:56+0200\n"
 "PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -23,13 +23,17 @@ msgstr ""
 msgid "PostgreSQL database"
 msgstr "Banco de dados PostgreSQL "
 
-#: .desc
+#: .description
 msgid "PostgreSQL relational database"
 msgstr "PostgreSQL SGBD relacional"
 
 #: modules/postgresql/setup-postgresql.sh:11
 msgid "Postgresql is running."
 msgstr "Postgresql está rodando."
+
+#: .standalone
+msgid "True"
+msgstr ""
 
 #: .packages[0].name
 msgid "all"

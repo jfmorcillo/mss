@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,9 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .name
-msgid "Webmail"
+#: .description
+msgctxt ".description"
+msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 
 #: .actions[0].type
@@ -47,11 +48,31 @@ msgstr ""
 msgid "https://@HOSTNAME@/roundcubemail/"
 msgstr ""
 
+#: .name
+msgid "Webmail"
+msgstr ""
+
 #: .dependencies[0]
+msgctxt ".dependencies[0]"
+msgid "mds_mail"
+msgstr ""
+
+#: .module.conflicts[0]
+msgctxt ".module.conflicts[0]"
+msgid "zarafa"
+msgstr ""
+
+#: .module.section
+msgid "core"
+msgstr ""
+
+#: .module.dependencies[0]
+msgctxt ".module.dependencies[0]"
 msgid "mds_mail"
 msgstr ""
 
 #: .conflicts[0]
+msgctxt ".conflicts[0]"
 msgid "zarafa"
 msgstr ""
 
@@ -131,7 +152,16 @@ msgstr ""
 msgid "mds_webmail"
 msgstr ""
 
+#: .categories[0].slug
+msgid "mail"
+msgstr ""
+
+#: .categories[0].name
+msgid "Mail"
+msgstr ""
+
 #: .desc
+msgctxt ".desc"
 msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 

@@ -1,114 +1,119 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
-#   <jpbraun@mandriva.com>, 2012.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 19:55+0100\n"
-"PO-Revision-Date: 2013-03-26 09:40+0000\n"
+"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"PO-Revision-Date: 2013-04-08 09:16+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
-"team/fr_FR/)\n"
-"Language: fr_FR\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .desc
+#: .description
 msgid "General system configuration"
 msgstr "Configuration générale du système"
 
-#: modules/system/setup-system.sh:18
-msgid "Hostname and domain name configured."
-msgstr "Nom d'hôte et domaine configurés."
+#: .standalone
+msgid "True"
+msgstr "True"
 
-#: .config[0].help
-msgid "Hostname without the domain name"
-msgstr "Nom de la machine sans le domaine"
+#: .config[0].name
+msgid "hostname"
+msgstr "hostname"
 
-#: modules/system/__init__.py:54
-msgid "Incorrect hostname."
-msgstr "Nom d'hôte incorrect."
+#: .config[0].default
+msgid "get_hostname"
+msgstr "get_hostname"
 
-#: .name
-msgid "System setup"
-msgstr "Configuration système"
-
-#: .config[1].help
-msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr "Le domaine utilisé pour votre organisation (ex: mandriva.com)"
+#: .config[0].require
+msgctxt ".config[0].require"
+msgid "yes"
+msgstr "yes"
 
 #: .config[0].label
 msgid "The server hostname"
 msgstr "Nom d'hôte du serveur"
 
+#: .config[0].validation
+msgid "valid_hostname"
+msgstr "valid_hostname"
+
+#: .config[0].type
+msgctxt ".config[0].type"
+msgid "text"
+msgstr "text"
+
+#: .config[0].store
+msgctxt ".config[0].store"
+msgid "yes"
+msgstr "yes"
+
+#: .config[0].help
+msgid "Hostname without the domain name"
+msgstr "Nom de la machine sans le domaine"
+
+#: .config[1].name
+msgid "domain"
+msgstr "domain"
+
+#: .config[1].default
+msgid "get_domain"
+msgstr "get_domain"
+
+#: .config[1].require
+msgctxt ".config[1].require"
+msgid "yes"
+msgstr "yes"
+
 #: .config[1].label
 msgid "Your domain name"
 msgstr "Domaine"
 
-#: .config[1].name
-msgid "domain"
-msgstr ""
+#: .config[1].validation
+msgid "fqdn"
+msgstr "fqdn"
+
+#: .config[1].type
+msgctxt ".config[1].type"
+msgid "text"
+msgstr "text"
+
+#: .config[1].store
+msgctxt ".config[1].store"
+msgid "yes"
+msgstr "yes"
+
+#: .config[1].help
+msgid "The domain name used in your organization (eg: mandriva.com)."
+msgstr "Le domaine utilisé pour votre organisation (ex: mandriva.com)"
+
+#: .slug
+msgid "system"
+msgstr "system"
+
+#: .name
+msgid "System setup"
+msgstr "Configuration système"
+
+#: modules/system/setup-system.sh:18
+msgid "Hostname and domain name configured."
+msgstr "Nom d'hôte et domaine configurés."
 
 #: modules/system/__init__.py:48
 msgid "example.com"
 msgstr "exemple.com"
 
-#: .config[1].validation
-msgid "fqdn"
-msgstr ""
+#: modules/system/__init__.py:54
+msgid "Incorrect hostname."
+msgstr "Nom d'hôte incorrect."
 
-#: .config[1].default
-msgid "get_domain"
-msgstr ""
 
-#: .config[0].default
-msgid "get_hostname"
-msgstr ""
-
-#: .config[0].name
-msgid "hostname"
-msgstr ""
-
-#: .slug
-msgid "system"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
-msgstr ""
-
-#: .config[0].validation
-msgid "valid_hostname"
-msgstr ""
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
-#: .config[0].store
-msgctxt ".config[0].store"
-msgid "yes"
-msgstr ""
-
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
-
-#: .config[1].store
-msgctxt ".config[1].store"
-msgid "yes"
-msgstr ""
