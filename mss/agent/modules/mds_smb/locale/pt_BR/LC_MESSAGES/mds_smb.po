@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -44,19 +44,8 @@ msgstr ""
 msgid "Allow connections from internal networks"
 msgstr "Permite conexões de redes internas"
 
-#: .desc
+#: .description .desc
 #, fuzzy
-msgctxt ".desc"
-msgid ""
-"Authenticate Windows users with SAMBA and provide Windows file shares on "
-"your network"
-msgstr ""
-"Autenticar usuários do Windows com SAMBA e fornecer compartilhamentos de "
-"arquivos do Windows em sua rede"
-
-#: .description
-#, fuzzy
-msgctxt ".description"
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
@@ -112,10 +101,6 @@ msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
 msgstr ""
 "Nome netbios incorreto (apenas caracteres maiúsculos e dígitos são "
 "permitido)."
-
-#: .config[0].default
-msgid "MBSDOMAIN"
-msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
@@ -174,26 +159,8 @@ msgstr ""
 "Agora você pode usar a interface de gerenciamento para gerenciar os usuários "
 "do Windows e compartilhamentos em https://@HOSTNAME@/mmc/."
 
-#: .config[2].default
-msgid "admin"
-msgstr ""
-
 #: .packages[0].name
 msgid "all"
-msgstr ""
-
-#: .config[4].type
-msgctxt ".config[4].type"
-msgid "check"
-msgstr ""
-
-#: .config[5].type
-msgctxt ".config[5].type"
-msgid "check"
-msgstr ""
-
-#: .module.section
-msgid "core"
 msgstr ""
 
 #: .config[4].name
@@ -204,70 +171,6 @@ msgstr ""
 msgid "fw_wan"
 msgstr ""
 
-#: .config[1].default
-msgid "get_netbios"
-msgstr ""
-
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .dependencies[0]
-#, fuzzy
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .module.dependencies[0]
-#, fuzzy
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .slug
-msgid "mds_smb"
-msgstr ""
-
-#: .packages[0].rpms[5]
-msgid "mmc-web-samba"
-msgstr "mmc-web-samba"
-
-#: .config[5].default
-msgid "off"
-msgstr ""
-
-#: .config[4].default
-msgid "on"
-msgstr ""
-
-#: .config[3].type
-msgid "password"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "python-mmc-samba"
-msgstr "python-mmc-samba"
-
-#: .packages[0].rpms[1]
-msgid "samba-client"
-msgstr "samba-client"
-
-#: .packages[0].rpms[2]
-msgid "samba-common"
-msgstr "samba-common"
-
-#: .packages[0].rpms[3]
-msgid "samba-doc"
-msgstr "samba-doc"
-
-#: .packages[0].rpms[0]
-msgid "samba-server"
-msgstr "samba-server"
-
 #: .config[2].name
 msgid "smbadmin"
 msgstr ""
@@ -275,10 +178,6 @@ msgstr ""
 #: .config[0].name
 msgid "smbdomain"
 msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "smbldap-tools"
-msgstr "smbldap-tools"
 
 #: .config[1].name
 msgid "smbnetbios"
@@ -288,49 +187,42 @@ msgstr ""
 msgid "smbpasswd"
 msgstr ""
 
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".description"
+#~ msgid ""
+#~ "Authenticate Windows users with SAMBA and provide Windows file shares on "
+#~ "your network"
+#~ msgstr ""
+#~ "Autenticar usuários do Windows com SAMBA e fornecer compartilhamentos de "
+#~ "arquivos do Windows em sua rede"
 
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
 
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "text"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".module.dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
 
-#: .categories[0].slug
-msgid "users"
-msgstr ""
+#~ msgid "mmc-web-samba"
+#~ msgstr "mmc-web-samba"
 
-#: .config[0].validation
-msgid "valid_domain"
-msgstr ""
+#~ msgid "python-mmc-samba"
+#~ msgstr "python-mmc-samba"
 
-#: .config[1].validation
-msgid "valid_netbios"
-msgstr ""
+#~ msgid "samba-client"
+#~ msgstr "samba-client"
 
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
+#~ msgid "samba-common"
+#~ msgstr "samba-common"
 
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
+#~ msgid "samba-doc"
+#~ msgstr "samba-doc"
 
-#: .config[2].require
-msgctxt ".config[2].require"
-msgid "yes"
-msgstr ""
+#~ msgid "samba-server"
+#~ msgstr "samba-server"
 
-#: .config[3].require
-msgctxt ".config[3].require"
-msgid "yes"
-msgstr ""
+#~ msgid "smbldap-tools"
+#~ msgstr "smbldap-tools"

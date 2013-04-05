@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,39 +21,12 @@ msgstr ""
 msgid "General system configuration"
 msgstr ""
 
-#: .standalone
-msgid "True"
-msgstr ""
-
 #: .config[0].name
 msgid "hostname"
 msgstr ""
 
-#: .config[0].default
-msgid "get_hostname"
-msgstr ""
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
 #: .config[0].label
 msgid "The server hostname"
-msgstr ""
-
-#: .config[0].validation
-msgid "valid_hostname"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
-msgstr ""
-
-#: .config[0].store
-msgctxt ".config[0].store"
-msgid "yes"
 msgstr ""
 
 #: .config[0].help
@@ -64,39 +37,12 @@ msgstr ""
 msgid "domain"
 msgstr ""
 
-#: .config[1].default
-msgid "get_domain"
-msgstr ""
-
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
-
 #: .config[1].label
 msgid "Your domain name"
 msgstr ""
 
-#: .config[1].validation
-msgid "fqdn"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
-msgstr ""
-
-#: .config[1].store
-msgctxt ".config[1].store"
-msgid "yes"
-msgstr ""
-
 #: .config[1].help
 msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr ""
-
-#: .slug
-msgid "system"
 msgstr ""
 
 #: .name

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -93,23 +93,12 @@ msgid ""
 msgstr ""
 "A senha de administrador da interface web para gerenciar usuários e serviços."
 
-#: .module.reboot
-msgid "True"
-msgstr ""
-
 #: .categories[0].name
 msgid "Users"
 msgstr ""
 
-#: .desc
+#: .description .desc
 #, fuzzy
-msgctxt ".desc"
-msgid "Users and groups management"
-msgstr "Gerenciamento de usuários e grupos"
-
-#: .description
-#, fuzzy
-msgctxt ".description"
 msgid "Users and groups management"
 msgstr "Gerenciamento de usuários e grupos"
 
@@ -124,24 +113,6 @@ msgstr ""
 msgid "all"
 msgstr ""
 
-#: .packages[0].rpms[18]
-msgid "apache-mod_ssl"
-msgstr "apache-mod_ssl"
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
-msgstr ""
-
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "check"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
 #: .config[1].name
 msgid "fw_lan"
 msgstr ""
@@ -150,152 +121,90 @@ msgstr ""
 msgid "fw_wan"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .dependencies[2]
-msgctxt ".dependencies[2]"
-msgid "mbs_repo"
-msgstr ""
-
-#: .module.dependencies[2]
-msgctxt ".module.dependencies[2]"
-msgid "mbs_repo"
-msgstr ""
-
-#: .slug
-msgid "mds_mmc"
-msgstr ""
-
 #: .config[0].name
 msgid "mdspasswd"
 msgstr ""
 
-#: .packages[0].rpms[12]
-msgid "mmc-agent"
-msgstr "mmc-agent"
-
-#: .packages[0].rpms[0]
-msgid "mmc-web-base"
-msgstr "mmc-web-base"
-
-#: .packages[0].rpms[1]
-msgid "mmc-web-bulkimport"
-msgstr "mmc-web-bulkimport"
-
-#: .packages[0].rpms[3]
-msgid "mmc-web-dashboard"
-msgstr "mmc-web-dashboard"
-
-#: .packages[0].rpms[5]
 #, fuzzy
-msgid "mmc-web-packages"
-msgstr "mmc-web-base"
+#~ msgctxt ".description"
+#~ msgid "Users and groups management"
+#~ msgstr "Gerenciamento de usuários e grupos"
 
-#: .packages[0].rpms[2]
-msgid "mmc-web-services"
-msgstr "mmc-web-services"
+#~ msgid "apache-mod_ssl"
+#~ msgstr "apache-mod_ssl"
 
-#: .packages[0].rpms[4]
-msgid "mmc-web-shorewall"
-msgstr "mmc-web-shorewall"
+#~ msgid "mmc-agent"
+#~ msgstr "mmc-agent"
 
-#: .dependencies[1]
+#~ msgid "mmc-web-base"
+#~ msgstr "mmc-web-base"
+
+#~ msgid "mmc-web-bulkimport"
+#~ msgstr "mmc-web-bulkimport"
+
+#~ msgid "mmc-web-dashboard"
+#~ msgstr "mmc-web-dashboard"
+
 #, fuzzy
-msgctxt ".dependencies[1]"
-msgid "network"
-msgstr "rede"
+#~ msgid "mmc-web-packages"
+#~ msgstr "mmc-web-base"
 
-#: .module.dependencies[1]
+#~ msgid "mmc-web-services"
+#~ msgstr "mmc-web-services"
+
+#~ msgid "mmc-web-shorewall"
+#~ msgstr "mmc-web-shorewall"
+
 #, fuzzy
-msgctxt ".module.dependencies[1]"
-msgid "network"
-msgstr "rede"
+#~ msgctxt ".dependencies[1]"
+#~ msgid "network"
+#~ msgstr "rede"
 
-#: .packages[0].rpms[14]
-msgid "nss_ldap"
-msgstr "nss_ldap"
-
-#: .config[2].default
-msgid "off"
-msgstr ""
-
-#: .config[1].default
-msgid "on"
-msgstr ""
-
-#: .packages[0].rpms[15]
-msgid "openldap-clients"
-msgstr "openldap-clients"
-
-#: .packages[0].rpms[17]
-msgid "openldap-mandriva-dit"
-msgstr "openldap-mandriva-dit"
-
-#: .packages[0].rpms[13]
-msgid "openldap-servers"
-msgstr "openldap-servers"
-
-#: .packages[0].rpms[16]
-msgid "pam_ldap"
-msgstr "pam_ldap"
-
-#: .config[0].type
-msgid "password"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "python-mmc-base"
-msgstr "python-mmc-base"
-
-#: .packages[0].rpms[7]
-msgid "python-mmc-bulkimport"
-msgstr "python-mmc-bulkimport"
-
-#: .packages[0].rpms[9]
-msgid "python-mmc-dashboard"
-msgstr "python-mmc-dashboard"
-
-#: .packages[0].rpms[11]
 #, fuzzy
-msgid "python-mmc-packages"
-msgstr "python-mmc-base"
+#~ msgctxt ".module.dependencies[1]"
+#~ msgid "network"
+#~ msgstr "rede"
 
-#: .packages[0].rpms[8]
-msgid "python-mmc-services"
-msgstr "python-mmc-services"
+#~ msgid "nss_ldap"
+#~ msgstr "nss_ldap"
 
-#: .packages[0].rpms[10]
-msgid "python-mmc-shorewall"
-msgstr "python-mmc-shorewall"
+#~ msgid "openldap-clients"
+#~ msgstr "openldap-clients"
 
-#: .dependencies[0]
+#~ msgid "openldap-mandriva-dit"
+#~ msgstr "openldap-mandriva-dit"
+
+#~ msgid "openldap-servers"
+#~ msgstr "openldap-servers"
+
+#~ msgid "pam_ldap"
+#~ msgstr "pam_ldap"
+
+#~ msgid "python-mmc-base"
+#~ msgstr "python-mmc-base"
+
+#~ msgid "python-mmc-bulkimport"
+#~ msgstr "python-mmc-bulkimport"
+
+#~ msgid "python-mmc-dashboard"
+#~ msgstr "python-mmc-dashboard"
+
 #, fuzzy
-msgctxt ".dependencies[0]"
-msgid "system"
-msgstr "sistema"
+#~ msgid "python-mmc-packages"
+#~ msgstr "python-mmc-base"
 
-#: .module.dependencies[0]
+#~ msgid "python-mmc-services"
+#~ msgstr "python-mmc-services"
+
+#~ msgid "python-mmc-shorewall"
+#~ msgstr "python-mmc-shorewall"
+
 #, fuzzy
-msgctxt ".module.dependencies[0]"
-msgid "system"
-msgstr "sistema"
+#~ msgctxt ".dependencies[0]"
+#~ msgid "system"
+#~ msgstr "sistema"
 
-#: .categories[0].slug
-msgid "users"
-msgstr ""
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
-#: .postinstall.reboot
-msgctxt ".postinstall.reboot"
-msgid "yes"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".module.dependencies[0]"
+#~ msgid "system"
+#~ msgstr "sistema"

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -45,7 +45,8 @@ msgstr ""
 msgid "Login to the Cups interface is the root account."
 msgstr "O login para a interface do Cups é a conta de root"
 
-#: .description
+#: .description .desc
+#, fuzzy
 msgid "Network printers management"
 msgstr "Gerenciamento de Impressoras de rede"
 
@@ -73,36 +74,6 @@ msgstr ""
 msgid "all"
 msgstr ""
 
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "cups"
-msgstr "cups"
-
-#: .packages[0].rpms[1]
-msgid "cups-drivers"
-msgstr "cups-drivers"
-
-#: .packages[0].rpms[2]
-msgid "cups-windows"
-msgstr "cups-windows"
-
-#: .packages[0].rpms[3]
-msgid "foomatic-filters"
-msgstr "foomatic-filters"
-
 #: .config[0].name
 msgid "fw_lan"
 msgstr ""
@@ -111,34 +82,28 @@ msgstr ""
 msgid "fw_wan"
 msgstr ""
 
-#: .packages[0].rpms[6]
-msgid "hplip"
-msgstr "hplip"
+#, fuzzy
+#~ msgctxt ".description"
+#~ msgid "Network printers management"
+#~ msgstr "Gerenciamento de Impressoras de rede"
 
-#: .packages[0].rpms[4]
-msgid "hplip-hpijs-ppds"
-msgstr "hplip-hpijs-ppds"
+#~ msgid "cups"
+#~ msgstr "cups"
 
-#: .actions[0].value
-msgid "http://@HOSTNAME@:631/admin/"
-msgstr ""
+#~ msgid "cups-drivers"
+#~ msgstr "cups-drivers"
 
-#: .actions[0].type
-msgid "link"
-msgstr ""
+#~ msgid "cups-windows"
+#~ msgstr "cups-windows"
 
-#: .slug
-msgid "mds_cups"
-msgstr ""
+#~ msgid "foomatic-filters"
+#~ msgstr "foomatic-filters"
 
-#: .config[0].default
-msgid "n"
-msgstr ""
+#~ msgid "hplip"
+#~ msgstr "hplip"
 
-#: .config[1].default
-msgid "off"
-msgstr ""
+#~ msgid "hplip-hpijs-ppds"
+#~ msgstr "hplip-hpijs-ppds"
 
-#: .packages[0].rpms[5]
-msgid "postscript-ppds"
-msgstr "postscript-ppds"
+#~ msgid "postscript-ppds"
+#~ msgstr "postscript-ppds"

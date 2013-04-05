@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:38+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -19,47 +19,19 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .repositories[0].options
-msgid "--distrib"
-msgstr ""
-
 #: .description
 msgid "Access software from MBS public repositories"
 msgstr ""
 
-#: .name
+#: .repositories[0].name .name
 #, fuzzy
-msgctxt ".name"
 msgid "Mandriva Business Server repositories"
 msgstr "Repositórios do Mandriva Business Server"
-
-#: .repositories[0].name
-#, fuzzy
-msgctxt ".repositories[0].name"
-msgid "Mandriva Business Server repositories"
-msgstr "Repositórios do Mandriva Business Server"
-
-#: .repositories[0].restricted
-msgctxt ".repositories[0].restricted"
-msgid "True"
-msgstr ""
-
-#: .standalone
-msgctxt ".standalone"
-msgid "True"
-msgstr ""
-
-#: .repositories[0].url
-msgid "http://mirror.mandriva.com/mbs1/@ARCH@/"
-msgstr ""
-
-#: .repositories[0].slug
-msgid "mbs"
-msgstr ""
-
-#: .slug
-msgid "mbs_repo"
-msgstr ""
 
 #~ msgid "Get security updates through MBS repositories"
 #~ msgstr "Atualize updates de segurança através dos repositórios do MBS "
+
+#, fuzzy
+#~ msgctxt ".repositories[0].name"
+#~ msgid "Mandriva Business Server repositories"
+#~ msgstr "Repositórios do Mandriva Business Server"

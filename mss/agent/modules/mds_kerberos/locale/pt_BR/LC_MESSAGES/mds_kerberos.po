@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -18,33 +18,6 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
-
-#: .config[8].default
-msgid "300"
-msgstr ""
-
-#: .config[10].size
-msgctxt ".config[10].size"
-msgid "50"
-msgstr ""
-
-#: .config[11].size
-msgctxt ".config[11].size"
-msgid "50"
-msgstr ""
-
-#: .config[9].size
-msgctxt ".config[9].size"
-msgid "50"
-msgstr ""
-
-#: .config[4].default
-msgid "749"
-msgstr ""
-
-#: .config[3].default
-msgid "88"
-msgstr ""
 
 #: .config[4].label
 msgid "Administrator server port"
@@ -118,15 +91,8 @@ msgstr ""
 msgid "Indicates whether weak encryption types should be filtered out"
 msgstr "Indica se os tipos de criptografia fracos devem ser filtrados"
 
-#: .desc
+#: .description .desc
 #, fuzzy
-msgctxt ".desc"
-msgid "Install and configure Kerberos authentication"
-msgstr "Instalar e configurar atutenticação Kerberos"
-
-#: .description
-#, fuzzy
-msgctxt ".description"
 msgid "Install and configure Kerberos authentication"
 msgstr "Instalar e configurar atutenticação Kerberos"
 
@@ -210,10 +176,6 @@ msgstr "Tipos de criptografia TGS"
 msgid "TKT encryption types"
 msgstr "Tipos de criptografia TKT"
 
-#: .standalone
-msgid "True"
-msgstr ""
-
 #: .packages[0].name
 msgid "all"
 msgstr ""
@@ -222,60 +184,8 @@ msgstr ""
 msgid "allow_weak_enctypes"
 msgstr ""
 
-#: .config[12].type
-msgctxt ".config[12].type"
-msgid "check"
-msgstr ""
-
-#: .config[6].type
-msgctxt ".config[6].type"
-msgid "check"
-msgstr ""
-
-#: .config[7].type
-msgctxt ".config[7].type"
-msgid "check"
-msgstr ""
-
-#: .config[1].validation
-msgid "check_kdc_host_name"
-msgstr ""
-
-#: .config[3].validation
-msgctxt ".config[3].validation"
-msgid "check_port"
-msgstr ""
-
-#: .config[4].validation
-msgctxt ".config[4].validation"
-msgid "check_port"
-msgstr ""
-
-#: .config[0].validation
-msgid "check_realm"
-msgstr ""
-
 #: .config[8].name
 msgid "clock_skew"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .config[10].default
-msgctxt ".config[10].default"
-msgid "des3-cbc-sha1-kd des-cbc-crc"
-msgstr ""
-
-#: .config[11].default
-msgctxt ".config[11].default"
-msgid "des3-cbc-sha1-kd des-cbc-crc"
-msgstr ""
-
-#: .config[9].default
-msgctxt ".config[9].default"
-msgid "des3-cbc-sha1-kd des-cbc-crc"
 msgstr ""
 
 #: .config[2].name
@@ -288,26 +198,6 @@ msgstr ""
 
 #: .config[7].name
 msgid "dns_lookup_realm"
-msgstr ""
-
-#: .config[2].validation
-msgid "fqdn"
-msgstr ""
-
-#: .config[2].default
-msgid "get_default_domain_name"
-msgstr ""
-
-#: .config[1].default
-msgid "get_default_host_name"
-msgstr ""
-
-#: .config[0].default
-msgid "get_default_realm"
-msgstr ""
-
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
 msgstr ""
 
 #: .packages[2].name
@@ -330,147 +220,12 @@ msgstr ""
 msgid "kdc_port"
 msgstr ""
 
-#: .packages[0].rpms[0]
-msgid "krb5-server"
-msgstr "krb5-server"
-
-#: .packages[0].rpms[1]
-msgid "krb5-workstation"
-msgstr "krb5-workstation"
-
-#: .packages[1].rpms
-msgid "lib64sasl2-plug-gssapi"
-msgstr "lib64sasl2-plug-gssapi"
-
-#: .packages[2].rpms
-msgid "libsasl2-plug-gssapi"
-msgstr "libsasl2-plug-gssapi"
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .dependencies[1]
-#, fuzzy
-msgctxt ".dependencies[1]"
-msgid "mds_dns"
-msgstr "mds_dns"
-
-#: .module.dependencies[1]
-#, fuzzy
-msgctxt ".module.dependencies[1]"
-msgid "mds_dns"
-msgstr "mds_dns"
-
-#: .slug
-msgid "mds_kerberos"
-msgstr ""
-
-#: .dependencies[0]
-#, fuzzy
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .module.dependencies[0]
-#, fuzzy
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .packages[0].rpms[8]
-msgid "mmc-web-kerberos"
-msgstr "mmc-web-kerberos"
-
-#: .packages[0].rpms[3]
-msgid "nss_ldap"
-msgstr "nss_ldap"
-
-#: .config[12].default
-msgctxt ".config[12].default"
-msgid "on"
-msgstr ""
-
-#: .config[6].default
-msgctxt ".config[6].default"
-msgid "on"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "openldap-clients"
-msgstr "openldap-clients"
-
-#: .packages[0].rpms[6]
-msgid "openldap-mandriva-dit"
-msgstr "openldap-mandriva-dit"
-
-#: .packages[0].rpms[2]
-msgid "openldap-servers"
-msgstr "openldap-servers"
-
-#: .packages[0].rpms[5]
-msgid "pam_ldap"
-msgstr "pam_ldap"
-
-#: .config[5].type
-msgid "password"
-msgstr ""
-
 #: .config[11].name
 msgid "permitted_enctypes"
 msgstr ""
 
-#: .packages[0].rpms[7]
-msgid "python-mmc-kerberos"
-msgstr "python-mmc-kerberos"
-
 #: .config[0].name
 msgid "realm"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
-msgstr ""
-
-#: .config[10].type
-msgctxt ".config[10].type"
-msgid "text"
-msgstr ""
-
-#: .config[11].type
-msgctxt ".config[11].type"
-msgid "text"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
-msgstr ""
-
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "text"
-msgstr ""
-
-#: .config[3].type
-msgctxt ".config[3].type"
-msgid "text"
-msgstr ""
-
-#: .config[4].type
-msgctxt ".config[4].type"
-msgid "text"
-msgstr ""
-
-#: .config[8].type
-msgctxt ".config[8].type"
-msgid "text"
-msgstr ""
-
-#: .config[9].type
-msgctxt ".config[9].type"
-msgid "text"
 msgstr ""
 
 #: .config[9].name
@@ -485,42 +240,60 @@ msgstr ""
 msgid "x86_64"
 msgstr ""
 
-#: .config[0].edit_if_unconfigured
-msgctxt ".config[0].edit_if_unconfigured"
-msgid "yes"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".description"
+#~ msgid "Install and configure Kerberos authentication"
+#~ msgstr "Instalar e configurar atutenticação Kerberos"
 
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
+#~ msgid "krb5-server"
+#~ msgstr "krb5-server"
 
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
+#~ msgid "krb5-workstation"
+#~ msgstr "krb5-workstation"
 
-#: .config[2].require
-msgctxt ".config[2].require"
-msgid "yes"
-msgstr ""
+#~ msgid "lib64sasl2-plug-gssapi"
+#~ msgstr "lib64sasl2-plug-gssapi"
 
-#: .config[3].require
-msgctxt ".config[3].require"
-msgid "yes"
-msgstr ""
+#~ msgid "libsasl2-plug-gssapi"
+#~ msgstr "libsasl2-plug-gssapi"
 
-#: .config[4].require
-msgctxt ".config[4].require"
-msgid "yes"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".dependencies[1]"
+#~ msgid "mds_dns"
+#~ msgstr "mds_dns"
 
-#: .config[5].require
-msgctxt ".config[5].require"
-msgid "yes"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".module.dependencies[1]"
+#~ msgid "mds_dns"
+#~ msgstr "mds_dns"
 
-#: .config[5].show_if_unconfigured
-msgctxt ".config[5].show_if_unconfigured"
-msgid "yes"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
+
+#, fuzzy
+#~ msgctxt ".module.dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
+
+#~ msgid "mmc-web-kerberos"
+#~ msgstr "mmc-web-kerberos"
+
+#~ msgid "nss_ldap"
+#~ msgstr "nss_ldap"
+
+#~ msgid "openldap-clients"
+#~ msgstr "openldap-clients"
+
+#~ msgid "openldap-mandriva-dit"
+#~ msgstr "openldap-mandriva-dit"
+
+#~ msgid "openldap-servers"
+#~ msgstr "openldap-servers"
+
+#~ msgid "pam_ldap"
+#~ msgstr "pam_ldap"
+
+#~ msgid "python-mmc-kerberos"
+#~ msgstr "python-mmc-kerberos"

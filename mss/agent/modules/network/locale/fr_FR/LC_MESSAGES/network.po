@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
-"PO-Revision-Date: 2013-04-08 09:07+0000\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"PO-Revision-Date: 2013-04-08 10:18+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,29 +22,13 @@ msgstr ""
 msgid "Configure network interfaces"
 msgstr "Configure les interfaces réseau et le firewall"
 
-#: .standalone
-msgid "True"
-msgstr "True"
-
-#: .packages[0].rpms[0]
-msgid "shorewall"
-msgstr "shorewall"
-
 #: .packages[0].name
 msgid "all"
 msgstr "all"
 
-#: .config[0].type
-msgid "custom"
-msgstr "custom"
-
 #: .config[0].name
 msgid "interfaces"
 msgstr "interfaces"
-
-#: .slug
-msgid "network"
-msgstr "network"
 
 #: .name
 msgid "Network setup"

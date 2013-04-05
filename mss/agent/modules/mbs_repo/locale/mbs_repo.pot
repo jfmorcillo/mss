@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,38 +21,6 @@ msgstr ""
 msgid "Access software from MBS public repositories"
 msgstr ""
 
-#: .standalone
-msgctxt ".standalone"
-msgid "True"
-msgstr ""
-
-#: .repositories[0].url
-msgid "http://mirror.mandriva.com/mbs1/@ARCH@/"
-msgstr ""
-
-#: .repositories[0].restricted
-msgctxt ".repositories[0].restricted"
-msgid "True"
-msgstr ""
-
-#: .repositories[0].options
-msgid "--distrib"
-msgstr ""
-
-#: .repositories[0].slug
-msgid "mbs"
-msgstr ""
-
-#: .repositories[0].name
-msgctxt ".repositories[0].name"
-msgid "Mandriva Business Server repositories"
-msgstr ""
-
-#: .slug
-msgid "mbs_repo"
-msgstr ""
-
-#: .name
-msgctxt ".name"
+#: .repositories[0].name .name
 msgid "Mandriva Business Server repositories"
 msgstr ""

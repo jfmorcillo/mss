@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,71 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
+#: .description .desc
 msgid "Network printers management"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Printers management"
 msgstr ""
 
-#: .actions[0].value
-msgid "http://@HOSTNAME@:631/admin/"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "cups"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "cups-drivers"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "cups-windows"
-msgstr ""
-
-#: .packages[0].rpms[3]
-msgid "foomatic-filters"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "hplip-hpijs-ppds"
-msgstr ""
-
-#: .packages[0].rpms[5]
-msgid "postscript-ppds"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "hplip"
+#: .name
+msgid "Printing service"
 msgstr ""
 
 #: .packages[0].name
 msgid "all"
 msgstr ""
 
-#: .config[0].default
-msgid "n"
-msgstr ""
-
 #: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the Printer Management Service "
 "from internal networks"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
 msgstr ""
 
 #: .config[0].name
@@ -92,19 +47,10 @@ msgstr ""
 msgid "Allow connections to the management interface from internal networks"
 msgstr ""
 
-#: .config[1].default
-msgid "off"
-msgstr ""
-
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the Printer Management Service "
 "from external networks"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
 msgstr ""
 
 #: .config[1].name
@@ -113,14 +59,6 @@ msgstr ""
 
 #: .config[1].label
 msgid "Allow connections to the management interface from external networks"
-msgstr ""
-
-#: .slug
-msgid "mds_cups"
-msgstr ""
-
-#: .name
-msgid "Printing service"
 msgstr ""
 
 #: modules/mds_cups/setup-cups.sh:19

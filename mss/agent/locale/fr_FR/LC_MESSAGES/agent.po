@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
-"PO-Revision-Date: 2013-04-08 08:50+0000\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"PO-Revision-Date: 2013-04-08 10:16+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,31 +18,23 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: [0].slug
-msgid "core"
-msgstr "core"
-
 #: [0].name
 msgid "Core Services"
 msgstr "Services essentiels"
-
-#: [1].slug
-msgid "other"
-msgstr "other"
 
 #: [1].name
 msgid "Other Services"
 msgstr "Autre services"
 
-#: classes/module.py:151
+#: classes/module.py:154
 msgid "Other"
 msgstr "Autres"
 
-#: classes/module.py:368
+#: classes/module.py:371
 msgid "This field can't be empty."
 msgstr "Ce champ ne peut pas être vide."
 
-#: classes/module.py:373
+#: classes/module.py:376
 msgid "Password mismatch."
 msgstr "Les mots de passe ne sont pas identiques."
 

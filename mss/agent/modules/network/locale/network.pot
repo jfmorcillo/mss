@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,28 +21,12 @@ msgstr ""
 msgid "Configure network interfaces"
 msgstr ""
 
-#: .standalone
-msgid "True"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "shorewall"
-msgstr ""
-
 #: .packages[0].name
 msgid "all"
 msgstr ""
 
-#: .config[0].type
-msgid "custom"
-msgstr ""
-
 #: .config[0].name
 msgid "interfaces"
-msgstr ""
-
-#: .slug
-msgid "network"
 msgstr ""
 
 #: .name

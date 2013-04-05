@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -28,15 +28,8 @@ msgstr "Permite pedidos DHCP de redes externas"
 msgid "Allow DHCP requests from internal networks"
 msgstr "Permite pedidos DHCP de redes internas"
 
-#: .desc
+#: .description .desc
 #, fuzzy
-msgctxt ".desc"
-msgid "Configure automatically your client computers IP settings"
-msgstr "Configurar automaticamente o IP dos computadores clientes "
-
-#: .description
-#, fuzzy
-msgctxt ".description"
 msgid "Configure automatically your client computers IP settings"
 msgstr "Configurar automaticamente o IP dos computadores clientes "
 
@@ -84,24 +77,6 @@ msgstr ""
 msgid "all"
 msgstr ""
 
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "dhcp-server"
-msgstr "dhcp-server"
-
 #: .config[0].name
 msgid "fw_lan"
 msgstr ""
@@ -110,47 +85,30 @@ msgstr ""
 msgid "fw_wan"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .slug
-msgid "mds_dhcp"
-msgstr ""
-
-#: .dependencies[0]
 #, fuzzy
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
+#~ msgctxt ".description"
+#~ msgid "Configure automatically your client computers IP settings"
+#~ msgstr "Configurar automaticamente o IP dos computadores clientes "
 
-#: .module.dependencies[0]
+#~ msgid "dhcp-server"
+#~ msgstr "dhcp-server"
+
 #, fuzzy
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
+#~ msgctxt ".dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
 
-#: .packages[0].rpms[1]
-msgid "mmc-web-network"
-msgstr "mmc-web-network"
-
-#: .categories[0].slug
 #, fuzzy
-msgid "network"
-msgstr "mmc-web-network"
+#~ msgctxt ".module.dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
 
-#: .config[1].default
-msgid "off"
-msgstr ""
+#~ msgid "mmc-web-network"
+#~ msgstr "mmc-web-network"
 
-#: .config[0].default
-msgid "on"
-msgstr ""
+#, fuzzy
+#~ msgid "network"
+#~ msgstr "mmc-web-network"
 
-#: .packages[0].rpms[2]
-msgid "python-mmc-network"
-msgstr "python-mmc-network"
+#~ msgid "python-mmc-network"
+#~ msgstr "python-mmc-network"

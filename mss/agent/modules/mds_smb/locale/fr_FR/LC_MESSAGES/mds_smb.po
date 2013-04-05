@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
-"PO-Revision-Date: 2013-04-08 09:21+0000\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"PO-Revision-Date: 2013-04-08 10:22+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,8 +18,7 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
@@ -27,63 +26,13 @@ msgstr ""
 "Authentifie les utilisateurs Windows avec SAMBA et fourni des partages de "
 "fichiers sur le réseau"
 
-#: .actions[0].type
-msgid "link"
-msgstr "link"
-
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface d'administration"
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr "https://@HOSTNAME@/mmc/main.php"
-
 #: .name
 msgid "Windows users and file sharing management"
 msgstr "Gestion des utilisateurs et partages de fichiers Windows"
-
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .module.section
-msgid "core"
-msgstr "core"
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .packages[0].rpms[0]
-msgid "samba-server"
-msgstr "samba-server"
-
-#: .packages[0].rpms[1]
-msgid "samba-client"
-msgstr "samba-client"
-
-#: .packages[0].rpms[2]
-msgid "samba-common"
-msgstr "samba-common"
-
-#: .packages[0].rpms[3]
-msgid "samba-doc"
-msgstr "samba-doc"
-
-#: .packages[0].rpms[4]
-msgid "smbldap-tools"
-msgstr "smbldap-tools"
-
-#: .packages[0].rpms[5]
-msgid "mmc-web-samba"
-msgstr "mmc-web-samba"
-
-#: .packages[0].rpms[6]
-msgid "python-mmc-samba"
-msgstr "python-mmc-samba"
 
 #: .packages[0].name
 msgid "all"
@@ -93,27 +42,9 @@ msgstr "all"
 msgid "smbdomain"
 msgstr "smbdomain"
 
-#: .config[0].default
-msgid "MBSDOMAIN"
-msgstr "DOMAINEMBS"
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr "yes"
-
 #: .config[0].label
 msgid "SAMBA domain name"
 msgstr "Nom de domaine SAMBA"
-
-#: .config[0].validation
-msgid "valid_domain"
-msgstr "valid_domain"
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
-msgstr "text"
 
 #: .config[0].help
 msgid "The name of your Microsoft domain."
@@ -123,27 +54,9 @@ msgstr "Le nom de votre domaine Microsoft."
 msgid "smbnetbios"
 msgstr "smbnetbios"
 
-#: .config[1].default
-msgid "get_netbios"
-msgstr "get_netbios"
-
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr "yes"
-
 #: .config[1].label
 msgid "Netbios name"
 msgstr "Nom netbios"
-
-#: .config[1].validation
-msgid "valid_netbios"
-msgstr "valid_netbios"
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
-msgstr "text"
 
 #: .config[1].help
 msgid "The name of your SAMBA server in the Microsoft domain."
@@ -153,23 +66,9 @@ msgstr "Le nom de votre serveur SAMBA sur le domaine Microsoft."
 msgid "The name of the Microsoft domain administrator."
 msgstr "Le nom de l'administrateur du domaine"
 
-#: .config[2].default
-msgid "admin"
-msgstr "admin"
-
-#: .config[2].require
-msgctxt ".config[2].require"
-msgid "yes"
-msgstr "yes"
-
 #: .config[2].label
 msgid "Administrator name"
 msgstr "Nom de l'administrateur"
-
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "text"
-msgstr "text"
 
 #: .config[2].name
 msgid "smbadmin"
@@ -179,15 +78,6 @@ msgstr "smbadmin"
 msgid "Password for the Microsoft domain administrator."
 msgstr "Mot de passe pour l'administrateur du domaine"
 
-#: .config[3].require
-msgctxt ".config[3].require"
-msgid "yes"
-msgstr "yes"
-
-#: .config[3].type
-msgid "password"
-msgstr "password"
-
 #: .config[3].name
 msgid "smbpasswd"
 msgstr "smbpasswd"
@@ -195,10 +85,6 @@ msgstr "smbpasswd"
 #: .config[3].label
 msgid "Administrator password"
 msgstr "Mot de passe de l'administrateur"
-
-#: .config[4].default
-msgid "on"
-msgstr "on"
 
 #: .config[4].help
 msgid ""
@@ -208,11 +94,6 @@ msgstr ""
 "Configurer le firewall pour accepter le traffic SAMBA sur les interfaces "
 "internes"
 
-#: .config[4].type
-msgctxt ".config[4].type"
-msgid "check"
-msgstr "check"
-
 #: .config[4].name
 msgid "fw_lan"
 msgstr "fw_lan"
@@ -220,10 +101,6 @@ msgstr "fw_lan"
 #: .config[4].label
 msgid "Allow connections from internal networks"
 msgstr "Autoriser les connexions depuis les réseaux internes"
-
-#: .config[5].default
-msgid "off"
-msgstr "off"
 
 #: .config[5].help
 msgid ""
@@ -233,11 +110,6 @@ msgstr ""
 "Configurer le firewall pour accepter le traffic SAMBA sur les interfaces "
 "externes"
 
-#: .config[5].type
-msgctxt ".config[5].type"
-msgid "check"
-msgstr "check"
-
 #: .config[5].name
 msgid "fw_wan"
 msgstr "fw_wan"
@@ -246,26 +118,9 @@ msgstr "fw_wan"
 msgid "Allow connections from external networks"
 msgstr "Autoriser les connexions depuis les réseaux externes"
 
-#: .slug
-msgid "mds_smb"
-msgstr "mds_smb"
-
-#: .categories[0].slug
-msgid "users"
-msgstr "users"
-
 #: .categories[0].name
 msgid "Users"
 msgstr "Utilisateurs"
-
-#: .desc
-msgctxt ".desc"
-msgid ""
-"Authenticate Windows users with SAMBA and provide Windows file shares on "
-"your network"
-msgstr ""
-"Authentifie les utilisateurs Windows avec SAMBA et fourni des partages de "
-"fichiers sur le réseau"
 
 #: modules/mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."

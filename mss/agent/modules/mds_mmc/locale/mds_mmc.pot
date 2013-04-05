@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,144 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "Users and groups management"
-msgstr ""
-
-#: .postinstall.reboot
-msgctxt ".postinstall.reboot"
-msgid "yes"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
 #: .name
 msgid "MBS administration web interface"
-msgstr ""
-
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "system"
-msgstr ""
-
-#: .dependencies[1]
-msgctxt ".dependencies[1]"
-msgid "network"
-msgstr ""
-
-#: .dependencies[2]
-msgctxt ".dependencies[2]"
-msgid "mbs_repo"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "system"
-msgstr ""
-
-#: .module.dependencies[1]
-msgctxt ".module.dependencies[1]"
-msgid "network"
-msgstr ""
-
-#: .module.dependencies[2]
-msgctxt ".module.dependencies[2]"
-msgid "mbs_repo"
-msgstr ""
-
-#: .module.reboot
-msgid "True"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "mmc-web-base"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "mmc-web-bulkimport"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "mmc-web-services"
-msgstr ""
-
-#: .packages[0].rpms[3]
-msgid "mmc-web-dashboard"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "mmc-web-shorewall"
-msgstr ""
-
-#: .packages[0].rpms[5]
-msgid "mmc-web-packages"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "python-mmc-base"
-msgstr ""
-
-#: .packages[0].rpms[7]
-msgid "python-mmc-bulkimport"
-msgstr ""
-
-#: .packages[0].rpms[8]
-msgid "python-mmc-services"
-msgstr ""
-
-#: .packages[0].rpms[9]
-msgid "python-mmc-dashboard"
-msgstr ""
-
-#: .packages[0].rpms[10]
-msgid "python-mmc-shorewall"
-msgstr ""
-
-#: .packages[0].rpms[11]
-msgid "python-mmc-packages"
-msgstr ""
-
-#: .packages[0].rpms[12]
-msgid "mmc-agent"
-msgstr ""
-
-#: .packages[0].rpms[13]
-msgid "openldap-servers"
-msgstr ""
-
-#: .packages[0].rpms[14]
-msgid "nss_ldap"
-msgstr ""
-
-#: .packages[0].rpms[15]
-msgid "openldap-clients"
-msgstr ""
-
-#: .packages[0].rpms[16]
-msgid "pam_ldap"
-msgstr ""
-
-#: .packages[0].rpms[17]
-msgid "openldap-mandriva-dit"
-msgstr ""
-
-#: .packages[0].rpms[18]
-msgid "apache-mod_ssl"
 msgstr ""
 
 #: .packages[0].name
@@ -167,15 +39,6 @@ msgid ""
 "services."
 msgstr ""
 
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
-#: .config[0].type
-msgid "password"
-msgstr ""
-
 #: .config[0].name
 msgid "mdspasswd"
 msgstr ""
@@ -184,19 +47,10 @@ msgstr ""
 msgid "Administrator password"
 msgstr ""
 
-#: .config[1].default
-msgid "on"
-msgstr ""
-
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the web interface from internal "
 "networks"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
 msgstr ""
 
 #: .config[1].name
@@ -207,19 +61,10 @@ msgstr ""
 msgid "Allow access from internal networks"
 msgstr ""
 
-#: .config[2].default
-msgid "off"
-msgstr ""
-
 #: .config[2].help
 msgid ""
 "Configure the firewall to allow access to the web interface from external "
 "networks"
-msgstr ""
-
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "check"
 msgstr ""
 
 #: .config[2].name
@@ -230,21 +75,8 @@ msgstr ""
 msgid "Allow access from external networks"
 msgstr ""
 
-#: .slug
-msgid "mds_mmc"
-msgstr ""
-
-#: .categories[0].slug
-msgid "users"
-msgstr ""
-
 #: .categories[0].name
 msgid "Users"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid "Users and groups management"
 msgstr ""
 
 #: modules/mds_mmc/setup-mmc.sh:32

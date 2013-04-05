@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 19:56+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: 2013-03-26 09:39+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
@@ -40,21 +40,10 @@ msgstr "Senha de root do MySQL"
 msgid "MySQL user password for the audit database"
 msgstr "Senha do usuário MySQL para o banco de dados de auditoria"
 
-#: .desc
+#: .description .desc
 #, fuzzy
-msgctxt ".desc"
 msgid "Track any changes made in the management interface"
 msgstr "Acompanhe qualquer mudança feita na interface de gerenciamento"
-
-#: .description
-#, fuzzy
-msgctxt ".description"
-msgid "Track any changes made in the management interface"
-msgstr "Acompanhe qualquer mudança feita na interface de gerenciamento"
-
-#: .standalone
-msgid "True"
-msgstr ""
 
 #: .config[0].help
 msgid "Used to create the audit database"
@@ -64,30 +53,6 @@ msgstr "Usado para criar o banco de dados de auditoria"
 msgid "all"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
-msgstr ""
-
-#: .slug
-msgid "mds_audit"
-msgstr ""
-
-#: .dependencies[0]
-#, fuzzy
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .module.dependencies[0]
-#, fuzzy
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
 #: .config[1].name
 msgid "myauditpasswd"
 msgstr ""
@@ -96,42 +61,33 @@ msgstr ""
 msgid "myrootpasswd"
 msgstr ""
 
-#: .dependencies[1]
 #, fuzzy
-msgctxt ".dependencies[1]"
-msgid "mysql"
-msgstr "mysql"
+#~ msgctxt ".description"
+#~ msgid "Track any changes made in the management interface"
+#~ msgstr "Acompanhe qualquer mudança feita na interface de gerenciamento"
 
-#: .module.dependencies[1]
 #, fuzzy
-msgctxt ".module.dependencies[1]"
-msgid "mysql"
-msgstr "mysql"
+#~ msgctxt ".dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
 
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "password"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".module.dependencies[0]"
+#~ msgid "mds_mmc"
+#~ msgstr "mds_mmc"
 
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "password"
-msgstr ""
+#, fuzzy
+#~ msgctxt ".dependencies[1]"
+#~ msgid "mysql"
+#~ msgstr "mysql"
 
-#: .packages[0].rpms[1]
-msgid "python-mysql"
-msgstr "python-mysql"
+#, fuzzy
+#~ msgctxt ".module.dependencies[1]"
+#~ msgid "mysql"
+#~ msgstr "mysql"
 
-#: .packages[0].rpms[0]
-msgid "python-sqlalchemy"
-msgstr "python-sqlalchemy"
+#~ msgid "python-mysql"
+#~ msgstr "python-mysql"
 
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
+#~ msgid "python-sqlalchemy"
+#~ msgstr "python-sqlalchemy"

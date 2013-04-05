@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,57 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "Track any changes made in the management interface"
-msgstr ""
-
-#: .standalone
-msgid "True"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
 #: .name
 msgid "Audit plugin"
-msgstr ""
-
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .dependencies[1]
-msgctxt ".dependencies[1]"
-msgid "mysql"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .module.dependencies[1]
-msgctxt ".module.dependencies[1]"
-msgid "mysql"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "python-sqlalchemy"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "python-mysql"
 msgstr ""
 
 #: .packages[0].name
@@ -76,16 +35,6 @@ msgstr ""
 
 #: .config[0].help
 msgid "Used to create the audit database"
-msgstr ""
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "password"
 msgstr ""
 
 #: .config[0].name
@@ -100,29 +49,10 @@ msgstr ""
 msgid "MySQL user password for the audit database"
 msgstr ""
 
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "password"
-msgstr ""
-
 #: .config[1].name
 msgid "myauditpasswd"
 msgstr ""
 
 #: .config[1].label
 msgid "MySQL audit password"
-msgstr ""
-
-#: .slug
-msgid "mds_audit"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid "Track any changes made in the management interface"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,103 +17,30 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "Roundcube, a complete webmail solution for your mail service"
-msgstr ""
-
-#: .actions[0].type
-msgctxt ".actions[0].type"
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .actions[1].type
-msgctxt ".actions[1].type"
-msgid "link"
-msgstr ""
-
 #: .actions[1].name
 msgid "Webmail interface"
-msgstr ""
-
-#: .actions[1].value
-msgid "https://@HOSTNAME@/roundcubemail/"
 msgstr ""
 
 #: .name
 msgid "Webmail"
 msgstr ""
 
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mail"
-msgstr ""
-
-#: .module.conflicts[0]
-msgctxt ".module.conflicts[0]"
-msgid "zarafa"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mail"
-msgstr ""
-
-#: .conflicts[0]
-msgctxt ".conflicts[0]"
-msgid "zarafa"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "roundcubemail"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "sqlite-tools"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "php-fileinfo"
-msgstr ""
-
-#: .packages[0].rpms[3]
-msgid "php-mcrypt"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "php-pear-MDB2_Driver_sqlite"
-msgstr ""
-
 #: .packages[0].name
 msgid "all"
-msgstr ""
-
-#: .config[0].default
-msgctxt ".config[0].default"
-msgid "on"
 msgstr ""
 
 #: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "internal networks"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
 msgstr ""
 
 #: .config[0].name
@@ -124,20 +51,10 @@ msgstr ""
 msgid "Allow access from internal networks"
 msgstr ""
 
-#: .config[1].default
-msgctxt ".config[1].default"
-msgid "on"
-msgstr ""
-
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "external networks"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
 msgstr ""
 
 #: .config[1].name
@@ -148,21 +65,8 @@ msgstr ""
 msgid "Allow access from external networks"
 msgstr ""
 
-#: .slug
-msgid "mds_webmail"
-msgstr ""
-
-#: .categories[0].slug
-msgid "mail"
-msgstr ""
-
 #: .categories[0].name
 msgid "Mail"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 
 #: modules/mds_webmail/setup-webmail.sh:50

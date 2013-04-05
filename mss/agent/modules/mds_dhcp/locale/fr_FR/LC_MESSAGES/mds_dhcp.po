@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
-"PO-Revision-Date: 2013-04-08 09:34+0000\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"PO-Revision-Date: 2013-04-08 10:19+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,60 +18,21 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "Configure automatically your client computers IP settings"
 msgstr "Configuration réseau automatique de vos clients"
-
-#: .actions[0].type
-msgid "link"
-msgstr "link"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface d'administration"
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr "https://@HOSTNAME@/mmc/main.php"
-
 #: .name
 msgid "DHCP Service"
 msgstr "Service DHCP"
 
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .module.section
-msgid "core"
-msgstr "core"
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr "mds_mmc"
-
-#: .packages[0].rpms[0]
-msgid "dhcp-server"
-msgstr "dhcp-server"
-
-#: .packages[0].rpms[1]
-msgid "mmc-web-network"
-msgstr "mmc-web-network"
-
-#: .packages[0].rpms[2]
-msgid "python-mmc-network"
-msgstr "python-mmc-network"
-
 #: .packages[0].name
 msgid "all"
 msgstr "all"
-
-#: .config[0].default
-msgid "on"
-msgstr "on"
 
 #: .config[0].help
 msgid ""
@@ -81,11 +42,6 @@ msgstr ""
 "Configure le firewall pour accepter les requêtes DHCP sur les interfaces "
 "internes"
 
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
-msgstr "check"
-
 #: .config[0].name
 msgid "fw_lan"
 msgstr "fw_lan"
@@ -93,10 +49,6 @@ msgstr "fw_lan"
 #: .config[0].label
 msgid "Allow DHCP requests from internal networks"
 msgstr "Autoriser les requêtes DHCP depuis les réseaux internes"
-
-#: .config[1].default
-msgid "off"
-msgstr "off"
 
 #: .config[1].help
 msgid ""
@@ -106,11 +58,6 @@ msgstr ""
 "Configure le firewall pour accepter les requêtes DHCP sur les interfaces "
 "externes"
 
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
-msgstr "check"
-
 #: .config[1].name
 msgid "fw_wan"
 msgstr "fw_wan"
@@ -119,22 +66,9 @@ msgstr "fw_wan"
 msgid "Allow DHCP requests from external networks"
 msgstr "Autoriser les requêtes DHCP depuis les réseaux externes"
 
-#: .slug
-msgid "mds_dhcp"
-msgstr "mds_dhcp"
-
-#: .categories[0].slug
-msgid "network"
-msgstr "network"
-
 #: .categories[0].name
 msgid "Network"
 msgstr "Réseau"
-
-#: .desc
-msgctxt ".desc"
-msgid "Configure automatically your client computers IP settings"
-msgstr "Configuration réseau automatique de vos clients"
 
 #: modules/mds_dhcp/setup-dhcp.sh:41
 msgid "The DHCP service is installed."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,92 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "DAViCal a service for calendar and addressbook sharing."
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "DAViCal administration"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/davical/"
-msgstr ""
-
 #: .name
 msgid "Calendar and Addressbook"
-msgstr ""
-
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "postgresql"
-msgstr ""
-
-#: .dependencies[1]
-msgctxt ".dependencies[1]"
-msgid "mds_webmail"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "postgresql"
-msgstr ""
-
-#: .module.dependencies[1]
-msgctxt ".module.dependencies[1]"
-msgid "mds_webmail"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgctxt ".packages[0].rpms[0]"
-msgid "davical"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "php-pdo_pgsql"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "php-calendar"
-msgstr ""
-
-#: .packages[0].rpms[3]
-msgid "php-ldap"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "roundcubemail-plugins"
 msgstr ""
 
 #: .packages[0].name
 msgid "all"
 msgstr ""
 
-#: .slug
-msgctxt ".slug"
-msgid "davical"
-msgstr ""
-
-#: .categories[0].slug
-msgid "collaboration"
-msgstr ""
-
 #: .categories[0].name
 msgid "Collaboration"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr ""
 
 #: modules/davical/setup-davical.sh:40

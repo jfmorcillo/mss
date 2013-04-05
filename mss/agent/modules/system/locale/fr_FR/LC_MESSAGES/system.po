@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
-"PO-Revision-Date: 2013-04-08 09:16+0000\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"PO-Revision-Date: 2013-04-08 10:18+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,40 +22,13 @@ msgstr ""
 msgid "General system configuration"
 msgstr "Configuration générale du système"
 
-#: .standalone
-msgid "True"
-msgstr "True"
-
 #: .config[0].name
 msgid "hostname"
 msgstr "hostname"
 
-#: .config[0].default
-msgid "get_hostname"
-msgstr "get_hostname"
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr "yes"
-
 #: .config[0].label
 msgid "The server hostname"
 msgstr "Nom d'hôte du serveur"
-
-#: .config[0].validation
-msgid "valid_hostname"
-msgstr "valid_hostname"
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
-msgstr "text"
-
-#: .config[0].store
-msgctxt ".config[0].store"
-msgid "yes"
-msgstr "yes"
 
 #: .config[0].help
 msgid "Hostname without the domain name"
@@ -65,40 +38,13 @@ msgstr "Nom de la machine sans le domaine"
 msgid "domain"
 msgstr "domain"
 
-#: .config[1].default
-msgid "get_domain"
-msgstr "get_domain"
-
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr "yes"
-
 #: .config[1].label
 msgid "Your domain name"
 msgstr "Domaine"
 
-#: .config[1].validation
-msgid "fqdn"
-msgstr "fqdn"
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
-msgstr "text"
-
-#: .config[1].store
-msgctxt ".config[1].store"
-msgid "yes"
-msgstr "yes"
-
 #: .config[1].help
 msgid "The domain name used in your organization (eg: mandriva.com)."
 msgstr "Le domaine utilisé pour votre organisation (ex: mandriva.com)"
-
-#: .slug
-msgid "system"
-msgstr "system"
 
 #: .name
 msgid "System setup"

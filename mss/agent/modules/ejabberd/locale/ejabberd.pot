@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,48 +17,26 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
+#: .description .desc
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
-#: .module.section
-msgid "other"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgctxt ".packages[0].rpms[0]"
-msgid "ejabberd"
+#: .name
+msgid "Jabber/XMPP instant messaging server"
 msgstr ""
 
 #: .packages[0].name
 msgid "all"
 msgstr ""
 
-#: .config[0].default
-msgid "on"
-msgstr ""
-
 #: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the Instant Messaging Service from "
 "internal networks"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "check"
 msgstr ""
 
 #: .config[0].name
@@ -69,19 +47,10 @@ msgstr ""
 msgid "Allow access from internal networks"
 msgstr ""
 
-#: .config[1].default
-msgid "off"
-msgstr ""
-
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the Instant Messaging Service from "
 "external networks"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "check"
 msgstr ""
 
 #: .config[1].name
@@ -92,21 +61,8 @@ msgstr ""
 msgid "Allow access from external networks"
 msgstr ""
 
-#: .slug
-msgctxt ".slug"
-msgid "ejabberd"
-msgstr ""
-
-#: .categories[0].slug
-msgid "collaboration"
-msgstr ""
-
 #: .categories[0].name
 msgid "Collaboration"
-msgstr ""
-
-#: .name
-msgid "Jabber/XMPP instant messaging server"
 msgstr ""
 
 #: modules/ejabberd/setup-ejabberd.sh:28

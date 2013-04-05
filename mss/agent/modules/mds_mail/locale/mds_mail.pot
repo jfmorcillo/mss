@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,97 +17,16 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
 #: .name
 msgid "Mail Service"
-msgstr ""
-
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .module.conflicts[0]
-msgctxt ".module.conflicts[0]"
-msgid "zarafa"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .conflicts[0]
-msgctxt ".conflicts[0]"
-msgid "zarafa"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "postfix"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "postfix-ldap"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "mmc-web-mail"
-msgstr ""
-
-#: .packages[0].rpms[3]
-msgid "python-mmc-mail"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "amavisd-new"
-msgstr ""
-
-#: .packages[0].rpms[5]
-msgid "spamassassin"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "spamassassin-tools"
-msgstr ""
-
-#: .packages[0].rpms[7]
-msgid "clamd"
-msgstr ""
-
-#: .packages[0].rpms[8]
-msgid "dovecot"
-msgstr ""
-
-#: .packages[0].rpms[9]
-msgid "dovecot-plugins-ldap"
-msgstr ""
-
-#: .packages[0].rpms[10]
-msgid "dovecot-plugins-sieve"
-msgstr ""
-
-#: .packages[0].rpms[11]
-msgid "dovecot-plugins-managesieve"
 msgstr ""
 
 #: .packages[0].name
@@ -118,26 +37,8 @@ msgstr ""
 msgid "smtpd_mynetworks"
 msgstr ""
 
-#: .config[0].format
-msgid "short"
-msgstr ""
-
-#: .config[0].default
-msgid "get_networks"
-msgstr ""
-
 #: .config[0].label
 msgid "My networks"
-msgstr ""
-
-#: .config[0].validation
-msgctxt ".config[0].validation"
-msgid "network"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "network"
 msgstr ""
 
 #: .config[0].help
@@ -150,59 +51,30 @@ msgstr ""
 msgid "Protocols that the dovecot server will provide."
 msgstr ""
 
-#: .config[1].require
-msgid "yes"
-msgstr ""
-
 #: .config[1].label
 msgid "Protocols supported"
-msgstr ""
-
-#: .config[1].type
-msgid "options"
 msgstr ""
 
 #: .config[1].options[0].name
 msgid "IMAPS and POP3S"
 msgstr ""
 
-#: .config[1].options[0].value
-msgid "imap imaps pop3 pop3s"
-msgstr ""
-
 #: .config[1].options[1].name
 msgid "IMAPS"
-msgstr ""
-
-#: .config[1].options[1].value
-msgid "imaps imap"
 msgstr ""
 
 #: .config[1].options[2].name
 msgid "POP3S"
 msgstr ""
 
-#: .config[1].options[2].value
-msgid "pop3s pop3"
-msgstr ""
-
 #: .config[1].name
 msgid "popimap_proto"
-msgstr ""
-
-#: .config[2].default
-msgid "on"
 msgstr ""
 
 #: .config[2].help
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'internal'"
-msgstr ""
-
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "check"
 msgstr ""
 
 #: .config[2].name
@@ -213,19 +85,10 @@ msgstr ""
 msgid "Allow mail services access from internal networks"
 msgstr ""
 
-#: .config[3].default
-msgid "off"
-msgstr ""
-
 #: .config[3].help
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'external'"
-msgstr ""
-
-#: .config[3].type
-msgctxt ".config[3].type"
-msgid "check"
 msgstr ""
 
 #: .config[3].name
@@ -236,21 +99,8 @@ msgstr ""
 msgid "Allow mail services access from external networks"
 msgstr ""
 
-#: .slug
-msgid "mds_mail"
-msgstr ""
-
-#: .categories[0].slug
-msgid "mail"
-msgstr ""
-
 #: .categories[0].name
 msgid "Mail"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 
 #: modules/mds_mail/setup-mail.sh:94

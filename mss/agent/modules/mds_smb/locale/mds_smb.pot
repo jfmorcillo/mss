@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
-msgstr ""
-
-#: .actions[0].type
-msgid "link"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr ""
 
-#: .actions[0].value
-msgid "https://@HOSTNAME@/mmc/main.php"
-msgstr ""
-
 #: .name
 msgid "Windows users and file sharing management"
-msgstr ""
-
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "samba-server"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "samba-client"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "samba-common"
-msgstr ""
-
-#: .packages[0].rpms[3]
-msgid "samba-doc"
-msgstr ""
-
-#: .packages[0].rpms[4]
-msgid "smbldap-tools"
-msgstr ""
-
-#: .packages[0].rpms[5]
-msgid "mmc-web-samba"
-msgstr ""
-
-#: .packages[0].rpms[6]
-msgid "python-mmc-samba"
 msgstr ""
 
 #: .packages[0].name
@@ -90,26 +39,8 @@ msgstr ""
 msgid "smbdomain"
 msgstr ""
 
-#: .config[0].default
-msgid "MBSDOMAIN"
-msgstr ""
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
 #: .config[0].label
 msgid "SAMBA domain name"
-msgstr ""
-
-#: .config[0].validation
-msgid "valid_domain"
-msgstr ""
-
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "text"
 msgstr ""
 
 #: .config[0].help
@@ -120,26 +51,8 @@ msgstr ""
 msgid "smbnetbios"
 msgstr ""
 
-#: .config[1].default
-msgid "get_netbios"
-msgstr ""
-
-#: .config[1].require
-msgctxt ".config[1].require"
-msgid "yes"
-msgstr ""
-
 #: .config[1].label
 msgid "Netbios name"
-msgstr ""
-
-#: .config[1].validation
-msgid "valid_netbios"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "text"
 msgstr ""
 
 #: .config[1].help
@@ -150,22 +63,8 @@ msgstr ""
 msgid "The name of the Microsoft domain administrator."
 msgstr ""
 
-#: .config[2].default
-msgid "admin"
-msgstr ""
-
-#: .config[2].require
-msgctxt ".config[2].require"
-msgid "yes"
-msgstr ""
-
 #: .config[2].label
 msgid "Administrator name"
-msgstr ""
-
-#: .config[2].type
-msgctxt ".config[2].type"
-msgid "text"
 msgstr ""
 
 #: .config[2].name
@@ -176,15 +75,6 @@ msgstr ""
 msgid "Password for the Microsoft domain administrator."
 msgstr ""
 
-#: .config[3].require
-msgctxt ".config[3].require"
-msgid "yes"
-msgstr ""
-
-#: .config[3].type
-msgid "password"
-msgstr ""
-
 #: .config[3].name
 msgid "smbpasswd"
 msgstr ""
@@ -193,19 +83,10 @@ msgstr ""
 msgid "Administrator password"
 msgstr ""
 
-#: .config[4].default
-msgid "on"
-msgstr ""
-
 #: .config[4].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'internal'"
-msgstr ""
-
-#: .config[4].type
-msgctxt ".config[4].type"
-msgid "check"
 msgstr ""
 
 #: .config[4].name
@@ -216,19 +97,10 @@ msgstr ""
 msgid "Allow connections from internal networks"
 msgstr ""
 
-#: .config[5].default
-msgid "off"
-msgstr ""
-
 #: .config[5].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'external'"
-msgstr ""
-
-#: .config[5].type
-msgctxt ".config[5].type"
-msgid "check"
 msgstr ""
 
 #: .config[5].name
@@ -239,23 +111,8 @@ msgstr ""
 msgid "Allow connections from external networks"
 msgstr ""
 
-#: .slug
-msgid "mds_smb"
-msgstr ""
-
-#: .categories[0].slug
-msgid "users"
-msgstr ""
-
 #: .categories[0].name
 msgid "Users"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid ""
-"Authenticate Windows users with SAMBA and provide Windows file shares on "
-"your network"
 msgstr ""
 
 #: modules/mds_smb/setup-smb.sh:32

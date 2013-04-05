@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,69 +17,24 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgctxt ".description"
+#: .description .desc
 msgid "Set file quotas on the server"
-msgstr ""
-
-#: .module.section
-msgid "core"
-msgstr ""
-
-#: .module.dependencies[0]
-msgctxt ".module.dependencies[0]"
-msgid "mds_mmc"
 msgstr ""
 
 #: .name
 msgid "User quota management"
 msgstr ""
 
-#: .dependencies[0]
-msgctxt ".dependencies[0]"
-msgid "mds_mmc"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgid "quota"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "python-mmc-userquota"
-msgstr ""
-
-#: .packages[0].rpms[2]
-msgid "mmc-web-userquota"
-msgstr ""
-
 #: .packages[0].name
 msgid "all"
-msgstr ""
-
-#: .config[0].multi
-msgctxt ".config[0].multi"
-msgid "yes"
 msgstr ""
 
 #: .config[0].name
 msgid "filesystems"
 msgstr ""
 
-#: .config[0].default
-msgid "get_filesystems"
-msgstr ""
-
-#: .config[0].require
-msgctxt ".config[0].require"
-msgid "yes"
-msgstr ""
-
 #: .config[0].label
 msgid "Filesystems"
-msgstr ""
-
-#: .config[0].type
-msgid "text"
 msgstr ""
 
 #: .config[0].help
@@ -88,21 +43,8 @@ msgid ""
 "following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
 msgstr ""
 
-#: .slug
-msgid "mds_quota"
-msgstr ""
-
-#: .categories[0].slug
-msgid "users"
-msgstr ""
-
 #: .categories[0].name
 msgid "Users"
-msgstr ""
-
-#: .desc
-msgctxt ".desc"
-msgid "Set file quotas on the server"
 msgstr ""
 
 #: modules/mds_quota/setup-quota.sh:36

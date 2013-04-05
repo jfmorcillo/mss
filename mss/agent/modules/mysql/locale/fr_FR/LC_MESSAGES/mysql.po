@@ -3,13 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
-#   <jpbraun@mandriva.com>, 2012.
+#   <jpbraun@mandriva.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 20:41+0200\n"
-"PO-Revision-Date: 2013-04-08 08:09+0000\n"
+"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"PO-Revision-Date: 2013-04-08 10:21+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -22,22 +22,9 @@ msgstr ""
 msgid "MySQL relational database"
 msgstr "Base de donnée relationnelle MySQL"
 
-#: .standalone
-msgid "True"
-msgstr ""
-
-#: .packages[0].rpms[0]
-msgctxt ".packages[0].rpms[0]"
-msgid "mysql"
-msgstr ""
-
-#: .packages[0].rpms[1]
-msgid "mysql-client"
-msgstr "mysql-client"
-
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "all"
 
 #: .config[0].help
 msgid "Current MySQL root password."
@@ -47,48 +34,21 @@ msgstr "Le mot de passe MySQL actuel."
 msgid "Current password"
 msgstr "Mot de passe actuel"
 
-#: .config[0].type
-msgctxt ".config[0].type"
-msgid "password"
-msgstr ""
-
 #: .config[0].name
 msgid "current_mypasswd"
-msgstr ""
-
-#: .config[0].show
-msgid "configured"
-msgstr ""
+msgstr "current_mypasswd"
 
 #: .config[1].help
 msgid "New MySQL root password. Set here the new password"
-msgstr ""
-
-#: .config[1].require
-msgid "yes"
-msgstr ""
-
-#: .config[1].type
-msgctxt ".config[1].type"
-msgid "password"
-msgstr ""
+msgstr "Nouveau mot de passe root MySQL."
 
 #: .config[1].name
 msgid "mypasswd"
-msgstr ""
+msgstr "mypasswd"
 
 #: .config[1].label
 msgid "New password"
 msgstr "Nouveau mot de passe"
-
-#: .slug
-msgctxt ".slug"
-msgid "mysql"
-msgstr ""
-
-#: .conflict[0]
-msgid "mysqlmax"
-msgstr "mysqlmax"
 
 #: .name
 msgid "MySQL database"
