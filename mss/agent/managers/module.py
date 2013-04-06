@@ -349,7 +349,7 @@ class ModuleManager:
     def get_modules_details(self, modules):
         """ return modules info """
         logger.info("Get modules details: %s" % str(modules))
-        result = [self.modules[slug].details for slug in modules]
+        result = [self.modules[slug].details for slug in modules if slug in self.modules]
         logger.debug("Result: %s" % str(result))
         return result
 
@@ -357,7 +357,10 @@ class ModuleManager:
     def get_module_details(self, module):
         """ return module info """
         logger.info("Get module detail: %s" % module)
-        result = self.modules[module]
+        if module in self.modules:
+            result = self.modules[module].details
+        else:
+            result = {}
         logger.debug("Result: %s" % str(result))
         return result
 
@@ -451,7 +454,9 @@ class ModuleManager:
 
     def get_dependencies(self, module):
         """ get dependencies for module """
-        return [d for d in self.modules[module].dependencies if d in self.modules]
+        if module in self.modules:
+            return [d for d in self.modules[module].dependencies if d in self.modules]
+        return []
 
     @expose
     def download_modules(self, modules):

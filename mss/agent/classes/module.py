@@ -67,6 +67,8 @@ class Module(object):
                 'actions': self.actions,
                 'downloaded': self.downloaded,
                 'installed': self.installed,
+                'has_repositories': bool(self.repositories),
+                'has_restricted_repositories': self.has_restricted_repositories,
                 'has_configuration': self.has_configuration,
                 'has_configuration_script': self.has_configuration_script,
                 'configured': self.configured,
@@ -254,6 +256,13 @@ class Module(object):
                     repository['module_slug'] = self.slug
                     self._repositories.append(Media(**repository))
         return self._repositories
+
+    @property
+    def has_restricted_repositories(self):
+        for repository in self.repositories:
+            if repository.restricted:
+                return True
+        return False
 
     def get_config(self):
         """ get module current config """
