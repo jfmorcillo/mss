@@ -34,7 +34,7 @@ from django.utils.translation import ugettext as _, activate
 from mss.www.xmlrpc import XmlRpc
 
 from lib.jsonui.response import JSONResponse
-from transaction import Transaction, Steps
+from transaction import Transaction, Steps, State
 
 xmlrpc = XmlRpc()
 output = {"status": ""}
@@ -119,8 +119,8 @@ def first_time_required(function):
         # flush some user session data
         if not 'first-time' in request.session or not request.session['first-time']:
             transaction = Transaction(request, ['mds_mmc'])
-            if isinstance(transaction.transaction, HttpResponseRedirect):
-                return transaction.transaction
+            if isinstance(transaction.steps, HttpResponseRedirect):
+                return transaction.steps
             else:
                 # Custom transaction for first-time
                 transaction.update_step({
@@ -233,7 +233,7 @@ def preinst(request):
     """ preinst page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.PREINST)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     return render(request, 'preinst.html', {'transaction': transaction})
@@ -242,7 +242,7 @@ def preinst(request):
 def download(request):
     transaction = Transaction(request)
     transaction.set_current_step(Steps.DOWNLOAD)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     return render(request, 'download.html', {'transaction': transaction})
@@ -257,7 +257,7 @@ def medias_auth(request):
     """ media auth page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.MEDIAS_AUTH)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     return render(request, 'media_auth.html', {'transaction': transaction})
@@ -267,7 +267,7 @@ def medias_add(request):
     """ media add page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.MEDIAS_ADD)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     if request.method == "POST":
@@ -298,7 +298,7 @@ def install(request):
     """ install page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.INSTALL)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     # launch modules install
@@ -318,7 +318,7 @@ def config(request):
     """ configuration page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.CONFIG)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     err, result = xmlrpc.call('get_config', transaction.modules_list)
@@ -351,7 +351,7 @@ def config_valid(request):
     """ check user configuration """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.CONFIG)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     # get forms values
@@ -394,7 +394,7 @@ def config_end(request, module):
 def reboot(request):
     transaction = Transaction(request)
     transaction.set_current_step(Steps.REBOOT)
-    if transaction.current_step()['disabled']:
+    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
     return render(request, 'reboot.html',

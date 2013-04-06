@@ -1,5 +1,9 @@
-{% for step in transaction.transaction %}
-    {% if not step.disabled %}
+{% for step in transaction.steps %}
+    {% if step.state == 0 %}
 <li {% if step.current %}class="active"{% endif %}><span>{{ step.title }}</span></li>
+    {% else %}
+        {% if step.state == 1 %}
+<li class="done"><span>{{ step.title }}</span></li>
+        {% endif %}
     {% endif %}
 {% endfor %}
