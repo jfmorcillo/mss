@@ -1,4 +1,5 @@
 {% load i18n %}
+{% load markup %}
 <script type="text/javascript">
     var conflicts = new Object();
     var installs = new Object();
@@ -73,22 +74,6 @@
     };
 
     $(document).ready(function() {
-        // show/hide action menu
-        /*$('span.actions').each(function(i) {
-            Event.observe(i, 'mouseover', function() {
-                var menu = $(this).firstDescendant();
-                if (menu) {
-                    menu.setStyle({ left: this.offsetLeft+'px' });
-                    menu.show();
-                }
-            });
-            Event.observe(i, 'mouseout', function() {
-                var menu = $(this).firstDescendant();
-                if (menu) {
-                    menu.hide();
-                }
-            });
-        });*/
         // check/uncheck install input on re-install/re-configure
         /*$('input.action').each(function(i) {
             Event.observe(i, 'click', function() {
@@ -108,6 +93,21 @@
         // check conflicts when selecting module
         $('.module-checkbox').each(function(i) {
             $(this).bind('click', checkConflicts);
+        });
+
+        $('.module').each(function() {
+             $(this).hover(function() {
+                var help = $($(this).find('.help-block')[0]);
+                console.log(help);
+                var cur_height = help.height();
+                help.css('height', 'auto');
+                var to_height = help.height();
+                help.css('height', cur_height).animate({'height': to_height}, 200);
+            },
+            function() {
+                var help = $($(this).find('.help-block')[0]);
+                help.animate({'height': '30px'}, 200);
+            });
         });
 
         createPopups();
@@ -199,7 +199,7 @@
         {% endif %}
         {% endcomment %}
 
-        <span class="help-block">{{ m.description|safe }}</span>
+        <span class="help-block" style="height: 30px">{{ m.description|markdown }}</span>
         <p>
             {% if not m.configured and not m.purshased and m.price %}
             <a class="btn btn-small btn-success" href="{{ m.url }}" target="_blank"><i class="icon-shopping-cart icon-white"></i> {{ m.price }}</a>

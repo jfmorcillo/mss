@@ -158,6 +158,7 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.markup',
     'mss.www.wizard',
     'mss.www.cpserver',
     'mss.www.errors',

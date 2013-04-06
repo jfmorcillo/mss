@@ -96,9 +96,9 @@ class Module(object):
     def description(self):
         if self._desc.get('desc', False):
             logger.warning("deprecated: desc must be renamed in description (%s)" % self.slug)
-            return _(self._desc['desc'], self.slug).split("\n")[0]
+            return _(self._desc['desc'], self.slug)
         elif self._desc.get('description', False):
-            return _(self._desc['description'], self.slug).split("\n")[0]
+            return _(self._desc['description'], self.slug)
         else:
             return ""
 

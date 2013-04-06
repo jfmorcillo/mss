@@ -8,6 +8,7 @@ python-netifaces
 python-sphinx
 python-cherrypy
 python-sqlalchemy
+python-markdown
 binutils
 gettext
 locales-fr
