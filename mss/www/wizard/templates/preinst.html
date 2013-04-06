@@ -8,7 +8,7 @@
     <div class="page-header">
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
-    {% if transaction.modules %}
+    {% if transaction.modules_list %}
     <p class="alert">{{ transaction.current_step.info }}</p>
     {% else %}
     <p class="alert alert-error">{% trans "No addon selected." %}</p>
@@ -28,7 +28,7 @@
             {% endfor %}
         {% endif %}
         <div class="form-actions">
-            {% if transaction.modules %}
+            {% if transaction.modules_list %}
             <div class="pull-right">
                 <button class="btn btn-primary" type="submit">{% trans "Continue" %} →</button>
             </div>

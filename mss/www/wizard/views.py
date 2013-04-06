@@ -22,10 +22,9 @@
 import re
 import time
 
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
 from django.views.generic.simple import direct_to_template
-from django.template import RequestContext
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -111,19 +110,13 @@ def login_form(request):
         return HttpResponseRedirect(reverse('sections'))
     else:
         xmlrpc.call('check_net')
-        return render_to_response('login.html',
-            context_instance=RequestContext(request))
+        return render(request, 'login.html')
 
 def first_time_required(function):
     # Check if we need to run the first-time
     # installation
     def wrap(request, *args, **kwargs):
         # flush some user session data
-        for key in ('modules', 'modules_info', 'transaction'):
-            try:
-                del request.session[key]
-            except KeyError:
-                pass
         if not 'first-time' in request.session or not request.session['first-time']:
             transaction = Transaction(request, ['mds_mmc'])
             if isinstance(transaction.transaction, HttpResponseRedirect):
@@ -144,8 +137,7 @@ def first_time_required(function):
 
 def error(request, code):
     """ error page """
-    return render_to_response('error.html', {'code': code},
-        context_instance=RequestContext(request))
+    return render(request, 'error.html', {'code': code})
 
 # get agent status with Ajax long polling
 def get_status(request):
@@ -164,9 +156,7 @@ def get_status(request):
                request.GET['force'] == 'true' or \
                TIMEOUT >= MAX_TIME:
                 output["status"] = sts
-                return render_to_response('raw_output.html',
-                    {'output': sts},
-                    context_instance=RequestContext(request))
+                return render(request, 'raw_output.html', {'output': sts})
             # wait for new status
             else:
                 TIMEOUT += 1
@@ -207,9 +197,7 @@ def sections(request):
         return err
 
     # render the main page with all sections
-    return render_to_response('sections.html',
-        {'sections': sections},
-        context_instance=RequestContext(request))
+    return render(request, 'sections.html', {'sections': sections})
 
 @first_time_required
 @login_required
@@ -227,9 +215,7 @@ def section(request, section):
                     if action['type'] == "link":
                         action['value'] = toHtml(request, action['value'], False)
 
-    return render_to_response('section.html',
-                              {'categories': categories},
-                              context_instance=RequestContext(request))
+    return render(request, 'section.html', {'categories': categories})
 
 @login_required
 def prepare(request):
@@ -238,13 +224,10 @@ def prepare(request):
         modules = []
         for module, value in request.POST.items():
             modules.append(module)
+        transaction = Transaction(request, modules)
     else:
-        try:
-            modules = request.session['modules_list']
-        except KeyError:
-            return HttpResponseRedirect(reverse('sections'))
+        transaction = Transaction(request)
 
-    transaction = Transaction(request, modules)
     return HttpResponseRedirect(transaction.first_step_url())
 
 @login_required
@@ -255,8 +238,7 @@ def preinst(request):
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    return render_to_response('preinst.html', {'transaction': transaction},
-                              context_instance=RequestContext(request))
+    return render(request, 'preinst.html', {'transaction': transaction})
 
 @login_required
 def download(request):
@@ -265,17 +247,7 @@ def download(request):
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    # Verify if we still need to download something
-    download = False
-    for module in transaction.modules_info:
-        if not module["downloaded"]:
-            download = True
-
-    if not download:
-        return HttpResponseRedirect(transaction.next_step_url())
-
-    return render_to_response('download.html', {'transaction': transaction},
-                              context_instance=RequestContext(request))
+    return render(request, 'download.html', {'transaction': transaction})
 
 @login_required
 def download_module(request, module):
@@ -283,32 +255,20 @@ def download_module(request, module):
     return HttpResponse("")
 
 @login_required
-def download_end(request):
-    transaction = Transaction(request)
-    transaction.reset()
-    transaction.prepare()
-    transaction.save(request)
-    return HttpResponse("")
-
-@login_required
 def medias_auth(request):
     """ media auth page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.MEDIAS_AUTH)
-
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    return render_to_response('media_auth.html',
-            {'transaction': transaction},
-            context_instance=RequestContext(request))
+    return render(request, 'media_auth.html', {'transaction': transaction})
 
 @login_required
 def medias_add(request):
     """ media add page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.MEDIAS_ADD)
-
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
@@ -319,10 +279,9 @@ def medias_add(request):
         username = None
         password = None
 
-    return render_to_response('media_add.html',
-            {'transaction': transaction,
-             'username': username, 'password': password},
-            context_instance=RequestContext(request))
+    return render(request, 'media_add.html',
+                  {'transaction': transaction,
+                   'username': username, 'password': password})
 
 @login_required
 def add_media(request, module, repository):
@@ -341,19 +300,15 @@ def install(request):
     """ install page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.INSTALL)
-
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
     # launch modules install
-    err, result = xmlrpc.call('install_modules', transaction.modules)
+    err, result = xmlrpc.call('install_modules', transaction.modules_list)
     if err:
         return err
-    else:
-        if result:
-            return render_to_response('install.html',
-                    {'transaction': transaction},
-                    context_instance=RequestContext(request))
+    if result:
+        return render(request, 'install.html', {'transaction': transaction})
 
 @login_required
 def reload_packages(request):
@@ -365,9 +320,14 @@ def config(request):
     """ configuration page """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.CONFIG)
-
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
+
+    err, result = xmlrpc.call('get_config', transaction.modules_list)
+    if err:
+        return err
+    else:
+        config = result
 
     run_config = False
     skip_config = True
@@ -379,16 +339,12 @@ def config(request):
 
     # modules don't have configuration scripts
     if not run_config:
-        for module in transaction.modules:
+        for module in transaction.modules_list:
             config_end(request, module)
-        return render_to_response('config_no.html',
-            {'transaction': transaction},
-            context_instance=RequestContext(request));
+        return render(request, 'config_no.html', {'transaction': transaction})
     # some module have configuration
     elif not skip_config:
-        return render_to_response('config.html',
-            {'transaction': transaction},
-            context_instance=RequestContext(request))
+        return render(request, 'config.html', {'transaction': transaction, 'config': config})
     else:
         return HttpResponseRedirect(reverse('config_valid'))
 
@@ -397,14 +353,7 @@ def config_valid(request):
     """ check user configuration """
     transaction = Transaction(request)
     transaction.set_current_step(Steps.CONFIG)
-
-    do_config = False
-    # redirect if configuration is already done
-    for module in transaction.modules_info:
-        if not module['configured']:
-            do_config = True
-
-    if not do_config:
+    if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
     # get forms values
@@ -412,20 +361,18 @@ def config_valid(request):
     for name, value in request.POST.items():
         config[name] = value
     # validate values
-    err, result = xmlrpc.call('valid_config', transaction.modules, config)
+    err, result = xmlrpc.call('valid_config', transaction.modules_list, config)
     if err:
         return err
     else:
         errors = result[0]
         config = result[1]
     if errors:
-        return render_to_response('config.html',
-                {'config': config, 'transaction': transaction},
-                context_instance=RequestContext(request))
+        return render(request, 'config.html', {'config': config,
+                                               'transaction': transaction})
     else:
-        return render_to_response('config_run.html',
-                {'config': config, 'transaction': transaction},
-                context_instance=RequestContext(request))
+        return render(request, 'config_run.html', {'config': config,
+                                                   'transaction': transaction})
 
 @login_required
 def config_run(request, module):
@@ -449,13 +396,11 @@ def config_end(request, module):
 def reboot(request):
     transaction = Transaction(request)
     transaction.set_current_step(Steps.REBOOT)
-
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    return render_to_response('reboot.html',
-            {'transaction': transaction},
-            context_instance=RequestContext(request))
+    return render(request, 'reboot.html',
+                  {'transaction': transaction})
 
 @login_required
 def reboot_run(request):
@@ -467,13 +412,11 @@ def end(request):
     transaction = Transaction(request)
     transaction.set_current_step(Steps.END)
 
-    for module in transaction.modules:
+    for module in transaction.modules_list:
         xmlrpc.call('end_config', module, 0, "")
 
-    return render_to_response('end.html',
-            {'transaction': transaction},
-            context_instance=RequestContext(request))
-
+    return render(request, 'end.html',
+                  {'transaction': transaction})
 
 def toHtml(request, text, links = True):
     # replace hostname tag with server name

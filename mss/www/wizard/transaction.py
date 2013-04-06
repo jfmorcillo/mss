@@ -8,6 +8,7 @@ from mss.www.xmlrpc import XmlRpc
 xmlrpc = XmlRpc()
 logger = logging.getLogger(__name__)
 
+
 class Steps:
     PREINST = "preinst"
     DOWNLOAD = "download"
@@ -18,31 +19,26 @@ class Steps:
     REBOOT = "reboot"
     END = "end"
 
-class Transaction:
 
-    def __init__(self, request, modules = []):
-        if 'transaction' in request.session:
-            self.transaction = request.session['transaction']
-            self.modules = request.session['modules_list']
-            self.modules_info = request.session['modules_info']
-            self.config_info = request.session['config_info']
-            self.repositories = request.session['repositories']
-            self.update_modules_info()
+class Transaction(object):
+
+    def __init__(self, request, modules_list=[]):
+        if modules_list:
+            self.modules_list = modules_list
         else:
-            err, result = xmlrpc.call('preinstall_modules', modules)
-            if err:
-                self.transaction = err
-            else:
-                self.modules_info = result
-                # update with depedencies
-                self.modules = [ m['slug'] for m in self.modules_info ]
-                self.reset()
-                self.prepare()
-                self.save(request)
+            self.modules_list = request.session['modules_list']
+        self.setup()
+        self.save(request)
 
-    def reset(self):
-        self.repositories = []
-        self.config_info = []
+    def setup(self):
+        err, result = xmlrpc.call('preinstall_modules', self.modules_list)
+        if not err:
+            self.modules_info = result
+            self.modules_list = [m['slug'] for m in self.modules_info]
+        else:
+            self.transaction = err
+            return
+
         self.transaction = [
             {
                 'id': Steps.PREINST,
@@ -51,7 +47,7 @@ class Transaction:
                 'info': ungettext(
                             "The folowing addon will be installed.",
                             "The folowing addons will be installed.",
-                            len(self.modules)
+                            len(self.modules_list)
                         ),
                 'show_modules': True,
                 'current': False
@@ -105,8 +101,20 @@ class Transaction:
             }
         ]
 
-    def prepare(self):
-        err, result = xmlrpc.call('get_repositories', self.modules)
+        for module in self.modules_info:
+            if not module['installed'] or not module["downloaded"]:
+                self.enable_step(Steps.INSTALL)
+                logger.debug("Module %s is not installed or not downloaded: enabling install step" % module["slug"])
+            if not module["downloaded"]:
+                self.enable_step(Steps.DOWNLOAD)
+                logger.debug("Module %s is not downloaded: enabling download step" % module["slug"])
+            if module['reboot']:
+                logger.debug("Module %s need to reboot the system: enabling reboot step" % module["slug"])
+                self.enable_step(Steps.REBOOT)
+            else:
+                self.enable_step(Steps.END)
+
+        err, result = xmlrpc.call('get_repositories', self.modules_list)
         if not err:
             self.repositories = result
             for repository in self.repositories:
@@ -116,26 +124,7 @@ class Transaction:
             if self.repositories:
                 self.enable_step(Steps.MEDIAS_ADD)
 
-        err, result = xmlrpc.call('get_modules_details', self.modules)
-        if not err:
-            self.modules_info = result
-            for module in self.modules_info:
-                if not module['installed'] or not module["downloaded"]:
-                    self.enable_step(Steps.INSTALL)
-                    logger.debug("Module %s is not installed or not downloaded: enabling install step" % module["slug"])
-                if not module["downloaded"]:
-                    self.enable_step(Steps.DOWNLOAD)
-                    logger.debug("Module %s is not downloaded: enabling download step" % module["slug"])
-                if module['reboot']:
-                    logger.debug("Module %s need to reboot the system: enabling reboot step" % module["slug"])
-                    self.enable_step(Steps.REBOOT)
-                else:
-                    self.enable_step(Steps.END)
-
         if self.find_step(Steps.DOWNLOAD)['disabled']:
-            err, result = xmlrpc.call('get_config', self.modules)
-            self.config_info = result
-            self.update_modules_info()
             for module in self.modules_info:
                 if module["has_configuration"] or module["has_configuration_script"]:
                     logger.debug("Module %s needs configuration: enabling config step" % module['slug'])
@@ -146,11 +135,7 @@ class Transaction:
             self.enable_step(Steps.CONFIG)
 
     def save(self, request):
-        request.session['transaction'] = self.transaction
-        request.session['modules_list'] = self.modules
-        request.session['modules_info'] = self.modules_info
-        request.session['repositories'] = self.repositories
-        request.session['config_info'] = self.config_info
+        request.session['modules_list'] = self.modules_list
 
     def find_step(self, step):
         for s in self.transaction:
@@ -169,11 +154,6 @@ class Transaction:
             if s['id'] == step['id']:
                 for key, value in step.items():
                     s[key] = value
-
-    def update_modules_info(self):
-        err, result = xmlrpc.call('get_modules_details', self.modules)
-        if not err:
-            self.modules_info = result
 
     def current_step(self):
         for s in self.transaction:

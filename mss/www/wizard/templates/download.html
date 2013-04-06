@@ -26,7 +26,6 @@
             if(modules[current])
                 run();
             else {
-                $.get('{% url download_end %}');
                 $("#next").html("{% trans "Continue" %} →");
                 $("#next").attr("href", "{{ transaction.next_step_url }}");
                 $('#next').removeClass("disabled");

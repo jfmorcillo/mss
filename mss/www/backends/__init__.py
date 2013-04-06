@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2013 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #

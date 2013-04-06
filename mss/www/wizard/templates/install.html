@@ -57,7 +57,7 @@
     <div class="page-header">
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
-    <p class="alert alert-info" id="install-task">{% blocktrans count transaction.modules|length as counter %}The following addon is being installed{% plural %}The following addons are being installed{% endblocktrans %} :
+    <p class="alert alert-info" id="install-task">{% blocktrans count transaction.modules_list|length as counter %}The following addon is being installed{% plural %}The following addons are being installed{% endblocktrans %} :
     {% for m in transaction.modules_info %}
         <strong>{{ m.name }}</strong>{% if not forloop.last %},{% endif %}
     {% endfor %}</p>

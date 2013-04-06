@@ -70,7 +70,7 @@
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
     <form id="configuration-form" class="form-horizontal" action="{% url config_valid %}" method="post">
-    {% for m in transaction.config_info %}
+    {% for m in config %}
         {% for module in transaction.modules_info %}
             {% ifequal module.slug m.slug %}
                 {% if module.has_configuration %}
