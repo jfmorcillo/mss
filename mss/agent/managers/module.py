@@ -85,14 +85,14 @@ class ModuleManager:
         self.sections = {}
         self.packages = []
 
-        # Translation manager
-        TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
         # BDD access
         self.session = Session()
         # Get machine-id
         machine_id = open('/etc/machine-id', 'r').read().strip()
         logger.info("Machine id is %s" % machine_id)
         self.set_option("machine-id", machine_id)
+        # Translation manager
+        TranslationManager().set_catalog('agent', os.path.join(os.path.dirname(__file__), '..'))
         # Load packages
         self.load_packages()
 
@@ -263,7 +263,6 @@ class ModuleManager:
     @expose
     def set_lang(self, lang):
         """ change lang during execution """
-        logger.info("Lang changed to %s" % lang)
         TranslationManager().set_lang(lang)
 
     @expose
@@ -502,7 +501,7 @@ class ModuleManager:
     @expose
     def get_config(self, modules):
         """ get modules config """
-        logger.info("Get config for modules : %s" % str(modules))
+        logger.info("Get config for modules: %s" % ", ".join(modules))
         config = []
         for module in modules:
             config.append(self.modules[module].get_config())
@@ -512,6 +511,7 @@ class ModuleManager:
     @expose
     def valid_config(self, modules, modules_config):
         """ validate user configuration for modules """
+        logger.info("Valid config for modules: %s" % ", ".join(modules))
         config = []
         errors = False
         for module in modules:
@@ -519,6 +519,7 @@ class ModuleManager:
             config.append(module_config)
             if module_errors:
                 errors = True
+        logger.debug("Result: (%s, %s)" % (errors, str(config)))
         return (errors, config)
 
     @expose

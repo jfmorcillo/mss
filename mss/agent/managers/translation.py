@@ -24,8 +24,11 @@
 import gettext
 import os
 import locale
+import logging
 
 from mss.agent.lib.utils import Singleton
+
+logger = logging.getLogger(__name__)
 
 
 class TranslationManager:
@@ -34,6 +37,7 @@ class TranslationManager:
     def __init__(self):
         # set default locale when starting agent
         self.lang = locale.getdefaultlocale()[0]
+        logger.debug("Selected lang: %s" % self.lang)
         self.catalogs = {}
 
     def set_lang(self, lang):
@@ -41,6 +45,7 @@ class TranslationManager:
         for name, infos in self.catalogs.items():
             (path, catalog) = infos
             self.set_catalog(name, path)
+        logger.debug("Lang changed to: %s" % self.lang)
 
     def get_lang(self):
         return self.lang
