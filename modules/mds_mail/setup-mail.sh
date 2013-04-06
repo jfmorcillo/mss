@@ -37,7 +37,7 @@ fw_lan="$3"
 fw_wan="$4"
 
 # LDAP schema
-add_schema temapltes/mail.schema
+add_schema templates/mail.schema
 
 # postfix
 backup /etc/postfix/main.cf
