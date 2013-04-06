@@ -381,6 +381,7 @@ class ModuleManager:
                 #force_modules.append(m.replace("force-", ""))
         #modules = [m.replace("force-", "") for m in modules]
 
+        logger.info("Pre-install modules: %s" % ", ".join(modules))
         # store old modules list
         old = modules
         # get dependencies for modules
@@ -398,7 +399,7 @@ class ModuleManager:
                 m['dep'] = True
             else:
                 m['dep'] = False
-        logger.info("Pre-install modules : %s" % str(modules))
+        logger.debug("Result: %s" % modules)
         return modules
 
     def order_dependencies(self, modules, cnt=1):

@@ -70,15 +70,15 @@
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
     <form id="configuration-form" class="form-horizontal" action="{% url config_valid %}" method="post">
-    {% for module in config %}
+    {% for m in transaction.config_info %}
+        {% for module in transaction.modules_info %}
+            {% ifequal module.slug m.slug %}
+                {% if module.has_configuration %}
+
         <fieldset>
-            {% for m in transaction.modules_info %}
-                {% ifequal module.0.slug m.slug %}
-            <legend>{{ m.name }}</legend>
-                {% endifequal %}
-            {% endfor %}
-            {% for field in module %}
-            {% if module.0.configured and field.show_if_unconfigured %}
+            <legend>{{ module.name }}</legend>
+            {% for field in m.config %}
+            {% if module.configured and field.show_if_unconfigured %}
                 <input
                     id="{{ field.slug }}_{{ field.name }}"
                     name="{{ field.slug }}_{{ field.name }}"
@@ -86,7 +86,6 @@
                     type="hidden"
             	/>
         	{% else %}
-                {% if field.type %}
                 {% ifequal field.type "subtitle" %}
                     <h3>{{ field.label }}</h3>
                 {% endifequal %}
@@ -270,13 +269,13 @@
             		{% endif %}
                 </div>
         	    {% endifequal %}
-                {% endif %}
-        	    {% if not module.0.do_config %}
-                    <p class="alert">{% trans "No configuration for this module." %}</p>
-        	    {% endif %}
         	{% endif %}
-            {% endfor %}
+            {% endfor %} <!-- end fields -->
         </fieldset>
+
+                {% endif %} <!-- end has_configuration -->
+            {% endifequal %}
+        {% endfor %}
     {% endfor %}
         <p><small><span class="require">*</span> : {% trans "Required field" %}</small></p>
         <div class="form-actions">

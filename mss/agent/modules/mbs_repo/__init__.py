@@ -18,8 +18,3 @@
 # along with MSS; if not, write to the Free Software
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
-
-from mss.agent.lib.utils import grep
-
-def check_configured():
-    return grep('mirror.mandriva.com/mbs1/', '/etc/urpmi/urpmi.cfg')

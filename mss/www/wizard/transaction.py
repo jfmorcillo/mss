@@ -21,13 +21,13 @@ class Steps:
 class Transaction:
 
     def __init__(self, request, modules = []):
-
         if 'transaction' in request.session:
             self.transaction = request.session['transaction']
             self.modules = request.session['modules_list']
             self.modules_info = request.session['modules_info']
+            self.config_info = request.session['config_info']
             self.repositories = request.session['repositories']
-            self.update_module_info()
+            self.update_modules_info()
         else:
             err, result = xmlrpc.call('preinstall_modules', modules)
             if err:
@@ -133,10 +133,11 @@ class Transaction:
 
         if self.find_step(Steps.DOWNLOAD)['disabled']:
             err, result = xmlrpc.call('get_config', self.modules)
-            for module in result:
-                infos = module[0]
-                if not infos['skip_config']:
-                    logger.debug("Module %s needs configuration: enabling config step" % infos['slug'])
+            self.config_info = result
+            self.update_modules_info()
+            for module in self.modules_info:
+                if module["has_configuration"] or module["has_configuration_script"]:
+                    logger.debug("Module %s needs configuration: enabling config step" % module['slug'])
                     self.enable_step(Steps.CONFIG)
                     break
         else:
@@ -147,6 +148,7 @@ class Transaction:
         request.session['transaction'] = self.transaction
         request.session['modules_list'] = self.modules
         request.session['modules_info'] = self.modules_info
+        request.session['config_info'] = self.config_info
         request.session['repositories'] = self.repositories
 
     def find_step(self, step):
@@ -167,9 +169,10 @@ class Transaction:
                 for key, value in step.items():
                     s[key] = value
 
-    def update_module_info(self):
-        err, result = xmlrpc.call('preinstall_modules', self.modules)
-        self.modules_info = result
+    def update_modules_info(self):
+        err, result = xmlrpc.call('get_modules_details', self.modules)
+        if not err:
+            self.modules_info = result
 
     def current_step(self):
         for s in self.transaction:

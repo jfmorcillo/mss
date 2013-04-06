@@ -370,38 +370,25 @@ def config(request):
     if transaction.current_step()['disabled']:
         return HttpResponseRedirect(transaction.next_step_url())
 
-    err, result = xmlrpc.call('get_config', transaction.modules)
-    if err:
-        return err
-    else:
-        config = result
-
-    # check if the modules needs configuration
-    do_config = False
-    # check if the modules have configuration scripts
+    run_config = False
     skip_config = True
-    for m1 in config:
-        for m2 in transaction.modules_info:
-            if m1[0]['slug'] == m2['slug']:
-                if m1[0].get('do_config'):
-                    do_config = True
-                if not m1[0].get('skip_config'):
-                    skip_config = False
-                # store in the module list skip_config
-                # information for config_run view
-                m2['skip_config'] = m1[0].get('skip_config')
-    transaction.save(request)
-    # all modules does'nt have a configuration script
-    if skip_config:
+    for module in transaction.modules_info:
+        if module["has_configuration"]:
+            skip_config = False
+        if module["has_configuration_script"]:
+            run_config = True
+
+    # modules don't have configuration scripts
+    if not run_config:
         for module in transaction.modules:
             config_end(request, module)
         return render_to_response('config_no.html',
             {'transaction': transaction},
             context_instance=RequestContext(request));
-    # some module have a configuration
-    elif do_config:
+    # some module have configuration
+    elif not skip_config:
         return render_to_response('config.html',
-            {'config': config, 'transaction': transaction},
+            {'transaction': transaction},
             context_instance=RequestContext(request))
     else:
         return HttpResponseRedirect(reverse('config_valid'))
@@ -410,6 +397,7 @@ def config(request):
 def config_valid(request):
     """ check user configuration """
     transaction = Transaction(request)
+    transaction.set_current_step(Steps.CONFIG)
 
     do_config = False
     # redirect if configuration is already done

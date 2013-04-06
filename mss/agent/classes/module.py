@@ -67,6 +67,8 @@ class Module(object):
                 'actions': self.actions,
                 'downloaded': self.downloaded,
                 'installed': self.installed,
+                'has_configuration': self.has_configuration,
+                'has_configuration_script': self.has_configuration_script,
                 'configured': self.configured,
                 'conflicts': self.conflicts,
                 'dependencies': self.dependencies,
@@ -160,6 +162,16 @@ class Module(object):
         else:
             return "other"
 
+    @property
+    def has_configuration(self):
+        return "config" in self._desc
+
+    @property
+    def has_configuration_script(self):
+        if getattr(self, "_script", False):
+            return True
+        return False
+
     def check_configured(self):
         # check if module is configured by calling module method
         if self._module:
@@ -177,14 +189,6 @@ class Module(object):
             self._configured = True
         else:
             self._configured = False
-        # if the module has no configuration consider it is configured
-        if self._module:
-            try:
-                script, args = getattr(self._module, 'get_config_info')()
-            except AttributeError:
-                script, args = (None, [])
-            if script == None:
-                self._configured = True
 
     @property
     def configured(self):
@@ -243,6 +247,7 @@ class Module(object):
         self._repositories = []
         repositories = self._desc.get("repositories", [])
         if repositories:
+            # Don't return repositories already installed
             for repository in repositories:
                 repository['url'] = repository['url'].replace('@ARCH@', ModuleManager().arch)
                 if 'url' in repository and not grep(repository['url'].split('://')[1], '/etc/urpmi/urpmi.cfg'):
@@ -254,6 +259,7 @@ class Module(object):
         """ get module current config """
         assert self._module
         reload(self._module)
+
         # get current module config
         try:
             current_config = getattr(self._module, 'get_current_config')(self)
@@ -264,27 +270,12 @@ class Module(object):
             logger.error(str(err))
             logger.error("Can't get module current config")
             current_config = {}
-        # get script name and args order
-        try:
-            script, args = getattr(self._module, 'get_config_info')()
-        except AttributeError:
-            script, args = (None, [])
 
         # reset config
         self.config = []
-
-        # no config script we skip the configuration
-        if not script:
-            self.config.append({'slug': self.slug, 'skip_config': True, 'do_config': False})
-        # we have a config script
-        else:
-            self.config.append({'slug': self.slug, 'skip_config': False, 'do_config': False})
+        if self.has_configuration:
             # get XML config
             fields = self._desc.get("config", [])
-            if fields:
-                # if we have fields, show the configuration page
-                self.config[0]['do_config'] = True
-                self.config[0]['configured'] = self.configured
             for field_config in fields:
                 field_config["slug"] = self.slug
                 if field_config["type"] == "custom":
@@ -318,13 +309,12 @@ class Module(object):
                 if field_config["type"] != "custom":
                     self.config.append(field_config)
 
-        return self.config
+        return {"slug": self.slug, "config": self.config}
 
     def valid_config(self, user_config):
-
         """ valid user configuration for module """
         if not getattr(self, "config", None):
-            self.config = self.get_config()
+            self.get_config()
 
         validated_config = copy.deepcopy(self.config)
         errors = False
@@ -407,15 +397,9 @@ class Module(object):
         return (errors, validated_config)
 
     def info_config(self):
-        # get script name and args order
-        try:
-            script, args = getattr(self._module, 'get_config_info')()
-        except AttributeError:
-            script, args = (None, [])
         # get args values
         args_values = []
-
-        for arg in args:
+        for arg in self._script_args:
             for field in self.config:
                 if arg == field.get('name'):
                     # network field values
@@ -441,7 +425,7 @@ class Module(object):
                     else:
                         args_values.append(field.get('default'))
 
-        return (self._path, script, args_values)
+        return (self._path, self._script, args_values)
 
     def download(self):
         """ Download module if not present on disk """
@@ -501,6 +485,12 @@ class Module(object):
         except Exception, err:
             logger.error("Can't load module %s __init__.py :" % self.slug)
             logger.error("%s" % err)
+        else:
+            # get script name and args order
+            try:
+                self._script, self._script_args = getattr(self._module, 'get_config_info')()
+            except AttributeError:
+                self._script, self._script_args = (False, [])
 
     def load_translations(self):
         TranslationManager().set_catalog(self.slug, self._path)

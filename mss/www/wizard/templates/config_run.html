@@ -43,7 +43,7 @@
     var current = 0;
     var modules = [];
     {% for m in transaction.modules_info %}
-        {% if not m.skip_config %}
+        {% if m.has_configuration_script %}
             modules.push('{{ m.slug }}');
         {% endif %}
     {% endfor %}
@@ -141,20 +141,11 @@
     <p id="summary" class="alert" style="display: none;"></p>
 
     {% for m in transaction.modules_info %}
+        {% if m.has_configuration_script %}
     <div class="module" id="{{ m.slug }}">
         <h2>{{ m.name }}</h2>
         <p class=help-block">{{ m.description }}</p>
         <div class="install">
-            {% if m.skip_config %}
-            <p class="alert alert-success">{% trans "No configuration for this module." %}</p>
-            <script type="text/javascript">
-                $.get('/mss/config/end/{{ m.slug }}/')
-                 .error(function(xhr) {
-                    if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
-                 });
-            });
-            </script>
-            {% else %}
             <p class="alert">{% trans "Waiting..." %}</p>
             <div class="install-summary"></div>
             <div class="log-button pull-right">
@@ -162,9 +153,18 @@
             </div>
             <div class="clearfix"></div>
             <div class="log" style="display: none;"></div>
-            {% endif %}
         </div>
     </div>
+        {% else %}
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $.get('/mss/config/end/{{ m.slug }}/')
+             .error(function(xhr) {
+                if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+             });
+        });
+    </script>
+        {% endif %}
     {% endfor %}
 
     <div class="form-actions">
