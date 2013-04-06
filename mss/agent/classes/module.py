@@ -278,6 +278,12 @@ class Module(object):
             fields = self._desc.get("config", [])
             for field_config in fields:
                 field_config["slug"] = self.slug
+                # translate label and help fields
+                if "label" in field_config:
+                    field_config["label"] = _(field_config["label"], self.slug)
+                if "help" in field_config:
+                    field_config["help"] = _(field_config["help"], self.slug)
+                # get dynamic configuration via a python method
                 if field_config["type"] == "custom":
                     self.config = getattr(self._module, 'get_%s_config' % field_config['name'])(self.config)
                 # add current value if module is configured
