@@ -129,7 +129,7 @@ def first_time_required(function):
                     'info': _('Before you can install any services we need to setup a few things with you.'),
                     'show_modules': False
                 })
-                return HttpResponseRedirect(reverse('prepare'))
+                return HttpResponseRedirect(reverse('preinst'))
         else:
             return function(request, *args, **kwargs)
 
@@ -195,7 +195,6 @@ def sections(request):
     err, sections = xmlrpc.call('get_sections')
     if err:
         return err
-
     # render the main page with all sections
     return render(request, 'sections.html', {'sections': sections})
 
@@ -225,10 +224,9 @@ def prepare(request):
         for module, value in request.POST.items():
             modules.append(module)
         transaction = Transaction(request, modules)
+        return HttpResponseRedirect(transaction.first_step_url())
     else:
-        transaction = Transaction(request)
-
-    return HttpResponseRedirect(transaction.first_step_url())
+        return HttpResponseRedirect(reverse('sections'))
 
 @login_required
 def preinst(request):
