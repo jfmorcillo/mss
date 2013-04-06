@@ -391,7 +391,8 @@ def config_end(request, module):
     """ tells the agent the module has been configured """
     # FIXME
     if module == "mds_mmc":
-        request.session['first-time'] = True;
+        err, result = xmlrpc.call('set_option', 'first-time', 'yes')
+        request.session['first-time'] = result
     return HttpResponse("")
 
 @login_required

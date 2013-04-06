@@ -271,6 +271,7 @@ class ModuleManager:
         option = OptionTable(slug, value)
         self.session.merge(option)
         self.session.commit()
+        return value
 
     @expose
     def get_option(self, slug):
@@ -544,9 +545,6 @@ class ModuleManager:
         if code == 0 and not self.modules[module].configured:
             logger.debug("Set %s as configured" % str(module))
             self.modules[module].configured = True
-            # FIXME
-            if module == "mds_mmc":
-                self.set_option("first-time", "yes")
             # try to store the config log
             try:
                 log_type = self.session.query(LogTypeTable).filter(LogTypeTable.name == "config").first()
