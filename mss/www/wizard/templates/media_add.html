@@ -12,7 +12,7 @@
         var updater = "";
         var current = 0;
         var repositories = [];
-        {% for repository in transaction.repositories %}
+        {% for repository in repositories %}
         repositories.push({"slug": "{{ repository.slug }}",
                            "module_slug": "{{ repository.module_slug }}",
                            "username": "{{ username }}",
@@ -86,7 +86,7 @@
             run();
         });
     </script>
-    {% for repository in transaction.repositories %}
+    {% for repository in repositories %}
     <fieldset id="{{ repository.slug }}">
         <legend>{{ repository.name }}</legend>
         <p class="alert">{% trans "Waiting..." %}</p>

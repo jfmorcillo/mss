@@ -277,8 +277,12 @@ def medias_add(request):
         username = None
         password = None
 
+    err, repositories = xmlrpc.call('get_repositories', transaction.modules_list)
+    if err:
+        return err
+
     return render(request, 'media_add.html',
-                  {'transaction': transaction,
+                  {'transaction': transaction, 'repositories': repositories,
                    'username': username, 'password': password})
 
 @login_required

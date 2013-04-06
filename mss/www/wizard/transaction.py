@@ -112,80 +112,51 @@ class Transaction(object):
         for module in self.modules_info:
             if not module['installed'] or not module["downloaded"]:
                 self.todo_step(Steps.INSTALL)
-                logger.debug("Module %s is not installed or not downloaded: todo install step" % module["slug"])
             if not module["downloaded"]:
                 self.todo_step(Steps.DOWNLOAD)
-                logger.debug("Module %s is not downloaded: todo download step" % module["slug"])
-            if module['reboot']:
-                logger.debug("Module %s need to reboot the system: enabling reboot step" % module["slug"])
-                self.todo_step(Steps.REBOOT)
-            else:
-                self.todo_step(Steps.END)
-
-        err, result = xmlrpc.call('get_repositories', self.modules_list)
-        if not err:
-            self.repositories = result
-            for repository in self.repositories:
-                if repository['restricted']:
-                    self.todo_step(Steps.MEDIAS_AUTH)
-                    break
-            if self.repositories:
+            if module["has_repositories"]:
                 self.todo_step(Steps.MEDIAS_ADD)
+            if module["has_restricted_repositories"]:
+                self.todo_step(Steps.MEDIAS_AUTH)
+            if module["has_configuration"] or module["has_configuration_script"] or not module["downloaded"]:
+                self.todo_step(Steps.CONFIG)
+            if module['reboot']:
+                self.todo_step(Steps.REBOOT)
 
-        if self.find_step(Steps.DOWNLOAD)['state'] == State.TODO:
-            logger.debug("Some module is not downloaded: todo config step")
-            self.todo_step(Steps.CONFIG)
-        else:
-            for module in self.modules_info:
-                if module["has_configuration"] or module["has_configuration_script"]:
-                    logger.debug("Module %s needs configuration: todo config step" % module['slug'])
-                    self.todo_step(Steps.CONFIG)
-                    break
+        if self.get_state_step(Steps.REBOOT) == State.DISABLED:
+                self.todo_step(Steps.END)
 
     def update(self):
         err, result = xmlrpc.call('get_modules_details', self.modules_list)
         if not err:
             self.modules_info = result
 
-        err, result = xmlrpc.call('get_repositories', self.modules_list)
-        if not err:
-            self.repositories = result
-
         downloaded = True
-        medias_auth = True
-        medias_added = True
+        has_repositories = False
+        has_restricted_repositories = False
         installed = True
         configured = True
 
         for module in self.modules_info:
             if not module['downloaded']:
                 downloaded = False
-                break
-        if self.get_state_step(Steps.DOWNLOAD) == State.TODO and downloaded:
-            self.done_step(Steps.DOWNLOAD)
-
-        for module in self.modules_info:
+            if module['has_repositories']:
+                has_repositories = True
+            if module['has_restricted_repositories']:
+                has_restricted_repositories = True
             if not module['installed']:
                 installed = False
-                break
-        if self.get_state_step(Steps.INSTALL) == State.TODO and installed:
-            self.done_step(Steps.INSTALL)
-
-        if self.repositories:
-            medias_added = False
-            for repository in self.repositories:
-                if repository['restricted']:
-                    medias_auth = False
-                    break
-        if self.get_state_step(Steps.MEDIAS_AUTH) == State.TODO and medias_auth:
-            self.done_step(Steps.MEDIAS_AUTH)
-        if self.get_state_step(Steps.MEDIAS_ADD) == State.TODO and medias_added:
-            self.done_step(Steps.MEDIAS_ADD)
-
-        for module in self.modules_info:
             if not module['configured']:
                 configured = False
-                break
+
+        if self.get_state_step(Steps.DOWNLOAD) == State.TODO and downloaded:
+            self.done_step(Steps.DOWNLOAD)
+        if self.get_state_step(Steps.INSTALL) == State.TODO and installed:
+            self.done_step(Steps.INSTALL)
+        if self.get_state_step(Steps.MEDIAS_AUTH) == State.TODO and not has_restricted_repositories:
+            self.done_step(Steps.MEDIAS_AUTH)
+        if self.get_state_step(Steps.MEDIAS_ADD) == State.TODO and not has_repositories:
+            self.done_step(Steps.MEDIAS_ADD)
         if self.get_state_step(Steps.CONFIG) == State.TODO and configured:
             self.done_step(Steps.CONFIG)
 
