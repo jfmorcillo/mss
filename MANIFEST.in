@@ -1,9 +1,8 @@
 include README LICENCE
-recursive-include bin/ *
-recursive-include mss/ *
-recursive-exclude mss/ *.po
-recursive-exclude doc/ *
-recursive-exclude dist/ *
-recursive-exclude mss.egg-info/ *
-recursive-include var/ *
-recursive-include etc/ *
+recursive-include bin *
+recursive-include mss *
+recursive-include etc *
+recursive-include modules *
+recursive-exclude doc *
+recursive-exclude dist *
+recursive-exclude mss.egg-info *

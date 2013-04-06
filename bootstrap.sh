@@ -33,7 +33,6 @@ function generate_salt() {
 }
 
 sh manage.sh todev
-mkdir -p /var/lib/mss/local
 mkdir -p /var/lib/mss/cache
 mkdir -p /etc/mss
 touch /var/log/mss/mss-agent.log
@@ -59,8 +58,6 @@ chown $user.$user /var/lib/mss/
 chown $user.$user /var/lib/mss/mss-www.db
 [ -h /etc/mss/agent.ini ] && rm -f /etc/mss/agent.ini
 ln -s ${path}/etc/agent.ini /etc/mss/agent.ini
-[ -h /var/lib/mss/local/addons ] && rm -f /var/lib/mss/local/addons
-ln -s ${path}/mss/agent/modules /var/lib/mss/local/addons
-[ -h /var/lib/mss/local/sections.json ] && rm -f /var/lib/mss/local/sections.json
-ln -s ${path}/var/sections.json /var/lib/mss/local/sections.json
+[ -h /var/lib/mss/local ] && rm -f /var/lib/mss/local
+ln -s ${path}/modules /var/lib/mss/local
 su -c 'sh build_mo.sh' $user

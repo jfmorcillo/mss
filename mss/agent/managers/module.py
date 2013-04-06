@@ -112,7 +112,7 @@ class ModuleManager:
         """
         Setup the python path to load modules
         """
-        local_path = os.path.join(self.config.get("local", "localDir"), "addons")
+        local_path = self.config.get("local", "localDir")
         cache_path = self.config.get("local", "cacheDir")
         if local:
             try:
@@ -153,10 +153,10 @@ class ModuleManager:
         paths = []
         result = []
 
-        for item in glob.glob(os.path.join(self.config.get("local", "addonsDir"),
+        for item in glob.glob(os.path.join(self.config.get("local", "localDir"),
                                            "*", "__init__.py")):
             module = item.split("/")[-2]
-            path = os.path.join(self.config.get("local", "addonsDir"), module)
+            path = os.path.join(self.config.get("local", "localDir"), module)
             paths.append(path)
 
         for path in paths:

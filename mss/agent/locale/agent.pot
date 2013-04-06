@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-06 11:09+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,15 +25,15 @@ msgstr ""
 msgid "Other Services"
 msgstr ""
 
-#: classes/module.py:154
+#: classes/module.py:156
 msgid "Other"
 msgstr ""
 
-#: classes/module.py:371
+#: classes/module.py:367
 msgid "This field can't be empty."
 msgstr ""
 
-#: classes/module.py:376
+#: classes/module.py:372
 msgid "Password mismatch."
 msgstr ""
 

@@ -65,7 +65,6 @@ def mylogin(request):
     if request.method == "POST":
         user = authenticate(username=request.POST['username'],
                             password=request.POST['password'])
-        print user
         if user is not None and user.is_active:
                 login(request, user)
                 err, status = xmlrpc.call('load')

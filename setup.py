@@ -26,12 +26,11 @@ from setuptools import setup, find_packages
 setup(
     name='mss',
     version = '2.0',
-    description = "Mandriva Server Setup",    
+    description = "Mandriva Server Setup",
     author = "Jean-Philippe Braun",
     author_email = "jpbraun@mandriva.com",
     maintainer = "Jean-Philippe Braun",
     maintainer_email = "jpbraun@mandriva.com",
     url = "http://www.mandriva.com",
-    packages = find_packages(),
-    include_package_data = True,
+    packages = find_packages()
 )

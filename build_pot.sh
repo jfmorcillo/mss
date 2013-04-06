@@ -24,7 +24,7 @@ pushd mss/agent
 
 # Agent translation
 pot="locale/agent.pot"
-json="../../var/sections.json"
+json="../../modules/sections.json"
 langs="fr_FR pt_BR"
 rm -f ${pot}
 echo -n "creating ${pot}"
@@ -34,6 +34,9 @@ find . -name modules -prune -o -iname "*.py" -exec xgettext -j -o ${pot} --langu
 # Remove duplicates
 sed '/msgctxt/d' ${pot} | msguniq > ${pot}.tmp
 mv ${pot}.tmp ${pot}
+
+popd
+pushd modules
 
 # Modules translation
 for module in modules/*; do
@@ -66,14 +69,6 @@ django-admin.py makemessages -l en
 
 popd
 pushd mss/www/errors
-django-admin.py makemessages -l en
-
-popd
-pushd mss/www/layout/base
-django-admin.py makemessages -l en
-
-popd
-pushd mss/www/layout/commercial
 django-admin.py makemessages -l en
 
 exit 0
