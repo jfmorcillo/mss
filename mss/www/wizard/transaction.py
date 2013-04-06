@@ -203,3 +203,6 @@ class Transaction:
 
     def first_step_url(self):
         return reverse(self.first_step()['id'])
+
+    def current_step_url(self):
+        return reverse(self.current_step()['id'])

@@ -68,13 +68,21 @@ class RequestThread(threading.Thread):
         for header in self.headers:
             request.add_header(header[0], header[1])
         request.add_header('Accept-Language', TranslationManager().get_lang().split('_')[0] + ',en')
-        response = urllib2.urlopen(request)
-        start = time.time()
-        logger.debug("Start: %s" % str(start))
-        self.chunk_read(response, report_hook=self.chunk_report)
-        end = time.time()
-        logger.debug("End: %s" % str(end))
-        logger.debug("Last: %ss" % str(end - start))
+        try:
+            response = urllib2.urlopen(request)
+        except urllib2.HTTPError as e:
+            logger.error("HTTP Error: %s (%s))" % (str(e.reason), self.url))
+            self._code = e.code
+        except urllib2.URLError as e:
+            logger.error("URL Error: %s (%s))" % (str(e.reason), self.url))
+            self._code = 500
+        else:
+            start = time.time()
+            logger.debug("Start: %s" % str(start))
+            self.chunk_read(response, report_hook=self.chunk_report)
+            end = time.time()
+            logger.debug("End: %s" % str(end))
+            logger.debug("Last: %ss" % str(end - start))
 
     def chunk_read(self, response, chunk_size=512, report_hook=None):
         total_size = response.info().getheader('Content-Length').strip()

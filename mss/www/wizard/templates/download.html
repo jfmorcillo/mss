@@ -28,6 +28,7 @@
             else {
                 $.get('{% url download_end %}');
                 $("#next").html("{% trans "Continue" %} →");
+                $("#next").attr("href", "{{ transaction.next_step_url }}");
                 $('#next').removeClass("disabled");
                 $('#back').removeClass("disabled");
             }
@@ -64,11 +65,14 @@
                         }
                         else {
                             box.removeClass("alert-info");
+                            box.addClass("alert-error");
                             task.removeClass("alert-info");
                             task.addClass("alert-error");
                             task.html("{% trans "Failed to download <strong>{0}</strong> addon." %}".format(modules[current].name));
                             $('#back').removeClass("disabled");
-                            $("#next").html("{% trans "Continue" %} →");
+                            $("#next").html("{% trans "Retry" %}");
+                            $("#next").attr("href", "{{ transaction.current_step_url }}");
+                            $('#next').removeClass("disabled");
                         }
                     }
                     else {
@@ -88,7 +92,7 @@
     <div class="downloads"></div>
     <div class="form-actions">
         <div class="pull-right">
-            <a id="next" href="{{ transaction.next_step_url }}" class="disabled">{% trans "Please wait..." %}</a>
+            <a id="next" href="#" class="disabled">{% trans "Please wait..." %}</a>
         </div>
         <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
     </div>
