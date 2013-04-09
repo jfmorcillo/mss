@@ -32,5 +32,6 @@ setup(
     maintainer = "Jean-Philippe Braun",
     maintainer_email = "jpbraun@mandriva.com",
     url = "http://www.mandriva.com",
-    packages = find_packages()
+    packages = find_packages(),
+    include_package_data = True
 )
