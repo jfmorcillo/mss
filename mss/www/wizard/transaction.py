@@ -42,6 +42,7 @@ class Transaction:
 
     def reset(self):
         self.repositories = []
+        self.config_info = []
         self.transaction = [
             {
                 'id': Steps.PREINST,
@@ -148,8 +149,8 @@ class Transaction:
         request.session['transaction'] = self.transaction
         request.session['modules_list'] = self.modules
         request.session['modules_info'] = self.modules_info
-        request.session['config_info'] = self.config_info
         request.session['repositories'] = self.repositories
+        request.session['config_info'] = self.config_info
 
     def find_step(self, step):
         for s in self.transaction:
