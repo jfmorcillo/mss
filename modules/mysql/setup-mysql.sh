@@ -177,7 +177,7 @@ cleanup() {
 
 
 # The actual script starts here
-service mysqld restart
+restart_service mysqld
 prepare
 set_echo_compat
 get_root_password $1
