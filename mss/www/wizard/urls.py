@@ -19,13 +19,13 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from django.conf.urls.defaults import *
+from django.conf.urls.defaults import patterns, url
+from django.core.urlresolvers import reverse
+from django.views.generic.simple import redirect_to
 
 urlpatterns = patterns('mss.www.wizard.views',
-    url(r'^$', 'first_time', name="first_time"),
     url(r'^lang/(?P<lang>[\w_]+)/$', 'set_lang', name="set_lang"),
     url(r'^has_net/(?P<has_net>[\d]+)/$', 'has_net', name="has_net"),
-    url(r'^account/authentication/$', 'login_form', name="login_form"),
     url(r'^account/login/$', 'mylogin', name="login"),
     url(r'^account/logout/$', 'mylogout', name="logout"),
     url(r'^sections/$', 'sections', name="sections"),
@@ -51,3 +51,8 @@ urlpatterns = patterns('mss.www.wizard.views',
     url(r'^reboot/run/$', 'reboot_run', name="reboot_run"),
     url(r'^end/$', 'end', name="end"),
 )
+
+urlpatterns += patterns('',
+    (r'^$', redirect_to, {'url': reverse('login')}),
+)
+

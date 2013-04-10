@@ -2,10 +2,20 @@
 {% load i18n %}
 {% block content %}
 <section id="login">
+    {% if not first_time %}
+    <div class="page-header">
+        <h1>{% trans "Welcome" %}</h1>
+    </div>
+    <p class="alert">{% trans "Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly setup the services you need on your server." %}<br /><br />{% trans "Login to begin to setup your server." %}</p>
+    {% else %}
     <div class="page-header">
         <h1><img src="{{ MEDIA_URL }}img/login.png" /> {% trans "Login" %}</h1>
     </div>
+    {% endif %}
     <form class="form-horizontal" action="{% url login %}" method="post" accept-charset="utf-8">
+        {% if not first_time %}
+        <legend>{% trans "Login" %}</legend>
+        {% endif %}
         {% include "login_form.html" %}
     </form>
 </section>

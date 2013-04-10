@@ -61,63 +61,44 @@ def set_lang(request, lang):
         return HttpResponseRedirect("/")
 
 def mylogin(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect(reverse('sections'))
+
     if request.method == "POST":
         user = authenticate(username=request.POST['username'],
                             password=request.POST['password'])
-        if user is not None and user.is_active:
+        if user is not None:
+            if user.is_active:
                 login(request, user)
                 err, status = xmlrpc.call('load')
-                if err:
-                    xmlrpc.call('check_net')
-                    return direct_to_template(request, 'invalid_login.html')
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
+            else:
+                # disabled account
+                xmlrpc.call('check_net')
+                return direct_to_template(request, 'inactive_account.html')
         else:
-            # disabled account
+            # invalid user
             xmlrpc.call('check_net')
-            return direct_to_template(request, 'inactive_account.html')
+            return direct_to_template(request, 'invalid_login.html')
     else:
-        # invalid login
+        err, first_time = xmlrpc.call('get_option', 'first-time')
+        err, lang = xmlrpc.call('get_lang')
+        set_lang(request, lang)
+        # show login form
         xmlrpc.call('check_net')
-        return direct_to_template(request, 'invalid_login.html')
+        return render(request, 'login.html', {'first_time': first_time})
 
 def mylogout(request):
     logout(request)
-    # reset language
-    set_lang(request, settings.DEFAULT_LANGUAGE)
-    return HttpResponseRedirect(reverse('first_time'))
-
-def first_time(request):
-    set_lang(request, settings.DEFAULT_LANGUAGE)
-    # Check if first-time installation was done
-    err, result = xmlrpc.call('get_option', 'first-time')
-    if not result:
-        request.session['first-time'] = False;
-    else:
-        request.session['first-time'] = True;
-
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('sections'))
-
-    if not request.session['first-time']:
-        xmlrpc.call('check_net')
-        return direct_to_template(request, 'first_time.html')
-    else:
-        return HttpResponseRedirect(reverse('login_form'))
-
-def login_form(request):
-    if request.user.is_authenticated():
-        return HttpResponseRedirect(reverse('sections'))
-    else:
-        xmlrpc.call('check_net')
-        return render(request, 'login.html')
+    return HttpResponseRedirect(reverse('login'))
 
 def first_time_required(function):
     # Check if we need to run the first-time
     # installation
     def wrap(request, *args, **kwargs):
-        # flush some user session data
-        if not 'first-time' in request.session or not request.session['first-time']:
+        err, first_time = xmlrpc.call('get_option', 'first-time')
+        if not first_time:
             transaction = Transaction(request, ['mds_mmc'])
             if isinstance(transaction.steps, HttpResponseRedirect):
                 return transaction.steps
@@ -132,7 +113,6 @@ def first_time_required(function):
                 return HttpResponseRedirect(reverse('preinst'))
         else:
             return function(request, *args, **kwargs)
-
     return wrap
 
 def error(request, code):
@@ -392,7 +372,6 @@ def config_end(request, module):
     # FIXME
     if module == "mds_mmc":
         err, result = xmlrpc.call('set_option', 'first-time', 'yes')
-        request.session['first-time'] = result
     return HttpResponse("")
 
 @login_required

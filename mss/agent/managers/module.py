@@ -266,6 +266,11 @@ class ModuleManager:
         TranslationManager().set_lang(lang)
 
     @expose
+    def get_lang(self):
+        """ return current language """
+        return TranslationManager().get_lang()
+
+    @expose
     def set_option(self, slug, value):
         """ add an option in the DB """
         option = OptionTable(slug, value)
