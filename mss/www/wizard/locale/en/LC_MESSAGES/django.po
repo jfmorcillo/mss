@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-06 11:09+0200\n"
+"POT-Creation-Date: 2013-04-10 14:08+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -17,62 +17,70 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
-#: transaction.py:49
+#: transaction.py:53
 msgid "Installation summary"
 msgstr ""
 
-#: transaction.py:51
+#: transaction.py:55
 msgid "The folowing addon will be installed."
 msgid_plural "The folowing addons will be installed."
 msgstr[0] ""
 msgstr[1] ""
 
-#: transaction.py:61
+#: transaction.py:65
 msgid "Addon download"
 msgstr ""
 
-#: transaction.py:62
+#: transaction.py:66
 msgid "Download addons from the ServicePlace"
 msgstr ""
 
-#: transaction.py:68
+#: transaction.py:72
 msgid "Medias authentication"
 msgstr ""
 
-#: transaction.py:69
+#: transaction.py:73
 msgid "One or more medias need authentication"
 msgstr ""
 
-#: transaction.py:75
+#: transaction.py:79
 msgid "Medias add"
 msgstr ""
 
-#: transaction.py:82
+#: transaction.py:86
 msgid "Installation"
 msgstr ""
 
-#: transaction.py:89
+#: transaction.py:93
 msgid "Initial configuration"
 msgstr ""
 
-#: transaction.py:96 templates/reboot.html:14
-msgid "Reboot"
-msgstr ""
-
-#: transaction.py:102
+#: transaction.py:100
 msgid "End of installation"
 msgstr ""
 
-#: views.py:135 templates/first_time.html:6
+#: transaction.py:101
+msgid "The installation is finished."
+msgstr ""
+
+#: transaction.py:120 templates/end.html:15
+msgid "Reboot"
+msgstr ""
+
+#: transaction.py:122
+msgid "The installation is finished. The server must be rebooted."
+msgstr ""
+
+#: views.py:128 templates/first_time.html:6
 msgid "Welcome"
 msgstr ""
 
-#: views.py:136
+#: views.py:129
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr ""
 
-#: views.py:175 templates/error.html:9
+#: views.py:165 templates/error.html:9
 msgid "MSS agent is unreacheable."
 msgstr ""
 
@@ -80,7 +88,7 @@ msgstr ""
 msgid "Hide log"
 msgstr ""
 
-#: templates/base.html:25 templates/config_run.html:152
+#: templates/base.html:25 templates/config_run.html:156
 #: templates/install.html:66 templates/media_add.html:95
 msgid "Show log"
 msgstr ""
@@ -130,8 +138,8 @@ msgstr ""
 msgid "Installation & configuration was successful."
 msgstr ""
 
-#: templates/config_no.html:14 templates/config_run.html:84
-#: templates/config_run.html.py:104 templates/error.html:14
+#: templates/config_no.html:14 templates/config_run.html:88
+#: templates/config_run.html.py:108 templates/error.html:14
 msgid "Home page"
 msgstr ""
 
@@ -147,7 +155,7 @@ msgstr ""
 msgid "Configuration errors"
 msgstr ""
 
-#: templates/config_run.html:57 templates/config_run.html.py:106
+#: templates/config_run.html:57 templates/config_run.html.py:110
 msgid "Configuration terminated, details are displayed below."
 msgstr ""
 
@@ -155,23 +163,23 @@ msgstr ""
 msgid "Configuration succeded."
 msgstr ""
 
-#: templates/config_run.html:83
+#: templates/config_run.html:87
 msgid "Configuration failed."
 msgstr ""
 
-#: templates/config_run.html:112
+#: templates/config_run.html:116
 msgid "Could not find any configuration script to execute."
 msgstr ""
 
-#: templates/config_run.html:119
+#: templates/config_run.html:123
 msgid "Running configuration..."
 msgstr ""
 
-#: templates/config_run.html:149 templates/media_add.html:92
+#: templates/config_run.html:153 templates/media_add.html:92
 msgid "Waiting..."
 msgstr ""
 
-#: templates/config_run.html:172 templates/download.html:95
+#: templates/config_run.html:176 templates/download.html:95
 #: templates/install.html:74 templates/media_add.html:104
 msgid "Please wait..."
 msgstr ""
@@ -192,11 +200,7 @@ msgstr ""
 msgid "Retry"
 msgstr ""
 
-#: templates/end.html:11
-msgid "The installation is finished."
-msgstr ""
-
-#: templates/end.html:14
+#: templates/end.html:17
 msgid "Home"
 msgstr ""
 
@@ -327,10 +331,6 @@ msgstr ""
 msgid ""
 "If other addons requires this addon they may be broken after the "
 "reinstallation."
-msgstr ""
-
-#: templates/reboot.html:11
-msgid "The configuration is finished. The server must be rebooted."
 msgstr ""
 
 #: templates/section.html:19
