@@ -16,7 +16,6 @@ class Steps:
     MEDIAS_ADD = "medias_add"
     INSTALL = "install"
     CONFIG = "config"
-    REBOOT = "reboot"
     END = "end"
 
 
@@ -96,15 +95,11 @@ class Transaction(object):
                 'current': False
             },
             {
-                'id': Steps.REBOOT,
-                'state': State.DISABLED,
-                'title': _("Reboot"),
-                'current': False
-            },
-            {
                 'id': Steps.END,
-                'state': State.DISABLED,
+                'state': State.TODO,
                 'title': _("End of installation"),
+                'info': _("The installation is finished."),
+                'reboot': False,
                 'current': False
             }
         ]
@@ -121,10 +116,10 @@ class Transaction(object):
             if module["has_configuration"] or module["has_configuration_script"] or not module["downloaded"]:
                 self.todo_step(Steps.CONFIG)
             if module['reboot']:
-                self.todo_step(Steps.REBOOT)
-
-        if self.get_state_step(Steps.REBOOT) == State.DISABLED:
-                self.todo_step(Steps.END)
+                self.update_step({'id': Steps.END,
+                                  'title': _("Reboot"),
+                                  'reboot': True,
+                                  'info': _("The installation is finished. The server must be rebooted.")})
 
     def update(self):
         err, result = xmlrpc.call('get_modules_details', self.modules_list)

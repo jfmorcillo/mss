@@ -396,16 +396,6 @@ def config_end(request, module):
     return HttpResponse("")
 
 @login_required
-def reboot(request):
-    transaction = Transaction(request)
-    transaction.set_current_step(Steps.REBOOT)
-    if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
-        return HttpResponseRedirect(transaction.next_step_url())
-
-    return render(request, 'reboot.html',
-                  {'transaction': transaction})
-
-@login_required
 def reboot_run(request):
     xmlrpc.call('reboot')
     return HttpResponse("")
