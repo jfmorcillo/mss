@@ -19,7 +19,7 @@ test -d .tx || tx init --host=https://transifex.mandriva.com
 
 tx set --execute --auto-local -r mss.agent -s en -f mss/agent/locale/agent.pot "mss/agent/locale/<lang>/LC_MESSAGES/agent.po"
 
-for mod in mss/agent/modules/*
+for mod in modules/*
 do
     if [ -d ${mod} ]; then
         name=`basename ${mod}`
