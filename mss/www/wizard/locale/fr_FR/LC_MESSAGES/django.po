@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-10 14:08+0200\n"
-"PO-Revision-Date: 2013-04-10 12:12+0000\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
+"PO-Revision-Date: 2013-04-15 13:44+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -73,26 +73,26 @@ msgstr "Redémarrage"
 msgid "The installation is finished. The server must be rebooted."
 msgstr "L'installation est terminée. Le serveur doit être redémarré."
 
-#: views.py:128 templates/first_time.html:6
+#: views.py:109 templates/login.html:7
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: views.py:129
+#: views.py:110
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr ""
 "Avant de pouvoir installer vos services nous devons paramétrer quelques "
 "éléments avec vous."
 
-#: views.py:165 templates/error.html:9
+#: views.py:145 templates/error.html:9
 msgid "MSS agent is unreacheable."
 msgstr "L'agent MSS est injoignable."
 
 #: templates/base.html:22
 msgid "Hide log"
-msgstr "Cacher le détail"
+msgstr "Info"
 
-#: templates/base.html:25 templates/config_run.html:156
+#: templates/base.html:25 templates/config_run.html:159
 #: templates/install.html:66 templates/media_add.html:95
 msgid "Show log"
 msgstr "Afficher le détail"
@@ -142,8 +142,7 @@ msgstr "Retour"
 msgid "Installation & configuration was successful."
 msgstr "Installation et configuration réussie."
 
-#: templates/config_no.html:14 templates/config_run.html:88
-#: templates/config_run.html.py:108 templates/error.html:14
+#: templates/config_no.html:14 templates/error.html:14
 msgid "Home page"
 msgstr "Page d'accueil"
 
@@ -159,31 +158,36 @@ msgstr "Avertissements de configuration"
 msgid "Configuration errors"
 msgstr "Erreurs de configuration"
 
-#: templates/config_run.html:57 templates/config_run.html.py:110
+#: templates/config_run.html:57 templates/config_run.html.py:113
 msgid "Configuration terminated, details are displayed below."
 msgstr "La configuration est terminée. Les détails sont affichés ci-dessous."
 
-#: templates/config_run.html:74
+#: templates/config_run.html:75
 msgid "Configuration succeded."
 msgstr "Configuration réussie."
 
-#: templates/config_run.html:87
+#: templates/config_run.html:88
 msgid "Configuration failed."
 msgstr "Configuration échouée."
 
-#: templates/config_run.html:116
+#: templates/config_run.html:89 templates/config_run.html.py:110
+#: templates/download.html:73 templates/install.html:37
+msgid "Retry"
+msgstr "Relancer"
+
+#: templates/config_run.html:119
 msgid "Could not find any configuration script to execute."
 msgstr "Aucun script de configuration à executer."
 
-#: templates/config_run.html:123
+#: templates/config_run.html:126
 msgid "Running configuration..."
 msgstr "Configuration en cours..."
 
-#: templates/config_run.html:153 templates/media_add.html:92
+#: templates/config_run.html:156 templates/media_add.html:92
 msgid "Waiting..."
 msgstr "En attente..."
 
-#: templates/config_run.html:176 templates/download.html:95
+#: templates/config_run.html:179 templates/download.html:95
 #: templates/install.html:74 templates/media_add.html:104
 msgid "Please wait..."
 msgstr "Patientez..."
@@ -200,10 +204,6 @@ msgstr "Addon <strong>{0}</strong> téléchargé."
 msgid "Failed to download <strong>{0}</strong> addon."
 msgstr "Échec du téléchargement de <strong>{0}</strong>."
 
-#: templates/download.html:73 templates/install.html:37
-msgid "Retry"
-msgstr "Relancer"
-
 #: templates/end.html:17
 msgid "Home"
 msgstr "Accueil"
@@ -219,23 +219,6 @@ msgid ""
 msgstr ""
 "Vérifiez le statut du service avec la commande <strong>service mss-agent "
 "status</strong>."
-
-#: templates/first_time.html:8
-msgid ""
-"Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
-"setup the services you need on your server."
-msgstr ""
-"Mandriva Server Setup (<em>MSS</em>) est un outil simple vous permettant de "
-"paramétrer les services dont vous avez besoin sur votre serveur."
-
-#: templates/first_time.html:8
-msgid "Login to begin to setup your server."
-msgstr "Identifiez-vous pour commencer à paramétrer le serveur."
-
-#: templates/first_time.html:10 templates/invalid_login.html:6
-#: templates/login.html:6
-msgid "Login"
-msgstr "Identification"
 
 #: templates/install.html:17
 msgid "Installation succeded."
@@ -256,9 +239,26 @@ msgid_plural "The following addons are being installed"
 msgstr[0] "L'addon suivant est en cours d'installation"
 msgstr[1] "Les addons suivants sont en cours d'installation"
 
+#: templates/invalid_login.html:6 templates/login.html:12
+#: templates/login.html.py:17
+msgid "Login"
+msgstr "Identification"
+
 #: templates/invalid_login.html:9
 msgid "Wrong username or password."
 msgstr "Mauvais utilisateur ou mot de passe."
+
+#: templates/login.html:9
+msgid ""
+"Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
+"setup the services you need on your server."
+msgstr ""
+"Mandriva Server Setup (<em>MSS</em>) est un outil simple vous permettant de "
+"paramétrer les services dont vous avez besoin sur votre serveur."
+
+#: templates/login.html:9
+msgid "Login to begin to setup your server."
+msgstr "Identifiez-vous pour commencer à paramétrer le serveur."
 
 #: templates/login_form.html:12 templates/media_auth.html:21
 msgid "Your my.mandriva.com email address."
@@ -350,27 +350,27 @@ msgstr ""
 msgid "This addon can't be installed with"
 msgstr "Cet addon ne peut pas être installé avec"
 
-#: templates/section.html:112
+#: templates/section.html:111
 msgid "No addon available in this section."
 msgstr "Pas d'addon disponible dans cette section."
 
-#: templates/section.html:165
+#: templates/section.html:168
 msgid "This addon is installed and configured"
 msgstr "Cet addon est installé et configuré"
 
-#: templates/section.html:166
+#: templates/section.html:169
 msgid "This module conflicts with : "
 msgstr "Ce module est en conflit avec : "
 
-#: templates/section.html:169
+#: templates/section.html:172
 msgid "You have purshased this addon"
 msgstr "Vous avez acheté cet addon"
 
-#: templates/section.html:190
-msgid "Buy"
-msgstr "Acheter"
+#: templates/section.html:194
+msgid "Info"
+msgstr ""
 
-#: templates/section.html:203
+#: templates/section.html:206
 msgid "Install and configure selected addons"
 msgstr "Installer et configurer les addons sélectionnés"
 

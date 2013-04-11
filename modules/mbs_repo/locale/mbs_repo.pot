@@ -18,21 +18,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .description .desc
-msgid "Manage your user's SSH keys using LDAP as a backend"
-msgstr ""
-
-#: .actions[0].name
-msgid "Management interface"
+msgid "Access all MBS packages from public repositories."
 msgstr ""
 
 #: .name
-msgid "SSH keys management"
-msgstr ""
-
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .categories[0].name
-msgid "Users"
+msgid "Mandriva Business Server repositories"
 msgstr ""

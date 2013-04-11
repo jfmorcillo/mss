@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -115,55 +115,55 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:32
+#: mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:53
+#: mds_smb/setup-smb.sh:53
 msgid "Error while populating directory."
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:63
+#: mds_smb/setup-smb.sh:63
 msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created before, they still remains in the users group."
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:70
+#: mds_smb/setup-smb.sh:70
 msgid "Failed to grant rights to the Domain Admins group"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:89
+#: mds_smb/setup-smb.sh:89
 msgid "Domain name : $smbdomain"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:90
+#: mds_smb/setup-smb.sh:90
 msgid "Server name : $smbnetbios"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:91
+#: mds_smb/setup-smb.sh:91
 msgid "Domain administrator : $smbadmin"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:92
+#: mds_smb/setup-smb.sh:92
 msgid "- a public share is created in /home/samba/shares/public"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:93
+#: mds_smb/setup-smb.sh:93
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr ""
 
-#: modules/mds_smb/setup-smb.sh:94
+#: mds_smb/setup-smb.sh:94
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
 msgstr ""
 
-#: modules/mds_smb/__init__.py:39
+#: mds_smb/__init__.py:39
 msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
 msgstr ""
 
-#: modules/mds_smb/__init__.py:46
+#: mds_smb/__init__.py:46
 msgid ""
 "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
 msgstr ""

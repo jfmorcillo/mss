@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -103,43 +103,43 @@ msgstr ""
 msgid "Mail"
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:94
+#: mds_mail/setup-mail.sh:94
 msgid ""
 "Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
 "c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:128
+#: mds_mail/setup-mail.sh:128
 msgid "The mail service is configured."
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:129
+#: mds_mail/setup-mail.sh:129
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:130
+#: mds_mail/setup-mail.sh:130
 msgid "- the mail domain $DOMAIN has been created"
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:131
+#: mds_mail/setup-mail.sh:131
 msgid "- SSL is enabled on the SMTP server"
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:132
+#: mds_mail/setup-mail.sh:132
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
 msgstr ""
 
-#: modules/mds_mail/setup-mail.sh:133
+#: mds_mail/setup-mail.sh:133
 msgid ""
 "- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""
 
-#: modules/mds_mail/add_domain.py:16
+#: mds_mail/add_domain.py:16
 msgid "Default mail domain"
 msgstr ""
 
-#: modules/mds_mail/add_domain.py:20
+#: mds_mail/add_domain.py:20
 msgid "Failed to add the mail domain."
 msgstr ""

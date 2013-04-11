@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -47,15 +47,15 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: modules/mds_quota/setup-quota.sh:36
+#: mds_quota/setup-quota.sh:36
 msgid "Quotas not supported on this filesystem : $fs"
 msgstr ""
 
-#: modules/mds_quota/setup-quota.sh:54
+#: mds_quota/setup-quota.sh:54
 msgid "Quota module is activated in the management interface."
 msgstr ""
 
-#: modules/mds_quota/setup-quota.sh:55
+#: mds_quota/setup-quota.sh:55
 msgid ""
 "You can now configure user quotas from the management interface : https://"
 "@HOSTNAME@/mmc/."

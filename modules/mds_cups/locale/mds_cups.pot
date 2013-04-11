@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,16 +61,16 @@ msgstr ""
 msgid "Allow connections to the management interface from external networks"
 msgstr ""
 
-#: modules/mds_cups/setup-cups.sh:19
+#: mds_cups/setup-cups.sh:19
 msgid "The printing service is running."
 msgstr ""
 
-#: modules/mds_cups/setup-cups.sh:20
+#: mds_cups/setup-cups.sh:20
 msgid ""
 "You can add new printers from the Cups web interface : https://"
 "@HOSTNAME@:631/admin/."
 msgstr ""
 
-#: modules/mds_cups/setup-cups.sh:21
+#: mds_cups/setup-cups.sh:21
 msgid "Login to the Cups interface is the root account."
 msgstr ""

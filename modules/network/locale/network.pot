@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -33,84 +33,84 @@ msgstr ""
 msgid "Network setup"
 msgstr ""
 
-#: modules/network/setup-network.sh:108
+#: network/setup-network.sh:108
 msgid "Network and firewall configured."
 msgstr ""
 
-#: modules/network/__init__.py:82
+#: network/__init__.py:82
 msgid "Interface type"
 msgstr ""
 
-#: modules/network/__init__.py:83
+#: network/__init__.py:83
 msgid ""
 "Choose \"External\" if the interface is connected to the Internet. If the "
 "interface is connected to an internal network, choose \"Internal\""
 msgstr ""
 
-#: modules/network/__init__.py:86
+#: network/__init__.py:86
 msgid "Internal network"
 msgstr ""
 
-#: modules/network/__init__.py:87
+#: network/__init__.py:87
 msgid "External network"
 msgstr ""
 
-#: modules/network/__init__.py:93
+#: network/__init__.py:93
 msgid "Configuration method"
 msgstr ""
 
-#: modules/network/__init__.py:96
+#: network/__init__.py:96
 msgid "No configuration"
 msgstr ""
 
-#: modules/network/__init__.py:97
+#: network/__init__.py:97
 msgid "DHCP configuration"
 msgstr ""
 
-#: modules/network/__init__.py:98
+#: network/__init__.py:98
 msgid "Manual configuration"
 msgstr ""
 
-#: modules/network/__init__.py:106
+#: network/__init__.py:106
 msgid "IP Address"
 msgstr ""
 
-#: modules/network/__init__.py:111
+#: network/__init__.py:111
 msgid "Netmask"
 msgstr ""
 
-#: modules/network/__init__.py:116
+#: network/__init__.py:116
 msgid "First DNS server"
 msgstr ""
 
-#: modules/network/__init__.py:121
+#: network/__init__.py:121
 msgid "Second DNS server"
 msgstr ""
 
-#: modules/network/__init__.py:126
+#: network/__init__.py:126
 msgid "Domain search"
 msgstr ""
 
-#: modules/network/__init__.py:131
+#: network/__init__.py:131
 msgid "Gateway"
 msgstr ""
 
-#: modules/network/__init__.py:135
+#: network/__init__.py:135
 msgid "Firewall configuration"
 msgstr ""
 
-#: modules/network/__init__.py:139
+#: network/__init__.py:139
 msgid "Allow access to Mandriva Server Setup from internal networks"
 msgstr ""
 
-#: modules/network/__init__.py:144
+#: network/__init__.py:144
 msgid "Allow SSH access from internal networks"
 msgstr ""
 
-#: modules/network/__init__.py:149
+#: network/__init__.py:149
 msgid "Allow access to Mandriva Server Setup from external networks"
 msgstr ""
 
-#: modules/network/__init__.py:154
+#: network/__init__.py:154
 msgid "Allow SSH access from external networks"
 msgstr ""

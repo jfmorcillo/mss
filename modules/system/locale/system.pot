@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,14 +49,14 @@ msgstr ""
 msgid "System setup"
 msgstr ""
 
-#: modules/system/setup-system.sh:18
+#: system/setup-system.sh:18
 msgid "Hostname and domain name configured."
 msgstr ""
 
-#: modules/system/__init__.py:48
+#: system/__init__.py:48
 msgid "example.com"
 msgstr ""
 
-#: modules/system/__init__.py:54
+#: system/__init__.py:54
 msgid "Incorrect hostname."
 msgstr ""

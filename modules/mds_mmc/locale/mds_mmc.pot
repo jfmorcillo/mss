@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,39 +79,39 @@ msgstr ""
 msgid "Users"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:32
+#: mds_mmc/setup-mmc.sh:32
 msgid "Error while generating the password."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:74
+#: mds_mmc/setup-mmc.sh:74
 msgid "OpenLDAP configuration has errors."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:86
+#: mds_mmc/setup-mmc.sh:86
 msgid "Database load test failed."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:100
+#: mds_mmc/setup-mmc.sh:100
 msgid "Failed to initialize the database."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:108
+#: mds_mmc/setup-mmc.sh:108
 msgid "Error while configuring lib nss-ldap."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:131
+#: mds_mmc/setup-mmc.sh:131
 msgid "The MBS administration web interface is configured."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:132
+#: mds_mmc/setup-mmc.sh:132
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:133
+#: mds_mmc/setup-mmc.sh:133
 msgid "Administrator name : root"
 msgstr ""
 
-#: modules/mds_mmc/setup-mmc.sh:134
+#: mds_mmc/setup-mmc.sh:134
 msgid "Administrator password : $mypass"
 msgstr ""

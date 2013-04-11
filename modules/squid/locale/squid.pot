@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -61,28 +61,32 @@ msgstr ""
 msgid "Allow access from external networks"
 msgstr ""
 
-#: modules/squid/setup-squid.sh:58
+#: .categories[0].name
+msgid "Network"
+msgstr ""
+
+#: squid/setup-squid.sh:58
 msgid "Something went wrong while creating the user groups."
 msgstr ""
 
-#: modules/squid/setup-squid.sh:73
+#: squid/setup-squid.sh:73
 msgid "The proxy service is running."
 msgstr ""
 
-#: modules/squid/setup-squid.sh:75
+#: squid/setup-squid.sh:75
 msgid "Configure your clients to access the proxy service at @HOSTNAME@:3128"
 msgstr ""
 
-#: modules/squid/setup-squid.sh:77
+#: squid/setup-squid.sh:77
 msgid ""
 "You can manage proxy rules from the management interface : https://"
 "@HOSTNAME@/mmc/"
 msgstr ""
 
-#: modules/squid/create-groups.py:11
+#: squid/create-groups.py:11
 msgid "Full access to Internet"
 msgstr ""
 
-#: modules/squid/create-groups.py:12
+#: squid/create-groups.py:12
 msgid "Filtered access to Internet"
 msgstr ""

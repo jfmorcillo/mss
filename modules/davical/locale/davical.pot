@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2013-04-11 22:29+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -37,27 +37,27 @@ msgstr ""
 msgid "Collaboration"
 msgstr ""
 
-#: modules/davical/setup-davical.sh:40
+#: davical/setup-davical.sh:40
 msgid "Failed to setup the database."
 msgstr ""
 
-#: modules/davical/setup-davical.sh:79
+#: davical/setup-davical.sh:79
 msgid "The calendar and addressbook service is configured."
 msgstr ""
 
-#: modules/davical/setup-davical.sh:80
+#: davical/setup-davical.sh:80
 msgid "- Administrator : admin"
 msgstr ""
 
-#: modules/davical/setup-davical.sh:81
+#: davical/setup-davical.sh:81
 msgid "- Password : $DAVICAL_ADMIN_PASS"
 msgstr ""
 
-#: modules/davical/setup-davical.sh:82
+#: davical/setup-davical.sh:82
 msgid "Change it using the management interface https://@HOSTNAME@/davical/"
 msgstr ""
 
-#: modules/davical/setup-davical.sh:84
+#: davical/setup-davical.sh:84
 msgid ""
 "Use https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ to add "
 "calendar into caldav clients."
