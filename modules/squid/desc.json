@@ -8,21 +8,12 @@
             "type": "link",
             "name": "Management interface",
             "value": "https://@HOSTNAME@/mmc/main.php"
-           }
+        }
     ],
     "packages": [
         {
             "name": "all",
             "rpms": ["squid", "sarg", "python-mmc-squid", "mmc-web-squid"]
-        }
-    ],
-    "repositories": [
-        {
-            "slug": "mbs-repo",
-            "name": "Mandriva Business Server repositories",
-            "url": "http://mirror.mandriva.com/mbs1/@ARCH@/",
-            "restricted": false,
-            "options": "--distrib"
         }
     ],
     "config": [
