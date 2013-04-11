@@ -54,6 +54,7 @@ class Module(object):
         self._path = desc["module"]["path"]
         self._module = None
         if self.downloaded:
+            self.load_desc()
             self.load_module()
             self.load_translations()
         self.check_configured()
@@ -489,9 +490,9 @@ class Module(object):
 
     def load_desc(self):
         if self.downloaded:
-            logger.debug("Reloading %s desc.json" % self.slug)
+            logger.debug("Loading downloaded %s desc.json" % self.slug)
             h = open(os.path.join(self._path, "desc.json"))
-            self._desc = json.load(h)
+            self._desc.update(json.load(h))
             h.close()
 
     def load_module(self):
