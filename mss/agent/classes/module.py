@@ -64,6 +64,7 @@ class Module(object):
         return {'slug': self.slug,
                 'name': self.name,
                 'description': self.description,
+                'url': self._desc.get("url", False),
                 'actions': self.actions,
                 'downloaded': self.downloaded,
                 'installed': self.installed,
@@ -77,6 +78,7 @@ class Module(object):
                 'standalone': self.standalone,
                 'price': self.price,
                 'purshased': self.purshased,
+                'can_download': self._desc.get('can_download', True),
                 'reboot': self.reboot,
                 'module': self._desc.get("module", {})}
 
