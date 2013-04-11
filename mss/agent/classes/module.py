@@ -54,6 +54,7 @@ class Module(object):
         self._path = desc["module"]["path"]
         self._module = None
         if self.downloaded:
+            self.load_desc()
             self.load_module()
             self.load_translations()
         self.check_configured()
@@ -64,6 +65,7 @@ class Module(object):
         return {'slug': self.slug,
                 'name': self.name,
                 'description': self.description,
+                'url': self._desc.get("url", False),
                 'actions': self.actions,
                 'downloaded': self.downloaded,
                 'installed': self.installed,
@@ -77,6 +79,7 @@ class Module(object):
                 'standalone': self.standalone,
                 'price': self.price,
                 'purshased': self.purshased,
+                'can_download': self._desc.get('can_download', True),
                 'reboot': self.reboot,
                 'module': self._desc.get("module", {})}
 
@@ -487,9 +490,9 @@ class Module(object):
 
     def load_desc(self):
         if self.downloaded:
-            logger.debug("Reloading %s desc.json" % self.slug)
+            logger.debug("Loading downloaded %s desc.json" % self.slug)
             h = open(os.path.join(self._path, "desc.json"))
-            self._desc = json.load(h)
+            self._desc.update(json.load(h))
             h.close()
 
     def load_module(self):

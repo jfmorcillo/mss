@@ -107,95 +107,98 @@
     });
 </script>
 <form name="mss" action="{% url prepare %}" method="post">
-    <div class="bundle" id="{{ bundle.slug }}">
-        {% if not categories %}
-        <p class="alert alert-error">{% trans "No addon available in this section." %}</p>
+    {% if not categories %}
+    <p class="alert alert-error">{% trans "No addon available in this section." %}</p>
+    {% endif %}
+    {% for c in  categories %}
+    <div class="page-header">
+        <a name="{{ c.slug }}"></a>
+        <h1>{% if c.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ c.icon }}" /> {% endif %}{{ c.name }}</h1>
+    </div>
+        {% for m in c.modules %}
+        {% if m.standalone %}
+
+    <script type="text/javascript">
+        {% if m.conflicts %}
+            {% for conflict in m.conflicts %}
+        if (! conflicts.{{ conflict }})
+            conflicts.{{ conflict }} = new Array();
+        conflicts.{{ conflict }}.push("{{ m.slug }}");
+            {% endfor %}
         {% endif %}
-        {% for c in  categories %}
-        <div class="page-header">
-            <a name="{{ c.slug }}"></a>
-            <h1>{% if c.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ c.icon }}" /> {% endif %}{{ c.name }}</h1>
-        </div>
-            {% for m in c.modules %}
-            {% if m.standalone %}
+        {% if m.configured %}
+        installs.{{ m.slug }} = true;
+        {% else %}
+        installs.{{ m.slug }} = false;
+        {% endif %}
+    </script>
 
-        <script type="text/javascript">
-            {% if m.conflicts %}
-                {% for conflict in m.conflicts %}
-            if (! conflicts.{{ conflict }})
-                conflicts.{{ conflict }} = new Array();
-            conflicts.{{ conflict }}.push("{{ m.slug }}");
-                {% endfor %}
-            {% endif %}
+    <div class="module control-group" id="{{ m.slug }}">
+        <label class="{% if not m.configured and not m.conflict and m.can_download %}checkbox{% endif %}">
             {% if m.configured %}
-            installs.{{ m.slug }} = true;
+                <i class="icon-ok icon-blue"></i>
             {% else %}
-            installs.{{ m.slug }} = false;
-            {% endif %}
-        </script>
-
-        <div class="module control-group" id="{{ m.slug }}">
-            <label class="{% if not m.configured and not m.conflict %}checkbox{% endif %}">
-                {% if m.configured %}
-                    <i class="icon-ok icon-blue"></i>
+                {% if m.conflict %}
+                    <i class="icon-ban-circle"></i>
                 {% else %}
-                    {% if m.conflict %}
-                        <i class="icon-ban-circle"></i>
+                    {% if m.can_download %}
+                    <input type="checkbox" name="{{ m.slug }}" class="module-checkbox">
                     {% else %}
-                        <input type="checkbox" name="{{ m.slug }}" class="module-checkbox">
+                    <i class="icon-shopping-cart icon-blue"></i>
                     {% endif %}
                 {% endif %}
-                <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
-                {% if m.actions and m.configured %}
-                &nbsp;
-                <span class="btn-group">
-                    <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
-                        <i class="icon-cog"></i>&nbsp;<span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu">
-                        {% for action in m.actions %}
-                            {% ifequal action.type "link" %}
-                            <li><a href="{{ action.value }}" target="_blank">{{ action.name }}</a></li>
-                            {% endifequal %}
-                        {% endfor %}
-                    </ul>
-                </span>
-                {% endif %}
-                <div class="popover-content" style="display: none">
-                    {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This addon is installed and configured" %}</p>{% endif %}
-                    {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
-                        {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
-                    {% endif %}
-                    {% if m.purchased %}<p><i class="icon-shopping-cart"></i> {% trans "You have purshased this addon" %}</p>{% endif %}
-                </div>
-            </label>
-
-            {% comment %}
-            {% if m.configured %}
-            <span class="actions">{% trans "Actions" %}
-                <div class="actions" style="display: none">
-                    <div class="action">
-                        <input class="action" type="checkbox" name="force-{{ m.slug }}" id="force-{{ m.slug }}" /><label for="force-{{ m.slug }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
-                    </div>
-                </div>
+            {% endif %}
+            <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
+            {% if m.actions and m.configured %}
+            &nbsp;
+            <span class="btn-group">
+                <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
+                    <i class="icon-cog"></i>&nbsp;<span class="caret"></span>
+                </button>
+                <ul class="dropdown-menu">
+                    {% for action in m.actions %}
+                        {% ifequal action.type "link" %}
+                        <li><a href="{{ action.value }}" target="_blank">{{ action.name }}</a></li>
+                        {% endifequal %}
+                    {% endfor %}
+                </ul>
             </span>
             {% endif %}
-            {% endcomment %}
-
-            <span class="help-block">{{ m.description|safe }}</span>
-            <p>
-                {% if not m.configured %}
-                {% if not m.purchased and not m.price == 0 %}
-                <a class="btn btn-small btn-success" href="{{ m.url }}"><i class="icon-shopping-cart icon-white"></i> {% trans "Buy" %}</a>
+            <div class="popover-content" style="display: none">
+                {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This addon is installed and configured" %}</p>{% endif %}
+                {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
+                    {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                 {% endif %}
-                {% endif %}
-            </p>
+                {% if m.purchased %}<p><i class="icon-shopping-cart"></i> {% trans "You have purshased this addon" %}</p>{% endif %}
+            </div>
+        </label>
 
-        </div> <!-- /modules -->
+        {% comment %}
+        {% if m.configured %}
+        <span class="actions">{% trans "Actions" %}
+            <div class="actions" style="display: none">
+                <div class="action">
+                    <input class="action" type="checkbox" name="force-{{ m.slug }}" id="force-{{ m.slug }}" /><label for="force-{{ m.slug }}">{% trans "Reinstall and reconfigure" %} <img class="field" src="{{ MEDIA_URL }}img/reconfigure.png" alt="({% trans "Reconfigure" %})" title="{% trans "Reconfigure this module." %}" /></label>
+                </div>
+            </div>
+        </span>
+        {% endif %}
+        {% endcomment %}
+
+        <span class="help-block">{{ m.description|safe }}</span>
+        <p>
+            {% if not m.configured %}
+            {% if not m.purchased and m.price %}
+            <a class="btn btn-small btn-success" href="{{ m.url }}" target="_blank"><i class="icon-shopping-cart icon-white"></i> {{ m.price }}</a>
+            <a class="btn btn-small btn-info" href="{{ m.url }}" target="_blank"><i class="icon-info-sign icon-white"></i> {% trans "Info" %}</a>
             {% endif %}
-            {% endfor %}
+            {% endif %}
+        </p>
+
+    </div> <!-- /modules -->
+        {% endif %}
         {% endfor %}
-    </div> <!-- /category -->
+    {% endfor %}
 
     <div class="form-actions">
             <div class="pull-right">
