@@ -163,10 +163,6 @@ h3 {
     margin-top: 0;
 }
 
-.popover.right .arrow:after {
-    border-right-color: white;
-}
-
 .popover {
     -webkit-border-radius: 0px;
        -moz-border-radius: 0px;
@@ -174,7 +170,8 @@ h3 {
 }
 
 .module-popover {
-    width: 400px !important;
+    width: auto !important;
+    max-width: 400px;
 }
 
 .page-header {

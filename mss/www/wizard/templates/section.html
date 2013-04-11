@@ -55,6 +55,13 @@
                 }
             }
         );
+        $("[rel=url]").each(function() {
+            $(this).popover({
+                trigger: 'hover',
+                template: '<div class="popover module-popover"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
+                content: "{% trans "More info about this addon" %}",
+            });
+        });
     };
 
     setModulePopup = function(id, icon, text) {
@@ -148,9 +155,16 @@
                     {% endif %}
                 {% endif %}
             {% endif %}
-            <span class="module-name" rel="popover" data-original-title="">{{ m.name }}</span>
-            {% if m.actions and m.configured %}
+            <span class="module-name" rel="popover">{{ m.name }}</span>
             &nbsp;
+            {% if m.url %}
+            <span class="btn-group">
+                <a class="btn btn-mini" href="{{ m.url }}" target="_blank" rel="url">
+                    <i class="icon-info-sign"></i>
+                </a>
+            </span>
+            {% endif %}
+            {% if m.actions and m.configured %}
             <span class="btn-group">
                 <button class="btn btn-mini dropdown-toggle" data-toggle="dropdown">
                     <i class="icon-cog"></i>&nbsp;<span class="caret"></span>
@@ -169,7 +183,7 @@
                 {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
                     {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                 {% endif %}
-                {% if m.purchased %}<p><i class="icon-shopping-cart"></i> {% trans "You have purshased this addon" %}</p>{% endif %}
+                {% if m.purshased %}<p><i class="icon-shopping-cart"></i> {% trans "You have purshased this addon" %}</p>{% endif %}
             </div>
         </label>
 
@@ -187,11 +201,9 @@
 
         <span class="help-block">{{ m.description|safe }}</span>
         <p>
-            {% if not m.configured %}
-            {% if not m.purchased and m.price %}
+            {% if not m.configured and not m.purshased and m.price %}
             <a class="btn btn-small btn-success" href="{{ m.url }}" target="_blank"><i class="icon-shopping-cart icon-white"></i> {{ m.price }}</a>
             <a class="btn btn-small btn-info" href="{{ m.url }}" target="_blank"><i class="icon-info-sign icon-white"></i> {% trans "Info" %}</a>
-            {% endif %}
             {% endif %}
         </p>
 
