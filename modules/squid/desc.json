@@ -10,6 +10,12 @@
             "value": "https://@HOSTNAME@/mmc/main.php"
         }
     ],
+    "categories": [
+        {
+            "slug": "network",
+            "name": "Network"
+        }
+    ],
     "packages": [
         {
             "name": "all",

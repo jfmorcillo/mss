@@ -5,8 +5,8 @@
     "desc": "Manage your user's SSH keys using LDAP as a backend",
     "categories": [
         {
-            "slug": "other",
-            "name": "Other"
+            "slug": "users",
+            "name": "Users"
         }
     ],
     "actions": [
