@@ -42,15 +42,6 @@
             ]
         }
     ],
-    "repositories": [
-        {
-            "slug": "mbs-repo",
-            "name": "Mandriva Business Server repositories",
-            "url": "http://mirror.mandriva.com/mbs1/@ARCH@/",
-            "restricted": false,
-            "options": "--distrib"
-        }
-    ],
     "config": [
         {
             "type": "password",
