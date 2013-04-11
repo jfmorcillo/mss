@@ -42,6 +42,15 @@
             ]
         }
     ],
+    "repositories": [
+        {
+            "slug": "mbs-repo",
+            "name": "Mandriva Business Server repositories",
+            "url": "http://mirror.mandriva.com/mbs1/@ARCH@/",
+            "restricted": false,
+            "options": "--distrib"
+        }
+    ],
     "config": [
         {
             "type": "password",
@@ -65,13 +74,13 @@
             "help": "Configure the firewall to allow access to the web interface from external networks"
         }
     ],
-    "dependencies": ["system", "network", "mbs_repo"],
+    "dependencies": ["system", "network"],
     "postinstall": {
         "reboot": "yes"
     },
     "module": {
         "section": "core",
-        "dependencies": ["system", "network", "mbs_repo"],
+        "dependencies": ["system", "network"],
         "reboot": true
     }
 }
