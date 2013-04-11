@@ -57,7 +57,8 @@
             $("#summary").html("{% trans "Configuration terminated, details are displayed below." %}");
             $("#summary").addClass("alert-success");
             $("#summary").show('fast');
-            $("#next").html("{% trans "Continue" %}");
+            $("#next").html("{% trans "Continue" %} →");
+            $("#next").attr("href", "{{ transaction.next_step_url }}");
             $('#next').removeClass("disabled");
         }
     }
@@ -85,7 +86,8 @@
                     current_task.removeClass("alert-info");
                     current_task.addClass("alert-error");
                     current_task.html("{% trans "Configuration failed." %}");
-                    $('#next').html("{% trans "Home page" %}");
+                    $("#next").html("{% trans "Retry" %}");
+                    $("#next").attr("href", "{{ transaction.current_step_url }}");
                     $('#next').removeClass("disabled");
                     install_summary = current_task.next();
                     log = new collectLog();
@@ -105,8 +107,9 @@
     }
 
     stop = function() {
-        $("#next").html("{% trans "Home page" %}");
-        $("#next").removeClass('disabled');
+        $("#next").html("{% trans "Retry" %}");
+        $("#next").attr("href", "{{ transaction.current_step_url }}");
+        $('#next').removeClass("disabled");
         $("#summary").html("{% trans "Configuration terminated, details are displayed below." %}");
         $("#summary").addClass("alert-info");
         $("#summary").show('fast');
@@ -173,7 +176,7 @@
 
     <div class="form-actions">
         <div class="pull-right">
-            <a href="{{ transaction.next_step_url }}" class="disabled" id="next">{% trans "Please wait..." %}</a>
+            <a href="#" class="disabled" id="next">{% trans "Please wait..." %}</a>
         </div>
     </div>
 </section>
