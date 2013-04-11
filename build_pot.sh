@@ -27,7 +27,7 @@ pot="locale/agent.pot"
 json="../../modules/sections.json"
 langs="fr_FR pt_BR"
 rm -f ${pot}
-echo -n "creating ${pot}"
+echo "creating ${pot}"
 touch ${pot}
 json2po --filter=name,desc,description,label,help --progress=none ${json} --pot ${pot}
 find . -name modules -prune -o -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
@@ -39,22 +39,22 @@ popd
 pushd modules
 
 # Modules translation
-for module in modules/*; do
+for module in *; do
     if [ -d $module ]; then
         mod=`basename $module`
-        json=modules/${mod}/desc.json
-        pot=modules/${mod}/locale/${mod}.pot
+        json=${mod}/desc.json
+        pot=${mod}/locale/${mod}.pot
         for lang in $langs; do
-            [ ! -d modules/${mod}/locale/$lang/LC_MESSAGES ] && mkdir -p modules/${mod}/locale/$lang/LC_MESSAGES
-            touch modules/${mod}/locale/${lang}/LC_MESSAGES/${mod}.po
+            [ ! -d ${mod}/locale/$lang/LC_MESSAGES ] && mkdir -p ${mod}/locale/$lang/LC_MESSAGES
+            touch ${mod}/locale/${lang}/LC_MESSAGES/${mod}.po
         done
         rm -f ${pot}
         touch ${pot}
         if [ -f $json ]; then
-            echo -n "creating ${pot}"
+            echo "creating ${pot}"
             json2po --filter=name,desc,description,label,help --progress=none ${json} --pot ${pot}
-            bash --dump-po-strings modules/${mod}/*.sh >> ${pot}
-            find modules/${mod} -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
+            bash --dump-po-strings ${mod}/*.sh >> ${pot}
+            find ${mod} -iname "*.py" -exec xgettext -j -o ${pot} --language=Python --keyword=_ {} \;
             # Remove duplicates
             sed '/msgctxt/d' ${pot} | msguniq > ${pot}.tmp
             mv ${pot}.tmp ${pot}
