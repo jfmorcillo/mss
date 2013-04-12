@@ -345,7 +345,8 @@ $c->authenticate_hook['config'] = array(
     );
 
   /* If there is some user you do not want to sync from LDAP, put their username in this list */
-  $c->do_not_sync_from_ldap = array( 'admin' => true );
+//  $c->do_not_sync_from_ldap = array( 'admin' => true );
+  $c->do_not_sync_from_ldap = array( );
 
 include('drivers_ldap.php');
 

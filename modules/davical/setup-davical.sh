@@ -33,11 +33,10 @@ for (( i=10 ; i ; i-=1 )); do sleep 1; echo -n '.'; done
 # Drop any Davical DB
 su postgres -c 'dropdb davical' 2>/dev/null
 # Create the DB
-su postgres -c /usr/share/davical/dba/create-database.sh 2>&1
+su postgres -c /usr/share/davical/dba/create-database.sh > /dev/null
 # Get the generated password from the DB
-DAVICAL_ADMIN_PASS=`su postgres -c "psql davical -c 'select username, password from usr;'" | sed -n '/admin/s/^ *admin.*\*\*\(.*\)$/\1/p'`
-
-[ ! $DAVICAL_ADMIN_PASS ] && error $"Failed to setup the database." && exit 1
+#DAVICAL_ADMIN_PASS=`su postgres -c "psql davical -c 'select username, password from usr;'" | sed -n '/admin/s/^ *admin.*\*\*\(.*\)$/\1/p'`
+#[ ! $DAVICAL_ADMIN_PASS ] && error $"Failed to setup the database." && exit 1
 
 ###Enable acces to Davical folder
 backup $APACHE_DAVICAL_CONF
@@ -76,10 +75,25 @@ su apache -c "/usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~
 cat $DAVICAL_CRON_TEMPLATE > $DAVICAL_CRON
 sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CRON
 
+### Set user admin from ldap as the administrator of the calendars 
+#get ldap admin email
+ADMIN_MAIL=`ldapsearch -LLL -x uid='admin' mail | grep mail | sed 's/mail: //'`
+[ ! $? ] && error $"Cannot get email address for user admin from the ldap, please check your configuration" && exit 1
+
+#set admin user from ldap as administrator
+ADMIN_INSERT=`su postgres -c "psql davical -c \"insert into role_member select 1, user_no from usr where username= '$ADMIN_MAIL'  ; \" "`
+
+#check that new administrator has been set
+[ "$ADMIN_INSERT" != "INSERT 0 1" ] && error $"Cannot set user $ADMIN_MAIL as Davical administrator, exiting" && exit 1
+
+#remove local administrator
+su postgres -c "psql davical -c \"delete from role_member where user_no=1;\" "
+[ ! $? ] && warning $"Failed to remove local administrator from Davical DB"
+
 info_b $"The calendar and addressbook service is configured."
-info $"- Administrator : admin"
-info $"- Password : $DAVICAL_ADMIN_PASS"
-info $"Change it using the management interface https://@HOSTNAME@/davical/"
+info $"- Administrator : $ADMIN_MAIL"
+info $"- Password : use the one you've chose for the administrator"
+#info $"Change it using the management interface https://@HOSTNAME@/davical/"
 
 info_b $"Use https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ to add calendar into caldav clients."
 
