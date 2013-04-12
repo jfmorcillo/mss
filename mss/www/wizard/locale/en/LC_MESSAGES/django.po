@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-11 22:29+0200\n"
+"POT-Creation-Date: 2013-04-12 04:51+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -337,27 +337,31 @@ msgstr ""
 msgid "This addon can't be installed with"
 msgstr ""
 
-#: templates/section.html:111
+#: templates/section.html:62
+msgid "More info about this addon"
+msgstr ""
+
+#: templates/section.html:118
 msgid "No addon available in this section."
 msgstr ""
 
-#: templates/section.html:168
+#: templates/section.html:182
 msgid "This addon is installed and configured"
 msgstr ""
 
-#: templates/section.html:169
+#: templates/section.html:183
 msgid "This module conflicts with : "
 msgstr ""
 
-#: templates/section.html:172
+#: templates/section.html:186
 msgid "You have purshased this addon"
 msgstr ""
 
-#: templates/section.html:194
+#: templates/section.html:207
 msgid "Info"
 msgstr ""
 
-#: templates/section.html:206
+#: templates/section.html:218
 msgid "Install and configure selected addons"
 msgstr ""
 

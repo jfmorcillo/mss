@@ -1,25 +1,46 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
-"PO-Revision-Date: 2013-03-26 09:39+0000\n"
+"POT-Creation-Date: 2013-04-12 04:51+0200\n"
+"PO-Revision-Date: 2013-04-15 13:41+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[1].label
-msgid "Allow access from external networks"
+#: .description .desc
+msgid "Restrict and cache internet access"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "Proxy-cache service"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the proxy service from internal "
+"networks"
+msgstr ""
+
+#: .config[0].name
+msgid "fw_lan"
 msgstr ""
 
 #: .config[0].label
@@ -32,58 +53,42 @@ msgid ""
 "networks"
 msgstr ""
 
-#: .config[0].help
-msgid ""
-"Configure the firewall to allow access to the proxy service from internal "
-"networks"
-msgstr ""
-
-#: modules/squid/setup-squid.sh:75
-msgid "Configure your clients to access the proxy service at @HOSTNAME@:3128"
-msgstr ""
-
-#: modules/squid/create-groups.py:12
-msgid "Filtered access to Internet"
-msgstr ""
-
-#: modules/squid/create-groups.py:11
-msgid "Full access to Internet"
-msgstr ""
-
-#: .actions[0].name
-msgid "Management interface"
-msgstr ""
-
-#: .name
-msgid "Proxy-cache service"
-msgstr ""
-
-#: .description .desc
-msgid "Restrict and cache internet access"
-msgstr ""
-
-#: modules/squid/setup-squid.sh:58
-msgid "Something went wrong while creating the user groups."
-msgstr ""
-
-#: modules/squid/setup-squid.sh:73
-msgid "The proxy service is running."
-msgstr ""
-
-#: modules/squid/setup-squid.sh:77
-msgid ""
-"You can manage proxy rules from the management interface : https://"
-"@HOSTNAME@/mmc/"
-msgstr ""
-
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .config[0].name
-msgid "fw_lan"
-msgstr ""
-
 #: .config[1].name
 msgid "fw_wan"
 msgstr ""
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr ""
+
+#: .categories[0].name
+msgid "Network"
+msgstr ""
+
+#: squid/setup-squid.sh:58
+msgid "Something went wrong while creating the user groups."
+msgstr ""
+
+#: squid/setup-squid.sh:73
+msgid "The proxy service is running."
+msgstr ""
+
+#: squid/setup-squid.sh:75
+msgid "Configure your clients to access the proxy service at @HOSTNAME@:3128"
+msgstr ""
+
+#: squid/setup-squid.sh:77
+msgid ""
+"You can manage proxy rules from the management interface : "
+"https://@HOSTNAME@/mmc/"
+msgstr ""
+
+#: squid/create-groups.py:11
+msgid "Full access to Internet"
+msgstr ""
+
+#: squid/create-groups.py:12
+msgid "Filtered access to Internet"
+msgstr ""
+
+
