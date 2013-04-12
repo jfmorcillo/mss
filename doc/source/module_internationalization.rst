@@ -6,22 +6,22 @@ MSS uses gettext facilities for internationalization support.
 Translation files must be located in ``locale/<lang>/LC_MESSAGES/<module_name>.po`` in
 the module's directory.
 
-You can use the ``build_pot.sh`` script to extract the strings of ``desc.xml`` to create
-the modules po file thanks to ``xml2po``.
+You can use the ``build_pot.sh`` script to extract the strings of ``desc.json`` to create
+the modules po file thanks to ``json2po``.
 
-To translate the configuration script output, just add the strings in
-the ``desc.xml`` file in ``<text>`` nodes :
-
-.. highlight:: xml
+The strings marked for translation in the setup script are also extracted by this script.
+We use the standard bash method to translate strings with gettext. In your setup script:
 
 ::
 
-    <module id="module">
-        <name>My module</name>
-        [ ... ]
-        <text>started succesfully.</text>
-        <text>fails starting. Check</text>
-        <text>Mandriva Directory Server is running.</text>
-        <text>You can log in the MDS interface from https://@HOSTNAME@/mmc/.</text>
-        <text>MDS administrator : root</text>
-    </module>
+    info $"Administrator name : root"
+    info $"Administrator password : $mypass"
+
+You can also translate strings in the module python files like this:
+
+::
+
+    from mss.agent.managers.translation import TranslationManager
+    _ = TranslationManager().translate
+
+    _('Text to translate', 'module_slug')

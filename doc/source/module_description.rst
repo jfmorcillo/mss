@@ -1,35 +1,59 @@
 Module description
 =================================================
 
-The modules are located in the mss.agent.modules python package.
+The stock modules are located in the modules directory.
 
-A module directory contains :
+Each module directory contains:
 
-- a XML file describing the module, ``desc.xml``
-- an ``__init__.py`` file
+- a JSON file describing the module, ``desc.json``
+- an ``__init__.py`` file because a module is also a python module
 - some python functions to retrieve the current configuration in the ``__init__.py`` file (optional)
-- locales
+- gettext files
 - a setup script (optional)
 - templates files used by the setup script (optional)
 
-The desc.xml file
+The desc.json file
 -------------------------------------------------
 
-For full examples of the ``desc.xml`` file check-out the :doc:`module_desc_example` page.
+For full examples of the ``desc.json`` file check-out the :doc:`module_desc_example` page.
 
-.. highlight:: xml
+.. highlight:: javascript
 
 Basic description
 ^^^^^^^^^^^^^^^^^
-
-The XML root is defined by a <module> node. The id parameter use the
-same name as the module name
+The module is identified by its slug. Basically it uses the same name of the
+module's directory.
 
 ::
 
- <module id="module">
-    <name>My module</name>
-    <desc>A great module</desc>
+ {
+    "slug": "module1",
+    "name": "My module",
+    "description": "A great module",
+
+
+Categorization and location
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+For the module to appear in the web client you need to set it's section and
+optionnaly a category in this section.
+
+::
+
+    "standalone": true,
+    "categories": [
+        {
+            "slug": "users",
+            "name": "Users"
+        }
+    ],
+    "module": {
+        "section": "core"
+    }
+
+Sections are defined in ``modules/sections.json``.
+
+The module can be hidden when using standalone = false.
 
 Actions
 ^^^^^^^
@@ -39,30 +63,50 @@ html links are supported.
 
 ::
 
- <actions>
-     <action type="link" name="Management interface" value="https://@HOSTNAME@/mmc/" />
-     <action type="link" name="Webmail" value="http://@HOSTNAME@/roundcubemail/" />
- </actions>
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        },
+        {
+            "type": "link",
+            "name": "Webmail interface",
+            "value": "http://@HOSTNAME@/roundcubemail/"
+        }
+    ],
 
-Medias
-^^^^^^
+Repositories
+^^^^^^^^^^^^
 
-MSS allows you to add medias on the system to install packages.
+MSS allows you to add repositories on the system to install packages.
 
-* @verbose_name : name displayed in the web interface when adding the media
-* @name : name used in the urmpi.cfg file
-* @auth (optional) : None (default) | my
-* @proto : http (default) | https
-* @mode (optional) : None (default) | distrib | updates
-* @can_skip (optional) : Node (default) | yes
+* @slug: name used in the urmpi.cfg file
+* @name: name displayed in the web interface when adding the repository
+* @url: location of the repository
+* @restricted: if repository need an HTTP authentication
+* @options: options passed to the package manager when adding the media
 
 @ARCH@ will be replaced by the machine arch (x86_64 or i586).
 
 ::
 
-    <medias verbose_name="MES5 repositories" name="mes5" auth="my" proto="https">
-        <url>download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/</url>
-    </medias>
+    "repositories": [
+        {
+            "slug": "repo1",
+            "name": "Repository one",
+            "url": "http://mirror.mandriva.com/one/@ARCH@/",
+            "restricted": false,
+            "options": "--updates"
+        },
+        {
+            "slug": "repo2",
+            "name": "Repository two",
+            "url": "http://mirror.mandriva.com/two/@ARCH@/",
+            "restricted": true,
+            "options": "--distrib"
+        }
+    ]
 
 
 Packages
@@ -70,23 +114,31 @@ Packages
 
 Your module may install some packages. The packages can be arch dependant.
 
-* @name : i586 | x86_64 | all
+* @name: i586 | x86_64 | all
 
 ::
 
-    <packages>
-        <target name="all">
-            <rpm>openldap-servers</rpm>
-            <rpm>openldap-clients</rpm>
-        </target>
-        <target name="i686">
-            <rpm>libsasl2-plug-gssapi</rpm>
-        </target>
-        <target name="x86_64">
-            <rpm>lib64sasl2-plug-gssapi</rpm>
-        </target>
-    <packages>
-
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "openldap-servers",
+                "openldap-clients"
+            ]
+        },
+        {
+            "name": "i686",
+            "rpms": [
+                "libsasl2-plug-gssapi"
+            ]
+        },
+        {
+            "name": "x86_64",
+            "rpms": [
+                "lib64sasl2-plug-gssapi"
+            ]
+        }
+    ]
 
 Conflicts
 ^^^^^^^^^
@@ -95,9 +147,9 @@ If the module conflicts with other modules in MSS.
 
 ::
 
-    <conflicts>
-        <module>some_module</module>
-    </conflicts>
+    "module": {
+        "conflicts": ["module2"]
+    }
 
 
 Dependencies
@@ -108,10 +160,9 @@ dependency it will be installed and configured before the current module.
 
 ::
 
-    <deps>
-        <modules>some_other_module</modules>
-    </deps>
-
+    "module": {
+        "dependencies": ["module34", "module23"]
+    }
 
 Module configuration
 ^^^^^^^^^^^^^^^^^^^^
@@ -123,117 +174,136 @@ Configuration definition starts with :
 
 ::
 
-    <config>
+    "config": [
 
 Then add some form fields.
 
 Simple text field
 """""""""""""""""
 
-* @name : field name
-* @require : the field is mandatory (optional)
-* @default : default value for the field - can be a string or a custom method (optional)
-* @validation : fqdn | ip | custom method (validate the field data - optional)
-* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
-* @edit_if_unconfigured : the field won't be editable on reconfiguration (optional)
+* @name: field name
+* @require: the field is mandatory (optional)
+* @default: default value for the field - can be a string or a custom method (optional)
+* @validation: fqdn | ip | custom method (validate the field data - optional)
+* @label: verbose name of the field
+* @help: verbose help for the field
 
 ::
 
-    <text name="param1" require="yes" default="default_text" validation="ip">
-        <label>Param 1</label>
-        <help>Some help on param 1</help>
-    </text>
+    {
+        "type": "text",
+        "name": "server1",
+        "label": "Server 1 IP",
+        "help": "The first server IP address",
+        "require": "yes",
+        "default": "127.0.0.1",
+        "validation": "ip"
+    }
 
-The custom method for validation or default value must be declared in the
+
+The custom method for validation or the default value must be declared in the
 module's __init__.py file.
 
 Password field
 """"""""""""""
 
 The generated form will add automatically a second password field to validate
-the password
+the password in the web client.
 
-* @name : field name
-* @require : the field is mandatory (optional)
-* @default : default value for the field - can be a string or a custom method (optional)
-* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
+* @name: field name
+* @require: the field is mandatory (optional)
+* @default: default value for the field - can be a string or a custom method (optional)
+
 
 ::
 
-    <password name="password" require="yes" default="default_pass">
-        <label>Password</label>
-        <help>Some help on password</help>
-    </password>
+        {
+            "type": "password",
+            "name": "passwd",
+            "label": "Password",
+            "help": "The server password",
+            "require": "yes",
+            "default": ""
+        }
 
 Multi text field
 """"""""""""""""
 
-* @name : field name
-* @multi : yes | no (add/remove fields buttons)
-* @require : yes | no (the field is mandatory - optional)
-* @default : default value for the field - can be a string or a custom method (optional)
-* @validation : fqdn | ip | custom method (validate the field data - optional)
-* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
+Same as a text field but with the multi option. Will allow the user to specify
+multiple value for this field.
 
 ::
 
-    <text name="param2" multi="yes" default="text1;text2;text3">
-        <label>Param 2</label>
-        <help>Some help on param 2</help>
-    </text>
+        {
+            "type": "text",
+            "multi": "yes",
+            "name": "param1",
+            ...
+        }
 
 Network field
 """""""""""""
 
 This special field let the user input a network description (ip/netmask)
 
-* @name : field name
-* @format : long | short (/24 or /255.255.255.0 - format used in the config script)
-* @default : default value for the field - can be a string or a custom method (optional)
-* @validation : network (optional)
-* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
+* @name: field name
+* @format: long | short (/24 or /255.255.255.0 - format used in the config script)
+* @default: default value for the field - can be a string or a custom method (optional)
+* @validation: network (optional)
+
 
 ::
 
-    <network name="param3" format="short" validation="network">
-        <label>Param 3</label>
-        <help>Some help on param 3</help>
-    </network>
+        {
+            "type": "network",
+            "name": "bind_networks",
+            "format": "short",
+            "validation": "network",
+            "default": "get_networks",
+            "label": "My networks",
+            "help": "Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0."
+        }
 
 Select list field
 """""""""""""""""
 
-* @name : field name
-* @require : yes | no (mandatory field - optional)
-* @default : default selected value - can be a string or a custom method (optional)
-* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
+* @name: field name
+* @require: yes | no
+* @options: list of values
 
 ::
 
-    <options name="param4" require="yes">
-        <label>Param 4</label>
-        <help>Some help on param 4</help>
-        <option value="option1">Option 1</option>
-        <option value="option2">Option 2</option>
-        <option value="option3">Option 3</option>
-    </options>
+        {
+            "type": "options",
+            "name": "popimap_proto",
+            "require": "yes",
+            "label": "Protocols supported",
+            "help": "Protocols that the dovecot server will provide.",
+            "options": [
+                        { "name": "IMAPS and POP3S", "value": "imap imaps pop3 pop3s" },
+                        { "name": "IMAPS", "value": "imaps imap" },
+                        { "name": "POP3S", "value": "pop3s pop3" }
+            ]
+        }
 
 Checkbox field
 """"""""""""""
 
-* @name : field name
-* @default : on | off
-* @show_if_unconfigured : the field won't be displayed on reconfiguration (optional)
+* @name: field name
+* @default: on | off
 
 ::
 
-    <check name="param5" default="on">
-        <label>Param 5</label>
-        <help>Some help on param 5</help>
-    </check>
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow mail services access from internal networks",
+            "help": "Configure the firewall to accept smtp/imap/pop3 connections on interfaces configured as 'internal'"
+        }
 
+For full examples of the ``desc.json`` file check-out the :doc:`module_desc_example` page.
 
-For full examples of the ``desc.xml`` file check-out the :doc:`module_desc_example` page.
 
 The __init__.py file
 -------------------------------------------------
@@ -254,10 +324,10 @@ to be declared.
 MSS use this function to get the name of the configuration script and the order
 of the parameters used to call the script. The script name is relative to the
 module directory. The names of the parameters are the field names used in the
-configuration description in ``desc.xml``.
+configuration description in ``desc.json``.
 
-If you want to retrieve the current configuration of the module when re-configuring
-the module in MSS you have to write a :py:func:`get_current_config` function.
+If you want to retrieve the current configuration of the module when configuring
+the module you have to write a :py:func:`get_current_config` function.
 
 .. py:function:: get_current_config()
 
@@ -267,10 +337,10 @@ the module in MSS you have to write a :py:func:`get_current_config` function.
 
 
 The values returned by this function replaces the default values set in in the
-configuration description in ``desc.xml``. Have a look in ``mds_*`` modules for some examples.
+configuration description in ``desc.json``. Have a look in ``mds_*`` modules for some examples.
 
-After a module is configured on MSS, the module is automatically tagged as 
-configured in the MSS database. You can also write a :py:func:`check_configured` 
+After a module is configured on MSS, the module is automatically tagged as
+configured in the MSS database. You can also write a :py:func:`check_configured`
 function that tells MSS if the module is configured or not. This will override
 the database value.
 
@@ -281,46 +351,75 @@ the database value.
     :rtype: bool
 
 
-Example of ``mds_mmc`` module
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Dynamic configuration fields
+----------------------------
 
-Configuration definition in ``desc.xml`` :
+If you want to generate configuration fields dynamically you can create a
+custom field in ``desc.json``:
 
 ::
 
-    <config>
-        <text name="mdsdomain" require="yes" default="example.com" validation="fqdn">
-            <label>MDS domain name</label>
-            <help>Usually the domain name (eg: domain.com) managed with MDS.
-            This define the LDAP root.</help>
-        </text>
-        <password name="mdspasswd" require="yes">
-            <label>MDS password</label>
-            <help>The MDS admin password.</help>
-        </password>
-        <check name="mdsppolicy" default="on">
-            <label>Password policy</label>
-            <help>Enable password policy on MDS (password age, expiration,
-            history, lock-out...)</help>
-        </check>
-    </config>
+    "config": [
+        {
+            "type": "custom",
+            "name": "interfaces"
+        }
+    ]
+
+Then in ``__init__.py`` write the ``get_<field_name>_config`` function to return
+the fields definition in python. A good example is in the network module. The
+method will create configuration fields for all network interfaces available on
+the host.
+
+
+Example of ``mds_mmc`` module
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Configuration definition in ``desc.json`` :
+
+::
+
+    "config": [
+        {
+            "type": "password",
+            "name": "mdspasswd",
+            "require": "yes",
+            "label": "Administrator password",
+            "help": "The administrator password of the web interface for managing MBS users and services."
+        },
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow access from internal networks",
+            "help": "Configure the firewall to allow access to the web interface from internal networks"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow access from external networks",
+            "help": "Configure the firewall to allow access to the web interface from external networks"
+        }
+    ],
 
 
 ``__init__.py`` file :
 
-.. literalinclude:: ../../mss/agent/modules/mds_mmc/__init__.py
+.. literalinclude:: ../../modules/mds_mmc/__init__.py
+    :linenos:
     :language: py
 
 The setup script and templates
 ------------------------------
 
 To run modules configuration the MSS agent runs shell scripts as root in the
-background. The script name and its parameters launch by MSS have to be declared 
+background. The script name and its parameters launch by MSS have to be declared
 in the :py:func:`get_config_info` function.
 
 ``mds_webmail`` script example :
 
-.. literalinclude:: ../../mss/agent/modules/mds_webmail/setup-webmail.sh
+.. literalinclude:: ../../modules/mds_webmail/setup-webmail.sh
     :linenos:
     :language: sh
 

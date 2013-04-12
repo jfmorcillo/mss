@@ -1,14 +1,14 @@
-Module ``desc.xml`` examples
+Module ``desc.json`` examples
 =================================================
 
 ``mds_mmc`` module
 ------------------
 
-.. literalinclude:: ../../mss/agent/modules/mds_mmc/desc.xml
-    :language: xml
-    
-``zarafa`` module
+.. literalinclude:: ../../modules/mds_mmc/desc.json
+    :language: javascript
+
+``mds_mail`` module
 ----------------------
 
-.. literalinclude:: ../../mss/agent/modules/zarafa/desc.xml
-    :language: xml
+.. literalinclude:: ../../modules/mds_mail/desc.json
+    :language: javascript

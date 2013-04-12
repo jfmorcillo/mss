@@ -15,47 +15,52 @@ interface.
 
 A module is characterized by :
 
-1. a name
-2. a description
-3. some pre-installation text
-4. packages
-5. medias to add in order to install the packages
-6. dependencies
-7. conflicts
-8. configuration field and types
-9. some python methods to get the current module configuration
+1. name
+2. description
+3. rpm packages
+4. medias to add in order to install the packages
+5. dependencies with other MSS modules
+6. conflicts with other MSS modules
+7. configuration fields for user input
+8. a shell script to do the configuration
 
-Most of this information is written in an XML file. For example, this is the description of
+Most of this information is written in an JSON file. For example, this is the description of
 the mysql module:
 
-.. highlight:: xml
+.. highlight:: javascript
 
 ::
 
-    <module id="mysql">
-        <name>MySQL database</name>
-        <desc>MySQL relational database</desc>
-        <packages>
-            <target name="all">
-                <rpm>mysql</rpm>
-                <rpm>mysql-client</rpm>
-            </target>
-        </packages>
-        <conflicts>
-            <module>mysqlmax</module>
-        </conflicts>
-        <config>
-            <password name="current_mypasswd">
-                <label>Current password</label>
-                <help>Current MySQL root password. Leave blank for first installation.</help>
-            </password>
-            <password name="mypasswd" require="yes">
-                <label>New password</label>
-                <help>New MySQL root password. Set here the new password.</help>
-            </password>
-        </config>
-    </module>
-    
+    {
+        "slug": "mysql",
+        "name": "MySQL database",
+        "description": "MySQL relational database",
+        "packages": [
+            {
+                "name": "all",
+                "rpms": ["mysql", "mysql-client"]
+            }
+        ],
+        "conflict": ["mysqlmax"],
+        "config": [
+            {
+                "type": "password",
+                "name": "current_mypasswd",
+                "show": "configured",
+                "label": "Current password",
+                "help": "Current MySQL root password."
+            },
+            {
+                "type": "password",
+                "name": "mypasswd",
+                "require": "yes",
+                "label": "New password",
+                "help": "New MySQL root password. Set here the new password"
+            }
+        ],
+        "standalone": false
+    }
+
 For mor detailled info check :doc:`module_description`
 
 MSS web interface (mss.www python package)
@@ -64,19 +69,3 @@ MSS web interface (mss.www python package)
 The MSS web interface is served by the cherrypy webserver. Django is used on top of
 cherrypy as it provides nice features for templating, url naming, internationalization,
 authentication backends in a modular approach.
-
-Authentication process
-----------------------
-
-.. image:: media/authentication.png
-
-
-Front page and section page render
-----------------------------------
-
-.. image:: media/section_render.png
-
-Module installation
-----------------------------------
-
-.. image:: media/module_install.png

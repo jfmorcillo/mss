@@ -24,13 +24,12 @@ Contents
 
 .. toctree::
    :maxdepth: 2
-      
+
    architecture
    module_description
    module_desc_example
-   module_init_example   
+   module_init_example
    module_internationalization
-   layouts
 
 Indices and tables
 ==================
