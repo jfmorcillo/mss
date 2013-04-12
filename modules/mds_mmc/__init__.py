@@ -20,4 +20,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ("setup-mmc.sh", ['mdspasswd', 'fw_lan', 'fw_wan'])
+    return ("setup-mmc.sh", ['mdspasswd', 'fw_lan', 'fw_wan', 'admin'])

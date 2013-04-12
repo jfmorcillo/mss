@@ -44,6 +44,13 @@
     ],
     "config": [
         {
+            "type": "text",
+            "name": "admin",
+            "require": "yes",
+            "default": "admin",
+            "label": "Administrator name",
+            "help": "The name of the administrator for the services you will deploy."
+        },        {
             "type": "password",
             "name": "mdspasswd",
             "require": "yes",

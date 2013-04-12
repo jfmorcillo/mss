@@ -23,6 +23,7 @@ mypass_e=`escape_sed $mypass`
 mysuffix=`calc_suffix $DOMAIN`
 fw_lan=$2
 fw_wan=$3
+adminUID=$4
 
 # LDAP schema
 add_schema templates/mmc.schema
@@ -123,6 +124,12 @@ restart_service ldap
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
+
+# create the user admin
+python -c 'from mmc.plugins.base import *; createUser($adminUID, $mypass, $adminUID, $adminUID, "/home/$adminUID")'
+python -c 'from mmc.plugins.base import *; changeUserAttributes($adminUID, "uidNumber", "512")'
+python -c 'from mmc.plugins.base import *; changeUserAttributes($adminUID, "gidNumber", "512")'
+python -c 'from mmc.plugins.base import *; changeUserAttributes($adminUID, "loginShell:", "/bin/false")'
 
 # configure the Firewall
 [ $fw_lan == "on" ] && mss-add-shorewall-rule -a Web/ACCEPT -t lan

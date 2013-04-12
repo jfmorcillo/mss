@@ -49,7 +49,7 @@
             "label": "Netbios name",
             "help": "The name of your SAMBA server in the Microsoft domain."
         },
-        {
+/*        {
             "type": "text",
             "name": "smbadmin",
             "require": "yes",
@@ -63,7 +63,7 @@
             "require": "yes",
             "label": "Administrator password",
             "help": "Password for the Microsoft domain administrator."
-        },
+        },*/
         {
             "type": "check",
             "name": "fw_lan",
