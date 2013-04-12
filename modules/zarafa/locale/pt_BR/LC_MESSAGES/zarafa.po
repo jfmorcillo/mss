@@ -1,88 +1,58 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
-"PO-Revision-Date: 2013-03-26 09:40+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2013-04-12 04:51+0200\n"
+"PO-Revision-Date: 2013-04-16 14:12+0000\n"
+"Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[6].label
-msgid "ActiveSync support"
-msgstr "Suporte ActiveSync"
-
-#: .config[2].label
-msgid "Attachments directory"
-msgstr "Diretório de anexos"
-
-#: .config[5].label
-msgid "CalDAV/iCal support"
-msgstr "Suporte CalDAV/iCal"
-
-#: .config[3].help
-msgid "Create default folders for users in the selected language"
-msgstr "Criar pastas padrão para usuários no idioma selecionado"
-
-#: .config[3].label
-msgid "Default language for Zarafa folders"
-msgstr "Linguagem padrão para as pastas Zarafa"
-
-#: .config[3].options[2].name
-msgid "Deutsch"
-msgstr "Alemão"
-
-#: .config[6].help
+#: .description .desc
 msgid ""
-"Enable ActiveSync for mobile phones synchronisation (mail, contacts, "
-"calendars)"
+"Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
+"compatibility, ActiveSync support and a rich webmail interface. Zarafa users"
+" and groups are managed in the MBS management interface"
 msgstr ""
-"Habilitar ActiveSync para sincronização de telefones móveis (mail, contatos, "
-"calendários)"
+"Zarafa é uma substituição para o Microsoft Exchange. Possui total "
+"compatibilidade MS Outlook, suporte ActiveSync e uma interface de webmail "
+"rica. Zarafa usuários e grupos são gerenciados na interface de gerenciamento"
+" MBS"
 
-#: .config[4].help
-msgid "Enable IMAP and IMAPS on the Zarafa server"
-msgstr "Ativar IMAP e IMAPS no servidor Zarafa"
+#: .actions[0].name
+msgid "Users and groups management"
+msgstr "Gerenciamento de usuários e grupos"
 
-#: .config[3].options[0].name
-msgid "English"
-msgstr "Inglês"
+#: .actions[1].name
+msgid "Zarafa webmail interface"
+msgstr "Zarafa webmail interface"
 
-#: .config[5].help
-msgid ""
-"Export calendars in CalDAV/iCal format for mail clients (thunderbird, "
-"evolution...)"
-msgstr ""
-"Exportar calendários no formato CalDAV/iCal para os clientes de email "
-"(thunderbird, evolution...)"
+#: .name
+msgid "Zarafa Collaboration Platform"
+msgstr "Zarafa Plataforma de Configuração"
 
-#: .config[3].options[1].name
-msgid "Français"
-msgstr "Francês"
+#: .packages[0].name
+msgid "all"
+msgstr "todos"
 
-#: .config[4].label
-msgid "IMAP/IMAPS support"
-msgstr "Suporte IMAP/IMAPS"
+#: .config[0].help
+msgid "Used to create the zarafa database"
+msgstr "Usado para criar o banco de dados Zarafa"
 
-#: .config[7].label
-msgid "My hostname"
-msgstr "Meu hostname"
-
-#: .config[8].label
-msgid "My networks"
-msgstr "Minhas redes"
+#: .config[0].name
+msgid "mysql_rootpasswd"
+msgstr "mysql_rootpasswd"
 
 #: .config[0].label
 msgid "MySQL root password"
@@ -92,9 +62,105 @@ msgstr "Senha de root MySQL"
 msgid "MySQL user password for the zarafa database"
 msgstr "Senha do usuário MySQL para o banco de dados Zarafa"
 
+#: .config[1].name
+msgid "mysql_zarafapasswd"
+msgstr "mysql_zarafapasswd"
+
 #: .config[1].label
 msgid "MySQL zarafa password"
 msgstr "Senha do zarafa MySQL"
+
+#: .config[2].help
+msgid "Where do you want to store mail attachments ?"
+msgstr "Onde você deseja armazenar os anexos de email?"
+
+#: .config[2].label
+msgid "Attachments directory"
+msgstr "Diretório de anexos"
+
+#: .config[2].name
+msgid "zarafa_attachments"
+msgstr "zarafa_attachments"
+
+#: .config[3].help
+msgid "Create default folders for users in the selected language"
+msgstr "Criar pastas padrão para usuários no idioma selecionado"
+
+#: .config[3].label
+msgid "Default language for Zarafa folders"
+msgstr "Linguagem padrão para as pastas Zarafa"
+
+#: .config[3].options[0].name
+msgid "English"
+msgstr "Inglês"
+
+#: .config[3].options[1].name
+msgid "Français"
+msgstr "Francês"
+
+#: .config[3].options[2].name
+msgid "Deutsch"
+msgstr "Alemão"
+
+#: .config[3].name
+msgid "zarafa_lang"
+msgstr "zarafa_lang"
+
+#: .config[4].help
+msgid "Enable IMAP and IMAPS on the Zarafa server"
+msgstr "Ativar IMAP e IMAPS no servidor Zarafa"
+
+#: .config[4].name
+msgid "zarafa_imap"
+msgstr "zarafa_imap"
+
+#: .config[4].label
+msgid "IMAP/IMAPS support"
+msgstr "Suporte IMAP/IMAPS"
+
+#: .config[5].help
+msgid ""
+"Export calendars in CalDAV/iCal format for mail clients (thunderbird, "
+"evolution...)"
+msgstr ""
+"Exportar calendários no formato CalDAV/iCal para os clientes de email "
+"(thunderbird, evolution...)"
+
+#: .config[5].name
+msgid "zarafa_ical"
+msgstr "zarafa_ical"
+
+#: .config[5].label
+msgid "CalDAV/iCal support"
+msgstr "Suporte CalDAV/iCal"
+
+#: .config[6].help
+msgid ""
+"Enable ActiveSync for mobile phones synchronisation (mail, contacts, "
+"calendars)"
+msgstr ""
+"Habilitar ActiveSync para sincronização de telefones móveis (mail, contatos,"
+" calendários)"
+
+#: .config[6].name
+msgid "zarafa_zpush"
+msgstr "zarafa_zpush"
+
+#: .config[6].label
+msgid "ActiveSync support"
+msgstr "Suporte ActiveSync"
+
+#: .config[7].help
+msgid "The host FQDN (eg: smtp.domain.com)"
+msgstr "O FQDN do host (por exemplo: smtp.domain.com)"
+
+#: .config[7].label
+msgid "My hostname"
+msgstr "Meu hostname"
+
+#: .config[7].name
+msgid "smtpd_myhostname"
+msgstr "smtpd_myhostname"
 
 #: .config[8].help
 msgid ""
@@ -105,165 +171,12 @@ msgstr ""
 "servidor de correio. Se o seu endereço de rede é 192.168.0.0 especificar: "
 "192.168.0.0/255.255.255.0"
 
-#: .config[7].help
-msgid "The host FQDN (eg: smtp.domain.com)"
-msgstr "O FQDN do host (por exemplo: smtp.domain.com)"
-
-#: .config[0].help
-msgid "Used to create the zarafa database"
-msgstr "Usado para criar o banco de dados Zarafa"
-
-#: .actions[0].name
-msgid "Users and groups management"
-msgstr ""
-
-#: .config[2].help
-msgid "Where do you want to store mail attachments ?"
-msgstr "Onde você deseja armazenar os anexos de email?"
-
-#: .name
-msgid "Zarafa Collaboration Platform"
-msgstr "Zarafa Plataforma de Configuração"
-
-#: .description .desc
-#, fuzzy
-msgid ""
-"Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
-"compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
-"and groups are managed in the MBS management interface"
-msgstr ""
-"Zarafa é uma substituição para o Microsoft Exchange. Possui total "
-"compatibilidade MS Outlook, suporte ActiveSync e uma interface de webmail "
-"rica. Zarafa usuários e grupos são gerenciados na interface de gerenciamento "
-"MBS"
-
-#: .actions[1].name
-msgid "Zarafa webmail interface"
-msgstr ""
-
-#: .packages[0].name
-msgid "all"
-msgstr ""
-
-#: .config[0].name
-msgid "mysql_rootpasswd"
-msgstr ""
-
-#: .config[1].name
-msgid "mysql_zarafapasswd"
-msgstr ""
-
-#: .config[7].name
-msgid "smtpd_myhostname"
-msgstr ""
+#: .config[8].label
+msgid "My networks"
+msgstr "Minhas redes"
 
 #: .config[8].name
 msgid "smtpd_mynetworks"
-msgstr ""
+msgstr "smtpd_mynetworks"
 
-#: .config[2].name
-msgid "zarafa_attachments"
-msgstr ""
 
-#: .config[5].name
-msgid "zarafa_ical"
-msgstr ""
-
-#: .config[4].name
-msgid "zarafa_imap"
-msgstr ""
-
-#: .config[3].name
-msgid "zarafa_lang"
-msgstr ""
-
-#: .config[6].name
-msgid "zarafa_zpush"
-msgstr ""
-
-#, fuzzy
-#~ msgctxt ".description"
-#~ msgid ""
-#~ "Zarafa is a replacement for Microsoft Exchange. It features full MS "
-#~ "Outlook compatibility, ActiveSync support and a rich webmail interface. "
-#~ "Zarafa users and groups are managed in the MBS management interface"
-#~ msgstr ""
-#~ "Zarafa é uma substituição para o Microsoft Exchange. Possui total "
-#~ "compatibilidade MS Outlook, suporte ActiveSync e uma interface de webmail "
-#~ "rica. Zarafa usuários e grupos são gerenciados na interface de "
-#~ "gerenciamento MBS"
-
-#~ msgid "amavisd-new"
-#~ msgstr "amavisd-new"
-
-#~ msgid "clamd"
-#~ msgstr "clamd"
-
-#~ msgid ""
-#~ "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-#~ msgstr ""
-#~ "download.mandriva.com/EnterpriseServer5/rpms/@ARCH@/media/main/testing/"
-
-#, fuzzy
-#~ msgctxt ".conflicts[0]"
-#~ msgid "mds_mail"
-#~ msgstr "mds_mail"
-
-#, fuzzy
-#~ msgctxt ".module.conflicts[0]"
-#~ msgid "mds_mail"
-#~ msgstr "mds_mail"
-
-#, fuzzy
-#~ msgctxt ".dependencies[0]"
-#~ msgid "mds_mmc"
-#~ msgstr "mds_mmc"
-
-#, fuzzy
-#~ msgctxt ".module.dependencies[0]"
-#~ msgid "mds_mmc"
-#~ msgstr "mds_mmc"
-
-#, fuzzy
-#~ msgctxt ".conflicts[1]"
-#~ msgid "mds_webmail"
-#~ msgstr "mds_webmail"
-
-#, fuzzy
-#~ msgctxt ".module.conflicts[1]"
-#~ msgid "mds_webmail"
-#~ msgstr "mds_webmail"
-
-#~ msgid "mmc-web-mail"
-#~ msgstr "mmc-web-mail"
-
-#, fuzzy
-#~ msgctxt ".dependencies[1]"
-#~ msgid "mysql"
-#~ msgstr "mysql"
-
-#, fuzzy
-#~ msgctxt ".module.dependencies[1]"
-#~ msgid "mysql"
-#~ msgstr "mysql"
-
-#~ msgid "php-xml"
-#~ msgstr "php-xml"
-
-#~ msgid "postfix"
-#~ msgstr "postfix"
-
-#~ msgid "postfix-ldap"
-#~ msgstr "postfix-ldap"
-
-#~ msgid "python-mmc-mail"
-#~ msgstr "python-mmc-mail"
-
-#~ msgid "spamassassin"
-#~ msgstr "spamassassin"
-
-#~ msgid "spamassassin-tools"
-#~ msgstr "spamassassin-tools"
-
-#~ msgid "zarafa-webaccess"
-#~ msgstr "zarafa-webaccess"

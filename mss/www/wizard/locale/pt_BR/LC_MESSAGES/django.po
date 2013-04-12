@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-04-12 04:51+0200\n"
-"PO-Revision-Date: 2013-04-16 11:40+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"PO-Revision-Date: 2013-04-16 13:52+0000\n"
+"Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -26,16 +26,16 @@ msgstr "Sumário de instalação"
 #: transaction.py:55
 msgid "The folowing addon will be installed."
 msgid_plural "The folowing addons will be installed."
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "o seguinte addon será instalado."
+msgstr[1] "Os seguintes addos serão instalados"
 
 #: transaction.py:65
 msgid "Addon download"
-msgstr ""
+msgstr "Adicionar download"
 
 #: transaction.py:66
 msgid "Download addons from the ServicePlace"
-msgstr ""
+msgstr "Baixe addons do ServicePlace"
 
 #: transaction.py:72
 msgid "Medias authentication"
@@ -59,11 +59,11 @@ msgstr "Configuração inicial"
 
 #: transaction.py:100
 msgid "End of installation"
-msgstr ""
+msgstr "Fim da instalação"
 
 #: transaction.py:101
 msgid "The installation is finished."
-msgstr ""
+msgstr "A instalação foi finalizada."
 
 #: transaction.py:120 templates/end.html:15
 msgid "Reboot"
@@ -71,7 +71,7 @@ msgstr "Reiniciar"
 
 #: transaction.py:122
 msgid "The installation is finished. The server must be rebooted."
-msgstr ""
+msgstr "A instalação é concluída. O servidor deve ser reiniciado."
 
 #: views.py:109 templates/login.html:7
 msgid "Welcome"
@@ -195,19 +195,19 @@ msgstr "Por favor, aguarde..."
 
 #: templates/download.html:55
 msgid "Downloading <strong>{0}</strong>: {1}..."
-msgstr ""
+msgstr "Baixando <strong>{0}</strong>: {1}..."
 
 #: templates/download.html:63
 msgid "Addon <strong>{0}</strong> downloaded."
-msgstr ""
+msgstr "Addon <strong>{0}</strong> baixado."
 
 #: templates/download.html:71
 msgid "Failed to download <strong>{0}</strong> addon."
-msgstr ""
+msgstr "Falha ao baixar <strong>{0}</strong> addon."
 
 #: templates/end.html:17
 msgid "Home"
-msgstr ""
+msgstr "Home"
 
 #: templates/error.html:6
 msgid "An error has occured."
@@ -236,8 +236,8 @@ msgstr "A instalação falhou."
 #: templates/install.html:60
 msgid "The following addon is being installed"
 msgid_plural "The following addons are being installed"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "O seguinte addon está sendo instalado"
+msgstr[1] "Os seguintes addons estão sendo instalados"
 
 #: templates/invalid_login.html:6 templates/login.html:12
 #: templates/login.html.py:17
@@ -326,7 +326,7 @@ msgstr "Adicionar mídias"
 
 #: templates/preinst.html:14
 msgid "No addon selected."
-msgstr ""
+msgstr "Nenhum addon selecionado."
 
 #: templates/preinst.html:22
 msgid "Added as a dependency"
@@ -341,22 +341,24 @@ msgid ""
 "If other addons requires this addon they may be broken after the "
 "reinstallation."
 msgstr ""
+"Se outros addons requerem este addon, eles podem ser quebrados após a "
+"reinstalação."
 
 #: templates/section.html:19
 msgid "This addon can't be installed with"
-msgstr ""
+msgstr "Este addon não pode ser instalado com"
 
 #: templates/section.html:62
 msgid "More info about this addon"
-msgstr ""
+msgstr "Mais informações sobre este addon"
 
 #: templates/section.html:118
 msgid "No addon available in this section."
-msgstr ""
+msgstr "Não tem addons disponíveis nesta seção."
 
 #: templates/section.html:182
 msgid "This addon is installed and configured"
-msgstr ""
+msgstr "Este addon está instalado e configurado"
 
 #: templates/section.html:183
 msgid "This module conflicts with : "
@@ -364,18 +366,20 @@ msgstr "Este módulo conflita com : "
 
 #: templates/section.html:186
 msgid "You have purshased this addon"
-msgstr ""
+msgstr "Você comprou este addon"
 
 #: templates/section.html:207
 msgid "Info"
-msgstr ""
+msgstr "Informação"
 
 #: templates/section.html:218
 msgid "Install and configure selected addons"
-msgstr ""
+msgstr "Instalar e configurar o addons selecionados"
 
 #: templates/sections.html:42
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""
+"Não tem addon para o Mandriva Server Setup disponível. Tente fazer o login "
+"novamente."
 
 

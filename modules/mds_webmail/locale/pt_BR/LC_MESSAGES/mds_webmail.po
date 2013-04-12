@@ -1,28 +1,55 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
-"PO-Revision-Date: 2013-03-26 09:40+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2013-04-12 04:51+0200\n"
+"PO-Revision-Date: 2013-04-16 14:17+0000\n"
+"Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[1].label
-msgid "Allow access from external networks"
-msgstr "Permitir o acesso de redes externas"
+#: .description .desc
+msgid "Roundcube, a complete webmail solution for your mail service"
+msgstr "Roundcube, uma solução de webmail completa para o serviço de Emails"
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr "interface de gerenciamento"
+
+#: .actions[1].name
+msgid "Webmail interface"
+msgstr "Webmail interface"
+
+#: .name
+msgid "Webmail"
+msgstr "Webmail"
+
+#: .packages[0].name
+msgid "all"
+msgstr "todos"
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the webmail interface from "
+"internal networks"
+msgstr ""
+"Configure o firewall para permitir o acesso à interface de webmail de redes "
+"internas"
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
@@ -36,98 +63,27 @@ msgstr ""
 "Configure o firewall para permitir o acesso à interface de webmail de redes "
 "externas"
 
-#: .config[0].help
-msgid ""
-"Configure the firewall to allow access to the webmail interface from "
-"internal networks"
-msgstr ""
-"Configure o firewall para permitir o acesso à interface de webmail de redes "
-"internas"
+#: .config[1].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr "Permitir o acesso de redes externas"
 
 #: .categories[0].name
 msgid "Mail"
-msgstr ""
+msgstr "Email"
 
-#: .actions[0].name
-msgid "Management interface"
-msgstr ""
-
-#: .description .desc
-#, fuzzy
-msgid "Roundcube, a complete webmail solution for your mail service"
-msgstr "Roundcube, uma solução de webmail completa para serviços de correio"
-
-#: .name
-msgid "Webmail"
-msgstr "Webmail"
-
-#: modules/mds_webmail/setup-webmail.sh:50
+#: mds_webmail/setup-webmail.sh:50
 msgid "Webmail Roundcube is installed on your server."
 msgstr "Webmail Roundcube está instalado no seu servidor."
 
-#: .actions[1].name
-msgid "Webmail interface"
-msgstr ""
-
-#: modules/mds_webmail/setup-webmail.sh:51
+#: mds_webmail/setup-webmail.sh:51
 msgid ""
 "You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
 msgstr ""
-"Você pode acessar a interface de webmail em https://@HOSTNAME@/"
-"roundcubemail/."
+"Você pode acessar a interface de webmail em "
+"https://@HOSTNAME@/roundcubemail/."
 
-#: .packages[0].name
-msgid "all"
-msgstr ""
 
-#: .config[0].name
-msgid "fw_lan"
-msgstr ""
-
-#: .config[1].name
-msgid "fw_wan"
-msgstr ""
-
-#, fuzzy
-#~ msgctxt ".description"
-#~ msgid "Roundcube, a complete webmail solution for your mail service"
-#~ msgstr "Roundcube, uma solução de webmail completa para serviços de correio"
-
-#, fuzzy
-#~ msgid "mail"
-#~ msgstr "Webmail"
-
-#, fuzzy
-#~ msgctxt ".dependencies[0]"
-#~ msgid "mds_mail"
-#~ msgstr "mds_mail"
-
-#, fuzzy
-#~ msgctxt ".module.dependencies[0]"
-#~ msgid "mds_mail"
-#~ msgstr "mds_mail"
-
-#~ msgid "php-fileinfo"
-#~ msgstr "php-fileinfo"
-
-#~ msgid "php-mcrypt"
-#~ msgstr "php-mcrypt"
-
-#~ msgid "php-pear-MDB2_Driver_sqlite"
-#~ msgstr "php-pear-MDB2_Driver_sqlite"
-
-#~ msgid "roundcubemail"
-#~ msgstr "roundcubemail"
-
-#~ msgid "sqlite-tools"
-#~ msgstr "sqlite-tools"
-
-#, fuzzy
-#~ msgctxt ".conflicts[0]"
-#~ msgid "zarafa"
-#~ msgstr "zarafa"
-
-#, fuzzy
-#~ msgctxt ".module.conflicts[0]"
-#~ msgid "zarafa"
-#~ msgstr "zarafa"

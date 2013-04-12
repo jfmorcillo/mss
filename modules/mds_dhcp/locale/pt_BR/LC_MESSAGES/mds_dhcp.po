@@ -1,71 +1,81 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
-"PO-Revision-Date: 2013-03-26 09:39+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2013-04-12 04:51+0200\n"
+"PO-Revision-Date: 2013-04-16 14:00+0000\n"
+"Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .config[1].label
-msgid "Allow DHCP requests from external networks"
-msgstr "Permite pedidos DHCP de redes externas"
-
-#: .config[0].label
-msgid "Allow DHCP requests from internal networks"
-msgstr "Permite pedidos DHCP de redes internas"
-
 #: .description .desc
-#, fuzzy
 msgid "Configure automatically your client computers IP settings"
-msgstr "Configurar automaticamente o IP dos computadores clientes "
+msgstr "Configurar automaticamente computadores cliente configurações de IP"
 
-#: .config[1].help
-msgid ""
-"Configure the firewall to accept DHCP requests on interfaces configured as "
-"'external'"
-msgstr ""
-"Configure o firewall para aceitar pedidos de DHCP em interfaces configuradas "
-"como 'externas'"
+#: .actions[0].name
+msgid "Management interface"
+msgstr "Interface de gerenciamento"
+
+#: .name
+msgid "DHCP Service"
+msgstr "Serviço DHCP"
+
+#: .packages[0].name
+msgid "all"
+msgstr "todos"
 
 #: .config[0].help
 msgid ""
 "Configure the firewall to accept DHCP requests on interfaces configured as "
 "'internal'"
 msgstr ""
-"Configure o firewall para aceitar pedidos de DHCP em interfaces configuradas "
-"como 'interna'"
+"Configure o firewall para aceitar pedidos de DHCP em interfaces configuradas"
+" como 'interna'"
 
-#: .name
-msgid "DHCP Service"
-msgstr ""
+#: .config[0].name
+msgid "fw_lan"
+msgstr "fw_lan"
 
-#: .actions[0].name
-msgid "Management interface"
+#: .config[0].label
+msgid "Allow DHCP requests from internal networks"
+msgstr "Permite pedidos DHCP de redes internas"
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'external'"
 msgstr ""
+"Configure o firewall para aceitar pedidos de DHCP em interfaces configuradas"
+" como 'externas'"
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[1].label
+msgid "Allow DHCP requests from external networks"
+msgstr "Permite pedidos DHCP de redes externas"
 
 #: .categories[0].name
 msgid "Network"
-msgstr ""
+msgstr "Rede"
 
-#: modules/mds_dhcp/setup-dhcp.sh:41
+#: mds_dhcp/setup-dhcp.sh:41
 msgid "The DHCP service is installed."
 msgstr "O serviço de DHCP está instalado."
 
-#: modules/mds_dhcp/setup-dhcp.sh:42
+#: mds_dhcp/setup-dhcp.sh:42
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"
@@ -73,42 +83,4 @@ msgstr ""
 "Agora você pode fazer suas configurações de DHCP na interface de gestão: "
 "https://@host@/mmc/"
 
-#: .packages[0].name
-msgid "all"
-msgstr ""
 
-#: .config[0].name
-msgid "fw_lan"
-msgstr ""
-
-#: .config[1].name
-msgid "fw_wan"
-msgstr ""
-
-#, fuzzy
-#~ msgctxt ".description"
-#~ msgid "Configure automatically your client computers IP settings"
-#~ msgstr "Configurar automaticamente o IP dos computadores clientes "
-
-#~ msgid "dhcp-server"
-#~ msgstr "dhcp-server"
-
-#, fuzzy
-#~ msgctxt ".dependencies[0]"
-#~ msgid "mds_mmc"
-#~ msgstr "mds_mmc"
-
-#, fuzzy
-#~ msgctxt ".module.dependencies[0]"
-#~ msgid "mds_mmc"
-#~ msgstr "mds_mmc"
-
-#~ msgid "mmc-web-network"
-#~ msgstr "mmc-web-network"
-
-#, fuzzy
-#~ msgid "network"
-#~ msgstr "mmc-web-network"
-
-#~ msgid "python-mmc-network"
-#~ msgstr "python-mmc-network"
