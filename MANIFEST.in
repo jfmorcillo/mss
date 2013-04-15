@@ -1,6 +1,7 @@
 include README LICENCE
 graft bin
 graft etc
+graft mss
 graft modules
 prune modules/squid
 prune modules/mds_kerberos
