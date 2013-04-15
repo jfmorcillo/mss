@@ -215,6 +215,7 @@ function add_schema() {
     cp -f $1 /etc/openldap/schema/
     chmod 644 /etc/openldap/schema/${schema}
     echo Schema ${schema} added to OpenLDAP.
+    restart_service ldap
 }
 
 function https_redirect() {
