@@ -1,8 +1,8 @@
 include README LICENCE
-recursive-include bin *
-recursive-include mss *
-recursive-include etc *
-recursive-include modules *
-recursive-exclude doc *
-recursive-exclude dist *
-recursive-exclude mss.egg-info *
+graft bin
+graft etc
+graft modules
+prune modules/squid
+prune modules/mds_kerberos
+prune modules/mds_audit
+prune modules/zarafa
