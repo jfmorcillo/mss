@@ -1,0 +1,9 @@
+{
+    "slug": "mbs_repo",
+    "name": "Mandriva Business Server repositories",
+    "description": "Access all MBS packages from public repositories.",
+    "desc": "Access all MBS packages from public repositories.",
+    "module": {
+        "section": "core"
+    }
+}
