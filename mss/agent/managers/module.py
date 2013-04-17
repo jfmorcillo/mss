@@ -163,10 +163,10 @@ class ModuleManager:
             paths.append(path)
 
         for path in paths:
-            h = open(os.path.join(path, "desc.json"))
             try:
+                h = open(os.path.join(path, "desc.json"))
                 desc = json.load(h)
-            except ValueError as e:
+            except (ValueError, IOError) as e:
                 logger.error("Failed to load %s: %s" % (path, str(e)))
             else:
                 if not "module" in desc:
