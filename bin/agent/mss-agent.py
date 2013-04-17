@@ -22,9 +22,11 @@
 
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from optparse import OptionParser
+import ConfigParser
 import logging
 import logging.handlers
 import os
+import sys
 
 from mss.agent.managers.module import ModuleManager
 from mss.agent.lib.db import Base, engine
@@ -65,15 +67,31 @@ if __name__ == "__main__":
     logger.addHandler(ch)
     logger.addHandler(fh)
 
-    # Run the XML-RPC server
     logger.debug("Using configuration %s" % options.config)
-    MM = ModuleManager(config_path=options.config)
+    config = ConfigParser.ConfigParser();
+    try:
+        config.readfp(open(options.config))
+    except IOError:
+        logger.exception("Error while reading configuration at %s" % options.config)
+        sys.exit(1)
 
-    server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
+    try:
+        host = config.get("agent", "host")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        host = 'localhost'
+    try:
+        port = config.getint("agent", "port")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        port = 8001
+
+    # Run the XML-RPC server
+    MM = ModuleManager(config_path=options.config)
+    server = SimpleXMLRPCServer((host, port), allow_none=True, logRequests=False)
     server.register_instance(MM)
 
     try:
         print 'This is MSS XML-RPC agent'
+        print 'Listening at %s:%s' % (host, port)
         print 'Use Control-C to exit'
         server.serve_forever()
     except KeyboardInterrupt:

@@ -77,10 +77,7 @@ class ModuleManager:
         else:
             self.arch = 'i586'
         self.config = ConfigParser.ConfigParser();
-        try:
-            self.config.readfp(open(config_path))
-        except OSError:
-            logger.exception("Error while reading configuration at %s" % config_path)
+        self.config.readfp(open(config_path))
 
         self._token = False
         self.modules = {}
