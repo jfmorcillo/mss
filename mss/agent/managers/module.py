@@ -347,7 +347,7 @@ class ModuleManager:
     def get_modules(self):
         """ return all available modules details """
         logger.info("Get all available modules")
-        result = [module.details for module in self.modules]
+        result = [module.details for slug, module in self.modules.items()]
         logger.debug("Result: %s" % str(result))
         return result
 
