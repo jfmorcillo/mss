@@ -37,6 +37,8 @@ if __name__ == "__main__":
     parser = OptionParser()
     parser.add_option("-d", "--debug", action="store_true", dest="debug",
                       default=False, help="Enable debug mode")
+    parser.add_option("-c", "--config", action="store", dest="config",
+                      default='/etc/mss/agent.ini', help="Agent configuration file")
 
     (options, args) = parser.parse_args()
 
@@ -64,7 +66,8 @@ if __name__ == "__main__":
     logger.addHandler(fh)
 
     # Run the XML-RPC server
-    MM = ModuleManager()
+    logger.debug("Using configuration %s" % options.config)
+    MM = ModuleManager(config_path=options.config)
 
     server = SimpleXMLRPCServer(("localhost", 8001), allow_none=True, logRequests=False)
     server.register_instance(MM)

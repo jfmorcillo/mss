@@ -71,13 +71,16 @@ class ModuleManager:
             logger.error(traceback.format_exc())
             raise
 
-    def __init__(self):
+    def __init__(self, config_path):
         if platform.machine() == 'x86_64':
             self.arch = 'x86_64'
         else:
             self.arch = 'i586'
         self.config = ConfigParser.ConfigParser();
-        self.config.readfp(open("/etc/mss/agent.ini"))
+        try:
+            self.config.readfp(open(config_path))
+        except OSError:
+            logger.exception("Error while reading configuration at %s" % config_path)
 
         self._token = False
         self.modules = {}
