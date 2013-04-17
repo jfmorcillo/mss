@@ -243,7 +243,7 @@ class Module(object):
             for target in targets:
                 if target['name'] == "all" or \
                     target['name'] == ModuleManager().arch:
-                    self._packages = target.get("rpms", [])
+                    self._packages.extend(target.get("rpms", []))
         return self._packages
 
     @property
