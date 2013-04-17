@@ -44,9 +44,39 @@ if __name__ == "__main__":
 
     (options, args) = parser.parse_args()
 
+    print "Using configuration %s" % options.config
+    config = ConfigParser.ConfigParser();
+    try:
+        config.readfp(open(options.config))
+    except IOError as e:
+        print "Error while reading configuration at %s" % options.config
+        print e
+        sys.exit(1)
+
+    try:
+        host = config.get("agent", "host")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        host = 'localhost'
+    try:
+        port = config.getint("agent", "port")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        port = 8001
+    try:
+        log_file = config.get("agent", "log_file")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        log_file = '/var/log/mss/mss-agent.log'
+
     # Setup logging
-    LOG_FILENAME = '/var/log/mss/mss-agent.log'
-    os.chmod(LOG_FILENAME, 0600)
+    if not os.path.exists(log_file):
+        try:
+            h = open(log_file, 'w+')
+            h.write("")
+        except:
+            print "Can't write to log file %s" % log_file
+            sys.exit(1)
+        else:
+            h.close()
+            os.chmod(log_file, 0600)
 
     level = logging.ERROR
     format = '%(asctime)s - %(message)s'
@@ -61,28 +91,11 @@ if __name__ == "__main__":
 
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
-    fh = logging.handlers.RotatingFileHandler(LOG_FILENAME, maxBytes=10485760, backupCount=5)
+    fh = logging.handlers.RotatingFileHandler(log_file, maxBytes=10485760, backupCount=5)
     fh.setFormatter(formatter)
 
     logger.addHandler(ch)
     logger.addHandler(fh)
-
-    logger.debug("Using configuration %s" % options.config)
-    config = ConfigParser.ConfigParser();
-    try:
-        config.readfp(open(options.config))
-    except IOError:
-        logger.exception("Error while reading configuration at %s" % options.config)
-        sys.exit(1)
-
-    try:
-        host = config.get("agent", "host")
-    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-        host = 'localhost'
-    try:
-        port = config.getint("agent", "port")
-    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-        port = 8001
 
     # Run the XML-RPC server
     MM = ModuleManager(config_path=options.config)
