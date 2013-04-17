@@ -103,8 +103,17 @@ class TestBasics(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    # Setup module dir
     modules_tmp_dir = "/tmp/basic_modules/"
+
+    # Cleanup
+    if os.path.isdir(modules_tmp_dir):
+        shutil.rmtree(modules_tmp_dir)
+    if os.path.exists('/tmp/mss-agent.log'):
+        os.unlink('/tmp/mss-agent.log')
+    if os.path.exists('/tmp/mss-agent.db'):
+        os.unlink('/tmp/mss-agent.db')
+
+    # Setup module dir
     modules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_modules')
     config = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_conf.ini')
     if os.path.isdir(modules_tmp_dir):
@@ -112,7 +121,7 @@ if __name__ == '__main__':
     shutil.copytree(modules_dir, modules_tmp_dir)
 
     print "### RUNNING MSS-AGENT"
-    process = Popen(['mss-agent', '-d', '--config', config])
+    process = Popen(['/usr/sbin/mss-agent', '-d', '--config', config])
     time.sleep(3)
 
     print "### RUNNING TESTS"
@@ -125,3 +134,7 @@ if __name__ == '__main__':
     # Cleanup
     if os.path.isdir(modules_tmp_dir):
         shutil.rmtree(modules_tmp_dir)
+    if os.path.exists('/tmp/mss-agent.log'):
+        os.unlink('/tmp/mss-agent.log')
+    if os.path.exists('/tmp/mss-agent.db'):
+        os.unlink('/tmp/mss-agent.db')
