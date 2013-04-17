@@ -369,7 +369,8 @@ class ModuleManager:
         if module in self.modules:
             result = self.modules[module].details
         else:
-            result = {}
+            logger.error("Module %s doesn't exists" % module)
+            result = False
         logger.debug("Result: %s" % str(result))
         return result
 
