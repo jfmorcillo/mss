@@ -3,7 +3,7 @@ import logging
 from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _, ungettext
 
-from mss.www.xmlrpc import XmlRpc
+from mss.lib.xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
 logger = logging.getLogger(__name__)

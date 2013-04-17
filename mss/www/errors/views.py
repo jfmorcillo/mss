@@ -6,7 +6,7 @@ from django.shortcuts import render_to_response
 from django.conf import settings
 from django.template import RequestContext
 
-from mss.www.xmlrpc import XmlRpc
+from mss.lib.xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
 

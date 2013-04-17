@@ -31,7 +31,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.utils.translation import ugettext as _, activate
 
-from mss.www.xmlrpc import XmlRpc
+from mss.lib.xmlrpc import XmlRpc
 
 from lib.jsonui.response import JSONResponse
 from transaction import Transaction, Steps, State
@@ -148,7 +148,7 @@ def get_state(request, thread, module):
     """ used to get any thread result code and output """
     err, result = xmlrpc.call('get_state', thread, module)
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
     else:
         code = result[0]
         output = result[1]
@@ -174,7 +174,7 @@ def sections(request):
     # get section list
     err, sections = xmlrpc.call('get_sections')
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
     # render the main page with all sections
     return render(request, 'sections.html', {'sections': sections})
 
@@ -184,7 +184,7 @@ def section(request, section):
     """ render section page """
     err, categories = xmlrpc.call('get_section', section)
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
 
     # format management url
     for category in categories:
@@ -259,7 +259,7 @@ def medias_add(request):
 
     err, repositories = xmlrpc.call('get_repositories', transaction.modules_list)
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
 
     return render(request, 'media_add.html',
                   {'transaction': transaction, 'repositories': repositories,
@@ -288,7 +288,7 @@ def install(request):
     # launch modules install
     err, result = xmlrpc.call('install_modules', transaction.modules_list)
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
     if result:
         return render(request, 'install.html', {'transaction': transaction})
 
@@ -307,7 +307,7 @@ def config(request):
 
     err, result = xmlrpc.call('get_config', transaction.modules_list)
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
     else:
         config = result
 
@@ -345,7 +345,7 @@ def config_valid(request):
     # validate values
     err, result = xmlrpc.call('valid_config', transaction.modules_list, config)
     if err:
-        return err
+        return HttpResponseRedirect(reverse('error', args=[err[0]]))
     else:
         errors = result[0]
         config = result[1]

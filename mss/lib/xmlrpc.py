@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2013 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -22,20 +20,26 @@
 # MA 02110-1301, USA.
 
 import xmlrpclib
+import logging
 from socket import error as socket_error
-from django.http import HttpResponseRedirect
-from django.core.urlresolvers import reverse
+
+logger = logging.getLogger(__name__)
 
 
 class XmlRpc:
     """ Class to handle the xmlrpc calls """
 
+    def __init__(self, host="127.0.0.1", port=8001):
+        self._host = host
+        self._port = port
+        self._url = 'http://%s:%d' % (self._host, self._port)
+
     def call(self, method_name, *args):
-        conn = xmlrpclib.ServerProxy('http://localhost:8001')
+        conn = xmlrpclib.ServerProxy(self._url)
         method = getattr(conn, method_name)
         try:
             return [False, method(*args)]
-        except socket_error, err:
-            return [HttpResponseRedirect(reverse('error', args=[err[0]])), False]
-
-# xmlrpclib.Fault, xmlrpclib.ProtocolError, xmlrpclib.ResponseError)
+        except (socket_error, xmlrpclib.Fault,
+                xmlrpclib.ProtocolError, xmlrpclib.ResponseError) as err:
+            logger.exception("Exception while doing the XML-RPC request")
+            return [err, False]

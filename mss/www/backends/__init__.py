@@ -20,7 +20,7 @@
 # MA 02110-1301, USA.
 
 from django.contrib.auth.models import User
-from mss.www.xmlrpc import XmlRpc
+from mss.lib.xmlrpc import XmlRpc
 
 
 xmlrpc = XmlRpc()
