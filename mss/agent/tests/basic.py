@@ -1,10 +1,15 @@
+import os
 import unittest
+import shutil
+from subprocess import Popen
+import time
+
 from mss.lib.xmlrpc import XmlRpc
 
 class TestBasics(unittest.TestCase):
 
     def setUp(self):
-        self.client = XmlRpc()
+        self.client = XmlRpc(port=8888)
         err, result = self.client.call('load')
 
     def test_get_modules(self):
@@ -98,5 +103,25 @@ class TestBasics(unittest.TestCase):
 
 
 if __name__ == '__main__':
+    # Setup module dir
+    modules_tmp_dir = "/tmp/basic_modules/"
+    modules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_modules')
+    config = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_conf.ini')
+    if os.path.isdir(modules_tmp_dir):
+        shutil.rmtree(modules_tmp_dir)
+    shutil.copytree(modules_dir, modules_tmp_dir)
+
+    print "### RUNNING MSS-AGENT"
+    process = Popen(['mss-agent', '-d', '--config', config])
+    time.sleep(3)
+
+    print "### RUNNING TESTS"
     suite = unittest.TestLoader().loadTestsFromTestCase(TestBasics)
     unittest.TextTestRunner(verbosity=2).run(suite)
+
+    print "### STOPPING MSS-AGENT"
+    process.terminate()
+
+    # Cleanup
+    if os.path.isdir(modules_tmp_dir):
+        shutil.rmtree(modules_tmp_dir)
