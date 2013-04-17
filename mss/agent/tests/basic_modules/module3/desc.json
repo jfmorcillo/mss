@@ -1,0 +1,12 @@
+{
+    "slug": "module3",
+    "name": "Module Three",
+    "description": "Module Three description",
+    "repositories": [
+        {
+            "slug": "repo",
+            "name": "Repository",
+            "url": "http://mirror.mandriva.com"
+        }
+    ]
+}

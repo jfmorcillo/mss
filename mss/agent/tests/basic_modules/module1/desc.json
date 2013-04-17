@@ -1,0 +1,33 @@
+{
+    "slug": "module1",
+    "name": "Module One",
+    "description": "Module One description",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "package1",
+                "package2",
+                "package3"
+            ]
+        },
+        {
+            "name": "x86_64",
+            "rpms": [
+                "package4"
+            ]
+        }
+    ],
+    "module": {
+        "section": "test",
+        "dependencies": ["module2"]
+    },
+    "repositories": [
+        {
+            "slug": "repo",
+            "name": "Repository",
+            "url": "http://exemple.mandriva.com",
+            "restricted": true
+        }
+    ]
+}

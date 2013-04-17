@@ -487,7 +487,7 @@ class ModuleManager:
         logger.debug("Get packages repositories for modules: %s" % ", ".join(modules))
         repositories = []
         for module in modules:
-            repositories = repositories + self.modules[module].repositories
+            repositories += self.modules[module].repositories
         logger.debug("Result: %s" % repositories)
         return repositories
 

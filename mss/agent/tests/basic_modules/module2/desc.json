@@ -1,0 +1,12 @@
+{
+    "slug": "module2",
+    "name": "Module Two",
+    "description": "Module Two description",
+    "repositories": [
+        {
+            "slug": "repo",
+            "name": "Repository",
+            "url": "http://exemple.com"
+        }
+    ]
+}
