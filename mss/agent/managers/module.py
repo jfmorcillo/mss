@@ -377,7 +377,9 @@ class ModuleManager:
     @expose
     def get_packages(self, module):
         """ returns package list for module """
-        return self.modules[module].packages
+        if module in self.modules:
+            return self.modules[module].packages
+        return False
 
     @expose
     def preinstall_modules(self, modules):
