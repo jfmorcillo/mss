@@ -27,15 +27,13 @@ import logging
 import logging.handlers
 import os
 import sys
+from sqlalchemy.exc import OperationalError
+from sqlalchemy import create_engine
 
 from mss.agent.managers.module import ModuleManager
-from mss.agent.lib.db import Base, engine
+from mss.agent.lib.db import Base
 
 if __name__ == "__main__":
-
-    # Create all tables if needed
-    Base.metadata.create_all(engine)
-
     parser = OptionParser()
     parser.add_option("-d", "--debug", action="store_true", dest="debug",
                       default=False, help="Enable debug mode")
@@ -52,7 +50,6 @@ if __name__ == "__main__":
         print "Error while reading configuration at %s" % options.config
         print e
         sys.exit(1)
-
     try:
         host = config.get("agent", "host")
     except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
@@ -65,6 +62,19 @@ if __name__ == "__main__":
         log_file = config.get("agent", "log_file")
     except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
         log_file = '/var/log/mss/mss-agent.log'
+    try:
+        db_file = config.get("agent", "db_file")
+    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+        db_file = '/var/lib/mss/mss-agent.db'
+
+    # Create all tables if needed
+    try:
+        engine = create_engine('sqlite:///%s' % db_file)
+        Base.metadata.create_all(engine)
+    except OperationalError as e:
+        print "Failed to setup the database %s" % db_file
+        print e
+        sys.exit(1)
 
     # Setup logging
     if not os.path.exists(log_file):

@@ -28,9 +28,13 @@ from sqlalchemy.engine import Engine
 from datetime import datetime
 import json
 
-engine = create_engine('sqlite:////var/lib/mss/mss-agent.db')
-Session = sessionmaker(bind=engine)
 Base = declarative_base()
+
+
+def get_session(db_file):
+    engine = create_engine('sqlite:///%s' % db_file)
+    Session = sessionmaker(bind=engine)
+    return Session()
 
 
 class OptionTable(Base):

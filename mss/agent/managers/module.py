@@ -34,7 +34,7 @@ import urllib2
 import time
 
 from mss.agent.lib.utils import Singleton
-from mss.agent.lib.db import Session, OptionTable, LogTypeTable, LogTable, ModuleTable
+from mss.agent.lib.db import get_session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
 
@@ -78,6 +78,13 @@ class ModuleManager:
             self.arch = 'i586'
         self.config = ConfigParser.ConfigParser();
         self.config.readfp(open(config_path))
+        # Get the DB file path
+        try:
+            self.db_file = self.config.get("agent", "db_file")
+        except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
+            self.db_file = '/var/lib/mss/mss-agent.db'
+        # Setup BDD access
+        self.session = get_session(self.db_file)
 
         self._token = False
         self.modules = {}
@@ -85,8 +92,6 @@ class ModuleManager:
         self.sections = {}
         self.packages = []
 
-        # BDD access
-        self.session = Session()
         # Get machine-id
         machine_id = open('/etc/machine-id', 'r').read().strip()
         logger.info("Machine id is %s" % machine_id)

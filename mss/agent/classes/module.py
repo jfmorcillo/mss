@@ -31,7 +31,7 @@ import zipfile
 from datetime import datetime
 from IPy import IP
 
-from mss.agent.lib.db import Session, ModuleTable
+from mss.agent.lib.db import get_session, ModuleTable
 from mss.agent.lib.utils import grep
 from mss.agent.classes.media import Media
 from mss.agent.classes.validation import Validation
@@ -188,7 +188,7 @@ class Module(object):
                 except:
                     pass
     	# check if module is configured from database
-        session = Session()
+        session = get_session(ModuleManager().db_file)
         module = session.query(ModuleTable).filter(ModuleTable.name == self.slug).first()
         if module and module.configured:
             self._configured = True
@@ -205,7 +205,7 @@ class Module(object):
         if value:
             module = ModuleTable(self.slug)
             module.configured = datetime.now()
-            session = Session()
+            session = get_session(ModuleManager().db_file)
             session.merge(module)
             session.commit()
 
