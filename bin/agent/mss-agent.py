@@ -27,6 +27,8 @@ import logging
 import logging.handlers
 import os
 import sys
+import traceback
+
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import create_engine
 
@@ -48,7 +50,7 @@ if __name__ == "__main__":
         config.readfp(open(options.config))
     except IOError as e:
         print "Error while reading configuration at %s" % options.config
-        print e
+        print traceback.format_exc()
         sys.exit(1)
     try:
         host = config.get("agent", "host")
@@ -73,7 +75,7 @@ if __name__ == "__main__":
         Base.metadata.create_all(engine)
     except OperationalError as e:
         print "Failed to setup the database %s" % db_file
-        print e
+        print traceback.format_exc()
         sys.exit(1)
 
     # Setup logging
@@ -83,6 +85,7 @@ if __name__ == "__main__":
             h.write("")
         except:
             print "Can't write to log file %s" % log_file
+            print traceback.format_exc()
             sys.exit(1)
         else:
             h.close()
