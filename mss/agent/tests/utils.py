@@ -1,7 +1,7 @@
 import os
 import shutil
 
-modules_dir = "/tmp/basic_modules/"
+modules_dir = "/tmp/mss_modules/"
 log_file = "/tmp/mss-agent.log"
 db_file = "/tmp/mss-agent.db"
 

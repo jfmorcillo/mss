@@ -104,7 +104,7 @@ class TestBasics(unittest.TestCase):
 
 if __name__ == '__main__':
     modules = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_modules')
-    config = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_conf.ini')
+    config = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'agent.ini')
 
     cleanup_tests()
     setup_modules(modules)
