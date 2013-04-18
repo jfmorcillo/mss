@@ -19,11 +19,54 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+import os
+import stat
 import xmlrpclib
 import logging
+from cookielib import LWPCookieJar
+from urllib2 import Request as CookieRequest
 from socket import error as socket_error
 
 logger = logging.getLogger(__name__)
+
+
+class CookieXMLRPCTransport(xmlrpclib.Transport):
+    """ Cookie aware xmlrpclib.Transport """
+    cookie_file = '/tmp/mss-cookies'
+    crequest = False
+
+    def send_host(self, connection, host):
+        """ Override send_host to add cookie info
+        to XML-RPC requests """
+        self.crequest = CookieRequest('http://'+host+'/')
+        # Read the cookie file and add the Token header
+        if os.path.exists(self.cookie_file):
+            cj = LWPCookieJar()
+            cj.load(self.cookie_file)
+            for cookie in cj:
+                if cookie.name == 'Token':
+                    connection.putheader(cookie.name, cookie.value)
+        xmlrpclib.Transport.send_host(self, connection, host)
+
+    def parse_response(self, response):
+        """ Override parse_response to store cookie info on
+        response """
+        # dummy response class for extracting cookies
+        class CookieResponse:
+            def __init__(self, headers):
+                self.headers = headers
+            def info(self):
+                return self.headers
+
+        if hasattr(response, 'getheader'):
+            cj = LWPCookieJar()
+            cresponse = CookieResponse(response.msg)
+            cj.extract_cookies(cresponse, self.crequest)
+            if len(cj) > 0 and self.cookie_file != None:
+                cj.save(self.cookie_file)
+                os.chmod(self.cookie_file, stat.S_IRUSR | stat.S_IWUSR)
+
+        return xmlrpclib.Transport.parse_response(self, response)
 
 
 class XmlRpc:
@@ -35,7 +78,7 @@ class XmlRpc:
         self._url = 'http://%s:%d' % (self._host, self._port)
 
     def call(self, method_name, *args):
-        conn = xmlrpclib.ServerProxy(self._url)
+        conn = xmlrpclib.ServerProxy(self._url, transport=CookieXMLRPCTransport())
         method = getattr(conn, method_name)
         try:
             return [False, method(*args)]

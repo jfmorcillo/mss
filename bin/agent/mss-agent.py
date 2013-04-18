@@ -33,6 +33,7 @@ from sqlalchemy.exc import OperationalError
 from sqlalchemy import create_engine
 
 from mss.agent.managers.module import ModuleManager
+from mss.agent.server import MSSXMLRPCRequestHandler
 from mss.agent.lib.db import Base
 
 if __name__ == "__main__":
@@ -110,10 +111,13 @@ if __name__ == "__main__":
     logger.addHandler(ch)
     logger.addHandler(fh)
 
+    # Init the ModuleManager with the config
+    ModuleManager(config_path=options.config)
+
     # Run the XML-RPC server
-    MM = ModuleManager(config_path=options.config)
-    server = SimpleXMLRPCServer((host, port), allow_none=True, logRequests=False)
-    server.register_instance(MM)
+    server = SimpleXMLRPCServer((host, port),
+                                requestHandler=MSSXMLRPCRequestHandler,
+                                allow_none=True, logRequests=False)
 
     try:
         print 'This is MSS XML-RPC agent'

@@ -20,13 +20,13 @@
 # MA 02110-1301, USA.
 
 import os
+import uuid
 import copy
 import re
 import glob
 import sys
 import logging
 import platform
-import traceback
 import json
 import ConfigParser
 import urllib
@@ -64,12 +64,7 @@ class ModuleManager:
         func = getattr(self, method)
         if not is_exposed(func):
             raise Exception('Method "%s" is not supported' % method)
-
-        try:
-            return func(*params)
-        except:
-            logger.error(traceback.format_exc())
-            raise
+        return func(*params)
 
     def __init__(self, config_path):
         if platform.machine() == 'x86_64':
@@ -87,6 +82,7 @@ class ModuleManager:
         self.session = get_session(self.db_file)
 
         self._token = False
+        self._mode = None
         self.modules = {}
         self.sections_modules = {}
         self.sections = {}
@@ -101,7 +97,6 @@ class ModuleManager:
         # Load packages
         self.load_packages()
 
-    @expose
     def load(self):
         """ Load data in the agent """
         self.modules = {}
@@ -134,7 +129,7 @@ class ModuleManager:
 
     def load_modules(self):
         """ load modules """
-        if not self._token:
+        if self._mode == "local":
             logger.debug("Using local modules")
             modules_list = self.get_local_modules()
         else:
@@ -217,7 +212,7 @@ class ModuleManager:
 
     def load_sections(self):
         """ load sections """
-        if not self._token:
+        if self._mode == "local":
             logger.debug("Using local sections")
             sections = self.get_local_sections()
         else:
@@ -664,6 +659,7 @@ class ModuleManager:
     def authenticate(self, user, password):
         """ Authenticate mss-www to the agent """
         self._token = False
+        self._mode = None
         if not user or not password:
             return False
         # Local auth with PAM
@@ -673,7 +669,13 @@ class ModuleManager:
             result = pam.authenticate(user, password, service="passwd")
             if result:
                 logger.debug("Logged with PAM.")
-            return result
+                # Generate an uuid for this session
+                self._token = str(uuid.uuid4())
+                self._mode = "local"
+                self.load()
+                return self._token
+            logger.error("Login failed against PAM.")
+            return False
         # API auth
         else:
             logger.debug("ServicePlace authentication")
@@ -681,11 +683,20 @@ class ModuleManager:
             result, code = self.request(url, {'username': user, 'password': password})
             if code == 200:
                 if 'token' in result:
-                    self._token = result['token']
                     logger.debug("Logged with the ServicePlace !")
-                    return True
+                    self._token = result['token']
+                    self._mode = "api"
+                    self.load()
+                    return self._token
             logger.error("Login failed against the ServicePlace.")
             return False
+
+    def check_token(self, token):
+        if not self._token:
+            return False
+        if not token:
+            return False
+        return token == self._token
 
     def request(self, url, params=None):
         """
