@@ -168,8 +168,8 @@ class ModuleManager:
             try:
                 h = open(os.path.join(path, "desc.json"))
                 desc = json.load(h)
-            except (ValueError, IOError) as e:
-                logger.error("Failed to load %s: %s" % (path, str(e)))
+            except (ValueError, IOError):
+                logger.exception("Failed to load %s" % (path))
             else:
                 if not "module" in desc:
                     desc["module"] = {}
@@ -523,7 +523,10 @@ class ModuleManager:
         logger.info("Get config for modules: %s" % ", ".join(modules))
         config = []
         for module in modules:
-            config.append(self.modules[module].get_config())
+            if module in self.modules:
+                config.append(self.modules[module].get_config())
+            else:
+                logger.error("Module %s is not available" % module)
         logger.debug("Result: %s" % str(config))
         return config
 
