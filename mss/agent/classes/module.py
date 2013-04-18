@@ -338,7 +338,6 @@ class Module(object):
         errors = False
 
         for field in validated_config:
-
             field_name = field.get("name")
             field_type = field.get("type")
             if field_name:
@@ -346,11 +345,11 @@ class Module(object):
                 if field_type == "network":
                     field_value = []
                     for user_field, user_value in user_config.items():
-                        ip = re.match("^"+self.slug+"_"+field_name+"_([0-9]?)_ip$", user_field)
-                        if ip:
-                            net = ip.group(1)
-                            ip = user_config.get(self.slug+"_"+field_name+"_"+net+"_ip")
-                            mask = user_config.get(self.slug+"_"+field_name+"_"+net+"_mask")
+                        match = re.match("^"+self.slug+"_"+field_name+"_([0-9]?)_(ip|mask)$", user_field)
+                        if match:
+                            net = match.group(1)
+                            ip = user_config.get(self.slug+"_"+field_name+"_"+net+"_ip", '')
+                            mask = user_config.get(self.slug+"_"+field_name+"_"+net+"_mask", '')
                             field_value.append((ip, mask))
                 # handle multi text fields
                 elif "multi" in field:

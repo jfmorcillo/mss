@@ -36,6 +36,8 @@ class Validation:
             return None
 
     def network(self, networks):
+        if not isinstance(networks, list):
+            return "Incorrect IP or netmask address."
         for ip, mask in networks:
             if not re.match('^[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}$', ip):
                 return "Incorrect IP address."

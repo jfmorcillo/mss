@@ -534,6 +534,7 @@ class ModuleManager:
     def valid_config(self, modules, modules_config):
         """ validate user configuration for modules """
         logger.info("Valid config for modules: %s" % ", ".join(modules))
+        logger.debug("Configuration is: %s" % str(modules_config))
         config = []
         errors = False
         for module in modules:
