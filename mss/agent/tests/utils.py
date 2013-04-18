@@ -1,5 +1,8 @@
 import os
 import shutil
+from subprocess import Popen
+import time
+import unittest
 
 modules_dir = "/tmp/mss_modules/"
 log_file = "/tmp/mss-agent.log"
@@ -19,3 +22,18 @@ def setup_modules(src_dir):
     if os.path.isdir(modules_dir):
         shutil.rmtree(modules_dir)
     shutil.copytree(src_dir, modules_dir)
+
+def run_agent(config):
+    print "### RUNNING MSS-AGENT"
+    process = Popen(['/usr/sbin/mss-agent', '-d', '--config', config])
+    time.sleep(2)
+    return process
+
+def stop_agent(process):
+    print "### STOPPING MSS-AGENT"
+    process.terminate()
+
+def run_tests(test_case):
+    print "### RUNNING TESTS"
+    suite = unittest.TestLoader().loadTestsFromTestCase(test_case)
+    unittest.TextTestRunner(verbosity=2).run(suite)

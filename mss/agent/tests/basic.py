@@ -1,10 +1,10 @@
 import os
 import unittest
-from subprocess import Popen
-import time
 
 from mss.lib.xmlrpc import XmlRpc
-from mss.agent.tests.utils import cleanup_tests, setup_modules
+from mss.agent.tests.utils import cleanup_tests, setup_modules, \
+                                  run_agent, stop_agent, \
+                                  run_tests
 
 class TestBasics(unittest.TestCase):
 
@@ -108,16 +108,7 @@ if __name__ == '__main__':
 
     cleanup_tests()
     setup_modules(modules)
-
-    print "### RUNNING MSS-AGENT"
-    process = Popen(['/usr/sbin/mss-agent', '-d', '--config', config])
-    time.sleep(3)
-
-    print "### RUNNING TESTS"
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestBasics)
-    unittest.TextTestRunner(verbosity=2).run(suite)
-
-    print "### STOPPING MSS-AGENT"
-    process.terminate()
-
+    process = run_agent(config)
+    run_tests(TestBasics)
+    stop_agent(process)
     cleanup_tests()
