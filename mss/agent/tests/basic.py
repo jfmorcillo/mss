@@ -1,10 +1,10 @@
 import os
 import unittest
-import shutil
 from subprocess import Popen
 import time
 
 from mss.lib.xmlrpc import XmlRpc
+from mss.agent.tests.utils import cleanup_tests, setup_modules
 
 class TestBasics(unittest.TestCase):
 
@@ -103,22 +103,11 @@ class TestBasics(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    modules_tmp_dir = "/tmp/basic_modules/"
-
-    # Cleanup
-    if os.path.isdir(modules_tmp_dir):
-        shutil.rmtree(modules_tmp_dir)
-    if os.path.exists('/tmp/mss-agent.log'):
-        os.unlink('/tmp/mss-agent.log')
-    if os.path.exists('/tmp/mss-agent.db'):
-        os.unlink('/tmp/mss-agent.db')
-
-    # Setup module dir
-    modules_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_modules')
+    modules = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_modules')
     config = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'basic_conf.ini')
-    if os.path.isdir(modules_tmp_dir):
-        shutil.rmtree(modules_tmp_dir)
-    shutil.copytree(modules_dir, modules_tmp_dir)
+
+    cleanup_tests()
+    setup_modules(modules)
 
     print "### RUNNING MSS-AGENT"
     process = Popen(['/usr/sbin/mss-agent', '-d', '--config', config])
@@ -131,10 +120,4 @@ if __name__ == '__main__':
     print "### STOPPING MSS-AGENT"
     process.terminate()
 
-    # Cleanup
-    if os.path.isdir(modules_tmp_dir):
-        shutil.rmtree(modules_tmp_dir)
-    if os.path.exists('/tmp/mss-agent.log'):
-        os.unlink('/tmp/mss-agent.log')
-    if os.path.exists('/tmp/mss-agent.db'):
-        os.unlink('/tmp/mss-agent.db')
+    cleanup_tests()
