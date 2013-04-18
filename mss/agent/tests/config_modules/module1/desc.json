@@ -1,0 +1,18 @@
+{
+    "slug": "module1",
+    "name": "Module One",
+    "description": "Module One",
+    "config": [
+        {
+            "type": "text",
+            "name": "option1",
+            "label": "option one",
+            "default": "foo"
+        },
+        {
+            "type": "check",
+            "name": "option2",
+            "label": "option two"
+        }
+    ]
+}

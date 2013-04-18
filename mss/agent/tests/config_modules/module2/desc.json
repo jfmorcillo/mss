@@ -1,0 +1,18 @@
+{
+    "slug": "module2",
+    "name": "Module Two",
+    "description": "Module Two",
+    "config": [
+        {
+            "type": "text",
+            "name": "option1",
+            "label": "option one",
+            "require": "yes"
+        },
+        {
+            "type": "text",
+            "name": "option2",
+            "label": "option two"
+        }
+    ]
+}
