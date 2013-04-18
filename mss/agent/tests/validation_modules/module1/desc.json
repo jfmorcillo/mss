@@ -1,0 +1,32 @@
+{
+    "slug": "module1",
+    "name": "Module One",
+    "description": "Module one",
+    "config": [
+        {
+            "type": "text",
+            "name": "fqdn",
+            "validation": "fqdn"
+        },
+        {
+            "type": "text",
+            "name": "network_text",
+            "validation": "network"
+        },
+        {
+            "type": "network",
+            "name": "network",
+            "validation": "network"
+        },
+        {
+            "type": "text",
+            "name": "ip",
+            "validation": "ip"
+        },
+        {
+            "type": "text",
+            "name": "custom",
+            "validation": "custom"
+        }
+    ]
+}
