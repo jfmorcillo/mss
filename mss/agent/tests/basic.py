@@ -10,7 +10,7 @@ class TestBasics(unittest.TestCase):
 
     def setUp(self):
         self.client = XmlRpc(port=8888)
-        err, result = self.client.call('load')
+        err, result = self.client.call('authenticate', 'root', 'mandriva')
 
     def test_get_modules(self):
         err, result = self.client.call('get_modules')
@@ -109,6 +109,6 @@ if __name__ == '__main__':
     cleanup_tests()
     setup_modules(modules)
     process = run_agent(config)
-    run_tests(TestBasics)
+    run_tests(TestBasics, process)
     stop_agent(process)
     cleanup_tests()

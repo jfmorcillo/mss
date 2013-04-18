@@ -11,7 +11,7 @@ class TestConfigValidation(unittest.TestCase):
 
     def setUp(self):
         self.client = XmlRpc(port=8888)
-        err, result = self.client.call('load')
+        err, result = self.client.call('authenticate', 'root', 'mandriva')
 
     def test_fqdn_validation(self):
         err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo"})
@@ -109,6 +109,6 @@ if __name__ == '__main__':
     cleanup_tests()
     setup_modules(modules)
     process = run_agent(config)
-    run_tests(TestConfigValidation)
+    run_tests(TestConfigValidation, process)
     stop_agent(process)
     cleanup_tests()

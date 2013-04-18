@@ -33,7 +33,10 @@ def stop_agent(process):
     print "### STOPPING MSS-AGENT"
     process.terminate()
 
-def run_tests(test_case):
+def run_tests(test_case, process):
     print "### RUNNING TESTS"
-    suite = unittest.TestLoader().loadTestsFromTestCase(test_case)
-    unittest.TextTestRunner(verbosity=2).run(suite)
+    try:
+        suite = unittest.TestLoader().loadTestsFromTestCase(test_case)
+        unittest.TextTestRunner(verbosity=2).run(suite)
+    except KeyboardInterrupt:
+        process.terminate()

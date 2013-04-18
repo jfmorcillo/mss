@@ -10,7 +10,7 @@ class TestModuleConfiguration(unittest.TestCase):
 
     def setUp(self):
         self.client = XmlRpc(port=8888)
-        err, result = self.client.call('load')
+        err, result = self.client.call('authenticate', 'root', 'mandriva')
 
     def test_get_config_module_unavailable(self):
         err, result = self.client.call('get_config', ['foo'])
@@ -51,6 +51,6 @@ if __name__ == '__main__':
     cleanup_tests()
     setup_modules(modules)
     process = run_agent(config)
-    run_tests(TestModuleConfiguration)
+    run_tests(TestModuleConfiguration, process)
     stop_agent(process)
     cleanup_tests()
