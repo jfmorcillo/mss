@@ -28,7 +28,7 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
         cinfo['expires'] = 30*24*60*60
         cinfo['path'] = '/RPC2/'
         cinfo['comment'] = 'MSS-AGENT'
-        cinfo['domain'] = '127.0.0.1'
+        cinfo['domain'] = self.request.getsockname()[0]
         cinfo['max-age'] = 30*24*60*60
         cinfo['secure'] = ''
         cinfo['version'] = 1
