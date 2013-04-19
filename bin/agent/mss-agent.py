@@ -22,7 +22,6 @@
 
 from SimpleXMLRPCServer import SimpleXMLRPCServer
 from optparse import OptionParser
-import ConfigParser
 import logging
 import logging.handlers
 import os
@@ -32,7 +31,7 @@ import traceback
 from sqlalchemy.exc import OperationalError
 from sqlalchemy import create_engine
 
-from mss.agent.managers.module import ModuleManager
+from mss.agent.config import Config
 from mss.agent.server import MSSXMLRPCRequestHandler
 from mss.agent.lib.db import Base
 
@@ -45,52 +44,30 @@ if __name__ == "__main__":
 
     (options, args) = parser.parse_args()
 
-    print "Using configuration %s" % options.config
-    config = ConfigParser.ConfigParser();
-    try:
-        config.readfp(open(options.config))
-    except IOError as e:
-        print "Error while reading configuration at %s" % options.config
-        print traceback.format_exc()
-        sys.exit(1)
-    try:
-        host = config.get("agent", "host")
-    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-        host = 'localhost'
-    try:
-        port = config.getint("agent", "port")
-    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-        port = 8001
-    try:
-        log_file = config.get("agent", "log_file")
-    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-        log_file = '/var/log/mss/mss-agent.log'
-    try:
-        db_file = config.get("agent", "db_file")
-    except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-        db_file = '/var/lib/mss/mss-agent.db'
+    # read configuration
+    Config(options.config)
 
     # Create all tables if needed
     try:
-        engine = create_engine('sqlite:///%s' % db_file)
+        engine = create_engine('sqlite:///%s' % Config().db_file)
         Base.metadata.create_all(engine)
     except OperationalError as e:
-        print "Failed to setup the database %s" % db_file
+        print "Failed to setup the database %s" % Config().db_file
         print traceback.format_exc()
         sys.exit(1)
 
     # Setup logging
-    if not os.path.exists(log_file):
+    if not os.path.exists(Config().log_file):
         try:
-            h = open(log_file, 'w+')
+            h = open(Config().log_file, 'w+')
             h.write("")
         except:
-            print "Can't write to log file %s" % log_file
+            print "Can't write to log file %s" % Config().log_file
             print traceback.format_exc()
             sys.exit(1)
         else:
             h.close()
-            os.chmod(log_file, 0600)
+            os.chmod(Config().log_file, 0600)
 
     level = logging.ERROR
     format = '%(asctime)s - %(message)s'
@@ -105,23 +82,20 @@ if __name__ == "__main__":
 
     ch = logging.StreamHandler()
     ch.setFormatter(formatter)
-    fh = logging.handlers.RotatingFileHandler(log_file, maxBytes=10485760, backupCount=5)
+    fh = logging.handlers.RotatingFileHandler(Config().log_file, maxBytes=10485760, backupCount=5)
     fh.setFormatter(formatter)
 
     logger.addHandler(ch)
     logger.addHandler(fh)
 
-    # Init the ModuleManager with the config
-    ModuleManager(config_path=options.config)
-
     # Run the XML-RPC server
-    server = SimpleXMLRPCServer((host, port),
+    server = SimpleXMLRPCServer((Config().host, Config().port),
                                 requestHandler=MSSXMLRPCRequestHandler,
                                 allow_none=True, logRequests=False)
 
     try:
         print 'This is MSS XML-RPC agent'
-        print 'Listening at %s:%s' % (host, port)
+        print 'Listening at %s:%s' % (Config().host, Config().port)
         print 'Use Control-C to exit'
         server.serve_forever()
     except KeyboardInterrupt:

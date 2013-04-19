@@ -28,11 +28,11 @@ import sys
 import logging
 import platform
 import json
-import ConfigParser
 import urllib
 import urllib2
 import time
 
+from mss.agent.config import Config
 from mss.agent.lib.utils import Singleton
 from mss.agent.lib.db import get_session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.managers.process import ProcessManager
@@ -66,20 +66,14 @@ class ModuleManager:
             raise Exception('Method "%s" is not supported' % method)
         return func(*params)
 
-    def __init__(self, config_path):
+    def __init__(self):
         if platform.machine() == 'x86_64':
             self.arch = 'x86_64'
         else:
             self.arch = 'i586'
-        self.config = ConfigParser.ConfigParser();
-        self.config.readfp(open(config_path))
-        # Get the DB file path
-        try:
-            self.db_file = self.config.get("agent", "db_file")
-        except (ConfigParser.NoSectionError, ConfigParser.NoOptionError):
-            self.db_file = '/var/lib/mss/mss-agent.db'
+
         # Setup BDD access
-        self.session = get_session(self.db_file)
+        self.session = get_session(Config().db_file)
 
         self._token = False
         self._mode = None
@@ -112,8 +106,8 @@ class ModuleManager:
         """
         Setup the python path to load modules
         """
-        local_path = self.config.get("local", "localDir")
-        cache_path = self.config.get("local", "cacheDir")
+        local_path = Config().localDir
+        cache_path = Config().cacheDir
         if local:
             try:
                 sys.path.remove(cache_path)
@@ -141,7 +135,7 @@ class ModuleManager:
         for module_desc in modules_list:
             if "module" in module_desc:
                 if not "path" in module_desc["module"]:
-                    module_desc["module"]["path"] = os.path.join(self.config.get("local", "cacheDir"),
+                    module_desc["module"]["path"] = os.path.join(Config().cacheDir,
                                                                  module_desc["slug"])
                 self.modules[module_desc['slug']] = Module(module_desc)
                 section = self.modules[module_desc['slug']].section
@@ -153,10 +147,10 @@ class ModuleManager:
         paths = []
         result = []
 
-        for item in glob.glob(os.path.join(self.config.get("local", "localDir"),
+        for item in glob.glob(os.path.join(Config().localDir,
                                            "*", "__init__.py")):
             module = item.split("/")[-2]
-            path = os.path.join(self.config.get("local", "localDir"), module)
+            path = os.path.join(Config().localDir, module)
             paths.append(path)
 
         for path in paths:
@@ -179,17 +173,17 @@ class ModuleManager:
 
     def get_api_modules(self):
         """ return list of modules from the API """
-        cache_path = os.path.join(self.config.get("local", "cacheDir"), "addons.json")
+        cache_path = os.path.join(Config().cacheDir, "addons.json")
 
         try:
             mtime = os.path.getmtime(cache_path)
         except OSError:
             mtime = 0
         # Cache 6 hours
-        if int(time.time()) - mtime > self.config.getint("local", "cache"):
+        if int(time.time()) - mtime > Config().cache:
             logger.debug("Getting new version of %s" % cache_path)
 
-            result, code = self.request(self.config.get("api", "addonsUrl"))
+            result, code = self.request(Config().addonsUrls)
             if code == 200:
                 h = open(cache_path, "w")
                 json.dump(result, h)
@@ -222,7 +216,7 @@ class ModuleManager:
 
     def get_local_sections(self):
         """ return local section list """
-        path = os.path.join(self.config.get("local", "localDir"), "sections.json")
+        path = os.path.join(Config().localDir, "sections.json")
         h = open(path)
         sections = json.load(h)
         h.close()
@@ -231,17 +225,17 @@ class ModuleManager:
 
     def get_api_sections(self):
         """ return section list from API """
-        cache_path = os.path.join(self.config.get("local", "cacheDir"), "sections.json")
+        cache_path = os.path.join(Config().cacheDir, "sections.json")
 
         try:
             mtime = os.path.getmtime(cache_path)
         except OSError:
             mtime = 0
         # Cache 6 hours
-        if int(time.time()) - mtime > self.config.getint("local", "cache"):
+        if int(time.time()) - mtime > Config().cache:
             logger.debug("Getting new version of %s" % cache_path)
 
-            result, code = self.request(self.config.get("api", "sectionsUrl"))
+            result, code = self.request(Config().sectionsUrl)
             if code == 200:
                 h = open(cache_path, "w")
                 json.dump(result, h)
@@ -679,7 +673,7 @@ class ModuleManager:
         # API auth
         else:
             logger.debug("ServicePlace authentication")
-            url = self.config.get("api", "tokenUrl")
+            url = Config().tokenUrl
             result, code = self.request(url, {'username': user, 'password': password})
             if code == 200:
                 if 'token' in result:
