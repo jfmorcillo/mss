@@ -658,10 +658,10 @@ class ModuleManager:
     @expose
     def authenticate(self, user, password):
         """ Authenticate mss-www to the agent """
-        self._token = False
-        self._mode = None
         if not user or not password:
             return False
+        # Logout the current user
+        self.logout()
         # Local auth with PAM
         if user == "root":
             logger.debug("PAM authentication")
@@ -697,6 +697,12 @@ class ModuleManager:
         if not token:
             return False
         return token == self._token
+
+    @expose
+    def logout(self):
+        self._token = False
+        self._mode = None
+        logger.info("User logged out")
 
     def request(self, url, params=None):
         """
