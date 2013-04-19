@@ -5,6 +5,9 @@ from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler
 from mss.agent.managers.module import ModuleManager
 
 logger = logging.getLogger(__name__)
+UNAUTHENTICATED_METHODS = ('set_lang', 'get_lang',
+                           'get_status', 'get_state',
+                           'check_net')
 
 
 class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
@@ -93,10 +96,9 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
     def _dispatch(self, method, params):
         self.cookies = []
 
-        if method in ('authenticate'):
+        if method == 'authenticate':
             return self.authenticate(*params)
-
-        if self.check_token():
+        elif method in UNAUTHENTICATED_METHODS or self.check_token():
             try:
                 return ModuleManager()._dispatch(method, params)
             except Exception as e:

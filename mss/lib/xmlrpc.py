@@ -84,5 +84,5 @@ class XmlRpc:
             return [False, method(*args)]
         except (socket_error, xmlrpclib.Fault,
                 xmlrpclib.ProtocolError, xmlrpclib.ResponseError) as err:
-            logger.exception("Exception while doing the XML-RPC request")
+            logger.exception("Exception while calling %s" % method_name)
             return [err, False]
