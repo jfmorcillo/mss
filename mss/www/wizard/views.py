@@ -70,7 +70,6 @@ def mylogin(request):
         if user is not None:
             if user.is_active:
                 login(request, user)
-                err, status = xmlrpc.call('load')
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
             else:
