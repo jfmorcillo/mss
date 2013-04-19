@@ -90,6 +90,7 @@ def mylogin(request):
 
 def mylogout(request):
     logout(request)
+    xmlrpc.call('logout')
     return HttpResponseRedirect(reverse('login'))
 
 def first_time_required(function):
