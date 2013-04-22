@@ -71,6 +71,7 @@ make_config() {
     esc_pass=`basic_single_escape "$rootpass"`
     echo "password='$esc_pass'" >>$config
     #sed 's,^,> ,' < $config  # Debugging
+    chmod go-rwx $config
 }
 
 get_root_password() {
