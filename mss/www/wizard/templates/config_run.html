@@ -43,7 +43,7 @@
     var current = 0;
     var modules = [];
     {% for m in transaction.modules_info %}
-        {% if m.has_configuration_script %}
+        {% if m.has_configuration_script and not m.configured %}
             modules.push('{{ m.slug }}');
         {% endif %}
     {% endfor %}
@@ -148,7 +148,7 @@
     <p id="summary" class="alert" style="display: none;"></p>
 
     {% for m in transaction.modules_info %}
-        {% if m.has_configuration_script %}
+        {% if m.has_configuration_script and not m.configured %}
     <div class="module" id="{{ m.slug }}">
         <h2>{{ m.name }}</h2>
         <p class=help-block">{{ m.description }}</p>
