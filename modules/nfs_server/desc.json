@@ -1,5 +1,5 @@
 {
-    "slug": "nfs-server",
+    "slug": "nfs_server",
     "name": "NFS server",
     "description": "Install NFS Server and configure it to integrate with the firewall",
     "desc": "Install NFS Server and configure it to integrate with the firewall",
