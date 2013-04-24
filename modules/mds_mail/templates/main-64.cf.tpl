@@ -25,7 +25,7 @@ mailbox_size_limit = 0
 message_size_limit = 15728640
 
 # LDAP Transport
-transport_map = ldap:/etc/postfix/ldap-transport.cf
+transport_maps = ldap:/etc/postfix/ldap-transport.cf
 
 # Virtual Domains Control
 virtual_mailbox_domains = ldap:/etc/postfix/ldap-domains.cf
