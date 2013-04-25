@@ -83,7 +83,8 @@ class ModuleManager:
         self.packages = []
 
         # Get machine-id
-        machine_id = open('/etc/machine-id', 'r').read().strip()
+        with open('/etc/machine-id', 'r') as f:
+            machine_id = f.read().strip()
         logger.info("Machine id is %s" % machine_id)
         self.set_option("machine-id", machine_id)
         # Translation manager
@@ -155,8 +156,8 @@ class ModuleManager:
 
         for path in paths:
             try:
-                h = open(os.path.join(path, "desc.json"))
-                desc = json.load(h)
+                with open(os.path.join(path, "desc.json")) as f:
+                    desc = json.load(f)
             except (ValueError, IOError):
                 logger.exception("Failed to load %s" % (path))
             else:
@@ -164,8 +165,6 @@ class ModuleManager:
                     desc["module"] = {}
                 desc["module"]["path"] = path
                 result.append(desc)
-            finally:
-                h.close()
 
         self.setup_python_path(local=True)
 
@@ -185,21 +184,17 @@ class ModuleManager:
 
             result, code = self.request(Config().addonsUrls)
             if code == 200:
-                h = open(cache_path, "w")
-                json.dump(result, h)
-                h.close()
-                h = open(cache_path)
-                modules_list = json.load(h)
-                h.close()
+                with open(cache_path, "w") as f:
+                    json.dump(result, f)
+                modules_list = result
                 self.setup_python_path(local=False)
             else:
                 logger.error("Failed to retrieve modules from the API.")
                 logger.error("Using local modules.")
                 modules_list = self.get_local_modules()
         else:
-            h = open(cache_path)
-            modules_list = json.load(h)
-            h.close()
+            with open(cache_path) as f:
+                modules_list = json.load(f)
             self.setup_python_path(local=False)
 
         return modules_list
@@ -217,9 +212,8 @@ class ModuleManager:
     def get_local_sections(self):
         """ return local section list """
         path = os.path.join(Config().localDir, "sections.json")
-        h = open(path)
-        sections = json.load(h)
-        h.close()
+        with open(path) as f:
+            sections = json.load(f)
 
         return sections
 
@@ -237,20 +231,16 @@ class ModuleManager:
 
             result, code = self.request(Config().sectionsUrl)
             if code == 200:
-                h = open(cache_path, "w")
-                json.dump(result, h)
-                h.close()
-                h = open(cache_path)
-                sections = json.load(h)
-                h.close()
+                with open(cache_path, "w") as f:
+                    json.dump(result, f)
+                sections = result
             else:
                 logger.error("Failed to retrieve sections from the API.")
                 logger.error("Using local sections.")
                 sections = self.get_local_sections()
         else:
-            h = open(cache_path)
-            sections = json.load(h)
-            h.close()
+            with open(cache_path) as f:
+                sections = json.load(f)
 
         return sections
 

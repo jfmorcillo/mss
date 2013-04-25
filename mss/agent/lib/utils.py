@@ -26,9 +26,6 @@ import re
 import os
 import netifaces
 from IPy import IP
-import urllib2
-import urllib
-import json
 
 def formatExceptionInfo(maxTBlevel=5):
     cla, exc, trbk = sys.exc_info()
@@ -51,9 +48,8 @@ def get_config_option(file, option):
     OPTION=value
     """
     if os.path.exists(file):
-        h = open(file)
-        string = h.read()
-        h.close()
+        with open(file) as f:
+            string = f.read()
         expr = re.compile("\s*%s\s*=\s*(.*)" % option, re.M)
         match = expr.search(string)
         if match and match.group(1):
@@ -65,9 +61,8 @@ def get_config_option(file, option):
 
 def grep(search, file):
     if os.path.exists(file):
-        h = open(file)
-        string = h.read()
-        h.close()
+        with open(file) as f:
+            string = f.read()
         expr = re.compile(search, re.M)
         if expr.search(string):
             return True

@@ -458,21 +458,17 @@ class Module(object):
     def end_download(self, module, code, result):
         if code == 200:
             temp_path = os.path.join("/tmp", self.slug + ".zip")
-            h = open(temp_path, "wb")
-            h.write(result)
-            h.close()
+            with open(temp_path, "wb") as f:
+                f.write(result)
         else:
             logger.error("Error while downloading %s module" % self.slug)
 
         if code == 200:
             # Verify sha1
             logger.debug("Unzip module: %s" % temp_path)
-            h = open(temp_path, "rb")
             sha1 = hashlib.sha1()
-            try:
-                sha1.update(h.read())
-            finally:
-                h.close()
+            with open(temp_path, "rb") as f:
+                sha1.update(f.read())
             logger.debug("Process sha1sum: %s" % sha1.hexdigest())
             if sha1.hexdigest() == self._desc['module']['file_sha1']:
                 logger.debug("Zip file is valid: unzip...")
@@ -491,9 +487,8 @@ class Module(object):
     def load_desc(self):
         if self.downloaded:
             logger.debug("Loading downloaded %s desc.json" % self.slug)
-            h = open(os.path.join(self._path, "desc.json"))
-            self._desc.update(json.load(h))
-            h.close()
+            with open(os.path.join(self._path, "desc.json")) as f:
+                self._desc.update(json.load(f))
 
     def load_module(self):
         logger.debug("Loading %s python module" % self.slug)
