@@ -101,9 +101,9 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
         elif method in UNAUTHENTICATED_METHODS or self.check_token():
             try:
                 return ModuleManager()._dispatch(method, params)
-            except Exception as e:
+            except Exception:
                 logger.exception("Error while calling ModuleManager.%s" % method)
-                raise e
+                raise
         else:
             raise Exception(u"Authentication failed")
 

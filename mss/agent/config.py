@@ -34,10 +34,10 @@ class Config(object):
         self.config = ConfigParser.ConfigParser();
         try:
             self.config.readfp(open(config_path))
-        except IOError as e:
+        except IOError:
             print "Error while reading configuration at %s" % config_path
             print traceback.format_exc()
-            raise e
+            raise
 
     def __getattr__(self, attr):
         option = None
