@@ -1,0 +1,28 @@
+{
+    "slug": "tftp_server",
+    "name": "TFTP server",
+    "description": "TFTP Server",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["tftp-server"]
+        }
+     ],
+     "config": [
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow access from internal networks",
+            "help": "Configure the firewall to allow access to the TFTP service from internal networks"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow access from external networks",
+            "help": "Configure the firewall to allow access to the TFTP service from external networks"
+        }
+    ],
+    "standalone": false
+}
