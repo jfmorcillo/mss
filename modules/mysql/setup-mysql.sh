@@ -15,6 +15,8 @@
 # along with this program; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+. ../functions.sh
+
 config="/root/.my.cnf"
 command=".mysql.$$"
 
@@ -68,7 +70,7 @@ make_config() {
     echo "# mysql_secure_installation config file" >$config
     echo "[mysql]" >>$config
     echo "user=root" >>$config
-    esc_pass=`basic_single_escape "$rootpass"`
+    esc_pass=`basic_single_escape "$1"`
     echo "password='$esc_pass'" >>$config
     #sed 's,^,> ,' < $config  # Debugging
     chmod go-rwx $config
@@ -91,16 +93,16 @@ set_root_password() {
     echo "Setting the root password ensures that nobody can log into the MySQL"
     echo "root user without the proper authorisation."
     esc_pass=`basic_single_escape "$1"`
-    do_query "UPDATE mysql.user SET Password=PASSWORD('$esc_pass') WHERE User='root';"
+    #do_query "UPDATE mysql.user SET Password=PASSWORD('$esc_pass') WHERE User='root';"
+    mysqladmin password "$1"
     if [ $? -eq 0 ]; then
-	echo "Password updated successfully!"
-	echo "Reloading privilege tables.."
-	reload_privilege_tables || exit 1
-	rootpass=$1
-	make_config
+        echo "Password updated successfully!"
+        echo "Reloading privilege tables.."
+        make_config "$1"
+        #reload_privilege_tables || exit 1
     else
-	echo "2Password update failed!"
-	interrupt
+        echo "2Password update failed!"
+        interrupt
     fi
 
     return 0
@@ -181,8 +183,9 @@ cleanup() {
 restart_service mysqld
 prepare
 set_echo_compat
-get_root_password $1
-set_root_password $2
+#get_root_password $1
+#set_root_password $2
+set_root_password "$1"
 remove_anonymous_users
 remove_remote_root
 remove_test_database

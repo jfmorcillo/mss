@@ -107,7 +107,7 @@ function clean_database() {
 }
 
 # mysql functions vars
-config="/tmp/.my.cnf.$$"
+config="/root/.my.cnf"
 command="/tmp/.mysql.$$"
 
 function mysql_prepare() {

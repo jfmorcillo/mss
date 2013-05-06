@@ -12,14 +12,7 @@
     "config": [
         {
             "type": "password",
-            "name": "current_mypasswd",
-            "show": "configured",
-            "label": "Current password",
-            "help": "Current MySQL root password."
-        },
-        {
-            "type": "password",
-            "name": "mypasswd",
+            "name": "mysqlpasswd",
             "require": "yes",
             "label": "New password",
             "help": "New MySQL root password. Set here the new password"

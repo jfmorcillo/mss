@@ -22,4 +22,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ("setup-mysql.sh", ['current_mypasswd', 'mypasswd'])
+    return ("setup-mysql.sh", ['mysqlpasswd'])
