@@ -2,8 +2,6 @@
 #
 # (c) 2013 Mandriva, http://www.mandriva.com/
 #
-# $Id$
-#
 # This file is part of Mandriva Server Setup
 #
 # MSS is free software; you can redistribute it and/or modify

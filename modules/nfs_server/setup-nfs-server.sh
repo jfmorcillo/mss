@@ -47,28 +47,26 @@ restart_service rpcbind
 
 # Configure the Firewall
 if [ ! -f /etc/shorewall/macro.NFS ]; then
-    echo<<EOF > /etc/shorewall/macro.NFS
-#
-# Shorewall version 3.2 - NFS Macro
-#
-# /etc/shorewall/macro.NFS
-#
-#	This macro handles Network File Server (NFS)
-#	Because NFS lacks all security you should not enable it over
-#	Internet.
-#       This macro is specific to MBS1 NFS installation
-#
-###############################################################################
-#ACTION	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/
-#				PORT(S)	PORT(S)	LIMIT	GROUP
-PARAM	-	-	udp	111
-PARAM	-	-	tcp	111
-PARAM	-	-	udp	2049
-PARAM	-	-	tcp	2049
-PARAM	-	-	udp	32764:32769
-PARAM	-	-	tcp	32764:32769
-
-EOF
+    echo "#" > /etc/shorewall/macro.NFS
+    echo "# Shorewall version 3.2 - NFS Macro" >> /etc/shorewall/macro.NFS
+    echo "#" >> /etc/shorewall/macro.NFS
+    echo "# /etc/shorewall/macro.NFS" >> /etc/shorewall/macro.NFS
+    echo "#" >> /etc/shorewall/macro.NFS
+    echo "#	This macro handles Network File Server (NFS)" >> /etc/shorewall/macro.NFS
+    echo "#	Because NFS lacks all security you should not enable it over" >> /etc/shorewall/macro.NFS
+    echo "#	Internet." >> /etc/shorewall/macro.NFS
+    echo "#       This macro is specific to MBS1 NFS installation" >> /etc/shorewall/macro.NFS
+    echo "#" >> /etc/shorewall/macro.NFS
+    echo "###############################################################################" >> /etc/shorewall/macro.NFS
+    echo "#ACTION	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/" >> /etc/shorewall/macro.NFS
+    echo "#				PORT(S)	PORT(S)	LIMIT	GROUP" >> /etc/shorewall/macro.NFS
+    echo "PARAM	-	-	udp	111" >> /etc/shorewall/macro.NFS
+    echo "PARAM	-	-	tcp	111" >> /etc/shorewall/macro.NFS
+    echo "PARAM	-	-	udp	2049" >> /etc/shorewall/macro.NFS
+    echo "PARAM	-	-	tcp	2049" >> /etc/shorewall/macro.NFS
+    echo "PARAM	-	-	udp	32764:32769" >> /etc/shorewall/macro.NFS
+    echo "PARAM	-	-	tcp	32764:32769" >> /etc/shorewall/macro.NFS
+    echo "" >> /etc/shorewall/macro.NFS
 fi
 
 # Internal interface
@@ -81,6 +79,6 @@ restart_service shorewall
 
 # Information
 info_b $"The NFS service is running."
-info_b $"Edit '/etc/exports' to add your NFS shares"
+info $"Edit '/etc/exports' to add your NFS shares"
 
 exit 0
