@@ -266,3 +266,7 @@ function replace() {
     #replacement=`escape_sed $replacement`
     sed -i "s|$pattern|$replacement|" $path
 }
+
+function randpass() {
+    date +%s | sha256sum | base64 | head -c 32
+}
