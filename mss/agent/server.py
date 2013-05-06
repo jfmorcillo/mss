@@ -7,7 +7,7 @@ from mss.agent.managers.module import ModuleManager
 logger = logging.getLogger(__name__)
 UNAUTHENTICATED_METHODS = ('set_lang', 'get_lang',
                            'get_status', 'get_state',
-                           'check_net')
+                           'check_net', 'update_medias')
 
 
 class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
