@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <maikwagner@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-04-18 12:16+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: .description .desc
+msgid "Set file quotas on the server"
+msgstr "Dateiquotas auf dem Server setzen"
+
+#: .name
+msgid "User quota management"
+msgstr "Benutzer Quotaverwaltung"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].name
+msgid "filesystems"
+msgstr "Dateisysteme"
+
+#: .config[0].label
+msgid "Filesystems"
+msgstr "Dateisysteme"
+
+#: .config[0].help
+msgid ""
+"Specify the filesystems where you want to apply user quotas with the "
+"following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
+msgstr ""
+"Geben Sie die Dateisysteme an, worauf Sie Benutzerquotas anwenden wollen, in"
+" folgendem Format an : 'Gerätepfad':'Identifikation' (zB: /dev/sda1:Root)"
+
+#: .categories[0].name
+msgid "Users"
+msgstr "Benutzer"
+
+#: mds_quota/setup-quota.sh:36
+msgid "Quotas not supported on this filesystem : $fs"
+msgstr "Quotas werden nicht auf diesem Dateisystem unterstützt : $fs"
+
+#: mds_quota/setup-quota.sh:54
+msgid "Quota module is activated in the management interface."
+msgstr "Quotamodul ist in der Verwaltungsschnittstelle aktiviert."
+
+#: mds_quota/setup-quota.sh:55
+msgid ""
+"You can now configure user quotas from the management interface : "
+"https://@HOSTNAME@/mmc/."
+msgstr ""
+"Sie können nun die Benutzerquotas von der Verwaltungsschnittstelle "
+"konfigurieren : https://@HOSTNAME@/mmc/."
+
+

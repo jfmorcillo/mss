@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 04:51+0200\n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
 "PO-Revision-Date: 2013-04-16 14:14+0000\n"
 "Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
@@ -27,7 +27,7 @@ msgstr "Serviços principais"
 msgid "Other Services"
 msgstr "Outros serviços"
 
-#: classes/module.py:161
+#: classes/module.py:162
 msgid "Other"
 msgstr "Outro"
 

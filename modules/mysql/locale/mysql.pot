@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 04:51+0200\n"
+"POT-Creation-Date: 2013-05-07 04:10+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -26,26 +26,14 @@ msgid "all"
 msgstr ""
 
 #: .config[0].help
-msgid "Current MySQL root password."
-msgstr ""
-
-#: .config[0].label
-msgid "Current password"
-msgstr ""
-
-#: .config[0].name
-msgid "current_mypasswd"
-msgstr ""
-
-#: .config[1].help
 msgid "New MySQL root password. Set here the new password"
 msgstr ""
 
-#: .config[1].name
-msgid "mypasswd"
+#: .config[0].name
+msgid "mysqlpasswd"
 msgstr ""
 
-#: .config[1].label
+#: .config[0].label
 msgid "New password"
 msgstr ""
 

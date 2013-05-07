@@ -1,0 +1,220 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-05-13 13:35+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: .description .desc
+msgid "Install and configure Kerberos authentication"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "Kerberos authentication with MDS backend"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .packages[1].name
+msgid "x86_64"
+msgstr ""
+
+#: .packages[2].name
+msgid "i586"
+msgstr ""
+
+#: .config[0].name
+msgid "realm"
+msgstr ""
+
+#: .config[0].label
+msgid "Realm"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Kerberos realm (e.g., REALM.COM). Attention! It can be set only when the "
+"module is unconfigured)"
+msgstr ""
+
+#: .config[1].name
+msgid "kdc_host_name"
+msgstr ""
+
+#: .config[1].label
+msgid "KDC host name"
+msgstr ""
+
+#: .config[1].help
+msgid "Host name of the KDC server without DNS domain name (e.g., server)"
+msgstr ""
+
+#: .config[2].name
+msgid "dns_domain_name"
+msgstr ""
+
+#: .config[2].label
+msgid "DNS domain name"
+msgstr ""
+
+#: .config[2].help
+msgid "DNS Domain name (e.g., example.com)"
+msgstr ""
+
+#: .config[3].name
+msgid "kdc_port"
+msgstr ""
+
+#: .config[3].label
+msgid "KDC port"
+msgstr ""
+
+#: .config[3].help
+msgid "Default port of the KDC server (e.g., 88)"
+msgstr ""
+
+#: .config[4].name
+msgid "kadmin_port"
+msgstr ""
+
+#: .config[4].label
+msgid "Administrator server port"
+msgstr ""
+
+#: .config[4].help
+msgid "Default port of the administrator server (e.g., 749)"
+msgstr ""
+
+#: .config[5].help
+msgid ""
+"Master key for the KDC server. Attention! It can be set only when the module"
+" is unconfigured"
+msgstr ""
+
+#: .config[5].label
+msgid "KDC database master key"
+msgstr ""
+
+#: .config[5].name
+msgid "kdc_key_passwd"
+msgstr ""
+
+#: .config[6].help
+msgid ""
+"Indicates whether DNS SRV records should be used to locate the KDCs and "
+"other servers for a realm, if they are not listed in the information for the"
+" realm"
+msgstr ""
+
+#: .config[6].name
+msgid "dns_lookup_kdc"
+msgstr ""
+
+#: .config[6].label
+msgid "DNS lookup for KDC"
+msgstr ""
+
+#: .config[7].help
+msgid ""
+"Indicates whether DNS TXT records should be used to determine the Kerberos "
+"realm of a host"
+msgstr ""
+
+#: .config[7].name
+msgid "dns_lookup_realm"
+msgstr ""
+
+#: .config[7].label
+msgid "DNS lookup for realm"
+msgstr ""
+
+#: .config[8].help
+msgid ""
+"Maximum allowable amount of clockskew in seconds that the library will "
+"tolerate before assuming that a Kerberos message is invalid (e.g., 300)"
+msgstr ""
+
+#: .config[8].name
+msgid "clock_skew"
+msgstr ""
+
+#: .config[8].label
+msgid "Clock skew"
+msgstr ""
+
+#: .config[9].help
+msgid ""
+"Supported list of session key encryption types that should be returned by "
+"the KDC (Values of list devided by whitespace or comma from each other, "
+"e.g., des3-cbc-sha1-kd des-cbc-crc)"
+msgstr ""
+
+#: .config[9].label
+msgid "TGS encryption types"
+msgstr ""
+
+#: .config[9].name
+msgid "tgs_enctypes"
+msgstr ""
+
+#: .config[10].help
+msgid ""
+"Supported list of session key encryption types that should be requested by "
+"the client (Values of list devided by whitespace or comma from each other, "
+"e.g., des3-cbc-sha1-kd des-cbc-crc)"
+msgstr ""
+
+#: .config[10].label
+msgid "TKT encryption types"
+msgstr ""
+
+#: .config[10].name
+msgid "tkt_enctypes"
+msgstr ""
+
+#: .config[11].help
+msgid ""
+"All encryption types that are permitted for use in session key encryption "
+"(Values of list devided by whitespace or comma from each other, e.g., des3"
+"-cbc-sha1-kd des-cbc-crc)"
+msgstr ""
+
+#: .config[11].label
+msgid "Permitted encryption types"
+msgstr ""
+
+#: .config[11].name
+msgid "permitted_enctypes"
+msgstr ""
+
+#: .config[12].help
+msgid "Indicates whether weak encryption types should be filtered out"
+msgstr ""
+
+#: .config[12].name
+msgid "allow_weak_enctypes"
+msgstr ""
+
+#: .config[12].label
+msgid "Allow weak encryption types"
+msgstr ""
+
+

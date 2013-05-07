@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:07+0200\n"
+"PO-Revision-Date: 2013-05-13 13:33+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .description .desc
+msgid ""
+"ownCloud gives your users an universal access to their files through a web interface or WebDAV.\n"
+"\n"
+"It also provides a platform to easily view & sync your contacts, calendars and bookmarks across all your devices and enables basic editing right on the web"
+msgstr ""
+"ownCloud fourni à vos utilisateurs un accès universel à leur fichiers depuis une interface web ou WebDAV.\n"
+"\n"
+"Il fourni aussi une plateforme pour facilement consulter et synchroniser les contacts, calendriers et favoris sur différentes plateformes."
+
+#: .actions[0].name
+msgid "ownCloud interface"
+msgstr "Interface ownCloud"
+
+#: .name
+msgid "ownCloud"
+msgstr "ownCloud"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].help
+msgid "The name of the ownCloud administrator that will be created"
+msgstr "Le nom de l'administrateur ownCloud qui sera créé"
+
+#: .config[0].name
+msgid "owncloud_adminUser"
+msgstr "owncloud_adminUser"
+
+#: .config[0].label
+msgid "ownCloud administrator"
+msgstr "Administrateur ownCloud"
+
+#: .config[1].help
+msgid "Password of the ownCloud administrator"
+msgstr "Mot de passe de l'administrateur ownCloud"
+
+#: .config[1].name
+msgid "owncloud_adminPass"
+msgstr "owncloud_adminPass"
+
+#: .config[1].label
+msgid "Password"
+msgstr "Mot de passe"
+
+#: .config[2].help
+msgid "Directory path where all users's data will be stored."
+msgstr "Chemin vers le dossier qui contiendra les données des utilisateurs."
+
+#: .config[2].label
+msgid "ownCloud data directory"
+msgstr "Dossier des données ownCloud"
+
+#: .config[2].name
+msgid "owncloud_dataPath"
+msgstr "owncloud_dataPath"
+
+#: .categories[0].name
+msgid "Cloud"
+msgstr "Cloud"
+
+#: owncloud/setup-owncloud.sh:114
+msgid "ownCloud is now configured."
+msgstr "ownCloud est configuré."
+
+#: owncloud/setup-owncloud.sh:115
+msgid "You can access the web interface at https://@HOSTNAME@/owncloud/"
+msgstr "Vous pouvez accéder à l'interface web sur "
+
+

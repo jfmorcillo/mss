@@ -1,0 +1,128 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <maikwagner@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-04-18 12:12+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: .description .desc
+msgid "Users and groups management"
+msgstr "Benutzer und Gruppenverwaltung"
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr "Verwaltungsschnittstelle"
+
+#: .name
+msgid "MBS administration web interface"
+msgstr "MBS Administration Web Interface"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].help
+msgid ""
+"The administrator password of the web interface for managing MBS users and "
+"services."
+msgstr ""
+"Das Administratorpasswort des Web-Interface für die Verwaltung von MBS "
+"Benutzern und Diensten."
+
+#: .config[0].name
+msgid "mdspasswd"
+msgstr "mdspasswd"
+
+#: .config[0].label
+msgid "Administrator password"
+msgstr "Administrator-Passwort"
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the web interface from internal "
+"networks"
+msgstr ""
+"Konfigurieren der Firewall, Zugang zum Web-Interface von internen Netzwerken"
+" zu erlauben"
+
+#: .config[1].name
+msgid "fw_lan"
+msgstr "fw_lan"
+
+#: .config[1].label
+msgid "Allow access from internal networks"
+msgstr "Zugang von internen Netzwerken erlauben"
+
+#: .config[2].help
+msgid ""
+"Configure the firewall to allow access to the web interface from external "
+"networks"
+msgstr ""
+"Konfigurieren der Firewall, Zugang zum Web-Interface von externen Netzwerken"
+" zu erlauben"
+
+#: .config[2].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[2].label
+msgid "Allow access from external networks"
+msgstr "Zugang von externen Netzwerken erlauben"
+
+#: .categories[0].name
+msgid "Users"
+msgstr "Benutzer"
+
+#: mds_mmc/setup-mmc.sh:32
+msgid "Error while generating the password."
+msgstr "Fehler beim Erstellen des Passworts."
+
+#: mds_mmc/setup-mmc.sh:74
+msgid "OpenLDAP configuration has errors."
+msgstr "OpenLDAP-Konfiguration ist fehlerhaft."
+
+#: mds_mmc/setup-mmc.sh:86
+msgid "Database load test failed."
+msgstr "Datenbank laden-Test fehlgeschlagen."
+
+#: mds_mmc/setup-mmc.sh:100
+msgid "Failed to initialize the database."
+msgstr "Fehler beim Initialisieren der Datenbank."
+
+#: mds_mmc/setup-mmc.sh:108
+msgid "Error while configuring lib nss-ldap."
+msgstr "Fehler beim Konfigurieren von lib nss-ldap."
+
+#: mds_mmc/setup-mmc.sh:131
+msgid "The MBS administration web interface is configured."
+msgstr "Die MBS Verwaltungs-Webschnittstelle ist konfiguriert."
+
+#: mds_mmc/setup-mmc.sh:132
+msgid ""
+"You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
+msgstr ""
+"Sie können sich in die Oberfläche unter https://@HOSTNAME@/mmc/ nach dem "
+"Neustart einloggen."
+
+#: mds_mmc/setup-mmc.sh:133
+msgid "Administrator name : root"
+msgstr "Administratorname : root"
+
+#: mds_mmc/setup-mmc.sh:134
+msgid "Administrator password : $mypass"
+msgstr "Administratorpasswort : $mypass"
+
+

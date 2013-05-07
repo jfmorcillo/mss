@@ -1,0 +1,164 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <maikwagner@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-04-18 13:05+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: .description .desc
+msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
+msgstr ""
+"Vollständiger Maildienst mit POP/IMAP, Anti-Virus und Anti-Spam-Werkzeugen"
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr "Verwaltungsschnittstelle"
+
+#: .name
+msgid "Mail Service"
+msgstr "Mail Dienst"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].name
+msgid "smtpd_mynetworks"
+msgstr "smtpd_mynetworks"
+
+#: .config[0].label
+msgid "My networks"
+msgstr "Meine Netzwerke"
+
+#: .config[0].help
+msgid ""
+"Specify which clients are authorized to send mails through the mail server "
+"without authentication."
+msgstr ""
+"Geben Sie an, welche Clients authorisiert sind, Mails über den Mailserver "
+"ohne Authenfizierung zu senden."
+
+#: .config[1].help
+msgid "Protocols that the dovecot server will provide."
+msgstr "Protokolle, die der dovecot-Server bereit stellen wird."
+
+#: .config[1].label
+msgid "Protocols supported"
+msgstr "Unterstützte Protokolle"
+
+#: .config[1].options[0].name
+msgid "IMAPS and POP3S"
+msgstr "IMAPS und POP3S"
+
+#: .config[1].options[1].name
+msgid "IMAPS"
+msgstr "IMAPS"
+
+#: .config[1].options[2].name
+msgid "POP3S"
+msgstr "POP3S"
+
+#: .config[1].name
+msgid "popimap_proto"
+msgstr "popimap_proto"
+
+#: .config[2].help
+msgid ""
+"Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
+"configured as 'internal'"
+msgstr ""
+"Konfigurieren der Firewall, smtp/imap/pop3-Verbindungen auf Schnittstellen "
+"zu akzeptieren, die als 'intern' konfiguriert sind"
+
+#: .config[2].name
+msgid "fw_lan"
+msgstr "fw_lan"
+
+#: .config[2].label
+msgid "Allow mail services access from internal networks"
+msgstr "Maildienstezugang von internen Netzwerken erlauben"
+
+#: .config[3].help
+msgid ""
+"Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
+"configured as 'external'"
+msgstr ""
+"Konfigurieren der Firewall, smtp/imap/pop3-Verbindungen auf Schnittstellen "
+"zu akzeptieren, die als 'extern' konfiguriert sind"
+
+#: .config[3].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[3].label
+msgid "Allow mail services access from external networks"
+msgstr "Maildienstezugang von externen Netzwerken erlauben"
+
+#: .categories[0].name
+msgid "Mail"
+msgstr "Mail"
+
+#: mds_mail/setup-mail.sh:94
+msgid ""
+"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh "
+"-c 'razor-admin -register && razor-admin -discover'"
+msgstr ""
+"Fehler beim Registrieren von razor. Versuchen Sie als root folgendes später "
+"zu starten : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin"
+" -discover'"
+
+#: mds_mail/setup-mail.sh:128
+msgid "The mail service is configured."
+msgstr "Der Maildienst ist konfiguriert."
+
+#: mds_mail/setup-mail.sh:129
+msgid ""
+"You can add mail addresses and aliases to your users through the management "
+"interface at https://@HOSTNAME@/mmc/."
+msgstr ""
+"Sie können Mailadressen und Aliases für Ihre Benutzer über die "
+"Verwaltungsschnittstelle hinzufügen unter  https://@HOSTNAME@/mmc/."
+
+#: mds_mail/setup-mail.sh:130
+msgid "- the mail domain $DOMAIN has been created"
+msgstr "- die Maildomain $DOMAIN wurde erstellt"
+
+#: mds_mail/setup-mail.sh:131
+msgid "- SSL is enabled on the SMTP server"
+msgstr "- SSL ist auf dem SMTP-Server aktiviert"
+
+#: mds_mail/setup-mail.sh:132
+msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
+msgstr ""
+"- Verbindungen ohne SSL sind standardmäßig auf dem IMAP/POP3 deaktiviert"
+
+#: mds_mail/setup-mail.sh:133
+msgid ""
+"- Networks authorized to send mail without authentication : "
+"$smtpd_mynetworks"
+msgstr ""
+"- Netzwerke authorisiert, Mail ohne Authentifizierung zu senden : "
+"$smtpd_mynetworks"
+
+#: mds_mail/add_domain.py:16
+msgid "Default mail domain"
+msgstr "Vorgegebene Maildomain"
+
+#: mds_mail/add_domain.py:20
+msgid "Failed to add the mail domain."
+msgstr "Fehler beim Hinzufügen der Maildomain"
+
+

@@ -1,0 +1,88 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .description .desc
+msgid ""
+"ownCloud gives your users an universal access to their files through a web "
+"interface or WebDAV.\n"
+"\n"
+"It also provides a platform to easily view & sync your contacts, calendars "
+"and bookmarks across all your devices and enables basic editing right on the "
+"web"
+msgstr ""
+
+#: .actions[0].name
+msgid "ownCloud interface"
+msgstr ""
+
+#: .name
+msgid "ownCloud"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid "The name of the ownCloud administrator that will be created"
+msgstr ""
+
+#: .config[0].name
+msgid "owncloud_adminUser"
+msgstr ""
+
+#: .config[0].label
+msgid "ownCloud administrator"
+msgstr ""
+
+#: .config[1].help
+msgid "Password of the ownCloud administrator"
+msgstr ""
+
+#: .config[1].name
+msgid "owncloud_adminPass"
+msgstr ""
+
+#: .config[1].label
+msgid "Password"
+msgstr ""
+
+#: .config[2].help
+msgid "Directory path where all users's data will be stored."
+msgstr ""
+
+#: .config[2].label
+msgid "ownCloud data directory"
+msgstr ""
+
+#: .config[2].name
+msgid "owncloud_dataPath"
+msgstr ""
+
+#: .categories[0].name
+msgid "Cloud"
+msgstr ""
+
+#: owncloud/setup-owncloud.sh:114
+msgid "ownCloud is now configured."
+msgstr ""
+
+#: owncloud/setup-owncloud.sh:115
+msgid "You can access the web interface at https://@HOSTNAME@/owncloud/"
+msgstr ""

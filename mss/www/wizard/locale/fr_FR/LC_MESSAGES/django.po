@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 04:51+0200\n"
-"PO-Revision-Date: 2013-04-16 11:41+0000\n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-04-22 09:18+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -90,7 +90,7 @@ msgstr "L'agent MSS est injoignable."
 
 #: templates/base.html:22
 msgid "Hide log"
-msgstr "Info"
+msgstr "Cacher le détail"
 
 #: templates/base.html:25 templates/config_run.html:159
 #: templates/install.html:66 templates/media_add.html:95

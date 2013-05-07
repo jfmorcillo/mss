@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
-"PO-Revision-Date: 2013-04-08 10:21+0000\n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-05-13 12:29+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -27,26 +27,14 @@ msgid "all"
 msgstr "all"
 
 #: .config[0].help
-msgid "Current MySQL root password."
-msgstr "Le mot de passe MySQL actuel."
-
-#: .config[0].label
-msgid "Current password"
-msgstr "Mot de passe actuel"
-
-#: .config[0].name
-msgid "current_mypasswd"
-msgstr "current_mypasswd"
-
-#: .config[1].help
 msgid "New MySQL root password. Set here the new password"
 msgstr "Nouveau mot de passe root MySQL."
 
-#: .config[1].name
-msgid "mypasswd"
-msgstr "mypasswd"
+#: .config[0].name
+msgid "mysqlpasswd"
+msgstr ""
 
-#: .config[1].label
+#: .config[0].label
 msgid "New password"
 msgstr "Nouveau mot de passe"
 
