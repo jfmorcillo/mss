@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-05-07 04:07+0200\n"
-"PO-Revision-Date: 2013-05-13 13:33+0000\n"
+"PO-Revision-Date: 2013-05-13 13:52+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -86,6 +86,7 @@ msgstr "ownCloud est configuré."
 
 #: owncloud/setup-owncloud.sh:115
 msgid "You can access the web interface at https://@HOSTNAME@/owncloud/"
-msgstr "Vous pouvez accéder à l'interface web sur "
+msgstr ""
+"Vous pouvez accéder à l'interface web sur https://@HOSTNAME@/owncloud/"
 
 
