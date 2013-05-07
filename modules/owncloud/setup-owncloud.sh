@@ -16,7 +16,7 @@ OWNCLOUD_TEMPLATE="templates/autoconfig.php.tpl"
 OWNCLOUD_AUTOCONFIG="/usr/share/owncloud/config/autoconfig.php"
 OWNCLOUD_CONFIG="/usr/share/owncloud/config/config.php"
 
-echo -n "Create owncloud database..."
+echo -n "Create ownCloud database..."
 dbname="owncloud"
 dbuser="owncloud"
 dbpass=`randpass 10 1`
@@ -27,7 +27,7 @@ mysql_do_query "GRANT ALL ON ${dbname}.* to '${dbuser}'@'localhost' identified b
 mysql_do_query "FLUSH PRIVILEGES;"
 echo "done."
 
-echo -n "Generating owncloud configuration..."
+echo -n "Generating ownCloud configuration..."
 [ -e $OWNCLOUD_CONFIG ] && rm -f $OWNCLOUD_CONFIG
 cp $OWNCLOUD_TEMPLATE $OWNCLOUD_AUTOCONFIG
 
@@ -44,7 +44,7 @@ sed -i "s!\@DATA_PATH\@!$owncloud_dataPath!" $OWNCLOUD_AUTOCONFIG
 echo "done."
 
 # fullfil the database
-echo -n "Filling owncloud database..."
+echo -n "Filling ownCloud database..."
 wget --no-check-certificate -O - http://127.0.0.1/owncloud/ > /dev/null 2>&1
 
 # FIXME: Add a sql request to see if the db has been filled correctly
@@ -111,5 +111,5 @@ echo "done."
 
 https_redirect owncloud /etc/httpd/conf/webapps.d/owncloud.conf
 
-info_b $"Owncloud is now configured."
+info_b $"ownCloud is now configured."
 info $"You can access the web interface at https://@HOSTNAME@/owncloud/"
