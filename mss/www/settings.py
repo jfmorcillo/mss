@@ -122,6 +122,7 @@ LANGUAGES = (
   ('en', 'English'),
   ('fr_FR', 'Français'),
   ('pt_BR', 'Português do Brasil'),
+  ('de_DE', 'Deutsch'),
 )
 
 TEMPLATE_LOADERS = (
