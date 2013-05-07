@@ -254,6 +254,10 @@ h3 {
     background-image: url('../img/lang/ru_RU.png');
 }
 
+#language option.de_DE {
+    background-image: url('../img/lang/de_DE.png');
+}
+
 #sidebar {
     margin-right: -2.564102564102564%;
 }
