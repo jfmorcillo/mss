@@ -109,6 +109,25 @@ mysql_do_query "USE owncloud;
 
 echo "done."
 
+# Add directory for downloaded apps
+mkdir -p /var/lib/owncloud/apps/
+chown -R apache.apache /var/lib/owncloud/apps/
+sed -i "s!'installed' => true,!'installed' => true,\n\
+  'apps_paths' => array (\n\
+      0 =>\n\
+        array (\n\
+          'path' => '/usr/share/owncloud/apps/',\n\
+          'url' => '/apps',\n\
+          'writable' => false,\n\
+        ),\n\
+      1 =>\n\
+        array (\n\
+          'path' => '/var/lib/owncloud/apps/',\n\
+          'url' => '/apps2',\n\
+          'writable' => true,\n\
+        )\n\
+  )!" $OWNCLOUD_CONFIG
+
 https_redirect owncloud /etc/httpd/conf/webapps.d/owncloud.conf
 
 info_b $"ownCloud is now configured."
