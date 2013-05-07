@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <maikwagner@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-04-18 08:31+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: [0].name
+msgid "Core Services"
+msgstr "Core-Dienste"
+
+#: [1].name
+msgid "Other Services"
+msgstr "Weitere Dienste"
+
+#: classes/module.py:162
+msgid "Other"
+msgstr "Weitere"
+
+#: classes/module.py:379
+msgid "This field can't be empty."
+msgstr "Dieses Feld darf nicht leer sein."
+
+#: classes/module.py:384
+msgid "Password mismatch."
+msgstr "Passwörter stimmen nicht überein."
+
+#: managers/process.py:44
+msgid "Loading packages list"
+msgstr "Paketliste lädt"
+
+#: managers/process.py:51
+msgid "Installing packages..."
+msgstr "Installation der Pakete..."
+
+#: managers/process.py:60
+msgid "Running configuration"
+msgstr "Konfiguration läuft gerade"
+
+#: managers/process.py:70
+msgid "Rebooting..."
+msgstr "Boote neu..."
+
+#: managers/process.py:76
+msgid "Updating medias"
+msgstr "Medien werden aktualisiert"
+
+#: managers/process.py:82
+msgid "Checking network"
+msgstr "Überprüfe das Netzwerk"
+
+#: managers/process.py:87
+msgid "Adding media"
+msgstr "Medium wird hinzugefügt"
+
+#: managers/process.py:92
+#, python-format
+msgid "Downloading %s addon..."
+msgstr "Lade Addon %s herunter..."
+
+#: managers/process.py:94
+msgid "Downloading addon..."
+msgstr "Lade Addon herunter..."
+
+#: managers/process.py:167
+msgid "Ready"
+msgstr "Bereit"
+
+

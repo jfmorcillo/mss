@@ -1,0 +1,386 @@
+# MSS.
+# Copyright (C) 2011
+# This file is distributed under the same license as the mss package.
+# 
+## Translators:
+#   <maikwagner@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-07 04:03+0200\n"
+"PO-Revision-Date: 2013-04-18 09:01+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: transaction.py:53
+msgid "Installation summary"
+msgstr "Zusammenfassung der Installation"
+
+#: transaction.py:55
+msgid "The folowing addon will be installed."
+msgid_plural "The folowing addons will be installed."
+msgstr[0] "Das folgende Addon wird installiert werden."
+msgstr[1] "Die folgenden Addons werden installiert."
+
+#: transaction.py:65
+msgid "Addon download"
+msgstr "Download von Addon"
+
+#: transaction.py:66
+msgid "Download addons from the ServicePlace"
+msgstr "Herunterladen von Addons aus dem ServicePlace"
+
+#: transaction.py:72
+msgid "Medias authentication"
+msgstr "Medien-Authentifizierung"
+
+#: transaction.py:73
+msgid "One or more medias need authentication"
+msgstr "Ein oder mehrere Medien benötigen Authentifizierung"
+
+#: transaction.py:79
+msgid "Medias add"
+msgstr "Medien hinzufügen"
+
+#: transaction.py:86
+msgid "Installation"
+msgstr "Installation"
+
+#: transaction.py:93
+msgid "Initial configuration"
+msgstr "Ursprüngliche Konfiguration"
+
+#: transaction.py:100
+msgid "End of installation"
+msgstr "Ende der Installation"
+
+#: transaction.py:101
+msgid "The installation is finished."
+msgstr "Die Installation ist abgeschlossen."
+
+#: transaction.py:120 templates/end.html:15
+msgid "Reboot"
+msgstr "Reboot"
+
+#: transaction.py:122
+msgid "The installation is finished. The server must be rebooted."
+msgstr ""
+"Die Installation ist abgeschlossen. Der Server muss neu gestartet werden."
+
+#: views.py:109 templates/login.html:7
+msgid "Welcome"
+msgstr "Willkommen"
+
+#: views.py:110
+msgid ""
+"Before you can install any services we need to setup a few things with you."
+msgstr ""
+"Bevor Sie Dienste installieren können, müssen wir einige Dinge mit Ihnen "
+"zusammen einrichten"
+
+#: views.py:145 templates/error.html:9
+msgid "MSS agent is unreacheable."
+msgstr "MSS-Agent kann nicht erreicht werden."
+
+#: templates/base.html:22
+msgid "Hide log"
+msgstr "Log verbergen"
+
+#: templates/base.html:25 templates/config_run.html:159
+#: templates/install.html:66 templates/media_add.html:95
+msgid "Show log"
+msgstr "Log anzeigen"
+
+#: templates/base.html:51 templates/base.html.py:137
+msgid "Ready"
+msgstr "Bereit"
+
+#: templates/base.html:112
+msgid "Update packages list on your server."
+msgstr "Aktualisieren der Paketliste auf Ihrem Server."
+
+#: templates/base.html:113
+msgid "Update medias"
+msgstr "Medien aktualisieren"
+
+#: templates/base.html:117 templates/sections.html:45
+msgid "Logout"
+msgstr "Logout"
+
+#: templates/config.html:110 templates/config.html.py:257
+msgid "Add"
+msgstr "Hinzufügen"
+
+#: templates/config.html:164
+msgid "Re-enter password"
+msgstr "Passwort nochmals eingeben"
+
+#: templates/config.html:280
+msgid "Required field"
+msgstr "Benötigtes Feld"
+
+#: templates/config.html:283 templates/config_run.html:60
+#: templates/download.html:30 templates/install.html:19
+#: templates/media_add.html:29 templates/media_add.html.py:74
+#: templates/preinst.html:33
+msgid "Continue"
+msgstr "Fortfahren"
+
+#: templates/config.html:285 templates/download.html:97
+#: templates/install.html:76 templates/media_add.html:106
+#: templates/media_auth.html:40 templates/preinst.html:36
+msgid "Back"
+msgstr "Zurück"
+
+#: templates/config_no.html:11
+msgid "Installation & configuration was successful."
+msgstr "Installation und Konfiguration war erfolgreich."
+
+#: templates/config_no.html:14 templates/error.html:14
+msgid "Home page"
+msgstr "Startseite"
+
+#: templates/config_run.html:25
+msgid "Configuration summary"
+msgstr "Zusammenfassung der Konfiguration"
+
+#: templates/config_run.html:26
+msgid "Configuration warnings"
+msgstr "Konfigurationswarnungen"
+
+#: templates/config_run.html:27
+msgid "Configuration errors"
+msgstr "Konfigurationsfehler"
+
+#: templates/config_run.html:57 templates/config_run.html.py:113
+msgid "Configuration terminated, details are displayed below."
+msgstr "Konfiguration abgebrochen, Details werden untenstehend angezeigt."
+
+#: templates/config_run.html:75
+msgid "Configuration succeded."
+msgstr "Konfiguration war erfolgreich."
+
+#: templates/config_run.html:88
+msgid "Configuration failed."
+msgstr "Konfiguration fehlgeschlagen."
+
+#: templates/config_run.html:89 templates/config_run.html.py:110
+#: templates/download.html:73 templates/install.html:37
+msgid "Retry"
+msgstr "Nochmals versuchen"
+
+#: templates/config_run.html:119
+msgid "Could not find any configuration script to execute."
+msgstr "Konnte kein Konfigurationsskript zur Ausführung finden."
+
+#: templates/config_run.html:126
+msgid "Running configuration..."
+msgstr "Konfiguration läuft..."
+
+#: templates/config_run.html:156 templates/media_add.html:92
+msgid "Waiting..."
+msgstr "Wartend..."
+
+#: templates/config_run.html:179 templates/download.html:95
+#: templates/install.html:74 templates/media_add.html:104
+msgid "Please wait..."
+msgstr "Bitte warten..."
+
+#: templates/download.html:55
+msgid "Downloading <strong>{0}</strong>: {1}..."
+msgstr "Lade herunter <strong>{0}</strong>: {1}..."
+
+#: templates/download.html:63
+msgid "Addon <strong>{0}</strong> downloaded."
+msgstr "Addon <strong>{0}</strong> heruntergeladen."
+
+#: templates/download.html:71
+msgid "Failed to download <strong>{0}</strong> addon."
+msgstr "Fehler beim Herunterladen von Addon <strong>{0}</strong>."
+
+#: templates/end.html:17
+msgid "Home"
+msgstr "Home"
+
+#: templates/error.html:6
+msgid "An error has occured."
+msgstr "Ein Fehler ist aufgetreten."
+
+#: templates/error.html:10
+msgid ""
+"Check the service status with the <strong>service mss-agent status</strong> "
+"command."
+msgstr ""
+"Überprüfen Sie den Dienststatus mit dem Befehl <strong>service mss-agent "
+"status</strong>."
+
+#: templates/install.html:17
+msgid "Installation succeded."
+msgstr "Installation erfolgreich."
+
+#: templates/install.html:31
+msgid "Installation failed. Update your medias and retry to install."
+msgstr ""
+"Installation fehlgeschlagen. Aktualisieren Sie Ihre Medien und versuchen Sie"
+" eine erneute Installation."
+
+#: templates/install.html:33
+msgid "Installation failed."
+msgstr "Installation fehlgeschlagen."
+
+#: templates/install.html:60
+msgid "The following addon is being installed"
+msgid_plural "The following addons are being installed"
+msgstr[0] "Das folgende Addon wird gerade installiert"
+msgstr[1] "Die folgenden Addons werden gerade installiert"
+
+#: templates/invalid_login.html:6 templates/login.html:12
+#: templates/login.html.py:17
+msgid "Login"
+msgstr "Login"
+
+#: templates/invalid_login.html:9
+msgid "Wrong username or password."
+msgstr "Falscher Benutzername oder Passwort"
+
+#: templates/login.html:9
+msgid ""
+"Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
+"setup the services you need on your server."
+msgstr ""
+"Mandriva Server Setup (<em>MSS</em>) ist ein Werkzeug um die Einrichtung der"
+" auf dem Server benötigten Dienste zu vereinfachen."
+
+#: templates/login.html:9
+msgid "Login to begin to setup your server."
+msgstr "Loggen Sie sich ein um mit der Einrichtung Ihres Servers zu beginnen."
+
+#: templates/login_form.html:12 templates/media_auth.html:21
+msgid "Your my.mandriva.com email address."
+msgstr "Ihre my.mandriva.com Emailadresse."
+
+#: templates/login_form.html:16 templates/media_auth.html:29
+msgid "Your my.mandriva.com password."
+msgstr "Ihr my.mandriva.com Passwort."
+
+#: templates/login_form.html:19
+msgid "Use your Mandriva account to login."
+msgstr "Nutzen Sie Ihr Mandrivakonto für den Login."
+
+#: templates/login_form.html:28
+msgid "The server <strong>root</strong> password."
+msgstr "Das <strong>root</strong>-Passwort des Servers."
+
+#: templates/login_form.html:31
+msgid "No internet connection, use the root password to login."
+msgstr "Keine Internetverbindung, nutzen Sie das root-Passwort für den Login."
+
+#: templates/login_form.html:52 templates/media_auth.html:16
+msgid "Username"
+msgstr "Benutzername"
+
+#: templates/login_form.html:58 templates/media_auth.html:25
+msgid "Password"
+msgstr "Passwort"
+
+#: templates/login_form.html:64
+msgid "Language"
+msgstr "Sprache"
+
+#: templates/login_form.html:71
+msgid "Enter"
+msgstr "Eingeben"
+
+#: templates/media_add.html:40
+msgid "Adding media..."
+msgstr "Medium wird hinzugefügt..."
+
+#: templates/media_add.html:58
+msgid "Media added."
+msgstr "Medium hinzugefügt."
+
+#: templates/media_add.html:64
+msgid "Media already added."
+msgstr "Medium bereits hinzugefügt."
+
+#: templates/media_add.html:70
+msgid "Failed to add media."
+msgstr "Fehler beim Hinzufügen des Mediums."
+
+#: templates/media_auth.html:14
+msgid "My authentication"
+msgstr "Meine Authentifizierung"
+
+#: templates/media_auth.html:36
+msgid "Don't add medias"
+msgstr "Medien nicht hinzufügen"
+
+#: templates/media_auth.html:38
+msgid "Add medias"
+msgstr "Medien hinzufügen"
+
+#: templates/preinst.html:14
+msgid "No addon selected."
+msgstr "Kein Addon ausgewählt."
+
+#: templates/preinst.html:22
+msgid "Added as a dependency"
+msgstr "Als Abhängigkeit hinzugefügt"
+
+#: templates/preinst.html:23
+msgid "Reinstallation"
+msgstr "Neuinstallation"
+
+#: templates/preinst.html:25
+msgid ""
+"If other addons requires this addon they may be broken after the "
+"reinstallation."
+msgstr ""
+"Wenn andere Addons dieses Addon benötigen sind diese eventuell nach der "
+"Neuinstallation defekt."
+
+#: templates/section.html:19
+msgid "This addon can't be installed with"
+msgstr "Dieses Addon kann nicht installiert werden mit"
+
+#: templates/section.html:62
+msgid "More info about this addon"
+msgstr "Mehr Informationen über dieses Addon"
+
+#: templates/section.html:118
+msgid "No addon available in this section."
+msgstr "Kein Addon in dieser Sektion verfügbar."
+
+#: templates/section.html:182
+msgid "This addon is installed and configured"
+msgstr "Dieses Addon ist installiert und konfiguriert"
+
+#: templates/section.html:183
+msgid "This module conflicts with : "
+msgstr "Dieses Modul hat einen Konflikt mit: "
+
+#: templates/section.html:186
+msgid "You have purshased this addon"
+msgstr "Sie haben dieses Addon erworben"
+
+#: templates/section.html:207
+msgid "Info"
+msgstr "Info"
+
+#: templates/section.html:218
+msgid "Install and configure selected addons"
+msgstr "Installieren und Konfigurieren der gewählten Addons"
+
+#: templates/sections.html:42
+msgid "No addon for Mandriva Server Setup available. Try to login again."
+msgstr ""
+"Kein Addon für Mandriva Server Setup verfügbar. Versuchen Sie es mit einem "
+"erneuten Login."
+
+
