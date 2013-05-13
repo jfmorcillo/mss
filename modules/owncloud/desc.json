@@ -22,9 +22,6 @@
             "rpms": ["owncloud", "php-ldap", "openssl", "php-pdo_mysql"]
         }
     ],
-    "dependencies": [
-                        "mysql"
-                  ],
     "config": [
         {
             "type": "text",
@@ -49,7 +46,9 @@
             "help": "Directory path where all users's data will be stored."
         }
     ],
+    "dependencies": ["mysql"],
     "module": {
-        "section": "other"
+        "section": "other",
+        "dependencies": ["mysql"]
     }
 }
