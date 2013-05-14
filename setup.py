@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2010-2013 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -25,7 +23,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mss',
-    version = '2.1',
+    version = '2.2',
     description = "Mandriva Server Setup",
     author = "Jean-Philippe Braun",
     author_email = "jpbraun@mandriva.com",
