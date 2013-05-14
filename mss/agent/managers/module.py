@@ -181,8 +181,7 @@ class ModuleManager:
         # Cache 6 hours
         if int(time.time()) - mtime > Config().cache:
             logger.debug("Getting new version of %s" % cache_path)
-
-            result, code = self.request(Config().addonsUrls)
+            result, code = self.request(Config().addonsUrl)
             if code == 200:
                 with open(cache_path, "w") as f:
                     json.dump(result, f)
