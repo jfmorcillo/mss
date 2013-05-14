@@ -18,11 +18,18 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .description .desc
-msgid "Access all MBS packages from public repositories."
+msgid ""
+"Access to MBS security updates.\n"
+"\n"
+"Restricted to MBS Starter/Enterprise/Preminum users."
+msgstr ""
+
+#: .repositories[0].name
+msgid "Mandriva Business Server security updates repositories"
 msgstr ""
 
 #: .name
-msgid "Mandriva Business Server repositories"
+msgid "Mandriva Business Server security updates"
 msgstr ""
 
 #: .categories[0].name
