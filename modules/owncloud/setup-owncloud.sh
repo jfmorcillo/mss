@@ -127,7 +127,12 @@ sed -i "s!'installed' => true,!'installed' => true,\n\
         )\n\
   )!" $OWNCLOUD_CONFIG
 
+# Always use https
 https_redirect owncloud /etc/httpd/conf/webapps.d/owncloud.conf
+# Tune php.ini default value
+sed -i 's/^post_max_size = 8M/post_max_size = 150M/' /etc/php.ini
+sed -i 's/^upload_max_filesize = 16M/upload_max_filesize = 150M/' /etc/php.ini
+restart_service httpd
 
 info_b $"ownCloud is now configured."
 info $"You can access the web interface at https://@HOSTNAME@/owncloud/"
