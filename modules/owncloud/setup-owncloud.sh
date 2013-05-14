@@ -1,13 +1,12 @@
 # Copyright Mandriva 2013 all rights reserved
 #!/bin/bash
 
+# Get newer functions.sh for mss-2.1 installs
+wget http://git.mandriva.com/projects/?p=soft/mss.git;a=blob_plain;f=modules/functions.sh;hb=refs/heads/mss-2.2 -O ../functions.sh 2>/dev/null
+
 . '../functions.sh'
 
 check_mmc_configured
-
-function randpass() {
-    date +%s | sha256sum | base64 | head -c 32
-}
 
 owncloud_adminUser=$1
 owncloud_adminPass=$2
