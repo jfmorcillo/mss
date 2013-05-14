@@ -488,7 +488,12 @@ class Module(object):
         if self.downloaded:
             logger.debug("Loading downloaded %s desc.json" % self.slug)
             with open(os.path.join(self._path, "desc.json")) as f:
-                self._desc.update(json.load(f))
+                # Update current desc.json with the downloaded desc.json
+                # Don't use the local name and description
+                local_desc = json.load(f)
+                for key, value in local_desc.items():
+                    if key not in ("name", "description", "desc"):
+                        self._desc[key] = value
 
     def load_module(self):
         logger.debug("Loading %s python module" % self.slug)
