@@ -1,8 +1,8 @@
 {
     "slug": "mbs_repo_updates",
-    "name": "Mandriva Business Server security updates",
-    "description": "Access to MBS security updates.\n\nRestricted to MBS Starter/Enterprise/Preminum users.",
-    "desc": "Access to MBS security updates.\n\nRestricted to MBS Starter/Enterprise/Preminum users.",
+    "name": "Mandriva Business Server updates for subscribers",
+    "description": "Access to MBS bugfix and security updates.\n\nRestricted to MBS Starter/Enterprise/Preminum subscribers.",
+    "desc": "Access to MBS bugfix and security updates.\n\nRestricted to MBS Starter/Enterprise/Preminum subscribers.",
     "categories": [
         {
             "slug": "repositories",
