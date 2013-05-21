@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-14 17:32+0200\n"
+"POT-Creation-Date: 2013-05-21 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -19,17 +19,13 @@ msgstr ""
 
 #: .description .desc
 msgid ""
-"Access to MBS security updates.\n"
+"Access to MBS bugfix and security updates.\n"
 "\n"
-"Restricted to MBS Starter/Enterprise/Preminum users."
+"Restricted to MBS Starter/Enterprise/Preminum subscribers."
 msgstr ""
 
-#: .repositories[0].name
-msgid "Mandriva Business Server security updates repositories"
-msgstr ""
-
-#: .name
-msgid "Mandriva Business Server security updates"
+#: .repositories[0].name .name
+msgid "Mandriva Business Server updates repository"
 msgstr ""
 
 #: .categories[0].name

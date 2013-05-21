@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 04:51+0200\n"
-"PO-Revision-Date: 2013-04-15 13:43+0000\n"
+"POT-Creation-Date: 2013-05-21 18:34+0200\n"
+"PO-Revision-Date: 2013-05-22 14:03+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,15 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
-msgid "Access all MBS packages from public repositories."
-msgstr "Accès à tous les paquets du média public de MBS."
+msgid "Access to MBS packages from the public repository."
+msgstr "Accès aux paquets MBS depuis le dépôt public."
 
 #: .name
-msgid "Mandriva Business Server repositories"
-msgstr "Dépôt de paquets de Mandriva Business Server"
+msgid "Mandriva Business Server packages repository"
+msgstr "Dépôt de paquets pour Mandriva Business Server "
+
+#: .categories[0].name
+msgid "Repositories"
+msgstr "Dépôts"
 
 

@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-05-21 18:34+0200\n"
+"PO-Revision-Date: 2013-05-22 13:52+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .description .desc
+msgid ""
+"Access to MBS bugfix and security updates.\n"
+"\n"
+"Restricted to MBS Starter/Enterprise/Preminum subscribers."
+msgstr ""
+"Accès aux mises à jour MBS de correction de bugs et de sécurité.\n"
+"\n"
+"Restreint aux possesseurs de MBS Starter/Enterprise/Premium."
+
+#: .repositories[0].name .name
+msgid "Mandriva Business Server updates repository"
+msgstr "Dépôt de mises à jour pour Mandriva Business Server"
+
+#: .categories[0].name
+msgid "Repositories"
+msgstr "Dépôts"
+
+

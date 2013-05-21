@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-04-22 09:18+0000\n"
+"POT-Creation-Date: 2013-05-21 18:34+0200\n"
+"PO-Revision-Date: 2013-05-22 13:55+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -39,15 +39,15 @@ msgstr "Télécharge les addons depuis le ServicePlace."
 
 #: transaction.py:72
 msgid "Medias authentication"
-msgstr "Authentification des médias"
+msgstr "Authentification des dépôts"
 
 #: transaction.py:73
 msgid "One or more medias need authentication"
-msgstr "Une authentification est nécessaire pour installer un des médias"
+msgstr "Une authentification est nécessaire pour installer un des dépôts"
 
 #: transaction.py:79
 msgid "Medias add"
-msgstr "Ajout des médias"
+msgstr "Ajout des dépôts"
 
 #: transaction.py:86
 msgid "Installation"
@@ -107,7 +107,7 @@ msgstr "Met à jour les listes de packages sur votre serveur."
 
 #: templates/base.html:113
 msgid "Update medias"
-msgstr "Mettre à jour les médias"
+msgstr "Mettre à jour les dépôts"
 
 #: templates/base.html:117 templates/sections.html:45
 msgid "Logout"
@@ -227,7 +227,7 @@ msgstr "Installation réussie."
 #: templates/install.html:31
 msgid "Installation failed. Update your medias and retry to install."
 msgstr ""
-"Installation échouée. Mettez à jour vos médias et relancez l'installation."
+"Installation échouée. Mettez à jour vos dépôts et relancez l'installation."
 
 #: templates/install.html:33
 msgid "Installation failed."
@@ -300,19 +300,19 @@ msgstr "Entrer"
 
 #: templates/media_add.html:40
 msgid "Adding media..."
-msgstr "Ajout des médias..."
+msgstr "Ajout des dépôts..."
 
 #: templates/media_add.html:58
 msgid "Media added."
-msgstr "Le média a été ajouté."
+msgstr "Le dépôt a été ajouté."
 
 #: templates/media_add.html:64
 msgid "Media already added."
-msgstr "Le média est déja présent."
+msgstr "Le dépôt est déja présent."
 
 #: templates/media_add.html:70
 msgid "Failed to add media."
-msgstr "Échec lors de l'ajout du média."
+msgstr "Échec lors de l'ajout du dépôt."
 
 #: templates/media_auth.html:14
 msgid "My authentication"
@@ -320,11 +320,11 @@ msgstr "Authentification My"
 
 #: templates/media_auth.html:36
 msgid "Don't add medias"
-msgstr "Ne pas ajouter les médias"
+msgstr "Ne pas ajouter les dépôts"
 
 #: templates/media_auth.html:38
 msgid "Add medias"
-msgstr "Ajouter les médias"
+msgstr "Ajouter les dépôts"
 
 #: templates/preinst.html:14
 msgid "No addon selected."
@@ -346,11 +346,11 @@ msgstr ""
 "Si des addons dépendent de cet addons ils risquent d'être cassés après la "
 "réinstallation."
 
-#: templates/section.html:19
+#: templates/section.html:20
 msgid "This addon can't be installed with"
 msgstr "Cet addon ne peut pas être installé avec"
 
-#: templates/section.html:62
+#: templates/section.html:63
 msgid "More info about this addon"
 msgstr "Plus d'infos à propos de cet addon"
 

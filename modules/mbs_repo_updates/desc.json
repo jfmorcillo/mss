@@ -1,6 +1,6 @@
 {
     "slug": "mbs_repo_updates",
-    "name": "Mandriva Business Server updates for subscribers",
+    "name": "Mandriva Business Server updates repository",
     "description": "Access to MBS bugfix and security updates.\n\nRestricted to MBS Starter/Enterprise/Preminum subscribers.",
     "desc": "Access to MBS bugfix and security updates.\n\nRestricted to MBS Starter/Enterprise/Preminum subscribers.",
     "categories": [
@@ -12,7 +12,7 @@
     "repositories": [
         {
             "slug": "mbs_repo_updates",
-            "name": "Mandriva Business Server security updates repositories",
+            "name": "Mandriva Business Server updates repository",
             "url": "https://mirror.mandriva.com/mbs1_updates/x86_64/",
             "options": "--curl-options '-k' --distrib",
             "restricted": true

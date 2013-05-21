@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:10+0200\n"
+"POT-Creation-Date: 2013-05-21 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -79,10 +79,10 @@ msgstr ""
 msgid "Cloud"
 msgstr ""
 
-#: owncloud/setup-owncloud.sh:114
+#: owncloud/setup-owncloud.sh:137
 msgid "ownCloud is now configured."
 msgstr ""
 
-#: owncloud/setup-owncloud.sh:115
+#: owncloud/setup-owncloud.sh:138
 msgid "You can access the web interface at https://@HOSTNAME@/owncloud/"
 msgstr ""

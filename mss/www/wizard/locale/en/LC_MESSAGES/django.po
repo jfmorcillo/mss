@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:10+0200\n"
+"POT-Creation-Date: 2013-05-21 18:34+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -333,11 +333,11 @@ msgid ""
 "reinstallation."
 msgstr ""
 
-#: templates/section.html:19
+#: templates/section.html:20
 msgid "This addon can't be installed with"
 msgstr ""
 
-#: templates/section.html:62
+#: templates/section.html:63
 msgid "More info about this addon"
 msgstr ""
 
