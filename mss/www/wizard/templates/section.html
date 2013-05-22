@@ -73,6 +73,18 @@
         createPopups();
     };
 
+    checkModules = function(form) {
+        submit = false;
+        $(form).find('input[type=checkbox]').each(function() {
+            if (this.checked)
+                submit = true;
+        });
+        if (!submit) {
+            showError("{% trans "No addon selected." %}");
+        }
+        return submit;
+    };
+
     $(document).ready(function() {
         // check/uncheck install input on re-install/re-configure
         /*$('input.action').each(function(i) {
@@ -98,7 +110,6 @@
         $('.module').each(function() {
              $(this).hover(function() {
                 var help = $($(this).find('.help-block')[0]);
-                console.log(help);
                 var cur_height = help.height();
                 help.css('height', 'auto');
                 var to_height = help.height();
@@ -113,7 +124,7 @@
         createPopups();
     });
 </script>
-<form name="mss" action="{% url prepare %}" method="post">
+<form name="mss" action="{% url prepare %}" method="post" onsubmit="return checkModules(this)">
     {% if not categories %}
     <p class="alert alert-error">{% trans "No addon available in this section." %}</p>
     {% endif %}
