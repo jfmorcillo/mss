@@ -27,8 +27,8 @@ class State:
 
 class Transaction(object):
 
-    def __init__(self, request, modules_list=[]):
-        if modules_list:
+    def __init__(self, request, modules_list=None):
+        if modules_list is not None:
             self.modules_list = modules_list
             self.setup()
         else:
