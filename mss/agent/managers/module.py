@@ -31,6 +31,7 @@ import json
 import urllib
 import urllib2
 import time
+import xmlrpclib
 
 from mss.agent.config import Config
 from mss.agent.lib.utils import Singleton
@@ -663,7 +664,7 @@ class ModuleManager:
         else:
             logger.debug("ServicePlace authentication")
             url = Config().tokenUrl
-            result, code = self.request(url, {'username': user, 'password': password})
+            result, code = self.request(url, {'username': user, 'password': password.encode('utf-8')})
             if code == 200:
                 if 'token' in result:
                     logger.debug("Logged with the ServicePlace !")
@@ -693,7 +694,6 @@ class ModuleManager:
 
         Handles token and language headers
         """
-        code = 500
         if params:
             params = urllib.urlencode(params)
         request = urllib2.Request(url, params)
@@ -708,12 +708,11 @@ class ModuleManager:
                 result = response.read()
             code = response.getcode()
         except urllib2.HTTPError as e:
-            result = "HTTP Error:" + str(e.reason) + " " + url
-            logger.error(result)
-            code = e.code
+            logger.exception("HTTP error")
+            raise xmlrpclib.Fault(e.code, _("Connection failed with the ServicePlace.", "agent"))
         except urllib2.URLError as e:
-            result = "URL Error:" + str(e.reason) + " " + url
-            logger.error(result)
+            logger.exception("URL error")
+            raise xmlrpclib.Fault(777, str(e.reason))
 
         logger.debug("Return code %s" % code)
         return (result, code)

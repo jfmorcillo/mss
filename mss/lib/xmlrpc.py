@@ -69,6 +69,19 @@ class CookieXMLRPCTransport(xmlrpclib.Transport):
         return xmlrpclib.Transport.parse_response(self, response)
 
 
+class XMLRPCError(Exception):
+
+    def __init__(self, errno, error):
+        self.errno = errno
+        self.error = error
+
+    def __unicode__(self):
+        return self.error
+
+    def __repr__(self):
+        return "<XMLRPCError(%s, %s)>" % (self.errno, self.error)
+
+
 class XmlRpc:
     """ Class to handle the xmlrpc calls """
 
@@ -81,8 +94,15 @@ class XmlRpc:
         conn = xmlrpclib.ServerProxy(self._url, transport=CookieXMLRPCTransport())
         method = getattr(conn, method_name)
         try:
-            return [False, method(*args)]
-        except (socket_error, xmlrpclib.Fault,
-                xmlrpclib.ProtocolError, xmlrpclib.ResponseError) as err:
+            return method(*args)
+        except socket_error as err:
+            raise XMLRPCError(err.errno, err[1])
+        except xmlrpclib.Fault as err:
+            raise XMLRPCError(err.faultCode, err.faultString)
+        except xmlrpclib.ProtocolError as err:
+            raise XMLRPCError(err.errcode, err.errmsg)
+        except XMLRPCError:
+            raise
+        except:
             logger.exception("Exception while calling %s" % method_name)
-            return [err, False]
+            raise XMLRPCError(999, "Unknown error")

@@ -10,10 +10,11 @@ from mss.lib.xmlrpc import XmlRpc
 
 xmlrpc = XmlRpc()
 
+
 @csrf_exempt
 def user_error_submit(request):
     if request.method == "POST" and "error" in request.POST:
-        err, result = xmlrpc.call('get_option', 'machine-id')
+        result = xmlrpc.call('get_option', 'machine-id')
         data = {
             'machine': result,
             'error': request.POST['error'],

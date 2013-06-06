@@ -38,14 +38,9 @@ class Transaction(object):
         self.save(request)
 
     def setup(self):
-        err, result = xmlrpc.call('preinstall_modules', self.modules_list)
-        if not err:
-            self.modules_info = result
-            self.modules_list = [m['slug'] for m in self.modules_info]
-        else:
-            self.steps = err
-            return
-
+        result = xmlrpc.call('preinstall_modules', self.modules_list)
+        self.modules_info = result
+        self.modules_list = [m['slug'] for m in self.modules_info]
         self.steps = [
             {
                 'id': Steps.PREINST,
@@ -122,9 +117,7 @@ class Transaction(object):
                                   'info': _("The installation is finished. The server must be rebooted.")})
 
     def update(self):
-        err, result = xmlrpc.call('get_modules_details', self.modules_list)
-        if not err:
-            self.modules_info = result
+        self.modules_info = xmlrpc.call('get_modules_details', self.modules_list)
 
         downloaded = True
         has_repositories = False

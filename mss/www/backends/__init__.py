@@ -22,16 +22,12 @@
 from django.contrib.auth.models import User
 from mss.lib.xmlrpc import XmlRpc
 
-
 xmlrpc = XmlRpc()
 
 class MSSBackend:
 
     def authenticate(self, username=None, password=None):
-        err, result = xmlrpc.call('authenticate', username, password)
-        if err:
-            return None
-        # password ok
+        result = xmlrpc.call('authenticate', username, password)
         if result:
             try:
                 # user exists so, we update the password

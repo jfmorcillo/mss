@@ -51,7 +51,7 @@ def set_lang(request, lang):
         settings.DEFAULT_LANGUAGE = lang
         activate(lang)
         # set agent language
-        err, result = xmlrpc.call('set_lang', lang)
+        xmlrpc.call('set_lang', lang)
     # redirect to url if supplied in GET
     if url:
         return HttpResponseRedirect(url)
@@ -81,8 +81,8 @@ def mylogin(request):
             xmlrpc.call('check_net')
             return direct_to_template(request, 'invalid_login.html')
     else:
-        err, first_time = xmlrpc.call('get_option', 'first-time')
-        err, lang = xmlrpc.call('get_lang')
+        first_time = xmlrpc.call('get_option', 'first-time')
+        lang = xmlrpc.call('get_lang')
         set_lang(request, lang)
         # show login form
         xmlrpc.call('check_net')
@@ -97,7 +97,7 @@ def first_time_required(function):
     # Check if we need to run the first-time
     # installation
     def wrap(request, *args, **kwargs):
-        err, first_time = xmlrpc.call('get_option', 'first-time')
+        first_time = xmlrpc.call('get_option', 'first-time')
         if not first_time:
             transaction = Transaction(request, ['mds_mmc'])
             if isinstance(transaction.steps, HttpResponseRedirect):
@@ -115,10 +115,6 @@ def first_time_required(function):
             return function(request, *args, **kwargs)
     return wrap
 
-def error(request, code):
-    """ error page """
-    return render(request, 'error.html', {'code': code})
-
 # get agent status with Ajax long polling
 def get_status(request):
     """ get agent status """
@@ -127,7 +123,7 @@ def get_status(request):
     # max request time
     MAX_TIME = 5
     while 1:
-        err, sts = xmlrpc.call('get_status')
+        sts = xmlrpc.call('get_status')
         if sts:
             # if status change or request reached MAX_TIME
             # or we force the update
@@ -146,15 +142,12 @@ def get_status(request):
 
 def get_state(request, thread, module):
     """ used to get any thread result code and output """
-    err, result = xmlrpc.call('get_state', thread, module)
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
-    else:
-        code = result[0]
-        output = result[1]
-        for line in output:
-            if "text" in line:
-                line["text"] = toHtml(request, line["text"])
+    result = xmlrpc.call('get_state', thread, module)
+    code = result[0]
+    output = result[1]
+    for line in output:
+        if "text" in line:
+            line["text"] = toHtml(request, line["text"])
     return JSONResponse({'code': code, 'output': output})
 
 def has_net(request, has_net):
@@ -172,9 +165,7 @@ def has_net(request, has_net):
 def sections(request):
     """ sections list """
     # get section list
-    err, sections = xmlrpc.call('get_sections')
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
+    sections = xmlrpc.call('get_sections')
     # render the main page with all sections
     return render(request, 'sections.html', {'sections': sections})
 
@@ -182,9 +173,7 @@ def sections(request):
 @login_required
 def section(request, section):
     """ render section page """
-    err, categories = xmlrpc.call('get_section', section)
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
+    categories = xmlrpc.call('get_section', section)
 
     # format management url
     for category in categories:
@@ -257,9 +246,7 @@ def medias_add(request):
         username = None
         password = None
 
-    err, repositories = xmlrpc.call('get_repositories', transaction.modules_list)
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
+    repositories = xmlrpc.call('get_repositories', transaction.modules_list)
 
     return render(request, 'media_add.html',
                   {'transaction': transaction, 'repositories': repositories,
@@ -286,11 +273,8 @@ def install(request):
         return HttpResponseRedirect(transaction.next_step_url())
 
     # launch modules install
-    err, result = xmlrpc.call('install_modules', transaction.modules_list)
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
-    if result:
-        return render(request, 'install.html', {'transaction': transaction})
+    xmlrpc.call('install_modules', transaction.modules_list)
+    return render(request, 'install.html', {'transaction': transaction})
 
 @login_required
 def reload_packages(request):
@@ -305,11 +289,7 @@ def config(request):
     if transaction.current_step()['state'] in (State.DONE, State.DISABLED):
         return HttpResponseRedirect(transaction.next_step_url())
 
-    err, result = xmlrpc.call('get_config', transaction.modules_list)
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
-    else:
-        config = result
+    config = xmlrpc.call('get_config', transaction.modules_list)
 
     run_config = False
     skip_config = True
@@ -343,12 +323,9 @@ def config_valid(request):
     for name, value in request.POST.items():
         config[name] = value
     # validate values
-    err, result = xmlrpc.call('valid_config', transaction.modules_list, config)
-    if err:
-        return HttpResponseRedirect(reverse('error', args=[err[0]]))
-    else:
-        errors = result[0]
-        config = result[1]
+    result = xmlrpc.call('valid_config', transaction.modules_list, config)
+    errors = result[0]
+    config = result[1]
     if errors:
         return render(request, 'config.html', {'config': config,
                                                'transaction': transaction})
@@ -371,7 +348,7 @@ def config_end(request, module):
     """ tells the agent the module has been configured """
     # FIXME
     if module == "mds_mmc":
-        err, result = xmlrpc.call('set_option', 'first-time', 'yes')
+        xmlrpc.call('set_option', 'first-time', 'yes')
     return HttpResponse("")
 
 @login_required

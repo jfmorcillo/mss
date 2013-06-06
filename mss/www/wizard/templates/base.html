@@ -71,14 +71,9 @@
                     // requests are also aborted when the user changes pages
                     setTimeout(function() {
                         // request aborted
-                        if (xhr.status == 500) {
-                            $('body').html(xhr.responseText);
-                        }
-                        else {
-                            showError(xhr.responseText);
-                            // refresh every 2s on error
-                            setTimeout('updateStatus(false)', 2000);
-                        }
+                        showError(xhr.responseText);
+                        // refresh every 2s on error
+                        setTimeout('updateStatus(false)', 2000);
                     }, 100);
                 });
             }
