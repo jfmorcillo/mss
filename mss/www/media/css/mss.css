@@ -491,6 +491,10 @@ h3 {
 .module .help-block {
     padding-top: 5px;
     overflow: hidden;
+    height: auto;
+    transition-property: max-height;
+    transition-duration: 300ms;
+    max-height: 30px;
 }
 
 .module .help-block * {
@@ -501,13 +505,26 @@ h3 {
     font-size: 14px;
 }
 
+.module:hover .help-block {
+    transition-property: max-height;
+    transition-duration: 400ms;
+    transition-delay: 700ms;
+    max-height: 500px;
+}
+
+.module {
+    transition-property: background-color, border-color;
+    transition-duration: 300ms;
+    background-color: transparent;
+    border-color: transparent;
+}
+
 .module:hover {
     transition-property: background-color, border-color;
-    transition-duration: 500ms;
-    transition-delay: 300ms;
+    transition-duration: 400ms;
+    transition-delay: 400ms;
     background-color: #EBEBEB;
     border-color: #D1D1D1;
-
 }
 
 #section .control-group,

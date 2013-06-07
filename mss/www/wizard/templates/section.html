@@ -85,25 +85,6 @@
         return submit;
     };
 
-    showModule = function() {
-        var module = $(this);
-        clearTimeout(module.data('timeoutId'));
-        var help = $(module.find('.help-block')[0]);
-        var cur_height = help.height();
-        help.css('height', 'auto');
-        var to_height = help.height();
-        help.css('height', cur_height).animate({'height': to_height}, 200);
-    };
-
-    hideModule = function() {
-        var module = $(this);
-        var timeoutId = setTimeout(function() {
-            var help = $(module.find('.help-block')[0]);
-            help.animate({'height': '30px'}, 200);
-        }, 300);
-        module.data('timeoutId', timeoutId);
-    };
-
     $(document).ready(function() {
         // check/uncheck install input on re-install/re-configure
         /*$('input.action').each(function(i) {
@@ -124,10 +105,6 @@
         // check conflicts when selecting module
         $('.module-checkbox').each(function(i) {
             $(this).bind('click', checkConflicts);
-        });
-
-        $('.module').each(function() {
-            $(this).mouseenter(showModule).mouseleave(hideModule);
         });
 
         $('#sidebar .categories').html("");
@@ -224,7 +201,7 @@
         {% endif %}
         {% endcomment %}
 
-        <span class="help-block" style="height: 30px">{{ m.description|markdown }}</span>
+        <span class="help-block">{{ m.description|markdown }}</span>
         {% if not m.configured and not m.purshased and m.price %}
         <p>
             <a class="btn btn-small btn-success" href="{{ m.url }}" target="_blank"><i class="icon-shopping-cart icon-white"></i> {{ m.price }}</a>
