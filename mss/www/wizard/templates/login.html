@@ -16,6 +16,9 @@
         {% if not first_time %}
         <legend>{% trans "Login" %}</legend>
         {% endif %}
+        {% if error %}
+        <p class="alert alert-error">{% trans "Wrong username or password." %}</p>
+        {% endif %}
         {% include "login_form.html" %}
     </form>
 </section>

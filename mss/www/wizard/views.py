@@ -24,7 +24,6 @@ import time
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
-from django.views.generic.simple import direct_to_template
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
@@ -72,14 +71,9 @@ def mylogin(request):
                 login(request, user)
                 # redirect
                 return HttpResponseRedirect(reverse('sections'))
-            else:
-                # disabled account
-                xmlrpc.call('check_net')
-                return direct_to_template(request, 'inactive_account.html')
-        else:
-            # invalid user
-            xmlrpc.call('check_net')
-            return direct_to_template(request, 'invalid_login.html')
+        # invalid user
+        xmlrpc.call('check_net')
+        return render(request, 'login.html', {'error': True, 'first_time': True})
     else:
         first_time = xmlrpc.call('get_option', 'first-time')
         lang = xmlrpc.call('get_lang')
