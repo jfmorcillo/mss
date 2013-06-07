@@ -11,92 +11,76 @@ class TestConfigValidation(unittest.TestCase):
 
     def setUp(self):
         self.client = XmlRpc(port=8888)
-        err, result = self.client.call('authenticate', 'root', 'mandriva')
+        self.client.call('authenticate', 'root', 'mandriva')
 
     def test_fqdn_validation(self):
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[0])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo.a"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo.a"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[0])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo.local"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_fqdn": "foo.local"})
         self.assertFalse(config_err)
         module1_config = config_result[0]
         self.assertNotIn("error", module1_config[0])
 
     def test_network_validation(self):
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_text": "foo"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_text": "foo"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[1])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_text": [("192.168.0.0", "255.255.255.0")]})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_text": [("192.168.0.0", "255.255.255.0")]})
         self.assertFalse(config_err)
         module1_config = config_result[0]
         self.assertNotIn("error", module1_config[1])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "foo"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "foo"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[2])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "192.168.0.45"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "192.168.0.45"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[2])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "340.45.30", "module1_network_0_mask": "255.0.0.0"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "340.45.30", "module1_network_0_mask": "255.0.0.0"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[2])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_mask": "255.0.0.0"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_mask": "255.0.0.0"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[2])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_mask": "400.500.0.0"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_mask": "400.500.0.0"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[2])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "192.168.0.0", "module1_network_0_mask": "255.255.255.0"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_network_0_ip": "192.168.0.0", "module1_network_0_mask": "255.255.255.0"})
         self.assertFalse(config_err)
         module1_config = config_result[0]
         self.assertNotIn("error", module1_config[2])
 
     def test_ip_validation(self):
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_ip": "foo"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_ip": "foo"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[3])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_ip": "300.400.0.0"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_ip": "300.400.0.0"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertIn("error", module1_config[3])
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_ip": "192.168.30.34"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_ip": "192.168.30.34"})
         self.assertFalse(config_err)
         module1_config = config_result[0]
         self.assertNotIn("error", module1_config[3])
 
     def test_custom_validation(self):
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_custom": "bar"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_custom": "bar"})
         self.assertTrue(config_err)
         module1_config = config_result[0]
         self.assertEqual(module1_config[4]["error"], "Value is not foo")
-        err, (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_custom": "foo"})
-        self.assertFalse(err)
+        (config_err, config_result) = self.client.call('valid_config', ['module1'], {"module1_custom": "foo"})
         self.assertFalse(config_err)
         module1_config = config_result[0]
         self.assertNotIn("error", module1_config[4])
