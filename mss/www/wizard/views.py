@@ -317,9 +317,12 @@ def config_valid(request):
     for name, value in request.POST.items():
         config[name] = value
     # validate values
-    result = xmlrpc.call('valid_config', transaction.modules_list, config)
-    errors = result[0]
-    config = result[1]
+    errors = False
+    config = xmlrpc.call('valid_config', transaction.modules_list, config)
+    for conf in config:
+        if conf["errors"]:
+            errors = True
+            break
     if errors:
         return render(request, 'config.html', {'config': config,
                                                'transaction': transaction})

@@ -359,8 +359,9 @@ class Module(object):
                         f = re.match("^"+self.slug+"_"+field_name+"_([0-9]?)_field$", user_field)
                         if f:
                             nb = f.group(1)
-                            value = user_config.get(self.slug+"_"+field_name+"_"+nb+"_field")
-                            field_value.append(value)
+                            value = user_config.get(self.slug+"_"+field_name+"_"+nb+"_field").strip()
+                            if value:
+                                field_value.append(value)
                 # handle checkboxes
                 elif field_type == "check":
                     # if box uncheck, set default to off otherwise value is None
@@ -412,7 +413,7 @@ class Module(object):
         if not errors:
             self.config = validated_config
 
-        return (errors, validated_config)
+        return {"slug": self.slug, "config": validated_config, "errors": errors}
 
     def info_config(self):
         # get args values

@@ -515,14 +515,11 @@ class ModuleManager:
         logger.info("Valid config for modules: %s" % ", ".join(modules))
         logger.debug("Configuration is: %s" % str(modules_config))
         config = []
-        errors = False
         for module in modules:
-            module_errors, module_config = self.modules[module].valid_config(modules_config)
+            module_config = self.modules[module].valid_config(modules_config)
             config.append(module_config)
-            if module_errors:
-                errors = True
-        logger.debug("Result: (%s, %s)" % (errors, str(config)))
-        return (errors, config)
+        logger.debug("Result: %s" % str(config))
+        return config
 
     @expose
     def run_config(self, module):

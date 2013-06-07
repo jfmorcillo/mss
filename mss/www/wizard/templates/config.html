@@ -74,7 +74,6 @@
         {% for module in transaction.modules_info %}
             {% ifequal module.slug m.slug %}
                 {% if module.has_configuration %}
-
         <fieldset>
             <legend>{{ module.name }}</legend>
             {% for field in m.config %}
