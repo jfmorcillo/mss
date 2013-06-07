@@ -85,6 +85,16 @@ class TestConfigValidation(unittest.TestCase):
         module1_config = config_result[0]["config"]
         self.assertNotIn("error", module1_config[4])
 
+    def test_multi_required(self):
+        config_result = self.client.call('valid_config', ['module2'], {"module2_field1_0_field": ""})
+        self.assertTrue(config_result[0]["errors"])
+        module2_config = config_result[0]["config"]
+        self.assertEqual(module2_config[0]["error"], "This field can't be empty.")
+        config_result = self.client.call('valid_config', ['module2'], {"module2_field1_0_field": "foo"})
+        self.assertFalse(config_result[0]["errors"])
+        module2_config = config_result[0]["config"]
+        self.assertNotIn("error", module2_config[0])
+
 
 if __name__ == '__main__':
     modules = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'validation_modules')

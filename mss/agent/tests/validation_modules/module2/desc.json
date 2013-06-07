@@ -1,0 +1,13 @@
+{
+    "slug": "module2",
+    "name": "Module Two",
+    "description": "Module two",
+    "config": [
+        {
+            "type": "text",
+            "multi": true,
+            "name": "field1",
+            "require": true
+        }
+    ]
+}
