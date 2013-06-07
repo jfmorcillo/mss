@@ -85,6 +85,25 @@
         return submit;
     };
 
+    showModule = function() {
+        var module = $(this);
+        clearTimeout(module.data('timeoutId'));
+        var help = $(module.find('.help-block')[0]);
+        var cur_height = help.height();
+        help.css('height', 'auto');
+        var to_height = help.height();
+        help.css('height', cur_height).animate({'height': to_height}, 200);
+    };
+
+    hideModule = function() {
+        var module = $(this);
+        var timeoutId = setTimeout(function() {
+            var help = $(module.find('.help-block')[0]);
+            help.animate({'height': '30px'}, 200);
+        }, 300);
+        module.data('timeoutId', timeoutId);
+    };
+
     $(document).ready(function() {
         // check/uncheck install input on re-install/re-configure
         /*$('input.action').each(function(i) {
@@ -107,28 +126,14 @@
             $(this).bind('click', checkConflicts);
         });
 
-        showModule = function() {
-            var module = $(this);
-            clearTimeout(module.data('timeoutId'));
-            var help = $(module.find('.help-block')[0]);
-            var cur_height = help.height();
-            help.css('height', 'auto');
-            var to_height = help.height();
-            help.css('height', cur_height).animate({'height': to_height}, 200);
-        }
-
-        hideModule = function() {
-            var module = $(this);
-            var timeoutId = setTimeout(function() {
-                var help = $(module.find('.help-block')[0]);
-                help.animate({'height': '30px'}, 200);
-            }, 300);
-            module.data('timeoutId', timeoutId);
-        }
-
         $('.module').each(function() {
             $(this).mouseenter(showModule).mouseleave(hideModule);
         });
+
+        $('#sidebar .categories').html("");
+        var categories = $('<ul class="nav">')
+        {% for c in categories %}categories.append('<li><a href="#{{ c.slug }}">{{ c.name }}</a></li>');{% endfor %}
+        $('#{{ section }}').next('.categories').append(categories);
 
         createPopups();
     });
@@ -137,7 +142,7 @@
     {% if not categories %}
     <p class="alert alert-error">{% trans "No addon available in this section." %}</p>
     {% endif %}
-    {% for c in  categories %}
+    {% for c in categories %}
     <div class="page-header">
         <a name="{{ c.slug }}"></a>
         <h1>{% if c.icon %}<img src="{{ MEDIA_URL }}img/modules/{{ c.icon }}" /> {% endif %}{{ c.name }}</h1>

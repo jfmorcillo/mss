@@ -260,7 +260,7 @@ h3 {
 }
 
 #sidebar {
-    margin-right: -2.564102564102564%;
+    margin-right: -2.164102564102564%;
 }
 
 #sidebar .breadcrumb {
@@ -268,16 +268,17 @@ h3 {
     text-shadow: 1px 1px 2px white;
 }
 
-#sidebar .nav {
+#sidebar > .nav {
     padding: 0px;
     padding-top: 170px;
 }
 
-#sidebar .nav li {
+#sidebar > .nav > li {
     margin-bottom: 10%;
 }
 
-#sidebar .nav li a, #sidebar .nav li span {
+#sidebar > .nav > li a,
+#sidebar > .nav > li span {
     display: block;
     font-size: 115%;
     background: transparent;
@@ -288,17 +289,31 @@ h3 {
     margin: 0;
 }
 
-#sidebar .nav li.active a, #sidebar .nav li.active span, #sidebar .nav li.active:hover a {
+#sidebar > .nav > li.active > a,
+#sidebar > .nav > li.active > span,
+#sidebar > .nav > li.active:hover > a {
     border-top: 4px solid #EBEBEB;
     background: #F5F5F5;
     text-shadow: 0 -1px 0 white;
     color: #222;
 }
 
-#sidebar .nav li:hover a {
+#sidebar > .nav > li:hover > a {
     border-top: 4px solid #F5F5F5;
     color: #555;
 }
+
+#sidebar .categories .nav li > a {
+    font-size: 105%;
+    padding: 10px 25px;
+    color: #333;
+}
+
+#sidebar .categories .nav li > a:hover {
+    background: #F5F5F5;
+}
+
+
 
 .breadcrumb {
     -webkit-border-radius: 0px;
@@ -498,4 +513,3 @@ h3 {
 #section .control-group,
 #section .help-block {
     margin-bottom: 0px;
-}

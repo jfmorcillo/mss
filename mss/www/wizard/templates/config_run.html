@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load i18n %}
+{% load mss %}
 {% block sidebar %}
 {% include 'sidebar.html' %}
 {% endblock %}
@@ -151,7 +152,7 @@
         {% if m.has_configuration_script and not m.configured %}
     <div class="module" id="{{ m.slug }}">
         <h2>{{ m.name }}</h2>
-        <p class=help-block">{{ m.description }}</p>
+        <p class=help-block">{{ m.description|firstline }}</p>
         <div class="install">
             <p class="alert">{% trans "Waiting..." %}</p>
             <div class="install-summary"></div>

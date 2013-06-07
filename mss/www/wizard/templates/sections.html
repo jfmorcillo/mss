@@ -4,7 +4,8 @@
 {% block sidebar %}
     {% for section in sections %}
     <li {% ifequal section.slug "core" %}class="active"{% endifequal %}>
-        <a href="#{{ section.slug }}" data-target="{{ section.slug }}">{% trans section.name %}</a>
+        <a id="{{ section.slug }}" href="#{{ section.slug }}" data-target="{{ section.slug }}">{% trans section.name %}</a>
+        <div class="categories"></div>
     </li>
     {% endfor %}
     <script type="text/javascript">

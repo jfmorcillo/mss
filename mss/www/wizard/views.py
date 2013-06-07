@@ -183,7 +183,7 @@ def section(request, section):
                     if action['type'] == "link":
                         action['value'] = toHtml(request, action['value'], False)
 
-    return render(request, 'section.html', {'categories': categories})
+    return render(request, 'section.html', {'section': section, 'categories': categories})
 
 @login_required
 def prepare(request):
