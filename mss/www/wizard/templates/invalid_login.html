@@ -3,7 +3,7 @@
 {% block content %}
 <section id="login">
     <div class="page-header">
-        <h1>{% trans "Login" %}</h1>
+        <h1><img src="{{ MEDIA_URL }}img/login.png" /> {% trans "Login" %}</h1>
     </div>
     <form class="form-horizontal" action="{% url login %}" method="post" accept-charset="utf-8">
     	<p class="alert alert-error">{% trans "Wrong username or password." %}</p>
