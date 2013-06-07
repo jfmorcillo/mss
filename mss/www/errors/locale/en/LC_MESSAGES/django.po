@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-21 18:34+0200\n"
+"POT-Creation-Date: 2013-06-07 15:05+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -50,6 +50,24 @@ msgstr ""
 
 #: templates/errors/500.html:31
 msgid "Send"
+msgstr ""
+
+#: templates/errors/error.html:6
+msgid "An error has occured."
+msgstr ""
+
+#: templates/errors/error.html:9
+msgid "MSS agent is unreacheable."
+msgstr ""
+
+#: templates/errors/error.html:10
+msgid ""
+"Check the service status with the <strong>service mss-agent status</strong> "
+"command."
+msgstr ""
+
+#: templates/errors/error.html:16
+msgid "Home page"
 msgstr ""
 
 #: templates/errors/traceback_sent.html:6
