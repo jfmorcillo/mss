@@ -137,6 +137,7 @@ h3 {
 
 .module {
     padding-top: 9px;
+    padding-left: 5px;
 }
 
 .module + .module {
@@ -485,3 +486,16 @@ h3 {
     font-size: 14px;
 }
 
+.module:hover {
+    transition-property: background-color, border-color;
+    transition-duration: 500ms;
+    transition-delay: 300ms;
+    background-color: #EBEBEB;
+    border-color: #D1D1D1;
+
+}
+
+#section .control-group,
+#section .help-block {
+    margin-bottom: 0px;
+}
