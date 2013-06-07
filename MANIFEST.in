@@ -4,6 +4,14 @@ graft etc
 graft mss
 graft modules
 prune modules/squid
+prune modules/owncloud
+prune modules/davical
+
+prune modules/mbs_repo_updates
+
 prune modules/mds_kerberos
 prune modules/mds_audit
 prune modules/zarafa
+
+prune modules/nfs_server
+prune modules/tftp_server
