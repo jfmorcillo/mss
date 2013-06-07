@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-21 18:34+0200\n"
-"PO-Revision-Date: 2013-05-22 13:55+0000\n"
+"POT-Creation-Date: 2013-06-07 15:05+0200\n"
+"PO-Revision-Date: 2013-06-07 13:08+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -19,97 +19,97 @@ msgstr ""
 "Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: transaction.py:53
+#: transaction.py:48
 msgid "Installation summary"
 msgstr "Résumé de l'installation"
 
-#: transaction.py:55
+#: transaction.py:50
 msgid "The folowing addon will be installed."
 msgid_plural "The folowing addons will be installed."
 msgstr[0] "L'addon suivant sera installé."
 msgstr[1] "Les addons suivants seront installés."
 
-#: transaction.py:65
+#: transaction.py:60
 msgid "Addon download"
 msgstr "Téléchargement des addons"
 
-#: transaction.py:66
+#: transaction.py:61
 msgid "Download addons from the ServicePlace"
 msgstr "Télécharge les addons depuis le ServicePlace."
 
-#: transaction.py:72
+#: transaction.py:67
 msgid "Medias authentication"
 msgstr "Authentification des dépôts"
 
-#: transaction.py:73
+#: transaction.py:68
 msgid "One or more medias need authentication"
 msgstr "Une authentification est nécessaire pour installer un des dépôts"
 
-#: transaction.py:79
+#: transaction.py:74
 msgid "Medias add"
 msgstr "Ajout des dépôts"
 
-#: transaction.py:86
+#: transaction.py:81
 msgid "Installation"
 msgstr "Installation"
 
-#: transaction.py:93
+#: transaction.py:88
 msgid "Initial configuration"
 msgstr "Configuration initiale"
 
-#: transaction.py:100
+#: transaction.py:95
 msgid "End of installation"
 msgstr "Fin de l'installation"
 
-#: transaction.py:101
+#: transaction.py:96
 msgid "The installation is finished."
 msgstr "L'installation est terminée."
 
-#: transaction.py:120 templates/end.html:15
+#: transaction.py:115 templates/end.html:15
 msgid "Reboot"
 msgstr "Redémarrage"
 
-#: transaction.py:122
+#: transaction.py:117
 msgid "The installation is finished. The server must be rebooted."
 msgstr "L'installation est terminée. Le serveur doit être redémarré."
 
-#: views.py:109 templates/login.html:7
+#: views.py:103 templates/login.html:7
 msgid "Welcome"
 msgstr "Bienvenue"
 
-#: views.py:110
+#: views.py:104
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr ""
 "Avant de pouvoir installer vos services nous devons paramétrer quelques "
 "éléments avec vous."
 
-#: views.py:145 templates/error.html:9
+#: views.py:135
 msgid "MSS agent is unreacheable."
 msgstr "L'agent MSS est injoignable."
 
-#: templates/base.html:22
+#: templates/base.html:27
 msgid "Hide log"
 msgstr "Cacher le détail"
 
-#: templates/base.html:25 templates/config_run.html:159
+#: templates/base.html:30 templates/config_run.html:160
 #: templates/install.html:66 templates/media_add.html:95
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:51 templates/base.html.py:137
+#: templates/base.html:56 templates/base.html.py:143
 msgid "Ready"
 msgstr "Prêt"
 
-#: templates/base.html:112
+#: templates/base.html:118
 msgid "Update packages list on your server."
 msgstr "Met à jour les listes de packages sur votre serveur."
 
-#: templates/base.html:113
+#: templates/base.html:119
 msgid "Update medias"
 msgstr "Mettre à jour les dépôts"
 
-#: templates/base.html:117 templates/sections.html:45
+#: templates/base.html:123 templates/sections.html:46
 msgid "Logout"
 msgstr "Déconnexion"
 
@@ -125,16 +125,16 @@ msgstr "Ré-entrez le mot de passe"
 msgid "Required field"
 msgstr "Champ obligatoire"
 
-#: templates/config.html:283 templates/config_run.html:60
+#: templates/config.html:283 templates/config_run.html:61
 #: templates/download.html:30 templates/install.html:19
 #: templates/media_add.html:29 templates/media_add.html.py:74
-#: templates/preinst.html:33
+#: templates/preinst.html:34
 msgid "Continue"
 msgstr "Continuer"
 
 #: templates/config.html:285 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
-#: templates/media_auth.html:40 templates/preinst.html:36
+#: templates/media_auth.html:40 templates/preinst.html:37
 msgid "Back"
 msgstr "Retour"
 
@@ -142,52 +142,52 @@ msgstr "Retour"
 msgid "Installation & configuration was successful."
 msgstr "Installation et configuration réussie."
 
-#: templates/config_no.html:14 templates/error.html:14
+#: templates/config_no.html:14
 msgid "Home page"
 msgstr "Page d'accueil"
 
-#: templates/config_run.html:25
+#: templates/config_run.html:26
 msgid "Configuration summary"
 msgstr "Résumé de la configuration"
 
-#: templates/config_run.html:26
+#: templates/config_run.html:27
 msgid "Configuration warnings"
 msgstr "Avertissements de configuration"
 
-#: templates/config_run.html:27
+#: templates/config_run.html:28
 msgid "Configuration errors"
 msgstr "Erreurs de configuration"
 
-#: templates/config_run.html:57 templates/config_run.html.py:113
+#: templates/config_run.html:58 templates/config_run.html.py:114
 msgid "Configuration terminated, details are displayed below."
 msgstr "La configuration est terminée. Les détails sont affichés ci-dessous."
 
-#: templates/config_run.html:75
+#: templates/config_run.html:76
 msgid "Configuration succeded."
 msgstr "Configuration réussie."
 
-#: templates/config_run.html:88
+#: templates/config_run.html:89
 msgid "Configuration failed."
 msgstr "Configuration échouée."
 
-#: templates/config_run.html:89 templates/config_run.html.py:110
+#: templates/config_run.html:90 templates/config_run.html.py:111
 #: templates/download.html:73 templates/install.html:37
 msgid "Retry"
 msgstr "Relancer"
 
-#: templates/config_run.html:119
+#: templates/config_run.html:120
 msgid "Could not find any configuration script to execute."
 msgstr "Aucun script de configuration à executer."
 
-#: templates/config_run.html:126
+#: templates/config_run.html:127
 msgid "Running configuration..."
 msgstr "Configuration en cours..."
 
-#: templates/config_run.html:156 templates/media_add.html:92
+#: templates/config_run.html:157 templates/media_add.html:92
 msgid "Waiting..."
 msgstr "En attente..."
 
-#: templates/config_run.html:179 templates/download.html:95
+#: templates/config_run.html:180 templates/download.html:95
 #: templates/install.html:74 templates/media_add.html:104
 msgid "Please wait..."
 msgstr "Patientez..."
@@ -208,18 +208,6 @@ msgstr "Échec du téléchargement de <strong>{0}</strong>."
 msgid "Home"
 msgstr "Accueil"
 
-#: templates/error.html:6
-msgid "An error has occured."
-msgstr "Une erreur s'est produite."
-
-#: templates/error.html:10
-msgid ""
-"Check the service status with the <strong>service mss-agent status</strong> "
-"command."
-msgstr ""
-"Vérifiez le statut du service avec la commande <strong>service mss-agent "
-"status</strong>."
-
 #: templates/install.html:17
 msgid "Installation succeded."
 msgstr "Installation réussie."
@@ -239,15 +227,6 @@ msgid_plural "The following addons are being installed"
 msgstr[0] "L'addon suivant est en cours d'installation"
 msgstr[1] "Les addons suivants sont en cours d'installation"
 
-#: templates/invalid_login.html:6 templates/login.html:12
-#: templates/login.html.py:17
-msgid "Login"
-msgstr "Identification"
-
-#: templates/invalid_login.html:9
-msgid "Wrong username or password."
-msgstr "Mauvais utilisateur ou mot de passe."
-
 #: templates/login.html:9
 msgid ""
 "Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
@@ -259,6 +238,14 @@ msgstr ""
 #: templates/login.html:9
 msgid "Login to begin to setup your server."
 msgstr "Identifiez-vous pour commencer à paramétrer le serveur."
+
+#: templates/login.html:12 templates/login.html.py:17
+msgid "Login"
+msgstr "Identification"
+
+#: templates/login.html:20
+msgid "Wrong username or password."
+msgstr "Mauvais utilisateur ou mot de passe."
 
 #: templates/login_form.html:12 templates/media_auth.html:21
 msgid "Your my.mandriva.com email address."
@@ -326,19 +313,19 @@ msgstr "Ne pas ajouter les dépôts"
 msgid "Add medias"
 msgstr "Ajouter les dépôts"
 
-#: templates/preinst.html:14
+#: templates/preinst.html:15 templates/section.html:83
 msgid "No addon selected."
 msgstr "Aucun addon sélectionné."
 
-#: templates/preinst.html:22
+#: templates/preinst.html:23
 msgid "Added as a dependency"
 msgstr "Ajouté comme dépendance"
 
-#: templates/preinst.html:23
+#: templates/preinst.html:24
 msgid "Reinstallation"
 msgstr "Ré-installation"
 
-#: templates/preinst.html:25
+#: templates/preinst.html:26
 msgid ""
 "If other addons requires this addon they may be broken after the "
 "reinstallation."
@@ -354,31 +341,31 @@ msgstr "Cet addon ne peut pas être installé avec"
 msgid "More info about this addon"
 msgstr "Plus d'infos à propos de cet addon"
 
-#: templates/section.html:118
+#: templates/section.html:120
 msgid "No addon available in this section."
 msgstr "Pas d'addon disponible dans cette section."
 
-#: templates/section.html:182
+#: templates/section.html:184
 msgid "This addon is installed and configured"
 msgstr "Cet addon est installé et configuré"
 
-#: templates/section.html:183
+#: templates/section.html:185
 msgid "This module conflicts with : "
 msgstr "Ce module est en conflit avec : "
 
-#: templates/section.html:186
+#: templates/section.html:188
 msgid "You have purshased this addon"
 msgstr "Vous avez acheté cet addon"
 
-#: templates/section.html:207
+#: templates/section.html:209
 msgid "Info"
 msgstr "Info"
 
-#: templates/section.html:218
+#: templates/section.html:220
 msgid "Install and configure selected addons"
 msgstr "Installer et configurer les addons sélectionnés"
 
-#: templates/sections.html:42
+#: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr "Aucun addon disponible. Essayez de vous reconnecter."
 
