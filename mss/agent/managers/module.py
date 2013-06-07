@@ -708,8 +708,10 @@ class ModuleManager:
                 result = response.read()
             code = response.getcode()
         except urllib2.HTTPError as e:
-            logger.exception("HTTP error")
-            raise xmlrpclib.Fault(e.code, _("Connection failed with the ServicePlace.", "agent"))
+            code = e.code
+            result = ""
+            if code in (404, 500):
+                raise xmlrpclib.Fault(code, _("Connection failed with the ServicePlace.", "agent"))
         except urllib2.URLError as e:
             logger.exception("URL error")
             raise xmlrpclib.Fault(777, str(e.reason))
