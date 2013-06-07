@@ -17,6 +17,16 @@
     });
 </script>
 <style type="text/css">
-    #status, .form-actions { width: 540px; }
+    #status,
+    .form-horizontal .form-actions {
+        width: 540px;
+    }
+    .form-horizontal .form-actions {
+        position: relative;
+        bottom: 0px;
+        display: block;
+        -webkit-box-shadow: none;
+                box-shadow: none;
+    }
 </style>
 {% endblock %}
