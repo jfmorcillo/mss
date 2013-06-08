@@ -71,10 +71,8 @@
         }
     ],
     "dependencies": ["mds_mmc"],
-    "conflicts": ["zarafa"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"],
-        "conflicts": ["zarafa"]
     }
 }
