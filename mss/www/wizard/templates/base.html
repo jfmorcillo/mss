@@ -49,9 +49,16 @@
                  });
             }
             // long polling for status bar
+            var statusError = false;
             updateStatus = function(force) {
                 $.get('{% url status %}', {'force': force})
-                .success(function(status) {
+                 .success(function(status) {
+                    // Last request was an error (maybe the mss-agent restarted)
+                    // so we set the mss-agent language again
+                    if (statusError) {
+                        setLang("{{ current_lang }}");
+                        statusError = false;
+                    }
                     // hide status on Ready state
                     if (status.indexOf('{% trans "Ready" %}') === 0) {
                         $('#status-text').html(status);
@@ -75,6 +82,7 @@
                     // Wait a little before displaying the message
                     // requests are also aborted when the user changes pages
                     setTimeout(function() {
+                        statusError = true;
                         // request aborted
                         showError(xhr.responseText);
                         // refresh every 2s on error
