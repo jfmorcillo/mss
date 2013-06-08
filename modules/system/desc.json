@@ -2,6 +2,17 @@
     "slug": "system",
     "name": "System setup",
     "description": "General system configuration",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "locales-fr",
+                "locales-en",
+                "locales-de",
+                "locales-pt"
+            ]
+        }
+    ],
     "config": [
         {
             "type": "text",
