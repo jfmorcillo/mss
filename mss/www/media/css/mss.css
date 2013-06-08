@@ -143,8 +143,7 @@ h3 {
 }
 
 .module {
-    padding-top: 9px;
-    padding-left: 5px;
+    padding: 10px 5px 1px 5px;
 }
 
 .module + .module {
