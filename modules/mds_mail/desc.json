@@ -73,6 +73,6 @@
     "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
-        "dependencies": ["mds_mmc"],
+        "dependencies": ["mds_mmc"]
     }
 }
