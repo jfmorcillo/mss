@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-07 15:05+0200\n"
+"POT-Creation-Date: 2013-06-08 08:49+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,7 +22,7 @@ msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr ""
 
 #: .actions[0].name
-msgid "DAViCal administration"
+msgid "Management interface"
 msgstr ""
 
 #: .name
@@ -37,28 +37,21 @@ msgstr ""
 msgid "Collaboration"
 msgstr ""
 
-#: davical/setup-davical.sh:40
+#: davical/setup-davical.sh:42
 msgid "Failed to setup the database."
 msgstr ""
 
-#: davical/setup-davical.sh:79
+#: davical/setup-davical.sh:86
 msgid "The calendar and addressbook service is configured."
 msgstr ""
 
-#: davical/setup-davical.sh:80
-msgid "- Administrator : admin"
-msgstr ""
-
-#: davical/setup-davical.sh:81
-msgid "- Password : $DAVICAL_ADMIN_PASS"
-msgstr ""
-
-#: davical/setup-davical.sh:82
-msgid "Change it using the management interface https://@HOSTNAME@/davical/"
-msgstr ""
-
-#: davical/setup-davical.sh:84
+#: davical/setup-davical.sh:88
 msgid ""
-"Use https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ to add "
-"calendar into caldav clients."
+"- each user can access its personnal calendar at https://@HOSTNAME@/davical/"
+"caldav.php/[user_email]/calendar/ using a calendar client (Thunderbird with "
+"Lightning, iCal...)"
+msgstr ""
+
+#: davical/setup-davical.sh:89
+msgid "- you can add shared calendars at https://@HOSTNAME@/mmc/"
 msgstr ""

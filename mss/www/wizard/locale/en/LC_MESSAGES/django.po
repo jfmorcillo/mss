@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-07 15:05+0200\n"
+"POT-Creation-Date: 2013-06-08 08:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -93,42 +93,42 @@ msgstr ""
 msgid "Show log"
 msgstr ""
 
-#: templates/base.html:56 templates/base.html.py:143
+#: templates/base.html:63 templates/base.html.py:151
 msgid "Ready"
 msgstr ""
 
-#: templates/base.html:118
+#: templates/base.html:126
 msgid "Update packages list on your server."
 msgstr ""
 
-#: templates/base.html:119
+#: templates/base.html:127
 msgid "Update medias"
 msgstr ""
 
-#: templates/base.html:123 templates/sections.html:46
+#: templates/base.html:131 templates/sections.html:46
 msgid "Logout"
 msgstr ""
 
-#: templates/config.html:110 templates/config.html.py:257
+#: templates/config.html:109 templates/config.html.py:256
 msgid "Add"
 msgstr ""
 
-#: templates/config.html:164
+#: templates/config.html:163
 msgid "Re-enter password"
 msgstr ""
 
-#: templates/config.html:280
+#: templates/config.html:279
 msgid "Required field"
 msgstr ""
 
-#: templates/config.html:283 templates/config_run.html:61
+#: templates/config.html:282 templates/config_run.html:61
 #: templates/download.html:30 templates/install.html:19
 #: templates/media_add.html:29 templates/media_add.html.py:74
 #: templates/preinst.html:34
 msgid "Continue"
 msgstr ""
 
-#: templates/config.html:285 templates/download.html:97
+#: templates/config.html:284 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
 #: templates/media_auth.html:40 templates/preinst.html:37
 msgid "Back"
