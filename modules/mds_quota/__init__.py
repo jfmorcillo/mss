@@ -19,20 +19,37 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from subprocess import Popen, PIPE
+import psutil
+from mss.agent.managers.translation import TranslationManager
+
+_ = TranslationManager().translate
+
 
 def get_config_info():
     return ("setup-quota.sh", ['filesystems'])
 
 def get_filesystems(module):
     """
-    Return / and /home devices for quotas
+    Return all devices for quotas
     """
     mountpoints = []
-    p = Popen(["mount | grep '/dev/sd' | awk '{ print $1 \":\" $3 }'"], 
-              shell=True, stdin=PIPE, stdout=PIPE, close_fds=True)
-    for line in p.stdout:
-        if line.strip().split('/').pop() in ['', 'home']:
-            mountpoints.append(line.strip())
-
+    for part in psutil.disk_partitions(all=False):
+        mountpoints.append("%s:%s" % (part.device, part.mountpoint))
     return mountpoints
+
+def validate_filesystems(filesystems):
+    """
+    Validate device name
+    """
+    for filesystem in filesystems:
+        device = filesystem.split(':')[0]
+        valid = False
+        for part in psutil.disk_partitions(all=False):
+            if device == part.device:
+                valid = True
+                break
+
+        if not valid:
+            return _("Device %s doesn't exists." % device, "mds_quota")
+
+    return None

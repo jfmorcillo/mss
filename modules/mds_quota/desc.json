@@ -23,6 +23,7 @@
             "default": "get_filesystems",
             "multi": "yes",
             "label": "Filesystems",
+            "validation": "validate_filesystems",
             "help": "Specify the filesystems where you want to apply user quotas with the following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
         }
     ],
