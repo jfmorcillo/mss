@@ -134,7 +134,9 @@ class Transaction(object):
                 has_restricted_repositories = True
             if not module['installed']:
                 installed = False
-            if not module['configured'] and module["has_configuration_script"] and module["downloaded"]:
+            if module["has_configuration_script"] and not module['configured']:
+                configured = False
+            if not module['downloaded']:
                 configured = False
 
         if self.get_state_step(Steps.DOWNLOAD) == State.TODO and downloaded:
