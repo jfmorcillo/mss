@@ -12,7 +12,10 @@
     "packages": [
         {
             "name": "all",
-            "rpms": ["quota", "python-mmc-userquota", "mmc-web-userquota"]
+            "rpms": ["quota",
+                   "python-mmc-userquota",
+                   "mmc-web-userquota",
+                   "python-psutil"]
         }
     ],
     "config": [
