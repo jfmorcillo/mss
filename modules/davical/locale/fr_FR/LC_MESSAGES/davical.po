@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-08 08:49+0200\n"
-"PO-Revision-Date: 2013-06-10 12:56+0000\n"
-"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
+"PO-Revision-Date: 2013-06-11 08:21+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 
 #: .description .desc
 msgid "DAViCal a service for calendar and addressbook sharing."
-msgstr "DAViCal un service de partage de calendrier et de carnet d'adresses"
+msgstr "DAViCal un service de calendriers partagés et de carnet d'adresses."
 
 #: .actions[0].name
 msgid "Management interface"
@@ -29,7 +29,7 @@ msgstr "Interface de gestion"
 
 #: .name
 msgid "Calendar and Addressbook"
-msgstr "Calendrier et Carnet d'adresses"
+msgstr "Calendriers et carnet d'adresses"
 
 #: .packages[0].name
 msgid "all"
@@ -41,12 +41,11 @@ msgstr "Collaboration"
 
 #: davical/setup-davical.sh:42
 msgid "Failed to setup the database."
-msgstr "Configuration de la base de donnée echouée."
+msgstr "Configuration de la base de donnée échouée."
 
 #: davical/setup-davical.sh:86
 msgid "The calendar and addressbook service is configured."
-msgstr ""
-"Le service de partage de calendrier et de carnet d'adresse est configuré."
+msgstr "Le service de calendriers et de carnet d'adresses est configuré."
 
 #: davical/setup-davical.sh:88
 msgid ""
