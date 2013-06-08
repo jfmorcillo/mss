@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-04-18 08:31+0000\n"
+"POT-Creation-Date: 2013-06-08 08:49+0200\n"
+"PO-Revision-Date: 2013-06-10 14:21+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -30,13 +30,17 @@ msgstr "Weitere Dienste"
 msgid "Other"
 msgstr "Weitere"
 
-#: classes/module.py:379
+#: classes/module.py:380
 msgid "This field can't be empty."
 msgstr "Dieses Feld darf nicht leer sein."
 
-#: classes/module.py:384
+#: classes/module.py:385
 msgid "Password mismatch."
 msgstr "Passwörter stimmen nicht überein."
+
+#: managers/module.py:711
+msgid "Connection failed with the ServicePlace."
+msgstr "Verbindung zum ServicePlace fehlgeschlagen."
 
 #: managers/process.py:44
 msgid "Loading packages list"

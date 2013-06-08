@@ -4,13 +4,14 @@
 # 
 ## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
+#   <andre@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-03-19 18:50+0100\n"
-"PO-Revision-Date: 2013-02-06 18:30+0000\n"
-"Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
+"POT-Creation-Date: 2013-06-08 08:50+0200\n"
+"PO-Revision-Date: 2013-06-10 18:48+0000\n"
+"Last-Translator: Andre Machado <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -54,6 +55,26 @@ msgstr ""
 #: templates/errors/500.html:31
 msgid "Send"
 msgstr "Enviar"
+
+#: templates/errors/error.html:6
+msgid "An error has occured."
+msgstr "Ocorreu um erro."
+
+#: templates/errors/error.html:9
+msgid "MSS agent is unreacheable."
+msgstr "Agente MSS está inalcançável."
+
+#: templates/errors/error.html:10
+msgid ""
+"Check the service status with the <strong>service mss-agent status</strong> "
+"command."
+msgstr ""
+"Verifique o status do serviço com o comando <strong>service mss-agent "
+"status</strong>."
+
+#: templates/errors/error.html:16
+msgid "Home page"
+msgstr "Inicial"
 
 #: templates/errors/traceback_sent.html:6
 msgid "Thanks for your feedback!"

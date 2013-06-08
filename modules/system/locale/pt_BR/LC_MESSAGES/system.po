@@ -1,64 +1,71 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-#
-# # Translators:
+# 
+## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
+#   <andre@mandriva.com>, 2013.
+#   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:02+0200\n"
-"PO-Revision-Date: 2013-03-26 09:40+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
-"Language: pt_BR\n"
+"POT-Creation-Date: 2013-06-08 08:50+0200\n"
+"PO-Revision-Date: 2013-06-10 19:12+0000\n"
+"Last-Translator: Andre Machado <andre@mandriva.com>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description
 msgid "General system configuration"
 msgstr "Configurações gerais do sistema"
 
-#: modules/system/setup-system.sh:18
-msgid "Hostname and domain name configured."
-msgstr "Hostname e domínio estão configurados."
+#: .packages[0].name
+msgid "all"
+msgstr "todos"
 
-#: .config[0].help
-msgid "Hostname without the domain name"
-msgstr "O hostname sem o nome do domínio"
-
-#: modules/system/__init__.py:54
-msgid "Incorrect hostname."
-msgstr "Hostname incorreto."
-
-#: .name
-msgid "System setup"
-msgstr "Configuração do sistema"
-
-#: .config[1].help
-msgid "The domain name used in your organization (eg: mandriva.com)."
-msgstr "O nome de domínio usado em sua organização (ex: mandriva.com)."
+#: .config[0].name
+msgid "hostname"
+msgstr "hostname"
 
 #: .config[0].label
 msgid "The server hostname"
 msgstr "O hostname do servidor"
 
+#: .config[0].help
+msgid "Hostname without the domain name"
+msgstr "O hostname sem o nome do domínio"
+
+#: .config[1].name
+msgid "domain"
+msgstr "domain"
+
 #: .config[1].label
 msgid "Your domain name"
 msgstr "Seu nome de domínio"
 
-#: .config[1].name
-msgid "domain"
-msgstr ""
+#: .config[1].help
+msgid "The domain name used in your organization (eg: mandriva.com)."
+msgstr "O nome de domínio usado em sua organização (ex: mandriva.com)."
 
-#: modules/system/__init__.py:48
+#: .name
+msgid "System setup"
+msgstr "Configuração do sistema"
+
+#: system/setup-system.sh:18
+msgid "Hostname and domain name configured."
+msgstr "Hostname e domínio estão configurados."
+
+#: system/__init__.py:48
 msgid "example.com"
 msgstr "exemplo.com.br"
 
-#: .config[0].name
-msgid "hostname"
-msgstr ""
+#: system/__init__.py:54
+msgid "Incorrect hostname."
+msgstr "Hostname incorreto."
+
+

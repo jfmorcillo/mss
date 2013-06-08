@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-04-18 08:47+0000\n"
+"POT-Creation-Date: 2013-06-08 08:50+0200\n"
+"PO-Revision-Date: 2013-06-10 14:26+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -54,6 +54,26 @@ msgstr ""
 #: templates/errors/500.html:31
 msgid "Send"
 msgstr "Senden"
+
+#: templates/errors/error.html:6
+msgid "An error has occured."
+msgstr "Ein Fehler ist aufgetreten."
+
+#: templates/errors/error.html:9
+msgid "MSS agent is unreacheable."
+msgstr "MSS Agent kann nicht erreicht werden."
+
+#: templates/errors/error.html:10
+msgid ""
+"Check the service status with the <strong>service mss-agent status</strong> "
+"command."
+msgstr ""
+"Prüfen Sie den Dienststatus mit dem Befehl <strong>service mss-agent "
+"status</strong>."
+
+#: templates/errors/error.html:16
+msgid "Home page"
+msgstr "Homepage"
 
 #: templates/errors/traceback_sent.html:6
 msgid "Thanks for your feedback!"

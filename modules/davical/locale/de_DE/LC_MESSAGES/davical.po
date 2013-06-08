@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-04-18 09:13+0000\n"
+"POT-Creation-Date: 2013-06-08 08:49+0200\n"
+"PO-Revision-Date: 2013-06-10 14:24+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -23,8 +23,8 @@ msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr "DAViCal ein Dienst zum Teilen von Kalender und Adressbuch."
 
 #: .actions[0].name
-msgid "DAViCal administration"
-msgstr "DAViCal Verwaltung"
+msgid "Management interface"
+msgstr "Verwaltungsschnittstelle"
 
 #: .name
 msgid "Calendar and Addressbook"
@@ -38,33 +38,27 @@ msgstr "alle"
 msgid "Collaboration"
 msgstr "Zusammenarbeit"
 
-#: davical/setup-davical.sh:40
+#: davical/setup-davical.sh:42
 msgid "Failed to setup the database."
 msgstr "Fehler beim Einrichten der Datenbank."
 
-#: davical/setup-davical.sh:79
+#: davical/setup-davical.sh:86
 msgid "The calendar and addressbook service is configured."
 msgstr "Der Kalender und Adressbuchdienst ist konfiguriert."
 
-#: davical/setup-davical.sh:80
-msgid "- Administrator : admin"
-msgstr "- Administrator : admin"
-
-#: davical/setup-davical.sh:81
-msgid "- Password : $DAVICAL_ADMIN_PASS"
-msgstr "- Passwort : $DAVICAL_ADMIN_PASS"
-
-#: davical/setup-davical.sh:82
-msgid "Change it using the management interface https://@HOSTNAME@/davical/"
-msgstr ""
-"Ändern Sie es über die Verwaltungsschnittstelle https://@HOSTNAME@/davical/"
-
-#: davical/setup-davical.sh:84
+#: davical/setup-davical.sh:88
 msgid ""
-"Use https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ to add "
-"calendar into caldav clients."
+"- each user can access its personnal calendar at "
+"https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ using a "
+"calendar client (Thunderbird with Lightning, iCal...)"
 msgstr ""
-"Benutzen Sie https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ um"
-" Kaleder den caldav-Clients hinzuzufügen."
+"- jeder Nutzer hat Zugriff auf seinen persönlichen Kalender unter "
+"https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ unter "
+"Verwendung eines Kalenderclients (Thunderbird mit Lightning, iCal...)"
+
+#: davical/setup-davical.sh:89
+msgid "- you can add shared calendars at https://@HOSTNAME@/mmc/"
+msgstr ""
+"- Sie können geteilte Kalender unter https://@HOSTNAME@/mmc/ hinzufügen"
 
 
