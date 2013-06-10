@@ -12,14 +12,17 @@
     "actions": [
         {
             "type": "link",
-            "name": "DAViCal administration",
-            "value": "https://@HOSTNAME@/davical/"
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
         }
     ],
     "packages": [
         {
             "name": "all",
-            "rpms": ["davical", "php-pdo_pgsql", "php-calendar", "php-ldap", "roundcubemail-plugins"]
+            "rpms": ["davical", "php-pdo_pgsql", "php-calendar", "php-ldap", "roundcubemail-plugins",
+                     "mmc-web-davical",
+                     "python-mmc-davical"
+            ]
         }
     ],
     "dependencies": ["postgresql", "mds_webmail"],

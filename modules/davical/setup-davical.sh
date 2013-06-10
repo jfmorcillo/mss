@@ -6,6 +6,7 @@
 check_mmc_configured
 
 SERVICE="httpd"
+SERVICE_MMC="mmc-agent"
 PG_CONF_FILE="/var/lib/pgsql/data/pg_hba.conf"
 DAVICAL_CONF_TEMPLATE="templates/config.php.tpl"
 DAVICAL_CONF="/etc/davical/config.php"
@@ -14,6 +15,7 @@ APACHE_DAVICAL_CONF="/etc/httpd/conf/webapps.d/davical.conf"
 DAVICAL_CRON_TEMPLATE="templates/davical.cron.tpl"
 DAVICAL_CRON="/etc/cron.d/davical"
 roundcube_db_conf_template="templates/config.inc.php.tpl"
+DAVICAL_MMC_CONF="/etc/mmc/plugins/davical.ini"
 
 ###Give Davical access to the Postgre DB
 backup $PG_CONF_FILE
@@ -38,6 +40,10 @@ su postgres -c /usr/share/davical/dba/create-database.sh 2>&1
 DAVICAL_ADMIN_PASS=`su postgres -c "psql davical -c 'select username, password from usr;'" | sed -n '/admin/s/^ *admin.*\*\*\(.*\)$/\1/p'`
 
 [ ! $DAVICAL_ADMIN_PASS ] && error $"Failed to setup the database." && exit 1
+
+backup $DAVICAL_MMC_CONF
+sed -i "s/^user = .*/user = admin/" $DAVICAL_MMC_CONF
+sed -i "s/^pswd =.*/pswd = $DAVICAL_ADMIN_PASS/" $DAVICAL_MMC_CONF
 
 ###Enable acces to Davical folder
 backup $APACHE_DAVICAL_CONF
@@ -65,6 +71,7 @@ sqlite /var/lib/roundcubemail/sqlite.db < /usr/share/roundcubemail/plugins/calen
 https_redirect davical $APACHE_DAVICAL_CONF
 
 restart_service $SERVICE
+restart_service $SERVICE_MMC
 
 ###Open the firewall port
 #No need to open a particular port as Davical listen on the standard http port that should be already opened
