@@ -9,6 +9,7 @@ SERVICE="httpd"
 SERVICE_MMC="mmc-agent"
 PG_CONF_FILE="/var/lib/pgsql/data/pg_hba.conf"
 DAVICAL_CONF_TEMPLATE="templates/config.php.tpl"
+DAVICAL_MMC_HOOK="templates/davical.py"
 DAVICAL_CONF="/etc/davical/config.php"
 APACHE_DAVICAL_CONF_TEMPLATE="templates/davical.conf.tpl"
 APACHE_DAVICAL_CONF="/etc/httpd/conf/webapps.d/davical.conf"
@@ -69,6 +70,10 @@ sqlite /var/lib/roundcubemail/sqlite.db < /usr/share/roundcubemail/plugins/calen
 
 # http -> https redirection
 https_redirect davical $APACHE_DAVICAL_CONF
+
+# install MMC hook
+mkdir -p /etc/mmc/hooks/
+cp ${DAVICAL_MMC_HOOK} /etc/mmc/hooks/
 
 restart_service $SERVICE
 restart_service $SERVICE_MMC
