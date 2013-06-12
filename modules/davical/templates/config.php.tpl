@@ -329,6 +329,7 @@ $c->authenticate_hook['config'] = array(
                              "updated" => "modifyTimestamp",
                              "fullname" => "cn" ,
                              "email" => "mail",
+                             "modified" => "modifyTimestamp",
                              "locale" =>"preferredLanguage"),
     'group_mapping_field' => array("username" => "cn",
                                    "updated" => "modifyTimestamp",
