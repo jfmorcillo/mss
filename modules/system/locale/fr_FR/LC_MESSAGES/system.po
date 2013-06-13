@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-08 08:50+0200\n"
-"PO-Revision-Date: 2013-06-10 12:47+0000\n"
+"POT-Creation-Date: 2013-06-13 19:34+0200\n"
+"PO-Revision-Date: 2013-06-19 08:06+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,7 +24,7 @@ msgstr "Configuration générale du système"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "all"
 
 #: .config[0].name
 msgid "hostname"

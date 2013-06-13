@@ -9,8 +9,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-07 15:05+0200\n"
-"PO-Revision-Date: 2013-06-07 13:08+0000\n"
+"POT-Creation-Date: 2013-06-13 19:34+0200\n"
+"PO-Revision-Date: 2013-06-19 08:07+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,8 +24,8 @@ msgid "Installation summary"
 msgstr "Résumé de l'installation"
 
 #: transaction.py:50
-msgid "The folowing addon will be installed."
-msgid_plural "The folowing addons will be installed."
+msgid "The following addon will be installed."
+msgid_plural "The following addons will be installed."
 msgstr[0] "L'addon suivant sera installé."
 msgstr[1] "Les addons suivants seront installés."
 
@@ -97,42 +97,42 @@ msgstr "Cacher le détail"
 msgid "Show log"
 msgstr "Afficher le détail"
 
-#: templates/base.html:56 templates/base.html.py:143
+#: templates/base.html:63 templates/base.html.py:151
 msgid "Ready"
 msgstr "Prêt"
 
-#: templates/base.html:118
+#: templates/base.html:126
 msgid "Update packages list on your server."
 msgstr "Met à jour les listes de packages sur votre serveur."
 
-#: templates/base.html:119
+#: templates/base.html:127
 msgid "Update medias"
 msgstr "Mettre à jour les dépôts"
 
-#: templates/base.html:123 templates/sections.html:46
+#: templates/base.html:131 templates/sections.html:46
 msgid "Logout"
 msgstr "Déconnexion"
 
-#: templates/config.html:110 templates/config.html.py:257
+#: templates/config.html:109 templates/config.html.py:256
 msgid "Add"
 msgstr "Ajouter"
 
-#: templates/config.html:164
+#: templates/config.html:163
 msgid "Re-enter password"
 msgstr "Ré-entrez le mot de passe"
 
-#: templates/config.html:280
+#: templates/config.html:279
 msgid "Required field"
 msgstr "Champ obligatoire"
 
-#: templates/config.html:283 templates/config_run.html:61
+#: templates/config.html:282 templates/config_run.html:61
 #: templates/download.html:30 templates/install.html:19
 #: templates/media_add.html:29 templates/media_add.html.py:74
 #: templates/preinst.html:34
 msgid "Continue"
 msgstr "Continuer"
 
-#: templates/config.html:285 templates/download.html:97
+#: templates/config.html:284 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
 #: templates/media_auth.html:40 templates/preinst.html:37
 msgid "Back"

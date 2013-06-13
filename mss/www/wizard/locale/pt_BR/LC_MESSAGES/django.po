@@ -5,12 +5,13 @@
 ## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
+#   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-08 08:50+0200\n"
-"PO-Revision-Date: 2013-06-07 13:08+0000\n"
+"POT-Creation-Date: 2013-06-13 19:34+0200\n"
+"PO-Revision-Date: 2013-06-19 08:10+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
@@ -24,10 +25,10 @@ msgid "Installation summary"
 msgstr "Sumário de instalação"
 
 #: transaction.py:50
-msgid "The folowing addon will be installed."
-msgid_plural "The folowing addons will be installed."
-msgstr[0] "o seguinte addon será instalado."
-msgstr[1] "Os seguintes addos serão instalados"
+msgid "The following addon will be installed."
+msgid_plural "The following addons will be installed."
+msgstr[0] "O seguinte addon será instalado."
+msgstr[1] "Os seguintes addos serão instalados."
 
 #: transaction.py:60
 msgid "Addon download"
