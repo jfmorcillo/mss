@@ -47,8 +47,8 @@ class Transaction(object):
                 'state': State.TODO,
                 'title': _("Installation summary"),
                 'info': ungettext(
-                            "The folowing addon will be installed.",
-                            "The folowing addons will be installed.",
+                            "The following addon will be installed.",
+                            "The following addons will be installed.",
                             len(self.modules_list)
                         ),
                 'show_modules': True,
