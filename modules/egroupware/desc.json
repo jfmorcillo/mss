@@ -1,0 +1,46 @@
+{
+    "slug": "egroupware",
+    "name": "eGroupware",
+    "description": "Web-based groupware suite written in php",
+    "desc": "Web-based groupware suite written in php",
+    "categories": [
+        {
+            "slug": "groupware",
+            "name": "Groupware"
+        }
+    ],
+    "actions": [
+        {
+            "type": "link",
+            "name": "eGroupware interface",
+            "value": "https://@HOSTNAME@/egroupware/"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["egroupware", "php-mysql", "sqlite3-tools", "php-pdo_sqlite", "php-pdo_mysql", "php-pear-Net_IMAP", "php-pear-Net_Socket", "php-ldap"]
+        }
+    ],
+    "config": [
+        {
+            "type": "text",
+            "name": "egroupware_adminUser",
+            "require": "yes",
+            "label": "eGroupware administrator",
+            "help": "The name of the eGroupware administrator that will be created"
+        },
+        {
+            "type": "password",
+            "name": "egroupware_adminPass",
+            "require": "yes",
+            "label": "eGroupware administrator password",
+            "help": "The password of the eGroupware administrator that will be created"
+        }
+    ],
+    "dependencies": ["mysql"],
+    "module": {
+        "section": "other",
+        "dependencies": ["mysql"]
+    }
+}
