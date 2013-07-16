@@ -56,6 +56,8 @@ $config = array(
 	'ldap_search_filter' => '(uid=%user)',
 	'ldap_group_context' => 'ou=groups,$base',
 	'mailserver'    => '',
+	'smtp'		=> '',
+	'imap'		=> '',
 	'smtpserver'    => 'localhost,25',
 	'postfix'       => '',	// see setup-cli.php --help config
 	'cyrus'         => '',
@@ -130,6 +132,7 @@ function set_distro_defaults($distro=null)
 			$config['ldap_base'] = '$suffix';
 			$config['ldap_context'] = 'ou=People,$base';
 			$config['ldap_group_context'] = 'ou=Group,$base';
+			$config['smtp'] = 'yes,emailadmin_smtp_mandriva';
 			break;
 		default:
 			$config['distro'] = 'rh';
@@ -312,7 +315,7 @@ if (!file_exists($config['header']) || filesize($config['header']) < 200)	// def
 	}
 	// create mailserver config (fmail requires at least minimal config given as default, otherwise fatal error)
 	$setup_mailserver = $setup_cli.' --config '.escapeshellarg($config['domain'].','.$config['config_user'].','.$config['config_passwd']);
-	foreach(array('account-auth','smtpserver','postfix','mailserver','cyrus','sieve') as $name)
+	foreach(array('account-auth','smtpserver','postfix','mailserver','cyrus','sieve', 'smtp', 'imap') as $name)
 	{
 		if (!empty($config[$name])) $setup_mailserver .= ' --'.$name.' '.escapeshellarg($config[$name]);
 	}
