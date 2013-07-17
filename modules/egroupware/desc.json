@@ -55,6 +55,7 @@
                      "php-zip",
                      "php-sasl",
                      "php-pear-Auth_SASL",
+                     "php-pear-XML_Feed_Parser",
                      "php-jpgraph"
                      ]
         }
