@@ -78,14 +78,14 @@
             "name": "egroupware_adminUser",
             "require": "yes",
             "label": "eGroupware administrator",
-            "help": "The name of the eGroupware administrator that will be created"
+            "help": "The name of the eGroupware administrator"
         },
         {
             "type": "password",
             "name": "egroupware_adminPass",
             "require": "yes",
             "label": "eGroupware administrator password",
-            "help": "The password of the eGroupware administrator that will be created"
+            "help": "The password of the eGroupware administrator"
         }
     ],
     "dependencies": ["mysql", "mds_mail"],

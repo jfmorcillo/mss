@@ -59,9 +59,9 @@ python ./mmc_passwd.py -l $egroupware_adminUser -p $egroupware_adminPass
 
 mysql -u$egroupware_adminUser -p$egroupware_adminPass egroupware -e "update egw_config set config_value='sha1 'where config_name='ldap_encryption_type';"
 
-
-info_b $"eGroupware is installed and configured. Your user in the LDAP may belong to Default group to benefit from default authorisation in the eGroupware application."
-info $"You can access eGroupware at https://@HOSTNAME@/egroupware"
-info $"EGroupware administrator is '$egroupware_adminUser' and password is '$egroupware_adminPass'"
+info_b $"eGroupware is installed and configured."
+info $"Users in the LDAP must belong to the 'Default' group to benefit from default authorisations in the eGroupware application."
+info $"You can access eGroupware at https://@HOSTNAME@/egroupware."
+info $"eGroupware administrator is '$egroupware_adminUser' and password is '$egroupware_adminPass'."
 
 exit $?
