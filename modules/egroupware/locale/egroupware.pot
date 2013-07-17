@@ -18,19 +18,15 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .description .desc
-msgid "Roundcube, a complete webmail solution for your mail service"
+msgid "Web-based groupware suite written in php"
 msgstr ""
 
 #: .actions[0].name
-msgid "Management interface"
-msgstr ""
-
-#: .actions[1].name
-msgid "Webmail interface"
+msgid "eGroupware interface"
 msgstr ""
 
 #: .name
-msgid "Webmail"
+msgid "eGroupware"
 msgstr ""
 
 #: .packages[0].name
@@ -38,42 +34,49 @@ msgid "all"
 msgstr ""
 
 #: .config[0].help
-msgid ""
-"Configure the firewall to allow access to the webmail interface from "
-"internal networks"
+msgid "The name of the eGroupware administrator"
 msgstr ""
 
 #: .config[0].name
-msgid "fw_lan"
+msgid "egroupware_adminUser"
 msgstr ""
 
 #: .config[0].label
-msgid "Allow access from internal networks"
+msgid "eGroupware administrator"
 msgstr ""
 
 #: .config[1].help
-msgid ""
-"Configure the firewall to allow access to the webmail interface from "
-"external networks"
+msgid "The password of the eGroupware administrator"
 msgstr ""
 
 #: .config[1].name
-msgid "fw_wan"
+msgid "egroupware_adminPass"
 msgstr ""
 
 #: .config[1].label
-msgid "Allow access from external networks"
+msgid "eGroupware administrator password"
 msgstr ""
 
 #: .categories[0].name
-msgid "Mail"
+msgid "Groupware"
 msgstr ""
 
-#: mds_webmail/setup-webmail.sh:50
-msgid "Webmail Roundcube is installed on your server."
+#: egroupware/setup-egroupware.sh:62
+msgid "eGroupware is installed and configured."
 msgstr ""
 
-#: mds_webmail/setup-webmail.sh:51
+#: egroupware/setup-egroupware.sh:63
 msgid ""
-"You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
+"Users in the LDAP must belong to the 'Default' group to benefit from default "
+"authorisations in the eGroupware application."
+msgstr ""
+
+#: egroupware/setup-egroupware.sh:64
+msgid "You can access eGroupware at https://@HOSTNAME@/egroupware."
+msgstr ""
+
+#: egroupware/setup-egroupware.sh:65
+msgid ""
+"eGroupware administrator is '$egroupware_adminUser' and password is "
+"'$egroupware_adminPass'."
 msgstr ""
