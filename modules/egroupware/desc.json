@@ -64,7 +64,7 @@
                      "php-pear-Net_IMAP",
                      "php-pear-XML_Feed_Parser",
                      "php-pear-Net_Sieve",
-                     "php-pear-log",
+                     "php-pear-Log",
                      "php-gd",
                      "php-jpgraph",
                      "sqlite3-tools"
