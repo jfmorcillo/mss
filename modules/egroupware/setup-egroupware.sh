@@ -10,12 +10,16 @@ egroupware_adminPass=$2
 EGROUPWARE_POST_INST="templates/post_install.php"
 mysql_password=`cat /root/.my.cnf | grep password  | sed "s/password='\(.*\)'/\1/"`
 MAIL_SERV=$(echo "select name from module where name='mds_mail';" | sqlite3 /var/lib/mss/mss-agent.db)
-
+EGROUPWARE_CONF_FILE="/etc/httpd/conf/webapps.d/egroupware.conf"
 
 ### Clean generated resource before running eGroupware configuration
 if [ -f "/var/www/egroupware/header.inc.php" ]; then
     rm -f /var/www/egroupware/header.inc.php
 fi
+
+#TODO: check that the user that will be created as egroupware admin does not exit.
+# In the case where a local user already exists the script will silently fail to 
+# create the admin.
 
 ### Email service configuration
 EMAIL_SERV_CFG=
@@ -33,7 +37,8 @@ php $EGROUPWARE_POST_INST --verbose --source_dir /var/www/egroupware/ --distro m
 if [ ! -d /var/www/jpgraph ]; then
     mkdir -p /var/www/jpgraph
     ln -s /usr/share/php/jpgraph /var/www/jpgraph/src
-    sed -i 's!/usr/share/jpgraph!/var/www/jpgraph!'
+    backup $EGROUPWARE_CONF_FILE
+    sed -i 's!/usr/share/jpgraph!/var/www/jpgraph!' $EGROUPWARE_CONF_FILE
     chown root:apache -R /var/www/jpgraph
 fi
 

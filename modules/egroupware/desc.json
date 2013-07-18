@@ -50,7 +50,7 @@
                      "php-mbstring",
                      "php-ldap",
                      "php-sasl",
-                     "php-ctype"
+                     "php-ctype",
                      "php-mcrypt",
                      "php-xmlreader",
                      "php-gd",
