@@ -67,7 +67,8 @@
                      "php-pear-Log",
                      "php-gd",
                      "php-jpgraph",
-                     "sqlite3-tools"
+                     "sqlite3-tools",
+                     "tnef"
                      ]
         }
     ],
