@@ -36,9 +36,11 @@ php $EGROUPWARE_POST_INST --verbose --source_dir /var/www/egroupware/ --distro m
 # Fix path to jpgraph
 if [ ! -d /var/www/jpgraph ]; then
     mkdir -p /var/www/jpgraph
-    ln -s /usr/share/php/jpgraph /var/www/jpgraph/src
+    cp -r /usr/share/php/jpgraph /var/www/jpgraph/src
     backup $EGROUPWARE_CONF_FILE
     sed -i 's!/usr/share/jpgraph!/var/www/jpgraph!' $EGROUPWARE_CONF_FILE
+    #FIXES mission version file
+    echo "Version: v3.5.0b1" > /var/www/jpgraph/VERSION
     chown root:apache -R /var/www/jpgraph
 fi
 
@@ -47,6 +49,7 @@ chmod 640 /var/www/egroupware/header.inc.php
 
 chown root:apache -R /var/www/egroupware
 
+restart_service http
 
 info_b $"eGroupware is installed and configured. Your user in the LDAP may belong to Default group to benefit from default authorisation in the eGroupware application."
 info $"You can access eGroupware at https://$FQDN/egroupware"
