@@ -44,7 +44,7 @@
                      "egroupware-manual",
                      "egroupware-wiki",
                      "egroupware-news_admin",
-                     "php-mysql",
+                     "php-mysqli",
                      "php-pdo_mysql",
                      "php-pdo_sqlite",
                      "php-mbstring",

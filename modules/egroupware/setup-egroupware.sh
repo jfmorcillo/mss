@@ -27,10 +27,10 @@ if [ ! -z $MAIL_SERV ]; then
     EMAIL_SERV_CFG="--mailserver localhost,imaps,$DOMAIN,vmailmgr --smtpserver localhost,25,,,yes --imap root,$MDSPASS,emailadmin_dovecot"
 fi
 php $EGROUPWARE_POST_INST --verbose --source_dir /var/www/egroupware/ --distro mandriva \
-    --account-auth ldap --ldap_host 'ldaps://127.0.0.1' --ldap_suffix "$MDSSUFFIX" --ldap_admin_pw $MDSPASS \
-    --db_type mysql --db_host localhost --db_pass $egroupware_adminPass  --db_root_pw $mysql_password \
+    --account-auth ldap --ldap_host 'ldaps://127.0.0.1' --ldap_suffix $(echo $MDSSUFFIX | sed 's! !!g') --ldap_admin_pw $MDSPASS \
+    --db_type mysqli --db_host localhost --db_pass "$egroupware_adminPass"  --db_root_pw $mysql_password \
     $EMAIL_SERV_CFG \
-    --config_user $egroupware_adminUser --config_passwd $egroupware_adminPass --admin_user $egroupware_adminUser --admin_passwd $egroupware_adminPass
+    --config_user $egroupware_adminUser --config_passwd "$egroupware_adminPass" --admin_user $egroupware_adminUser --admin_passwd "$egroupware_adminPass"
 # @TODO: anonymous configuration to authorize notifications
 
 # Fix path to jpgraph
@@ -47,9 +47,11 @@ fi
 # Fix permissions
 chmod 640 /var/www/egroupware/header.inc.php
 
+sed -i 's!/usr/share/pear!/usr/share/pear:/usr/lib64/pear:/var/www:/var/lib/php!' $EGROUPWARE_CONF_FILE
+
 chown root:apache -R /var/www/egroupware
 
-restart_service http
+restart_service httpd
 
 info_b $"eGroupware is installed and configured. Your user in the LDAP may belong to Default group to benefit from default authorisation in the eGroupware application."
 info $"You can access eGroupware at https://$FQDN/egroupware"
