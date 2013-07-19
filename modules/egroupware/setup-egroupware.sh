@@ -53,6 +53,10 @@ chown root:apache -R /var/www/egroupware
 
 restart_service httpd
 
+### Fix admin first login
+python ./mmc_passwd.py -l $egroupware_adminUser -p $egroupware_adminPass
+###
+
 info_b $"eGroupware is installed and configured. Your user in the LDAP may belong to Default group to benefit from default authorisation in the eGroupware application."
 info $"You can access eGroupware at https://$FQDN/egroupware"
 info $"EGroupware administrator is '$egroupware_adminUser' and password is '$egroupware_adminPass'"
