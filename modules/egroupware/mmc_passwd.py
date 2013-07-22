@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import ldap
+import logging
 from mmc.plugins.base import createUser, addUserToGroup, existGroup, existUser, LdapUserGroupControl
 from optparse import OptionParser
 
@@ -19,4 +20,8 @@ if __name__ == "__main__":
 
     # Check options
     if options.login and options.password:
-        mmc_change_passwod(options.login, options.password);
+        mmc_change_password(options.login, options.password)
+        logging.debug('password changed')
+    else:
+        logging.debug('password not changed')
+        exit(-1)
