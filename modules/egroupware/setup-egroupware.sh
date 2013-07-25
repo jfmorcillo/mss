@@ -24,7 +24,7 @@ fi
 ### Email service configuration
 EMAIL_SERV_CFG=
 if [ ! -z $MAIL_SERV ]; then
-    EMAIL_SERV_CFG="--mailserver localhost,imaps,$DOMAIN,vmailmgr --smtpserver localhost,25,,,yes --imap root,$MDSPASS,emailadmin_dovecot"
+    EMAIL_SERV_CFG="--mailserver localhost,imaps,$DOMAIN,email --smtpserver localhost,25,,,no --imap root,$MDSPASS,emailadmin_dovecot"
 fi
 php $EGROUPWARE_POST_INST --verbose --source_dir /var/www/egroupware/ --distro mandriva \
     --account-auth ldap --ldap_host 'ldaps://127.0.0.1' --ldap_suffix $(echo $MDSSUFFIX | sed 's! !!g') --ldap_admin_pw $MDSPASS \
