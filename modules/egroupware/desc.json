@@ -88,9 +88,9 @@
             "help": "The password of the eGroupware administrator that will be created"
         }
     ],
-    "dependencies": ["mysql"],
+    "dependencies": ["mysql", "mds_mail"],
     "module": {
         "section": "other",
-        "dependencies": ["mysql"]
+        "dependencies": ["mysql", "mds_mail"]
     }
 }

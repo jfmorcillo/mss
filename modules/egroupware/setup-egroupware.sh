@@ -18,7 +18,7 @@ if [ -f "/var/www/egroupware/header.inc.php" ]; then
 fi
 
 #TODO: check that the user that will be created as egroupware admin does not exit.
-# In the case where a local user already exists the script will silently fail to 
+# In the case where a local user already exists the script will silently fail to
 # create the admin.
 
 ### Email service configuration
@@ -39,7 +39,7 @@ if [ ! -d /var/www/jpgraph ]; then
     cp -r /usr/share/php/jpgraph /var/www/jpgraph/src
     backup $EGROUPWARE_CONF_FILE
     sed -i 's!/usr/share/jpgraph!/var/www/jpgraph!' $EGROUPWARE_CONF_FILE
-    #FIXES mission version file
+    #FIXES missing version file
     echo "Version: v3.5.0b1" > /var/www/jpgraph/VERSION
     chown root:apache -R /var/www/jpgraph
 fi
@@ -57,8 +57,11 @@ restart_service httpd
 python ./mmc_passwd.py -l $egroupware_adminUser -p $egroupware_adminPass
 ###
 
+mysql -u$egroupware_adminUser -p$egroupware_adminPass egroupware -e "update egw_config set config_value='sha1 'where config_name='ldap_encryption_type';"
+
+
 info_b $"eGroupware is installed and configured. Your user in the LDAP may belong to Default group to benefit from default authorisation in the eGroupware application."
-info $"You can access eGroupware at https://$FQDN/egroupware"
+info $"You can access eGroupware at https://@HOSTNAME@/egroupware"
 info $"EGroupware administrator is '$egroupware_adminUser' and password is '$egroupware_adminPass'"
 
 exit $?
