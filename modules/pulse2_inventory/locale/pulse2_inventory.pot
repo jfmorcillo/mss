@@ -1,0 +1,92 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-08-09 12:10+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .description .desc
+msgid "The inventory management module of Pulse2"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "Pulse2 Inventory"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the Pulse2 inventory service from "
+"internal networks"
+msgstr ""
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[0].label
+msgid "Allow access from internal networks"
+msgstr ""
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the Pulse2 inventory service from "
+"external networks"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr ""
+
+#: .categories[0].name
+msgid "Pulse2"
+msgstr ""
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:55
+msgid ""
+"You need to allow access to the Pulse2 Inventory server on either internal "
+"or external networks."
+msgstr ""
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:58
+msgid ""
+"A DNS entry must be set for this server if you want the Pulse2 services to "
+"listen on multiple interfaces."
+msgstr ""
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:108
+msgid "Pulse2 Inventory is installed and configured."
+msgstr ""
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:109
+msgid ""
+"The inventory is available on the management interface at https://@HOSTNAME@/"
+"mmc/."
+msgstr ""
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:110
+msgid "Check the documentation to use the Pulse2 inventory."
+msgstr ""
