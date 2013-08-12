@@ -79,15 +79,6 @@ pulse2-setup -b -R --reset-db \
  --ldap-uri=ldaps://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
  --disable-imaging --disable-package --disable-backup | sed -r 's/\x1b.*?[mGKHh]//g'
 
-# Modify listening port of scheduler from 8000 to 8010
-sed -i 's!^.*port = 8000$!port = 8010!' /etc/mmc/pulse2/scheduler/scheduler.ini
-sed -i 's!^.*port = 8000$!port = 8010!' /etc/mmc/pulse2/launchers/launchers.ini
-sed -i 's!^.*port = 8000$!port = 8010!' /etc/mmc/plugins/msc.ini
-
-# Modify listening port of launcher from 8001 to 8011
-sed -i 's!^.*port = 8001$!port = 8011!' /etc/mmc/pulse2/launchers/launchers.ini
-sed -i 's!^.*port = 8001$!port = 8011!' /etc/mmc/pulse2/scheduler/scheduler.ini
-
 # Disable agent threading
 sed -i 's!^multithreading.*$!multithreading = 0!' /etc/mmc/agent/config.ini
 
