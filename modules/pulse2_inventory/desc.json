@@ -43,8 +43,8 @@
                 "mingw32-cpp",
                 "mmc-web-msc",
                 "python-mmc-msc",
-                "python-pulse2-common-database-msc"
-
+                "python-pulse2-common-database-msc",
+                "samba-utils"
             ]
         }
     ],
