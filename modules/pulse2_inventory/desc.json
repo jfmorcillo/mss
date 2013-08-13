@@ -44,7 +44,7 @@
                 "mmc-web-msc",
                 "python-mmc-msc",
                 "python-pulse2-common-database-msc",
-                "samba-utils"
+                "samba-common"
             ]
         }
     ],
@@ -68,7 +68,6 @@
     "modules": {
         "section": "other",
         "dependencies": ["mds_mmc", "mysql"]
-
     },
     "standalone": true
 }
