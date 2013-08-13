@@ -98,6 +98,6 @@ restart_service shorewall
 
 info_b $"Pulse2 Inventory is installed and configured."
 info $"The inventory is available on the management interface at https://@HOSTNAME@/mmc/."
-info $"Check the documentation to use the Pulse2 inventory."
+info $"Check the documentation to use the Pulse2 inventory at http://serviceplace.mandriva.com/addons/mbs/1.0/pulse2_inventory/."
 
 exit 0
