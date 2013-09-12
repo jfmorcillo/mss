@@ -28,8 +28,11 @@ restart_service mmc-agent
 enable_service pulse2-scheduler
 enable_service pulse2-launchers
 enable_service pulse2-package-server
+service pulse2-scheduler stop
 restart_service pulse2-scheduler
+service pulse2-launchers stop
 restart_service pulse2-launchers
+service pulse2-package-server stop
 restart_service pulse2-package-server
 
 # Setup the firewall
