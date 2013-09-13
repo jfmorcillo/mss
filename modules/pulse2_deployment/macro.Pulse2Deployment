@@ -1,0 +1,13 @@
+#
+# Shorewall version 4 - Pulse2 Deployment Macro
+#
+# /etc/shorewall/macro.Pulse2Deployment
+#
+#	This macro handles Pulse2 Deployment traffic.
+#
+###############################################################################
+#ACTION	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/
+#				PORT(S)	PORT(S)	LIMIT	GROUP
+PARAM	-	-	tcp	9990
+PARAM	-	-	tcp	8010
+PARAM	-	-	tcp	8011
