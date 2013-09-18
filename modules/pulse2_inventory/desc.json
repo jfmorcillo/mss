@@ -20,6 +20,7 @@
         {
             "name": "all",
             "rpms": [
+                "pulse2",
                 "pulse2-homepage",
                 "pulse2-common",
                 "python-pulse2-common",
