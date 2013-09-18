@@ -85,6 +85,7 @@ sed -i 's!^multithreading.*$!multithreading = 0!' /etc/mmc/agent/config.ini
 # Disable unneeded modules
 sed -i 's!^disable.*$!disable = 1!' /etc/mmc/plugins/msc.ini
 sed -i 's!^disable.*$!disable = 1!' /etc/mmc/plugins/pkgs.ini
+sed -i 's!^disable.*$!disable = 1!' /etc/mmc/plugins/imaging.ini
 
 stop_service pulse2-scheduler
 stop_service pulse2-launchers
