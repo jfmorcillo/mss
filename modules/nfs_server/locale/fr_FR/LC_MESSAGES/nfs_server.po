@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-05-13 12:29+0000\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
+"PO-Revision-Date: 2013-10-14 14:15+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -18,51 +19,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
-msgid "Install NFS Server and configure it to integrate with the firewall"
-msgstr ""
+msgid "Network File System service"
+msgstr "Service de partage de fichiers sur le réseau"
 
 #: .name
-msgid "NFS server"
-msgstr ""
+msgid "NFS service"
+msgstr "Service NFS"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "all"
 
 #: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the NFS service from internal "
 "networks"
 msgstr ""
+"Configure le firewall pour autoriser l'accès au service NFS depuis les "
+"réseaux internes"
 
 #: .config[0].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "Autoriser l'accès depuis les réseaux internes"
 
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the NFS service from external "
 "networks"
 msgstr ""
+"Configure le firewall pour autoriser l'accès au service NFS depuis les "
+"réseaux externes"
 
 #: .config[1].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[1].label
 msgid "Allow access from external networks"
-msgstr ""
+msgstr "Autoriser l'accès depuis les réseaux externes"
 
 #: nfs_server/setup-nfs-server.sh:81
 msgid "The NFS service is running."
-msgstr ""
+msgstr "Le service NFS est configuré."
 
 #: nfs_server/setup-nfs-server.sh:82
-msgid "Edit '/etc/exports' to add your NFS shares"
-msgstr ""
+msgid "Edit '/etc/exports' to configure your NFS shares"
+msgstr "Gérez vos partages NFS dans le fichier '/etc/exports'"
 
 

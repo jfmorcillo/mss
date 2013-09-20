@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <maikwagner@yahoo.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-05-13 12:29+0000\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
+"PO-Revision-Date: 2013-10-14 14:02+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -18,51 +19,55 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: .description .desc
-msgid "Install NFS Server and configure it to integrate with the firewall"
+msgid "Network File System service"
 msgstr ""
 
 #: .name
-msgid "NFS server"
+msgid "NFS service"
 msgstr ""
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the NFS service from internal "
 "networks"
 msgstr ""
+"Die Firewall konfigurieren, dass Zugang zu dem NFS-Dienst von internen "
+"Netzwerken gewährt wird."
 
 #: .config[0].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "Zugang von internen Netzwerken erlauben"
 
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the NFS service from external "
 "networks"
 msgstr ""
+"Die Firewall konfigurieren, dass Zugang zu dem NFS-Dienst von externen "
+"Netzwerken gewährt wird."
 
 #: .config[1].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[1].label
 msgid "Allow access from external networks"
-msgstr ""
+msgstr "Zugang von externen Netzwerken erlauben"
 
 #: nfs_server/setup-nfs-server.sh:81
 msgid "The NFS service is running."
-msgstr ""
+msgstr "Der NFS-Dienst läuft."
 
 #: nfs_server/setup-nfs-server.sh:82
-msgid "Edit '/etc/exports' to add your NFS shares"
+msgid "Edit '/etc/exports' to configure your NFS shares"
 msgstr ""
 
 

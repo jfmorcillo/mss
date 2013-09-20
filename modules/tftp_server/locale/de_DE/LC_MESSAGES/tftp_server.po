@@ -3,12 +3,13 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <maikwagner@yahoo.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-05-07 04:03+0200\n"
-"PO-Revision-Date: 2013-05-13 12:30+0000\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
+"PO-Revision-Date: 2013-10-14 14:02+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
@@ -17,52 +18,56 @@ msgstr ""
 "Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: .description
-msgid "TFTP Server"
+#: .description .desc
+msgid "Trivial File Transfer Protocol service"
+msgstr ""
+
+#: .name
+msgid "TFTP service"
 msgstr ""
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: .config[0].help
 msgid ""
 "Configure the firewall to allow access to the TFTP service from internal "
 "networks"
 msgstr ""
+"Die Firewall konfigurieren, dass Zugang zum TFTP-Dienst von internen "
+"Netzwerken erlaubt wird."
 
 #: .config[0].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "Zugang von internen Netzwerken erlauben"
 
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the TFTP service from external "
 "networks"
 msgstr ""
+"Die Firewall konfigurieren, dass Zugang zum TFTP-Dienst von externen "
+"Netzwerken erlaubt wird."
 
 #: .config[1].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[1].label
 msgid "Allow access from external networks"
-msgstr ""
-
-#: .name
-msgid "TFTP server"
-msgstr ""
+msgstr "Zugang von externen Netzwerken erlauben"
 
 #: tftp_server/setup-tftp-server.sh:25
 msgid "TFTP server is running."
-msgstr ""
+msgstr "TFTP-Dienst läuft"
 
 #: tftp_server/setup-tftp-server.sh:26
 msgid "Your initial repository in located in '/var/lib/tftp'"
-msgstr ""
+msgstr "Ihr anfängliches Repository befindet sich in '/var/lib/tftp'"
 
 

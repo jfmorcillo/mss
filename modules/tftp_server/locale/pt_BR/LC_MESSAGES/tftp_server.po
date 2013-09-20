@@ -8,9 +8,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-08 08:50+0200\n"
-"PO-Revision-Date: 2013-06-10 20:27+0000\n"
-"Last-Translator: Andre Machado <andre@mandriva.com>\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
+"PO-Revision-Date: 2013-10-14 14:02+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -18,9 +18,13 @@ msgstr ""
 "Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .description
-msgid "TFTP Server"
-msgstr "Servidor TFTP"
+#: .description .desc
+msgid "Trivial File Transfer Protocol service"
+msgstr ""
+
+#: .name
+msgid "TFTP service"
+msgstr ""
 
 #: .packages[0].name
 msgid "all"
@@ -57,10 +61,6 @@ msgstr "fw_wan"
 #: .config[1].label
 msgid "Allow access from external networks"
 msgstr "Permitir acesso a partir de redes externas"
-
-#: .name
-msgid "TFTP server"
-msgstr "Servidor TFTP"
 
 #: tftp_server/setup-tftp-server.sh:25
 msgid "TFTP server is running."
