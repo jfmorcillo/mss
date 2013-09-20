@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 12:10+0200\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,8 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description
-msgid "TFTP Server"
+#: .description .desc
+msgid "Trivial File Transfer Protocol service"
+msgstr ""
+
+#: .name
+msgid "TFTP service"
 msgstr ""
 
 #: .packages[0].name
@@ -51,10 +55,6 @@ msgstr ""
 
 #: .config[1].label
 msgid "Allow access from external networks"
-msgstr ""
-
-#: .name
-msgid "TFTP server"
 msgstr ""
 
 #: tftp_server/setup-tftp-server.sh:25

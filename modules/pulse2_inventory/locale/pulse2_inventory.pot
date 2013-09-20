@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 12:10+0200\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -65,28 +65,30 @@ msgstr ""
 msgid "Pulse2"
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:55
+#: pulse2_inventory/setup-pulse2-inventory.sh:54
 msgid ""
 "You need to allow access to the Pulse2 Inventory server on either internal "
 "or external networks."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:58
+#: pulse2_inventory/setup-pulse2-inventory.sh:57
 msgid ""
 "A DNS entry must be set for this server if you want the Pulse2 services to "
 "listen on multiple interfaces."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:108
+#: pulse2_inventory/setup-pulse2-inventory.sh:103
 msgid "Pulse2 Inventory is installed and configured."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:109
+#: pulse2_inventory/setup-pulse2-inventory.sh:104
 msgid ""
 "The inventory is available on the management interface at https://@HOSTNAME@/"
 "mmc/."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:110
-msgid "Check the documentation to use the Pulse2 inventory."
+#: pulse2_inventory/setup-pulse2-inventory.sh:105
+msgid ""
+"Check the documentation to use the Pulse2 inventory at http://serviceplace."
+"mandriva.com/addons/mbs/1.0/pulse2_inventory/."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-08-09 12:10+0200\n"
+"POT-Creation-Date: 2013-09-20 06:50+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,11 +18,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .description .desc
-msgid "Install NFS Server and configure it to integrate with the firewall"
+msgid "Network File System service"
 msgstr ""
 
 #: .name
-msgid "NFS server"
+msgid "NFS service"
 msgstr ""
 
 #: .packages[0].name
@@ -62,5 +62,5 @@ msgid "The NFS service is running."
 msgstr ""
 
 #: nfs_server/setup-nfs-server.sh:82
-msgid "Edit '/etc/exports' to add your NFS shares"
+msgid "Edit '/etc/exports' to configure your NFS shares"
 msgstr ""
