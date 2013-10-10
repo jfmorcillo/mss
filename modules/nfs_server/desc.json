@@ -1,15 +1,15 @@
 {
     "slug": "nfs_server",
-    "name": "NFS server",
-    "description": "Install NFS Server and configure it to integrate with the firewall",
-    "desc": "Install NFS Server and configure it to integrate with the firewall",
+    "name": "NFS service",
+    "description": "Network File System service",
+    "desc": "Network File System service",
     "packages": [
         {
             "name": "all",
             "rpms": ["nfs-utils"]
         }
      ],
-     "config": [
+    "config": [
         {
             "type": "check",
             "name": "fw_lan",

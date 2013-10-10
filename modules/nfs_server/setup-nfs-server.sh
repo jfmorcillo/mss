@@ -79,6 +79,6 @@ restart_service shorewall
 
 # Information
 info_b $"The NFS service is running."
-info $"Edit '/etc/exports' to add your NFS shares"
+info $"Edit '/etc/exports' to configure your NFS shares"
 
 exit 0

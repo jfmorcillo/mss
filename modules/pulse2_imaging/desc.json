@@ -1,0 +1,43 @@
+{
+    "slug": "pulse2_imaging",
+    "name": "Pulse2 Imaging",
+    "desc": "The imaging module of Pulse2",
+    "description": "The imaging module of Pulse2",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "categories": [
+        {
+            "slug": "pulse2",
+            "name": "Pulse2"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "python-pulse2-common-database-imaging",
+                "pulse2-imaging-server",
+                "pulse2-imaging-client",
+                "mmc-web-imaging",
+                "python-mmc-imaging"
+            ]
+        }
+    ],
+    "dependencies": ["pulse2_inventory", "mds_dhcp", "tftp_server", "nfs_server"],
+    "module": {
+        "section": "other",
+        "dependencies": ["pulse2_inventory", "mds_dhcp", "tftp_server", "nfs_server"]
+    },
+    "config": [
+        {
+            "type": "custom",
+            "name": "interfaces"
+        }
+    ],
+    "standalone": true
+}

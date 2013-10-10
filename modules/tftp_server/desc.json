@@ -1,7 +1,8 @@
 {
     "slug": "tftp_server",
-    "name": "TFTP server",
-    "description": "TFTP Server",
+    "name": "TFTP service",
+    "description": "Trivial File Transfer Protocol service",
+    "desc": "Trivial File Transfer Protocol service",
     "packages": [
         {
             "name": "all",
