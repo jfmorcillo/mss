@@ -27,7 +27,6 @@ function configure_imaging() {
     package_srv_conf=/etc/mmc/pulse2/package-server/package-server.ini
     uuid=`uuidgen`
     sed -i 's!^# mount_point!mount_point!' $package_srv_conf
-    sed -i "s!^# uuid =.*!uuid = ${uuid}!" $package_srv_conf
     enable_service pulse2-package-server
     service pulse2-package-server stop
     restart_service pulse2-package-server
