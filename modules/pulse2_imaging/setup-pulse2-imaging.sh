@@ -23,6 +23,21 @@ function get_interface_addr() {
 }
 
 function configure_imaging() {
+    echo "Configuring the time service"
+    cat > /etc/xinet.d/time << EOF
+service time
+{
+   disable        = no
+   type           = INTERNAL
+   id             = time-stream
+   socket_type    = stream
+   protocol       = tcp
+   user           = root
+   wait           = no
+}
+EOF
+    restart_service xinetd
+
     echo "Configuring the package server for imaging"
     package_srv_conf=/etc/mmc/pulse2/package-server/package-server.ini
     uuid=`uuidgen`

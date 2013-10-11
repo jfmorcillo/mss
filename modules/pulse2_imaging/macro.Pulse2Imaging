@@ -12,6 +12,9 @@
 PARAM	-	-	udp	69
 # Imaging server
 PARAM   -   -   udp 1001
+PARAM   -   -   tcp 1001
+# Time server
+PARAM   -   -   tcp 37
 # NFS
 PARAM	-	-	udp	111
 PARAM	-	-	tcp	111
