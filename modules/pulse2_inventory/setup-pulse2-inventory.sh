@@ -64,7 +64,6 @@ fi
 
 # Generate pulse2 agents
 cp /root/.ssh/id_rsa_pulse.pub /tmp/id_rsa.pub
-sed -i 's!/root/.ssh/id_rsa.pub!/tmp/id_rsa.pub!g' /var/lib/pulse2/clients/win32/generate-agent-pack.sh.in
 sed -i 's!/root/.ssh/id_rsa.pub!/tmp/id_rsa.pub!g' /var/lib/pulse2/clients/win32/generate-agent-pack.sh
 /var/lib/pulse2/clients/win32/generate-agent-pack.sh | grep -v '^7zsd.sfx' | grep -v '^7-Zip'
 rm -f /tmp/id_rsa.pub
