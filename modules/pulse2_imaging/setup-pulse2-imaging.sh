@@ -90,7 +90,7 @@ function configure_imaging() {
         echo "/var/lib/pulse2/imaging/computers 0.0.0.0/0.0.0.0(async,rw,no_root_squash,subtree_check)" >> /etc/exports
         echo "/var/lib/pulse2/imaging/masters 0.0.0.0/0.0.0.0(async,rw,no_root_squash,subtree_check)" >> /etc/exports
         echo "/var/lib/pulse2/imaging/postinst 0.0.0.0/0.0.0.0(async,ro,no_root_squash,subtree_check)" >> /etc/exports
-        echo "# pulse2_imaging: configured"
+        echo "# pulse2_imaging: configured" >> /etc/exports
         echo "" >> /etc/exports
         restart_service nfs-common
     fi

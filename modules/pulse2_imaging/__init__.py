@@ -43,11 +43,15 @@ def get_config_info():
     args = []
     interfaces = get_pulse2_interfaces()
     for interface, zone in interfaces.items():
-        args.append(interface + "_name")
-        args.append(interface + "_zone")
-        args.append(interface + "_dhcp")
-        args.append(interface + "_addr")
-        args.append(interface + "_netmask")
+        if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
+        if_detail = netifaces.ifaddresses(interface)
+        configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail
+        if configured:
+            args.append(interface + "_name")
+            args.append(interface + "_zone")
+            args.append(interface + "_dhcp")
+            args.append(interface + "_addr")
+            args.append(interface + "_netmask")
     return ("setup-pulse2-imaging.sh", args)
 
 def get_interfaces_config(config):
