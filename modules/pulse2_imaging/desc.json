@@ -33,11 +33,5 @@
         "section": "other",
         "dependencies": ["pulse2_inventory", "mds_dhcp", "tftp_server", "nfs_server"]
     },
-    "config": [
-        {
-            "type": "custom",
-            "name": "interfaces"
-        }
-    ],
     "standalone": true
 }
