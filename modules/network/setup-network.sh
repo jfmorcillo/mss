@@ -72,6 +72,7 @@ function allow() {
     do
         [ $service = mss ] && echo ACCEPT         $zone  fw  tcp     8000 >> $shorewall_rules
         [ $service = ssh ] && echo SSH/ACCEPT     $zone  fw >> $shorewall_rules
+        echo Ping/ACCEPT     $zone  fw >> $shorewall_rules
     done
 }
 
