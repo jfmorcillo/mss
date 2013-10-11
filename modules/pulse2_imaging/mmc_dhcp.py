@@ -26,7 +26,7 @@ def mmc_pxe_configure(interface, ipaddr, netmask):
             addPool(net, "Imaging pool", start, end)
 
     # Configure pxe
-    setSubnetStatement(net, "filename", "\"/imaging/bootloader/pxe_boot\"")
+    setSubnetStatement(net, "filename", "\"/bootloader/pxe_boot\"")
     setSubnetStatement(net, "next-server", ipaddr)
     #/bootloader/pxe_boot
     setSubnetAuthoritative(net)

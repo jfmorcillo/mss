@@ -66,16 +66,18 @@ function configure_imaging() {
 
     # Configure TFTP server
     echo "Configuring TFTP repository..."
-    if [ ! -d /var/lib/tftp/imaging ]; then
-        mkdir -p /var/lib/tftp/imaging
-    fi
+    #if [ ! -d /var/lib/tftp/imaging ]; then
+    #    mkdir -p /var/lib/tftp/imaging
+    #fi
     # Tune fstab if needed
     grep -q 'tftp/imaging' /etc/fstab
     if [ $? -eq 1 ]; then
         echo '' >> /etc/fstab
         echo '# Pulse2 tftp entry' >> /etc/fstab
-        echo '/var/lib/pulse2/imaging	/var/lib/tftp/imaging	none	auto,bind	0 0' >> /etc/fstab
-        mount /var/lib/tftp/imaging
+        #echo '/var/lib/pulse2/imaging  /var/lib/tftp/imaging   none    auto,bind       0 0' >> /etc/fstab
+        #mount /var/lib/tftp/imaging
+        echo '/var/lib/pulse2/imaging /var/lib/tftp/ none	auto,bind	0 0' >> /etc/fstab
+        mount /var/lib/tftp/
     fi
 
     # Configure NFS share
@@ -120,6 +122,9 @@ function configure_imaging() {
         fi
     fi
 
+    # Regen the agent pack to copy postinstall files
+    /var/lib/pulse2/clients/win32/generate-agent-pack.sh | grep -v '^7zsd.sfx' | grep -v '^7-Zip'
+
     enable_service pulse2-imaging-server
     service pulse2-imaging-server stop
     restart_service pulse2-imaging-server
@@ -133,6 +138,7 @@ function configure_dhcp() {
     # create the DHCP subnet
     python mmc_dhcp.py -i $if_name -a $if_addr -n $if_netmask
     dhcp_configured="$dhcp_configured $if_name"
+    restart_service dhcpd
 }
 
 configure_imaging
