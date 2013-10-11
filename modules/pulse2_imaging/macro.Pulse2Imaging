@@ -22,3 +22,5 @@ PARAM	-	-	udp	2049
 PARAM	-	-	tcp	2049
 PARAM	-	-	udp	32764:32769
 PARAM	-	-	tcp	32764:32769
+# Ping (may not enabled by default)
+PARAM   -   -   icmp    8
