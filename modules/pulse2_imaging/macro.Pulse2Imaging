@@ -11,7 +11,7 @@
 # TFTP
 PARAM	-	-	udp	69
 # Imaging server
-PARAM   -   -   tcp 7080
+PARAM   -   -   udp 1001
 # NFS
 PARAM	-	-	udp	111
 PARAM	-	-	tcp	111
