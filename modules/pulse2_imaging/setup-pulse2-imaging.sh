@@ -10,15 +10,16 @@ check_mmc_configured
 dhcp_configured=""
 dhcp_external=""
 
-function configure_firewall() {
-    echo "Firewall configuration..."
-    if_name=$1
-    if_zone=$2
-    if_zone_type=`echo $if_zone | sed 's![0-9]*!!g'`
-    # Firewall configuration
-    cp -f macro.Pulse2Imaging /etc/shorewall
-    mss-add-shorewall-rule -a Pulse2Imaging/ACCEPT -t $if_zone_type
-    restart_service shorewall
+function get_pulse2_zones() {
+  grep -q 'lan\|wan' /etc/shorewall/interfaces
+  if [ $? -eq 0 ]; then
+    echo `grep Pulse2Inventory /etc/shorewall/rules | awk '{ print $2 }'`
+  fi
+}
+
+function get_interface_addr() {
+  iface=$1
+  echo `ip addr show $iface | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | sed 's/inet //'`
 }
 
 function configure_imaging() {
@@ -130,24 +131,43 @@ function configure_imaging() {
     restart_service pulse2-imaging-server
 }
 
-function configure_dhcp() {
+function configure_firewall() {
+    echo "Firewall configuration..."
     if_name=$1
-    if_addr=$2
-    if_netmask=$3
-    echo "DHCP subnet creation configuration..."
-    # create the DHCP subnet
-    python mmc_dhcp.py -i $if_name -a $if_addr -n $if_netmask
-    dhcp_configured="$dhcp_configured $if_name"
-    restart_service dhcpd
+    if_zone=$2
+    if_zone_type=`echo $if_zone | sed 's![0-9]*!!g'`
+    # Firewall configuration
+    cp -f macro.Pulse2Imaging /etc/shorewall
+    mss-add-shorewall-rule -a Pulse2Imaging/ACCEPT -t $if_zone_type
+    restart_service shorewall
 }
 
-configure_imaging
-while [ $# -ne 0 ]; do
-    if [[ $1 = eth* ]]; then
-        configure_firewall $1 $2
-        [ $3 == "on" ] && configure_dhcp $1 $4 $5 || dhcp_external="$dhcp_external $1"
-        shift 5
+function configure_dhcp() {
+    if_name=$1
+    if_addr=`get_interface_addr $if_name`
+    grep -q "BOOTPROTO=none" /etc/sysconfig/network-scripts/ifcfg-${interface}
+    if [ $? -eq 0 ] && [ -n "$if_addr" ]; then
+        echo -e "DHCP subnet creation configuration on $ifname..."
+        if_netmask=`grep NETMASK= /etc/sysconfig/network-scripts/ifcfg-eth1 | cut -d= -f2`
+        # create the DHCP subnet
+        python mmc_dhcp.py -i $if_name -a $if_addr -n $if_netmask
+        dhcp_configured="$dhcp_configured $if_name"
+        restart_service dhcpd
+        echo "done"
+    else
+        echo "No DHCP configuration on $ifname."
+        dhcp_external="$dhcp_external $if_name"
     fi
+}
+
+
+configure_imaging
+zones=`get_pulse2_zones`
+for zone in $zones
+do
+    interface=`echo $zone | sed -e 's/lan/eth/' -e 's/wan/eth/'`
+    configure_firewall $interface $zone
+    configure_dhcp $interface
 done
 
 info_b $"Pulse2 imaging module is installed and configured."
@@ -161,3 +181,5 @@ do
     info $"- The external DHCP server used on $interface must be configured for Pulse2."
 done
 info $"Check the documentation to use the Pulse2 imaging at http://serviceplace.mandriva.com/addons/mbs/1.0/pulse2_imaging/."
+
+exit 0
