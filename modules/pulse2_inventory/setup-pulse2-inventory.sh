@@ -49,8 +49,7 @@ if [ ! ${is_dns_working} -eq 0 ]; then
     nb_ifaces=`echo $ifaces | wc -w`
 
     if [ $nb_ifaces -eq 1 ]; then
-        addr=`get_interface_addr $ifaces`
-        sed -i "s!^public_ip.*!public_ip = $addr!" /etc/mmc/pulse2/package-server/package-server.ini
+        FQDN=`get_interface_addr $ifaces`
     elif [ $nb_ifaces -eq 0 ]; then
         error $"You need to allow access to the Pulse2 Inventory server on either internal or external networks."
         exit 1
@@ -58,9 +57,8 @@ if [ ! ${is_dns_working} -eq 0 ]; then
         error $"A DNS entry must be set for this server if you want the Pulse2 services to listen on multiple interfaces."
         exit 1
     fi
-else
-    sed -i "s!^public_ip.*!public_ip = ${FQDN}!" /etc/mmc/pulse2/package-server/package-server.ini
 fi
+sed -i "s!^public_ip.*!public_ip = ${FQDN}!" /etc/mmc/pulse2/package-server/package-server.ini
 
 # Generate pulse2 agents
 cp /root/.ssh/id_rsa_pulse.pub /tmp/id_rsa.pub
@@ -85,6 +83,10 @@ sed -i 's!^multithreading.*$!multithreading = 0!' /etc/mmc/agent/config.ini
 sed -i 's!^disable.*$!disable = 1!' /etc/mmc/plugins/msc.ini
 sed -i 's!^disable.*$!disable = 1!' /etc/mmc/plugins/pkgs.ini
 sed -i 's!^disable.*$!disable = 1!' /etc/mmc/plugins/imaging.ini
+
+# Fix external IPs
+sed -i "s!^public_ip.*!public_ip = ${FQDN}!" /etc/mmc/pulse2/package-server/package-server.ini
+sed -i "s!^tcp_sproxy_host.*!tcp_sproxy_host = ${FQDN}!" /etc/mmc/pulse2/launchers/launchers.ini
 
 stop_service pulse2-scheduler
 stop_service pulse2-launchers
