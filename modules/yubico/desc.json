@@ -1,0 +1,36 @@
+{
+    "slug":"yubico",
+    "name":"Yubico enhanced authentication",
+    "description":"Support for authentication with Yubikey from Yubico.",
+    "desc":"Authentication support for Yubikey from Yubico.",
+    "categories":[
+        {
+            "slug":"users",
+            "name":"Users"
+        }
+    ],
+    "actions":[
+        {
+            "type":"link",
+            "name":"Management interface",
+            "value":"https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages":[
+        {
+            "name":"all",
+            "rpms":[
+                "python-yubico-client"
+            ]
+        }
+    ],
+    "dependencies":[
+        "mds_mmc"
+    ],
+    "module":{
+        "section":"core",
+        "dependencies":[
+            "mds_mmc"
+        ]
+    }
+}
