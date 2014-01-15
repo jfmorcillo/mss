@@ -88,6 +88,7 @@ comment = Network Logon Service
 path = /home/samba/netlogon
 guest ok = yes
 browseable = no
+writable = yes
 
 # profiles #
 # [profiles]

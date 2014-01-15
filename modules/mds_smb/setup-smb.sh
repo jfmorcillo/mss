@@ -72,6 +72,7 @@ fi
 
 # create directories
 mkdir -p /home/samba/netlogon
+setfacl -Rm group:Domain\ Admins:rwx /home/samba/netlogon
 mkdir -p /home/samba/shares/public
 chown "root:Domain Users" /home/samba/shares/public
 mkdir -p /home/samba/profiles
