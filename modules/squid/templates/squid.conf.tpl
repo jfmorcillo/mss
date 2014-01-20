@@ -51,18 +51,19 @@ http_access deny manager
 http_access deny !Safe_ports
 http_access deny CONNECT !SSL_ports
 
+# Permissions: Block and Allow? not remove #Allow and #Deny they are marks.
+#Allow
 http_access allow nonfiltered_group all
-http_access allow machines all
-http_access allow localhost
-http_access allow filtered_group whitelist
-http_access allow filtered_group timeranges
-
-http_access deny filtered_group blacklist_ext
+http_access deny all filtered_group blacklist_ext
+http_access allow all filtered_group timeranges
 http_access deny filtered_group blacklist
-
+http_access allow filtered_group whitelist
 http_access allow filtered_group all
+http_access allow machines all
 
+#Deny
 http_access deny all
+
 #################################################################################
 
 http_port 3128
