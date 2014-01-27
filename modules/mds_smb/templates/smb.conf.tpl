@@ -31,6 +31,7 @@ ldap group suffix = ou=Group
 ldap user suffix = ou=People
 ldap machine suffix = ou=Hosts
 ldap idmap suffix = ou=Idmap
+ldap passwd sync = yes
 idmap backend = ldap:ldap://127.0.0.1/
 idmap uid = 20000-30000
 idmap gid = 20000-30000
