@@ -23,6 +23,7 @@ OPENVPN_SERVERFILE="templates/vpnserver-ldap-auth.conf.tpl"
 OPENVPN_VARS="templates/vars.tpl"
 CLIENT_CONF_TPL="templates/mbs_vpn_client.ovpn.tpl"
 APACHE_CONF="templates/openvpn-apache.conf"
+SERVICE="templates/openvpn-vpnserver-ldap-auth.service"
 
 EASYRSA_PATH=`mktemp -d`
 cp -r /usr/share/openvpn/easy-rsa/* ${EASYRSA_PATH}
@@ -53,7 +54,7 @@ pushd $EASYRSA_PATH
     ./clean-all
     ./build-dh
     ./pkitool --initca
-    ./build-key-server $HOSTNAME
+    ./pkitool --server $HOSTNAME
     mv ./keys/*.{crt,key} ./keys/dh2048.pem /etc/openvpn
 popd
 rm -rf ${EASYRSA_PATH}
@@ -65,6 +66,7 @@ python templates/mmc_groupadd.py -g VPNUsers -d "Users authorized to gain access
 cp $APACHE_CONF /etc/httpd/conf/webapps.d/openvpn.conf
 
 # Build configuration
+[ -d configuration ] && rm -rf configuration
 mkdir configuration
 CLIENT_CONF=configuration/vpn_${HOSTNAME}.ovpn
 cp $CLIENT_CONF_TPL $CLIENT_CONF
@@ -76,8 +78,11 @@ pushd configuration
 popd
 
 restart_service httpd
-enable_service openvpn@vpnserver-ldap-auth
-restart_service openvpn@vpnserver-ldap-auth
+
+cp $SERVICE /etc/systemd/system
+systemctl daemon-reload
+enable_service openvpn-vpnserver-ldap-auth
+restart_service openvpn-vpnserver-ldap-auth
 
 # Shorewall configuration
 mss-add-shorewall-rule -a ACCEPT -t $iface_name -p udp -P 1194

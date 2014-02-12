@@ -1,0 +1,13 @@
+[Unit]
+Description=OpenVPN Robust And Highly Flexible Tunneling Application (Config: vpnserver-ldap-auth)
+After=network.target
+PartOf=openvpn.target
+
+[Service]
+PrivateTmp=true
+Type=forking
+PIDFile=/var/run/openvpn/vpnserver-ldap-auth.pid
+ExecStart=/usr/sbin/openvpn --daemon --writepid /var/run/openvpn/vpnserver-ldap-auth.pid --cd /etc/openvpn/ --config vpnserver-ldap-auth.conf
+
+[Install]
+WantedBy=openvpn.target
