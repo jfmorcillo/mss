@@ -1,0 +1,125 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Configuration OpenVPN</title>
+</head>
+<body>
+    <h1>Configuration des utilisateurs</h1>
+    Pour autoriser un utilisateur à se connecter au VPN, il faut
+    l'ajouter au groupe VPNUsers dans l'onglet Users de MDS.
+    <br>
+    <p align="center">
+        <img
+            src="vpn-group.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    <br>Pour lui retirer l’accès il suffit de l'exclure du groupe.
+    <br>
+    <table style="width: 100%; ">
+        <tr>
+            <td><img
+                src="./warning.png"
+                style="vertical-align: middle;"
+            ></td>
+            <td><b><span
+                    style="vertical-align: middle; width: 50%;"
+                >les connexions en cours ne sont pas interrompues,
+                        cette modification s'appliquera au connexions
+                        futures.</span></b></td>
+        </tr>
+    </table>
+    <h1>Configuration serveur</h1>
+    <p>Tout est fait grace à MSS, les paramètres peuvent etre saisie
+        dans l'ihm.
+    <h1>Configuration poste client</h1>
+    Pour les clients windows, il faut télécharger le client qui se
+    trouve
+    <a href="//openvpn.net/index.php/download/community-downloads.html">http://openvpn.net/index.php/download/community-downloads.html</a>
+    <br>
+    <br>
+    <table>
+        <tr>
+            <td><img
+                src="./warning.png"
+                style="vertical-align: middle;"
+            ></td>
+            <td><b><span
+                    style="vertical-align: middle; width: 50%;"
+                > l'installeur est sensiblement bugué, il semble qu'il
+                        ne sache pas bien nettoyer la base de registre
+                        ainsi s'il doit etre réinstallé la nouvelle
+                        installation risque d'utiliser les clés de
+                        registre de la précédente.</span></b></td>
+        </tr>
+    </table>
+    <br> Lancer le setup en Administrateur valider les choix par
+    défaut pour finaliser l'installation.
+    <br>
+    <br> Un fichier de configuration pour les clients est
+    automatiquement généré.
+    <br>Il se nomme mbs_vpn_client.ovpn et se trouve dans une
+    archive téléchargeable depuis MSS.
+    <p align="center">
+        <img
+            src="./Download configuration.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        >
+    </p>
+    <br>
+
+
+
+    <br>Les fichiers mbs_vpn_client.ovpn et ca.crt présents dans
+    l'archive de configuration doivent etre décompressées dans le
+    dossier de configuration du client accessible depuis le menu de
+    Windows.
+    <br>
+    <p align="center">
+        <img
+            src="client configuration folder.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        > <img
+            src="client configuration folder-2.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        >
+    </p>
+
+    <br> l'application openvpn_gui doit etre lancée (la première
+    fois en Administrateur sous Windows 7 (click doit lancer en tant
+    qu'Administrateur))
+    <p align="center">
+        <img
+            src="openvpn-gui_as_administrator.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        >
+    </p>
+    Sélectionner l'ihm dans la barre des tâches.
+    <p align="center">
+        <img
+            src="openvpn-gui.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        >
+    </p>
+    Click droit puis "connnecter" Le nom et le mot de passe d'un
+    utilisateur autorisé à se connecter au VPN sont alors demandés et
+    doivent etre saisis.
+    <p align="center">
+        <img
+            src="login.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        >
+    </p>
+    <br>La connexion s'effectue, le poste client peut accéder aux
+    ressources présente sur le VPN. L'icone d'OpenVPN passe au vert :
+    <p align="center">
+        <img
+            src="connected.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-style: solid"
+        >
+    </p>
+</body>
+</html>
+

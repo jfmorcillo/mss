@@ -1,0 +1,86 @@
+{
+    "slug": "openvpn",
+    "name": "Virtual Private Network (VPN) service",
+    "desc": "Allow your users to connect from outside your organization",
+    "description": "Allow your users to connect from outside your organization",
+    "categories": [
+        {
+            "slug": "network",
+            "name": "OpenVPN"
+        }
+    ],
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        },
+        {
+            "type": "link",
+            "name": "Addon documentation",
+            "value": "https://@HOSTNAME@/openvpn-documentation/"
+        },
+        {
+            "type": "link",
+            "name": "Client configuration",
+            "value": "https://@HOSTNAME@/openvpn-configuration/vpn_config_client.zip"
+        }
+    ],
+    "config": [
+        {
+            "type": "text",
+            "name": "openvpn_country",
+            "require": "yes",
+            "validation": "country_code",
+            "default": "FR",
+            "label": "Country code"
+        },
+        {
+            "type": "text",
+            "name": "openvpn_province",
+            "require": "yes",
+            "label": "Province"
+        },
+        {
+            "type": "text",
+            "name": "openvpn_city",
+            "require": "yes",
+            "label": "City"
+        },
+        {
+            "type": "text",
+            "name": "openvpn_org",
+            "require": "yes",
+            "label": "Organization",
+            "help": "Your organization name"
+        },
+        {
+            "type": "text",
+            "name": "openvpn_email",
+            "require": "yes",
+            "label": "Contact email"
+        },
+        {
+            "type": "text",
+            "name": "openvpn_networks",
+            "require": "yes",
+            "validation": "ip",
+            "default": "10.8.0.0",
+            "label": "VPN network",
+            "help": "Specify which network address you want to use for your VPN. If unsure leave the default value."
+        },
+        {
+            "type": "custom",
+            "name": "interface"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["openvpn", "zip"]
+        }
+    ],
+    "module": {
+            "section": "core"
+    }
+}
