@@ -1,0 +1,157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <jfmorcillo@mandriva.com>, 2014.
+#   <jpbraun@mandriva.com>, 2014.
+#   <nlecureuil@mandriva.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-12 14:53+0100\n"
+"PO-Revision-Date: 2014-02-12 15:32+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .description .desc
+msgid "Allow your users to connect from outside your organization"
+msgstr ""
+"Permet à vos utilisateurs de se connecter depuis l'extérieur de l'entreprise"
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr "Interface d'administration"
+
+#: .actions[1].name
+msgid "Addon documentation"
+msgstr "Documentation"
+
+#: .actions[2].name
+msgid "Client configuration"
+msgstr "Configuration des clients"
+
+#: .name
+msgid "Virtual Private Network (VPN) service"
+msgstr "Virtual Private Network (VPN) service"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].name
+msgid "openvpn_country"
+msgstr "openvpn_country"
+
+#: .config[0].label
+msgid "Country code"
+msgstr "Code du pays"
+
+#: .config[1].name
+msgid "openvpn_province"
+msgstr "openvpn_province"
+
+#: .config[1].label
+msgid "Province"
+msgstr "Région"
+
+#: .config[2].name
+msgid "openvpn_city"
+msgstr "openvpn_city"
+
+#: .config[2].label
+msgid "City"
+msgstr "Ville"
+
+#: .config[3].help
+msgid "Your organization name"
+msgstr "Nom de votre organisation"
+
+#: .config[3].name
+msgid "openvpn_org"
+msgstr "openvpn_org"
+
+#: .config[3].label
+msgid "Organization"
+msgstr "Organisation"
+
+#: .config[4].name
+msgid "openvpn_email"
+msgstr "openvpn_email"
+
+#: .config[4].label
+msgid "Contact email"
+msgstr "Courriel de contact"
+
+#: .config[5].name
+msgid "openvpn_networks"
+msgstr "openvpn_networks"
+
+#: .config[5].label
+msgid "VPN network"
+msgstr "Réseau VPN"
+
+#: .config[5].help
+msgid ""
+"Specify which network address you want to use for your VPN. If unsure leave "
+"the default value."
+msgstr ""
+"Veuillez spécifier l'adresse réseau que vous souhaitez utiliser pour votre "
+"VPN. En cas de doutes, laissez la valeur par défaut."
+
+#: .config[6].name
+msgid "interface"
+msgstr "interface"
+
+#: .categories[0].name
+msgid "OpenVPN"
+msgstr "OpenVPN"
+
+#: openvpn/setup-openvpn.sh:95
+msgid "The VPN service is running."
+msgstr "Le service VPN est en fonctionnement."
+
+#: openvpn/setup-openvpn.sh:96
+msgid "- The VPN network address is $network"
+msgstr "- L'adresse du réseau VPN est $network "
+
+#: openvpn/setup-openvpn.sh:97
+msgid "- The server IP in the VPN network is $vpn_ip"
+msgstr "- Dans le réseau VPN, le serveur a pour adresse IP $vpn_ip "
+
+#: openvpn/setup-openvpn.sh:98
+msgid ""
+"- Documentation for this addon is available at http://@HOSTNAME@/openvpn-"
+"documentation/"
+msgstr ""
+"La documentation pour cet addon est disponible à l'adresse suivante: "
+"http://@HOSTNAME@/openvpn-documentation/ "
+
+#: openvpn/setup-openvpn.sh:99
+msgid ""
+"- An archive containing the clients configuration files is available in the "
+"addon's menu. Use it to configure your clients."
+msgstr ""
+"- Une archive contenant les fichiers de configuration du client est "
+"disponible dans le menu de l'addon. Utilisez la afin de configurer vos "
+"clients."
+
+#: openvpn/__init__.py:59
+msgid "VPN interface"
+msgstr "Interface du VPN"
+
+#: openvpn/__init__.py:60
+msgid ""
+"The network interface where the VPN server will listen. It must be "
+"accessible by your VPN clients."
+msgstr ""
+"Interface réseau où le serveur VPN écoutera. Elle doit être accessible par "
+"les clients de votre VPN."
+
+
