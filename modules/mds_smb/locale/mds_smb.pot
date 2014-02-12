@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-20 06:50+0200\n"
+"POT-Creation-Date: 2014-02-12 14:53+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -133,27 +133,27 @@ msgstr ""
 msgid "Failed to grant rights to the Domain Admins group"
 msgstr ""
 
-#: mds_smb/setup-smb.sh:89
+#: mds_smb/setup-smb.sh:90
 msgid "Domain name : $smbdomain"
 msgstr ""
 
-#: mds_smb/setup-smb.sh:90
+#: mds_smb/setup-smb.sh:91
 msgid "Server name : $smbnetbios"
 msgstr ""
 
-#: mds_smb/setup-smb.sh:91
+#: mds_smb/setup-smb.sh:92
 msgid "Domain administrator : $smbadmin"
 msgstr ""
 
-#: mds_smb/setup-smb.sh:92
+#: mds_smb/setup-smb.sh:93
 msgid "- a public share is created in /home/samba/shares/public"
 msgstr ""
 
-#: mds_smb/setup-smb.sh:93
+#: mds_smb/setup-smb.sh:94
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr ""
 
-#: mds_smb/setup-smb.sh:94
+#: mds_smb/setup-smb.sh:95
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
