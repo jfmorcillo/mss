@@ -1,0 +1,142 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-17 15:06+0100\n"
+"PO-Revision-Date: 2014-02-17 14:22+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr_FR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .description .desc
+msgid "Use your MBS server to run KVM virtual machines"
+msgstr "Utilisez votre serveur MBS pour héberger des machines virtuelles"
+
+#: .name
+msgid "Libvirt with KVM"
+msgstr "Libvirt avec KVM"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].help
+msgid "Password to manage virtual machines"
+msgstr "Mot de passe pour gérer les machines virtuelles"
+
+#: .config[0].name
+msgid "admin_password"
+msgstr "admin_password"
+
+#: .config[0].label
+msgid "Admin password"
+msgstr "Mot de passe"
+
+#: .config[1].help
+msgid ""
+"Adds a libvirt storage for your virtual machines and ISO files. Make sure "
+"you have enough space available."
+msgstr ""
+"Créée un emplacement pour stocker les machines virtuelles et fichiers ISO. "
+"Assurez vous d'avoir assez d'espace disponible."
+
+#: .config[1].label
+msgid "Storage location"
+msgstr "Chemin de stockage"
+
+#: .config[1].name
+msgid "pool_location"
+msgstr "pool_location"
+
+#: .config[2].name
+msgid "bridge"
+msgstr "bridge"
+
+#: .config[3].help
+msgid ""
+"Configure the firewall to accept libvirt management on interfaces configured"
+" as 'internal'"
+msgstr ""
+"Configure le firewall pour accepter la gestion de libvirt depuis les "
+"interfaces marquées comme 'internes'."
+
+#: .config[3].name
+msgid "fw_lan"
+msgstr "fw_lan"
+
+#: .config[3].label
+msgid "Allow connections from internal networks"
+msgstr "Autoriser les connexions depuis les réseaux internes"
+
+#: .config[4].help
+msgid ""
+"Configure the firewall to accept libvirt management on interfaces configured"
+" as 'external'"
+msgstr ""
+"Configure le firewall pour accepter la gestion de libvirt depuis les "
+"interfaces marquées comme 'externes'."
+
+#: .config[4].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[4].label
+msgid "Allow connections from external networks"
+msgstr "Autoriser les connexions depuis les réseaux externes"
+
+#: .categories[0].name
+msgid "Virtualization"
+msgstr "Virtualisation"
+
+#: libvirt/setup-libvirt.sh:71
+msgid "Libvirt and KVM are now installed and configured."
+msgstr "Libvirt et KVM sont installés et configurés."
+
+#: libvirt/setup-libvirt.sh:72
+msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
+msgstr ""
+"Authentifiez-vous sur libvirt avec le client virt-manager en utilisant la "
+"méthode TCP/SASL:"
+
+#: libvirt/setup-libvirt.sh:73
+msgid "- Hostname is @HOSTNAME@"
+msgstr "- Le nom d'hôte est @HOSTNAME@"
+
+#: libvirt/setup-libvirt.sh:74
+msgid "- Username is admin"
+msgstr "- L'utilisateur est admin"
+
+#: libvirt/setup-libvirt.sh:75
+msgid "- Password is $admin_password"
+msgstr "- Le mot de passe est $admin_password"
+
+#: libvirt/setup-libvirt.sh:76
+msgid ""
+"Reboot to apply the network configuration. If you have a DHCP IP address "
+"your IP address may change."
+msgstr ""
+"Redémarrez pour appliquer la configuration réseau. Si vous avez une adresse "
+"IP configurée par DHCP cette adresse IP peut changer."
+
+#: libvirt/__init__.py:68
+#, python-format
+msgid "Create a bridge for interface %s (%s, %s)"
+msgstr "Crééer un pont pour l'interface %s (%s, %s)"
+
+#: libvirt/__init__.py:69
+msgid "You will be able to setup virtual machines on this network."
+msgstr ""
+"Vous pourrez mettre en place des machines virtuelles sur ce réseau en "
+"utilisant le pont."
+
+

@@ -1,0 +1,127 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-02-17 15:06+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: .description .desc
+msgid "Use your MBS server to run KVM virtual machines"
+msgstr ""
+
+#: .name
+msgid "Libvirt with KVM"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid "Password to manage virtual machines"
+msgstr ""
+
+#: .config[0].name
+msgid "admin_password"
+msgstr ""
+
+#: .config[0].label
+msgid "Admin password"
+msgstr ""
+
+#: .config[1].help
+msgid ""
+"Adds a libvirt storage for your virtual machines and ISO files. Make sure "
+"you have enough space available."
+msgstr ""
+
+#: .config[1].label
+msgid "Storage location"
+msgstr ""
+
+#: .config[1].name
+msgid "pool_location"
+msgstr ""
+
+#: .config[2].name
+msgid "bridge"
+msgstr ""
+
+#: .config[3].help
+msgid ""
+"Configure the firewall to accept libvirt management on interfaces configured "
+"as 'internal'"
+msgstr ""
+
+#: .config[3].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[3].label
+msgid "Allow connections from internal networks"
+msgstr ""
+
+#: .config[4].help
+msgid ""
+"Configure the firewall to accept libvirt management on interfaces configured "
+"as 'external'"
+msgstr ""
+
+#: .config[4].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[4].label
+msgid "Allow connections from external networks"
+msgstr ""
+
+#: .categories[0].name
+msgid "Virtualization"
+msgstr ""
+
+#: libvirt/setup-libvirt.sh:71
+msgid "Libvirt and KVM are now installed and configured."
+msgstr ""
+
+#: libvirt/setup-libvirt.sh:72
+msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
+msgstr ""
+
+#: libvirt/setup-libvirt.sh:73
+msgid "- Hostname is @HOSTNAME@"
+msgstr ""
+
+#: libvirt/setup-libvirt.sh:74
+msgid "- Username is admin"
+msgstr ""
+
+#: libvirt/setup-libvirt.sh:75
+msgid "- Password is $admin_password"
+msgstr ""
+
+#: libvirt/setup-libvirt.sh:76
+msgid ""
+"Reboot to apply the network configuration. If you have a DHCP IP address "
+"your IP address may change."
+msgstr ""
+
+#: libvirt/__init__.py:68
+#, python-format
+msgid "Create a bridge for interface %s (%s, %s)"
+msgstr ""
+
+#: libvirt/__init__.py:69
+msgid "You will be able to setup virtual machines on this network."
+msgstr ""
