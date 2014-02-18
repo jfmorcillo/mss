@@ -10,15 +10,15 @@ QEMU_CONF=templates/qemu.conf
 QEMU_SASL=templates/sasl2-qemu.conf
 SHOREWALL_MACRO=templates/macro.Libvirtd
 
-# start service
-restart_service libvirtd
-
 # set configuration
 cp -f $LIBVIRTD_CONF /etc/libvirt/libvirtd.conf
 cp -f $SHOREWALL_MACRO /etc/shorewall/macro.Libvirtd
 cp -f $QEMU_CONF /etc/libvirt/qemu.conf
 cp -f $QEMU_SASL /etc/sasl2/qemu.conf
 cp -f $LIBVIRTD_SYSCONFIG /etc/sysconfig/libvirtd
+
+# start service
+restart_service libvirtd
 
 # define password for admin
 admin_password=$1
