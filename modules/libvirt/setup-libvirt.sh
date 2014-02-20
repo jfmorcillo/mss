@@ -9,6 +9,7 @@ LIBVIRTD_CONF=templates/libvirtd.conf
 QEMU_CONF=templates/qemu.conf
 QEMU_SASL=templates/sasl2-qemu.conf
 SHOREWALL_MACRO=templates/macro.Libvirtd
+APACHE_CONF="templates/libvirt-apache.conf"
 
 # set configuration
 cp -f $LIBVIRTD_CONF /etc/libvirt/libvirtd.conf
@@ -34,6 +35,9 @@ virsh pool-autostart default
 virsh pool-start default
 
 restart_service libvirtd
+
+# Install documentation
+cp $APACHE_CONF /etc/httpd/conf/webapps.d/libvirt.conf
 
 shift 2
 

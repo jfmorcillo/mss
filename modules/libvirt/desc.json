@@ -1,60 +1,72 @@
 {
-    "slug": "libvirt",
-    "name": "Libvirt with KVM",
-    "description": "Use your MBS server to run KVM virtual machines",
-    "desc": "Use your MBS server to run KVM virtual machines",
-    "categories": [
+    "slug":"libvirt",
+    "name":"Libvirt with KVM",
+    "description":"Use your MBS server to run KVM virtual machines",
+    "desc":"Use your MBS server to run KVM virtual machines",
+    "categories":[
         {
-            "slug": "virtualization",
-            "name": "Virtualization"
+            "slug":"virtualization",
+            "name":"Virtualization"
         }
     ],
-    "packages": [
+    "actions":[
         {
-            "name": "all",
-            "rpms": ["libvirt-utils", "qemu", "lib64sasl2-plug-digestmd5", "lib64sasl2-plug-sasldb"]
+            "type":"link",
+            "name":"Addon documentation",
+            "value":"https://@HOSTNAME@/libvirt-documentation/"
         }
     ],
-    "config": [
+    "packages":[
         {
-            "type": "password",
-            "name": "admin_password",
-            "require": "yes",
-            "label": "Admin password",
-            "help": "Password to manage virtual machines"
-        },
-        {
-            "type": "text",
-            "name": "pool_location",
-            "require": "yes",
-            "default": "/home/libvirt/images/",
-            "label": "Storage location",
-            "help": "Adds a libvirt storage for your virtual machines and ISO files. Make sure you have enough space available."
-        },
-        {
-            "type": "custom",
-            "name": "bridge"
-        },
-        {
-            "type": "check",
-            "name": "fw_lan",
-            "default": "on",
-            "label": "Allow connections from internal networks",
-            "help": "Configure the firewall to accept libvirt management on interfaces configured as 'internal'"
-        },
-        {
-            "type": "check",
-            "name": "fw_wan",
-            "default": "off",
-            "label": "Allow connections from external networks",
-            "help": "Configure the firewall to accept libvirt management on interfaces configured as 'external'"
+            "name":"all",
+            "rpms":[
+                "libvirt-utils",
+                "qemu",
+                "lib64sasl2-plug-digestmd5",
+                "lib64sasl2-plug-sasldb"
+            ]
         }
     ],
-    "postinstall": {
-        "reboot": "yes"
+    "config":[
+        {
+            "type":"password",
+            "name":"admin_password",
+            "require":"yes",
+            "label":"Admin password",
+            "help":"Password to manage virtual machines"
+        },
+        {
+            "type":"text",
+            "name":"pool_location",
+            "require":"yes",
+            "default":"/home/libvirt/images/",
+            "label":"Storage location",
+            "help":"Adds a libvirt storage for your virtual machines and ISO files. Make sure you have enough space available."
+        },
+        {
+            "type":"custom",
+            "name":"bridge"
+        },
+        {
+            "type":"check",
+            "name":"fw_lan",
+            "default":"on",
+            "label":"Allow connections from internal networks",
+            "help":"Configure the firewall to accept libvirt management on interfaces configured as 'internal'"
+        },
+        {
+            "type":"check",
+            "name":"fw_wan",
+            "default":"off",
+            "label":"Allow connections from external networks",
+            "help":"Configure the firewall to accept libvirt management on interfaces configured as 'external'"
+        }
+    ],
+    "postinstall":{
+        "reboot":"yes"
     },
-    "module": {
-        "section": "other",
-        "reboot": true
+    "module":{
+        "section":"other",
+        "reboot":true
     }
 }

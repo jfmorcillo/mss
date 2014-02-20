@@ -1,0 +1,111 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Libvirt avec KVM sur MBS</title>
+</head>
+<body>
+    <h1>Installation de Libvirt sur MBS</h1>
+    Libvirt pour MBS est disponible via le Service Place de Mandriva.
+    Afin de l'installer, il convient de se loguer sur MSS avec votre
+    compte 'my'.
+    <br>
+    <p align="center">
+        <img
+            src="fr/login.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Rendez vous dans la section 'Autres services' et sélectionnez
+    'Libvirt avec KVM' puis lancez l'installation.
+    <p align="center">
+        <img
+            src="fr/selection.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    A l'étape de configuration :
+    <br>
+    <ul>
+        <li>Sélectionnez le mot de passe désiré pour accéder à
+            l'hyperviseur ;</li>
+        <li>Sélectionnez l'emplacement où seront stockés les
+            fichiers .iso d'installation ainsi que les disques de vos
+            machines virtuelles ;</li>
+        <li>Si vous souhaitez que vos machines virtuelles accèdent
+            directement à votre réseau (et notamment au serveur DHCP),
+            cochez la case 'Créer un bridge'. Dans le cas contraire, vos
+            machines virtuelles seront dans un réseau isolé. Elles
+            pourront toujours accéder à l'extérieur au moyen d'un NAT.</li>
+    </ul>
+    <p align="center">
+        <img
+            src="fr/configuration.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Finalisez l'installation et relancez l'hote pour compléter la
+    configuration.
+    <p align="center">
+        <img
+            src="fr/installed.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    <h1>Installation de machines virtuelles</h1>
+    <br>
+    <br>Connectez vous avec 'Virtual Manager' sur votre nouvelle
+    installation de libvirt.
+    <p align="center">
+        <img
+            src="fr/virtmanager1.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Sélectionnez :
+    <ul>
+        <li>Connexion à un hôte distant ;</li>
+        <li>Méthode TCP(SASL, Kerberos...) ;</li>
+    </ul>
+    Renseignez :
+    <ul>
+        <li>'admin' pour le nom d'utilisateur ;</li>
+        <li>L'adresse IP de votre installation MBS, ou son nom pour
+            le nom de l'hôte.</li>
+    </ul>
+
+    <p align="center">
+        <img
+            src="fr/virtmanager2.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Lors de la connexion, utilisez 'admin' comme nom d'utilisateur et
+    renseignez le mot de passe choisit lors de la configuration dans
+    MSS.
+    <p align="center">
+        <img
+            src="fr/virtmanager3.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Vous pouvez maintenant lancer l'installation de machines virtuelles
+    sur votre système MBS (apres avoir mis les .iso nécessaires à
+    l'installation dans le dossier adéquat).
+    <p align="center">
+        <img
+            src="fr/virtmanager4.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    <p align="center">
+        <img
+            src="fr/virtmanager5.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    ...
+</body>
+</html>
+

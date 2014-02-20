@@ -1,0 +1,108 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+<meta charset="utf-8">
+<title>Libvirt with KVM on MBS</title>
+</head>
+<body>
+    <h1>Installing Libvirt on MBS</h1>
+    Libvirt for MBS is available via Mandriva Service Place. To install
+    it, it is necessary to log on MSS with your 'my' account.
+    <br>
+    <p align="center">
+        <img
+            src="en/login.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Go to 'Other services' and select 'Libvirt with KVM' then launch the
+    installation..
+    <p align="center">
+        <img
+            src="en/selection.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    At the configuration step:
+    <br>
+    <ul>
+        <li>Choose the password you want to use to acces the
+            hypervisor,</li>
+        <li>Choose the directory where you want to store you .iso
+            files and your virtual disks,</li>
+        <li>If you want your virtual machines to directly access
+            your network (and for example the DHCP server), check the
+            'Create a bridge'. Otherwise, your virtual machines will be
+            in an isolated network. They can still access the outside
+            through a NAT.</li>
+    </ul>
+    <p align="center">
+        <img
+            src="en/configuration.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Complete the installation and restart the host for finishing the
+    configuration.
+    <p align="center">
+        <img
+            src="en/installed.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    <h1>Installing some virtual machines</h1>
+    <br>
+    <br>Connect your new libvirt installation using 'Virtual
+    Manager'.
+    <p align="center">
+        <img
+            src="en/virtmanager1.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    Select :
+    <ul>
+        <li>Connect to remote host,</li>
+        <li>Method TCP(SASL, Kerberos...) ;</li>
+    </ul>
+    Fill :
+    <ul>
+        <li>'admin' as the user name,</li>
+        <li>The IP adress of your mbs installation or its host
+            name.</li>
+    </ul>
+
+    <p align="center">
+        <img
+            src="en/virtmanager2.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    When connecting, use 'admin' as the username and enter the password
+    chosen during configuration with MSS.
+    <p align="center">
+        <img
+            src="en/virtmanager3.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    You can now begin installing virtual machines on your MBS system
+    (after putting the necessary .iso files in the correct installation
+    folder).
+    <p align="center">
+        <img
+            src="en/virtmanager4.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    <p align="center">
+        <img
+            src="en/virtmanager5.png"
+            style="border-bottom-width: 1px; border-right-width: 1px; border-left-width: 1px; border-top-width: 1px; border-bottom-style: solid; border-top-style: solid; border-left-style: solid; border-right-style: solid; font-family: legende"
+        >
+    </p>
+    ...
+</body>
+</html>
+
