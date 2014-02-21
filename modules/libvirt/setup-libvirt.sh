@@ -38,6 +38,7 @@ restart_service libvirtd
 
 # Install documentation
 cp $APACHE_CONF /etc/httpd/conf/webapps.d/libvirt.conf
+restart_service httpd
 
 shift 2
 
