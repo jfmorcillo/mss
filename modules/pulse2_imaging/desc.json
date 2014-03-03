@@ -21,7 +21,7 @@
             "name": "all",
             "rpms": [
                 "python-pulse2-common-database-imaging",
-                "pulse2-imaging-server",
+                "pulse2-package-server",
                 "pulse2-imaging-client",
                 "mmc-web-imaging",
                 "python-mmc-imaging"
