@@ -45,7 +45,8 @@
                 "mmc-web-msc",
                 "python-mmc-msc",
                 "python-pulse2-common-database-msc",
-                "samba-common"
+                "samba-common",
+                "python-mmc-report"
             ]
         }
     ],
