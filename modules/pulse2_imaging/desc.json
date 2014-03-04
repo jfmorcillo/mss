@@ -24,7 +24,8 @@
                 "pulse2-package-server",
                 "pulse2-imaging-client",
                 "mmc-web-imaging",
-                "python-mmc-imaging"
+                "python-mmc-imaging",
+                "xinetd-simple-services"
             ]
         }
     ],
