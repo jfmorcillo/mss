@@ -24,7 +24,7 @@ function get_interface_addr() {
 
 function configure_imaging() {
     echo "Configuring the time service"
-    cat > /etc/xinet.d/time << EOF
+    cat > /etc/xinetd.d/time << EOF
 service time
 {
    disable        = no
