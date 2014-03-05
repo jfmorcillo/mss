@@ -142,9 +142,9 @@ EOF
     /var/lib/pulse2/clients/win32/generate-agent-pack.sh | grep -v '^7zsd.sfx' | grep -v '^7-Zip'
     rm -f /tmp/id_rsa.pub
 
-    enable_service pulse2-imaging-server
-    service pulse2-imaging-server stop
-    restart_service pulse2-imaging-server
+    enable_service pulse2-package-server
+    service pulse2-package-server stop
+    restart_service pulse2-package-server
 }
 
 function configure_firewall() {

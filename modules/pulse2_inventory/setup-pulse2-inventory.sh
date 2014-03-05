@@ -74,7 +74,7 @@ mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password=
 pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldaps://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
- --disable-package --disable-backup | sed -r 's/\x1b.*?[mGKHh]//g'
+ --disable-package | sed -r 's/\x1b.*?[mGKHh]//g'
 
 # Disable agent threading
 sed -i 's!^multithreading.*$!multithreading = 0!' /etc/mmc/agent/config.ini
