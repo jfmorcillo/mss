@@ -32,12 +32,12 @@ cp -f macro.Pulse2Inventory /etc/shorewall
 [ $fw_wan == "on" ] && mss-add-shorewall-rule -a Pulse2Inventory/ACCEPT -t wan
 
 # SSH key management
-if [ ! -f /root/.ssh/id_rsa_pulse ]; then
-	ssh-keygen -t rsa -b 2048 -f /root/.ssh/id_rsa_pulse -N '' > /dev/null 2>&1
+if [ ! -f /root/.ssh/id_rsa ]; then
+	ssh-keygen -t rsa -b 2048 -f /root/.ssh/id_rsa -N '' > /dev/null 2>&1
     [ $? -ne 0 ] && error "Failed to generate a SSH key pair for Pulse2 services" && exit 1
 fi
-sed -i 's!^.*sshkey_default = .*$!sshkey_default = /root/.ssh/id_rsa_pulse!' /etc/mmc/pulse2/launchers/launchers.ini
-sed -i "s!/root/.ssh/id_rsa'!/root/.ssh/id_rsa_pulse'!" /usr/sbin/pulse2-setup
+sed -i 's!^.*sshkey_default = .*$!sshkey_default = /root/.ssh/id_rsa!' /etc/mmc/pulse2/launchers/launchers.ini
+sed -i "s!/root/.ssh/id_rsa'!/root/.ssh/id_rsa'!" /usr/sbin/pulse2-setup
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
@@ -61,7 +61,7 @@ fi
 sed -i "s!^public_ip.*!public_ip = ${FQDN}!" /etc/mmc/pulse2/package-server/package-server.ini
 
 # Generate pulse2 agents
-cp /root/.ssh/id_rsa_pulse.pub /tmp/id_rsa.pub
+cp /root/.ssh/id_rsa.pub /tmp/id_rsa.pub
 sed -i 's!/root/.ssh/id_rsa.pub!/tmp/id_rsa.pub!g' /var/lib/pulse2/clients/win32/generate-agent-pack.sh
 /var/lib/pulse2/clients/win32/generate-agent-pack.sh | grep -v '^7zsd.sfx' | grep -v '^7-Zip'
 rm -f /tmp/id_rsa.pub
