@@ -26,7 +26,7 @@
         {
             "type": "check",
             "name": "fw_lan",
-            "default": "n",
+            "default": "on",
             "label": "Allow connections to the management interface from internal networks",
             "help": "Configure the firewall to allow access to the Printer Management Service from internal networks"
         },
