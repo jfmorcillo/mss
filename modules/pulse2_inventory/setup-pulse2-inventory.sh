@@ -39,6 +39,14 @@ fi
 sed -i 's!^.*sshkey_default = .*$!sshkey_default = /root/.ssh/id_rsa!' /etc/mmc/pulse2/launchers/launchers.ini
 sed -i "s!/root/.ssh/id_rsa'!/root/.ssh/id_rsa'!" /usr/sbin/pulse2-setup
 
+# Configure inventory module to use GLPI
+
+sed -i 's!# glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=!glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=!' /etc/mmc/plugins/glpi.ini
+sed -i "s!# glpi_mode = False!glpi_mode = True!" /etc/mmc/pulse2/package-server/package-server.ini
+sed -i "s!disable = 1!disable = 0!" /etc/mmc/plugins/glpi.ini
+sed -i "s!# enable_forward = False!enable_forward = True!" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+sed -i "s!# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php!url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php!" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
 is_dns_working=$?
@@ -74,7 +82,8 @@ mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password=
 pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldaps://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
- --disable-package | sed -r 's/\x1b.*?[mGKHh]//g'
+ --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="pulse2GLPI" --glpi-dbuser=root --glpi-dbpasswd="$mysql_password" \
+ | sed -r 's/\x1b.*?[mGKHh]//g'
 
 # Disable agent threading
 sed -i 's!^multithreading.*$!multithreading = 0!' /etc/mmc/agent/config.ini
