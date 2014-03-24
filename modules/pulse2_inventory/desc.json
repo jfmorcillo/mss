@@ -48,7 +48,8 @@
                 "samba-common",
                 "python-mmc-report",
                 "glpi",
-                "glpi-plugin-webservices"
+                "glpi-plugin-webservices",
+                "python-mmc-glpi"
             ]
         }
     ],
