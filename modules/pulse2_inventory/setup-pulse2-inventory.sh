@@ -46,6 +46,9 @@ sed -i "s!# glpi_mode = False!glpi_mode = True!" /etc/mmc/pulse2/package-server/
 sed -i "s!disable = 1!disable = 0!" /etc/mmc/plugins/glpi.ini
 sed -i "s!# enable_forward = False!enable_forward = True!" /etc/mmc/pulse2/inventory-server/inventory-server.ini
 sed -i "s!# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php!url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php!" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+sed -i "s!#purge_machine = 0!#purge_machine = 1!" /etc/mmc/plugins/glpi.ini
+sed -i "s!#glpi_username = username!glpi_username = glpi!" /etc/mmc/plugins/glpi.ini
+sed -i "s!#glpi_password = password!glpi_password = glpi!" /etc/mmc/plugins/glpi.ini
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
