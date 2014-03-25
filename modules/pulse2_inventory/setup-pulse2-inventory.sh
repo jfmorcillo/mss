@@ -49,6 +49,7 @@ sed -i "s!# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front
 sed -i "s!#purge_machine = 0!#purge_machine = 1!" /etc/mmc/plugins/glpi.ini
 sed -i "s!#glpi_username = username!glpi_username = glpi!" /etc/mmc/plugins/glpi.ini
 sed -i "s!#glpi_password = password!glpi_password = glpi!" /etc/mmc/plugins/glpi.ini
+sed -i "s!method = inventory!method = glpi!" /etc/mmc/plugins/base.ini
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
