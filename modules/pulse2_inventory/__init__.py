@@ -20,4 +20,4 @@
 # MA 02110-1301, USA.
 
 def get_config_info():
-    return ("setup-pulse2-inventory.sh", ["fw_lan", "fw_wan"])
+    return ("setup-pulse2-inventory.sh", ["myrootpasswd", "fw_lan", "fw_wan"])

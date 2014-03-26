@@ -20,8 +20,9 @@ function get_interface_addr() {
 check_mmc_configured
 
 # PARAMETERS
-fw_lan="$1"
-fw_wan="$2"
+myrootpasswd="$1"
+fw_lan="$2"
+fw_wan="$3"
 
 # Retrieve info from filesystem
 LDAP_ADMINDN="uid=LDAP Admin,ou=System Accounts,$MDSSUFFIX"
@@ -50,6 +51,25 @@ sed -i "s!#purge_machine = 0!#purge_machine = 1!" /etc/mmc/plugins/glpi.ini
 sed -i "s!#glpi_username = username!glpi_username = glpi!" /etc/mmc/plugins/glpi.ini
 sed -i "s!#glpi_password = password!glpi_password = glpi!" /etc/mmc/plugins/glpi.ini
 sed -i "s!method = inventory!method = glpi!" /etc/mmc/plugins/base.ini
+
+
+# We fill the glpi database.
+dbname="glpi"
+dbuser="glpi"
+dbpass=`randpass 10 1`
+
+mysql_get_root_password $myrootpasswd
+
+mysql_do_query "DROP USER ${dbuser}@'localhost';"
+mysql_do_query "DROP DATABASE IF EXISTS ${dbname};"
+mysql_do_query "CREATE DATABASE ${dbname};"
+mysql_do_query "GRANT ALL ON ${dbname}.* to '${dbuser}'@'localhost' identified by '${dbpass}';"
+mysql_do_query "FLUSH PRIVILEGES;"
+
+mysql -u $dbuser -p$dbpass $dbname < /usr/share/glpi/install/mysql/glpi-0.83.1-empty.sql
+
+# For security reason we delete the install folder
+rm -frv /usr/share/glpi/install
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'

@@ -54,6 +54,13 @@
         }
     ],
     "config": [
+         {   
+             "type": "password",
+             "name": "myrootpasswd",
+             "require": "yes",
+             "label": "MySQL root password",
+             "help": "Used to create the glpi database"
+        },  
         {
             "type": "check",
             "name": "fw_lan",
