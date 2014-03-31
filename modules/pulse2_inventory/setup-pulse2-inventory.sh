@@ -41,7 +41,6 @@ sed -i 's!^.*sshkey_default = .*$!sshkey_default = /root/.ssh/id_rsa!' /etc/mmc/
 sed -i "s!/root/.ssh/id_rsa'!/root/.ssh/id_rsa'!" /usr/sbin/pulse2-setup
 
 # Configure inventory module to use GLPI
-
 sed -i 's!# glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=!glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=!' /etc/mmc/plugins/glpi.ini
 sed -i "s!# glpi_mode = False!glpi_mode = True!" /etc/mmc/pulse2/package-server/package-server.ini
 sed -i "s!disable = 1!disable = 0!" /etc/mmc/plugins/glpi.ini
@@ -106,7 +105,7 @@ mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password=
 pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldaps://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
- --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="pulse2GLPI" --glpi-dbuser=root --glpi-dbpasswd="$mysql_password" \
+ --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root --glpi-dbpasswd="$mysql_password" \
  | sed -r 's/\x1b.*?[mGKHh]//g'
 
 # Disable agent threading
