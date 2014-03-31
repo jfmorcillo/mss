@@ -49,6 +49,7 @@
                 "python-mmc-report",
                 "glpi",
                 "glpi-plugin-webservices",
+                "glpi-plugin-fusioninventory",
                 "python-mmc-glpi"
             ]
         }
