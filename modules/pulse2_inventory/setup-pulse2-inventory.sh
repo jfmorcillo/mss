@@ -24,6 +24,9 @@ myrootpasswd="$1"
 fw_lan="$2"
 fw_wan="$3"
 
+ENABLE_FUSIONFILE=templates/020_enable_fusioninventory.sh
+GLPI_CONFIG=templates/config_db.php
+
 # Retrieve info from filesystem
 LDAP_ADMINDN="uid=LDAP Admin,ou=System Accounts,$MDSSUFFIX"
 
@@ -69,6 +72,11 @@ mysql -u $dbuser -p$dbpass $dbname < /usr/share/glpi/install/mysql/glpi-0.83.1-e
 
 # For security reason we delete the install folder
 rm -frv /usr/share/glpi/install
+
+# Enable fusioninventory
+sh $ENABLE_FUSIONFILE
+
+cp  $GLPI_CONFIG /usr/share/glpi/config
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
