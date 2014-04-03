@@ -80,6 +80,13 @@ cp  $GLPI_CONFIG /usr/share/glpi/config
 sed -i 's!@DBUSER@!$dbuser!' /usr/share/glpi/config/config_db.php
 sed -i 's!@DBPASS@!$dbname!' /usr/share/glpi/config/config_db.php
 sed -i 's!@DBNAME@!$dbpass!' /usr/share/glpi/config/config_db.php
+
+# Not available on MBS yet!
+#fusinvdeploy usr/share/glpi/plugins
+#fusinvinventory usr/share/glpi/plugins
+#fusinvsnmp usr/share/glpi/plugins
+#fusioninventory usr/share/glpi/plugins
+
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
 is_dns_working=$?
