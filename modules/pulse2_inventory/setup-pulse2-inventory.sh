@@ -87,6 +87,9 @@ sed -i 's!@DBNAME@!$dbpass!' /usr/share/glpi/config/config_db.php
 #fusinvsnmp usr/share/glpi/plugins
 #fusioninventory usr/share/glpi/plugins
 
+#Create initial entitie ( if not done pulse2 backtrace )
+echo "INSERT INTO glpi.glpi_entities (id ,name ,entities_id ,completename ,comment ,level ,sons_cache ,ancestors_cache) VALUES ( NULL , 'glpi', '0', 'glpi', '', '1', NULL , NULL )" | mysql glpi
+
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
 is_dns_working=$?
