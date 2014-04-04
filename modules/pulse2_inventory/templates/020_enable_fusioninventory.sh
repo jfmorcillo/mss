@@ -45,7 +45,7 @@ echo "INSERT INTO glpi_plugin_fusioninventory_profiles VALUES \
      (21,'packages','w',${fusinvdeployid},4), \
      (22,'status','w',${fusinvdeployid},4);" | mysql glpi
 
-echo "update glpi_plugin_fusioninventory_configs set value = '/varlib/glpi/files/_plugins/fusinvdeploy/upload' where value = 'cli_install.php/files/_plugins/fusinvdeploy/upload';" | mysql glpi
+echo "update glpi_plugin_fusioninventory_configs set value = '/var/lib/glpi/files/_plugins/fusinvdeploy/upload' where value = 'cli_install.php/files/_plugins/fusinvdeploy/upload';" | mysql glpi
 
 echo "update glpi_plugin_fusioninventory_configs set value = 'http://127.0.0.1/glpi' where type = 'agent_base_url';" | mysql glpi
 
