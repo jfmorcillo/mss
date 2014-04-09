@@ -77,9 +77,9 @@ rm -frv /usr/share/glpi/install
 sh $ENABLE_FUSIONFILE
 
 cp  $GLPI_CONFIG /usr/share/glpi/config
-sed -i 's!@DBUSER@!$dbuser!' /usr/share/glpi/config/config_db.php
-sed -i 's!@DBPASS@!$dbpass!' /usr/share/glpi/config/config_db.php
-sed -i 's!@DBNAME@!$dbname!' /usr/share/glpi/config/config_db.php
+sed -i "s/\@DBUSER\@/$dbuser/" /usr/share/glpi/config/config_db.php
+sed -i "s/\@DBPASS\@/$dbpass/" /usr/share/glpi/config/config_db.php
+sed -i "s/\@DBNAME\@/$dbname/" /usr/share/glpi/config/config_db.php
 
 # Not available on MBS yet!
 #fusinvdeploy usr/share/glpi/plugins
