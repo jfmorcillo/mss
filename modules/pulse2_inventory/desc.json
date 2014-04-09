@@ -47,6 +47,7 @@
                 "python-pulse2-common-database-msc",
                 "samba-common",
                 "python-mmc-report",
+                "python-pygal",
                 "glpi",
                 "glpi-plugin-webservices",
                 "glpi-plugin-fusioninventory",
