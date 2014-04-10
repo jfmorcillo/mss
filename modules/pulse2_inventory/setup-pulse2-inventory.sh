@@ -41,18 +41,18 @@ if [ ! -f /root/.ssh/id_rsa ]; then
     [ $? -ne 0 ] && error "Failed to generate a SSH key pair for Pulse2 services" && exit 1
 fi
 sed -i 's!^.*sshkey_default = .*$!sshkey_default = /root/.ssh/id_rsa!' /etc/mmc/pulse2/launchers/launchers.ini
-sed -i "s!/root/.ssh/id_rsa'!/root/.ssh/id_rsa'!" /usr/sbin/pulse2-setup
+sed -i "s|/root/.ssh/id_rsa'|/root/.ssh/id_rsa'|" /usr/sbin/pulse2-setup
 
 # Configure inventory module to use GLPI
 sed -i 's|# glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=|glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=|' /etc/mmc/plugins/glpi.ini
-sed -i "s!# glpi_mode = False!glpi_mode = True!" /etc/mmc/pulse2/package-server/package-server.ini
-sed -i "s!disable = 1!disable = 0!" /etc/mmc/plugins/glpi.ini
-sed -i "s!# enable_forward = False!enable_forward = True!" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+sed -i "s|# glpi_mode = False|glpi_mode = True|" /etc/mmc/pulse2/package-server/package-server.ini
+sed -i "s|disable = 1|disable = 0|" /etc/mmc/plugins/glpi.ini
+sed -i "s|# enable_forward = False|enable_forward = True|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
 sed -i "s|# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
-sed -i "s!#purge_machine = 0!purge_machine = 1!" /etc/mmc/plugins/glpi.ini
-sed -i "s!#glpi_username = username!glpi_username = glpi!" /etc/mmc/plugins/glpi.ini
-sed -i "s!#glpi_password = password!glpi_password = glpi!" /etc/mmc/plugins/glpi.ini
-sed -i "s!method = inventory!method = glpi!" /etc/mmc/plugins/base.ini
+sed -i "s|#purge_machine = 0|purge_machine = 1|" /etc/mmc/plugins/glpi.ini
+sed -i "s|#glpi_username = username|glpi_username = glpi|" /etc/mmc/plugins/glpi.ini
+sed -i "s|#glpi_password = password|glpi_password = glpi|" /etc/mmc/plugins/glpi.ini
+sed -i "s|method = inventory|method = glpi|" /etc/mmc/plugins/base.ini
 
 
 # We fill the glpi database.
