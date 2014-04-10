@@ -47,8 +47,10 @@ sed -i "s|/root/.ssh/id_rsa'|/root/.ssh/id_rsa'|" /usr/sbin/pulse2-setup
 sed -i 's|# glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=|glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=|' /etc/mmc/plugins/glpi.ini
 sed -i "s|# glpi_mode = False|glpi_mode = True|" /etc/mmc/pulse2/package-server/package-server.ini
 sed -i "s|disable = 1|disable = 0|" /etc/mmc/plugins/glpi.ini
-sed -i "s|# enable_forward = False|enable_forward = True|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
-sed -i "s|# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+#overwritten by pulse2-setup
+#sed -i "s|# enable_forward = False|enable_forward = True|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+#sed -i "s|# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
+
 sed -i "s|#purge_machine = 0|purge_machine = 1|" /etc/mmc/plugins/glpi.ini
 sed -i "s|#glpi_username = username|glpi_username = glpi|" /etc/mmc/plugins/glpi.ini
 sed -i "s|#glpi_password = password|glpi_password = glpi|" /etc/mmc/plugins/glpi.ini
@@ -125,7 +127,9 @@ mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password=
 pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldaps://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
- --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root --glpi-dbpasswd="$mysql_password" \
+ --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root \
+ --glpi-dbpasswd="$mysql_password" \
+ --glpi-url="localhost/glpi"\
  | sed -r 's/\x1b.*?[mGKHh]//g'
 
 # Disable agent threading
