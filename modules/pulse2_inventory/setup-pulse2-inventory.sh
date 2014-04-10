@@ -125,7 +125,7 @@ mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password=
 pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldaps://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
- --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root --glpi-dbpasswd="$mysql_password" \
+ --disable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpiurl= "http://localhost/glpi/" --glpi-dbuser=root --glpi-dbpasswd="$mysql_password" \
  | sed -r 's/\x1b.*?[mGKHh]//g'
 
 # Disable agent threading
