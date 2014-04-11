@@ -83,14 +83,11 @@ sed -i "s/\@DBUSER\@/$dbuser/" /usr/share/glpi/config/config_db.php
 sed -i "s/\@DBPASS\@/$dbpass/" /usr/share/glpi/config/config_db.php
 sed -i "s/\@DBNAME\@/$dbname/" /usr/share/glpi/config/config_db.php
 
-# Not available on MBS yet!
-#fusinvdeploy usr/share/glpi/plugins
-#fusinvinventory usr/share/glpi/plugins
-#fusinvsnmp usr/share/glpi/plugins
-#fusioninventory usr/share/glpi/plugins
-
 #Create initial entitie ( if not done pulse2 backtrace )
 mysql_do_query "INSERT INTO glpi.glpi_entities (id ,name ,entities_id ,completename ,comment ,level ,sons_cache ,ancestors_cache) VALUES ( NULL , 'glpi', '0', 'glpi', '', '1', NULL , NULL )"
+
+# Enable Fusion inventory plugins
+php /usr/share/glpi/plugins/fusioninventory/tools/cli_install.php
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
