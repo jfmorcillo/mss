@@ -1,8 +1,8 @@
 #!/bin/sh
 
-if [ ! -e $config/glpi-reinitialize ]; then
-  exit 0
-fi
+#if [ ! -e $config/glpi-reinitialize ]; then
+#  exit 0
+#fi
 
 echo
 echo "#####################################"

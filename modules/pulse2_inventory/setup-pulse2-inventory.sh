@@ -20,6 +20,7 @@ function get_interface_addr() {
 check_mmc_configured
 
 # PARAMETERS
+# TODO: Remove and use the password from mysql directly'
 myrootpasswd="$1"
 fw_lan="$2"
 fw_wan="$3"
