@@ -54,7 +54,8 @@
                 "glpi-plugin-fusioninventory-deploy",
                 "glpi-plugin-fusioninventory-inventory",
                 "glpi-plugin-fusioninventory-snmp",
-                "python-mmc-glpi"
+                "python-mmc-glpi",
+                "mmc-web-glpi"
             ]
         }
     ],
