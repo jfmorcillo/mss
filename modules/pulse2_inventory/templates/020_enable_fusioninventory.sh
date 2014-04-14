@@ -49,7 +49,7 @@ echo "update glpi_plugin_fusioninventory_configs set value = '/var/lib/glpi/file
 
 echo "update glpi_plugin_fusioninventory_configs set value = 'http://127.0.0.1/glpi' where type = 'agent_base_url';" | mysql glpi
 
-chown -R www-data /var/lib/glpi/files/_plugins/fusi*
+chown -R apache /var/lib/glpi/_plugins/fusi*
 
 
 ### Add a few blacklists
