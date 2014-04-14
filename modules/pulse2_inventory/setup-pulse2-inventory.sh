@@ -76,9 +76,6 @@ mysql -u $dbuser -p$dbpass $dbname < /usr/share/glpi/install/mysql/glpi-0.83.1-e
 # For security reason we delete the install folder
 rm -frv /usr/share/glpi/install
 
-# Enable fusioninventory
-sh $ENABLE_FUSIONFILE
-
 cp  $GLPI_CONFIG /usr/share/glpi/config
 sed -i "s/\@DBUSER\@/$dbuser/" /usr/share/glpi/config/config_db.php
 sed -i "s/\@DBPASS\@/$dbpass/" /usr/share/glpi/config/config_db.php
@@ -89,6 +86,9 @@ mysql_do_query "INSERT INTO glpi.glpi_entities (id ,name ,entities_id ,completen
 
 # Enable Fusion inventory plugins
 php /usr/share/glpi/plugins/fusioninventory/tools/cli_install.php
+
+# Enable fusioninventory
+sh $ENABLE_FUSIONFILE
 
 # Check DNS
 dig ${FQDN} +nosearch +short | tail -n1 | grep -q -E '([0-9]{1,3}\.){3}[0-9]{1,3}'
