@@ -1,0 +1,70 @@
+{
+    "slug": "asterisk",
+    "name": "Asterisk VoIP server",
+    "description": "A VoIP server",
+    "desc": "A VoIP server",
+    "categories": [
+        {
+            "slug": "collaboration",
+            "name": "Collaboration"
+        }
+    ],
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["asterisk", "asterisk-plugins-ldap", "asterisk-plugins-voicemail", "asterisk-core-sounds-fr"]
+        }
+    ],
+    "config": [
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow access from internal networks",
+            "help": "Configure the firewall to allow access to the VoIP Service from internal networks"
+        },
+	{
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow access from external networks",
+            "help": "Configure the firewall to allow access to the VoIP Service from external networks"
+        },
+        {
+            "type": "options",
+            "name": "asterisk_lang",
+            "require": "yes",
+            "label": "Default language for Asterisk voicemail",
+            "help": "Create default folders for users in the selected language",
+            "options": [
+                {
+                    "name": "English",
+                    "value": "en"
+                },
+                {
+                    "name": "Français",
+                    "value": "fr"
+                },
+                {
+                    "name": "Deutsch",
+                    "value": "de"
+                },
+                {
+                    "name": "Portuguese (Brazil)",
+                    "value": "pt_BR"
+                }
+            ]
+	}
+    ],
+    "module": {
+        "section": "other"
+    }
+}
+
