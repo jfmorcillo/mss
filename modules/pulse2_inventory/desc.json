@@ -83,7 +83,7 @@
         }
     ],
     "dependencies": ["mds_mmc", "mysql"],
-    "modules": {
+    "module": {
         "section": "other",
         "dependencies": ["mds_mmc", "mysql"]
     },

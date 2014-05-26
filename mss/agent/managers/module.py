@@ -163,7 +163,10 @@ class ModuleManager:
                 logger.exception("Failed to load %s" % (path))
             else:
                 if not "module" in desc:
-                    desc["module"] = {}
+                    if desc['standalone'] == True:
+                        raise Exception('Missing section "module" in module %s' % desc['slug'])
+                    else:
+                        desc["module"] = {}
                 desc["module"]["path"] = path
                 result.append(desc)
 
