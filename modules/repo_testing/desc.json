@@ -2,6 +2,14 @@
     "slug": "repo_testing",
     "name": "Mandriva Business Server testing packages repository",
     "description": "Access to MBS testing packages from the public repository.",
-    "desc": "Access to MBS testing packages from the public repository.",
-    "dependencies": ["mbs_repo"]
+    "dependencies": ["mbs_repo"],
+    "categories": [
+        {
+            "slug": "repositories",
+            "name": "Repositories"
+        }
+    ],
+    "module": {
+        "section": "core"
+    }
 }
