@@ -7,6 +7,8 @@ check_mmc_configured
 python ./provision.py $1 $2 $3
 if [ "$?" != "0" ]; then
     exit $?
+else
+    info "Samba4 has been provisioned successfully"
 fi
 
 # confirmation

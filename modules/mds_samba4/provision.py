@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 import sys
 import os
+import shutil
 import socket
 import subprocess
 from time import sleep
@@ -22,7 +23,7 @@ def shlaunch(cmd):
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT)
     exit_code = p.wait()
-    stdout = "\n".join(p.stdout.readlines())
+    stdout = "".join(p.stdout.readlines())
     if exit_code != 0:
         print "ERROR executing `%s`:\n%s" % (cmd, stdout)
         fail_provisioning_samba4()
@@ -108,7 +109,7 @@ def provision_samba4(mode, realm, admin_password):
         print "Stopping iptables service"
         shlaunch("service iptables start")
 
-    def start_samba4_service(result):
+    def start_samba4_service():
         print "Starting samba4 service"
         shlaunch("service samba4 start")
         sleep(SLEEP_TIME)
@@ -116,6 +117,16 @@ def provision_samba4(mode, realm, admin_password):
     def start_s4sync_service():
         print "Starting s4sync daemon"
         shlaunch("service s4sync start")
+
+    # Clean up previous provisions
+    if os.path.exists(os.path.join(samba.prefix, 'etc/smb.conf')):
+        os.unlink(os.path.join(samba.prefix, 'etc/smb.conf'))
+    if os.path.exists(os.path.join(samba.prefix, 'private/sam.ldb')):
+        for root, dirs, files in os.walk(os.path.join(samba.prefix, 'private/')):
+            for f in files:
+    	        os.unlink(os.path.join(root, f))
+            for d in dirs:
+    	        shutil.rmtree(os.path.join(root, d))
 
     provision_domain()
     disable_password_complexity()
