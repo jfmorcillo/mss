@@ -1,0 +1,65 @@
+{
+    "slug": "mds_samba4",
+    "name": "Windows domain controller and file sharing management",
+    "description": "Use MBS as a Domain Controller with SAMBA 4 and provide Windows file shares on your network",
+    "categories": [
+        {
+            "slug": "users",
+            "name": "Users"
+        }
+    ],
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "lib64ldap2.4_2",
+                "openldap-clients",
+                "openldap-servers",
+                "samba4",
+                "mmc-web-samba4",
+                "python-mmc-samba4",
+                "python-s4sync"
+            ]
+        }
+    ],
+    "config": [
+        {
+            "type": "options",
+            "name": "smb_mode",
+            "require": "yes",
+            "label": "Mode",
+            "help": "Which type of provisioning of SAMBA 4",
+            "options": [
+                {"name": "Primary Domain Controller", "value": "dc"}
+            ]
+        },
+        {
+            "type": "text",
+            "name": "smb_domain",
+            "require": "yes",
+            "default": "example.com",
+            "validation": "valid_domain",
+            "label": "SAMBA domain name",
+            "help": "The name of your Microsoft domain."
+        },
+        {
+            "type": "password",
+            "name": "smb_passwd",
+            "require": "yes",
+            "label": "Administrator password",
+            "help": "Password for the Microsoft domain Administrator account."
+        }
+    ],
+    "module": {
+        "section": "core",
+        "dependencies": ["mds_mmc", "repo_testing", "repo_zentyal_jgarcia"],
+        "conflicts": ["mds_smb"]
+    }
+}
