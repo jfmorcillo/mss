@@ -20,7 +20,9 @@ def fail_provisioning_samba4(msg=None):
     sys.exit(1)
 
 
-def shlaunch(cmd):
+def shlaunch(cmd, ignore=False):
+    if not ignore:
+        print "$ %s" % cmd
     p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
                          stderr=subprocess.STDOUT)
     exit_code = p.wait()
@@ -28,6 +30,8 @@ def shlaunch(cmd):
     if exit_code != 0:
         print "ERROR executing `%s`:\n%s" % (cmd, stdout)
         fail_provisioning_samba4()
+    if not ignore:
+        print stdout
     return stdout
 
 
@@ -54,7 +58,7 @@ def provision_samba4(mode, realm, admin_password):
 
     def write_config_files():
         print "provision: domain_provision_cb"
-        netbios_domain_name = shlaunch("hostname").strip()
+        netbios_domain_name = shlaunch("hostname", ignore=True).strip()
         samba.writeSambaConfig(mode, netbios_domain_name, realm, DESCRIPTION)
         samba.writeKrb5Config(realm)
 
