@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 import sys
+import fileinput
 import os
 import shutil
 import socket
@@ -80,8 +81,28 @@ def provision_samba4(mode, realm, admin_password):
             tries += 1
         fail_provisioning_samba4("Ldap is not running after waiting long time")
 
+    def openldap_smb5pwd_config():
+        f = open('/etc/openldap/slapd.conf', 'r')
+        for line in f:
+            if line.lstrip().startswith('moduleload') and 'smbk5pwd' in line:
+                return
+        f.close()
+        state = 0
+        for line in fileinput.input('/etc/openldap/slapd.conf', inplace=1):
+            print line,
+            if state == 0:
+                if line.lstrip().startswith('moduleload'):
+                    print 'moduleload smbk5pwd.so'
+                    state = 1
+            elif state == 1:
+                if line.lstrip().startswith('database'):
+                    print 'overlay smbk5pwd'
+                    state = 2
+        shlaunch("chown root:ldap /etc/openldap/slapd.conf")
+
     def reconfig_ldap_service():
         print "Reconfiguring ldap service"
+        openldap_smb5pwd_config()
         should_reconfing = True
         f = None
         try:
@@ -95,19 +116,16 @@ def provision_samba4(mode, realm, admin_password):
                 f.write(os.linesep)
                 f.write('SLAPDURLLIST="ldap://127.0.0.1"')
                 f.write(os.linesep)
-                # restart slapd
-                shlaunch("service ldap restart")
+                f.close()
+            shlaunch("service ldap restart")
         except Exception as e:
             fail_provisioning_samba4(e.message)
-        finally:
-            if f:
-                f.close()
         sleep(SLEEP_TIME)
         check_ldap_is_running()
 
     def stop_iptables_services():
         print "Stopping iptables service"
-        shlaunch("service iptables start")
+        shlaunch("service iptables stop")
 
     def start_samba4_service():
         print "Starting samba4 service"

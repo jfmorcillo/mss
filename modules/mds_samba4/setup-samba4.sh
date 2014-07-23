@@ -1,7 +1,7 @@
 #!/bin/bash
 
 . ../functions.sh
-
+check_root
 check_mmc_configured
 
 python ./provision.py $1 $2 $3
