@@ -32,7 +32,7 @@
     "repositories": [
         {
             "slug": "zentyal_jgarcia",
-            "name": "zentyal devel samba4",
+            "name": "Zentyal samba 4 development repository",
             "url": "http://people.zentyal.org/~jgarcia/rpms"
         }
     ],
