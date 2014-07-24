@@ -60,6 +60,7 @@
             "type": "password",
             "name": "smb_passwd",
             "require": "yes",
+            "validation": "valid_password",
             "label": "Administrator password",
             "help": "Password for the Microsoft domain Administrator account."
         }
