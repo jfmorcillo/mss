@@ -29,6 +29,13 @@
             ]
         }
     ],
+    "repositories": [
+        {
+            "slug": "zentyal_jgarcia",
+            "name": "zentyal devel samba4",
+            "url": "http://people.zentyal.org/~jgarcia/rpms"
+        }
+    ],
     "config": [
         {
             "type": "options",
@@ -59,7 +66,7 @@
     ],
     "module": {
         "section": "core",
-        "dependencies": ["mds_mmc", "repo_testing", "repo_zentyal_jgarcia"],
+        "dependencies": ["mds_mmc", "repo_testing"],
         "conflicts": ["mds_smb"]
     }
 }
