@@ -1,0 +1,45 @@
+{
+    "slug": "eva",
+    "name": "eva",
+    "description": "",
+    "desc": "",
+    "categories": [
+        {
+            "slug": "cloud",
+            "name": "Cloud"
+        }
+    ],
+    "actions": [
+        {
+            "type": "link",
+            "name": "eVA interface",
+            "value": "https://@HOSTNAME@/eva/"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [ "unzip", "apache", "apache-mod_jk", "apache-mod_jk-tools", "apache-mod_perl", "apache-mod_perl-devel", "apache-mod_python","apache-mod_php", "apache-mod_deflate", "apache-devel", "apache-mod_ssl", "mariadb", "mariadb-client", "mysql-MariaDB", "php-cli", "php-pear", "php-mysql", "php-mysqli", "php-curl", "php-soap", "php-pdo", "python-virtinst ", "hexedit", "libguestfs","libguestfs-devel", "guestfish", "libguestfs-tools", "libguestfs-java", "libguestfs-java-devel", "unzip", "java-1.7.0-openjdk", "postgresql9.2", "postgresql9.2-server", "postgresql-jdbc", "jboss-as", "winexe", "samba-client", "lib64guac3", "lib64guac-client-vnc0", "lib64guacamole-vnc-over-ssh0", "guacd", "lib64guac5""lib64guac-client-vnc0", "lib64vncserver0", "guacd"]
+
+        }
+    ],
+    "config": [
+        {
+            "type": "text",
+            "name": "default_language",
+            "require": "yes",
+            "label": "Default installation language"
+        },
+        {
+            "type": "password",
+            "name": "password_eva",
+            "require": "yes",
+            "label": "Password of the eva user"
+        }
+    ],
+    "dependencies": ["mysql", "postgresql"],
+    "module": {
+        "section": "other",
+        "dependencies": ["mysql", "postgresql"]
+    }
+}
