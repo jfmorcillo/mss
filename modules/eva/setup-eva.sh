@@ -104,6 +104,9 @@ fi
 
 echo "Configure postgreSQL"
 
+#FIXME: Change into  ${pswdPostgres}
+su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD '${password_eva}';\""
+
 cp $postgresql_home/data/pg_hba.conf $postgresql_home/data/pg_hba.conf.$DATE_EXEC
 echo "host    all         all         ${adressereseau}          password" >> $postgresql_home/data/pg_hba.conf
 
@@ -225,7 +228,7 @@ echo "Install eVA"
 	export JBOSS_ADMIN=${JBOSS_HOME}/eva-admin
 	export JBOSS_REPORTING=${JBOSS_HOME}/eva-reporting
 	
-    export passwordForUserSiveo=$passwordForUserSiveo
+    export passwordForUserSiveo=$password_eva
      	  
     cp ${workspace}/.eva/createdb.sql ${workspace}/.eva/createdb.sql.parse
     sed -i "s/@PASSWORD@/${passwordForUserSiveo}/g" ${workspace}/.eva/createdb.sql.parse
@@ -233,7 +236,6 @@ echo "Install eVA"
     cp ${workspace}/.eva/activiti.cfg.xml.generique ${workspace}/.eva/activiti.cfg.xml
     sed -i "s/@PASSWORD@/${passwordForUserSiveo}/g" ${workspace}/.eva/activiti.cfg.xml
         	  
-    sed -i '/siveo/d' ~/.pgpass
     echo "localhost:5432:*:siveo:${passwordForUserSiveo}" >> ~/.pgpass
         	  
     JBOSS_ENCRYPTED_PASSWORD=`java -cp ${workspace}/.tools/siveo-persistence-jpa.jar:${workspace}/.tools/log4j-1.2.16.jar:${workspace}/.tools net.siveo.eva.domain.security.Crypt crypt ${passwordForUserSiveo}`
