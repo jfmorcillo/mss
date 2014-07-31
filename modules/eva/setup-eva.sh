@@ -258,20 +258,20 @@ echo "Install eVA"
 	sed -i "s/@IPFRONTAL@/${ipFrontal}/g" ${workspace}/.eva/eva.backup.parse
 	
 	# Creation des instances de base eva, activiti, eva-jms + creation du user siveo
-	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse >> ${fichier_log} 2>&1"
+	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse"
 	
 	# create tables for reporting-quartz instance database
-	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql >> ${fichier_log} 2>&1"
+	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql"
 	
 	# Creation des tables de l'instance eva + remplissage des tables
-	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse >> ${fichier_log} 2>&1"
+	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse"
 	rm -f ${workspace}/.eva/eva.backup.parse
 	
 	# Creation des tables de l'instance activiti
-	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup >> ${fichier_log} 2>&1"
+	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup"
 	
 	# Creation des tables de l'instance eva-jms
-	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup >> ${fichier_log} 2>&1"
+	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup"
 		
 	# Re-creation du lien "syspreps" entre l'admin et eVA
 	pushd ${JBOSS_ADMIN}
@@ -288,9 +288,9 @@ echo "Install eVA"
 # End Install_eva
 
 # on verifie l'existence des 2 fichiers
-if [ ! -e $licenseCodeActivationFile -o ! -e $licenseFilePath ]; then
-		return 1
-fi
+#if [ ! -e $licenseCodeActivationFile -o ! -e $licenseFilePath ]; then
+#		return 1
+#fi
 	
 # on change le proprietaire et on affecte le droit 711
 chown -R root:siveo /etc/ssl/private
