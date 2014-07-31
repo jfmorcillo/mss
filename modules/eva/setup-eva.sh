@@ -108,7 +108,7 @@ echo "Configure postgreSQL"
 su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD '${password_eva}';\""
 
 cp $postgresql_home/data/pg_hba.conf $postgresql_home/data/pg_hba.conf.$DATE_EXEC
-echo "host    all         all         ${adressereseau}          password" >> $postgresql_home/data/pg_hba.conf
+echo "host    all         all         127.0.0.1/32          password" >> $postgresql_home/data/pg_hba.conf
 
 chown postgres:postgres $postgresql_home/data/pg_hba.conf
 backup $postgresql_home/data/pg_hba.conf
@@ -239,8 +239,6 @@ echo "Install eVA"
     echo "localhost:5432:*:siveo:${passwordForUserSiveo}" >> ~/.pgpass
     chmod 600 ~/.pgpass
 
-    restart_service postgresql
-
     JBOSS_ENCRYPTED_PASSWORD=`java -cp ${workspace}/.tools/siveo-persistence-jpa.jar:${workspace}/.tools/log4j-1.2.16.jar:${workspace}/.tools net.siveo.eva.domain.security.Crypt crypt ${passwordForUserSiveo}`
         	  
     cp ${workspace}/.jboss/eva.xml $JBOSS_EVA/configuration/eva.xml
@@ -259,7 +257,10 @@ echo "Install eVA"
 	cp ${workspace}/.eva/eva.backup ${workspace}/.eva/eva.backup.parse
 	sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${workspace}/.eva/eva.backup.parse
 	sed -i "s/@IPFRONTAL@/${ipFrontal}/g" ${workspace}/.eva/eva.backup.parse
-	
+
+
+    restart_service postgresql
+
 	# Creation des instances de base eva, activiti, eva-jms + creation du user siveo
 	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse"
 	
