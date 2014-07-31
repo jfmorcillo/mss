@@ -62,6 +62,7 @@ export JAVA_HOME=$default_rep_javahome
 
 default_language=$1
 password_eva=$2
+password_pg=$3
 ipFrontal=127.0.0.1
 
 #TODO: Add in desc.json ( choice between fr and en ).
@@ -105,7 +106,7 @@ fi
 echo "Configure postgreSQL"
 
 #FIXME: Change into  ${pswdPostgres}
-su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD '${password_eva}';\""
+su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD '${password_pg}';\""
 
 cp $postgresql_home/data/pg_hba.conf $postgresql_home/data/pg_hba.conf.$DATE_EXEC
 echo "host    all         all         127.0.0.1/32          password" >> $postgresql_home/data/pg_hba.conf
