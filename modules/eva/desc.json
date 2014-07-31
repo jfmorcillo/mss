@@ -61,8 +61,6 @@
                 "lib64guac-client-vnc0",
                 "lib64guacamole-vnc-over-ssh0",
                 "guacd",
-                "lib64guac5",
-                "lib64guac-client-vnc0",
                 "lib64vncserver0",
                 "guacd"
             ]
