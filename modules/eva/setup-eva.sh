@@ -102,6 +102,8 @@ fi
 
 #postgresql
 
+echo "Configure postgreSQL"
+
 cp $postgresql_home/data/pg_hba.conf $postgresql_home/data/pg_hba.conf.$DATE_EXEC
 echo "host    all         all         ${adressereseau}          password" >> $postgresql_home/data/pg_hba.conf
 
@@ -216,6 +218,7 @@ popd
 
 # Install eVA	
 
+echo "Install eVA"
 	# mise en place de variables intermédiaires
 	export JBOSS_EVA=${JBOSS_HOME}/eva
 	export JBOSS_ADMIN=${JBOSS_HOME}/eva-admin
