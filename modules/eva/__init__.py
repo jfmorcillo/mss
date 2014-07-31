@@ -19,5 +19,17 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+from mss.agent.managers.translation import TranslationManager
+_ = TranslationManager().translate
+
+
 def get_config_info():
-    return ('setup-eva.sh', ["default_language", "password_eva" ])
+    return ('setup-eva.sh', ["default_language", "password_eva"])
+
+
+def valid_lic(lic):
+    """Check that the license has been accepted"""
+    if lic == "on":
+        return None
+    else:
+        return _("You must accept the license", "eva")
