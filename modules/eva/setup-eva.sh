@@ -276,7 +276,9 @@ echo "Install eVA"
 	
 	# Creation des tables de l'instance eva-jms
 	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup"
-		
+
+    rm -fv ~/.pgpass
+
 	# Re-creation du lien "syspreps" entre l'admin et eVA
 	pushd ${JBOSS_ADMIN}
 	    rm -f syspreps
