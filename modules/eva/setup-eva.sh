@@ -239,6 +239,8 @@ echo "Install eVA"
     echo "localhost:5432:*:siveo:${passwordForUserSiveo}" >> ~/.pgpass
     chmod 600 ~/.pgpass
 
+    restart_service postgresql
+
     JBOSS_ENCRYPTED_PASSWORD=`java -cp ${workspace}/.tools/siveo-persistence-jpa.jar:${workspace}/.tools/log4j-1.2.16.jar:${workspace}/.tools net.siveo.eva.domain.security.Crypt crypt ${passwordForUserSiveo}`
         	  
     cp ${workspace}/.jboss/eva.xml $JBOSS_EVA/configuration/eva.xml
