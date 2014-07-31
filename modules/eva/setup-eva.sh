@@ -128,6 +128,7 @@ echo 'export PATH=$JAVA_HOME/bin:$PATH'  >> ~eva/.bash_profile
 jbosshomedir=$default_rep_jboss
 
 pushd ${jbosshomedir}
+binJboss=jboss-as-7.1.1.Final.tar.gz
     tar zxvf ${workspace}/.jboss/${binJboss} >> ${fichier_log}
     mkdir -p ${jbosshomedir}/eva-admin/deployments
     cp ${workspace}/.eva/artifacts/eva-admin.war ${jbosshomedir}/eva-admin/deployments
