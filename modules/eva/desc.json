@@ -41,7 +41,7 @@
                 "php-curl",
                 "php-soap",
                 "php-pdo",
-                "python-virtinst ",
+                "python-virtinst",
                 "hexedit",
                 "libguestfs",
                 "libguestfs-devel",
