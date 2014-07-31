@@ -80,6 +80,12 @@
             "require":"yes",
             "label":"Password of the eva user"
         }
+        {
+            "type":"password",
+            "name":"password_pg",
+            "require":"yes",
+            "label":"Password of PostgreSQL"
+        }
     ],
     "dependencies":[
         "mysql",
