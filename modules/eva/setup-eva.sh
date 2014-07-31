@@ -127,13 +127,17 @@ jbosshomedir=$default_rep_jboss
 
 pushd ${jbosshomedir}
     tar zxvf ${workspace}/.jboss/${binJboss} >> ${fichier_log}
+    mkdir -p ${jbosshomedir}/eva-admin/deployments
     cp ${workspace}/.eva/artifacts/eva-admin.war ${jbosshomedir}/eva-admin/deployments
+    mkdir -p ${jbosshomedir}/eva/deployments/eva
     cp ${workspace}/.eva/artifacts/siveo-eva-ear.ear ${jbosshomedir}/eva/deployments/eva
+    mkdir -p ${jbosshomedir}/eva-reporting/deployments
     cp ${workspace}/.eva/artifacts/siveo-reporting-ws.war ${jbosshomedir}/eva-reporting/deployments
        
     rm -f ${jbosshomedir}/eva/GuestTools/*
     unzip ${workspace}/.eva/artifacts/Scripts-GuestTools.zip -d ${jbosshomedir}/eva/GuestTools/
-      
+
+    mkdir -p ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties
     cp ${workspace}/.jboss/siveo-reporting-ehcache.xml ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties/ehcache.xml
     echo "${jbosshomedir}/"|sed 's/\//\\\//g' > /tmp/jj
     JBOSS_HOME_BACKSLACHE=`cat /tmp/jj`
