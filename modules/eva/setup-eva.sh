@@ -83,7 +83,7 @@ SIVEO=`grep siveo /etc/group`
 
 if [ -z $EVA ]; then 
     useradd $USER
-    $password_eva | chpasswd
+    echo "$password_eva" | chpasswd
 fi
 
 if [ -z $SIVEO ]; then
