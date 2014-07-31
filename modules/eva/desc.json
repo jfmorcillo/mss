@@ -62,7 +62,8 @@
                 "lib64guacamole-vnc-over-ssh0",
                 "guacd",
                 "lib64vncserver0",
-                "guacd"
+                "guacd",
+                "eva"
             ]
         }
     ],
