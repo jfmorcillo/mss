@@ -280,12 +280,11 @@ echo "Install eVA"
 	popd
 	
 	# deploiement du fichier bar contenant les processus bpm
-	cd ${workspace}/.tools
+	pushd ${workspace}/.tools
 	java -cp siveo-activiti-deployment.jar:${workspace}/.eva net.siveo.activiti.deploy.DeployHelper ${workspace}/.eva/artifacts/eva-process-activiti.zip >> ${fichier_log}
 	# TODO A REMETTRE rm -f ${workspace}/.eva/activiti.cfg.xml
-	cd - > /dev/null
+	popd
 	
-	return 0
 # End Install_eva
 
 # on verifie l'existence des 2 fichiers
