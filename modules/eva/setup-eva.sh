@@ -303,7 +303,10 @@ echo "Install eVA"
 mkdir -p /etc/ssl/private
 chown -R root:siveo /etc/ssl/private
 chmod 711 /etc/ssl/private
-	
+
+licenseCodeActivationFile=/tmp/siveo.sc
+licenseFilePath=/tmp/license.details
+
 # on copie le fichier dans /etc/ssl/private/siveo.sc
 cp ${licenseCodeActivationFile} ${codeActivationFile}
 chmod 600 ${codeActivationFile}
