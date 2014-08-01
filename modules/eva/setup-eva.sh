@@ -5,6 +5,8 @@
 
 check_mmc_configured
 
+# Backend
+
 jbossInstanceIsRunning()
 {	
 	NB_INSTANCE=`ps -edf|grep $1|grep java|grep -v grep|wc -l`
@@ -293,12 +295,6 @@ echo "Install eVA"
 	
 # End Install_eva
 
-# on verifie l'existence des 2 fichiers
-#if [ ! -e $licenseCodeActivationFile -o ! -e $licenseFilePath ]; then
-#		return 1
-#fi
-	
-# on change le proprietaire et on affecte le droit 711
 mkdir -p /etc/ssl/private
 chown -R root:siveo /etc/ssl/private
 chmod 711 /etc/ssl/private
@@ -322,7 +318,15 @@ export LICENSE_DETAILS=$JBOSS_HOME/eva/license/license.details
 
 restart_service guacd
 
-#TODO: Before converting configure_postgresql(), be sure that this does not break already installed modules
+
+# FrontEnd.
+
+rep_siveo="/var/www/siveo"
+default_workspace_front="/usr/share/eva/web"
+
+mkdir -p $rep_siveo
+mkdir -p $default_workspace
+
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
 info $"You can access the web interface at https://@HOSTNAME@/eVA/"
