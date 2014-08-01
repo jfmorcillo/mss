@@ -24,7 +24,7 @@ _ = TranslationManager().translate
 
 
 def get_config_info():
-    return ('setup-eva.sh', ["default_language", "password_eva", "password_pg" ])
+    return ('setup-eva.sh', ["password_eva", "password_pg" ])
 
 
 def valid_lic(lic):

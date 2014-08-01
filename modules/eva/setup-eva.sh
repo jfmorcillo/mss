@@ -60,9 +60,8 @@ codeActivationFile="/etc/ssl/private/siveo.sc"
 export JAVA_HOME=$default_rep_javahome
 
 
-default_language=$1
-password_eva=$2
-password_pg=$3
+password_eva=$1
+password_pg=$2
 ipFrontal=127.0.0.1
 
 #TODO: Add in desc.json ( choice between fr and en ).

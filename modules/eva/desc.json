@@ -69,12 +69,6 @@
     ],
     "config":[
         {
-            "type":"text",
-            "name":"default_language",
-            "require":"yes",
-            "label":"Default installation language"
-        },
-        {
             "type":"password",
             "name":"password_eva",
             "require":"yes",
