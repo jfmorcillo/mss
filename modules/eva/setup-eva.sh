@@ -323,7 +323,7 @@ restart_service guacd
 rep_siveo="/var/www/siveo"
 default_workspace_front="/usr/share/eva/web"
 rep_apache2="/etc/httpd"
-adresseIPEva=i"127.0.0.1"
+adresseIPEva="127.0.0.1"
 
 mkdir -p $rep_siveo
 mkdir -p $default_workspace
