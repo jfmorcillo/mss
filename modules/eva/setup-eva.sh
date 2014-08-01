@@ -342,6 +342,9 @@ openssl req \
 
 cp $default_workspace_front/workers.properties $rep_apache2/conf/workers.properties
 sed -i "s/@ADRESSEIPEVA@/${adresseIPEva}/g" $rep_apache2/conf/workers.properties
+sed -i -e "s/#LoadModule asis_module modules\/mod_asis.so/LoadModule asis_module modules\/mod_asis.so/g" ${rep_apache2}/conf/httpd.conf
+sed -i -e "s/ServerTokens OS/ServerTokens Prod/g" ${rep_apache2}/conf/httpd.conf
+sed -i -e "s/ServerSignature On/ServerSignature Off/g" ${rep_apache2}/conf/httpd.conf
 
 
 info_b $"eVA is now configured."
