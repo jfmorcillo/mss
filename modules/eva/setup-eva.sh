@@ -300,6 +300,7 @@ echo "Install eVA"
 #fi
 	
 # on change le proprietaire et on affecte le droit 711
+mkdir -p /etc/ssl/private
 chown -R root:siveo /etc/ssl/private
 chmod 711 /etc/ssl/private
 	
