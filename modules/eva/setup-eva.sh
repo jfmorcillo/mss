@@ -302,7 +302,6 @@ chmod 711 /etc/ssl/private
 licenseCodeActivationFile=/tmp/siveo.sc
 licenseFilePath=/tmp/license.details
 
-# on copie le fichier dans /etc/ssl/private/siveo.sc
 cp ${licenseCodeActivationFile} ${codeActivationFile}
 chmod 600 ${codeActivationFile}
 chown eva:siveo ${codeActivationFile}
@@ -326,6 +325,18 @@ default_workspace_front="/usr/share/eva/web"
 
 mkdir -p $rep_siveo
 mkdir -p $default_workspace
+
+# Create OpenSSL Certs
+# FIXME: Need to customize ?
+openssl req \
+    -new \
+    -newkey rsa:4096 \
+    -days 365 \
+    -nodes \
+    -x509 \
+    -subj "/C=FR/ST=FR/L=Paris/O=Mdv/CN=www.mandriva.com" \
+    -keyout eva.key \
+    -out eva.cert
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
