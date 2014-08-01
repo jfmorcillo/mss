@@ -346,7 +346,33 @@ sed -i -e "s/#LoadModule asis_module modules\/mod_asis.so/LoadModule asis_module
 sed -i -e "s/ServerTokens OS/ServerTokens Prod/g" ${rep_apache2}/conf/httpd.conf
 sed -i -e "s/ServerSignature On/ServerSignature Off/g" ${rep_apache2}/conf/httpd.conf
 
+cp $default_workspace_front/default $rep_apache2/conf/vhosts.d/eva.conf
+
+tmplocal=`cat /etc/sysconfig/clock | grep "ZONE" | cut -d= -f2`
+echo ${tmplocal} |sed 's/\//\\\//g' > /tmp/loca
+local=`cat /tmp/loca`
+sed -i -e "s/;date.timezone =/date.timezone = ${local}/g" /etc/php.ini
+
+pswdMysql=`grep password .my.cnf |  cut -d\' -f2`
+
+mysql -u root -p${pswdMysql} < $workspace/actibox_siveo.sql
+unzip -d $rep_siveo -o $workspace/siveo-eva-ihm-*.zip
+mkdir -p $rep_siveo/temp/cache/php
+
+chmod ugo+rwx $rep_siveo/utils/
+chmod ugo+rwx $rep_siveo/var/
+chmod -R ugo+rwx $rep_siveo/temp/
+
+cp $workspace/webservices.xml $rep_siveo/sites/evplanet-admin/webservices.xml
+cp $workspace/encode.php $workspace/encodeTemp.php
+sed -i "s/password/${pswdMysql}/g" $workspace/encodeTemp.php
+
+pswdMysqlcrypt=`php $workspace/encodeTemp.php`
+
+cp $workspace/profils.copixdb.xml $rep_siveo/var/config/profils.copixdb.xml
+sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.copixdb.xml
+
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
-info $"You can access the web interface at https://@HOSTNAME@/eVA/"
+info $"You can access the web interface at https://@HOSTNAME@/eva/"
