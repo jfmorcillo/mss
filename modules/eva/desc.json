@@ -90,13 +90,15 @@
     ],
     "dependencies":[
         "mysql",
-        "postgresql"
+        "postgresql",
+        "libvirt"
     ],
     "module":{
         "section":"other",
         "dependencies":[
             "mysql",
-            "postgresql"
+            "postgresql",
+            "libvirt"
         ]
     }
 }
