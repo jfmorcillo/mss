@@ -378,7 +378,11 @@ CONF=templates/eva.conf.tpl
 cp -fv $CONF /etc/httpd/conf/vhosts.d/eva.conf
 
 restart_service httpd
+restart_service jboss-eva
+restart_service jboss-eva-admin
+restart_service jboss-eva-reporting
+restart_service jboss-guacamole
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
-info $"You can access the web interface at https://@HOSTNAME@/eva/"
+info $"You can access the web interface at https://@HOSTNAME@/"
