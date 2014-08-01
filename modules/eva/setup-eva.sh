@@ -353,7 +353,7 @@ echo ${tmplocal} |sed 's/\//\\\//g' > /tmp/loca
 local=`cat /tmp/loca`
 sed -i -e "s/;date.timezone =/date.timezone = ${local}/g" /etc/php.ini
 
-pswdMysql=`grep password .my.cnf |  cut -d\' -f2`
+pswdMysql=`grep password /root/.my.cnf |  cut -d\' -f2`
 
 mysql -u root -p${pswdMysql} < $default_workspace_front/actibox_siveo.sql
 unzip -d $rep_siveo -o $default_workspace_front/siveo-eva-ihm-*.zip
