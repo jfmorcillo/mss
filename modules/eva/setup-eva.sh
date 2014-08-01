@@ -355,24 +355,24 @@ sed -i -e "s/;date.timezone =/date.timezone = ${local}/g" /etc/php.ini
 
 pswdMysql=`grep password .my.cnf |  cut -d\' -f2`
 
-mysql -u root -p${pswdMysql} < $workspace/actibox_siveo.sql
-unzip -d $rep_siveo -o $workspace/siveo-eva-ihm-*.zip
+mysql -u root -p${pswdMysql} < $default_workspace_front/actibox_siveo.sql
+unzip -d $rep_siveo -o $default_workspace_front/siveo-eva-ihm-*.zip
 mkdir -p $rep_siveo/temp/cache/php
 
 chmod ugo+rwx $rep_siveo/utils/
 chmod ugo+rwx $rep_siveo/var/
 chmod -R ugo+rwx $rep_siveo/temp/
 
-cp $workspace/webservices.xml $rep_siveo/sites/evplanet-admin/webservices.xml
-cp $workspace/encode.php $workspace/encodeTemp.php
-sed -i "s/password/${pswdMysql}/g" $workspace/encodeTemp.php
+cp $default_workspace_front/webservices.xml $rep_siveo/sites/evplanet-admin/webservices.xml
+cp $default_workspace_front/encode.php $default_workspace_front/encodeTemp.php
+sed -i "s/password/${pswdMysql}/g" $default_workspace_front/encodeTemp.php
 
-pswdMysqlcrypt=`php $workspace/encodeTemp.php`
+pswdMysqlcrypt=`php $default_workspace_front/encodeTemp.php`
 
-cp $workspace/profils.copixdb.xml $rep_siveo/var/config/profils.copixdb.xml
+cp $default_workspace_front/profils.copixdb.xml $rep_siveo/var/config/profils.copixdb.xml
 sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.copixdb.xml
 
-cp $workspace/copixproperties.xml $rep_siveo/var/config
+cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
