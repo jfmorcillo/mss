@@ -322,6 +322,8 @@ restart_service guacd
 
 rep_siveo="/var/www/siveo"
 default_workspace_front="/usr/share/eva/web"
+rep_apache2="/etc/httpd"
+adresseIPEva=i"127.0.0.1"
 
 mkdir -p $rep_siveo
 mkdir -p $default_workspace
@@ -337,6 +339,10 @@ openssl req \
     -subj "/C=FR/ST=FR/L=Paris/O=Mdv/CN=www.mandriva.com" \
     -keyout eva.key \
     -out eva.cert
+
+cp $default_workspace_front/workers.properties $rep_apache2/conf/workers.properties
+sed -i "s/@ADRESSEIPEVA@/${adresseIPEva}/g" $rep_apache2/conf/workers.properties
+
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
