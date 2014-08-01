@@ -377,11 +377,11 @@ cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 CONF=templates/eva.conf.tpl
 cp -fv $CONF /etc/httpd/conf/vhosts.d/eva.conf
 
-restart_service httpd
-restart_service jboss-eva
-restart_service jboss-eva-admin
-restart_service jboss-eva-reporting
-restart_service jboss-guacamole
+service httpd start
+service jboss-eva start
+service jboss-eva-admin  start
+service jboss-eva-reporting start
+service jboss-guacamole start
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
