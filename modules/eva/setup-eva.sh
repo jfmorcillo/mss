@@ -74,7 +74,7 @@ export language="fr"
 #
 # mkdir /tmp/oracle
 # pushd /tmp/oracle
-#   wget http://javadl.sun.com/webapps/download/AutoDL?BundleId=92495 && mv "AutoDL?BundleId=92495" jre-7u65-linux-x64.rpm
+# wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
 #   urpmi jre-7u65-linux-x64.rpm
 #
 if [ -f "$default_workspace" ]; then
