@@ -353,7 +353,8 @@ sed -i -e "s/#LoadModule asis_module modules\/mod_asis.so/LoadModule asis_module
 sed -i -e "s/ServerTokens OS/ServerTokens Prod/g" ${rep_apache2}/conf/httpd.conf
 sed -i -e "s/ServerSignature On/ServerSignature Off/g" ${rep_apache2}/conf/httpd.conf
 
-cp $default_workspace_front/default $rep_apache2/conf/vhosts.d/eva.conf
+CONF=templates/eva.conf.tpl
+cp -fv $CONF $rep_apache2/conf/vhosts.d/eva.conf
 
 tmplocal=`cat /etc/sysconfig/clock | grep "ZONE" | cut -d= -f2`
 echo ${tmplocal} |sed 's/\//\\\//g' > /tmp/loca
