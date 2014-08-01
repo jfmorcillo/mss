@@ -70,6 +70,13 @@ ipFrontal=127.0.0.1
 #export language=$default_language
 export language="fr"
 
+# Uncomment to download and install Oracle JDK
+#
+# mkdir /tmp/oracle
+# pushd /tmp/oracle
+#   wget http://javadl.sun.com/webapps/download/AutoDL?BundleId=92495 && mv "AutoDL?BundleId=92495" jre-7u65-linux-x64.rpm
+#   urpmi jre-7u65-linux-x64.rpm
+#
 if [ -f "$default_workspace" ]; then
     mkdir -p $default_workspace
 fi
