@@ -374,6 +374,8 @@ sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.cop
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 
+restart_service httpd
+
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
 info $"You can access the web interface at https://@HOSTNAME@/eva/"
