@@ -1,4 +1,7 @@
 RedirectMatch ^/$ /evplanet-admin/
+RewriteEngine On
+RewriteCond %{HTTPS} !=on
+RewriteRule ^/?(.*) https://%{SERVER_NAME}/$1 [R,L]
 DocumentRoot /var/www/siveo/sites/evplanet-admin/www/
 Alias /evplanet-admin "/var/www/siveo/sites/evplanet-admin/www/"
 <Directory "/var/www/siveo/sites/evplanet-admin/www/">
