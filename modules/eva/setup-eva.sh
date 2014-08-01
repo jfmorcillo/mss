@@ -372,6 +372,7 @@ pswdMysqlcrypt=`php $workspace/encodeTemp.php`
 cp $workspace/profils.copixdb.xml $rep_siveo/var/config/profils.copixdb.xml
 sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.copixdb.xml
 
+cp $workspace/copixproperties.xml $rep_siveo/var/config
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
