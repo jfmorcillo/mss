@@ -72,20 +72,20 @@
             "type":"password",
             "name":"password_eva",
             "require":"yes",
-            "label":"Password of the eva user"
+            "label":"Senha do usuário eva"
         },
         {
             "type":"password",
             "name":"password_pg",
             "require":"yes",
-            "label":"Password of PostgreSQL"
+            "label":"Senha do PostgreSQL"
         },
         {
             "type": "check",
             "name": "accept_oracle",
             "validation": "valid_lic",
             "default": "off",
-            "label": "I accept the Oracle(c) Licence and install Oracle JDK"
+            "label": "Aceito a licença Oracle(c) e desejo instalar o Oracle JDK"
         }
     ],
     "dependencies":[
