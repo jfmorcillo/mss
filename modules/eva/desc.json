@@ -1,8 +1,8 @@
 {
-    "slug":"eva",
-    "name":"eva",
-    "description":"",
-    "desc":"",
+    "slug":"Mandriva eVA",
+    "name":"Mandriva eVA",
+    "description":"Cloud Management Solution",
+    "desc":"Cloud Management Solution",
     "categories":[
         {
             "slug":"cloud",
