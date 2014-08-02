@@ -382,9 +382,6 @@ sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.cop
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 
-CONF=templates/eva.conf.tpl
-cp -fv $CONF /etc/httpd/conf/vhosts.d/eva.conf
-
 service httpd start
 service jboss-eva start
 service jboss-eva-admin  start
