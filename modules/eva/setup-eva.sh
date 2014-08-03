@@ -74,7 +74,7 @@ ipFrontal=127.0.0.1
 
 export language="en"
 
-if [ $USE_ORACLE -eq 0 ]; then
+if [ $USE_ORACLE -eq 1 ]; then
     mkdir /tmp/oracle
     pushd /tmp/oracle
     wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
