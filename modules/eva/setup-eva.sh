@@ -383,6 +383,7 @@ chmod ugo+rwx $rep_siveo/var/
 chmod -R ugo+rwx $rep_siveo/temp/
 
 cp $default_workspace_front/webservices.xml $rep_siveo/sites/evplanet-admin/webservices.xml
+sed -i -e "s/https/http/g" $rep_siveo/sites/evplanet-admin/webservices.xml
 cp $default_workspace_front/encode.php $default_workspace_front/encodeTemp.php
 sed -i "s/password/${pswdMysql}/g" $default_workspace_front/encodeTemp.php
 
