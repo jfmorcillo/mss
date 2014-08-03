@@ -67,7 +67,6 @@ codeActivationFile="/etc/ssl/private/siveo.sc"
 
 export JAVA_HOME=$default_rep_javahome
 
-
 password_eva=$1
 password_pg=$2
 ipFrontal=127.0.0.1
@@ -86,6 +85,8 @@ if [ $USE_ORACLE -eq 1 ]; then
     echo JNI_LIBDIR="/usr/java/jdk1.7.0_65/" >> /etc/java/java.conf
     sed -i '/JAVA_LIBDIR/d' /etc/java/java.conf
     echo JAVA_LIBDIR="/usr/java/jdk1.7.0_65/" >> /etc/java/java.conf
+    sed -i '/JVM_ROOT/d' /etc/java/java.conf
+    echo JVM_ROOT="/usr/java/jdk1.7.0_65/" >> /etc/java/java.conf
 fi
 
 if [ -f "$default_workspace" ]; then
@@ -140,11 +141,10 @@ backup $postgresql_home/data/postgresql.conf
 sed -i "s/max_connections = 100/max_connections = 50/g" $postgresql_home/data/postgresql.conf
 
 #Configure Java
-export JAVA_HOME=${javahomedir}
 export PATH=$JAVA_HOME/bin:$PATH
 echo "JAVA_HOME=$JAVA_HOME" >> /etc/java/java.conf
 
-echo "export JAVA_HOME=${javahomedir}"  >> ~eva/.bash_profile
+echo "export JAVA_HOME=$JAVA_HOME" >> ~eva/.bashrc
 echo 'export PATH=$JAVA_HOME/bin:$PATH'  >> ~eva/.bash_profile
 
 # Configure JBoss
