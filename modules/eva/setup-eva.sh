@@ -82,6 +82,10 @@ if [ $USE_ORACLE -eq 1 ]; then
     fi
     urpmi ./jdk-7u65-linux-x64.rpm
     popd
+    sed -i '/JNI_LIBDIR/d' /etc/java/java.conf
+    echo JNI_LIBDIR="/usr/java/jdk1.7.0_65/" >> /etc/java/java.conf
+    sed -i '/JAVA_LIBDIR/d' /etc/java/java.conf
+    echo JAVA_LIBDIR="/usr/java/jdk1.7.0_65/" >> /etc/java/java.conf
 fi
 
 if [ -f "$default_workspace" ]; then
