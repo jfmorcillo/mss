@@ -80,7 +80,8 @@ if [ $USE_ORACLE -eq 1 ]; then
     if [ ! -e "jre-7u65-linux-x64.rpm" ] ; then
         wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
     fi
-    urpmi jre-7u65-linux-x64.rpm
+    urpmi ./jre-7u65-linux-x64.rpm
+    popd
 fi
 
 if [ -f "$default_workspace" ]; then
