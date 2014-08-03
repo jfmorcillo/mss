@@ -46,7 +46,7 @@ postgresql_home="/var/lib/pgsql"
 password_postgresql="siveo2014"
 
 USE_ORACLE=1
-if [ -z $USE_ORACLE ]; then
+if [ $USE_ORACLE -eq 0 ]; then
     default_rep_javahome="/usr/share/java"
 else
     default_rep_javahome="/usr/java/jre1.7.0_65"
@@ -72,11 +72,9 @@ password_eva=$1
 password_pg=$2
 ipFrontal=127.0.0.1
 
-#TODO: Add in desc.json ( choice between fr and en ).
-#export language=$default_language
-export language="fr"
+export language="en"
 
-if [ -z $USE_ORACLE ]; then
+if [ $USE_ORACLE -eq 0 ]; then
     mkdir /tmp/oracle
     pushd /tmp/oracle
     wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
