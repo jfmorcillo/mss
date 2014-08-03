@@ -49,7 +49,7 @@ USE_ORACLE=1
 if [ $USE_ORACLE -eq 0 ]; then
     default_rep_javahome="/usr/share/java"
 else
-    default_rep_javahome="/usr/java/jre1.7.0_65"
+    default_rep_javahome="/usr/java/jdk1.7.0_65"
 fi
 
 javaVersion64bits="jdk1.7.0_06"
@@ -76,7 +76,7 @@ export language="en"
 if [ $USE_ORACLE -eq 1 ]; then
     mkdir /tmp/oracle
     pushd /tmp/oracle
-    if [ ! -e "jre-7u65-linux-x64.rpm" ] ; then
+    if [ ! -e "jdk-7u65-linux-x64.rpm" ] ; then
         wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
     fi
     urpmi ./jdk-7u65-linux-x64.rpm
