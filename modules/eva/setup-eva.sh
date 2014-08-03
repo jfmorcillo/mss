@@ -394,7 +394,7 @@ sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.cop
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 
-service httpd start
+restart_service httpd
 service jboss-eva start
 service jboss-eva-admin  start
 service jboss-eva-reporting start
