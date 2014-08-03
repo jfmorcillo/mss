@@ -45,7 +45,13 @@ default_modeInstallation="standalone"
 postgresql_home="/var/lib/pgsql"
 password_postgresql="siveo2014"
 
-default_rep_javahome="/usr/share/java"
+USE_ORACLE=1
+if [ -z $USE_ORACLE ]; then
+    default_rep_javahome="/usr/share/java"
+else
+    default_rep_javahome="/usr/java/jre1.7.0_65"
+fi
+
 javaVersion64bits="jdk1.7.0_06"
 
 default_rep_jboss="/opt/jboss-as"
@@ -70,13 +76,13 @@ ipFrontal=127.0.0.1
 #export language=$default_language
 export language="fr"
 
-# Uncomment to download and install Oracle JDK
-#
-# mkdir /tmp/oracle
-# pushd /tmp/oracle
-# wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
-#   urpmi jre-7u65-linux-x64.rpm
-#
+if [ -z $USE_ORACLE ]; then
+    mkdir /tmp/oracle
+    pushd /tmp/oracle
+    wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm
+    urpmi jre-7u65-linux-x64.rpm
+fi
+
 if [ -f "$default_workspace" ]; then
     mkdir -p $default_workspace
 fi
