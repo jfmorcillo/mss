@@ -399,7 +399,7 @@ restart_service httpd
 restart_service jboss-eva
 restart_service jboss-eva-admin
 restart_service jboss-eva-reporting
-service jboss-guacamole start
+#service jboss-guacamole start
 
 info_b $"eVA is now configured."
 # FIXME: What is the URL for eVA ?
