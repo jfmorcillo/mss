@@ -393,7 +393,7 @@ cp $default_workspace_front/profils.copixdb.xml $rep_siveo/var/config/profils.co
 sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.copixdb.xml
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
-sed -i "s/useHttps/useHttp/g" $rep_siveo/var/config/copixproperties.xml
+sed -i "s/USEHTTPS/USEHTTP/g" $rep_siveo/var/config/copixproperties.xml
 
 restart_service httpd
 restart_service jboss-eva
