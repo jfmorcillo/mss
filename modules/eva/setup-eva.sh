@@ -396,9 +396,9 @@ cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 sed -i "s/useHttps/useHttp/g" $rep_siveo/var/config/copixproperties.xml
 
 restart_service httpd
-service jboss-eva start
-service jboss-eva-admin  start
-service jboss-eva-reporting start
+restart_service jboss-eva
+restart_service jboss-eva-admin
+restart_service jboss-eva-reporting
 service jboss-guacamole start
 
 info_b $"eVA is now configured."
