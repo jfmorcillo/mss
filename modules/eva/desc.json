@@ -13,7 +13,7 @@
         {
             "type":"link",
             "name":"eVA interface",
-            "value":"https://@HOSTNAME@/eva/"
+            "value":"https://@HOSTNAME@/evplanet-admin/"
         }
     ],
     "packages":[
@@ -72,20 +72,14 @@
             "type":"password",
             "name":"password_eva",
             "require":"yes",
-            "label":"Senha do usuário eva"
-        },
-        {
-            "type":"password",
-            "name":"password_pg",
-            "require":"yes",
-            "label":"Senha do PostgreSQL"
+            "label":"Password of eva administrator"
         },
         {
             "type": "check",
             "name": "accept_oracle",
             "validation": "valid_lic",
             "default": "off",
-            "label": "Aceito a licença Oracle(c) e desejo instalar o Oracle JDK"
+            "label": "I accept the Oracle(c) Licence and install Oracle JDK"
         }
     ],
     "dependencies":[

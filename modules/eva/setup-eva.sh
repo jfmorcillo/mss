@@ -43,7 +43,6 @@ default_modeInstallation="standalone"
 
 
 postgresql_home="/var/lib/pgsql"
-password_postgresql="siveo2014"
 
 USE_ORACLE=1
 if [ $USE_ORACLE -eq 0 ]; then
@@ -67,8 +66,8 @@ codeActivationFile="/etc/ssl/private/siveo.sc"
 
 export JAVA_HOME=$default_rep_javahome
 
+eVA_adminUser="evaadmin"
 password_eva=$1
-password_pg=$2
 ipFrontal=127.0.0.1
 
 export language="en"
@@ -93,7 +92,7 @@ if [ -f "$default_workspace" ]; then
     mkdir -p $default_workspace
 fi
 
-export modeInstallation=$default_modeInstallatio
+export modeInstallation=$default_modeInstallation
 export workspace=$default_workspace
 
 # Add User/Group
@@ -111,6 +110,9 @@ if [ -z $SIVEO ]; then
     groupadd $GROUP
 fi
 
+# Create evaadmin user
+python ./mmc_createuser.py -l $eVA_adminUser -p $password_eva
+
 if [ -e $JBOSS_HOME/eva/license/license.details ]; then
     export LICENSE_DETAILS=$JBOSS_HOME/eva/license/license.details
     decryptLicense $JBOSS_HOME/eva/license/license.details
@@ -124,9 +126,6 @@ fi
 #postgresql
 
 echo "Configure postgreSQL"
-
-#FIXME: Change into  ${pswdPostgres}
-su - postgres -c "psql -c \"ALTER USER postgres WITH PASSWORD '${password_pg}';\""
 
 cp $postgresql_home/data/pg_hba.conf $postgresql_home/data/pg_hba.conf.$DATE_EXEC
 echo "host    all         all         127.0.0.1/32          password" >> $postgresql_home/data/pg_hba.conf
@@ -231,6 +230,10 @@ popd
        ln -s ${jbosshomedir}/bin/init.d/jboss-as-eva-reporting.sh jboss-eva-reporting
        ln -s ${jbosshomedir}/bin/init.d/jboss-as-eva.sh jboss-eva
        ln -s ${jbosshomedir}/bin/init.d/jboss-as-guacamole.sh jboss-guacamole
+       chkconfig --level 2345 jboss-eva on
+       chkconfig --level 2345 jboss-eva-admin on
+       chkconfig --level 2345 jboss-eva-reporting on
+       chkconfig --level 2345 jboss-guacamole on
 
        cp $workspace/.guacamole/guacamole.properties $JBOSS_HOME/modules/net/siveo/guacamole/main/properties/guacamole.properties
        sed -i "s/@GUACD_SERVER@/localhost/g" $JBOSS_HOME/modules/net/siveo/guacamole/main/properties/guacamole.properties
@@ -393,12 +396,12 @@ cp $default_workspace_front/profils.copixdb.xml $rep_siveo/var/config/profils.co
 sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.copixdb.xml
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
-sed -i "s/USEHTTPS/USEHTTP/g" $rep_siveo/var/config/copixproperties.xml
+sed -i "s/@USEHTTPS@/False/g" $rep_siveo/var/config/copixproperties.xml
 
 restart_service httpd
-restart_service jboss-eva
-restart_service jboss-eva-admin
-restart_service jboss-eva-reporting
+#service jboss-eva start
+#service jboss-eva-admin start
+#service jboss-eva-reporting start
 #service jboss-guacamole start
 
 info_b $"eVA is now configured."
