@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Copyright (C) 2006, Jérôme Wax and Adam Cécilefor Linbox FAS
 # Copyright (C) 2010, Jean-Philippe Braun for Linbox FAS/Mandriva
