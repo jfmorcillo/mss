@@ -113,6 +113,9 @@ fi
 # Create evaadmin user
 python ./mmc_createuser.py -l $eVA_adminUser -p $password_eva
 
+# Create eva account for libvirt
+echo eVA_KvM@dm1n | saslpasswd2 -p -a libvirt eva
+
 if [ -e $JBOSS_HOME/eva/license/license.details ]; then
     export LICENSE_DETAILS=$JBOSS_HOME/eva/license/license.details
     decryptLicense $JBOSS_HOME/eva/license/license.details
@@ -405,5 +408,9 @@ restart_service httpd
 #service jboss-guacamole start
 
 info_b $"eVA is now configured."
-# FIXME: What is the URL for eVA ?
-info $"You can access the web interface at https://@HOSTNAME@/"
+info $"You can access eVA interface at https://@HOSTNAME@/"
+info $"You can access eVA admin interface at https://@HOSTNAME@/eva-admin/"
+info $"- Username is $eVA_adminUser"
+info $"- Password is $password_eva"
+info $"Reboot to complete the configuration."
+
