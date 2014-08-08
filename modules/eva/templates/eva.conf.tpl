@@ -1,4 +1,4 @@
-RedirectMatch ^/$ /evplanet-admin/
+RedirectMatch ^/$ /eva-first-run/
 DocumentRoot /var/www/siveo/sites/evplanet-admin/www/
 Alias /evplanet-admin "/var/www/siveo/sites/evplanet-admin/www/"
 <Directory "/var/www/siveo/sites/evplanet-admin/www/">

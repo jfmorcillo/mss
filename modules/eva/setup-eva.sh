@@ -163,7 +163,7 @@ binJboss=jboss-as-7.1.1.Final.tar.gz
     cp ${workspace}/.eva/artifacts/siveo-reporting-ws.war ${jbosshomedir}/eva-reporting/deployments
        
     rm -f ${jbosshomedir}/eva/GuestTools/*
-    unzip ${workspace}/.eva/artifacts/Scripts-GuestTools.zip -d ${jbosshomedir}/eva/GuestTools/
+    unzip ${workspace}/.eva/artifacts/Scripts-GuestTools.zip -d ${jbosshomedir}/eva/GuestTools/ > /dev/null
 
     mkdir -p ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties
     cp ${workspace}/.jboss/siveo-reporting-ehcache.xml ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties/ehcache.xml
@@ -288,20 +288,20 @@ echo "Install eVA"
     restart_service postgresql
 
 	# Creation des instances de base eva, activiti, eva-jms + creation du user siveo
-	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse"
+	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse" > /dev/null
 	
 	# create tables for reporting-quartz instance database
-	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql"
+	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql" > /dev/null
 	
 	# Creation des tables de l'instance eva + remplissage des tables
-	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse"
+	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse" > /dev/null
 	rm -f ${workspace}/.eva/eva.backup.parse
 	
 	# Creation des tables de l'instance activiti
-	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup"
+	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup" > /dev/null
 	
 	# Creation des tables de l'instance eva-jms
-	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup"
+	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup" > /dev/null
 
     rm -fv ~/.pgpass
 
@@ -322,20 +322,6 @@ echo "Install eVA"
 mkdir -p /etc/ssl/private
 chown -R root:siveo /etc/ssl/private
 chmod 711 /etc/ssl/private
-
-licenseCodeActivationFile=/tmp/siveo.sc
-licenseFilePath=/tmp/license.details
-
-cp ${licenseCodeActivationFile} ${codeActivationFile}
-chmod 600 ${codeActivationFile}
-chown eva:siveo ${codeActivationFile}
-export CODE_ACTIVATION=$codeActivationFile
-
-# on copie le fichier de détails de license dans $JBOSS_HOME/eva/license
-mkdir -p $JBOSS_HOME/eva/license
-cp ${licenseFilePath} $JBOSS_HOME/eva/license/license.details
-chown eva:siveo ${licenseFilePath}
-export LICENSE_DETAILS=$JBOSS_HOME/eva/license/license.details
 
 ###### END FIXME
 
@@ -366,22 +352,17 @@ openssl req \
 
 cp $default_workspace_front/workers.properties $rep_apache2/conf/workers.properties
 sed -i "s/@ADRESSEIPEVA@/${adresseIPEva}/g" $rep_apache2/conf/workers.properties
-sed -i -e "s/#LoadModule asis_module modules\/mod_asis.so/LoadModule asis_module modules\/mod_asis.so/g" ${rep_apache2}/conf/httpd.conf
-sed -i -e "s/ServerTokens OS/ServerTokens Prod/g" ${rep_apache2}/conf/httpd.conf
-sed -i -e "s/ServerSignature On/ServerSignature Off/g" ${rep_apache2}/conf/httpd.conf
+sed -i "s/#LoadModule asis_module modules\/mod_asis.so/LoadModule asis_module modules\/mod_asis.so/g" ${rep_apache2}/conf/httpd.conf
+sed -i "s/ServerTokens OS/ServerTokens Prod/g" ${rep_apache2}/conf/httpd.conf
+sed -i "s/ServerSignature On/ServerSignature Off/g" ${rep_apache2}/conf/httpd.conf
 
 CONF="/var/lib/mss/local/eva/templates/eva.conf.tpl"
 cp -fv $CONF $rep_apache2/conf/webapps.d/eva.conf
 
-tmplocal=`cat /etc/sysconfig/clock | grep "ZONE" | cut -d= -f2`
-echo ${tmplocal} |sed 's/\//\\\//g' > /tmp/loca
-local=`cat /tmp/loca`
-sed -i -e "s/;date.timezone =/date.timezone = ${local}/g" /etc/php.ini
-
 pswdMysql=`grep password /root/.my.cnf |  cut -d\' -f2`
 
 mysql -u root -p${pswdMysql} < $default_workspace_front/actibox_siveo.sql
-unzip -d $rep_siveo -o $default_workspace_front/siveo-eva-ihm-*.zip
+unzip -d $rep_siveo -o $default_workspace_front/siveo-eva-ihm-*.zip > /dev/null
 mkdir -p $rep_siveo/temp/cache/php
 
 chmod ugo+rwx $rep_siveo/utils/
@@ -406,6 +387,9 @@ restart_service httpd
 #service jboss-eva-admin start
 #service jboss-eva-reporting start
 #service jboss-guacamole start
+
+#FIXME: Siveo has to change the api to allow auth_tcp = sasl. For now we'll just allow unencrypted connections
+sed -i "s/^auth_tcp.*$/auth_tcp = \"none\"/g" /etc/libvirt/libvirtd.conf
 
 info_b $"eVA is now configured."
 info $"You can access eVA interface at https://@HOSTNAME@/"

@@ -12,13 +12,18 @@
     "actions":[
         {
             "type":"link",
+            "name":"eVA admin interface",
+            "value":"http://@HOSTNAME@/eva-admin/"
+        },
+        {
+            "type":"link",
             "name":"eVA interface",
             "value":"https://@HOSTNAME@/evplanet-admin/"
         },
         {
             "type":"link",
-            "name":"eVA admin interface",
-            "value":"http://@HOSTNAME@/eva-admin/"
+            "name":"Upgrade your unlicensed version into a fully licensed and supported version",
+            "value":"https://@HOSTNAME@/eva-first-run/"
         }
     ],
     "packages":[
