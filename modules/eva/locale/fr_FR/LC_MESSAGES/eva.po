@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 10:59+0200\n"
-"PO-Revision-Date: 2014-08-08 09:06+0000\n"
+"POT-Creation-Date: 2014-08-08 11:56+0200\n"
+"PO-Revision-Date: 2014-08-08 10:13+0000\n"
 "Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
 "MIME-Version: 1.0\n"
@@ -25,6 +25,10 @@ msgstr "Solution de gestion de Cloud"
 #: .actions[0].name
 msgid "eVA interface"
 msgstr "interface eVA"
+
+#: .actions[1].name
+msgid "eVA admin interface"
+msgstr "interface d'administration d'eVA"
 
 #: .name
 msgid "Mandriva eVA"
@@ -44,7 +48,7 @@ msgstr "Mot de passe de l'adminstrateur d'eVA"
 
 #: .config[1].name
 msgid "accept_oracle"
-msgstr ""
+msgstr "accept_oracle"
 
 #: .config[1].label
 msgid "I accept the Oracle(c) License and install Oracle JDK"
@@ -54,13 +58,32 @@ msgstr "J'accepte la licence Oracle(c) et j'installe le JDk Oracle"
 msgid "Cloud"
 msgstr "Cloud"
 
-#: eva/setup-eva.sh:407
+#: eva/setup-eva.sh:410
 msgid "eVA is now configured."
 msgstr "eVA est maintenant configuré"
 
-#: eva/setup-eva.sh:409
-msgid "You can access the web interface at https://@HOSTNAME@/"
-msgstr "Vous pouvez accéder l'interface web à l'adresse https://@HOSTNAME@/"
+#: eva/setup-eva.sh:411
+msgid "You can access eVA interface at https://@HOSTNAME@/"
+msgstr ""
+"Vous pouvez accéder à l'interface d'eVA à l'adresse https://@HOSTNAME@/"
+
+#: eva/setup-eva.sh:412
+msgid "You can access eVA admin interface at https://@HOSTNAME@/eva-admin/"
+msgstr ""
+"Vous pouvez accéder à l'interface d'administration d'eVA à l'adresse "
+"https://@HOSTNAME@/eva-admin/"
+
+#: eva/setup-eva.sh:413
+msgid "- Username is $eVA_adminUser"
+msgstr "- Le nom d'utilisateur est $eVA_adminUser"
+
+#: eva/setup-eva.sh:414
+msgid "- Password is $password_eva"
+msgstr "- Le mots de passe est $password_eva"
+
+#: eva/setup-eva.sh:415
+msgid "Reboot to complete the configuration."
+msgstr "- Veillez redémarrer pour terminer la configuration"
 
 #: eva/__init__.py:35
 msgid "You must accept the license"

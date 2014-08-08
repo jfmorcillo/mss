@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <andre@mandriva.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-17 15:06+0100\n"
-"PO-Revision-Date: 2014-02-17 14:09+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"POT-Creation-Date: 2014-08-08 11:56+0200\n"
+"PO-Revision-Date: 2014-08-08 13:34+0000\n"
+"Last-Translator: Andre Machado <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,111 +20,124 @@ msgstr ""
 
 #: .description .desc
 msgid "Use your MBS server to run KVM virtual machines"
-msgstr ""
+msgstr "Utilize seu servidor MBS para executar as máquinas virtuais KVM"
+
+#: .actions[0].name
+msgid "Addon documentation"
+msgstr "Addon Documentação"
 
 #: .name
 msgid "Libvirt with KVM"
-msgstr ""
+msgstr "Libvirt com KVM"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "todas"
 
 #: .config[0].help
 msgid "Password to manage virtual machines"
-msgstr ""
+msgstr "Senha para gerenciar márquinas virtuais"
 
 #: .config[0].name
 msgid "admin_password"
-msgstr ""
+msgstr "senha_admin"
 
 #: .config[0].label
 msgid "Admin password"
-msgstr ""
+msgstr "Senha do Admin"
 
 #: .config[1].help
 msgid ""
 "Adds a libvirt storage for your virtual machines and ISO files. Make sure "
 "you have enough space available."
 msgstr ""
+"Adiciona um armazenamento libvirt para sua máquina virtual e arquivos ISO. "
+"Certifique-se de ter espaço disponível suficiente."
 
 #: .config[1].label
 msgid "Storage location"
-msgstr ""
+msgstr "Local de armazenamento"
 
 #: .config[1].name
 msgid "pool_location"
-msgstr ""
+msgstr "local_pool"
 
 #: .config[2].name
 msgid "bridge"
-msgstr ""
+msgstr "bridge"
 
 #: .config[3].help
 msgid ""
 "Configure the firewall to accept libvirt management on interfaces configured"
 " as 'internal'"
 msgstr ""
+"Configurar o firewall para aceitar o gerenciamento do libvirt nas interfaces"
+" configurados como 'internas'"
 
 #: .config[3].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[3].label
 msgid "Allow connections from internal networks"
-msgstr ""
+msgstr "Permitir conexões de redes internas"
 
 #: .config[4].help
 msgid ""
 "Configure the firewall to accept libvirt management on interfaces configured"
 " as 'external'"
 msgstr ""
+"Configurar o firewall para aceitar o gerenciamento do libvirt nas interfaces"
+" configuradas como 'externas'"
 
 #: .config[4].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[4].label
 msgid "Allow connections from external networks"
-msgstr ""
+msgstr "Permitir conexões de redes externas"
 
 #: .categories[0].name
 msgid "Virtualization"
-msgstr ""
-
-#: libvirt/setup-libvirt.sh:71
-msgid "Libvirt and KVM are now installed and configured."
-msgstr ""
-
-#: libvirt/setup-libvirt.sh:72
-msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
-msgstr ""
-
-#: libvirt/setup-libvirt.sh:73
-msgid "- Hostname is @HOSTNAME@"
-msgstr ""
-
-#: libvirt/setup-libvirt.sh:74
-msgid "- Username is admin"
-msgstr ""
-
-#: libvirt/setup-libvirt.sh:75
-msgid "- Password is $admin_password"
-msgstr ""
+msgstr "Virtualização"
 
 #: libvirt/setup-libvirt.sh:76
+msgid "Libvirt and KVM are now installed and configured."
+msgstr "Libvirt e KVM agora estão instalados e configurados."
+
+#: libvirt/setup-libvirt.sh:77
+msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
+msgstr ""
+"Login para libvirt com o cliente virt-manager usando o método TCP/SASL:"
+
+#: libvirt/setup-libvirt.sh:78
+msgid "- Hostname is @HOSTNAME@"
+msgstr "- Nome da máquina é @HOSTNAME@"
+
+#: libvirt/setup-libvirt.sh:79
+msgid "- Username is admin"
+msgstr "- Nome do usuário é admin"
+
+#: libvirt/setup-libvirt.sh:80
+msgid "- Password is $admin_password"
+msgstr "- A senha é $admin_password"
+
+#: libvirt/setup-libvirt.sh:81
 msgid ""
 "Reboot to apply the network configuration. If you have a DHCP IP address "
 "your IP address may change."
 msgstr ""
+"Reinice para aplicar as configurações de rede. Caso tenha um endereço de IP "
+"DHCP, seu endereço de IP poderá ser alterado."
 
 #: libvirt/__init__.py:68
 #, python-format
 msgid "Create a bridge for interface %s (%s, %s)"
-msgstr ""
+msgstr "Criar uma conexão na mesma para a interface %s (%s, %s)"
 
 #: libvirt/__init__.py:69
 msgid "You will be able to setup virtual machines on this network."
-msgstr ""
+msgstr "Você poderá configurar máquinas virtuais nesta rede."
 
 

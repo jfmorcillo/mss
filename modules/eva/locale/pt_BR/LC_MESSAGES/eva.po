@@ -3,14 +3,15 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <andre@mandriva.com>, 2014.
 #   <spointu@mandriva.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 10:59+0200\n"
-"PO-Revision-Date: 2014-08-08 09:02+0000\n"
-"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
+"POT-Creation-Date: 2014-08-08 11:56+0200\n"
+"PO-Revision-Date: 2014-08-08 12:54+0000\n"
+"Last-Translator: Andre Machado <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,50 +21,70 @@ msgstr ""
 
 #: .description .desc
 msgid "Cloud Management Solution"
-msgstr ""
+msgstr "Solução de Gerenciamento de Nuvem"
 
 #: .actions[0].name
 msgid "eVA interface"
-msgstr ""
+msgstr "Interface eVA"
+
+#: .actions[1].name
+msgid "eVA admin interface"
+msgstr "Interface admin eVA"
 
 #: .name
 msgid "Mandriva eVA"
-msgstr ""
+msgstr "Mandriva eVA"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "Tudo"
 
 #: .config[0].name
 msgid "password_eva"
-msgstr ""
+msgstr "password_eva"
 
 #: .config[0].label
 msgid "Password of eva administrator"
-msgstr ""
+msgstr "Senha do administrador eva"
 
 #: .config[1].name
 msgid "accept_oracle"
-msgstr ""
+msgstr "accept_oracle"
 
 #: .config[1].label
 msgid "I accept the Oracle(c) License and install Oracle JDK"
-msgstr ""
+msgstr "Eu aceito a Licença Oracle(c) e instalo o Oracle JDK"
 
 #: .categories[0].name
 msgid "Cloud"
-msgstr ""
+msgstr "Nuvem"
 
-#: eva/setup-eva.sh:407
+#: eva/setup-eva.sh:410
 msgid "eVA is now configured."
-msgstr ""
+msgstr "eVA configurado."
 
-#: eva/setup-eva.sh:409
-msgid "You can access the web interface at https://@HOSTNAME@/"
-msgstr ""
+#: eva/setup-eva.sh:411
+msgid "You can access eVA interface at https://@HOSTNAME@/"
+msgstr "Acesse a interface do eVA em https://@HOSTNAME@/"
+
+#: eva/setup-eva.sh:412
+msgid "You can access eVA admin interface at https://@HOSTNAME@/eva-admin/"
+msgstr "Acesse a interface do admin eVA em https://@HOSTNAME@/eva-admin/"
+
+#: eva/setup-eva.sh:413
+msgid "- Username is $eVA_adminUser"
+msgstr "- O nome usuário é $eVA_adminUser"
+
+#: eva/setup-eva.sh:414
+msgid "- Password is $password_eva"
+msgstr "- A senha é $password_eva"
+
+#: eva/setup-eva.sh:415
+msgid "Reboot to complete the configuration."
+msgstr "Reinicie para completar a configuração."
 
 #: eva/__init__.py:35
 msgid "You must accept the license"
-msgstr ""
+msgstr "Você deve aceitar a licença"
 
 

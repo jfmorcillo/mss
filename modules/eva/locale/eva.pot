@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 10:59+0200\n"
+"POT-Creation-Date: 2014-08-08 11:56+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -23,6 +23,10 @@ msgstr ""
 
 #: .actions[0].name
 msgid "eVA interface"
+msgstr ""
+
+#: .actions[1].name
+msgid "eVA admin interface"
 msgstr ""
 
 #: .name
@@ -53,12 +57,28 @@ msgstr ""
 msgid "Cloud"
 msgstr ""
 
-#: eva/setup-eva.sh:407
+#: eva/setup-eva.sh:410
 msgid "eVA is now configured."
 msgstr ""
 
-#: eva/setup-eva.sh:409
-msgid "You can access the web interface at https://@HOSTNAME@/"
+#: eva/setup-eva.sh:411
+msgid "You can access eVA interface at https://@HOSTNAME@/"
+msgstr ""
+
+#: eva/setup-eva.sh:412
+msgid "You can access eVA admin interface at https://@HOSTNAME@/eva-admin/"
+msgstr ""
+
+#: eva/setup-eva.sh:413
+msgid "- Username is $eVA_adminUser"
+msgstr ""
+
+#: eva/setup-eva.sh:414
+msgid "- Password is $password_eva"
+msgstr ""
+
+#: eva/setup-eva.sh:415
+msgid "Reboot to complete the configuration."
 msgstr ""
 
 #: eva/__init__.py:35

@@ -1,0 +1,120 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <andre@mandriva.com>, 2013, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-08 11:56+0200\n"
+"PO-Revision-Date: 2014-08-08 13:32+0000\n"
+"Last-Translator: Andre Machado <andre@mandriva.com>\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .description .desc
+msgid "The inventory management module of Pulse2"
+msgstr "O módulo gerenciador de inventário do Pulse2"
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr "Interface do gerenciador"
+
+#: .name
+msgid "Pulse2 Inventory"
+msgstr "Inventário do Pulse2"
+
+#: .packages[0].name
+msgid "all"
+msgstr "todos"
+
+#: .config[0].help
+msgid "Used to create the glpi database"
+msgstr "Usado para criar o banco de dados glpi"
+
+#: .config[0].name
+msgid "myrootpasswd"
+msgstr "senhaderoot"
+
+#: .config[0].label
+msgid "MySQL root password"
+msgstr "Senha de root do MySQL"
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the Pulse2 inventory service from "
+"internal networks"
+msgstr ""
+"Configurar o firewall para parmitir acessos ao serviço de inventário do "
+"Pulse2 a partir das redes internas"
+
+#: .config[1].name
+msgid "fw_lan"
+msgstr "fw_lan"
+
+#: .config[1].label
+msgid "Allow access from internal networks"
+msgstr "Permitir acesso das redes internas"
+
+#: .config[2].help
+msgid ""
+"Configure the firewall to allow access to the Pulse2 inventory service from "
+"external networks"
+msgstr ""
+"Configurar o firewall para permitir acesso ao serviço de inventário do "
+"Pulse2 a partir das redes externas"
+
+#: .config[2].name
+msgid "fw_wan"
+msgstr "fw_wan"
+
+#: .config[2].label
+msgid "Allow access from external networks"
+msgstr "Permitir acesso das redes externas"
+
+#: .categories[0].name
+msgid "Pulse2"
+msgstr "Pulse2"
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:105
+msgid ""
+"You need to allow access to the Pulse2 Inventory server on either internal "
+"or external networks."
+msgstr ""
+"Você precisa dar acesso ao servidor de inventário do Pulse2 em ambas as "
+"redes internas e externas."
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:108
+msgid ""
+"A DNS entry must be set for this server if you want the Pulse2 services to "
+"listen on multiple interfaces."
+msgstr ""
+"A entrada DNS deve ser configurada este servidor, caso queira que os "
+"serviços do Pulse2 fiquem acessíveis a partir de múltiplas interfaces."
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:157
+msgid "Pulse2 Inventory is installed and configured."
+msgstr "O Inventário do Pulse2 está instalado e configurado."
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:158
+msgid ""
+"The inventory is available on the management interface at "
+"https://@HOSTNAME@/mmc/."
+msgstr ""
+"O inventário está disponível no gerenciador em https://@HOSTNAME@/mmc/."
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:159
+msgid ""
+"Check the documentation to use the Pulse2 inventory at "
+"http://serviceplace.mandriva.com/addons/mbs/1.0/pulse2_inventory/."
+msgstr ""
+"Para usar o inventário do Pulse2, verifique a documentação em "
+"http://serviceplace.mandriva.com/addons/mbs/1.0/pulse2_inventory/."
+
+
