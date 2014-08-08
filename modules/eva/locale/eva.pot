@@ -18,59 +18,49 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 
 #: .description .desc
-msgid "Network printers management"
+msgid "Cloud Management Solution"
 msgstr ""
 
 #: .actions[0].name
-msgid "Printers management"
+msgid "eVA interface"
 msgstr ""
 
 #: .name
-msgid "Printing service"
+msgid "Mandriva eVA"
 msgstr ""
 
 #: .packages[0].name
 msgid "all"
 msgstr ""
 
-#: .config[0].help
-msgid ""
-"Configure the firewall to allow access to the Printer Management Service "
-"from internal networks"
-msgstr ""
-
 #: .config[0].name
-msgid "fw_lan"
+msgid "password_eva"
 msgstr ""
 
 #: .config[0].label
-msgid "Allow connections to the management interface from internal networks"
-msgstr ""
-
-#: .config[1].help
-msgid ""
-"Configure the firewall to allow access to the Printer Management Service "
-"from external networks"
+msgid "Password of eva administrator"
 msgstr ""
 
 #: .config[1].name
-msgid "fw_wan"
+msgid "accept_oracle"
 msgstr ""
 
 #: .config[1].label
-msgid "Allow connections to the management interface from external networks"
+msgid "I accept the Oracle(c) License and install Oracle JDK"
 msgstr ""
 
-#: mds_cups/setup-cups.sh:19
-msgid "The printing service is running."
+#: .categories[0].name
+msgid "Cloud"
 msgstr ""
 
-#: mds_cups/setup-cups.sh:20
-msgid ""
-"You can add new printers from the Cups web interface : https://"
-"@HOSTNAME@:631/admin/."
+#: eva/setup-eva.sh:407
+msgid "eVA is now configured."
 msgstr ""
 
-#: mds_cups/setup-cups.sh:21
-msgid "Login to the Cups interface is the root account."
+#: eva/setup-eva.sh:409
+msgid "You can access the web interface at https://@HOSTNAME@/"
+msgstr ""
+
+#: eva/__init__.py:35
+msgid "You must accept the license"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-12 14:53+0100\n"
+"POT-Creation-Date: 2014-08-08 10:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -34,30 +34,42 @@ msgid "all"
 msgstr ""
 
 #: .config[0].help
-msgid ""
-"Configure the firewall to allow access to the Pulse2 inventory service from "
-"internal networks"
+msgid "Used to create the glpi database"
 msgstr ""
 
 #: .config[0].name
-msgid "fw_lan"
+msgid "myrootpasswd"
 msgstr ""
 
 #: .config[0].label
-msgid "Allow access from internal networks"
+msgid "MySQL root password"
 msgstr ""
 
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the Pulse2 inventory service from "
-"external networks"
+"internal networks"
 msgstr ""
 
 #: .config[1].name
-msgid "fw_wan"
+msgid "fw_lan"
 msgstr ""
 
 #: .config[1].label
+msgid "Allow access from internal networks"
+msgstr ""
+
+#: .config[2].help
+msgid ""
+"Configure the firewall to allow access to the Pulse2 inventory service from "
+"external networks"
+msgstr ""
+
+#: .config[2].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[2].label
 msgid "Allow access from external networks"
 msgstr ""
 
@@ -65,29 +77,29 @@ msgstr ""
 msgid "Pulse2"
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:54
+#: pulse2_inventory/setup-pulse2-inventory.sh:105
 msgid ""
 "You need to allow access to the Pulse2 Inventory server on either internal "
 "or external networks."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:57
+#: pulse2_inventory/setup-pulse2-inventory.sh:108
 msgid ""
 "A DNS entry must be set for this server if you want the Pulse2 services to "
 "listen on multiple interfaces."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:103
+#: pulse2_inventory/setup-pulse2-inventory.sh:157
 msgid "Pulse2 Inventory is installed and configured."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:104
+#: pulse2_inventory/setup-pulse2-inventory.sh:158
 msgid ""
 "The inventory is available on the management interface at https://@HOSTNAME@/"
 "mmc/."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:105
+#: pulse2_inventory/setup-pulse2-inventory.sh:159
 msgid ""
 "Check the documentation to use the Pulse2 inventory at http://serviceplace."
 "mandriva.com/addons/mbs/1.0/pulse2_inventory/."

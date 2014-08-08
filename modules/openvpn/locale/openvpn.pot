@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-12 14:53+0100\n"
+"POT-Creation-Date: 2014-08-08 10:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -104,28 +104,28 @@ msgid "interface"
 msgstr ""
 
 #: .categories[0].name
-msgid "OpenVPN"
+msgid "Network"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:95
+#: openvpn/setup-openvpn.sh:100
 msgid "The VPN service is running."
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:96
+#: openvpn/setup-openvpn.sh:101
 msgid "- The VPN network address is $network"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:97
+#: openvpn/setup-openvpn.sh:102
 msgid "- The server IP in the VPN network is $vpn_ip"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:98
+#: openvpn/setup-openvpn.sh:103
 msgid ""
 "- Documentation for this addon is available at http://@HOSTNAME@/openvpn-"
 "documentation/"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:99
+#: openvpn/setup-openvpn.sh:104
 msgid ""
 "- An archive containing the clients configuration files is available in the "
 "addon's menu. Use it to configure your clients."

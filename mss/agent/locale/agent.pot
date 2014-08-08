@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-12 14:53+0100\n"
+"POT-Creation-Date: 2014-08-08 10:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,19 +25,7 @@ msgstr ""
 msgid "Other Services"
 msgstr ""
 
-#: classes/module.py:162
-msgid "Other"
-msgstr ""
-
-#: classes/module.py:380
-msgid "This field can't be empty."
-msgstr ""
-
-#: classes/module.py:385
-msgid "Password mismatch."
-msgstr ""
-
-#: managers/module.py:711
+#: managers/module.py:714
 msgid "Connection failed with the ServicePlace."
 msgstr ""
 
@@ -80,4 +68,16 @@ msgstr ""
 
 #: managers/process.py:167
 msgid "Ready"
+msgstr ""
+
+#: classes/module.py:162
+msgid "Other"
+msgstr ""
+
+#: classes/module.py:380
+msgid "This field can't be empty."
+msgstr ""
+
+#: classes/module.py:385
+msgid "Password mismatch."
 msgstr ""

@@ -4,15 +4,15 @@
 # 
 ## Translators:
 #   <alexandre@mandriva.com.br>, 2013.
-#   <andre@mandriva.com>, 2011.
+#   <andre@mandriva.com>, 2011, 2014.
 #   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-20 06:50+0200\n"
-"PO-Revision-Date: 2013-06-19 08:10+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"POT-Creation-Date: 2014-02-12 14:53+0100\n"
+"PO-Revision-Date: 2014-08-07 17:47+0000\n"
+"Last-Translator: Andre Machado <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,7 +87,7 @@ msgstr ""
 
 #: views.py:135
 msgid "MSS agent is unreacheable."
-msgstr "O agente MSS está inalcansável"
+msgstr "O agente MSS está inalcançável"
 
 #: templates/base.html:27
 msgid "Hide log"
@@ -141,7 +141,7 @@ msgstr "Voltar"
 
 #: templates/config_no.html:11
 msgid "Installation & configuration was successful."
-msgstr "Instalação e configuração bem sucedidas."
+msgstr "Instalação e configuração foram bem sucedidas."
 
 #: templates/config_no.html:14
 msgid "Home page"
