@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 2.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-12 14:53+0100\n"
+"POT-Creation-Date: 2014-08-11 10:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -189,14 +189,17 @@ msgid "Please wait..."
 msgstr ""
 
 #: templates/download.html:55
+#, python-brace-format
 msgid "Downloading <strong>{0}</strong>: {1}..."
 msgstr ""
 
 #: templates/download.html:63
+#, python-brace-format
 msgid "Addon <strong>{0}</strong> downloaded."
 msgstr ""
 
 #: templates/download.html:71
+#, python-brace-format
 msgid "Failed to download <strong>{0}</strong> addon."
 msgstr ""
 

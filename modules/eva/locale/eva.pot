@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 11:56+0200\n"
+"POT-Creation-Date: 2014-08-11 10:33+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -22,11 +22,16 @@ msgid "Cloud Management Solution"
 msgstr ""
 
 #: .actions[0].name
-msgid "eVA interface"
+msgid "eVA admin interface"
 msgstr ""
 
 #: .actions[1].name
-msgid "eVA admin interface"
+msgid "eVA interface"
+msgstr ""
+
+#: .actions[2].name
+msgid ""
+"Upgrade your unlicensed version into a fully licensed and supported version"
 msgstr ""
 
 #: .name
@@ -42,7 +47,7 @@ msgid "password_eva"
 msgstr ""
 
 #: .config[0].label
-msgid "Password of eva administrator"
+msgid "Password of eVA administrator"
 msgstr ""
 
 #: .config[1].name
@@ -57,27 +62,27 @@ msgstr ""
 msgid "Cloud"
 msgstr ""
 
-#: eva/setup-eva.sh:410
+#: eva/setup-eva.sh:394
 msgid "eVA is now configured."
 msgstr ""
 
-#: eva/setup-eva.sh:411
+#: eva/setup-eva.sh:395
 msgid "You can access eVA interface at https://@HOSTNAME@/"
 msgstr ""
 
-#: eva/setup-eva.sh:412
+#: eva/setup-eva.sh:396
 msgid "You can access eVA admin interface at https://@HOSTNAME@/eva-admin/"
 msgstr ""
 
-#: eva/setup-eva.sh:413
+#: eva/setup-eva.sh:397
 msgid "- Username is $eVA_adminUser"
 msgstr ""
 
-#: eva/setup-eva.sh:414
+#: eva/setup-eva.sh:398
 msgid "- Password is $password_eva"
 msgstr ""
 
-#: eva/setup-eva.sh:415
+#: eva/setup-eva.sh:399
 msgid "Reboot to complete the configuration."
 msgstr ""
 
