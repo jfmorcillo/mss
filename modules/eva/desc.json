@@ -82,7 +82,7 @@
             "type":"password",
             "name":"password_eva",
             "require":"yes",
-            "label":"Password of eva administrator"
+            "label":"Password of eVA administrator"
         },
         {
             "type": "check",
