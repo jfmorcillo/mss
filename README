@@ -1,10 +1,24 @@
-Mandriva Server Setup aims to help system administrators to setup quickly 
+Mandriva Server Setup aims to help system administrators to setup quickly
 system services such as DNS and OpenLDAP through a web interface.
 
-In order to run MSS you have to start mss-agent (XML-RPC service) and 
+In order to run MSS you have to start mss-agent (XML-RPC service) and
 mss-www (Web server) daemons.
 
 MSS web interface is available from your web browser at https://localhost:8000.
 
 If you want to develop your own modules for MSS have a look in /usr/share/doc/mss/.
 
+Translations
+############
+
+Deps: transifex-client 0.4, translate-toolkit, django 1.3.x (in a virtualenv), gettext
+
+Run tx-setup.sh script once to setup the transifex configuration (you have to
+run the script again after build_pot.sh to add a new module in the transifex
+configuration).
+
+To update the POT files (when strings changes), run the build_pot.sh script.
+
+To upload POT files run (to make them available in Transifex): tx push -s
+
+To get new PO files run (to commit up-to-date PO files): tx pull
