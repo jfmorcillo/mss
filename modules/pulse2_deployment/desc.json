@@ -27,7 +27,7 @@
         }
     ],
     "dependencies": ["pulse2_inventory"],
-    "modules": {
+    "module": {
         "section": "other",
         "dependencies": ["pulse2_inventory"]
     },
