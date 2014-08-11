@@ -104,33 +104,37 @@ class ModuleManager:
         self.load_modules()
         logger.debug("Modules loaded.")
 
-    def setup_python_path(self, local=False):
+    def setup_python_path(self):
         """
         Setup the python path to load modules
         """
         local_path = Config().localDir
         cache_path = Config().cacheDir
-        if local:
-            try:
-                sys.path.remove(cache_path)
-            except ValueError:
-                pass
-            sys.path.append(local_path)
-        else:
-            try:
-                sys.path.remove(local_path)
-            except ValueError:
-                pass
-            sys.path.append(cache_path)
+
+        try:
+            sys.path.remove(local_path)
+        except ValueError:
+            pass
+        try:
+            sys.path.remove(cache_path)
+        except ValueError:
+            pass
+
+        sys.path.insert(0, local_path)
+
+        if self._mode == "api":
+            sys.path.insert(0, cache_path)
 
     def load_modules(self):
         """ load modules """
-        if self._mode == "local":
-            logger.debug("Using local modules")
-            modules_list = self.get_local_modules()
-        else:
+        logger.debug("Using local modules")
+        modules_list = self.get_local_modules()
+
+        if self._mode == "api":
             logger.debug("Using API modules")
-            modules_list = self.get_api_modules()
+            modules_list += self.get_api_modules()
+
+        self.setup_python_path()
 
         from mss.agent.classes.module import Module
 
@@ -143,7 +147,8 @@ class ModuleManager:
                 section = self.modules[module_desc['slug']].section
                 if not section in self.sections_modules:
                     self.sections_modules[section] = []
-                self.sections_modules[section].append(module_desc["slug"])
+                if not module_desc["slug"] in self.sections_modules[section]:
+                    self.sections_modules[section].append(module_desc["slug"])
 
     def get_local_modules(self):
         paths = []
@@ -163,14 +168,12 @@ class ModuleManager:
                 logger.exception("Failed to load %s" % (path))
             else:
                 if not "module" in desc:
-                    if desc['standalone'] == True:
+                    if desc['standalone'] is True:
                         raise Exception('Missing section "module" in module %s' % desc['slug'])
                     else:
                         desc["module"] = {}
                 desc["module"]["path"] = path
                 result.append(desc)
-
-        self.setup_python_path(local=True)
 
         return result
 
@@ -190,15 +193,11 @@ class ModuleManager:
                 with open(cache_path, "w") as f:
                     json.dump(result, f)
                 modules_list = result
-                self.setup_python_path(local=False)
             else:
                 logger.error("Failed to retrieve modules from the API.")
-                logger.error("Using local modules.")
-                modules_list = self.get_local_modules()
         else:
             with open(cache_path) as f:
                 modules_list = json.load(f)
-            self.setup_python_path(local=False)
 
         return modules_list
 
