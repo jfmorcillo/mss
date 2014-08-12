@@ -4,6 +4,7 @@ graft etc
 graft mss
 graft modules
 
+prune modules/eva
 prune modules/squid
 prune modules/owncloud
 prune modules/davical
