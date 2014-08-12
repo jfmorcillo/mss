@@ -35,8 +35,8 @@ def get_netbios(module):
 
 def valid_netbios(string):
     """ validate netbios """
-    if not re.match('^[A-Z]+[A-Z0-9]*$', string):
-        return _("Incorrect netbios name (only uppercase characters and digits allowed).", "mds_smb")
+    if not re.match('^[A-Z][A-Z0-9.-]{2,14}$', string):
+        return _("Incorrect netbios name (only uppercase characters, digits, '-' and '.' allowed).", "mds_smb")
     else:
         return None
 
