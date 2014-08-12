@@ -288,20 +288,20 @@ echo "Install eVA"
     restart_service postgresql
 
 	# Creation des instances de base eva, activiti, eva-jms + creation du user siveo
-	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse" > /dev/null
+	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse"
 	
 	# create tables for reporting-quartz instance database
-	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql" > /dev/null
+	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql"
 	
 	# Creation des tables de l'instance eva + remplissage des tables
-	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse" > /dev/null
+	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse"
 	rm -f ${workspace}/.eva/eva.backup.parse
 	
 	# Creation des tables de l'instance activiti
-	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup" > /dev/null
+	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup"
 	
 	# Creation des tables de l'instance eva-jms
-	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup" > /dev/null
+	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup"
 
     rm -fv ~/.pgpass
 
