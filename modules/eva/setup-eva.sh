@@ -406,14 +406,6 @@ restart_service httpd
 #FIXME: Siveo has to change the api to allow auth_tcp = sasl. For now we'll just allow unencrypted connections
 sed -i "s/^auth_tcp.*$/auth_tcp = \"none\"/g" /etc/libvirt/libvirtd.conf
 
-# Homepage
-homepage="/var/www/html/homepage.php"
-sed -i "s/@@LINK_FIRST_RUN@@/https:\/\/@HOSTNAME@\/eva-first-run\//g" $homepage
-sed -i "s/@LINK_EVA_ADMIN@@/http:\/\/@HOSTNAME@\/eva-admin\//g" $homepage
-sed -i "s/@@LINK_EVA@@/https:\/\/@HOSTNAME@\/evplanet-admin\//g" $homepage
-sed -i "s/@@LINK_MSS@@/https:\/\/@HOSTNAME@:8000\//g" $homepage
-sed -i "s/@@LINK_MMC@@/https:\/\/@HOSTNAME@\/mmc\//g" $homepage
-
 info_b $"eVA is now configured."
 info $"- Username is $eVA_adminUser"
 info $"- Password is $password_eva"
