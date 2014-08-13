@@ -404,7 +404,7 @@ restart_service httpd
 sed -i "s/^auth_tcp.*$/auth_tcp = \"none\"/g" /etc/libvirt/libvirtd.conf
 
 # Homepage
-homepage="/var/www/html/homepage.html"
+homepage="/var/www/html/homepage.php"
 sed -i "s/@@LINK_FIRST_RUN@@/https:\/\/@HOSTNAME@\/eva-first-run\//g" $homepage
 sed -i "s/@LINK_EVA_ADMIN@@/http:\/\/@HOSTNAME@\/eva-admin\//g" $homepage
 sed -i "s/@@LINK_EVA@@/https:\/\/@HOSTNAME@\/evplanet-admin\//g" $homepage
