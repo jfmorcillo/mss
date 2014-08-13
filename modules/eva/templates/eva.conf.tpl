@@ -1,5 +1,4 @@
-RedirectMatch ^/.*$ /eva-first-run/
-DocumentRoot /var/www/siveo/sites/evplanet-admin/www/
+RedirectMatch ^/$ /homepage.php
 Alias /evplanet-admin "/var/www/siveo/sites/evplanet-admin/www/"
 <Directory "/var/www/siveo/sites/evplanet-admin/www/">
         Options -Indexes -MultiViews +FollowSymLinks

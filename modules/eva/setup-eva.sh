@@ -41,7 +41,7 @@ fichier_log=`pwd`"/${0%.*}.log"
 default_language="fr"
 default_modeInstallation="standalone"
 
-HOMEPAGE="/var/lib/mss/local/eva/templates/homepage.tar.gz"
+HOMEPAGE="/var/lib/mss/local/eva/templates/homepage.tar.bz2"
 
 pushd /var/www/html
     tar xjvf $HOMEPAGE
