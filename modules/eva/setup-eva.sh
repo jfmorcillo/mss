@@ -161,8 +161,6 @@ pushd ${jbosshomedir}
 binJboss=jboss-as-7.1.1.Final.tar.gz
     tar zxvf ${workspace}/.jboss/${binJboss} >> ${fichier_log}
 
-    mv -frv jboss-as-7.1.1.Final/* .
-
     mkdir -p ${jbosshomedir}/eva-admin/deployments
     cp ${workspace}/.eva/artifacts/eva-admin.war ${jbosshomedir}/eva-admin/deployments
     mkdir -p ${jbosshomedir}/eva/deployments/eva
