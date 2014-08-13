@@ -41,6 +41,11 @@ fichier_log=`pwd`"/${0%.*}.log"
 default_language="fr"
 default_modeInstallation="standalone"
 
+HOMEPAGE="/var/lib/mss/local/eva/templates/homepage.tar.gz"
+
+pushd /var/www/html
+    tar xjvf $HOMEPAGE
+popd
 
 postgresql_home="/var/lib/pgsql"
 
