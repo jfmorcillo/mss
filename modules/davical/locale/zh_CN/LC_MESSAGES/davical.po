@@ -1,0 +1,59 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-14 00:51+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/team/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: .description .desc
+msgid "DAViCal a service for calendar and addressbook sharing."
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "Calendar and Addressbook"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .categories[0].name
+msgid "Collaboration"
+msgstr ""
+
+#: davical/setup-davical.sh:43
+msgid "Failed to setup the database."
+msgstr ""
+
+#: davical/setup-davical.sh:91
+msgid "The calendar and addressbook service is configured."
+msgstr ""
+
+#: davical/setup-davical.sh:93
+msgid ""
+"- each user can access its personnal calendar at "
+"https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ using a "
+"calendar client (Thunderbird with Lightning, iCal...)"
+msgstr ""
+
+#: davical/setup-davical.sh:94
+msgid "- you can add shared calendars at https://@HOSTNAME@/mmc/"
+msgstr ""
+
+

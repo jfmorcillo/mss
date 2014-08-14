@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-04-08 10:17+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
@@ -71,11 +71,11 @@ msgstr ""
 "Permettre les connexions à l'interface de gestion depuis les réseaux "
 "externes"
 
-#: modules/mds_cups/setup-cups.sh:19
+#: mds_cups/setup-cups.sh:19
 msgid "The printing service is running."
 msgstr "Le service d'impression fonctionne."
 
-#: modules/mds_cups/setup-cups.sh:20
+#: mds_cups/setup-cups.sh:20
 msgid ""
 "You can add new printers from the Cups web interface : "
 "https://@HOSTNAME@:631/admin/."
@@ -83,7 +83,7 @@ msgstr ""
 "Vous pouvez ajouter de nouvelles imprimantes à partir de l'interface web de "
 "CUPS : https://@HOSTNAME@:631/admin/."
 
-#: modules/mds_cups/setup-cups.sh:21
+#: mds_cups/setup-cups.sh:21
 msgid "Login to the Cups interface is the root account."
 msgstr ""
 "La connexion à l'interface de gestion de Cups s'effectue en tant "

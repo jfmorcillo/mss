@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <jpbraun@mandriva.com>, 2012.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2013-04-08 10:17+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: fr\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: .description .desc
+msgid "Configure automatically your client computers IP settings"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "DHCP Service"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'internal'"
+msgstr ""
+"Configure le firewall pour accepter les requêtes DHCP sur les interfaces "
+"internes"
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[0].label
+msgid "Allow DHCP requests from internal networks"
+msgstr "Autoriser les requêtes DHCP depuis les réseaux internes"
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to accept DHCP requests on interfaces configured as "
+"'external'"
+msgstr ""
+"Configure le firewall pour accepter les requêtes DHCP sur les interfaces "
+"externes"
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[1].label
+msgid "Allow DHCP requests from external networks"
+msgstr "Autoriser les requêtes DHCP depuis les réseaux externes"
+
+#: .categories[0].name
+msgid "Network"
+msgstr ""
+
+#: mds_dhcp/setup-dhcp.sh:41
+msgid "The DHCP service is installed."
+msgstr "Le service DHCP est installé."
+
+#: mds_dhcp/setup-dhcp.sh:42
+msgid ""
+"You can now configure your DHCP settings from the management interface : "
+"https://@HOSTNAME@/mmc/"
+msgstr ""
+"Vous pouvez maintenant configurer vos paramètres DHCP depuis l'interface de "
+"gestion : "
+
+

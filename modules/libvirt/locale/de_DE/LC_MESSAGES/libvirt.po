@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-02-17 15:06+0100\n"
-"PO-Revision-Date: 2014-02-17 14:09+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-08 08:57+0000\n"
+"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,6 +19,10 @@ msgstr ""
 
 #: .description .desc
 msgid "Use your MBS server to run KVM virtual machines"
+msgstr ""
+
+#: .actions[0].name
+msgid "Addon documentation"
 msgstr ""
 
 #: .name
@@ -91,27 +95,27 @@ msgstr ""
 msgid "Virtualization"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:71
+#: libvirt/setup-libvirt.sh:76
 msgid "Libvirt and KVM are now installed and configured."
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:72
+#: libvirt/setup-libvirt.sh:77
 msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:73
+#: libvirt/setup-libvirt.sh:78
 msgid "- Hostname is @HOSTNAME@"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:74
+#: libvirt/setup-libvirt.sh:79
 msgid "- Username is admin"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:75
+#: libvirt/setup-libvirt.sh:80
 msgid "- Password is $admin_password"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:76
+#: libvirt/setup-libvirt.sh:81
 msgid ""
 "Reboot to apply the network configuration. If you have a DHCP IP address "
 "your IP address may change."

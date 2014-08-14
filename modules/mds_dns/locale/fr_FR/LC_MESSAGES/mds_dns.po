@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-04-08 10:22+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
@@ -99,19 +99,19 @@ msgstr "Autoriser les requêtes depuis les réseaux externes"
 msgid "Network"
 msgstr "Réseau"
 
-#: modules/mds_dns/setup-dns.sh:34
+#: mds_dns/setup-dns.sh:34
 msgid "No networks are authorized to make external queries."
 msgstr "Aucun réseau n'est autorisé à effectuer de requêtes externes."
 
-#: modules/mds_dns/setup-dns.sh:73
+#: mds_dns/setup-dns.sh:73
 msgid "The DNS service is running."
 msgstr "Le service DNS fonctionne."
 
-#: modules/mds_dns/setup-dns.sh:75
+#: mds_dns/setup-dns.sh:75
 msgid "Your DNS will forward external queries to : $forwarders"
 msgstr "Votre DNS transférera les requêtes externes à : $forwarders"
 
-#: modules/mds_dns/setup-dns.sh:78
+#: mds_dns/setup-dns.sh:78
 msgid ""
 "The following networks are able to query your DNS for external domains : "
 "$networks"
@@ -119,7 +119,7 @@ msgstr ""
 "Les réseaux suivants peuvent interroger votre DNS pour les domaines externes"
 " : $networks"
 
-#: modules/mds_dns/setup-dns.sh:80
+#: mds_dns/setup-dns.sh:80
 msgid ""
 "You can now add DNS zones in the management interface : "
 "https://@HOSTNAME@/mmc/"

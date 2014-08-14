@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-04-08 10:22+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
@@ -86,42 +86,42 @@ msgstr "Autoriser l'accès depuis les réseaux externes"
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: modules/mds_mmc/setup-mmc.sh:32
+#: mds_mmc/setup-mmc.sh:32
 msgid "Error while generating the password."
 msgstr "Erreur lors de la génération du mot de passe."
 
-#: modules/mds_mmc/setup-mmc.sh:74
+#: mds_mmc/setup-mmc.sh:74
 msgid "OpenLDAP configuration has errors."
 msgstr "La configuration d'OpenLDAP est erronée."
 
-#: modules/mds_mmc/setup-mmc.sh:86
+#: mds_mmc/setup-mmc.sh:86
 msgid "Database load test failed."
 msgstr "Le chargement de la base de données de test à échoué."
 
-#: modules/mds_mmc/setup-mmc.sh:100
+#: mds_mmc/setup-mmc.sh:100
 msgid "Failed to initialize the database."
 msgstr "Erreur lors de l'initialisation de la base de donnée."
 
-#: modules/mds_mmc/setup-mmc.sh:108
+#: mds_mmc/setup-mmc.sh:108
 msgid "Error while configuring lib nss-ldap."
 msgstr "Erreur lors de la configuration de nss-ldap."
 
-#: modules/mds_mmc/setup-mmc.sh:131
+#: mds_mmc/setup-mmc.sh:131
 msgid "The MBS administration web interface is configured."
 msgstr "L'interface d'administration MBS est configurée."
 
-#: modules/mds_mmc/setup-mmc.sh:132
+#: mds_mmc/setup-mmc.sh:132
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
 "Vous pouvez vous connecter à l'interface d'administration à l'adresse "
 "https://@HOSTNAME@/mmc/ après le redémarrage du serveur."
 
-#: modules/mds_mmc/setup-mmc.sh:133
+#: mds_mmc/setup-mmc.sh:133
 msgid "Administrator name : root"
 msgstr "Nom de l'administrateur : root"
 
-#: modules/mds_mmc/setup-mmc.sh:134
+#: mds_mmc/setup-mmc.sh:134
 msgid "Administrator password : $mypass"
 msgstr "Mot de passe de l'administrateur : $mypass"
 

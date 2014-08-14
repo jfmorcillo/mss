@@ -1,0 +1,60 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-14 00:51+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/team/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: .description .desc
+msgid "Track any changes made in the management interface"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .name
+msgid "Audit plugin"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid "Used to create the audit database"
+msgstr ""
+
+#: .config[0].name
+msgid "myrootpasswd"
+msgstr ""
+
+#: .config[0].label
+msgid "MySQL root password"
+msgstr ""
+
+#: .config[1].help
+msgid "MySQL user password for the audit database"
+msgstr ""
+
+#: .config[1].name
+msgid "myauditpasswd"
+msgstr ""
+
+#: .config[1].label
+msgid "MySQL audit password"
+msgstr ""
+
+

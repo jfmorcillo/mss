@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-13 19:34+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-06-10 18:45+0000\n"
 "Last-Translator: Andre Machado <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
@@ -38,10 +38,6 @@ msgstr "Este campo não pode ser vazio."
 #: classes/module.py:385
 msgid "Password mismatch."
 msgstr "Senha incorreta."
-
-#: managers/module.py:711
-msgid "Connection failed with the ServicePlace."
-msgstr "Falhou a conexão com o ServicePlace."
 
 #: managers/process.py:44
 msgid "Loading packages list"
@@ -83,5 +79,9 @@ msgstr "Baixando addon..."
 #: managers/process.py:167
 msgid "Ready"
 msgstr "Pronto"
+
+#: managers/module.py:713
+msgid "Connection failed with the ServicePlace."
+msgstr "Falhou a conexão com o ServicePlace."
 
 

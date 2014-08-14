@@ -7,9 +7,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-08 11:56+0200\n"
-"PO-Revision-Date: 2014-08-08 09:57+0000\n"
-"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-14 00:27+0000\n"
+"Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -22,11 +22,16 @@ msgid "Cloud Management Solution"
 msgstr ""
 
 #: .actions[0].name
-msgid "eVA interface"
+msgid "eVA admin interface"
 msgstr ""
 
 #: .actions[1].name
-msgid "eVA admin interface"
+msgid "eVA interface"
+msgstr ""
+
+#: .actions[2].name
+msgid ""
+"Upgrade your unlicensed version into a fully licensed and supported version"
 msgstr ""
 
 #: .name
@@ -42,7 +47,7 @@ msgid "password_eva"
 msgstr ""
 
 #: .config[0].label
-msgid "Password of eva administrator"
+msgid "Password of eVA administrator"
 msgstr ""
 
 #: .config[1].name
@@ -57,27 +62,19 @@ msgstr ""
 msgid "Cloud"
 msgstr ""
 
-#: eva/setup-eva.sh:410
+#: eva/setup-eva.sh:409
 msgid "eVA is now configured."
 msgstr ""
 
-#: eva/setup-eva.sh:411
-msgid "You can access eVA interface at https://@HOSTNAME@/"
-msgstr ""
-
-#: eva/setup-eva.sh:412
-msgid "You can access eVA admin interface at https://@HOSTNAME@/eva-admin/"
-msgstr ""
-
-#: eva/setup-eva.sh:413
+#: eva/setup-eva.sh:410
 msgid "- Username is $eVA_adminUser"
 msgstr ""
 
-#: eva/setup-eva.sh:414
+#: eva/setup-eva.sh:411
 msgid "- Password is $password_eva"
 msgstr ""
 
-#: eva/setup-eva.sh:415
+#: eva/setup-eva.sh:412
 msgid "Reboot to complete the configuration."
 msgstr ""
 

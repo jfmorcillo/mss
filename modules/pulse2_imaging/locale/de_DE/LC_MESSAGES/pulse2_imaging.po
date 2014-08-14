@@ -3,13 +3,14 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 ## Translators:
+#   <maikwagner@yahoo.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-20 06:50+0200\n"
-"PO-Revision-Date: 2013-10-14 14:03+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2013-10-17 07:44+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,51 +20,57 @@ msgstr ""
 
 #: .description .desc
 msgid "The imaging module of Pulse2"
-msgstr ""
+msgstr "Das Imagingmodul von Pulse2"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "Verwaltungsschnittstelle"
 
 #: .name
 msgid "Pulse2 Imaging"
-msgstr ""
+msgstr "Pulse2 Imaging"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: .categories[0].name
 msgid "Pulse2"
-msgstr ""
+msgstr "Pulse2"
 
 #: pulse2_imaging/setup-pulse2-imaging.sh:62
 msgid "Failed to register the imaging server"
-msgstr ""
+msgstr "Fehler beim Registrieren des Imagingservers"
 
 #: pulse2_imaging/setup-pulse2-imaging.sh:189
 msgid "Pulse2 imaging module is installed and configured."
-msgstr ""
+msgstr "Pulse2 Imagingmodul ist installiert und konfiguriert."
 
 #: pulse2_imaging/setup-pulse2-imaging.sh:190
 msgid ""
 "The module is available on the management interface at "
 "https://@HOSTNAME@/mmc/."
 msgstr ""
+"Das Modul ist verfügbar unter der Verwaltungsschnittstelle  "
+"https://@HOSTNAME@/mmc/."
 
 #: pulse2_imaging/setup-pulse2-imaging.sh:193
 msgid "- DHCP subnet configured on $interface for Pulse2 imaging clients."
-msgstr ""
+msgstr "- DHCP Subnetz auf $interface für Pulse2 Imagingclient konfiguriert"
 
 #: pulse2_imaging/setup-pulse2-imaging.sh:197
 msgid ""
 "- The external DHCP server used on $interface must be configured for Pulse2."
 msgstr ""
+"- Der externe DHCP-Server, der auf $interface verwendet wird, muss für "
+"Pulse2 konfiguriert sein"
 
 #: pulse2_imaging/setup-pulse2-imaging.sh:199
 msgid ""
 "Check the documentation to use the Pulse2 imaging at "
 "http://serviceplace.mandriva.com/addons/mbs/1.0/pulse2_imaging/."
 msgstr ""
+"Prüfen Sie die Dokumentation um Pulse2 Imaging zu verwenden unter "
+"http://serviceplace.mandriva.com/addons/mbs/1.0/pulse2_imaging/."
 
 

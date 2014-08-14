@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <sergey.pecherkin@rosalab.ru>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2013-06-07 13:08+0000\n"
+"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: ru\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: [0].name
+msgid "Core Services"
+msgstr ""
+
+#: [1].name
+msgid "Other Services"
+msgstr ""
+
+#: classes/module.py:162
+msgid "Other"
+msgstr ""
+
+#: classes/module.py:380
+msgid "This field can't be empty."
+msgstr "Это поле не может быть пустым"
+
+#: classes/module.py:385
+msgid "Password mismatch."
+msgstr "Пароли не совпадают"
+
+#: managers/process.py:44
+msgid "Loading packages list"
+msgstr "Загрузка списка пакетов"
+
+#: managers/process.py:51
+msgid "Installing packages..."
+msgstr ""
+
+#: managers/process.py:60
+msgid "Running configuration"
+msgstr "Загруженная конфигурация"
+
+#: managers/process.py:70
+msgid "Rebooting..."
+msgstr ""
+
+#: managers/process.py:76
+msgid "Updating medias"
+msgstr "Обновление источников пакетов"
+
+#: managers/process.py:82
+msgid "Checking network"
+msgstr "Проверка сети"
+
+#: managers/process.py:87
+msgid "Adding media"
+msgstr "Добавления источника пакетов"
+
+#: managers/process.py:92
+#, python-format
+msgid "Downloading %s addon..."
+msgstr ""
+
+#: managers/process.py:94
+msgid "Downloading addon..."
+msgstr ""
+
+#: managers/process.py:167
+msgid "Ready"
+msgstr "Готов"
+
+#: managers/module.py:713
+msgid "Connection failed with the ServicePlace."
+msgstr ""
+
+

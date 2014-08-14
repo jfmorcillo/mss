@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-06-08 08:49+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-06-10 18:52+0000\n"
 "Last-Translator: Andre Machado <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
@@ -40,15 +40,15 @@ msgstr "Todos"
 msgid "Collaboration"
 msgstr "Colaboração"
 
-#: davical/setup-davical.sh:42
+#: davical/setup-davical.sh:43
 msgid "Failed to setup the database."
 msgstr "Configuração da database falhou."
 
-#: davical/setup-davical.sh:86
+#: davical/setup-davical.sh:91
 msgid "The calendar and addressbook service is configured."
 msgstr "O serviço de calendário e agenda está configurado."
 
-#: davical/setup-davical.sh:88
+#: davical/setup-davical.sh:93
 msgid ""
 "- each user can access its personnal calendar at "
 "https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ using a "
@@ -58,7 +58,7 @@ msgstr ""
 "https://@HOSTNAME@/davical/caldav.php/[user_email]/calendar/ usando um "
 "cliente de calendário (Thunderbird com Lightning, iCal...)"
 
-#: davical/setup-davical.sh:89
+#: davical/setup-davical.sh:94
 msgid "- you can add shared calendars at https://@HOSTNAME@/mmc/"
 msgstr ""
 "- você pode adicionar calendários compartilhados em https://@HOSTNAME@/mmc/"

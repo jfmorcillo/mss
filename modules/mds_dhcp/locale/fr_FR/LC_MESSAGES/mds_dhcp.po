@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-04-08 10:19+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
@@ -70,11 +70,11 @@ msgstr "Autoriser les requêtes DHCP depuis les réseaux externes"
 msgid "Network"
 msgstr "Réseau"
 
-#: modules/mds_dhcp/setup-dhcp.sh:41
+#: mds_dhcp/setup-dhcp.sh:41
 msgid "The DHCP service is installed."
 msgstr "Le service DHCP est installé."
 
-#: modules/mds_dhcp/setup-dhcp.sh:42
+#: mds_dhcp/setup-dhcp.sh:42
 msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"

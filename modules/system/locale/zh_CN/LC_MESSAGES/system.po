@@ -1,0 +1,70 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <contacts@siveo.net>, 2014.
+#   <spointu@mandriva.com>, 2014.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-14 01:38+0000\n"
+"Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
+"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/team/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: .description
+msgid "General system configuration"
+msgstr "普通的系统设置"
+
+#: .packages[0].name
+msgid "all"
+msgstr "all"
+
+#: .config[0].name
+msgid "hostname"
+msgstr "hostname"
+
+#: .config[0].label
+msgid "The server hostname"
+msgstr "服务器主机名"
+
+#: .config[0].help
+msgid "Hostname without the domain name"
+msgstr "主机名不带域名"
+
+#: .config[1].name
+msgid "domain"
+msgstr "domain"
+
+#: .config[1].label
+msgid "Your domain name"
+msgstr "您的域名"
+
+#: .config[1].help
+msgid "The domain name used in your organization (eg: mandriva.com)."
+msgstr "在您的组织中使用的域名(例如: mandriva.com)."
+
+#: .name
+msgid "System setup"
+msgstr "系统设置"
+
+#: system/setup-system.sh:18
+msgid "Hostname and domain name configured."
+msgstr "主机名与域名完成配置"
+
+#: system/__init__.py:48
+msgid "example.com"
+msgstr "example.com"
+
+#: system/__init__.py:54
+msgid "Incorrect hostname."
+msgstr "主机名不正确"
+
+

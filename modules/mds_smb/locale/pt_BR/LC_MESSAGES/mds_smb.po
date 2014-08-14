@@ -9,9 +9,9 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-12 04:51+0200\n"
-"PO-Revision-Date: 2013-04-16 14:19+0000\n"
-"Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-14 00:28+0000\n"
+"Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
 "Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -144,27 +144,27 @@ msgstr ""
 msgid "Failed to grant rights to the Domain Admins group"
 msgstr "Falha ao conceder direitos ao grupo Administradores de domínio"
 
-#: mds_smb/setup-smb.sh:89
+#: mds_smb/setup-smb.sh:90
 msgid "Domain name : $smbdomain"
 msgstr "Nome do Domínio : $smbdomain"
 
-#: mds_smb/setup-smb.sh:90
+#: mds_smb/setup-smb.sh:91
 msgid "Server name : $smbnetbios"
 msgstr "Nome do Servidor : $smbnetbios"
 
-#: mds_smb/setup-smb.sh:91
+#: mds_smb/setup-smb.sh:92
 msgid "Domain administrator : $smbadmin"
 msgstr "Administrador do domínio : $smbadmin"
 
-#: mds_smb/setup-smb.sh:92
+#: mds_smb/setup-smb.sh:93
 msgid "- a public share is created in /home/samba/shares/public"
 msgstr "- Um compartilhamento público foi criado em /home/samba/shares/public"
 
-#: mds_smb/setup-smb.sh:93
+#: mds_smb/setup-smb.sh:94
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr "- Você pode criar um script logon.bat em /home/samba/netlogon"
 
-#: mds_smb/setup-smb.sh:94
+#: mds_smb/setup-smb.sh:95
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
@@ -173,10 +173,10 @@ msgstr ""
 " do Windows e compartilhamentos em https://@HOSTNAME@/mmc/."
 
 #: mds_smb/__init__.py:39
-msgid "Incorrect netbios name (only uppercase characters and digits allowed)."
+msgid ""
+"Incorrect netbios name (only uppercase characters, digits, '-' and '.' "
+"allowed)."
 msgstr ""
-"Nome netbios incorreto (apenas caracteres maiúsculos e dígitos são "
-"permitido)."
 
 #: mds_smb/__init__.py:46
 msgid ""

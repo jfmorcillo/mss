@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+#   <maikwagner@yahoo.com>, 2013.
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2013-08-12 08:04+0000\n"
+"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+
+#: .description .desc
+msgid "Web-based groupware suite written in php"
+msgstr "Webbasierende Groupwaresuite geschrieben in php"
+
+#: .actions[0].name
+msgid "eGroupware interface"
+msgstr "eGroupware Schnittstelle"
+
+#: .name
+msgid "eGroupware"
+msgstr "eGroupware"
+
+#: .packages[0].name
+msgid "all"
+msgstr "alle"
+
+#: .config[0].help
+msgid "The name of the eGroupware administrator"
+msgstr "Name des eGroupware Administrators"
+
+#: .config[0].name
+msgid "egroupware_adminUser"
+msgstr "egroupware_adminUser"
+
+#: .config[0].label
+msgid "eGroupware administrator"
+msgstr "eGroupware Administrator"
+
+#: .config[1].help
+msgid "The password of the eGroupware administrator"
+msgstr "Passwort des eGroupware Administrators"
+
+#: .config[1].name
+msgid "egroupware_adminPass"
+msgstr "egroupware_adminPass"
+
+#: .config[1].label
+msgid "eGroupware administrator password"
+msgstr "eGroupware Administrator Passwort"
+
+#: .categories[0].name
+msgid "Groupware"
+msgstr "Groupware"
+
+#: egroupware/setup-egroupware.sh:62
+msgid "eGroupware is installed and configured."
+msgstr "eGroupware ist installiert und konfiguriert."
+
+#: egroupware/setup-egroupware.sh:63
+msgid ""
+"Users in the LDAP must belong to the 'Default' group to benefit from default"
+" authorisations in the eGroupware application."
+msgstr ""
+"Benutzer in LDAP müssen der 'Default' Gruppe angehören um von den "
+"standardmäßigen Authorisierungen in der eGroupware Anwendung zu profitieren."
+
+#: egroupware/setup-egroupware.sh:64
+msgid "You can access eGroupware at https://@HOSTNAME@/egroupware."
+msgstr ""
+"Sie können auf eGroupware zugreifen. unter https://@HOSTNAME@/egroupware. "
+
+#: egroupware/setup-egroupware.sh:65
+msgid ""
+"eGroupware administrator is '$egroupware_adminUser' and password is "
+"'$egroupware_adminPass'."
+msgstr ""
+"eGroupware Administrator ist '$egroupware_adminUser' und das Passwort lautet"
+" '$egroupware_adminPass'."
+
+

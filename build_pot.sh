@@ -25,7 +25,7 @@ pushd mss/agent
 # Agent translation
 pot="locale/agent.pot"
 json="../../modules/sections.json"
-langs="fr_FR pt_BR de_DE"
+langs="fr_FR pt_BR de_DE zh_CN"
 rm -f ${pot}
 echo "creating ${pot}"
 touch ${pot}

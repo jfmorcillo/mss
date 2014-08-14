@@ -1,0 +1,85 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# 
+## Translators:
+msgid ""
+msgstr ""
+"Project-Id-Version: Mandriva Server Setup\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"PO-Revision-Date: 2014-08-14 00:52+0000\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/team/zh_CN/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_CN\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+
+#: templates/errors/404.html:6
+msgid "Page not found"
+msgstr ""
+
+#: templates/errors/404.html:8
+msgid "This page doesn't exists."
+msgstr ""
+
+#: templates/errors/404.html:11 templates/errors/500.html:38
+#: templates/errors/traceback_sent.html:12
+msgid "Home"
+msgstr ""
+
+#: templates/errors/500.html:6
+msgid "An unexpected error occured"
+msgstr ""
+
+#: templates/errors/500.html:9
+msgid "The error message is"
+msgstr ""
+
+#: templates/errors/500.html:13
+msgid "Show details"
+msgstr ""
+
+#: templates/errors/500.html:22
+msgid ""
+"To help us solve this problem, can you explain what you were trying to do "
+"just now ?"
+msgstr ""
+
+#: templates/errors/500.html:31
+msgid "Send"
+msgstr ""
+
+#: templates/errors/error.html:6
+msgid "An error has occured."
+msgstr ""
+
+#: templates/errors/error.html:9
+msgid "MSS agent is unreacheable."
+msgstr ""
+
+#: templates/errors/error.html:10
+msgid ""
+"Check the service status with the <strong>service mss-agent status</strong> "
+"command."
+msgstr ""
+
+#: templates/errors/error.html:16
+msgid "Home page"
+msgstr ""
+
+#: templates/errors/traceback_sent.html:6
+msgid "Thanks for your feedback!"
+msgstr ""
+
+#: templates/errors/traceback_sent.html:8
+msgid "Developers have been notified and will take care of the issue."
+msgstr ""
+
+#: templates/errors/traceback_sent.html:9
+msgid "Sorry for the inconvenience."
+msgstr ""
+
+

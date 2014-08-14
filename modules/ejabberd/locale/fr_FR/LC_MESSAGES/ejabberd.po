@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-05 22:08+0200\n"
+"POT-Creation-Date: 2014-08-14 02:39+0200\n"
 "PO-Revision-Date: 2013-04-08 10:17+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
@@ -71,11 +71,11 @@ msgstr "Permettre l'accès depuis les réseaux externes"
 msgid "Collaboration"
 msgstr "Collaboration"
 
-#: modules/ejabberd/setup-ejabberd.sh:28
+#: ejabberd/setup-ejabberd.sh:28
 msgid "The instant messaging service is configured."
 msgstr "The service de messagerie instantanée est configuré."
 
-#: modules/ejabberd/setup-ejabberd.sh:29
+#: ejabberd/setup-ejabberd.sh:29
 msgid ""
 "You can simply add users through the management interface at "
 "https://@HOSTNAME@/mmc/. The user's mail will be used as his Jabber ID."
@@ -84,11 +84,11 @@ msgstr ""
 "gestion à https://@HOSTNAME@/mmc/. L'adresse e-mail de l'utilisateur sera "
 "utilisé pour son identifiant Jabber."
 
-#: modules/ejabberd/setup-ejabberd.sh:30
+#: ejabberd/setup-ejabberd.sh:30
 msgid "Use $HOST.$DOMAIN as the server."
 msgstr "Utiliser $HOST.$DOMAIN comme serveur."
 
-#: modules/ejabberd/setup-ejabberd.sh:31
+#: ejabberd/setup-ejabberd.sh:31
 msgid ""
 "If $HOST.$DOMAIN is setup as a Jabber server in the $DOMAIN DNS zone there "
 "is no need to configure the server address in client."
