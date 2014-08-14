@@ -366,10 +366,8 @@ CONF="/var/lib/mss/local/eva/templates/eva.conf.tpl"
 cp -fv $CONF $rep_apache2/conf/webapps.d/eva.conf
 chown apache: $rep_apache2/conf/webapps.d/eva.conf
 
-tmplocal=`cat /etc/sysconfig/clock | grep "ZONE" | cut -d= -f2`
-echo ${tmplocal} |sed 's/\//\\\//g' > /tmp/loca
-local=`cat /tmp/loca`
-sed -i -e "s/;date.timezone =/date.timezone = ${local}/g" /etc/php.ini
+local=`ls -l /etc/localtime | awk 'BEGIN { FS="/"; OFS=""; } {print $(NF-1),"/",$NF}'`
+sed -i -e "s~^;date.timezone.*$~date.timezone = ${local}~g" /etc/php.ini
 
 
 pswdMysql=`grep password /root/.my.cnf |  cut -d\' -f2`
