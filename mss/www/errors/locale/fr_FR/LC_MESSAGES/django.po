@@ -9,14 +9,16 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2013-06-07 13:11+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"PO-Revision-Date: 2014-08-22 17:52+0200\n"
+"Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
+"Language-Team: French "
+"<http://translate.mandriva.com/projects/mss/errors/fr_FR/>\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=n > 1;\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: templates/errors/404.html:6
 msgid "Page not found"
@@ -69,7 +71,7 @@ msgid ""
 "command."
 msgstr ""
 "Vérifiez l'état du service avec la commande <strong>service mss-agent "
-"status</strong>"
+"status</strong>."
 
 #: templates/errors/error.html:16
 msgid "Home page"
@@ -77,7 +79,7 @@ msgstr "Page d'accueil"
 
 #: templates/errors/traceback_sent.html:6
 msgid "Thanks for your feedback!"
-msgstr "Merci pour votre retour!"
+msgstr "Merci pour votre retour !"
 
 #: templates/errors/traceback_sent.html:8
 msgid "Developers have been notified and will take care of the issue."
@@ -87,5 +89,3 @@ msgstr ""
 #: templates/errors/traceback_sent.html:9
 msgid "Sorry for the inconvenience."
 msgstr "Désolé pour le dérangement."
-
-
