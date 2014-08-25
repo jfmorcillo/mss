@@ -49,7 +49,7 @@ def get_interfaces_config(config):
     """
     CONFIG_DIR = "/etc/sysconfig/network-scripts"
     for interface in netifaces.interfaces():
-        if interface.startswith("eth"):
+        if interface.startswith("eth") or interface.startswith("br"):
             if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
             if_detail = netifaces.ifaddresses(interface)
             configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail
