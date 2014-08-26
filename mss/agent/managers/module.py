@@ -203,12 +203,16 @@ class ModuleManager:
 
     def load_sections(self):
         """ load sections """
-        if self._mode == "local":
-            logger.debug("Using local sections")
-            sections = self.get_local_sections()
-        else:
+        logger.debug("Using local sections")
+        sections = self.get_local_sections()
+
+        if self._mode == "api":
             logger.debug("Using API sections")
-            sections = self.get_api_sections()
+            api_sections = self.get_api_sections()
+            for section in sections:
+                for api_section in api_sections:
+                    if section['slug'] == api_section['slug']:
+                        section.update(api_section)
         self.sections = sections
 
     def get_local_sections(self):
