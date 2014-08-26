@@ -188,7 +188,7 @@ class Module(object):
                     return
                 except:
                     pass
-    	# check if module is configured from database
+        # check if module is configured from database
         session = get_session(Config().db_file)
         module = session.query(ModuleTable).filter(ModuleTable.name == self.slug).first()
         if module and module.configured:
@@ -242,8 +242,8 @@ class Module(object):
             self._packages = []
             targets = self._desc.get("packages", [])
             for target in targets:
-                if target['name'] == "all" or \
-                    target['name'] == ModuleManager().arch:
+                if (target['name'] == "all" or
+                        target['name'] == ModuleManager().arch):
                     self._packages.extend(target.get("rpms", []))
         return self._packages
 
