@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:04+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,6 +25,10 @@ msgstr ""
 msgid "Other Services"
 msgstr ""
 
+#: [2].name
+msgid "Management"
+msgstr ""
+
 #: classes/module.py:162
 msgid "Other"
 msgstr ""
@@ -35,6 +39,10 @@ msgstr ""
 
 #: classes/module.py:385
 msgid "Password mismatch."
+msgstr ""
+
+#: managers/module.py:718
+msgid "Connection failed with the ServicePlace."
 msgstr ""
 
 #: managers/process.py:44
@@ -76,8 +84,4 @@ msgstr ""
 
 #: managers/process.py:167
 msgid "Ready"
-msgstr ""
-
-#: managers/module.py:713
-msgid "Connection failed with the ServicePlace."
 msgstr ""

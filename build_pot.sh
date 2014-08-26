@@ -60,15 +60,18 @@ for module in *; do
             mv ${pot}.tmp ${pot}
             echo "....done."
         fi
+        for lang in $langs; do
+            msgmerge -U ${mod}/locale/${lang}/LC_MESSAGES/${mod}.po ${pot}
+        done
     fi
 done
 
 popd
 pushd mss/www/wizard
-django-admin.py makemessages -l en
+django-admin.py makemessages -l de_DE -l fr_FR -l pt_BR -l zh_CN
 
 popd
 pushd mss/www/errors
-django-admin.py makemessages -l en
+django-admin.py makemessages -l de_DE -l fr_FR -l pt_BR -l zh_CN
 
 exit 0

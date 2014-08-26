@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <contacts@siveo.net>, 2014.
 #   <spointu@mandriva.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2014-08-14 01:37+0000\n"
 "Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
-"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/team/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/"
+"team/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: .description
@@ -34,5 +35,3 @@ msgstr "PostgreSQL 数据库"
 #: postgresql/setup-postgresql.sh:11
 msgid "Postgresql is running."
 msgstr "PostgreSQL 在运行中"
-
-

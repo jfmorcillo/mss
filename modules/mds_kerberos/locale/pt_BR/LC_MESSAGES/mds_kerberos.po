@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <alexandre@mandriva.com.br>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-04-16 13:40+0000\n"
 "Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
@@ -108,8 +109,8 @@ msgstr "Porta padrão para administração do servidor (ex: 749)"
 
 #: .config[5].help
 msgid ""
-"Master key for the KDC server. Attention! It can be set only when the module"
-" is unconfigured"
+"Master key for the KDC server. Attention! It can be set only when the module "
+"is unconfigured"
 msgstr ""
 "Chave mestre para o servidor KDC. Atenção! isso pode ser definido apenas "
 "quando o módulo não está configurado"
@@ -125,8 +126,8 @@ msgstr "kdc_key_passwd"
 #: .config[6].help
 msgid ""
 "Indicates whether DNS SRV records should be used to locate the KDCs and "
-"other servers for a realm, if they are not listed in the information for the"
-" realm"
+"other servers for a realm, if they are not listed in the information for the "
+"realm"
 msgstr ""
 "Indica se os registros SRV do DNS deve ser utilizado para localizar os KDCs "
 "e outros servidores para um realm, se eles não estão listados na informação "
@@ -175,8 +176,8 @@ msgstr "Clock skew"
 #: .config[9].help
 msgid ""
 "Supported list of session key encryption types that should be returned by "
-"the KDC (Values of list devided by whitespace or comma from each other, "
-"e.g., des3-cbc-sha1-kd des-cbc-crc)"
+"the KDC (Values of list devided by whitespace or comma from each other, e."
+"g., des3-cbc-sha1-kd des-cbc-crc)"
 msgstr ""
 "Lista de suporte de tipos de sessão de chave de criptografia que devem ser "
 "devolvidos pelo KDC (Valores da lista dividida por espaços em branco ou "
@@ -193,12 +194,12 @@ msgstr "tgs_enctypes"
 #: .config[10].help
 msgid ""
 "Supported list of session key encryption types that should be requested by "
-"the client (Values of list devided by whitespace or comma from each other, "
-"e.g., des3-cbc-sha1-kd des-cbc-crc)"
+"the client (Values of list devided by whitespace or comma from each other, e."
+"g., des3-cbc-sha1-kd des-cbc-crc)"
 msgstr ""
 "Lista de suporte de tipos de sessão de chave de criptografia que devem ser "
-"solicitados pelo cliente (Valores da lista dividida por espaços em branco ou"
-" vírgula um do outro, por exemplo, des3-cbc-sha1-kd des-cbc-crc)"
+"solicitados pelo cliente (Valores da lista dividida por espaços em branco ou "
+"vírgula um do outro, por exemplo, des3-cbc-sha1-kd des-cbc-crc)"
 
 #: .config[10].label
 msgid "TKT encryption types"
@@ -211,11 +212,11 @@ msgstr "tkt_enctypes"
 #: .config[11].help
 msgid ""
 "All encryption types that are permitted for use in session key encryption "
-"(Values of list devided by whitespace or comma from each other, e.g., des3"
-"-cbc-sha1-kd des-cbc-crc)"
+"(Values of list devided by whitespace or comma from each other, e.g., des3-"
+"cbc-sha1-kd des-cbc-crc)"
 msgstr ""
-"Todos os tipos de criptografia que são permitidas para o uso em criptografia"
-" de chave de sessão (Valores da lista dividida por espaços em branco ou "
+"Todos os tipos de criptografia que são permitidas para o uso em criptografia "
+"de chave de sessão (Valores da lista dividida por espaços em branco ou "
 "vírgula um do outro, por exemplo, des3-cbc-sha1-kd des-cbc-crc)"
 
 #: .config[11].label
@@ -237,5 +238,3 @@ msgstr "allow_weak_enctypes"
 #: .config[12].label
 msgid "Allow weak encryption types"
 msgstr "Permitir tipos de criptografia fracos"
-
-

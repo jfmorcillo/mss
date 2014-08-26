@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-04-16 14:02+0000\n"
 "Last-Translator: Alexandre Proença <alexandre@mandriva.com.br>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
@@ -114,8 +115,8 @@ msgstr "Email"
 
 #: mds_mail/setup-mail.sh:94
 msgid ""
-"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh "
-"-c 'razor-admin -register && razor-admin -discover'"
+"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
+"c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
 "Falha ao registrar razor. Tente executar como root depois: su - amavis-s / "
 "bin / sh-c 'razor-admin-register && razor-admin-discover'"
@@ -146,8 +147,7 @@ msgstr "- Não-SSL conexões são desabilitados por padrão no servidor IMAP/POP
 
 #: mds_mail/setup-mail.sh:133
 msgid ""
-"- Networks authorized to send mail without authentication : "
-"$smtpd_mynetworks"
+"- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""
 "- Redes autorizados a enviar e-mails sem autenticação: $ smtpd_mynetworks"
 
@@ -158,5 +158,3 @@ msgstr "Domínio de e-mail padrão"
 #: mds_mail/add_domain.py:20
 msgid "Failed to add the mail domain."
 msgstr "Falhou para adiconar o domínio de e-mail"
-
-

@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <andre@mandriva.com>, 2014.
 #   <spointu@mandriva.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:04+0200\n"
 "PO-Revision-Date: 2014-08-14 00:27+0000\n"
 "Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
@@ -35,8 +36,8 @@ msgstr "Interface eVA"
 msgid ""
 "Upgrade your unlicensed version into a fully licensed and supported version"
 msgstr ""
-"Atualize sua versão de demonstração para uma versão completamente licenciada"
-" e suportada"
+"Atualize sua versão de demonstração para uma versão completamente licenciada "
+"e suportada"
 
 #: .name
 msgid "Mandriva eVA"
@@ -66,24 +67,22 @@ msgstr "Eu aceito a Licença Oracle(c) e instalo o Oracle JDK"
 msgid "Cloud"
 msgstr "Cloud"
 
-#: eva/setup-eva.sh:409
+#: eva/setup-eva.sh:416
 msgid "eVA is now configured."
 msgstr "eVA configurado."
 
-#: eva/setup-eva.sh:410
+#: eva/setup-eva.sh:417
 msgid "- Username is $eVA_adminUser"
 msgstr "- O nome usuário é $eVA_adminUser"
 
-#: eva/setup-eva.sh:411
+#: eva/setup-eva.sh:418
 msgid "- Password is $password_eva"
 msgstr "- A senha é $password_eva"
 
-#: eva/setup-eva.sh:412
+#: eva/setup-eva.sh:419
 msgid "Reboot to complete the configuration."
 msgstr "Reinicie para completar a configuração."
 
 #: eva/__init__.py:35
 msgid "You must accept the license"
 msgstr "Você deve aceitar a licença"
-
-

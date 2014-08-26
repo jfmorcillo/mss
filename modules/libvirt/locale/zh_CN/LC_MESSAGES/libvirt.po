@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <contacts@siveo.net>, 2014.
 #   <spointu@mandriva.com>, 2014.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:04+0200\n"
 "PO-Revision-Date: 2014-08-14 01:25+0000\n"
 "Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
-"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/team/zh_CN/)\n"
+"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/"
+"team/zh_CN/)\n"
+"Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: zh_CN\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 
 #: .description .desc
@@ -67,8 +68,8 @@ msgstr "bridge"
 
 #: .config[3].help
 msgid ""
-"Configure the firewall to accept libvirt management on interfaces configured"
-" as 'internal'"
+"Configure the firewall to accept libvirt management on interfaces configured "
+"as 'internal'"
 msgstr "配置防火墙在配置为内部接口来接受Libvirt 管理"
 
 #: .config[3].name
@@ -81,8 +82,8 @@ msgstr "允许来自内部网络的链接 "
 
 #: .config[4].help
 msgid ""
-"Configure the firewall to accept libvirt management on interfaces configured"
-" as 'external'"
+"Configure the firewall to accept libvirt management on interfaces configured "
+"as 'external'"
 msgstr "配置防火墙在配置为外部接口来接受Libvirt 管理"
 
 #: .config[4].name
@@ -121,7 +122,8 @@ msgstr "密码为$admin_password"
 msgid ""
 "Reboot to apply the network configuration. If you have a DHCP IP address "
 "your IP address may change."
-msgstr "重新引导到应用网络程序。如有您有一个DHCP IP地址，您的IP地址可能会改变。"
+msgstr ""
+"重新引导到应用网络程序。如有您有一个DHCP IP地址，您的IP地址可能会改变。"
 
 #: libvirt/__init__.py:68
 #, python-format
@@ -131,5 +133,3 @@ msgstr "为界面创建一个桥梁%s (%s, %s)"
 #: libvirt/__init__.py:69
 msgid "You will be able to setup virtual machines on this network."
 msgstr "您可以在该网络上安装虚拟机"
-
-

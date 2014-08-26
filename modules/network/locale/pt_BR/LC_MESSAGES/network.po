@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-04-16 11:44+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description
@@ -48,8 +49,8 @@ msgid ""
 "Choose \"External\" if the interface is connected to the Internet. If the "
 "interface is connected to an internal network, choose \"Internal\""
 msgstr ""
-"Escolha \"externo\" se a interface está conectada à Internet. Se a interface"
-" está conectado a uma rede interna, escolha \"interno\""
+"Escolha \"externo\" se a interface está conectada à Internet. Se a interface "
+"está conectado a uma rede interna, escolha \"interno\""
 
 #: network/__init__.py:86
 msgid "Internal network"
@@ -120,5 +121,3 @@ msgstr ""
 #: network/__init__.py:154
 msgid "Allow SSH access from external networks"
 msgstr "Permitir o acesso SSH a partir de redes externas"
-
-

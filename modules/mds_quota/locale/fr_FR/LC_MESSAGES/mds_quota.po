@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <jfmorcillo@mandriva.com>, 2012.
 #   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-09-18 09:29+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
+"team/fr_FR/)\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
@@ -46,8 +47,8 @@ msgid ""
 "following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
 msgstr ""
 "Spécifiez les systèmes de fichiers sur lesquels vous voulez appliquer des "
-"quotas utilisateur avec le format suivant : \"Fichier de "
-"périphérique\":\"Description\" (ex: /dev/sda1:Root)"
+"quotas utilisateur avec le format suivant : \"Fichier de périphérique\":"
+"\"Description\" (ex: /dev/sda1:Root)"
 
 #: .categories[0].name
 msgid "Users"
@@ -63,8 +64,8 @@ msgstr "Module de quota activé dans l'interface de gestion."
 
 #: mds_quota/setup-quota.sh:55
 msgid ""
-"You can now configure user quotas from the management interface : "
-"https://@HOSTNAME@/mmc/."
+"You can now configure user quotas from the management interface : https://"
+"@HOSTNAME@/mmc/."
 msgstr ""
 "Vous pouvez maintenant configurer les quotas d'utilisateurs à partir de "
 "l'interface de gestion : https://@HOSTNAME@/mmc/."
@@ -73,5 +74,3 @@ msgstr ""
 #, python-format
 msgid "Device %s doesn't exists."
 msgstr "Le périphérique %s n'existe pas."
-
-

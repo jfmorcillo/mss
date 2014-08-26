@@ -1,22 +1,23 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <alexandre@mandriva.com.br>, 2013.
 #   <andre@mandriva.com>, 2011, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-06-10 18:56+0000\n"
 "Last-Translator: Andre Machado <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/projects/p/mss/team/pt_BR/)\n"
+"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
+"projects/p/mss/team/pt_BR/)\n"
+"Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
@@ -44,8 +45,8 @@ msgid ""
 "Specify the filesystems where you want to apply user quotas with the "
 "following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
 msgstr ""
-"Especificar os sistemas de arquivos que você deseja aplicar cotas de usuário"
-" com o seguinte formato: \"Caminho de dispositivo ':' string Identificador "
+"Especificar os sistemas de arquivos que você deseja aplicar cotas de usuário "
+"com o seguinte formato: \"Caminho de dispositivo ':' string Identificador "
 "'(por exemplo:/de/sda1:Root)"
 
 #: .categories[0].name
@@ -62,8 +63,8 @@ msgstr "Módulo cota é ativado na interface de gerenciamento."
 
 #: mds_quota/setup-quota.sh:55
 msgid ""
-"You can now configure user quotas from the management interface : "
-"https://@HOSTNAME@/mmc/."
+"You can now configure user quotas from the management interface : https://"
+"@HOSTNAME@/mmc/."
 msgstr ""
 "Agora você pode configurar cotas de usuário através da interface de "
 "gerenciamento: https://@HOSTNAME@/mmc/."
@@ -72,5 +73,3 @@ msgstr ""
 #, python-format
 msgid "Device %s doesn't exists."
 msgstr "Os dispositivos %s não existem."
-
-

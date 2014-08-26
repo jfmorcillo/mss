@@ -1,32 +1,39 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <maikwagner@yahoo.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-05-24 15:53+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
-"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
+"mss/team/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: .description .desc
 msgid ""
-"ownCloud gives your users an universal access to their files through a web interface or WebDAV.\n"
+"ownCloud gives your users an universal access to their files through a web "
+"interface or WebDAV.\n"
 "\n"
-"It also provides a platform to easily view & sync your contacts, calendars and bookmarks across all your devices and enables basic editing right on the web"
+"It also provides a platform to easily view & sync your contacts, calendars "
+"and bookmarks across all your devices and enables basic editing right on the "
+"web"
 msgstr ""
-"ownCloud gibt Ihren Benutzern über eine Webschnittstelle oder WebDAV Zugang zu deren Dateien.\n"
+"ownCloud gibt Ihren Benutzern über eine Webschnittstelle oder WebDAV Zugang "
+"zu deren Dateien.\n"
 "\n"
-"Weiterhin bietet ownCloud eine Plattform und einfach Kotakte, Kalender, Lesezeichen über alle Ihre Geräte zu sichten und zu synchronisieren und bietet grundlegende Bearbeitung direkt im Web"
+"Weiterhin bietet ownCloud eine Plattform und einfach Kotakte, Kalender, "
+"Lesezeichen über alle Ihre Geräte zu sichten und zu synchronisieren und "
+"bietet grundlegende Bearbeitung direkt im Web"
 
 #: .actions[0].name
 msgid "ownCloud interface"
@@ -88,5 +95,3 @@ msgstr "ownCloud ist nun konfiguriert."
 msgid "You can access the web interface at https://@HOSTNAME@/owncloud/"
 msgstr ""
 "Sie können das Web-Interface unter https://@HOSTNAME@/owncloud/ erreichen"
-
-

@@ -1,29 +1,29 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <jfmorcillo@mandriva.com>, 2012.
 #   <jpbraun@mandriva.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-06-26 15:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/team/fr_FR/)\n"
+"Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
+"team/fr_FR/)\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: fr_FR\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
 #: .description .desc
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
-"Service de messagerie complet avec POP/IMAP et outils anti-virus et anti-"
-"spam"
+"Service de messagerie complet avec POP/IMAP et outils anti-virus et anti-spam"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -115,12 +115,12 @@ msgstr "E-mail"
 
 #: mds_mail/setup-mail.sh:94
 msgid ""
-"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh "
-"-c 'razor-admin -register && razor-admin -discover'"
+"Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
+"c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
 "Impossible d'enregistrer Razor. Plus tard, essayez d'exécuter en tant que "
-"root : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin "
-"-discover'"
+"root : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -"
+"discover'"
 
 #: mds_mail/setup-mail.sh:128
 msgid "The mail service is configured."
@@ -132,8 +132,7 @@ msgid ""
 "interface at https://@HOSTNAME@/mmc/."
 msgstr ""
 "Vous pouvez ajouter des adresses de messagerie et des alias pour vos "
-"utilisateurs grâce à l'interface de gestion située à "
-"https://@HOSTNAME@/mmc/."
+"utilisateurs grâce à l'interface de gestion située à https://@HOSTNAME@/mmc/."
 
 #: mds_mail/setup-mail.sh:130
 msgid "- the mail domain $DOMAIN has been created"
@@ -146,13 +145,11 @@ msgstr "- SSL est activé sur le serveur SMTP"
 #: mds_mail/setup-mail.sh:132
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
 msgstr ""
-"- Les connexions non-SSL sont désactivés par défaut sur ​​le serveur "
-"IMAP/POP3"
+"- Les connexions non-SSL sont désactivés par défaut sur ​​le serveur IMAP/POP3"
 
 #: mds_mail/setup-mail.sh:133
 msgid ""
-"- Networks authorized to send mail without authentication : "
-"$smtpd_mynetworks"
+"- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""
 "- Réseaux autorisés à envoyer du courrier sans authentification: "
 "$smtpd_mynetworks"
@@ -164,5 +161,3 @@ msgstr "Domaine de mail par défaut"
 #: mds_mail/add_domain.py:20
 msgid "Failed to add the mail domain."
 msgstr "Echec de l'ajout du domaine de mail"
-
-

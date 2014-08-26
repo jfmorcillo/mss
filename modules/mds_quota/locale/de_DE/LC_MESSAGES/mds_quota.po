@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <maikwagner@yahoo.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-06-10 14:22+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
-"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
+"mss/team/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: .description .desc
@@ -43,8 +44,8 @@ msgid ""
 "Specify the filesystems where you want to apply user quotas with the "
 "following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
 msgstr ""
-"Geben Sie die Dateisysteme an, worauf Sie Benutzerquotas anwenden wollen, in"
-" folgendem Format an : 'Gerätepfad':'Identifikation' (zB: /dev/sda1:Root)"
+"Geben Sie die Dateisysteme an, worauf Sie Benutzerquotas anwenden wollen, in "
+"folgendem Format an : 'Gerätepfad':'Identifikation' (zB: /dev/sda1:Root)"
 
 #: .categories[0].name
 msgid "Users"
@@ -60,8 +61,8 @@ msgstr "Quotamodul ist in der Verwaltungsschnittstelle aktiviert."
 
 #: mds_quota/setup-quota.sh:55
 msgid ""
-"You can now configure user quotas from the management interface : "
-"https://@HOSTNAME@/mmc/."
+"You can now configure user quotas from the management interface : https://"
+"@HOSTNAME@/mmc/."
 msgstr ""
 "Sie können nun die Benutzerquotas von der Verwaltungsschnittstelle "
 "konfigurieren : https://@HOSTNAME@/mmc/."
@@ -70,5 +71,3 @@ msgstr ""
 #, python-format
 msgid "Device %s doesn't exists."
 msgstr "Device %s existiert nicht."
-
-

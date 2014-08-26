@@ -1,21 +1,22 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <maikwagner@yahoo.com>, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-08-26 12:05+0200\n"
 "PO-Revision-Date: 2013-04-18 12:12+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
-"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/mss/team/de_DE/)\n"
+"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
+"mss/team/de_DE/)\n"
+"Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: de_DE\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
 #: .description .desc
@@ -55,8 +56,8 @@ msgid ""
 "Configure the firewall to allow access to the web interface from internal "
 "networks"
 msgstr ""
-"Konfigurieren der Firewall, Zugang zum Web-Interface von internen Netzwerken"
-" zu erlauben"
+"Konfigurieren der Firewall, Zugang zum Web-Interface von internen Netzwerken "
+"zu erlauben"
 
 #: .config[1].name
 msgid "fw_lan"
@@ -71,8 +72,8 @@ msgid ""
 "Configure the firewall to allow access to the web interface from external "
 "networks"
 msgstr ""
-"Konfigurieren der Firewall, Zugang zum Web-Interface von externen Netzwerken"
-" zu erlauben"
+"Konfigurieren der Firewall, Zugang zum Web-Interface von externen Netzwerken "
+"zu erlauben"
 
 #: .config[2].name
 msgid "fw_wan"
@@ -124,5 +125,3 @@ msgstr "Administratorname : root"
 #: mds_mmc/setup-mmc.sh:134
 msgid "Administrator password : $mypass"
 msgstr "Administratorpasswort : $mypass"
-
-
