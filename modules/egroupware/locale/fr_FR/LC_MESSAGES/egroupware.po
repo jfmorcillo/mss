@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-08-22 17:53+0200\n"
+"PO-Revision-Date: 2014-08-26 12:15+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/egroupware/fr_FR/>\n"
@@ -33,7 +33,7 @@ msgstr "eGroupware"
 
 #: .packages[0].name
 msgid "all"
-msgstr "tous"
+msgstr "all"
 
 #: .config[0].help
 msgid "The name of the eGroupware administrator"
