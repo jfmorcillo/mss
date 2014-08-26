@@ -46,6 +46,8 @@ HOMEPAGE="/var/lib/mss/local/eva/templates/homepage.tar.bz2"
 pushd /var/www/html
     tar xjvf $HOMEPAGE
 popd
+sed -i "s/access MSS on/access eVA on/g" /etc/profile.d/99info.sh
+sed -i "s/:8000//g" /etc/profile.d/99info.sh
 
 postgresql_home="/var/lib/pgsql"
 
@@ -73,7 +75,8 @@ export JAVA_HOME=$default_rep_javahome
 
 eVA_adminUser="evaadmin"
 password_eva=$1
-ipFrontal=127.0.0.1
+
+iface_addr=`ifconfig | grep inet | cut -f 12 -d ' ' | cut -f 2 -d ':' | sed '/^$/d' | grep -v '127.0.0.1'`
 
 export language="en"
 
@@ -288,29 +291,29 @@ echo "Install eVA"
 	JBOSS_HOME_BACKSLACHE=`cat /tmp/jj`
 	cp ${workspace}/.eva/eva.backup ${workspace}/.eva/eva.backup.parse
 	sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${workspace}/.eva/eva.backup.parse
-	sed -i "s/@IPFRONTAL@/${ipFrontal}/g" ${workspace}/.eva/eva.backup.parse
+	sed -i "s/@IPFRONTAL@/${iface_addr}/g" ${workspace}/.eva/eva.backup.parse
 
 
     restart_service postgresql
 
 	# Creation des instances de base eva, activiti, eva-jms + creation du user siveo
-	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse"
+	su postgres -c "psql -U postgres -f ${workspace}/.eva/createdb.sql.parse" > /dev/null
 	
 	# create tables for reporting-quartz instance database
-	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql"
+	su postgres -c "psql -U siveo -d reporting-quartz -f ${workspace}/.eva/reporting-quartz.sql" > /dev/null
 	
 	# Creation des tables de l'instance eva + remplissage des tables
-	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse"
+	su postgres -c "psql -U siveo -d eva -f ${workspace}/.eva/eva.backup.parse" > /dev/null
 	rm -f ${workspace}/.eva/eva.backup.parse
 	
 	# Creation des tables de l'instance activiti
-	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup"
+	su postgres -c "psql -U siveo -d activiti -f ${workspace}/.eva/eva-activiti.backup" > /dev/null
 	
 	# Creation des tables de l'instance eva-jms
-	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup"
+	su postgres -c "psql -U siveo -d eva-jms -f ${workspace}/.eva/eva-jms.backup" > /dev/null
 
 	# Creation des tables de reporting
-	su postgres -c "psql -U siveo -d reporting -f ${workspace}/.eva/reporting.sql"
+	su postgres -c "psql -U siveo -d reporting -f ${workspace}/.eva/reporting.sql" > /dev/null
 
     rm -fv ~/.pgpass
 
@@ -395,6 +398,11 @@ sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.cop
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 sed -i "s/@USEHTTPS@/False/g" $rep_siveo/var/config/copixproperties.xml
+
+# Configure the Firewall
+[ $fw_lan == "on" ] && mss-add-shorewall-rule -a VNC/ACCEPT -t lan
+[ $fw_wan == "on" ] && mss-add-shorewall-rule -a VNC/ACCEPT -t wan
+restart_service shorewall
 
 restart_service httpd
 #service jboss-eva start
