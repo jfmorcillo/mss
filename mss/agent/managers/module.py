@@ -537,7 +537,8 @@ class ModuleManager:
         """
         Callback after run script
         """
-        if code == 0 and not self.modules[module].configured:
+        if (code == 0 and not self.modules[module].configured and
+                self.modules[module].section not in ('management')):
             logger.debug("Set %s as configured" % str(module))
             self.modules[module].configured = True
             # try to store the config log
