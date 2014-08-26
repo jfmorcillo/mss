@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:25+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/owncloud/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -46,7 +46,7 @@ msgstr "ownCloud (Nuvem Particular)"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tudo"
 
 #: .config[0].help
 msgid "The name of the ownCloud administrator that will be created"
