@@ -1,0 +1,31 @@
+{
+    "slug": "password_root",
+    "name": "Change UNIX root password",
+    "desc": "Change the root password of the server",
+    "description": "Change the root password of the server",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["expect"]
+        }
+    ],
+    "config": [
+        {
+            "type": "password",
+            "name": "old_passwd",
+            "require": "yes",
+            "confirm": "no",
+            "label": "Old password"
+        },
+        {
+            "type": "password",
+            "name": "new_passwd",
+            "require": "yes",
+            "label": "New password",
+            "validation": "password"
+        }
+    ],
+    "module": {
+            "section": "management"
+    }
+}
