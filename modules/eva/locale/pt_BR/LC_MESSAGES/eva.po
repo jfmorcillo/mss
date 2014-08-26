@@ -10,15 +10,16 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:04+0200\n"
-"PO-Revision-Date: 2014-08-14 00:27+0000\n"
-"Last-Translator: Stéphane Pointu <spointu@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
+"PO-Revision-Date: 2014-08-26 18:38+0200\n"
+"Last-Translator: Andre <andre@mandriva.com>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.mandriva.com/projects/mss/eva/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: .description .desc
 msgid "Cloud Management Solution"
@@ -45,11 +46,11 @@ msgstr "Mandriva eVA"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tudo"
 
 #: .config[0].name
 msgid "password_eva"
-msgstr "password_eva"
+msgstr "senha_eva"
 
 #: .config[0].label
 msgid "Password of eVA administrator"
@@ -57,7 +58,7 @@ msgstr "Senha do administrador eVA"
 
 #: .config[1].name
 msgid "accept_oracle"
-msgstr "accept_oracle"
+msgstr "aceitar_oracle"
 
 #: .config[1].label
 msgid "I accept the Oracle(c) License and install Oracle JDK"
@@ -65,7 +66,7 @@ msgstr "Eu aceito a Licença Oracle(c) e instalo o Oracle JDK"
 
 #: .categories[0].name
 msgid "Cloud"
-msgstr "Cloud"
+msgstr "Nuvem"
 
 #: eva/setup-eva.sh:416
 msgid "eVA is now configured."
