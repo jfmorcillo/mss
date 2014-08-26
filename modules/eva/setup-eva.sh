@@ -400,8 +400,8 @@ cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
 sed -i "s/@USEHTTPS@/False/g" $rep_siveo/var/config/copixproperties.xml
 
 # Configure the Firewall
-[ $fw_lan == "on" ] && mss-add-shorewall-rule -a VNC/ACCEPT -t lan
-[ $fw_wan == "on" ] && mss-add-shorewall-rule -a VNC/ACCEPT -t wan
+mss-add-shorewall-rule -a VNC/ACCEPT -t lan
+mss-add-shorewall-rule -a VNC/ACCEPT -t wan
 restart_service shorewall
 
 restart_service httpd
