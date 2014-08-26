@@ -158,6 +158,7 @@
                         />
                     </div>
                 </div>
+                {% ifnotequal field.confirm "no" %}
                 <div class="control-group {% if field.error %}error{% endif %}">
                     <label class="control-label" for="{{ field.slug }}_{{ field.name }}2">
                         {% trans "Re-enter password" %}{% if field.require %}<span class="require">&nbsp;*</span>{% endif %}:
@@ -175,6 +176,7 @@
                         {% endif %}
                     </div>
                 </div>
+                {% endifnotequal %}
                 {% endifequal %}
         	    {% ifequal field.type "options" %}
                 <div class="control-group {% if field.error %}error{% endif %}">

@@ -378,7 +378,7 @@ class Module(object):
                     if not field_value:
                         errors = True
                         field["error"] = _("This field can't be empty.", "agent")
-                    elif field_name.endswith("passwd"):
+                    elif field_name.endswith("passwd") and field.get("confirm", "yes") != "no":
                         field_value2 = user_config.get(self.slug+"_"+field_name+"2")
                         if field_value != field_value2:
                             errors = True
