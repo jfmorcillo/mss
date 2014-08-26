@@ -288,9 +288,9 @@ def config(request):
     run_config = False
     skip_config = True
     for module in transaction.modules_info:
-        if module["has_configuration"]:
+        if module["has_configuration"] and module["can_configure"]:
             skip_config = False
-        if module["has_configuration_script"]:
+        if module["has_configuration_script"] and module["can_configure"]:
             run_config = True
 
     # modules don't have configuration scripts
@@ -335,7 +335,7 @@ def config_run(request, module):
     """ run configuration script for module """
     transaction = Transaction(request)
     for m in transaction.modules_info:
-        if m['slug'] == module and not m['configured']:
+        if m['slug'] == module and m['can_configure']:
             xmlrpc.call('run_config', module)
             break
     return HttpResponse("")

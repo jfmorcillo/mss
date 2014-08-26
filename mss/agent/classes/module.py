@@ -75,6 +75,7 @@ class Module(object):
                 'has_configuration': self.has_configuration,
                 'has_configuration_script': self.has_configuration_script,
                 'configured': self.configured,
+                'can_configure': self.can_configure,
                 'conflicts': self.conflicts,
                 'dependencies': self.dependencies,
                 'standalone': self.standalone,
@@ -167,6 +168,10 @@ class Module(object):
             return self._desc["module"].get("section", "other")
         else:
             return "other"
+
+    @property
+    def can_configure(self):
+        return not self.configured or self.section == 'management'
 
     @property
     def has_configuration(self):

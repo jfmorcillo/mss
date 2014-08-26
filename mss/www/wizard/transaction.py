@@ -134,7 +134,7 @@ class Transaction(object):
                 has_restricted_repositories = True
             if not module['installed']:
                 installed = False
-            if module["has_configuration_script"] and not module['configured']:
+            if module["has_configuration_script"] and module['can_configure']:
                 configured = False
             if not module['downloaded']:
                 configured = False

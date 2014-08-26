@@ -393,7 +393,7 @@ class ModuleManager:
         # get modules info (modules + dependencies)
         modules = self.get_modules_details(modules)
         # remove already configured modules
-        modules = [m for m in modules if not m['configured']]
+        modules = [m for m in modules if m['can_configure']]
         # tell if the module is an dependency of selected modules
         for m in modules:
             if m['slug'] in deps:
@@ -541,8 +541,7 @@ class ModuleManager:
         """
         Callback after run script
         """
-        if (code == 0 and not self.modules[module].configured and
-                self.modules[module].section not in ('management')):
+        if code == 0 and not self.modules[module].configured:
             logger.debug("Set %s as configured" % str(module))
             self.modules[module].configured = True
             # try to store the config log
