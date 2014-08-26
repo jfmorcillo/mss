@@ -1,0 +1,31 @@
+{
+    "slug": "password_ldap",
+    "name": "Change LDAP root password",
+    "desc": "Change the root password of the management console",
+    "description": "Change the root password of the management console",
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["openldap-clients"]
+        }
+    ],
+    "config": [
+        {
+            "type": "password",
+            "name": "old_passwd",
+            "require": "yes",
+            "confirm": "no",
+            "label": "Old password"
+        },
+        {
+            "type": "password",
+            "name": "new_passwd",
+            "require": "yes",
+            "label": "New password",
+            "validation": "password"
+        }
+    ],
+    "module": {
+            "section": "management"
+    }
+}
