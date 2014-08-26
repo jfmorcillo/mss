@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:25+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-08-26 18:40+0200\n"
+"Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/nfs_server/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -30,7 +30,7 @@ msgstr "Serviço NFS"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tudo"
 
 #: .config[0].help
 msgid ""
@@ -46,7 +46,7 @@ msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
-msgstr "Permitir o acesso a partir de redes internas"
+msgstr "Permite acesso a partir da rede interna"
 
 #: .config[1].help
 msgid ""
@@ -62,7 +62,7 @@ msgstr "fw_wan"
 
 #: .config[1].label
 msgid "Allow access from external networks"
-msgstr "Permitir acesso a partir de redes externas"
+msgstr "Permitir o acesso a partir de redes externas"
 
 #: nfs_server/setup-nfs-server.sh:81
 msgid "The NFS service is running."
