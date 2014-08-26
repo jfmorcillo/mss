@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-08-22 17:51+0200\n"
+"PO-Revision-Date: 2014-08-26 12:33+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/wizard/fr_FR/>\n"
@@ -37,7 +37,7 @@ msgstr "Téléchargement des addons"
 
 #: transaction.py:61
 msgid "Download addons from the ServicePlace"
-msgstr "Télécharge les addons depuis le ServicePlace."
+msgstr "Télécharge les addons depuis le ServicePlace"
 
 #: transaction.py:67
 msgid "Medias authentication"
