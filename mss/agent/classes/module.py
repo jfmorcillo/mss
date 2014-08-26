@@ -58,8 +58,11 @@ class Module(object):
             self.load_desc()
             self.load_module()
             self.load_translations()
+
+    def init(self):
         self.check_configured()
         self.check_installed()
+        self.get_config_info()
 
     @property
     def details(self):
@@ -272,6 +275,14 @@ class Module(object):
             if repository.restricted:
                 return True
         return False
+
+    def get_config_info(self):
+        if self._module:
+            # get script name and args order
+            try:
+                self._script, self._script_args = getattr(self._module, 'get_config_info')()
+            except AttributeError:
+                self._script, self._script_args = (False, [])
 
     def get_config(self):
         """ get module current config """
@@ -509,12 +520,6 @@ class Module(object):
         except Exception, err:
             logger.error("Can't load module %s __init__.py :" % self.slug)
             logger.error("%s" % err)
-        else:
-            # get script name and args order
-            try:
-                self._script, self._script_args = getattr(self._module, 'get_config_info')()
-            except AttributeError:
-                self._script, self._script_args = (False, [])
 
     def load_translations(self):
         TranslationManager().set_catalog(self.slug, self._path)
