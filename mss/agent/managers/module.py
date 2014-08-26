@@ -375,7 +375,7 @@ class ModuleManager:
         return False
 
     @expose
-    def preinstall_modules(self, modules):
+    def preinstall_modules(self, install_modules):
         """
         get dependencies for modules to install
         return modules infos
@@ -388,26 +388,28 @@ class ModuleManager:
                 #force_modules.append(m.replace("force-", ""))
         #modules = [m.replace("force-", "") for m in modules]
 
-        logger.info("Pre-install modules: %s" % ", ".join(modules))
+        logger.info("Pre-install modules: %s" % ", ".join(install_modules))
         # store old modules list
-        old = modules
         # get dependencies for modules
-        modules = self.check_dependencies(modules, [])
+        modules = self.check_dependencies(install_modules, [])
         modules = self.order_dependencies(modules)
         # get difference for dep list
-        deps = list(set(modules).difference(old))
+        deps = list(set(modules).difference(install_modules))
         # get modules info (modules + dependencies)
         modules = self.get_modules_details(modules)
-        # remove already configured modules
-        modules = [m for m in modules if m['can_configure']]
-        # tell if the module is an dependency of selected modules
+
+        to_install = []
         for m in modules:
-            if m['slug'] in deps:
+            # don't install already configured deps
+            if m['slug'] in deps and not m['configured']:
                 m['dep'] = True
-            else:
+                to_install.append(m)
+            elif m['slug'] not in deps and m['can_configure']:
                 m['dep'] = False
-        logger.debug("Result: %s" % modules)
-        return modules
+                to_install.append(m)
+
+        logger.debug("Result: %s" % to_install)
+        return to_install
 
     def order_dependencies(self, modules, cnt=1):
         for module in modules:
