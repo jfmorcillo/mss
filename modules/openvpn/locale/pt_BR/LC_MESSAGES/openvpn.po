@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-08 21:28+0000\n"
-"Last-Translator: Andre Machado <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazilian) (http://transifex.mandriva.com/"
-"projects/p/mss/team/pt_BR/)\n"
+"PO-Revision-Date: 2014-08-26 16:25+0200\n"
+"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.mandriva.com/projects/mss/openvpn/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: .description .desc
 msgid "Allow your users to connect from outside your organization"
@@ -41,7 +42,7 @@ msgstr "Serviço VPN (Rede Virtual Privada)"
 
 #: .packages[0].name
 msgid "all"
-msgstr "todas"
+msgstr "all"
 
 #: .config[0].name
 msgid "openvpn_country"
