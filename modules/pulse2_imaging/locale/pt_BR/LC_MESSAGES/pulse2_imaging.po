@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:25+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-08-26 18:39+0200\n"
+"Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/pulse2_imaging/pt_BR/>\n"
 "Language: pt_BR\n"
@@ -26,7 +26,7 @@ msgstr "Módulo de Criação de Imagens do Pulse2"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr "Interface de Gerenciamento"
+msgstr "Interface de gerenciamento"
 
 #: .name
 msgid "Pulse2 Imaging"
@@ -34,7 +34,7 @@ msgstr "Criação de Imagens Pulse2"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tudo"
 
 #: .categories[0].name
 msgid "Pulse2"
