@@ -408,10 +408,8 @@ sed -i "s/@USEHTTPS@/False/g" $rep_siveo/var/config/copixproperties.xml
 mss-add-shorewall-rule -a VNC/ACCEPT -t lan
 mss-add-shorewall-rule -a VNC/ACCEPT -t wan
 
-#service jboss-eva start
-#service jboss-eva-admin start
-#service jboss-eva-reporting start
-#service jboss-guacamole start
+# Configure the product name
+sed -i "s/^product_name =.*$/product_name = Mandriva Business Server eVA/g" /etc/mmc/plugins/base.ini
 
 #FIXME: Siveo has to change the api to allow auth_tcp = sasl. For now we'll just allow unencrypted connections
 sed -i "s/^auth_tcp.*$/auth_tcp = \"none\"/g" /etc/libvirt/libvirtd.conf
