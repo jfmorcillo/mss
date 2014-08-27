@@ -34,6 +34,11 @@ decryptLicense()
     fi
 }
 
+function get_interface_addr() {
+  iface=`grep 'lan\|wan' /etc/shorewall/interfaces |cut -f 2 -d ' '`
+  echo `ip addr show $iface | grep -o "inet [0-9]*\.[0-9]*\.[0-9]*\.[0-9]*" | sed 's/inet //'`
+}
+
 default_workspace="/usr/share/eva"
 version_eva="3.0.0-SNAPSHOT"
 fichier_zip="eVA-backend-install-${version_eva}.zip"
@@ -76,7 +81,7 @@ export JAVA_HOME=$default_rep_javahome
 eVA_adminUser="evaadmin"
 password_eva=$1
 
-iface_addr=`ifconfig | grep inet | cut -f 12 -d ' ' | cut -f 2 -d ':' | sed '/^$/d' | grep -v '127.0.0.1'`
+iface_addr=`get_interface_addr`
 
 export language="en"
 
@@ -402,9 +407,7 @@ sed -i "s/@USEHTTPS@/False/g" $rep_siveo/var/config/copixproperties.xml
 # Configure the Firewall
 mss-add-shorewall-rule -a VNC/ACCEPT -t lan
 mss-add-shorewall-rule -a VNC/ACCEPT -t wan
-restart_service shorewall
 
-restart_service httpd
 #service jboss-eva start
 #service jboss-eva-admin start
 #service jboss-eva-reporting start
