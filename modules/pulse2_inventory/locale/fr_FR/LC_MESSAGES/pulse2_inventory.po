@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-08-22 16:14+0200\n"
-"Last-Translator: Mandriva Webteam <webteam@mandriva.com>\n"
+"PO-Revision-Date: 2014-08-28 12:07+0200\n"
+"Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/pulse2_inventory/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 1.10-dev\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: .description .desc
 msgid "The inventory management module of Pulse2"
@@ -62,7 +62,7 @@ msgstr "fw_lan"
 
 #: .config[1].label
 msgid "Allow access from internal networks"
-msgstr "Autoriser l'accès depuis les réseaux internes"
+msgstr "Permettre l'accès depuis les réseaux internes"
 
 #: .config[2].help
 msgid ""
@@ -78,7 +78,7 @@ msgstr "fw_wan"
 
 #: .config[2].label
 msgid "Allow access from external networks"
-msgstr "Autoriser l'accès depuis les réseaux externes"
+msgstr "Permettre l'accès depuis les réseaux externes"
 
 #: .categories[0].name
 msgid "Pulse2"
