@@ -103,6 +103,7 @@ class ModuleManager:
         logger.debug("Sections loaded.")
         self.load_modules()
         logger.debug("Modules loaded.")
+        self.init_modules()
 
     def setup_python_path(self):
         """
@@ -149,6 +150,11 @@ class ModuleManager:
                     self.sections_modules[section] = []
                 if not module_desc["slug"] in self.sections_modules[section]:
                     self.sections_modules[section].append(module_desc["slug"])
+
+    def init_modules(self):
+        for slug, module in self.modules.items():
+            if hasattr(module, "init"):
+                module.init()
 
     def get_local_modules(self):
         paths = []
@@ -393,7 +399,7 @@ class ModuleManager:
         # get modules info (modules + dependencies)
         modules = self.get_modules_details(modules)
         # remove already configured modules
-        modules = [m for m in modules if not m['configured']]
+        modules = [m for m in modules if m['can_configure']]
         # tell if the module is an dependency of selected modules
         for m in modules:
             if m['slug'] in deps:
@@ -541,8 +547,7 @@ class ModuleManager:
         """
         Callback after run script
         """
-        if (code == 0 and not self.modules[module].configured and
-                self.modules[module].section not in ('management')):
+        if code == 0 and not self.modules[module].configured:
             logger.debug("Set %s as configured" % str(module))
             self.modules[module].configured = True
             # try to store the config log

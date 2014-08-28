@@ -27,6 +27,7 @@ from mss.agent.managers.translation import TranslationManager
 
 _ = TranslationManager().translate
 
+
 def get_config_info():
     args = []
     for interface in netifaces.interfaces():
@@ -42,6 +43,7 @@ def get_config_info():
             args.append(interface + "_gateway")
     args = args + ["fw_mss_lan", "fw_ssh_lan", "fw_mss_wan", "fw_ssh_wan"]
     return ("setup-network.sh", args)
+
 
 def get_interfaces_config(config):
     """
@@ -60,6 +62,12 @@ def get_interfaces_config(config):
             dns2 = ""
             domain = ""
             gateway = ""
+            type = ""
+            with open('/etc/shorewall/interfaces') as h:
+                for line in h.readlines():
+                    if interface in line:
+                        type = line.split()[0]
+                        break
             if configured:
                 if grep("BOOTPROTO=dhcp", if_file):
                     method = "dhcp"
@@ -78,18 +86,21 @@ def get_interfaces_config(config):
                            'type': 'text', 'hidden': 'yes', 'default': interface})
             config.append({'slug': 'network',
                            'name': interface + '_type',
+                           'show_if_unconfigured': 'yes',
                            'require': 'yes',
+                           'default': type,
                            'label': _('Interface type', 'network'),
                            'help': _('Choose "External" if the interface is connected to the Internet. If the interface is connected to an internal network, choose "Internal"', 'network'),
                            'type': 'options',
                            'options': [
                                {'name': _('Internal network', 'network'), 'value': 'lan' + interface[-1]},
                                {'name': _('External network', 'network'), 'value': 'wan' + interface[-1]}
-                            ]
+                           ]
                            })
             config.append({'slug': 'network',
                            'name': interface + '_method',
-                           'default': method, 'require': 'yes',
+                           'default': method,
+                           'require': 'yes',
                            'label': _('Configuration method', 'network'),
                            'type': 'options',
                            'options': [
@@ -98,7 +109,7 @@ def get_interfaces_config(config):
                                {'name': _('Manual configuration', 'network'), 'value': 'static',
                                 'toggle': [interface + '_addr', interface + '_netmask', interface + '_dns1',
                                            interface + '_dns2', interface + '_domain', interface + '_gateway']}
-                            ]
+                           ]
                            })
             config.append({'slug': 'network',
                            'name': interface + '_addr',

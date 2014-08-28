@@ -58,8 +58,11 @@ class Module(object):
             self.load_desc()
             self.load_module()
             self.load_translations()
+
+    def init(self):
         self.check_configured()
         self.check_installed()
+        self.get_config_info()
 
     @property
     def details(self):
@@ -75,6 +78,7 @@ class Module(object):
                 'has_configuration': self.has_configuration,
                 'has_configuration_script': self.has_configuration_script,
                 'configured': self.configured,
+                'can_configure': self.can_configure,
                 'conflicts': self.conflicts,
                 'dependencies': self.dependencies,
                 'standalone': self.standalone,
@@ -167,6 +171,10 @@ class Module(object):
             return self._desc["module"].get("section", "other")
         else:
             return "other"
+
+    @property
+    def can_configure(self):
+        return not self.configured or self.section == 'management'
 
     @property
     def has_configuration(self):
@@ -267,6 +275,14 @@ class Module(object):
             if repository.restricted:
                 return True
         return False
+
+    def get_config_info(self):
+        if self._module:
+            # get script name and args order
+            try:
+                self._script, self._script_args = getattr(self._module, 'get_config_info')()
+            except AttributeError:
+                self._script, self._script_args = (False, [])
 
     def get_config(self):
         """ get module current config """
@@ -504,12 +520,6 @@ class Module(object):
         except Exception, err:
             logger.error("Can't load module %s __init__.py :" % self.slug)
             logger.error("%s" % err)
-        else:
-            # get script name and args order
-            try:
-                self._script, self._script_args = getattr(self._module, 'get_config_info')()
-            except AttributeError:
-                self._script, self._script_args = (False, [])
 
     def load_translations(self):
         TranslationManager().set_catalog(self.slug, self._path)

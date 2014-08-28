@@ -14,5 +14,8 @@
             "name": "interfaces"
         }
     ],
-    "standalone": false
+    "module": {
+        "section": "management",
+        "reboot": true
+    }
 }

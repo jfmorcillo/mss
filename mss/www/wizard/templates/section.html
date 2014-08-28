@@ -143,8 +143,8 @@
     </script>
 
     <div class="module control-group" id="{{ m.slug }}">
-        <label class="{% if not m.configured and not m.conflict and m.can_download %}checkbox{% endif %}">
-            {% if m.configured %}
+        <label class="{% if m.can_configure and not m.conflict and m.can_download %}checkbox{% endif %}">
+            {% if not m.can_configure %}
                 <i class="icon-ok icon-blue"></i>
             {% else %}
                 {% if m.conflict %}
@@ -181,7 +181,7 @@
             </span>
             {% endif %}
             <div class="popover-content" style="display: none">
-                {% if m.configured %}<p><i class="icon-ok"></i> {% trans "This addon is installed and configured" %}</p>{% endif %}
+                {% if m.configured and m.module.section != 'management' %}<p><i class="icon-ok"></i> {% trans "This addon is installed and configured" %}</p>{% endif %}
                 {% if m.conflict %}<p><i class="icon-ban-circle"></i> {% trans "This module conflicts with : " %}
                     {% for m in m.conflict %}<strong>{{ m }}</strong>{% if not forloop.last %}, {% endif %}{% endfor %}</p>
                 {% endif %}
