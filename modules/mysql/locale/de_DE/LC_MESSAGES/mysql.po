@@ -9,15 +9,16 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2013-05-24 11:15+0000\n"
-"Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
-"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
-"mss/team/de_DE/)\n"
+"PO-Revision-Date: 2014-08-28 16:45+0200\n"
+"Last-Translator: Maik Wagner <mwagner@mandriva.com>\n"
+"Language-Team: German "
+"<http://translate.mandriva.com/projects/mss/mysql/de_DE/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: .description
 msgid "MySQL relational database"
@@ -25,7 +26,7 @@ msgstr "MySQL relationale Datenbank"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "alle"
 
 #: .config[0].help
 msgid "New MySQL root password. Set here the new password"
