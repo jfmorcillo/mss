@@ -8,71 +8,82 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:04+0200\n"
-"PO-Revision-Date: 2014-08-08 08:57+0000\n"
-"Last-Translator: Jean-François Morcillo <jfmorcillo@mandriva.com>\n"
-"Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
-"mss/team/de_DE/)\n"
+"PO-Revision-Date: 2014-08-28 16:52+0200\n"
+"Last-Translator: Maik Wagner <mwagner@mandriva.com>\n"
+"Language-Team: German "
+"<http://translate.mandriva.com/projects/mss/libvirt/de_DE/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: .description .desc
 msgid "Use your MBS server to run KVM virtual machines"
 msgstr ""
+"Verwenden Sie Ihren MBS-Server um virtuelle Maschinen mit KVM laufen zu "
+"lassen"
 
 #: .actions[0].name
 msgid "Addon documentation"
-msgstr ""
+msgstr "Dokumentation des Addons"
 
 #: .name
 msgid "Libvirt with KVM"
-msgstr ""
+msgstr "Libvirt mit KVM"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: .config[0].help
 msgid "Password to manage virtual machines"
-msgstr ""
+msgstr "Passwort zur Verwaltung der virtuellen Maschinen"
 
 #: .config[0].name
+#, fuzzy
 msgid "admin_password"
-msgstr ""
+msgstr "admin_password"
 
 #: .config[0].label
 msgid "Admin password"
-msgstr ""
+msgstr "Adminpasswort"
 
 #: .config[1].help
 msgid ""
 "Adds a libvirt storage for your virtual machines and ISO files. Make sure "
 "you have enough space available."
 msgstr ""
+"Fügt einen libvirt-Storage für Ihren virtuellen Rechner und ISO-Dateien "
+"hinzu. Vergewissern Sie sich, dass Sie über genug Platz verfügen."
 
 #: .config[1].label
 msgid "Storage location"
-msgstr ""
+msgstr "Speicherort"
 
 #: .config[1].name
+#, fuzzy
 msgid "pool_location"
-msgstr ""
+msgstr "pool_location"
 
 #: .config[2].name
+#, fuzzy
 msgid "bridge"
-msgstr ""
+msgstr "bridge"
 
 #: .config[3].help
 msgid ""
 "Configure the firewall to accept libvirt management on interfaces configured "
 "as 'internal'"
 msgstr ""
+"Konfigurieren der Firewall, dass libvirt-Verwaltung auf als 'intern' "
+"konfigurierten Schnittstellen akzeptiert wird"
 
 #: .config[3].name
+#, fuzzy
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[3].label
 msgid "Allow connections from internal networks"
