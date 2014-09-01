@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-01 22:23+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/postgresql/pt_BR/>\n"
@@ -30,7 +30,7 @@ msgstr "tudo"
 
 #: .name
 msgid "PostgreSQL database"
-msgstr "Banco de dados PostgreSQL "
+msgstr "Banco de dados PostgreSQL"
 
 #: postgresql/setup-postgresql.sh:11
 msgid "Postgresql is running."
