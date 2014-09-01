@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-01 22:20+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_smb/pt_BR/>\n"
@@ -35,7 +35,7 @@ msgstr "Interface de gerenciamento"
 
 #: .name
 msgid "Windows users and file sharing management"
-msgstr "Gerenciamento de Usuários e compartilhamento de arquivos Windows "
+msgstr "Gerenciamento de usuários e compartilhamento de arquivos Windows"
 
 #: .packages[0].name
 msgid "all"
@@ -87,7 +87,7 @@ msgstr "smbpasswd"
 
 #: .config[3].label
 msgid "Administrator password"
-msgstr "Senha do Administrador"
+msgstr "Senha de Administrador"
 
 #: .config[4].help
 msgid ""
@@ -127,7 +127,7 @@ msgstr "Usuários"
 
 #: mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
-msgstr "Erro ao configurar senha do SAMBA"
+msgstr "Erro ao configurar senha do SAMBA."
 
 #: mds_smb/setup-smb.sh:53
 msgid "Error while populating directory."
