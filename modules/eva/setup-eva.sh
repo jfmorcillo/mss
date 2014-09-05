@@ -108,21 +108,6 @@ fi
 export modeInstallation=$default_modeInstallation
 export workspace=$default_workspace
 
-# Add User/Group
-USER="eva"
-EVA=`grep $USER /etc/passwd`
-GROUP="siveo"
-SIVEO=`grep siveo /etc/group`
-
-if [ -z $EVA ]; then 
-    useradd $USER
-    echo $password_eva | passwd eva --stdin
-fi
-
-if [ -z $SIVEO ]; then
-    groupadd $GROUP
-fi
-
 # Create evaadmin user
 python ./mmc_createuser.py -l $eVA_adminUser -p $password_eva
 
