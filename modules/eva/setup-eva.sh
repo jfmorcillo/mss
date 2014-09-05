@@ -162,47 +162,6 @@ echo "JAVA_HOME=$JAVA_HOME" >> /etc/java/java.conf
 echo "export JAVA_HOME=$JAVA_HOME" >> ~eva/.bashrc
 echo 'export PATH=$JAVA_HOME/bin:$PATH'  >> ~eva/.bash_profile
 
-# Configure JBoss
-jbosshomedir=$default_rep_jboss
-
-pushd ${jbosshomedir}
-binJboss=jboss-as-7.1.1.Final.tar.gz
-    tar zxvf ${workspace}/.jboss/${binJboss} >> ${fichier_log}
-
-    mkdir -p ${jbosshomedir}/eva-admin/deployments
-    cp ${workspace}/.eva/artifacts/eva-admin.war ${jbosshomedir}/eva-admin/deployments
-    mkdir -p ${jbosshomedir}/eva/deployments/eva
-    cp ${workspace}/.eva/artifacts/siveo-eva-ear.ear ${jbosshomedir}/eva/deployments/eva
-    mkdir -p ${jbosshomedir}/eva-reporting/deployments
-    cp ${workspace}/.eva/artifacts/siveo-reporting-ws.war ${jbosshomedir}/eva-reporting/deployments
-       
-    rm -f ${jbosshomedir}/eva/GuestTools/*
-    unzip ${workspace}/.eva/artifacts/Scripts-GuestTools.zip -d ${jbosshomedir}/eva/GuestTools/ > /dev/null
-
-    mkdir -p ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties
-    cp ${workspace}/.jboss/siveo-reporting-ehcache.xml ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties/ehcache.xml
-    echo "${jbosshomedir}/"|sed 's/\//\\\//g' > /tmp/jj
-    JBOSS_HOME_BACKSLACHE=`cat /tmp/jj`
-    # JBOSS_HOME_BACKSLACHE=${jbosshomedir}
-    sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${jbosshomedir}/modules/net/siveo/eva-cfg/main/properties/ehcache.xml
-
-    cp ${workspace}/.jboss/eva.conf ${jbosshomedir}/bin
-    sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${jbosshomedir}/bin/eva.conf
-
-    cp ${workspace}/.jboss/eva-admin.conf ${jbosshomedir}/bin
-    sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${jbosshomedir}/bin/eva-admin.conf
-
-    cp ${workspace}/.jboss/eva-reporting.conf ${jbosshomedir}/bin
-    sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${jbosshomedir}/bin/eva-reporting.conf
-
-    cp ${workspace}/.jboss/guacamole.conf ${jbosshomedir}/bin
-    sed -i "s/@JBOSS_HOME@/$JBOSS_HOME_BACKSLACHE/g" ${jbosshomedir}/bin/guacamole.conf
-
-    mkdir -p /etc/jboss-as
-    echo "JBOSS_HOME=${jbosshomedir}" > /etc/jboss-as/jboss-as.conf
-
-popd
-
     # création d'un repertoire /var/log/jboss-as avec les droits pour eva:siveo
         mkdir -p /var/log/jboss-as
         mkdir -p /var/run/jboss-as
@@ -210,9 +169,6 @@ popd
         chown -R eva:root /var/run/jboss-as
 
    #Modification des droits
-       find ${jbosshomedir} -type f -name "*.sh"|xargs -i chmod 750 {}
-       find ${jbosshomedir} -type f -name "*.pl"|xargs -i chmod 750 {}
-       find ${jbosshomedir} -type f -name "*.ksh"|xargs -i chmod 750 {}
 
        sed -i '/JBOSS_HOME=/d' ~/.bash_profile
        echo "export JBOSS_HOME=${jbosshomedir}" >> ~/.bash_profile
@@ -256,9 +212,6 @@ popd
        sed -i "s/@GUACD_SERVER@/localhost/g" $JBOSS_HOME/modules/net/siveo/guacamole/main/properties/guacamole.properties
        sed -i "s/@GUACD_PORT@/4822/g" $JBOSS_HOME/modules/net/siveo/guacamole/main/properties/guacamole.properties
 
-
-       chown -R eva:siveo $JBOSS_HOME
-       find $JBOSS_HOME|xargs -i chmod 750 {}
 
 # Install eVA	
 
