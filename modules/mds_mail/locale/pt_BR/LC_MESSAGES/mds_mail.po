@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-10 20:18+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_mail/pt_BR/>\n"
@@ -24,7 +24,7 @@ msgstr ""
 #: .description .desc
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
-"Serviço de correio completo com POP/IMAP,anti-vírus e anti-spam toolkits"
+"Serviço de correio completo com POP/IMAP, anti-vírus e anti-spam toolkits"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -124,7 +124,7 @@ msgstr ""
 
 #: mds_mail/setup-mail.sh:128
 msgid "The mail service is configured."
-msgstr "O serviço de e-mail correio está configurado."
+msgstr "O serviço de e-mail está configurado."
 
 #: mds_mail/setup-mail.sh:129
 msgid ""
@@ -144,13 +144,14 @@ msgstr "- SSL está habilitado no servidor SMTP"
 
 #: mds_mail/setup-mail.sh:132
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
-msgstr "- Não-SSL conexões são desabilitados por padrão no servidor IMAP/POP3"
+msgstr ""
+"- Por padrão, as conexões Não-SSL estão desabilitadas no servidor IMAP/POP3"
 
 #: mds_mail/setup-mail.sh:133
 msgid ""
 "- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""
-"- Redes autorizados a enviar e-mails sem autenticação: $ smtpd_mynetworks"
+"- Redes autorizadas a enviar e-mails sem autenticação: $ smtpd_mynetworks"
 
 #: mds_mail/add_domain.py:16
 msgid "Default mail domain"
@@ -158,4 +159,4 @@ msgstr "Domínio de e-mail padrão"
 
 #: mds_mail/add_domain.py:20
 msgid "Failed to add the mail domain."
-msgstr "Falhou para adiconar o domínio de e-mail"
+msgstr "Falha ao adiconar o domínio de e-mail"
