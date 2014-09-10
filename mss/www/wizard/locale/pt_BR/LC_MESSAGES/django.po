@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-09-01 22:28+0200\n"
+"PO-Revision-Date: 2014-09-10 20:58+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/wizard/pt_BR/>\n"
@@ -29,16 +29,16 @@ msgstr "Sumário de instalação"
 #: transaction.py:50
 msgid "The following addon will be installed."
 msgid_plural "The following addons will be installed."
-msgstr[0] "O seguinte addon será instalado."
-msgstr[1] "Os seguintes addos serão instalados."
+msgstr[0] "O seguinte complemento será instalado."
+msgstr[1] "Os seguintes complementos serão instalados."
 
 #: transaction.py:60
 msgid "Addon download"
-msgstr "Adicionar download"
+msgstr "Obter complemento"
 
 #: transaction.py:61
 msgid "Download addons from the ServicePlace"
-msgstr "Baixe addons do ServicePlace"
+msgstr "Baixar complementos do ServicePlace"
 
 #: transaction.py:67
 msgid "Medias authentication"
@@ -202,11 +202,11 @@ msgstr "Baixando <strong>{0}</strong>: {1}..."
 
 #: templates/download.html:63
 msgid "Addon <strong>{0}</strong> downloaded."
-msgstr "Addon <strong>{0}</strong> baixado."
+msgstr "Complemento <strong>{0}</strong> baixado."
 
 #: templates/download.html:71
 msgid "Failed to download <strong>{0}</strong> addon."
-msgstr "Falha ao baixar <strong>{0}</strong> addon."
+msgstr "Falha ao baixar o complemento <strong>{0}</strong>."
 
 #: templates/end.html:17
 msgid "Home"
@@ -227,8 +227,8 @@ msgstr "A instalação falhou."
 #: templates/install.html:60
 msgid "The following addon is being installed"
 msgid_plural "The following addons are being installed"
-msgstr[0] "O seguinte addon está sendo instalado"
-msgstr[1] "Os seguintes addons estão sendo instalados"
+msgstr[0] "O seguinte complemento está sendo instalado"
+msgstr[1] "Os seguintes complementos estão sendo instalados"
 
 #: templates/login.html:9
 msgid ""
@@ -316,7 +316,7 @@ msgstr "Adicionar mídias"
 
 #: templates/preinst.html:15 templates/section.html:83
 msgid "No addon selected."
-msgstr "Nenhum addon selecionado."
+msgstr "Nenhum complemento selecionado."
 
 #: templates/preinst.html:23
 msgid "Added as a dependency"
@@ -331,24 +331,24 @@ msgid ""
 "If other addons requires this addon they may be broken after the "
 "reinstallation."
 msgstr ""
-"Se outros addons requerem este addon, eles podem ser quebrados após a "
-"reinstalação."
+"Se outros complementos requerem este complemento, eles podem ser quebrados "
+"após a reinstalação."
 
 #: templates/section.html:20
 msgid "This addon can't be installed with"
-msgstr "Este addon não pode ser instalado com"
+msgstr "Este complemento não pode ser instalado com"
 
 #: templates/section.html:63
 msgid "More info about this addon"
-msgstr "Mais informações sobre este addon"
+msgstr "Mais informações sobre este complemento"
 
 #: templates/section.html:120
 msgid "No addon available in this section."
-msgstr "Não tem addons disponíveis nesta seção."
+msgstr "Não tem complementos disponíveis nesta seção."
 
 #: templates/section.html:184
 msgid "This addon is installed and configured"
-msgstr "Este addon está instalado e configurado"
+msgstr "Este complemento está instalado e configurado"
 
 #: templates/section.html:185
 msgid "This module conflicts with : "
@@ -356,7 +356,7 @@ msgstr "Este módulo conflita com : "
 
 #: templates/section.html:188
 msgid "You have purshased this addon"
-msgstr "Você comprou este addon"
+msgstr "Você comprou este complemento"
 
 #: templates/section.html:209
 msgid "Info"
@@ -364,10 +364,10 @@ msgstr "Informação"
 
 #: templates/section.html:220
 msgid "Install and configure selected addons"
-msgstr "Instalar e configurar o addons selecionados"
+msgstr "Instalar e configurar complementos selecionados"
 
 #: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""
-"Não tem addon para o Mandriva Server Setup disponível. Tente fazer o login "
-"novamente."
+"Não tem complemento para o Mandriva Server Setup disponível. Tente fazer o "
+"login novamente."
