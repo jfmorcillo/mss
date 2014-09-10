@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:40+0200\n"
+"PO-Revision-Date: 2014-09-10 20:40+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/squid/pt_BR/>\n"
@@ -78,7 +78,7 @@ msgstr "Algo deu errado ao criar os grupos de usuários."
 
 #: squid/setup-squid.sh:73
 msgid "The proxy service is running."
-msgstr "O serviço de proxy esta rodando."
+msgstr "O serviço de proxy está em execução."
 
 #: squid/setup-squid.sh:75
 msgid "Configure your clients to access the proxy service at @HOSTNAME@:3128"
