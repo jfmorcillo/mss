@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-10 20:28+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_dns/pt_BR/>\n"
@@ -107,7 +107,7 @@ msgstr "Nenhuma rede está autorizada a fazer consultas externas."
 
 #: mds_dns/setup-dns.sh:73
 msgid "The DNS service is running."
-msgstr "O serviço de DNS está rodando."
+msgstr "O serviço de DNS está em execução."
 
 #: mds_dns/setup-dns.sh:75
 msgid "Your DNS will forward external queries to : $forwarders"
