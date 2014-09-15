@@ -147,6 +147,9 @@ echo "JAVA_HOME=$JAVA_HOME" >> /etc/java/java.conf
 echo "export JAVA_HOME=$JAVA_HOME" >> ~eva/.bashrc
 echo 'export PATH=$JAVA_HOME/bin:$PATH'  >> ~eva/.bash_profile
 
+# Configure JBoss
+jbosshomedir=$default_rep_jboss
+
     # création d'un repertoire /var/log/jboss-as avec les droits pour eva:siveo
         mkdir -p /var/log/jboss-as
         mkdir -p /var/run/jboss-as
