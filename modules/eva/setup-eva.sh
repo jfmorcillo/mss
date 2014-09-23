@@ -355,6 +355,16 @@ sed -i "s/^product_name =.*$/product_name = Mandriva Business Server eVA/g" /etc
 #FIXME: Siveo has to change the api to allow auth_tcp = sasl. For now we'll just allow unencrypted connections
 sed -i "s/^auth_tcp.*$/auth_tcp = \"none\"/g" /etc/libvirt/libvirtd.conf
 
+# Configure pool for isos
+ISO_FOLDER="/home/samba/shares/ISO"
+mkdir ${ISO_FOLDER}
+chmod 777 ${ISO_FOLDER}
+cat /var/lib/mss/local/eva/templates/smb.conf.tpl >> /etc/samba/smb.conf
+service smb reload
+virsh pool-define-as --name ISO --type dir --target ${ISO_FOLDER}
+virsh pool-autostart ISO
+virsh pool-start ISO
+
 info_b $"eVA is now configured."
 info $"- Username is $eVA_adminUser"
 info $"- Password is $password_eva"
