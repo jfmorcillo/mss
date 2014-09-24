@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-09-10 20:28+0200\n"
+"PO-Revision-Date: 2014-09-24 21:47+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_dns/pt_BR/>\n"
@@ -70,7 +70,7 @@ msgid ""
 "Configure the firewall to accept DNS requests on interfaces configured as "
 "'internal'"
 msgstr ""
-"Configure o firewall para aceitar pedidos de DNS em interfaces configuradas "
+"Configurar o firewall para aceitar pedidos de DNS em interfaces configuradas "
 "como 'interno'"
 
 #: .config[2].name
@@ -79,14 +79,14 @@ msgstr "fw_lan"
 
 #: .config[2].label
 msgid "Allow DNS requests from internal networks"
-msgstr "Permitir solicitações de DNS de redes internas"
+msgstr "Permitir solicitações de DNS a partir de redes internas"
 
 #: .config[3].help
 msgid ""
 "Configure the firewall to accept DNS requests on interfaces configured as "
 "'external'"
 msgstr ""
-"Configure o firewall para aceitar pedidos de DNS em interfaces configuradas "
+"Configurar o firewall para aceitar pedidos de DNS em interfaces configuradas "
 "como 'externo'"
 
 #: .config[3].name
@@ -95,7 +95,7 @@ msgstr "fw_wan"
 
 #: .config[3].label
 msgid "Allow DNS requests from external networks"
-msgstr "Permitir solicitações de DNS de redes externas"
+msgstr "Permitir solicitações de DNS a partir de redes externas"
 
 #: .categories[0].name
 msgid "Network"
