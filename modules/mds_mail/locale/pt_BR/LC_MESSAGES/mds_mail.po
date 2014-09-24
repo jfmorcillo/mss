@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-09-10 20:18+0200\n"
+"PO-Revision-Date: 2014-09-24 21:14+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_mail/pt_BR/>\n"
@@ -24,7 +24,8 @@ msgstr ""
 #: .description .desc
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
-"Serviço de correio completo com POP/IMAP, anti-vírus e anti-spam toolkits"
+"Ferramentas completas para serviço de correio com POP/IMAP, anti-vírus e "
+"anti-spam"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -83,7 +84,7 @@ msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'internal'"
 msgstr ""
-"Configure o firewall para aceitar conexões smtp/imap/pop3 em interfaces "
+"Configurar o firewall para aceitar conexões smtp/imap/pop3 em interfaces "
 "configuradas como 'interno'"
 
 #: .config[2].name
@@ -92,14 +93,14 @@ msgstr "fw_lan"
 
 #: .config[2].label
 msgid "Allow mail services access from internal networks"
-msgstr "Permitir acesso aos serviços de correio de redes internas"
+msgstr "Permitir acesso aos serviços de correio a partir de redes internas"
 
 #: .config[3].help
 msgid ""
 "Configure the firewall to accept smtp/imap/pop3 connections on interfaces "
 "configured as 'external'"
 msgstr ""
-"Configure o firewall para aceitar conexões smtp/imap/pop3 em interfaces "
+"Configurar o firewall para aceitar conexões smtp/imap/pop3 em interfaces "
 "configuradas como 'externo'"
 
 #: .config[3].name
@@ -108,7 +109,7 @@ msgstr "fw_wan"
 
 #: .config[3].label
 msgid "Allow mail services access from external networks"
-msgstr "Permitir acesso aos serviços de correio de redes externas"
+msgstr "Permitir acesso aos serviços de correio a partir de redes externas"
 
 #: .categories[0].name
 msgid "Mail"
