@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:04+0200\n"
-"PO-Revision-Date: 2014-08-26 18:38+0200\n"
+"PO-Revision-Date: 2014-09-24 19:10+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/eva/pt_BR/>\n"
@@ -74,7 +74,7 @@ msgstr "eVA configurado."
 
 #: eva/setup-eva.sh:417
 msgid "- Username is $eVA_adminUser"
-msgstr "- O nome usuário é $eVA_adminUser"
+msgstr "- O nome do usuário é $eVA_adminUser"
 
 #: eva/setup-eva.sh:418
 msgid "- Password is $password_eva"
