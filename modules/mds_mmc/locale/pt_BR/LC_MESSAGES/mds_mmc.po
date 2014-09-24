@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-09-01 22:19+0200\n"
+"PO-Revision-Date: 2014-09-24 21:33+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_mmc/pt_BR/>\n"
@@ -57,7 +57,8 @@ msgid ""
 "Configure the firewall to allow access to the web interface from internal "
 "networks"
 msgstr ""
-"Configure o firewall para permitir o acesso à interface web de redes internas"
+"Configurar o firewall para permitir o acesso à interface web a partir de "
+"redes internas"
 
 #: .config[1].name
 msgid "fw_lan"
@@ -65,14 +66,15 @@ msgstr "fw_lan"
 
 #: .config[1].label
 msgid "Allow access from internal networks"
-msgstr "Permite acesso a partir da rede interna"
+msgstr "Permitir o acesso a partir de redes internas"
 
 #: .config[2].help
 msgid ""
 "Configure the firewall to allow access to the web interface from external "
 "networks"
 msgstr ""
-"Configure o firewall para permitir o acesso à interface web de redes externas"
+"Configurar o firewall para permitir o acesso à interface web a partir de "
+"redes externas"
 
 #: .config[2].name
 msgid "fw_wan"
@@ -104,7 +106,7 @@ msgstr "Falha ao inicializar o banco de dados."
 
 #: mds_mmc/setup-mmc.sh:108
 msgid "Error while configuring lib nss-ldap."
-msgstr "Erro ao configurar lib nss-ldap."
+msgstr "Erro ao configurar a biblioteca nss-ldap."
 
 #: mds_mmc/setup-mmc.sh:131
 msgid "The MBS administration web interface is configured."
