@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-24 21:04+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_dhcp/pt_BR/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: .description .desc
 msgid "Configure automatically your client computers IP settings"
-msgstr "Configurar automaticamente computadores cliente configurações de IP"
+msgstr "Configurar automaticamente os IPs de seus computadores clientes"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -51,7 +51,7 @@ msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow DHCP requests from internal networks"
-msgstr "Permite pedidos DHCP de redes internas"
+msgstr "Permite pedidos DHCP a partir de redes internas"
 
 #: .config[1].help
 msgid ""
@@ -67,7 +67,7 @@ msgstr "fw_wan"
 
 #: .config[1].label
 msgid "Allow DHCP requests from external networks"
-msgstr "Permite pedidos DHCP de redes externas"
+msgstr "Permite pedidos DHCP a partir de redes externas"
 
 #: .categories[0].name
 msgid "Network"
@@ -82,5 +82,5 @@ msgid ""
 "You can now configure your DHCP settings from the management interface : "
 "https://@HOSTNAME@/mmc/"
 msgstr ""
-"Agora você pode fazer suas configurações de DHCP na interface de gestão: "
-"https://@host@/mmc/"
+"Agora você modifica suas configurações de DHCP usando a interface de "
+"gerenciamento: https://@host@/mmc/"
