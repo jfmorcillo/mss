@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-24 23:45+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/system/pt_BR/>\n"
@@ -32,23 +32,23 @@ msgstr "tudo"
 
 #: .config[0].name
 msgid "hostname"
-msgstr "hostname"
+msgstr "O nome do servidor"
 
 #: .config[0].label
 msgid "The server hostname"
-msgstr "O hostname do servidor"
+msgstr "Nome do servidor"
 
 #: .config[0].help
 msgid "Hostname without the domain name"
-msgstr "O hostname sem o nome do domínio"
+msgstr "O nome do servidor sem o nome de domínio"
 
 #: .config[1].name
 msgid "domain"
-msgstr "domain"
+msgstr "domínio"
 
 #: .config[1].label
 msgid "Your domain name"
-msgstr "Seu nome de domínio"
+msgstr "Seu domínio"
 
 #: .config[1].help
 msgid "The domain name used in your organization (eg: mandriva.com)."
@@ -60,7 +60,7 @@ msgstr "Configuração do sistema"
 
 #: system/setup-system.sh:18
 msgid "Hostname and domain name configured."
-msgstr "Hostname e domínio estão configurados."
+msgstr "O nome do servidor e domínio estão configurados."
 
 #: system/__init__.py:48
 msgid "example.com"
@@ -68,4 +68,4 @@ msgstr "exemplo.com.br"
 
 #: system/__init__.py:54
 msgid "Incorrect hostname."
-msgstr "Hostname incorreto."
+msgstr "Nome de servidor incorreto."
