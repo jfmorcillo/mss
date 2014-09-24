@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:04+0200\n"
-"PO-Revision-Date: 2014-08-26 18:39+0200\n"
+"PO-Revision-Date: 2014-09-24 21:32+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/ejabberd/pt_BR/>\n"
@@ -50,7 +50,7 @@ msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
-msgstr "Permite acesso a partir da rede interna"
+msgstr "Permitir o acesso a partir de redes internas"
 
 #: .config[1].help
 msgid ""
