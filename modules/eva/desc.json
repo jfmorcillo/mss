@@ -95,7 +95,8 @@
     "dependencies":[
         "mysql",
         "postgresql",
-        "libvirt"
+        "libvirt",
+        "mds_smb"
     ],
     "module":{
         "section":"other",
