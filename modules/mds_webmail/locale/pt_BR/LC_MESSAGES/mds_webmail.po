@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-09-01 22:20+0200\n"
+"PO-Revision-Date: 2014-09-24 21:35+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_webmail/pt_BR/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 
 #: .description .desc
 msgid "Roundcube, a complete webmail solution for your mail service"
-msgstr "Roundcube, uma solução de webmail completa para o serviço de Emails"
+msgstr "Roundcube, uma completa solução de webmail para o serviço de Emails"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -46,8 +46,8 @@ msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "internal networks"
 msgstr ""
-"Configure o firewall para permitir o acesso à interface de webmail de redes "
-"internas"
+"Configurar o firewall para permitir o acesso à interface de webmail a partir "
+"de redes internas"
 
 #: .config[0].name
 msgid "fw_lan"
@@ -55,15 +55,15 @@ msgstr "fw_lan"
 
 #: .config[0].label
 msgid "Allow access from internal networks"
-msgstr "Permite acesso a partir da rede interna"
+msgstr "Permitir o acesso a partir de redes internas"
 
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the webmail interface from "
 "external networks"
 msgstr ""
-"Configure o firewall para permitir o acesso à interface de webmail de redes "
-"externas"
+"Configurar o firewall para permitir o acesso à interface de webmail a partir "
+"de redes externas"
 
 #: .config[1].name
 msgid "fw_wan"
@@ -85,5 +85,5 @@ msgstr "Webmail Roundcube está instalado no seu servidor."
 msgid ""
 "You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
 msgstr ""
-"Você pode acessar a interface de webmail em https://@HOSTNAME@/"
-"roundcubemail/."
+"Você pode acessar a interface do webmail em "
+"https://@HOSTNAME@/roundcubemail/."
