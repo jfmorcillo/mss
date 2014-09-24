@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-09-10 21:11+0200\n"
+"PO-Revision-Date: 2014-09-24 23:59+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_smb/pt_BR/>\n"
@@ -35,7 +35,7 @@ msgstr "Interface de gerenciamento"
 
 #: .name
 msgid "Windows users and file sharing management"
-msgstr "Gerenciamento de usuários e compartilhamento de arquivos Windows"
+msgstr "Compartilhamento de arquivos e usuários Windows"
 
 #: .packages[0].name
 msgid "all"
@@ -51,7 +51,7 @@ msgstr "Nome de domínio SAMBA"
 
 #: .config[0].help
 msgid "The name of your Microsoft domain."
-msgstr "O nome do seu domínio Microsoft."
+msgstr "O nome de seu domínio Microsoft."
 
 #: .config[1].name
 msgid "smbnetbios"
@@ -63,7 +63,7 @@ msgstr "Nome do Netbios"
 
 #: .config[1].help
 msgid "The name of your SAMBA server in the Microsoft domain."
-msgstr "O nome do seu servidor SAMBA no domínio Microsoft."
+msgstr "O nome de seu servidor SAMBA no domínio Microsoft."
 
 #: .config[2].help
 msgid "The name of the Microsoft domain administrator."
@@ -94,7 +94,7 @@ msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'internal'"
 msgstr ""
-"Configure o firewall para aceitar tráfego SAMBA nas interfaces configuradas "
+"Configurar o firewall para aceitar tráfego SAMBA nas interfaces configuradas "
 "como 'interna'"
 
 #: .config[4].name
@@ -103,14 +103,14 @@ msgstr "fw_lan"
 
 #: .config[4].label
 msgid "Allow connections from internal networks"
-msgstr "Permite conexões de redes internas"
+msgstr "Permitir conexões a partir de redes internas"
 
 #: .config[5].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'external'"
 msgstr ""
-"Configure o firewall para aceitar tráfego SAMBA nas interfaces configuradas "
+"Configurar o firewall para aceitar tráfego SAMBA nas interfaces configuradas "
 "como 'externa'"
 
 #: .config[5].name
@@ -119,7 +119,7 @@ msgstr "fw_wan"
 
 #: .config[5].label
 msgid "Allow connections from external networks"
-msgstr "Permitir conexões de redes externas"
+msgstr "Permitir conexões a partir de redes externas"
 
 #: .categories[0].name
 msgid "Users"
