@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-09-26 23:20+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_quota/pt_BR/>\n"
@@ -23,11 +23,11 @@ msgstr ""
 
 #: .description .desc
 msgid "Set file quotas on the server"
-msgstr "Definir cotas de arquivo no servidor"
+msgstr "Definir quotas de arquivo no servidor"
 
 #: .name
 msgid "User quota management"
-msgstr "Gerenciamento de cota de usuário"
+msgstr "Gerenciamento de quota do usuário"
 
 #: .packages[0].name
 msgid "all"
@@ -56,18 +56,18 @@ msgstr "Usuários"
 
 #: mds_quota/setup-quota.sh:36
 msgid "Quotas not supported on this filesystem : $fs"
-msgstr "O sistema de arquivos não suporta cotas: $fs"
+msgstr "Quotas não suportadas no sistema de arquivos: $fs"
 
 #: mds_quota/setup-quota.sh:54
 msgid "Quota module is activated in the management interface."
-msgstr "Módulo cota é ativado na interface de gerenciamento."
+msgstr "O módulo de Quotas é ativado na interface de gerenciamento."
 
 #: mds_quota/setup-quota.sh:55
 msgid ""
 "You can now configure user quotas from the management interface : https://"
 "@HOSTNAME@/mmc/."
 msgstr ""
-"Agora você pode configurar cotas de usuário através da interface de "
+"Agora você pode configurar as quotas do usuário através da interface de "
 "gerenciamento: https://@HOSTNAME@/mmc/."
 
 #: mds_quota/__init__.py:53
