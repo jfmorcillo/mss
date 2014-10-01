@@ -86,7 +86,7 @@ $SLAPADD -u -f $myslapdconf < $myldif
 [ $? -ne 0 ] &&  error $"Database load test failed." && exit 1
 
 # let's go for real now
-stop_service ldap
+stop_service slapd
 stop_service mmc-agent /var/log/mmc/mmc-agent.log
 
 backup_db=`clean_database /var/lib/ldap`
@@ -119,7 +119,7 @@ chmod 644 /usr/share/mmc/img/logo/mbs_logo.png
 
 sed -i 's/ENABLE=no/ENABLE=yes/' /etc/default/mmc-agent
 
-restart_service ldap
+restart_service slapd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service httpd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
