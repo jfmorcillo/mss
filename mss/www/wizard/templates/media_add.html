@@ -47,7 +47,7 @@
         };
 
         check = function() {
-            $.get("{% url state "repository" %}")
+            $.get("{% url 'state' "repository" %}")
              .success(function(r) {
                 current_log.html(formatLog(r.output));
                 scrollLog();
@@ -103,7 +103,7 @@
         <div class="pull-right">
             <a id="next" href="{{ transaction.next_step_url }}" class="disabled">{% trans "Please wait..." %}</a>
         </div>
-        <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
+        <a id="back" href="{% url 'preinst' %}" class="disabled">{% trans "Back" %}</a>
     </div>
 </section>
 {% endblock %}

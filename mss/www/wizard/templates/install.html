@@ -6,7 +6,7 @@
 {% block content %}
 <script type="text/javascript">
     getState = function() {
-        $.get("{% url state "install" %}")
+        $.get("{% url 'state' "install" %}")
          .success(function(r) {
             $('#log').html(formatLog(r.output));
             scrollLog();
@@ -19,7 +19,7 @@
                     $("#next").html("{% trans "Continue" %} →");
                     $("#next")[0].disabled = false;
                     $("#back").removeClass("disabled");
-                    $.get("{% url reload_packages %}")
+                    $.get("{% url 'reload_packages' %}")
                      .error(function(xhr) {
                         if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
                      });
@@ -33,7 +33,7 @@
                         $(".alert").html("{% trans "Installation failed." %}");
                     if ($('#log').css('display') == "none")
                         $(".log-button .btn")[0].click();
-                    $("#install-form").attr("action", "{% url install %}");
+                    $("#install-form").attr("action", "{% url 'install' %}");
                     $("#next").text("{% trans "Retry" %}");
                     $("#next")[0].disabled = false;
                     $("#back").removeClass("disabled");
@@ -73,7 +73,7 @@
             <div class="pull-right">
                 <button id="next" type="submit" name="continue" disabled="disabled">{% trans "Please wait..." %}</button>
             </div>
-            <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
+            <a id="back" href="{% url 'preinst' %}" class="disabled">{% trans "Back" %}</a>
         </div>
     </form>
 </section>

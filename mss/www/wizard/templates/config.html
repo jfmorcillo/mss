@@ -69,7 +69,7 @@
     <div class="page-header">
         <h1>{{ transaction.current_step.title }}</h1>
     </div>
-    <form id="configuration-form" class="form-horizontal" action="{% url config_valid %}" method="post">
+    <form id="configuration-form" class="form-horizontal" action="{% url 'config_valid' %}" method="post">
     {% for m in config %}
         {% for module in transaction.modules_info %}
             {% ifequal module.slug m.slug %}
@@ -283,7 +283,7 @@
             <div class="pull-right">
                 <button type="submit" name="continue">{% trans "Continue" %} →</button>
             </div>
-            <a href="{% url preinst %}">{% trans "Back" %}</a>
+            <a href="{% url 'preinst' %}">{% trans "Back" %}</a>
         </div>
     </form>
 </section>

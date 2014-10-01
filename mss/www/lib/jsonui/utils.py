@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 
-from django.utils import simplejson
+import json
 from django.utils.encoding import force_unicode
 from django.db.models.base import ModelBase
 
-class LazyJSONEncoder(simplejson.JSONEncoder):
+class LazyJSONEncoder(json.JSONEncoder):
     """ a JSONEncoder subclass that handle querysets and models objects. Add
     your code about how to handle your type of object here to use when dumping
     json """
@@ -29,7 +29,7 @@ class LazyJSONEncoder(simplejson.JSONEncoder):
         return super(LazyJSONEncoder,self).default(obj)
 
 def serialize_to_json(obj,*args,**kwargs):
-    """ A wrapper for simplejson.dumps with defaults as:
+    """ A wrapper for json.dumps with defaults as:
 
     ensure_ascii=False
     cls=LazyJSONEncoder
@@ -41,4 +41,4 @@ def serialize_to_json(obj,*args,**kwargs):
     kwargs['cls'] = kwargs.get('cls',LazyJSONEncoder)
 
 
-    return simplejson.dumps(obj,*args,**kwargs)
+    return json.dumps(obj,*args,**kwargs)

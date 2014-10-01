@@ -1,5 +1,5 @@
 {% load i18n %}
-{% load markup %}
+{% load mss %}
 <script type="text/javascript">
     var conflicts = new Object();
     var installs = new Object();
@@ -115,7 +115,7 @@
         createPopups();
     });
 </script>
-<form name="mss" action="{% url prepare %}" method="post" onsubmit="return checkModules(this)">
+<form name="mss" action="{% url 'prepare' %}" method="post" onsubmit="return checkModules(this)">
     {% if not categories %}
     <p class="alert alert-error">{% trans "No addon available in this section." %}</p>
     {% endif %}

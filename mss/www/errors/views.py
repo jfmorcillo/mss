@@ -1,6 +1,6 @@
 import urllib2
+import json
 
-from django.utils import simplejson
 from django.views.decorators.csrf import csrf_exempt
 from django.shortcuts import render_to_response
 from django.conf import settings
@@ -24,7 +24,7 @@ def user_error_submit(request):
         try:
             req = urllib2.Request(settings.TRACEBACK_API_URL)
             req.add_header('Content-Type', 'application/json')
-            urllib2.urlopen(req, simplejson.dumps(data))
+            urllib2.urlopen(req, json.dumps(data))
         except:
             pass
 

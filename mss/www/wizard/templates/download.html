@@ -49,7 +49,7 @@
         };
 
         check = function() {
-            $.get("{% url state "download_module" %}")
+            $.get("{% url 'state' "download_module" %}")
             .success(function(r) {
                 percent = Math.round(parseFloat(r.output[0].text.trim())) + "%";
                 task.html("{% trans "Downloading <strong>{0}</strong>: {1}..." %}".format(modules[current].name, percent));
@@ -94,7 +94,7 @@
         <div class="pull-right">
             <a id="next" href="#" class="disabled">{% trans "Please wait..." %}</a>
         </div>
-        <a id="back" href="{% url preinst %}" class="disabled">{% trans "Back" %}</a>
+        <a id="back" href="{% url 'preinst' %}" class="disabled">{% trans "Back" %}</a>
     </div>
 </section>
 {% endblock %}

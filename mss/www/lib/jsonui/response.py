@@ -8,7 +8,7 @@ class JSONResponse(HttpResponse):
     def __init__(self,content='',json_opts={},mimetype="application/json",*args,**kwargs):
         """
         This returns a object that we send as json content using
-        utils.serialize_to_json, that is a wrapper to simplejson.dumps
+        utils.serialize_to_json, that is a wrapper to json.dumps
         method using a custom class to handle models and querysets. Put your
         options to serialize_to_json in json_opts, other options are used by
         response.

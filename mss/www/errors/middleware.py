@@ -38,7 +38,7 @@ class CatchExceptions(object):
                     else:
                         html = render_to_string("errors/error.html",
                                                 context, context_instance=RequestContext(request))
-                        return HttpResponseServerError(html, mimetype='text/html')
+                        return HttpResponseServerError(html, content_type='text/html')
             else:
                 context = {}
                 exc_info = sys.exc_info()
@@ -57,6 +57,6 @@ class CatchExceptions(object):
 
                 html = render_to_string("errors/500.html",
                                         context, context_instance=RequestContext(request))
-                return HttpResponseServerError(html, mimetype='text/html')
+                return HttpResponseServerError(html, content_type='text/html')
 
         return None
