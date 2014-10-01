@@ -26,12 +26,13 @@ from mss.agent.lib.utils import grep, get_config_option
 from mss.agent.managers.translation import TranslationManager
 
 _ = TranslationManager().translate
+MANAGED_INTERFACE_NAMES = ('eth', 'br', 'ens', 'enp')
 
 
 def get_config_info():
     args = []
     for interface in netifaces.interfaces():
-        if interface.startswith("eth"):
+        if interface.startswith(MANAGED_INTERFACE_NAMES):
             args.append(interface + "_name")
             args.append(interface + "_type")
             args.append(interface + "_method")
@@ -51,7 +52,7 @@ def get_interfaces_config(config):
     """
     CONFIG_DIR = "/etc/sysconfig/network-scripts"
     for interface in netifaces.interfaces():
-        if interface.startswith("eth") or interface.startswith("br"):
+        if interface.startswith(MANAGED_INTERFACE_NAMES):
             if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
             if_detail = netifaces.ifaddresses(interface)
             configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail

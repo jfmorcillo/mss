@@ -82,7 +82,7 @@ wan_zones=""
 begin_shorewall_conf
 
 while [ $# -ne 0 ]; do
-    if [[ $1 = eth* ]]; then
+    if [[ $1 = eth* ]] || [[ $1 = br* ]] || [[ $1 = ens* ]] || [[ $1 = enp* ]]; then
         [[ $2 = lan* ]] && lan_zones="$lan_zones $2"
         [[ $2 = wan* ]] && wan_zones="$wan_zones $2"
         build_net_conf "$1" "$3" "$4" "$5" "$6" "$7" "$8" "$9" && \
