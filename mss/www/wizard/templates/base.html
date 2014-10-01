@@ -33,16 +33,16 @@
             }
             // launch medias update
             updateMedias = function() {
-                $.get('{% url medias_update %}')
+                $.get('{% url 'medias_update' %}')
                  .error(function(xhr) {
                     if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
                  });
             }
             // launch medias update
             reboot = function() {
-                $.get('{% url reboot_run %}')
+                $.get('{% url 'reboot_run' %}')
                  .success(function() {
-                     window.location.href='{% url logout %}';
+                     window.location.href='{% url 'logout' %}';
                  })
                  .error(function(xhr) {
                     if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
@@ -51,7 +51,7 @@
             // long polling for status bar
             var statusError = false;
             updateStatus = function(force) {
-                $.get('{% url status %}', {'force': force})
+                $.get('{% url 'status' %}', {'force': force})
                  .success(function(status) {
                     // Last request was an error (maybe the mss-agent restarted)
                     // so we set the mss-agent language again
@@ -114,7 +114,7 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a href="{% url sections %}" class="brand">
+                    <a href="{% url 'sections' %}" class="brand">
                         <img src="{{ MEDIA_URL}}img/mandriva-logo-opt.png" />&nbsp;Mandriva Server Setup&nbsp;<small>2.2</small>
                     </a>
                     <div class="nav-collapse">
@@ -128,7 +128,7 @@
                             </li>
                             {% endif %}
                             <li>
-                                <a href="{% url logout %}"><i class="icon-off icon-gray"></i>&nbsp;{% trans "Logout" %}</a>
+                                <a href="{% url 'logout' %}"><i class="icon-off icon-gray"></i>&nbsp;{% trans "Logout" %}</a>
                             </li>
                         </ul>
                         {% endif %}

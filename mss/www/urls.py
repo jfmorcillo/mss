@@ -19,17 +19,14 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-from django.conf.urls.defaults import patterns, include
+from django.conf.urls import patterns, include
+from django.views.generic.base import RedirectView, TemplateView
 import settings
 
-urlpatterns = patterns('django.views.generic.simple',
-    (r'^$', 'redirect_to', { 'url': '/mss/'})
-)
-
-urlpatterns += patterns('',
+urlpatterns = patterns('',
+    (r'^$', RedirectView.as_view(url='/mss/')),
     (r'^mss/', include('mss.www.wizard.urls')),
     (r'^errors/', include('mss.www.errors.urls')),
-    (r'^404/', 'django.views.generic.simple.direct_to_template', {'template': 'errors/404.html'}),
+    (r'^404/', TemplateView.as_view(template_name='errors/404.html')),
     (r'^site_media/(?P<path>.*)$', 'django.views.static.serve', {'document_root': settings.MEDIA_ROOT}),
 )
-

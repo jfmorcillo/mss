@@ -2,7 +2,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         (function checknet() {
-            $.get('{% url state "net" %}')
+            $.get('{% url 'state' "net" %}')
              .success(function(t) {
                 if (isInt(t.code) && t.code != 2000) {
                     if (t.code == 0) {

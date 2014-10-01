@@ -20,7 +20,7 @@
         {% endif %}
 		{% if request.session.has_net %}
             <p class="alert alert-info">{% trans "To help us solve this problem, can you explain what you were trying to do just now ?" %}</p>
-            <form action="{% url user_error_submit %}" method="post" class="form-inline">
+            <form action="{% url 'user_error_submit' %}" method="post" class="form-inline">
                 {% csrf_token %}
                 <input type="hidden" name="error" value="{{ exception_value|escape }}" />
                 <input type="hidden" id="simple_traceback" name="simple_traceback" value="{{ simple_traceback|escape }}" />
@@ -35,7 +35,7 @@
 
         <div class="form-actions">
             <div class="pull-right">
-                <a href="{% url sections %}" class="btn btn-primary">{% trans "Home" %}</a>
+                <a href="{% url 'sections' %}" class="btn btn-primary">{% trans "Home" %}</a>
             </div>
         </div>
     </section>

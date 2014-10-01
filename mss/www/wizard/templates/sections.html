@@ -30,7 +30,7 @@
 {% if sections %}
     <section id="section" class="section"></section>
     <script type="text/javascript">
-        $.get('{% url section "core" %}')
+        $.get('{% url 'section' "core" %}')
          .success(function(content) {
             $('#section').html(content);
          })
@@ -43,7 +43,7 @@
         <p class="alert">{% trans "No addon for Mandriva Server Setup available. Try to login again." %}</p>
         <div class="form-actions">
             <div class="pull-right">
-                <a href="{% url logout %}">{% trans "Logout" %}</a>
+                <a href="{% url 'logout' %}">{% trans "Logout" %}</a>
             </div>
         </div>
     </section>

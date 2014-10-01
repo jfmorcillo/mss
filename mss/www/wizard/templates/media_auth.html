@@ -33,11 +33,11 @@
         <div class="form-actions">
             <div class="pull-right">
                 {% if required %}
-                <a href="{% url install %}">{% trans "Don't add medias" %}</a>&nbsp;<span class="separator"></span>
+                <a href="{% url 'install' %}">{% trans "Don't add medias" %}</a>&nbsp;<span class="separator"></span>
                 {% endif %}
                 <button type="submit">{% trans "Add medias" %}</button>
             </div>
-            <a href="{% url preinst %}">{% trans "Back" %}</a>
+            <a href="{% url 'preinst' %}">{% trans "Back" %}</a>
         </div>
     </form>
 </section>
