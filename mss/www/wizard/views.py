@@ -93,7 +93,7 @@ def first_time_required(function):
     def wrap(request, *args, **kwargs):
         first_time = xmlrpc.call('get_option', 'first-time')
         if not first_time:
-            transaction = Transaction(request, ['mds_mmc', 'mds_smb'])
+            transaction = Transaction(request, ['mds_mmc'])
             if isinstance(transaction.steps, HttpResponseRedirect):
                 return transaction.steps
             else:
