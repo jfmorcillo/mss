@@ -24,6 +24,7 @@ pidfile		/var/run/ldap/slapd.pid
 argsfile	/var/run/ldap/slapd.args
 
 moduleload	back_monitor.la
+moduleload	back_bdb.la
 moduleload	syncprov.la
 moduleload	ppolicy.la
 #moduleload	refint.la
