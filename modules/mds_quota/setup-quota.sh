@@ -48,7 +48,7 @@ backup /etc/mmc/plugins/userquota.ini
 cat $userquota_tpl > /etc/mmc/plugins/userquota.ini
 sed -i "s!\@FILESYSTEMS\@!${filesystems%?}!" /etc/mmc/plugins/userquota.ini
 
-restart_service ldap
+restart_service slapd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 info_b $"Quota module is activated in the management interface."

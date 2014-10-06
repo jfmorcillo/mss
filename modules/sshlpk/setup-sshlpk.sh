@@ -10,7 +10,7 @@ check_mmc_configured
 add_schema ldap/openssh-lpk.schema
 
 # Restart services
-restart_service ldap
+restart_service slapd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 
 exit 0
