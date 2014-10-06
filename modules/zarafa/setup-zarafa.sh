@@ -242,7 +242,7 @@ chown zarafa.zarafa /var/log/zarafa
 
 # restart services
 restart_service mysqld
-restart_service ldap
+restart_service slapd
 restart_service mmc-agent /var/log/mmc/mmc-agent.log
 restart_service clamd
 restart_service amavisd
