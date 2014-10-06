@@ -27,6 +27,10 @@ import os
 import netifaces
 from IPy import IP
 
+
+MANAGED_INTERFACE_NAMES = ('eth', 'br', 'ens', 'enp')
+
+
 def formatExceptionInfo(maxTBlevel=5):
     cla, exc, trbk = sys.exc_info()
     excName = cla.__name__
@@ -74,7 +78,7 @@ def grep(search, file):
 def ethernet_ifs():
     ifs = []
     for interface in netifaces.interfaces():
-        if interface.startswith("eth"):
+        if interface.startswith(MANAGED_INTERFACE_NAMES):
             if_detail = netifaces.ifaddresses(interface)
             # check if interface is configured
             if netifaces.AF_INET in if_detail:

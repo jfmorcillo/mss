@@ -22,11 +22,10 @@
 import os
 import netifaces
 
-from mss.agent.lib.utils import grep, get_config_option
+from mss.agent.lib.utils import grep, get_config_option, MANAGED_INTERFACE_NAMES
 from mss.agent.managers.translation import TranslationManager
 
 _ = TranslationManager().translate
-MANAGED_INTERFACE_NAMES = ('eth', 'br', 'ens', 'enp')
 
 
 def get_config_info():
