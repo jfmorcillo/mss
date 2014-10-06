@@ -1,6 +1,11 @@
+from django.conf import settings
 from django import template
+from django.utils.encoding import force_text
+from django.utils.safestring import mark_safe
+
 
 register = template.Library()
+
 
 @register.filter
 def firstline(string):
