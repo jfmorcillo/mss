@@ -1,12 +1,20 @@
 {
     "slug": "mbs_repo",
-    "name": "Mandriva Business Server packages repository",
+    "name": "Mandriva Business Server repository",
     "description": "Access to MBS packages from the public repository.",
-    "desc": "Access to MBS packages from the public repository.",
     "categories": [
         {
             "slug": "repositories",
             "name": "Repositories"
+        }
+    ],
+    "repositories": [
+        {
+            "slug": "mbs_repo",
+            "name": "Mandriva Business Server repository",
+            "url": "https://mirror.mandriva.com/factory/x86_64/",
+            "options": "--curl-options '-k' --distrib",
+            "restricted": true
         }
     ],
     "module": {
