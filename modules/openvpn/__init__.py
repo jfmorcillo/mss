@@ -25,6 +25,7 @@ import re
 import logging
 
 from mss.agent.managers.translation import TranslationManager
+from mss.agent.lib.utils import MANAGED_INTERFACE_NAMES
 
 _ = TranslationManager().translate
 
@@ -42,7 +43,7 @@ def get_interface_config(config):
     CONFIG_DIR = "/etc/sysconfig/network-scripts"
     ifaces = []
     for interface in netifaces.interfaces():
-        if interface.startswith("eth") or interface.startswith("br"):
+        if interface.startswith(MANAGED_INTERFACE_NAMES):
             if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
             if_detail = netifaces.ifaddresses(interface)
             configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail
@@ -50,8 +51,7 @@ def get_interface_config(config):
             if configured:
                 s_iface = get_shorewall_interface(interface)
                 addr = if_detail[netifaces.AF_INET][0]['addr']
-                ifaces.append({'name': s_iface + ' (' +
-                                       interface + ':' + str(addr) + ')',
+                ifaces.append({'name': s_iface + ' (' + interface + ':' + str(addr) + ')',
                                'value': s_iface[0:3] + ' ' + str(addr)})
 
     config.append({'slug': 'openvpn',
