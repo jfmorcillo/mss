@@ -14,14 +14,14 @@ backup /etc/fstab
 for f in $fss; do
     # get UUID
     dev=`echo $f | cut -d: -f1`
-    uuid=`dumpe2fs $dev 2>/dev/null | grep UUID | awk '{ print $3 }'`
+    uuid=`blkid | grep $dev | sed 's/.*PARTUUID="\([a-f0-9-]*\)".*$/\1/'`
     # add usrquota option
-    mountpoint=`grep UUID=${uuid} /etc/fstab | sed "s/^UUID=${uuid}[[:space:]]\+\([^ ]\+\).*$/\1/"`
-    fs=`grep UUID=${uuid} /etc/fstab | sed "s/^UUID=${uuid}[[:space:]]\+[^ ]\+[[:space:]]\+\([^ ]\+\).*$/\1/"`
+    mountpoint=`grep PARTUUID=${uuid} /etc/fstab | sed "s/^PARTUUID=${uuid}[[:space:]]\+\([^[:space:]]\+\).*$/\1/"`
+    fs=`grep PARTUUID=${uuid} /etc/fstab | sed "s/^PARTUUID=${uuid}[[:space:]]\+[^[:space:]]\+[[:space:]]\+\([^[:space:]]\+\).*$/\1/"`
     grep $uuid /etc/fstab | grep -q usrquota
     if [ $? -ne 0 ]; then
         echo "Add usrquota option for $mountpoint"
-        sed -i "s/^\(UUID=${uuid}[[:space:]]\+[^ ]\+[[:space:]]\+[^ ]\+[[:space:]]\+\)\([^ ]\+\)\(.*\)$/\1\2,usrquota\3/" /etc/fstab
+        sed -i "s/^\(PARTUUID=${uuid}[[:space:]]\+[^[:space:]]\+[[:space:]]\+[^[:space:]]\+[[:space:]]\+\)\([^[:space:]]\+\)\(.*\)$/\1\2,usrquota\3/" /etc/fstab
         if [ "$fs" == "ext3" ] || [ "$fs" == "ext4" ]; then
             echo "Remount $mountpoint"
             mount -o remount,usrquota $mountpoint
