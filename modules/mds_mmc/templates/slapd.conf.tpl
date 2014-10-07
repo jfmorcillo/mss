@@ -33,7 +33,7 @@ TLSCertificateFile      /etc/pki/tls/certs/ldap.pem
 TLSCertificateKeyFile   /etc/pki/tls/private/ldap.pem
 TLSCACertificateFile    /etc/pki/tls/certs/ldap.pem
 
-#loglevel 256
+loglevel none
 
 database	bdb
 suffix		"@SUFFIX@"
