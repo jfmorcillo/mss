@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 18:37+0200\n"
+"PO-Revision-Date: 2014-10-07 22:02+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/openvpn/pt_BR/>\n"
@@ -26,7 +26,7 @@ msgstr "Permitir que seus usuários realizem conexões externas"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr "Interface de gerenciamento"
+msgstr "Interface de Gerenciamento"
 
 #: .actions[1].name
 msgid "Addon documentation"
