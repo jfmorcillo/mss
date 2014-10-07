@@ -15,7 +15,6 @@ ppolicy_template="templates/ppolicy.ini.tpl"
 base_ldif_template="templates/init.ldif.tpl"
 acl_template="templates/mandriva-dit-access.conf.tpl"
 acl_file="/etc/openldap/mandriva-dit-access.conf"
-ldap_conf_template="templates/ldap.conf.tpl"
 nsswitch_template="templates/nsswitch.conf.tpl"
 nslcd_template="templates/nslcd.conf.tpl"
 
@@ -54,9 +53,9 @@ mbs-setup
 # now, /etc/openldap/ldap.conf
 myldapconf=`make_temp`
 cat /etc/openldap/ldap.conf | \
-	sed -e "s/^BASE[[:blank:]]\+.*/BASE ${mysuffix}/g;\
-	s/^HOST[[:blank:]]\+.*/HOST ${SERVER}/g;\
-	s@^URI[[:blank:]]\+.*@URI ldap://${SERVER}@g" \
+	sed -e "s/^#?BASE[[:blank:]]\+.*/BASE ${mysuffix}/g;\
+	s/^#?HOST[[:blank:]]\+.*/HOST ${SERVER}/g;\
+	s@^#?URI[[:blank:]]\+.*@URI ldap://${SERVER}@g" \
 	> $myldapconf
 if ! grep -qE '^(HOST|URI)' $myldapconf; then
 	echo "URI ldap://${SERVER}" >> $myldapconf
@@ -99,11 +98,6 @@ cat $myldapconf > /etc/openldap/ldap.conf; rm -f $myldapconf
 echo "0Loading database..."
 $SLAPADD < $myldif
 [ $? -ne 0 ] &&  error $"Failed to initialize the database." && exit 1
-
-backup /etc/ldap.conf
-cat $ldap_conf_template > /etc/ldap.conf
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/ldap.conf && sed -i "s/\@SERVER\@/$SERVER/" /etc/ldap.conf
-[ $? -ne 0 ] && error $"Error while configuring lib nss-ldap." && exit 1
 
 backup /etc/nslcd.conf
 cat $nslcd_template > /etc/nslcd.conf
