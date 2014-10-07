@@ -29,7 +29,7 @@
                          "clamd",
                          "dovecot",
                          "dovecot-plugins-ldap",
-                         "dovecot-plugins-pigeonhole"]
+                         "dovecot-pigeonhole"]
         }
     ],
     "config": [
