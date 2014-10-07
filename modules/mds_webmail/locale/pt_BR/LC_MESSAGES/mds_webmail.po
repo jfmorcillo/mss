@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-09-24 21:35+0200\n"
+"PO-Revision-Date: 2014-10-07 22:02+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_webmail/pt_BR/>\n"
@@ -27,7 +27,7 @@ msgstr "Roundcube, uma completa solução de webmail para o serviço de Emails"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr "Interface de gerenciamento"
+msgstr "Interface de Gerenciamento"
 
 #: .actions[1].name
 msgid "Webmail interface"
