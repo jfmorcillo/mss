@@ -2,7 +2,6 @@
     "slug": "mds_webmail",
     "name": "Webmail",
     "description": "Roundcube, a complete webmail solution for your mail service",
-    "desc": "Roundcube, a complete webmail solution for your mail service",
     "categories": [
         {
             "slug": "mail",
@@ -28,7 +27,7 @@
                 "roundcubemail",
                 "sqlite-tools",
                 "php-fileinfo",
-                "php-mcrypt",
+                "php-mcrypt"
             ]
         }
     ],
@@ -49,7 +48,6 @@
         }
     ],
     "dependencies": ["mds_mail"],
-    "conflicts": ["zarafa"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mail"],
