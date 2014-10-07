@@ -28,14 +28,17 @@ _ = TranslationManager().translate
 def get_config_info():
     return ("setup-quota.sh", ['filesystems'])
 
+
 def get_filesystems(module):
     """
     Return all devices for quotas
     """
     mountpoints = []
     for part in psutil.disk_partitions(all=False):
-        mountpoints.append("%s:%s" % (part.device, part.mountpoint))
+        if part.fstype in ('ext3', 'ext4', 'xfs'):
+            mountpoints.append("%s:%s" % (part.device, part.mountpoint))
     return mountpoints
+
 
 def validate_filesystems(filesystems):
     """
