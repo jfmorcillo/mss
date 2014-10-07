@@ -17,6 +17,7 @@ acl_template="templates/mandriva-dit-access.conf.tpl"
 acl_file="/etc/openldap/mandriva-dit-access.conf"
 ldap_conf_template="templates/ldap.conf.tpl"
 nsswitch_template="templates/nsswitch.conf.tpl"
+nslcd_template="templates/nslcd.conf.tpl"
 
 mypass=$1
 mypass_e=`escape_sed $mypass`
@@ -99,13 +100,18 @@ echo "0Loading database..."
 $SLAPADD < $myldif
 [ $? -ne 0 ] &&  error $"Failed to initialize the database." && exit 1
 
-backup /etc/nsswitch.conf
-cat $nsswitch_template > /etc/nsswitch.conf
 backup /etc/ldap.conf
 cat $ldap_conf_template > /etc/ldap.conf
-sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/ldap.conf
-sed -i "s/\@SERVER\@/$SERVER/" /etc/ldap.conf
+sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/ldap.conf && sed -i "s/\@SERVER\@/$SERVER/" /etc/ldap.conf
 [ $? -ne 0 ] && error $"Error while configuring lib nss-ldap." && exit 1
+
+backup /etc/nslcd.conf
+cat $nslcd_template > /etc/nslcd.conf
+sed -i "s/\@SUFFIX\@/$mysuffix/" /etc/nslcd.conf
+[ $? -ne 0 ] && error $"Error while configuring lib nss-ldap." && exit 1
+
+backup /etc/nsswitch.conf
+cat $nsswitch_template > /etc/nsswitch.conf
 
 # enable modules
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/services.ini
