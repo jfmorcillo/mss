@@ -73,11 +73,11 @@ function mybackup() {
 # $1: *file* to be backed up
 function backup() {
     now=`date +%s`
-	if [ ! -f "$1" ]; then
+	if [ ! -f "$1" ] && [ ! -d "$1" ]; then
         echo "No file to backup ($1)"
     else
         newname="$1-mss-wizard-$now"
-        cp -a "$1" "$newname"
+        [ -f "$1" ] && cp -a "$1" "$newname" || cp -ar "$1" "$newname"
         if [ $? -eq 0 ]; then
             echo "Backed up $1 to $newname"
         else
@@ -252,7 +252,7 @@ function warning() {
 }
 
 function handle64bits() {
-    [ -f $1 ] && [ -d /usr/lib64 ] && sed -i "s!/usr/lib!/usr/lib64!g" $1
+    [ -f $1 ] && [ -d /usr/lib64 ] && sed -i "s!/usr/lib/!/usr/lib64/!g" $1
 }
 
 function replace() {
