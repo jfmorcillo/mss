@@ -25,8 +25,9 @@
             "name": "all",
             "rpms": [
                 "roundcubemail",
-                "sqlite-tools",
+                "sqlite3-tools",
                 "php-fileinfo",
+                "php-pdo_sqlite",
                 "php-mcrypt"
             ]
         }
@@ -47,7 +48,6 @@
             "help": "Configure the firewall to allow access to the webmail interface from external networks"
         }
     ],
-    "dependencies": ["mds_mail"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mail"],
