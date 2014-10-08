@@ -1,11 +1,12 @@
 smtpd_banner = $myhostname ESMTP $mail_name (Mandriva Business Server)
 biff = no
 
+daemon_directory = /usr/lib/postfix
+
 # appending .domain is the MUA's job.
 append_at_myorigin = yes
 append_dot_mydomain = no
 
-daemon_directory = /usr/lib64/postfix
 myhostname = @FQDN@
 alias_maps = hash:/etc/postfix/aliases
 alias_database = hash:/etc/postfix/aliases

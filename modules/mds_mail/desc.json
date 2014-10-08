@@ -2,7 +2,6 @@
     "slug":   "mds_mail",
     "name": "Mail Service",
     "description": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
-    "desc": "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits",
     "categories": [
         {
             "slug": "mail",
@@ -20,16 +19,16 @@
         {
             "name": "all",
             "rpms": ["postfix",
-                         "postfix-ldap",
-                         "mmc-web-mail",
-                         "python-mmc-mail",
-                         "amavisd-new",
-                         "spamassassin",
-                         "spamassassin-tools",
-                         "clamd",
-                         "dovecot",
-                         "dovecot-plugins-ldap",
-                         "dovecot-pigeonhole"]
+                   "postfix-ldap",
+                   "mmc-web-mail",
+                   "python-mmc-mail",
+                   "amavisd-new",
+                   "spamassassin",
+                   "spamassassin-tools",
+                   "clamd",
+                   "dovecot",
+                   "dovecot-plugins-ldap",
+                   "dovecot-pigeonhole"]
         }
     ],
     "config": [
@@ -49,9 +48,9 @@
             "label": "Protocols supported",
             "help": "Protocols that the dovecot server will provide.",
             "options": [
-                        { "name": "IMAPS and POP3S", "value": "imap imaps pop3 pop3s" },
-                        { "name": "IMAPS", "value": "imaps imap" },
-                        { "name": "POP3S", "value": "pop3s pop3" }
+                        { "name": "IMAPS and POP3S", "value": "imap pop3" },
+                        { "name": "IMAPS", "value": "imap" },
+                        { "name": "POP3S", "value": "pop3" }
             ]
         },
         {
@@ -69,7 +68,6 @@
             "help": "Configure the firewall to accept smtp/imap/pop3 connections on interfaces configured as 'external'"
         }
     ],
-    "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"]
