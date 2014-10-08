@@ -5,17 +5,10 @@
 
 check_mmc_configured
 
-if [ "`uname -m`" != "x86_64" ]; then
-    main_cf_template="templates/main-32.cf.tpl"
-    master_cf_template="templates/master-32.cf.tpl"
-else
-    main_cf_template="templates/main-64.cf.tpl"
-    master_cf_template="templates/master-64.cf.tpl"
-fi
-
+main_cf_template="templates/main.cf.tpl"
+master_cf_template="templates/master.cf.tpl"
 mail_ini_template="templates/mail.ini.tpl"
-dovecot_ldap_template="templates/dovecot-ldap.conf.tpl"
-dovecot_template="templates/dovecot.conf.tpl"
+dovecot_templates="templates/dovecot"
 ldap_accounts_cf="templates/ldap-accounts.cf"
 ldap_aliases_cf="templates/ldap-aliases.cf"
 ldap_valiases_cf="templates/ldap-valiases.cf"
@@ -42,12 +35,14 @@ add_schema templates/mail.schema
 # postfix
 backup /etc/postfix/main.cf
 cat $main_cf_template > /etc/postfix/main.cf
+handle64bits /etc/postfix/main.cf
 sed -i "s/\@FQDN\@/$FQDN/" /etc/postfix/main.cf
 sed -i "s/\@HOSTNAME\@/$HOST/" /etc/postfix/main.cf
 sed -i "s!\@MYNETWORKS\@!$smtpd_mynetworks!" /etc/postfix/main.cf
 
 backup /etc/postfix/master.cf
 cat $master_cf_template > /etc/postfix/master.cf
+handle64bits /etc/postfix/master.cf
 
 for template in $ldap_accounts_cf $ldap_aliases_cf $ldap_valiases_cf $ldap_domains_cf $ldap_maildrop_cf $ldap_transport_cf
 do
@@ -58,16 +53,11 @@ do
 done
 
 # dovecot
-backup /etc/dovecot.conf
-cat $dovecot_template > /etc/dovecot.conf
-sed -i "s/\@PROTOCOLS\@/$popimap_proto/" /etc/dovecot.conf
-
-if [ -f /etc/dovecot-ldap.conf ];
-    then backup /etc/dovecot-ldap.conf
-fi
-cat $dovecot_ldap_template > /etc/dovecot-ldap.conf
-sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/dovecot-ldap.conf
-sed -i "s/\@HOST\@/$MDSSERVER/" /etc/dovecot-ldap.conf
+backup /etc/dovecot
+cp -ifr $dovecot_templates/* /etc/dovecot/
+sed -i "s/\@PROTOCOLS\@/$popimap_proto/" /etc/dovecot/dovecot.conf
+sed -i "s/\@SUFFIX\@/$MDSSUFFIX/" /etc/dovecot/dovecot-ldap.conf.ext
+sed -i "s/\@HOST\@/$MDSSERVER/" /etc/dovecot/dovecot-ldap.conf.ext
 
 adduser -r -g mail --uid 30 vmail > /dev/null 2>&1
 mkdir -p /home/vmail > /dev/null 2>&1
