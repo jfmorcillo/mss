@@ -25,7 +25,7 @@ fw_lan=$2
 fw_wan=$3
 
 # configure PHP timezone
-tz=`readlink /etc/localtime | sed "s/\/usr\/share\/zoneinfo\/posix\///" | sed "s/_/ /g"`
+tz=`readlink /etc/localtime | sed "s/\/usr\/share\/zoneinfo\/posix\///"`
 sed -i "s|^;\?date\.timezone =.*|date.timezone = '$tz'|" /etc/php.ini
 
 # LDAP schema
