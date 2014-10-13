@@ -170,6 +170,8 @@ if not os.path.abspath(os.path.join(PROJECT_DIR, 'lib')) in sys.path:
 
 TRACEBACK_API_URL = "https://mbs-reports.mandriva.com/api/mss/traceback/"
 
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
 try:
     from local_settings import *
 except ImportError:
