@@ -23,7 +23,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='mss',
-    version = '2.2',
+    version = '2.3',
     description = "Mandriva Server Setup",
     author = "Jean-Philippe Braun",
     author_email = "jpbraun@mandriva.com",
