@@ -2,7 +2,6 @@
     "slug": "squid",
     "name": "Proxy-cache service",
     "description": "Restrict and cache internet access",
-    "desc": "Restrict and cache internet access",
     "actions": [
         {
             "type": "link",
@@ -38,7 +37,6 @@
             "help": "Configure the firewall to allow access to the proxy service from external networks"
         }
     ],
-    "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"]

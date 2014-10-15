@@ -8,15 +8,14 @@ hosts_file /etc/hosts
 
 #### AUTH CONF
 auth_param basic realm Proxy authentication
-auth_param basic program /usr/lib/squid/squid_ldap_auth -b "@SUFFIX@" -f uid=%s localhost
+auth_param basic program /usr/lib64/squid/basic_ldap_auth -b "@SUFFIX@" -f uid=%s localhost
 auth_param basic children 5
 auth_param basic casesensitive off
 auth_param basic credentialsttl 2 hours
 
-external_acl_type ldap_group %LOGIN /usr/lib/squid/squid_ldap_group -d -b "@SUFFIX@" -f "(&(memberuid=%u)(cn=%g))" -h localhost
+external_acl_type ldap_group %LOGIN /usr/lib64/squid/ext_ldap_group_acl -d -b "@SUFFIX@" -f "(&(memberuid=%u)(cn=%g))" -h localhost
 ####
 
-acl manager proto cache_object
 acl localhost src 127.0.0.1/32 ::1
 acl to_localhost dst 127.0.0.0/8 0.0.0.0/32 ::1
 
