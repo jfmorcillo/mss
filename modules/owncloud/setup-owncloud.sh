@@ -11,6 +11,7 @@ check_mmc_configured
 owncloud_adminUser=$1
 owncloud_adminPass=$2
 owncloud_dataPath=$3
+OWNCLOUD_DIR="/usr/share/owncloud"
 OWNCLOUD_TEMPLATE="templates/autoconfig.php.tpl"
 OWNCLOUD_AUTOCONFIG="/usr/share/owncloud/config/autoconfig.php"
 OWNCLOUD_CONFIG="/usr/share/owncloud/config/config.php"
@@ -45,6 +46,7 @@ echo "done."
 # fullfil the database
 echo -n "Filling ownCloud database..."
 wget --no-check-certificate -O - http://127.0.0.1/owncloud/ > /dev/null 2>&1
+sed -i '/trusted_domains/,+3d' $OWNCLOUD_CONFIG
 
 # FIXME: Add a sql request to see if the db has been filled correctly
 
@@ -55,7 +57,9 @@ mysql_do_query "USE owncloud;
                    ('user_ldap', 'types', 'authentication'),
                    ('user_ldap', 'enabled', 'yes'),
                    ('user_ldap', 'bgjUpdateGroupsLastRun', '1365681892'),
-                   ('user_ldap', 'ldap_uuid_attribute', 'auto'),
+                   ('user_ldap', 'ldap_uuid_attribute', 'entryUUID'),
+                   ('user_ldap', 'ldap_uuid_group_attribute', 'entryUUID'),
+                   ('user_ldap', 'ldap_uuid_user_attribute', 'entryUUID'),
                    ('user_ldap', 'ldap_host', '127.0.0.1'),
                    ('user_ldap', 'ldap_port', '389'),
                    ('user_ldap', 'ldap_backup_host', ''),
@@ -69,11 +73,11 @@ mysql_do_query "USE owncloud;
                    ('user_ldap', 'ldap_nocase', ''),
                    ('user_ldap', 'ldap_turn_off_cert_check', ''),
                    ('user_ldap', 'ldap_display_name', 'cn'),
-                   ('user_ldap', 'ldap_userlist_filter', 'objectClass=inetOrgPerson'),
-                   ('user_ldap', 'ldap_group_filter', 'objectClass=posixGroup'),
+		   ('user_ldap', 'ldap_userlist_filter', '(|(objectClass=inetOrgPerson))'),
+		   ('user_ldap', 'ldap_group_filter', '(|(objectClass=posixGroup))'),
                    ('user_ldap', 'ldap_group_display_name', 'cn'),
                    ('user_ldap', 'ldap_group_member_assoc_attribute', 'memberUid'),
-                   ('user_ldap', 'ldap_login_filter', 'uid=%uid'),
+		   ('user_ldap', 'ldap_login_filter', '(|(uid=%uid)(mail=%uid))'),
                    ('user_ldap', 'ldap_quota_attr', ''),
                    ('user_ldap', 'ldap_quota_def', ''),
                    ('user_ldap', 'ldap_email_attr', 'mail'),
@@ -133,6 +137,11 @@ https_redirect owncloud /etc/httpd/conf/webapps.d/owncloud.conf
 sed -i 's/^post_max_size = 8M/post_max_size = 150M/' /etc/php.ini
 sed -i 's/^upload_max_filesize = 16M/upload_max_filesize = 150M/' /etc/php.ini
 restart_service httpd
+
+pushd $OWNCLOUD_DIR > /dev/null
+php occ upgrade
+echo 
+popd > /dev/null
 
 info_b $"ownCloud is now configured."
 info $"You can access the web interface at https://@HOSTNAME@/owncloud/"
