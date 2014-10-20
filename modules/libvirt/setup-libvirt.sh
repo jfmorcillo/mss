@@ -27,6 +27,8 @@ restart_service libvirtd
 admin_password=$1
 echo $admin_password | saslpasswd2 -p -a libvirt admin
 
+sleep 2
+
 # Pool setup
 pool_location=$2
 mkdir -p $pool_location
@@ -49,7 +51,7 @@ function configure_bridge {
     interface_conf=${CONFIG_DIR}/ifcfg-${1}
     if [ -f $interface_conf ]; then
         echo -n "Configuring bridge on interface $1..."
-        bridge_name=`echo $1 | sed 's/eth/br/'`
+        bridge_name=br${1: -1}
         bridge_conf=${CONFIG_DIR}/ifcfg-${bridge_name}
 
         cp -f $interface_conf $bridge_conf
