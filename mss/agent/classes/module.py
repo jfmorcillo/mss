@@ -496,8 +496,7 @@ class Module(object):
                 self.load_desc()
                 self.load_module()
                 self.load_translations()
-                self.check_configured()
-                self.check_installed()
+                self.init()
             else:
                 logger.error("Zip file is invalid...")
 
