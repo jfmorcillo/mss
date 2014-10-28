@@ -12,4 +12,5 @@ prune modules/davical
 prune modules/mbs_repo_updates
 prune modules/mds_kerberos
 prune modules/mds_audit
+prune modules/mds_samba4
 prune modules/zarafa
