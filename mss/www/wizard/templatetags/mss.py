@@ -12,6 +12,11 @@ def firstline(string):
     return string.split("\n")[0]
 
 
+@register.filter
+def capitalize(string):
+    return string.capitalize()
+
+
 @register.filter(is_safe=True)
 def markdown(value, arg=''):
     """

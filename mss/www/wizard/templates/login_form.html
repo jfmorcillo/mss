@@ -1,4 +1,6 @@
+{% load mss %}
 {% load i18n %}
+{% get_current_language as LANGUAGE_CODE %}
 <script type="text/javascript">
     $(document).ready(function() {
         (function checknet() {
@@ -49,6 +51,19 @@
 </script>
 <p id="netinfo" class="alert" style="display: none"></p>
 <div class="control-group">
+  <label class="control-label" for="language">{% trans "Language" %}: </label>
+  <div class="controls">
+    <select name="language" onchange="setLang(this.value, '/')">
+    {% get_language_info_list for LANGUAGES as languages %}
+    {% for language in languages %}
+      <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+          {{ language.name_local | capitalize }}
+      </option>
+    {% endfor %}
+    </select>
+  </div>
+</div>
+<div class="control-group">
     <label class="control-label" for="username">{% trans "Username" %}: </label>
     <div class="controls">
         <input type="text" name="username" value="" id="username" />
@@ -58,12 +73,6 @@
     <label class="control-label" for="password">{% trans "Password" %}: </label>
     <div class="controls">
         <input type="password" name="password" value="" id="password" />
-    </div>
-</div>
-<div class="control-group">
-    <label class="control-label" for="language">{% trans "Language" %}: </label>
-    <div class="controls">
-        {% include 'language_form.html' %}
     </div>
 </div>
 <div class="form-actions">

@@ -1,4 +1,5 @@
 {% load i18n %}<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
 <html>
     <head>
         <title>Mandriva Server Setup</title>
@@ -56,7 +57,7 @@
                     // Last request was an error (maybe the mss-agent restarted)
                     // so we set the mss-agent language again
                     if (statusError) {
-                        setLang("{{ current_lang }}");
+                        setLang("{{ LANGUAGE_CODE }}");
                         statusError = false;
                     }
                     // hide status on Ready state
