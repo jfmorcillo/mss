@@ -55,6 +55,7 @@ class TranslationManager:
             translation = gettext.translation(name,
                                               os.path.join(path, "locale"),
                                               languages=[self.lang])
+            self.lang = translation.info()['language']
         except AttributeError:
             translation = gettext.NullTranslations()
         except IOError:
