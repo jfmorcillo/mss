@@ -24,7 +24,7 @@ from django.views.generic.base import RedirectView
 
 urlpatterns = patterns('mss.www.wizard.views',
     url(r'^$', RedirectView.as_view(url='account/login/')),
-    url(r'^lang/(?P<lang>[\w_]+)/$', 'set_lang', name="set_lang"),
+    url(r'^setlang/$', 'set_language', name="set_language"),
     url(r'^has_net/(?P<has_net>[\d]+)/$', 'has_net', name="has_net"),
     url(r'^account/login/$', 'mylogin', name="login"),
     url(r'^account/logout/$', 'mylogout', name="logout"),

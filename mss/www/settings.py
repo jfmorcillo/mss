@@ -119,10 +119,10 @@ LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
   ('en', 'English'),
-  ('fr_FR', 'Français'),
-  ('pt_BR', 'Português do Brasil'),
-  ('de_DE', 'Deutsch'),
-  ('zh_CN', 'Chinese'),
+  ('fr', 'Français'),
+  ('pt-br', 'Português do Brasil'),
+  ('de', 'Deutsch'),
+  ('zh-cn', 'Chinese'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
@@ -130,8 +130,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     "django.core.context_processors.i18n",
     "django.core.context_processors.debug",
     "django.core.context_processors.request",
-    "django.core.context_processors.media",
-    "mss.www.wizard.context.current_lang"
+    "django.core.context_processors.media"
 )
 
 MIDDLEWARE_CLASSES = (

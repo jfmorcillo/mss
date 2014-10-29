@@ -24,11 +24,13 @@ import time
 
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponseBadRequest, HttpResponse
+from django.utils.http import is_safe_url
 from django.core.urlresolvers import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
-from django.utils.translation import ugettext as _, activate
+from django.utils.translation import ugettext as _, \
+    LANGUAGE_SESSION_KEY, check_for_language, get_language, to_locale
 
 from mss.lib.xmlrpc import XmlRpc
 
@@ -38,28 +40,42 @@ from transaction import Transaction, Steps, State
 xmlrpc = XmlRpc()
 output = {"status": ""}
 
-# used to change interface + agent lang
-def set_lang(request, lang):
-    if "url" in request.GET:
-        url = request.GET["url"]
-    else:
-        url = False
-    if hasattr(request, 'session'):
-        # set interface lang
-        request.session['django_language'] = lang
-        settings.DEFAULT_LANGUAGE = lang
-        activate(lang)
-        # set agent language
-        xmlrpc.call('set_lang', lang)
-    # redirect to url if supplied in GET
-    if url:
-        return HttpResponseRedirect(url)
-    elif 'HTTP_REFERER' in request.META:
-        return HttpResponseRedirect(request.META['HTTP_REFERER'])
-    else:
-        return HttpResponseRedirect("/")
+
+def set_language(request):
+    """
+    Redirect to a given url while setting the chosen language in the
+    session or cookie. The url and the language code need to be
+    specified in the request parameters.
+
+    Since this view changes how the user will see the rest of the site, it must
+    only be accessed as a POST request. If called as a GET request, it will
+    redirect to the page in the request (the 'next' parameter) without changing
+    any state.
+    """
+    next = request.POST.get('next', request.GET.get('next'))
+    if not is_safe_url(url=next, host=request.get_host()):
+        next = request.META.get('HTTP_REFERER')
+        if not is_safe_url(url=next, host=request.get_host()):
+            next = '/'
+    response = HttpResponseRedirect(next)
+    if request.method == 'POST':
+        lang_code = request.POST.get('language', None)
+        if lang_code and check_for_language(lang_code):
+            xmlrpc.call('set_lang', to_locale(lang_code))
+            if hasattr(request, 'session'):
+                request.session[LANGUAGE_SESSION_KEY] = lang_code
+            else:
+                response.set_cookie(settings.LANGUAGE_COOKIE_NAME, lang_code,
+                                    max_age=settings.LANGUAGE_COOKIE_AGE,
+                                    path=settings.LANGUAGE_COOKIE_PATH,
+                                    domain=settings.LANGUAGE_COOKIE_DOMAIN)
+    return response
+
 
 def mylogin(request):
+    lang_code = get_language()
+    xmlrpc.call('set_lang', to_locale(lang_code))
+
     if request.user.is_authenticated():
         return HttpResponseRedirect(reverse('sections'))
 
@@ -76,9 +92,6 @@ def mylogin(request):
         return render(request, 'login.html', {'error': True, 'first_time': True})
     else:
         first_time = xmlrpc.call('get_option', 'first-time')
-        lang = xmlrpc.call('get_lang')
-        set_lang(request, lang)
-        # show login form
         xmlrpc.call('check_net')
         return render(request, 'login.html', {'first_time': first_time})
 

@@ -33,12 +33,22 @@ $(document).ready(function() {
     });
 });
 
-setLang = function(lang) {
-    window.location = "/mss/lang/"+lang+"/";
-}
+setLang = function(lang_code, redirect) {
+  $.post('/mss/setlang/', {
+    language: lang_code
+  })
+  .success(function() {
+    if (redirect) window.location = redirect;
+  });
+};
 
 scrollLog = function() {
     $('.log').each(function(i){ this.scrollTop = this.scrollHeight });
+}
+
+submitForm = function(elem) {
+  var elem = $(elem);
+  elem.closest('form').trigger('submit');
 }
 
 formatLog = function(JSONoutput) {
