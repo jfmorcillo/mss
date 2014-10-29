@@ -34,11 +34,10 @@
                 "python-mmc-packages",
                 "mmc-agent",
                 "openldap-servers",
-                "nss_ldap",
                 "openldap-clients",
-                "pam_ldap",
                 "openldap-mandriva-dit",
-                "apache-mod_ssl"
+                "apache-mod_ssl",
+                "nss-pam-ldapd"
             ]
         }
     ],
