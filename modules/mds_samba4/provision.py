@@ -146,9 +146,9 @@ def provision_samba4(mode, realm, admin_password):
     if os.path.exists(os.path.join(samba.prefix, 'private/sam.ldb')):
         for root, dirs, files in os.walk(os.path.join(samba.prefix, 'private/')):
             for f in files:
-    	        os.unlink(os.path.join(root, f))
+                os.unlink(os.path.join(root, f))
             for d in dirs:
-    	        shutil.rmtree(os.path.join(root, d))
+                shutil.rmtree(os.path.join(root, d))
 
     provision_domain()
     disable_password_complexity()
