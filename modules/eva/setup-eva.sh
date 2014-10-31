@@ -113,6 +113,8 @@ python ./mmc_createuser.py -l $eVA_adminUser -p $password_eva
 
 # Create eva account for libvirt
 echo eVA_KvM@dm1n | saslpasswd2 -p -a libvirt eva
+# SASL is not needed. A token is used
+sed -i "s/^vnc_sasl = [^0]$/vnc_sasl = 0/g" /etc/libvirt/qemu.conf
 
 if [ -e $JBOSS_HOME/eva/license/license.details ]; then
     export LICENSE_DETAILS=$JBOSS_HOME/eva/license/license.details
