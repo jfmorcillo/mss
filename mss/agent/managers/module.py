@@ -104,6 +104,7 @@ class ModuleManager:
         self.load_modules()
         logger.debug("Modules loaded.")
         self.init_modules()
+        logger.debug("Modules init done.")
 
     def setup_python_path(self):
         """

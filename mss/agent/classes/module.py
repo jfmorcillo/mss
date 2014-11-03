@@ -283,6 +283,8 @@ class Module(object):
                 self._script, self._script_args = getattr(self._module, 'get_config_info')()
             except AttributeError:
                 self._script, self._script_args = (False, [])
+        else:
+            logger.debug("No python module for %s found, can't get script name and args!" % self.name)
 
     def get_config(self):
         """ get module current config """
