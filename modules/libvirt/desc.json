@@ -62,11 +62,7 @@
             "help":"Configure the firewall to accept libvirt management on interfaces configured as 'external'"
         }
     ],
-    "postinstall":{
-        "reboot":"yes"
-    },
     "module":{
-        "section":"other",
-        "reboot":true
+        "section":"other"
     }
 }

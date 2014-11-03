@@ -43,6 +43,7 @@ def get_interfaces():
                 addr = if_detail[netifaces.AF_INET][0]['addr']
                 yield (interface, addr, method)
 
+
 def get_config_info():
     args = ['admin_password', 'pool_location']
     for interface, addr, method in get_interfaces():
@@ -51,6 +52,7 @@ def get_config_info():
     args.append('fw_lan')
     args.append('fw_wan')
     return ('setup-libvirt.sh', args)
+
 
 def get_bridge_config(config):
     """

@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 . '../functions.sh'
 
 check_mmc_configured
@@ -28,8 +30,8 @@ echo $admin_password | saslpasswd2 -p -a libvirt admin
 # Pool setup
 pool_location=$2
 mkdir -p $pool_location
-virsh pool-destroy default
-virsh pool-undefine default
+virsh pool-destroy default 2>/dev/null || echo "No default pool found."
+virsh pool-undefine default 2>/dev/null || echo ""
 virsh pool-define-as --type dir --name default --target $pool_location
 virsh pool-autostart default
 virsh pool-start default
@@ -63,12 +65,13 @@ function configure_bridge {
 }
 
 while [ $# -ne 0 ]; do
-    if [[ $1 == eth* ]]; then
-        [ "$2" == "on" ] && configure_bridge $1
+    if [[ $1 == eth* ]] || [[ $1 == en* ]]; then
+        [ "$2" == "on" ] && configure_bridge $1 && restart_service network
     else
         # shorewall configuration
         [ $1 == "on" ] && mss-add-shorewall-rule -a Libvirtd/ACCEPT -t lan
         [ $2 == "on" ] && mss-add-shorewall-rule -a Libvirtd/ACCEPT -t wan
+        restart_service shorewall
     fi
     shift 2
 done
@@ -78,4 +81,3 @@ info $"Login to libvirt with the virt-manager client using TCP/SASL method:"
 info $"- Hostname is @HOSTNAME@"
 info $"- Username is admin"
 info $"- Password is $admin_password"
-info $"Reboot to apply the network configuration. If you have a DHCP IP address your IP address may change."
