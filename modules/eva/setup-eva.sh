@@ -361,6 +361,13 @@ sed -i "s/^auth_tcp.*$/auth_tcp = \"none\"/g" /etc/libvirt/libvirtd.conf
 ISO_FOLDER="/home/samba/shares/ISO"
 mkdir ${ISO_FOLDER}
 chmod 777 ${ISO_FOLDER}
+mkdir /tmp/virtio-win
+pushd /tmp/virtio-win
+if [ ! -e "virtio-win-0.1-81.iso" ] ; then
+	wget http://alt.fedoraproject.org/pub/alt/virtio-win/latest/images/virtio-win-0.1-81.iso 
+fi
+cp virtio-win-0.1-81.iso ${ISO_FOLDER}
+popd
 cat /var/lib/mss/local/eva/templates/smb.conf.tpl >> /etc/samba/smb.conf
 service smb reload
 virsh pool-define-as --name ISO --type dir --target ${ISO_FOLDER}
