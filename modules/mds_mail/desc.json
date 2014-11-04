@@ -36,6 +36,7 @@
             "type": "network",
             "name": "smtpd_mynetworks",
             "format": "short",
+            "multi": "yes",
             "validation": "network",
             "default": "get_networks",
             "label": "My networks",

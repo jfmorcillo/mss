@@ -2,11 +2,10 @@
     "slug": "egroupware",
     "name": "eGroupware",
     "description": "Web-based groupware suite written in php",
-    "desc": "Web-based groupware suite written in php",
     "categories": [
         {
-            "slug": "groupware",
-            "name": "Groupware"
+            "slug": "collaboration",
+            "name": "Collaboration"
         }
     ],
     "actions": [
@@ -88,7 +87,6 @@
             "help": "The password of the eGroupware administrator"
         }
     ],
-    "dependencies": ["mysql", "mds_mail"],
     "module": {
         "section": "other",
         "dependencies": ["mysql", "mds_mail"]
