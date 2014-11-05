@@ -102,6 +102,7 @@ def provision_samba4(mode, realm, admin_password):
                 if line.lstrip().startswith('database'):
                     print 'overlay smbk5pwd'
                     state = 2
+        # TODO: fix this strange chmodS
         shlaunch("chown root:ldap /etc/openldap/slapd.conf")
 
     def reconfig_ldap_service():
@@ -110,35 +111,37 @@ def provision_samba4(mode, realm, admin_password):
         should_reconfing = True
         f = None
         try:
-            f = open('/etc/sysconfig/ldap', 'r')
+            f = open('/etc/sysconfig/slapd', 'r')
             for line in f:
                 if line.lstrip().startswith('SLAPDURLLIST='):
                     should_reconfing = False
             if should_reconfing:
                 f.close()
-                f = open('/etc/sysconfig/ldap', 'a')
+                f = open('/etc/sysconfig/slapd', 'a')
                 f.write(os.linesep)
                 f.write('SLAPDURLLIST="ldap://127.0.0.1"')
                 f.write(os.linesep)
                 f.close()
-            shlaunch("service ldap restart")
+            shlaunch("systemctl restart slapd")
         except Exception as e:
+            print(">>>> %s" % e)
             fail_provisioning_samba4(e.message)
         sleep(SLEEP_TIME)
         check_ldap_is_running()
 
     def stop_iptables_services():
         print "Stopping iptables service"
-        shlaunch("service iptables stop")
+        # FIXME
+        shlaunch("systemctl stop iptables")
 
     def start_samba4_service():
-        print "Starting samba4 service"
-        shlaunch("service samba4 start")
+        print "Starting samba service"
+        shlaunch("systemctl restart samba")
         sleep(SLEEP_TIME)
 
     def start_s4sync_service():
         print "Starting s4sync daemon"
-        shlaunch("service s4sync start")
+        shlaunch("systemctl start s4sync")
 
     # Clean up previous provisions
     if os.path.exists(os.path.join(samba.prefix, 'etc/smb.conf')):
@@ -151,13 +154,20 @@ def provision_samba4(mode, realm, admin_password):
                 shutil.rmtree(os.path.join(root, d))
 
     provision_domain()
+    print("### Done provision_domain")
     disable_password_complexity()
+    print("### Done disable_password_complexity")
     write_config_files()
+    print("### Done write_config_files")
 
     reconfig_ldap_service()
+    print("### Done reconfig_ldap_service")
     stop_iptables_services()
+    print("### Done stop_iptables_services")
 
     start_samba4_service()
+    print("### Done start_samba4_service")
     start_s4sync_service()
+    print("### Done start_s4sync_service")
 
 provision_samba4(*sys.argv[1:])
