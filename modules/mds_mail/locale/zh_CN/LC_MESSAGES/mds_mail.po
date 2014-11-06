@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:29+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-11-06 09:49+0200\n"
+"Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/mds_mail/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -25,7 +25,7 @@ msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "管理界面"
 
 #: .name
 msgid "Mail Service"
@@ -81,7 +81,7 @@ msgstr ""
 
 #: .config[2].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[2].label
 msgid "Allow mail services access from internal networks"
@@ -95,7 +95,7 @@ msgstr ""
 
 #: .config[3].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[3].label
 msgid "Allow mail services access from external networks"
