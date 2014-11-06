@@ -144,10 +144,10 @@ def provision_samba4(mode, realm, admin_password):
         shlaunch("systemctl start s4sync")
 
     # Clean up previous provisions
-    if os.path.exists(os.path.join(samba.prefix, 'etc/smb.conf')):
-        os.unlink(os.path.join(samba.prefix, 'etc/smb.conf'))
-    if os.path.exists(os.path.join(samba.prefix, 'private/sam.ldb')):
-        for root, dirs, files in os.walk(os.path.join(samba.prefix, 'private/')):
+    if os.path.exists(samba.smb_conf_path):
+        os.unlink(samba.smb_conf_path)
+    if os.path.exists(os.path.join(samba.db_dir, 'private/sam.ldb')):
+        for root, dirs, files in os.walk(os.path.join(samba.db_dir, 'private/')):
             for f in files:
                 os.unlink(os.path.join(root, f))
             for d in dirs:
