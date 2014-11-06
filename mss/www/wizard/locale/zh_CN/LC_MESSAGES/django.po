@@ -8,351 +8,352 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:29+0200\n"
-"PO-Revision-Date: 2014-08-14 00:52+0000\n"
-"Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
-"Language-Team: Chinese (China) (http://transifex.mandriva.com/projects/p/mss/"
-"team/zh_CN/)\n"
+"PO-Revision-Date: 2014-11-06 09:06+0200\n"
+"Last-Translator: glassarre <glassarre@mandriva.com>\n"
+"Language-Team: Simplified Chinese "
+"<http://translate.mandriva.com/projects/mss/wizard/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=1; plural=0\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Weblate 2.0-dev\n"
 
 #: transaction.py:48
 msgid "Installation summary"
-msgstr ""
+msgstr "安装摘要"
 
 #: transaction.py:50
 msgid "The following addon will be installed."
 msgid_plural "The following addons will be installed."
-msgstr[0] ""
+msgstr[0] "下面的插件将被安装."
 
 #: transaction.py:60
 msgid "Addon download"
-msgstr ""
+msgstr "插件下载"
 
 #: transaction.py:61
 msgid "Download addons from the ServicePlace"
-msgstr ""
+msgstr "从下载插件"
 
 #: transaction.py:67
 msgid "Medias authentication"
-msgstr ""
+msgstr "媒体认证"
 
 #: transaction.py:68
 msgid "One or more medias need authentication"
-msgstr ""
+msgstr "一人或多个媒体需要验证"
 
 #: transaction.py:74
 msgid "Medias add"
-msgstr ""
+msgstr "媒体添加"
 
 #: transaction.py:81
 msgid "Installation"
-msgstr ""
+msgstr "安装"
 
 #: transaction.py:88
 msgid "Initial configuration"
-msgstr ""
+msgstr "初始配置"
 
 #: transaction.py:95
 msgid "End of installation"
-msgstr ""
+msgstr "安装完成"
 
 #: transaction.py:96
 msgid "The installation is finished."
-msgstr ""
+msgstr "安装已经结束."
 
 #: transaction.py:115 templates/end.html:15
 msgid "Reboot"
-msgstr ""
+msgstr "重启"
 
 #: transaction.py:117
 msgid "The installation is finished. The server must be rebooted."
-msgstr ""
+msgstr "安装已经完成. 服务器将被重启."
 
 #: views.py:103 templates/login.html:7
 msgid "Welcome"
-msgstr ""
+msgstr "欢迎"
 
 #: views.py:104
 msgid ""
 "Before you can install any services we need to setup a few things with you."
-msgstr ""
+msgstr "在您安装任何服务之前，我们需要为您配置一些信息."
 
 #: views.py:135
 msgid "MSS agent is unreacheable."
-msgstr ""
+msgstr "MSS agent 不可使用."
 
 #: templates/base.html:27
 msgid "Hide log"
-msgstr ""
+msgstr "隐藏日志"
 
 #: templates/base.html:30 templates/config_run.html:160
 #: templates/install.html:66 templates/media_add.html:95
 msgid "Show log"
-msgstr ""
+msgstr "显示日志"
 
 #: templates/base.html:63 templates/base.html.py:151
 msgid "Ready"
-msgstr ""
+msgstr "准备"
 
 #: templates/base.html:126
 msgid "Update packages list on your server."
-msgstr ""
+msgstr "更新服务器上的包装列表."
 
 #: templates/base.html:127
 msgid "Update medias"
-msgstr ""
+msgstr "更新媒体"
 
 #: templates/base.html:131 templates/sections.html:46
 msgid "Logout"
-msgstr ""
+msgstr "注销"
 
 #: templates/config.html:109 templates/config.html.py:258
 msgid "Add"
-msgstr ""
+msgstr "添加"
 
 #: templates/config.html:164
 msgid "Re-enter password"
-msgstr ""
+msgstr "重新输入密码"
 
 #: templates/config.html:281
 msgid "Required field"
-msgstr ""
+msgstr "必填字段"
 
 #: templates/config.html:284 templates/config_run.html:61
 #: templates/download.html:30 templates/install.html:19
 #: templates/media_add.html:29 templates/media_add.html.py:74
 #: templates/preinst.html:34
 msgid "Continue"
-msgstr ""
+msgstr "继续"
 
 #: templates/config.html:286 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
 #: templates/media_auth.html:40 templates/preinst.html:37
 msgid "Back"
-msgstr ""
+msgstr "回到前叶"
 
 #: templates/config_no.html:11
 msgid "Installation & configuration was successful."
-msgstr ""
+msgstr "安装&配置已完成."
 
 #: templates/config_no.html:14
 msgid "Home page"
-msgstr ""
+msgstr "主页"
 
 #: templates/config_run.html:26
 msgid "Configuration summary"
-msgstr ""
+msgstr "配置汇总"
 
 #: templates/config_run.html:27
 msgid "Configuration warnings"
-msgstr ""
+msgstr "配置警告"
 
 #: templates/config_run.html:28
 msgid "Configuration errors"
-msgstr ""
+msgstr "配置错误"
 
 #: templates/config_run.html:58 templates/config_run.html.py:114
 msgid "Configuration terminated, details are displayed below."
-msgstr ""
+msgstr "配置终止，详细信息将显示在下方."
 
 #: templates/config_run.html:76
 msgid "Configuration succeded."
-msgstr ""
+msgstr "配置成功."
 
 #: templates/config_run.html:89
 msgid "Configuration failed."
-msgstr ""
+msgstr "配置失败."
 
 #: templates/config_run.html:90 templates/config_run.html.py:111
 #: templates/download.html:73 templates/install.html:37
 msgid "Retry"
-msgstr ""
+msgstr "重试"
 
 #: templates/config_run.html:120
 msgid "Could not find any configuration script to execute."
-msgstr ""
+msgstr "找不到任何配置脚本来执行."
 
 #: templates/config_run.html:127
 msgid "Running configuration..."
-msgstr ""
+msgstr "运行配置..."
 
 #: templates/config_run.html:157 templates/media_add.html:92
 msgid "Waiting..."
-msgstr ""
+msgstr "稍候..."
 
 #: templates/config_run.html:180 templates/download.html:95
 #: templates/install.html:74 templates/media_add.html:104
 msgid "Please wait..."
-msgstr ""
+msgstr "请稍等..."
 
 #: templates/download.html:55
 msgid "Downloading <strong>{0}</strong>: {1}..."
-msgstr ""
+msgstr "下载 <strong>{0}</strong>: {1}..."
 
 #: templates/download.html:63
 msgid "Addon <strong>{0}</strong> downloaded."
-msgstr ""
+msgstr "插件<strong>{0}</strong> 下载完成."
 
 #: templates/download.html:71
 msgid "Failed to download <strong>{0}</strong> addon."
-msgstr ""
+msgstr "无法下载<strong>{0}</strong>插件."
 
 #: templates/end.html:17
 msgid "Home"
-msgstr ""
+msgstr "主页"
 
 #: templates/install.html:17
 msgid "Installation succeded."
-msgstr ""
+msgstr "安装完成."
 
 #: templates/install.html:31
 msgid "Installation failed. Update your medias and retry to install."
-msgstr ""
+msgstr "安装时半. 等新您的媒体之后重新安装."
 
 #: templates/install.html:33
 msgid "Installation failed."
-msgstr ""
+msgstr "安装失败."
 
 #: templates/install.html:60
 msgid "The following addon is being installed"
 msgid_plural "The following addons are being installed"
-msgstr[0] ""
+msgstr[0] "以下插件已经安装"
 
 #: templates/login.html:9
 msgid ""
 "Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
 "setup the services you need on your server."
-msgstr ""
+msgstr "Mandriva 服务器设置(<em>MSS</em>) 　为一个简单的工具来帮助您在服务器上快速的设置所需要的服务."
 
 #: templates/login.html:9
 msgid "Login to begin to setup your server."
-msgstr ""
+msgstr "登录开始设置您的服务器."
 
 #: templates/login.html:12 templates/login.html.py:17
 msgid "Login"
-msgstr ""
+msgstr "登录"
 
 #: templates/login.html:20
 msgid "Wrong username or password."
-msgstr ""
+msgstr "用户名或是密码错误."
 
 #: templates/login_form.html:12 templates/media_auth.html:21
 msgid "Your my.mandriva.com email address."
-msgstr ""
+msgstr "您的my.mandriva.com 　邮件地址."
 
 #: templates/login_form.html:16 templates/media_auth.html:29
 msgid "Your my.mandriva.com password."
-msgstr ""
+msgstr "您的my.mandriva.com 密码."
 
 #: templates/login_form.html:19
 msgid "Use your Mandriva account to login."
-msgstr ""
+msgstr "使用您的Mandriva账户登录."
 
 #: templates/login_form.html:28
 msgid "The server <strong>root</strong> password."
-msgstr ""
+msgstr "服务器 <strong>root</strong> 密码."
 
 #: templates/login_form.html:31
 msgid "No internet connection, use the root password to login."
-msgstr ""
+msgstr "无网络连接，使用 root 密码登录."
 
 #: templates/login_form.html:52 templates/media_auth.html:16
 msgid "Username"
-msgstr ""
+msgstr "用户名"
 
 #: templates/login_form.html:58 templates/media_auth.html:25
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: templates/login_form.html:64
 msgid "Language"
-msgstr ""
+msgstr "语言"
 
 #: templates/login_form.html:71
 msgid "Enter"
-msgstr ""
+msgstr "进入"
 
 #: templates/media_add.html:40
 msgid "Adding media..."
-msgstr ""
+msgstr "添加媒体..."
 
 #: templates/media_add.html:58
 msgid "Media added."
-msgstr ""
+msgstr "媒体已添加."
 
 #: templates/media_add.html:64
 msgid "Media already added."
-msgstr ""
+msgstr "媒体已经添加."
 
 #: templates/media_add.html:70
 msgid "Failed to add media."
-msgstr ""
+msgstr "媒体添加失败."
 
 #: templates/media_auth.html:14
 msgid "My authentication"
-msgstr ""
+msgstr "我的验证"
 
 #: templates/media_auth.html:36
 msgid "Don't add medias"
-msgstr ""
+msgstr "不需添加媒体"
 
 #: templates/media_auth.html:38
 msgid "Add medias"
-msgstr ""
+msgstr "添加媒体"
 
 #: templates/preinst.html:15 templates/section.html:83
 msgid "No addon selected."
-msgstr ""
+msgstr "无插件选择."
 
 #: templates/preinst.html:23
 msgid "Added as a dependency"
-msgstr ""
+msgstr "添加为以来"
 
 #: templates/preinst.html:24
 msgid "Reinstallation"
-msgstr ""
+msgstr "重新安装"
 
 #: templates/preinst.html:26
 msgid ""
 "If other addons requires this addon they may be broken after the "
 "reinstallation."
-msgstr ""
+msgstr "如果其他插件需要这个插件，它们可能再重新安装后破裂."
 
 #: templates/section.html:20
 msgid "This addon can't be installed with"
-msgstr ""
+msgstr "此插件无法使用.....来进行安装"
 
 #: templates/section.html:63
 msgid "More info about this addon"
-msgstr ""
+msgstr "关于这个插件更多的信息"
 
 #: templates/section.html:120
 msgid "No addon available in this section."
-msgstr ""
+msgstr "无插件本届提供."
 
 #: templates/section.html:184
 msgid "This addon is installed and configured"
-msgstr ""
+msgstr "此插件已安装，已配置"
 
 #: templates/section.html:185
 msgid "This module conflicts with : "
-msgstr ""
+msgstr "该模块与 有冲突: "
 
 #: templates/section.html:188
 msgid "You have purshased this addon"
-msgstr ""
+msgstr "您已购买此插件"
 
 #: templates/section.html:209
 msgid "Info"
-msgstr ""
+msgstr "信息"
 
 #: templates/section.html:220
 msgid "Install and configure selected addons"
-msgstr ""
+msgstr "安装和配置已选择的插件"
 
 #: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
-msgstr ""
+msgstr "无MSS可使用的插件，请重新登录再试."
