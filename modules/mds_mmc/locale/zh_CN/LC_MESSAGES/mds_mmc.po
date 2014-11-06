@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:29+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-11-06 09:51+0200\n"
+"Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/mds_mmc/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -21,15 +21,15 @@ msgstr ""
 
 #: .description .desc
 msgid "Users and groups management"
-msgstr ""
+msgstr "用户与群组管理"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "管理界面"
 
 #: .name
 msgid "MBS administration web interface"
-msgstr ""
+msgstr "MBS 网络管理界面"
 
 #: .packages[0].name
 msgid "all"
@@ -39,81 +39,81 @@ msgstr "all"
 msgid ""
 "The administrator password of the web interface for managing MBS users and "
 "services."
-msgstr ""
+msgstr "网络界面管理员密码用来管理 MBS 用户和服务."
 
 #: .config[0].name
 msgid "mdspasswd"
-msgstr ""
+msgstr "Mds 密码"
 
 #: .config[0].label
 msgid "Administrator password"
-msgstr ""
+msgstr "管理员密码"
 
 #: .config[1].help
 msgid ""
 "Configure the firewall to allow access to the web interface from internal "
 "networks"
-msgstr ""
+msgstr "为允许从内部网络访问网络界面来配置防火墙"
 
 #: .config[1].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[1].label
 msgid "Allow access from internal networks"
-msgstr ""
+msgstr "允许来自内部网络的访问"
 
 #: .config[2].help
 msgid ""
 "Configure the firewall to allow access to the web interface from external "
 "networks"
-msgstr ""
+msgstr "为允许从外部网络访问网络界面来配置防火墙"
 
 #: .config[2].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[2].label
 msgid "Allow access from external networks"
-msgstr ""
+msgstr "允许来自外部网络的访问"
 
 #: .categories[0].name
 msgid "Users"
-msgstr ""
+msgstr "用户"
 
 #: mds_mmc/setup-mmc.sh:32
 msgid "Error while generating the password."
-msgstr ""
+msgstr "在生成密码时发生错误."
 
 #: mds_mmc/setup-mmc.sh:74
 msgid "OpenLDAP configuration has errors."
-msgstr ""
+msgstr "OpenLDAP 配置发生错误."
 
 #: mds_mmc/setup-mmc.sh:86
 msgid "Database load test failed."
-msgstr ""
+msgstr "数据库负载测试失败."
 
 #: mds_mmc/setup-mmc.sh:100
 msgid "Failed to initialize the database."
-msgstr ""
+msgstr "无法初始化数据库."
 
 #: mds_mmc/setup-mmc.sh:108
 msgid "Error while configuring lib nss-ldap."
-msgstr ""
+msgstr "在配置lib nss-ldap 时产生错误."
 
 #: mds_mmc/setup-mmc.sh:131
 msgid "The MBS administration web interface is configured."
-msgstr ""
+msgstr "MBS 管理网络界面完成配置."
 
 #: mds_mmc/setup-mmc.sh:132
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
-msgstr ""
+msgstr "在重新启动后，您可以在https://@HOSTNAME@/mmc/ 登陆界面."
 
 #: mds_mmc/setup-mmc.sh:133
 msgid "Administrator name : root"
-msgstr ""
+msgstr "管理员名字: root"
 
 #: mds_mmc/setup-mmc.sh:134
 msgid "Administrator password : $mypass"
-msgstr ""
+msgstr "管理员密码 : $mypass"
