@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:29+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-11-06 09:49+0200\n"
+"Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/mds_smb/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -27,7 +27,7 @@ msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "管理界面"
 
 #: .name
 msgid "Windows users and file sharing management"
@@ -83,7 +83,7 @@ msgstr ""
 
 #: .config[3].label
 msgid "Administrator password"
-msgstr ""
+msgstr "管理员密码"
 
 #: .config[4].help
 msgid ""
@@ -93,7 +93,7 @@ msgstr ""
 
 #: .config[4].name
 msgid "fw_lan"
-msgstr ""
+msgstr "fw_lan"
 
 #: .config[4].label
 msgid "Allow connections from internal networks"
@@ -107,7 +107,7 @@ msgstr ""
 
 #: .config[5].name
 msgid "fw_wan"
-msgstr ""
+msgstr "fw_wan"
 
 #: .config[5].label
 msgid "Allow connections from external networks"
@@ -115,7 +115,7 @@ msgstr ""
 
 #: .categories[0].name
 msgid "Users"
-msgstr ""
+msgstr "用户"
 
 #: mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
