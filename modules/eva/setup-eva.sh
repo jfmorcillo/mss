@@ -320,7 +320,7 @@ CONF_EVA="/var/lib/mss/local/eva/templates/eva.conf.tpl"
 cp -fv $CONF_EVA $rep_apache2/conf/webapps.d/eva.conf
 chown apache: $rep_apache2/conf/webapps.d/eva.conf
 CONF_EVA_REDIR="/var/lib/mss/local/eva/templates/eva-redirect.conf.tpl"
-cp -fv $CONF_EVA $rep_apache2/conf/eva-redirect.conf
+cp -fv $CONF_EVA_REDIR $rep_apache2/conf/eva-redirect.conf
 chown apache: $rep_apache2/conf/eva-redirect.conf
 sed -i "s/^<\/VirtualHost>$/Include \/etc\/httpd\/conf\/eva-redirect\.conf\n<\/VirtualHost>/g" $rep_apache2/conf/vhosts.d/01_default_ssl_vhost.conf
 
