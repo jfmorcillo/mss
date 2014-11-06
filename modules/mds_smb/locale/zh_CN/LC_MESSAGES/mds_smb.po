@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-11-06 09:52+0200\n"
+"PO-Revision-Date: 2014-11-06 10:30+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/mds_smb/zh_CN/>\n"
@@ -23,7 +23,7 @@ msgstr ""
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
-msgstr ""
+msgstr "使用SAMBA 验证Windows 用户，以及在您的网络上提供"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -31,7 +31,7 @@ msgstr "管理界面"
 
 #: .name
 msgid "Windows users and file sharing management"
-msgstr ""
+msgstr "Windows 用户和文件共享管理"
 
 #: .packages[0].name
 msgid "all"
@@ -39,47 +39,47 @@ msgstr "所有"
 
 #: .config[0].name
 msgid "smbdomain"
-msgstr ""
+msgstr "smbdomain"
 
 #: .config[0].label
 msgid "SAMBA domain name"
-msgstr ""
+msgstr "SAMBA  域名"
 
 #: .config[0].help
 msgid "The name of your Microsoft domain."
-msgstr ""
+msgstr "您的微软Microsoft 域的名称."
 
 #: .config[1].name
 msgid "smbnetbios"
-msgstr ""
+msgstr "smbnetbios"
 
 #: .config[1].label
 msgid "Netbios name"
-msgstr ""
+msgstr "Netbios 名称"
 
 #: .config[1].help
 msgid "The name of your SAMBA server in the Microsoft domain."
-msgstr ""
+msgstr "您的SAMBA 服务器在微软 Microsoft  域的名称."
 
 #: .config[2].help
 msgid "The name of the Microsoft domain administrator."
-msgstr ""
+msgstr "微软Microsoft域管理员的名称."
 
 #: .config[2].label
 msgid "Administrator name"
-msgstr ""
+msgstr "管理员名字"
 
 #: .config[2].name
 msgid "smbadmin"
-msgstr ""
+msgstr "smbadmin"
 
 #: .config[3].help
 msgid "Password for the Microsoft domain administrator."
-msgstr ""
+msgstr "微软Microsoft域管理员密码."
 
 #: .config[3].name
 msgid "smbpasswd"
-msgstr ""
+msgstr "smbpasswd"
 
 #: .config[3].label
 msgid "Administrator password"
@@ -89,7 +89,7 @@ msgstr "管理员密码"
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'internal'"
-msgstr ""
+msgstr "在界面配置为 '内部'接口上，将防火墙配置为接受SAMBA相关的流量"
 
 #: .config[4].name
 msgid "fw_lan"
@@ -97,13 +97,13 @@ msgstr "fw_lan"
 
 #: .config[4].label
 msgid "Allow connections from internal networks"
-msgstr ""
+msgstr "允许来自于内部网络的链接"
 
 #: .config[5].help
 msgid ""
 "Configure the firewall to accept SAMBA related traffic on interfaces "
 "configured as 'external'"
-msgstr ""
+msgstr "在界面配置为 '外部'接口上将防火墙配置为接受SAMBA相关的流量"
 
 #: .config[5].name
 msgid "fw_wan"
@@ -111,7 +111,7 @@ msgstr "fw_wan"
 
 #: .config[5].label
 msgid "Allow connections from external networks"
-msgstr ""
+msgstr "允许来自于外部网络的链接"
 
 #: .categories[0].name
 msgid "Users"
@@ -119,55 +119,55 @@ msgstr "用户"
 
 #: mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
-msgstr ""
+msgstr "在设立SAMBA 密码时产生错误."
 
 #: mds_smb/setup-smb.sh:53
 msgid "Error while populating directory."
-msgstr ""
+msgstr "填充目录时产生错误."
 
 #: mds_smb/setup-smb.sh:63
 msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created before, they still remains in the users group."
-msgstr ""
+msgstr "用户现在在Domain Users群组默认情况下创建。如果用户在之前已创建，他们仍保留在用户群中."
 
 #: mds_smb/setup-smb.sh:70
 msgid "Failed to grant rights to the Domain Admins group"
-msgstr ""
+msgstr "Domain Admins  群组授权失败"
 
 #: mds_smb/setup-smb.sh:90
 msgid "Domain name : $smbdomain"
-msgstr ""
+msgstr "域名: $smbdomain"
 
 #: mds_smb/setup-smb.sh:91
 msgid "Server name : $smbnetbios"
-msgstr ""
+msgstr "服务器名: $smbnetbios"
 
 #: mds_smb/setup-smb.sh:92
 msgid "Domain administrator : $smbadmin"
-msgstr ""
+msgstr "管理员域: $smbadmin"
 
 #: mds_smb/setup-smb.sh:93
 msgid "- a public share is created in /home/samba/shares/public"
-msgstr ""
+msgstr "一个公共分享创建在/home/samba/shares/public"
 
 #: mds_smb/setup-smb.sh:94
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
-msgstr ""
+msgstr "您可以在 /home/samba/netlogon中创建一个  logon.bat  脚本"
 
 #: mds_smb/setup-smb.sh:95
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
-msgstr ""
+msgstr "您现在可以使用管理界面来管理您的Windows 用户以及在https://@HOSTNAME@/mmc/. 进行共享."
 
 #: mds_smb/__init__.py:39
 msgid ""
 "Incorrect netbios name (only uppercase characters, digits, '-' and '.' "
 "allowed)."
-msgstr ""
+msgstr "netbios 名不正确 （仅允许大写字符，数字，' - '。)."
 
 #: mds_smb/__init__.py:46
 msgid ""
 "Incorrect SAMBA domain name (only uppercase characters and digits allowed)."
-msgstr ""
+msgstr "SAMBA 域名不正确 （仅允许大写字符和数字)."
