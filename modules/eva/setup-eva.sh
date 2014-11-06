@@ -316,9 +316,13 @@ sed -i "s/#LoadModule asis_module modules\/mod_asis.so/LoadModule asis_module mo
 sed -i "s/ServerTokens OS/ServerTokens Prod/g" ${rep_apache2}/conf/httpd.conf
 sed -i "s/ServerSignature On/ServerSignature Off/g" ${rep_apache2}/conf/httpd.conf
 
-CONF="/var/lib/mss/local/eva/templates/eva.conf.tpl"
-cp -fv $CONF $rep_apache2/conf/webapps.d/eva.conf
+CONF_EVA="/var/lib/mss/local/eva/templates/eva.conf.tpl"
+cp -fv $CONF_EVA $rep_apache2/conf/webapps.d/eva.conf
 chown apache: $rep_apache2/conf/webapps.d/eva.conf
+CONF_EVA_REDIR="/var/lib/mss/local/eva/templates/eva-redirect.conf.tpl"
+cp -fv $CONF_EVA $rep_apache2/conf/eva-redirect.conf
+chown apache: $rep_apache2/conf/eva-redirect.conf
+sed -i "s/^<\/VirtualHost>$/Include \/etc\/httpd\/conf\/eva-redirect\.conf\n<\/VirtualHost>/g" $rep_apache2/conf/vhosts.d/01_default_ssl_vhost.conf
 
 local=`ls -l /etc/localtime | awk 'BEGIN { FS="/"; OFS=""; } {print $(NF-1),"/",$NF}'`
 sed -i -e "s~^;date.timezone.*$~date.timezone = ${local}~g" /etc/php.ini
@@ -345,7 +349,7 @@ cp $default_workspace_front/profils.copixdb.xml $rep_siveo/var/config/profils.co
 sed -i "s/@PASSWORDMYSQL@/${pswdMysqlcrypt}/g" $rep_siveo/var/config/profils.copixdb.xml
 
 cp $default_workspace_front/copixproperties.xml $rep_siveo/var/config
-sed -i "s/@USEHTTPS@/False/g" $rep_siveo/var/config/copixproperties.xml
+sed -i "s/@USEHTTPS@/True/g" $rep_siveo/var/config/copixproperties.xml
 
 # Configure the Firewall
 mss-add-shorewall-rule -a VNC/ACCEPT -t lan
