@@ -381,6 +381,7 @@ virsh pool-start ISO
 # Setup sudo commands
 echo "bind 'RETURN: \"\e[1~sudo \e[4~\n\"'" >> ~eva/.bash_profile
 cp /var/lib/mss/local/eva/templates/sudoEva.tpl /etc/sudoers.d/sudoEva
+chmod 440 /etc/sudoers.d/sudoEva
 
 info_b $"eVA is now configured."
 info $"- Username is $eVA_adminUser"
