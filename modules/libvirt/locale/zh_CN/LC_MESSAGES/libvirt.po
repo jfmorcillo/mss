@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:04+0200\n"
-"PO-Revision-Date: 2014-11-06 09:52+0200\n"
+"PO-Revision-Date: 2014-11-06 10:27+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/libvirt/zh_CN/>\n"
@@ -79,7 +79,7 @@ msgstr "fw_lan"
 
 #: .config[3].label
 msgid "Allow connections from internal networks"
-msgstr "允许来自内部网络的链接 "
+msgstr "允许来自于内部网络的链接"
 
 #: .config[4].help
 msgid ""
@@ -93,7 +93,7 @@ msgstr "fw_wan"
 
 #: .config[4].label
 msgid "Allow connections from external networks"
-msgstr "允许来自外部网络的链接 "
+msgstr "允许来自于外部网络的链接"
 
 #: .categories[0].name
 msgid "Virtualization"
