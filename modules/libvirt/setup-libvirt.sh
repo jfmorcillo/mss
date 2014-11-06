@@ -4,7 +4,7 @@ set -e
 
 . '../functions.sh'
 
-check_mmc_configured
+check_root
 
 LIBVIRTD_SYSCONFIG=templates/sysconfig-libvirtd
 LIBVIRTD_CONF=templates/libvirtd.conf
