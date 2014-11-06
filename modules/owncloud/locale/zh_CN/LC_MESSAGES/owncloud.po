@@ -8,8 +8,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-26 16:29+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-11-06 08:31+0200\n"
+"Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/owncloud/zh_CN/>\n"
 "Language: zh_CN\n"
@@ -63,7 +63,7 @@ msgstr ""
 
 #: .config[1].label
 msgid "Password"
-msgstr ""
+msgstr "密码"
 
 #: .config[2].help
 msgid "Directory path where all users's data will be stored."
