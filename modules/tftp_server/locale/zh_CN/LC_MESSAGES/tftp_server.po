@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-11-06 09:49+0200\n"
+"PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/tftp_server/zh_CN/>\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "所有"
 
 #: .config[0].help
 msgid ""
