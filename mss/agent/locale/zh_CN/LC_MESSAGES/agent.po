@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-11-06 07:43+0200\n"
+"PO-Revision-Date: 2014-11-06 10:34+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/agent/zh_CN/>\n"
@@ -21,60 +21,60 @@ msgstr ""
 
 #: [0].name
 msgid "Core Services"
-msgstr ""
+msgstr "核心服务"
 
 #: [1].name
 msgid "Other Services"
-msgstr ""
+msgstr "其他服务"
 
 #: classes/module.py:162
 msgid "Other"
-msgstr ""
+msgstr "其他"
 
 #: classes/module.py:380
 msgid "This field can't be empty."
-msgstr ""
+msgstr "此字段不能空白."
 
 #: classes/module.py:385
 msgid "Password mismatch."
-msgstr ""
+msgstr "密码不匹配."
 
 #: managers/process.py:44
 msgid "Loading packages list"
-msgstr ""
+msgstr "文件包列表下载中"
 
 #: managers/process.py:51
 msgid "Installing packages..."
-msgstr ""
+msgstr "文件包安装中..."
 
 #: managers/process.py:60
 msgid "Running configuration"
-msgstr ""
+msgstr "配置运行中"
 
 #: managers/process.py:70
 msgid "Rebooting..."
-msgstr ""
+msgstr "重启中..."
 
 #: managers/process.py:76
 msgid "Updating medias"
-msgstr ""
+msgstr "媒体更新中"
 
 #: managers/process.py:82
 msgid "Checking network"
-msgstr ""
+msgstr "网络检查中"
 
 #: managers/process.py:87
 msgid "Adding media"
-msgstr ""
+msgstr "媒体添加中"
 
 #: managers/process.py:92
 #, python-format
 msgid "Downloading %s addon..."
-msgstr ""
+msgstr "插件 %s下载中..."
 
 #: managers/process.py:94
 msgid "Downloading addon..."
-msgstr ""
+msgstr "插件下载中..."
 
 #: managers/process.py:167
 msgid "Ready"
@@ -82,4 +82,4 @@ msgstr "准备"
 
 #: managers/module.py:713
 msgid "Connection failed with the ServicePlace."
-msgstr ""
+msgstr "与ServicePlace连接失败."
