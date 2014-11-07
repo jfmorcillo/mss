@@ -7,7 +7,7 @@
 <script type="text/javascript">
     var field_cnt = 0;
 
-    function addNetwork(module, fieldname, ip, mask) {
+    function addNetwork(module, fieldname, ip, mask, canRemove) {
         container = $("#" + module + "_" + fieldname);
         field = $('<div>', {'class': 'input-append field-multi'});
         input_ip = $('<input>', { 'name': module+"_"+fieldname+"_"+field_cnt+"_ip",
@@ -27,7 +27,8 @@
         field.append(input_ip);
         field.append(separator);
         field.append(input_mask);
-        field.append(remove);
+        if (canRemove)
+          field.append(remove);
         container.append(field);
         container.append($('<br>'));
 
@@ -254,9 +255,11 @@
                               name="{{ field.slug }}_{{ field.name }}"
                               data-placement="right" rel="tooltip"
                               data-original-title="{{ field.help }}"></span>
-                        <p><a class="btn btn-small" onclick="addNetwork('{{ field.slug }}', '{{ field.name }}', '', '')" >
+                        {% if field.multi %}
+                        <p><a class="btn btn-small" onclick="addNetwork('{{ field.slug }}', '{{ field.name }}', '', '', true)" >
                             <i class="icon-plus-sign"></i> {% trans "Add" %}
                         </a></p>
+                        {% endif %}
                         {% if field.error %}
                             <span class="help-block">{{ field.error }}</span>
                         {% endif %}
@@ -264,7 +267,7 @@
             		{% if field.default %}
                     <script type="text/javascript">
                     {% for network in field.default %}
-                        addNetwork('{{ field.slug }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}');
+                      addNetwork('{{ field.slug }}', '{{ field.name }}', '{{ network.0 }}', '{{ network.1 }}', '{{ field.multi }}');
                     {% endfor %}
                     </script>
             		{% endif %}

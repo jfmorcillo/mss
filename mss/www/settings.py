@@ -40,6 +40,8 @@ SERVER_EMAIL = "mss+mbs@mandriva.com"
 LOG_FILENAME = '/var/log/mss/mss-www.log'
 os.chmod(LOG_FILENAME, 0600)
 
+ALLOWED_HOSTS = ['*']
+
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
     LOGGING = {

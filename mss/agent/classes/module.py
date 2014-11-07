@@ -364,11 +364,11 @@ class Module(object):
                 if field_type == "network":
                     field_value = []
                     for user_field, user_value in user_config.items():
-                        match = re.match("^"+self.slug+"_"+field_name+"_([0-9]?)_(ip|mask)$", user_field)
+                        match = re.match("^" + self.slug + "_" + field_name + "_([0-9]?)_ip$", user_field)
                         if match:
                             net = match.group(1)
-                            ip = user_config.get(self.slug+"_"+field_name+"_"+net+"_ip", '')
-                            mask = user_config.get(self.slug+"_"+field_name+"_"+net+"_mask", '')
+                            ip = user_config.get(self.slug + "_" + field_name + "_" + net + "_ip", '')
+                            mask = user_config. get(self.slug + "_" + field_name + "_" + net + "_mask", '')
                             field_value.append((ip, mask))
                 # handle multi text fields
                 elif "multi" in field:
@@ -439,23 +439,23 @@ class Module(object):
         for arg in self._script_args:
             for field in self.config:
                 if arg == field.get('name'):
-                    # network field values
+                    # network field values
                     if field.get("type") == "network":
                         value = ''
                         for ip, mask in field['default']:
-                            network = ip+"/"+mask
+                            network = ip + "/" + mask
                             if field.get("format") == "long":
-                                network = str(IP(network))
+                                network = str(IP(network).strNormal(2))
                             else:
-                                network = str(IP(network, make_net=True))
-                            value += network+" "
+                                network = str(IP(network).strNormal(0))
+                            value += network + " "
                         value = value[:-1]
                         args_values.append(value)
                     # multi text field
                     elif "multi" in field:
                         value = ''
                         for text in field.get('default'):
-                            value += text+" "
+                            value += text + " "
                         value = value[:-1]
                         args_values.append(value)
                     # other fields

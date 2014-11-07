@@ -1,5 +1,25 @@
 #!/bin/bash
-# Copyright Mandriva 2013 all rights reserved
+#
+# (c) 2012-2014 Mandriva, http://www.mandriva.com/
+#
+# This file is part of Mandriva Server Setup
+#
+# MSS is free software; you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation; either version 2 of the License, or
+# (at your option) any later version.
+#
+# MSS is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with MSS; if not, write to the Free Software
+# Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
+# MA 02110-1301, USA.
+
+set -e
 
 # INCLUDES
 . '../functions.sh'
@@ -8,16 +28,20 @@
 check_mmc_configured
 
 # PARAMETERS
-country=$1
-province=$2
-city=$3
-org=$4
-email=$5
-network=$6
-iface_name=`echo $7 | cut -d ' ' -f1`
-iface_addr=`echo $7 | cut -d ' ' -f2`
+
+# gets an array of (IP, zone)
+listen=(${1//:/ })
+network=$2
+push_networks=$3
+
+country=$4
+province=$5
+city=$6
+org=$7
+email=$8
 
 # DEFINES
+ZONE_NAME="vpn"
 OPENVPN_AUTHCONF="templates/ldap-auth.config.tpl"
 OPENVPN_SERVERFILE="templates/vpnserver-ldap-auth.conf.tpl"
 OPENVPN_VARS="templates/vars.tpl"
@@ -43,14 +67,22 @@ sed -i "s!\@HOSTNAME\@!$HOST!" $EASYRSA_PATH/vars
 
 sed -i "s!\@MDSSUFFIX\@!$MDSSUFFIX!" /etc/openvpn/ldap-auth.config
 
+# OpenVPN configuration
 sed -i "s!\@HOSTNAME\@!$HOST!" /etc/openvpn/vpnserver-ldap-auth.conf
-sed -i "s!\@SERVER\@!$network!" /etc/openvpn/vpnserver-ldap-auth.conf
+sed -i "s!\@NETWORK\@!${network//\// }!" /etc/openvpn/vpnserver-ldap-auth.conf
+
+# Setup routes
+for push_network in $push_networks
+do
+    echo push \"route ${push_network//\// }\" >> /etc/openvpn/vpnserver-ldap-auth.conf
+done
+
 # Create keys
 
 #TODO: Change  "export KEY_CN=changeme"
 pushd $EASYRSA_PATH
     source ./vars
-    #make sure all is clean and OK.
+    # make sure all is clean and OK.
     ./clean-all
     ./build-dh
     ./pkitool --initca
@@ -60,17 +92,17 @@ popd
 rm -rf ${EASYRSA_PATH}
 
 # Create mmc group
-python templates/mmc_groupadd.py -g VPNUsers -d "Users authorized to gain access to VPN"
+python mmc_groupadd.py -g VPNUsers -d $"Users authorized to connect to the VPN"
 
 # Install documentation
 cp $APACHE_CONF /etc/httpd/conf/webapps.d/openvpn.conf
 
-# Build configuration
+# Build client configuration
 [ -d configuration ] && rm -rf configuration
 mkdir configuration
 CLIENT_CONF=configuration/vpn_${HOSTNAME}.ovpn
 cp $CLIENT_CONF_TPL $CLIENT_CONF
-sed -i -re 's/@REMOTE@/'"$iface_addr 1194"'/' $CLIENT_CONF
+sed -i -re 's/@REMOTE@/'"${listen[0]} 1194"'/' $CLIENT_CONF
 pushd configuration
     cp /etc/openvpn/ca.crt .
     zip vpn_config_client *
@@ -84,18 +116,33 @@ systemctl daemon-reload
 enable_service openvpn-vpnserver-ldap-auth
 restart_service openvpn-vpnserver-ldap-auth
 
-# Shorewall configuration
-mss-add-shorewall-rule -a ACCEPT -t $iface_name -p udp -P 1194
+## Shorewall configuration
 vpn_dev=`ip route get $network | head -n1 | awk '{ print $4; }'`
 vpn_ip=`ip route get $network | head -n1 | awk '{ print $NF; }'`
-vpn_zone=`echo $vpn_dev | sed 's/tun/vpn/'`
-grep -q $vpn_zone /etc/shorewall/policy
-if [ $? -ne 0 ]; then
-    echo "$vpn_zone $vpn_dev detect routeback" >> /etc/shorewall/interfaces
-    echo "$vpn_zone ipv4" >> /etc/shorewall/zones
-    sed -i "s/^all all DROP/$vpn_zone fw ACCEPT\nall all DROP/" /etc/shorewall/policy
+
+if ! grep -q $ZONE_NAME /etc/shorewall/policy
+then
+  backup /etc/shorewall/policy
+  backup /etc/shorewall/interfaces
+  backup /etc/shorewall/zones
+  backup /etc/shorewall/rules
+  echo "$ZONE_NAME $vpn_dev detect routeback" >> /etc/shorewall/interfaces
+  echo "$ZONE_NAME ipv4" >> /etc/shorewall/zones
+  # setup policies
+  python setup-fw.py
 fi
+
+cp -f templates/macro.OpenVPN /etc/shorewall
+mss-add-shorewall-rule -a OpenVPN/ACCEPT -t ${listen[1]}
 restart_service shorewall
+
+# Add the vpn zone to the shorewall module configuration
+MMC_SHOREWALL=/etc/mmc/plugins/shorewall.ini
+if ! grep -q "internal_zones_names" $MMC_SHOREWALL | grep -q $ZONE_NAME
+then
+  sed -i "s|internal_zones_names\s*=\s*\(.*\)$|internal_zones_names = \1 $ZONE_NAME|" $MMC_SHOREWALL
+  restart_service mmc-agent
+fi
 
 info_b $"The VPN service is running."
 info $"- The VPN network address is $network"

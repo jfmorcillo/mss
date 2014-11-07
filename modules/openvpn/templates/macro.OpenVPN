@@ -1,0 +1,11 @@
+#
+# Shorewall version 4 - DNS Macro
+#
+# /usr/share/shorewall/macro.DNS
+#
+#	This macro handles DNS traffic.
+#
+###############################################################################
+#ACTION	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/
+#				PORT(S)	PORT(S)	LIMIT	GROUP
+PARAM	-	-	udp     1194

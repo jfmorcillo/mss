@@ -1,6 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2012 Mandriva, http://www.mandriva.com/
+# (c) 2012-2014 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -19,10 +19,10 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
-import os
 import netifaces
-import re
-import logging
+from IPy import IP
+
+from mmc.plugins.shorewall import get_zones_types, get_zones_interfaces
 
 from mss.agent.managers.translation import TranslationManager
 from mss.agent.lib.utils import MANAGED_INTERFACE_NAMES
@@ -31,33 +31,34 @@ _ = TranslationManager().translate
 
 
 def get_config_info():
-    args = ["openvpn_country", "openvpn_province", "openvpn_city",
-            "openvpn_org", "openvpn_email", "openvpn_networks", "interface"]
+    args = ["listen", "vpn_network", "push_networks",
+            "country", "province", "city", "org", "email"]
     return ('setup-openvpn.sh', args)
 
 
-def get_interface_config(config):
+def get_listen_config(config):
     """
-    Dynamic configuration for ethernet interfaces
+    Get list of external addresses for openvpn
     """
-    CONFIG_DIR = "/etc/sysconfig/network-scripts"
+    external_zones = get_zones_types()[1]
+    external_interfaces = get_zones_interfaces(external_zones)
+
     ifaces = []
     for interface in netifaces.interfaces():
         if interface.startswith(MANAGED_INTERFACE_NAMES):
-            if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
-            if_detail = netifaces.ifaddresses(interface)
-            configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail
-            addr = ""
-            if configured:
-                s_iface = get_shorewall_interface(interface)
-                addr = if_detail[netifaces.AF_INET][0]['addr']
-                ifaces.append({'name': s_iface + ' (' + interface + ':' + str(addr) + ')',
-                               'value': s_iface[0:3] + ' ' + str(addr)})
+            for external_interface in external_interfaces:
+                # tuple of ('zone', 'interface', 'options')
+                if external_interface[1] == interface:
+                    detail = netifaces.ifaddresses(interface)
+                    addr = detail[netifaces.AF_INET][0]['addr']
+                    ifaces.append({'name': '%s (%s)' % (addr, external_interface[0]),
+                                   'value': "%s:%s" % (addr, external_interface[0])})
 
     config.append({'slug': 'openvpn',
-                   'name': 'interface',
-                   'label': _('VPN interface', 'openvpn'),
-                   'help': _('The network interface where the VPN server will listen. It must be accessible by your VPN clients.',
+                   'name': 'listen',
+                   'required': 'yes',
+                   'label': _('Listen address', 'openvpn'),
+                   'help': _('The IP address where the VPN server will listen. It must be accessible by your VPN clients.',
                              'openvpn'),
                    'type': 'options',
                    'options': ifaces})
@@ -65,11 +66,32 @@ def get_interface_config(config):
     return config
 
 
-def get_shorewall_interface(iface):
-    ''' Search for the Shorewall interface corresponding to the given ethX'''
-    with open('/etc/shorewall/interfaces', 'r') as shorewall_interfaces:
-        for line in shorewall_interfaces:
-            m = re.search('(\w+) ' + iface, line)
-            logging.debug(m)
-            if m:
-                return m.group(1)
+def get_push_networks_config(config):
+    """
+    Get list of internal networks to push to VPN clients
+    """
+    internal_zones = get_zones_types()[0]
+    internal_interfaces = get_zones_interfaces(internal_zones)
+
+    networks = []
+    for interface in netifaces.interfaces():
+        if interface.startswith(MANAGED_INTERFACE_NAMES):
+            for internal_interface in internal_interfaces:
+                if internal_interface[1] == interface:
+                    detail = netifaces.ifaddresses(interface)
+                    addr = detail[netifaces.AF_INET][0]['addr']
+                    netmask = detail[netifaces.AF_INET][0]['netmask']
+                    network = IP(addr).make_net(netmask)
+                    networks.append([str(network.net()), str(network.netmask())])
+
+    config.append({'slug': 'openvpn',
+                   'name': 'push_networks',
+                   'label': _('Shared networks', 'openvpn'),
+                   'help': _('The list of internal networks that will be accessible to VPN clients.',
+                             'openvpn'),
+                   'type': 'network',
+                   'format': 'long',
+                   'multi': 'yes',
+                   'default': networks})
+
+    return config
