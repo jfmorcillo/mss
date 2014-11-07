@@ -28,6 +28,7 @@
             "name": "bind_networks",
             "format": "short",
             "validation": "network",
+            "multi": "yes",
             "default": "get_networks",
             "label": "My networks",
             "help": "Specify which networks are authorized to resolve external queries with your DNS server (recursion). eg: 192.168.0.0/255.255.255.0."
