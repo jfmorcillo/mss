@@ -1,7 +1,6 @@
 {
     "slug": "openvpn",
     "name": "Virtual Private Network (VPN) service",
-    "desc": "Allow your users to connect from outside your organization",
     "description": "Allow your users to connect from outside your organization",
     "categories": [
         {
@@ -28,8 +27,26 @@
     ],
     "config": [
         {
+            "name": "listen",
+            "type": "custom"
+        },
+        {
+            "type": "network",
+            "name": "vpn_network",
+            "require": "yes",
+            "validation": "network",
+            "default": [["10.8.0.0", "255.255.255.0"]],
+            "format": "long",
+            "label": "VPN network",
+            "help": "Specify the VPN network address. It should not conflict with one of your current networks."
+        },
+        {
+            "name": "push_networks",
+            "type": "custom"
+        },
+        {
             "type": "text",
-            "name": "openvpn_country",
+            "name": "country",
             "require": "yes",
             "validation": "country_code",
             "default": "FR",
@@ -37,41 +54,28 @@
         },
         {
             "type": "text",
-            "name": "openvpn_province",
+            "name": "province",
             "require": "yes",
             "label": "Province"
         },
         {
             "type": "text",
-            "name": "openvpn_city",
+            "name": "city",
             "require": "yes",
             "label": "City"
         },
         {
             "type": "text",
-            "name": "openvpn_org",
+            "name": "org",
             "require": "yes",
             "label": "Organization",
             "help": "Your organization name"
         },
         {
             "type": "text",
-            "name": "openvpn_email",
+            "name": "email",
             "require": "yes",
             "label": "Contact email"
-        },
-        {
-            "type": "text",
-            "name": "openvpn_networks",
-            "require": "yes",
-            "validation": "ip",
-            "default": "10.8.0.0",
-            "label": "VPN network",
-            "help": "Specify which network address you want to use for your VPN. If unsure leave the default value."
-        },
-        {
-            "type": "custom",
-            "name": "interface"
         }
     ],
     "packages": [
@@ -81,6 +85,6 @@
         }
     ],
     "module": {
-            "section": "core"
+            "section": "other"
     }
 }
