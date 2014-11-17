@@ -23,7 +23,8 @@ def fail_provisioning_samba4(msg=None):
 def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     if not ignore:
         print "$ %s" % cmd
-    p = subprocess.Popen(cmd, shell=True, stdout=subprocess.PIPE,
+    p = subprocess.Popen(cmd, shell=True,
+                         stdout=subprocess.PIPE,
                          stderr=stderr)
     exit_code = p.wait()
     stdout = "".join(p.stdout.readlines())
@@ -54,11 +55,13 @@ def provision_samba4(mode, realm, admin_password):
                " --use-xattr=yes"
                " --use-rfc2307"
                " --server-role='%(role)s'" % params)
-        shlaunch(cmd, stderr=None)
+        shlaunch(cmd)
 
     def write_config_files():
         print "provision: domain_provision_cb"
-        netbios_domain_name = shlaunch("hostname", ignore=True).strip()
+        netbios_domain_name = shlaunch("hostname",
+                                       ignore=True,
+                                       stderr=None).strip()
         samba.writeSambaConfig(mode, netbios_domain_name, realm, DESCRIPTION)
         samba.writeKrb5Config(realm)
 
