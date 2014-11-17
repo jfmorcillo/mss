@@ -7,7 +7,7 @@ dn = ou=DHCP,@SUFFIX@
 pidfile = /var/run/dhcpd/dhcpd.pid
 init = /etc/rc.d/init.d/dhcpd
 logfile = /var/log/messages
-leases = /var/lib/dhcp/dhcpd.leases
+leases = /var/lib/dhcpd/dhcpd.leases
 hostname = @HOSTNAME@
 
 [dns]
