@@ -2,8 +2,8 @@
 include "/etc/mss_acls.conf";
 
 options {
-    listen-on port 53 { 127.0.0.1; };
-    listen-on-v6 port 53 { ::1; };
+    listen-on port 53 { any; };
+    listen-on-v6 port 53 { any; };
     directory "/var/named";
     dump-file "/var/named/data/cache_dump.db";
     statistics-file "/var/named/data/named_stats.txt";
