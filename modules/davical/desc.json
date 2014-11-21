@@ -26,7 +26,8 @@
                      "roundcubemail-plugins",
                      "mbs-mmc-hooks",
                      "mmc-web-davical",
-                     "python-mmc-davical"]
+                     "python-mmc-davical",
+		     "sqlite3-tools"]
         }
     ],
     "dependencies": ["postgresql", "mds_webmail"],
