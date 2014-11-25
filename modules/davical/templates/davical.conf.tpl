@@ -5,9 +5,7 @@ Alias /davical /usr/share/davical/htdocs
 <Directory /usr/share/davical/htdocs>
   DirectoryIndex index.php index.html
   AllowOverride None
-#  Require all granted
-  Order allow,deny
-  allow from all
+  Require all granted
   AcceptPathInfo On
   php_value include_path /usr/share/php/awl/inc
   php_value magic_quotes_gpc 0
