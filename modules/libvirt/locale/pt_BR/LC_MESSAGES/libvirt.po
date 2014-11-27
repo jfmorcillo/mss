@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:04+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-09-24 23:49+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) "
-"<http://translate.mandriva.com/projects/mss/libvirt/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
+"mss/libvirt/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -104,40 +104,39 @@ msgstr "Permitir conexões a partir de redes externas"
 msgid "Virtualization"
 msgstr "Virtualização"
 
-#: libvirt/setup-libvirt.sh:76
+#: libvirt/setup-libvirt.sh:81
 msgid "Libvirt and KVM are now installed and configured."
 msgstr "Libvirt e KVM agora estão instalados e configurados."
 
-#: libvirt/setup-libvirt.sh:77
+#: libvirt/setup-libvirt.sh:82
 msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
 msgstr ""
 "Login para libvirt com o cliente virt-manager usando o método TCP/SASL:"
 
-#: libvirt/setup-libvirt.sh:78
+#: libvirt/setup-libvirt.sh:83
 msgid "- Hostname is @HOSTNAME@"
 msgstr "- Nome da máquina é @HOSTNAME@"
 
-#: libvirt/setup-libvirt.sh:79
+#: libvirt/setup-libvirt.sh:84
 msgid "- Username is admin"
 msgstr "- Nome do usuário é admin"
 
-#: libvirt/setup-libvirt.sh:80
+#: libvirt/setup-libvirt.sh:85
 msgid "- Password is $admin_password"
 msgstr "- A senha é $admin_password"
 
-#: libvirt/setup-libvirt.sh:81
-msgid ""
-"Reboot to apply the network configuration. If you have a DHCP IP address "
-"your IP address may change."
-msgstr ""
-"Reinice para aplicar as configurações de rede. Caso tenha um endereço de IP "
-"DHCP, seu endereço de IP poderá ser alterado."
-
-#: libvirt/__init__.py:68
+#: libvirt/__init__.py:70
 #, python-format
 msgid "Create a bridge for interface %s (%s, %s)"
 msgstr "Criar uma conexão na mesma para a interface %s (%s, %s)"
 
-#: libvirt/__init__.py:69
+#: libvirt/__init__.py:71
 msgid "You will be able to setup virtual machines on this network."
 msgstr "Você poderá configurar máquinas virtuais nesta rede."
+
+#~ msgid ""
+#~ "Reboot to apply the network configuration. If you have a DHCP IP address "
+#~ "your IP address may change."
+#~ msgstr ""
+#~ "Reinice para aplicar as configurações de rede. Caso tenha um endereço de "
+#~ "IP DHCP, seu endereço de IP poderá ser alterado."

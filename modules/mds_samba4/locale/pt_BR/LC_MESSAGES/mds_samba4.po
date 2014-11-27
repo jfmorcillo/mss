@@ -1,0 +1,87 @@
+#: .description
+msgid ""
+"Use MBS as a Domain Controller with SAMBA 4 and provide Windows file shares "
+"on your network"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid "Which type of provisioning of SAMBA 4"
+msgstr ""
+
+#: .config[0].label
+msgid "Mode"
+msgstr ""
+
+#: .config[0].options[0].name
+msgid "Primary Domain Controller"
+msgstr ""
+
+#: .config[0].name
+msgid "smb_mode"
+msgstr ""
+
+#: .config[1].name
+msgid "smb_domain"
+msgstr ""
+
+#: .config[1].label
+msgid "SAMBA domain name"
+msgstr ""
+
+#: .config[1].help
+msgid "The name of your Microsoft domain."
+msgstr ""
+
+#: .config[2].help
+msgid "Password for the Microsoft domain Administrator account."
+msgstr ""
+
+#: .config[2].label
+msgid "Administrator password"
+msgstr ""
+
+#: .config[2].name
+msgid "smb_passwd"
+msgstr ""
+
+#: .categories[0].name
+msgid "Users"
+msgstr ""
+
+#: .name
+msgid "Windows domain controller and file sharing management"
+msgstr ""
+
+#: mds_samba4/setup-samba4.sh:15
+msgid ""
+"You can now use the management interface to manage your Windows users and "
+"shares at https://@HOSTNAME@/mmc/."
+msgstr ""
+
+#: mds_samba4/__init__.py:13
+msgid "Incorrect SAMBA domain name."
+msgstr ""
+
+#: mds_samba4/__init__.py:19
+msgid "Password must be at least 8 characters long"
+msgstr ""
+
+#: mds_samba4/__init__.py:21
+msgid "Password must have at least one number"
+msgstr ""
+
+#: mds_samba4/__init__.py:23
+msgid "Password must have at least one capital letter"
+msgstr ""
+
+#: mds_samba4/__init__.py:25
+msgid "Password must have at least one lowercase letter"
+msgstr ""

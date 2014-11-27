@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:04+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2013-04-08 10:17+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -20,17 +20,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .description .desc
+#: .description
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
 msgstr "Un serveur Jabber/XMPP distribué et tolérant aux pannes"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface d'administration"
-
-#: .name
-msgid "Jabber/XMPP instant messaging server"
-msgstr "Jabber/XMPP serveur de messagerie instantanée"
 
 #: .packages[0].name
 msgid "all"
@@ -71,6 +67,10 @@ msgstr "Permettre l'accès depuis les réseaux externes"
 #: .categories[0].name
 msgid "Collaboration"
 msgstr "Collaboration"
+
+#: .name
+msgid "Jabber/XMPP instant messaging server"
+msgstr "Jabber/XMPP serveur de messagerie instantanée"
 
 #: ejabberd/setup-ejabberd.sh:28
 msgid "The instant messaging service is configured."

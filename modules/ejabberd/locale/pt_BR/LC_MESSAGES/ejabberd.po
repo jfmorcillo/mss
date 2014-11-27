@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:04+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-10-07 22:02+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) "
-"<http://translate.mandriva.com/projects/mss/ejabberd/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
+"mss/ejabberd/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +20,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "A distributed, fault-tolerant Jabber/XMPP server"
 msgstr "Um servidor Jabber/XMPP distribuído, tolerante a falhas"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface de Gerenciamento"
-
-#: .name
-msgid "Jabber/XMPP instant messaging server"
-msgstr "Jabber/XMPP Servidor de mensagens instantaneas"
 
 #: .packages[0].name
 msgid "all"
@@ -71,6 +67,10 @@ msgstr "Permitir o acesso a partir de redes externas"
 #: .categories[0].name
 msgid "Collaboration"
 msgstr "Colaboração"
+
+#: .name
+msgid "Jabber/XMPP instant messaging server"
+msgstr "Jabber/XMPP Servidor de mensagens instantaneas"
 
 #: ejabberd/setup-ejabberd.sh:28
 msgid "The instant messaging service is configured."

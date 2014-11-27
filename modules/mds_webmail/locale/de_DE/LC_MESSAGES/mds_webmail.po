@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-08-28 16:52+0200\n"
 "Last-Translator: Maik Wagner <mwagner@mandriva.com>\n"
-"Language-Team: German "
-"<http://translate.mandriva.com/projects/mss/mds_webmail/de_DE/>\n"
+"Language-Team: German <http://translate.mandriva.com/projects/mss/"
+"mds_webmail/de_DE/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr "Roundcube, eine vollständige Webmaillösung für Ihren Maildienst"
 
@@ -31,10 +31,6 @@ msgstr "Verwaltungsschnittstelle"
 #: .actions[1].name
 msgid "Webmail interface"
 msgstr "Webmailschnittstelle"
-
-#: .name
-msgid "Webmail"
-msgstr "Webmail"
 
 #: .packages[0].name
 msgid "all"
@@ -77,11 +73,15 @@ msgstr "Zugang von externen Netzwerken erlauben"
 msgid "Mail"
 msgstr "Mail"
 
-#: mds_webmail/setup-webmail.sh:50
+#: .name
+msgid "Webmail"
+msgstr "Webmail"
+
+#: mds_webmail/setup-webmail.sh:49
 msgid "Webmail Roundcube is installed on your server."
 msgstr "Webmail Roundcube ist auf Ihrem Server installiert."
 
-#: mds_webmail/setup-webmail.sh:51
+#: mds_webmail/setup-webmail.sh:50
 msgid ""
 "You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:28+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -62,19 +62,19 @@ msgstr ""
 msgid "Cloud"
 msgstr ""
 
-#: eva/setup-eva.sh:416
+#: eva/setup-eva.sh:386
 msgid "eVA is now configured."
 msgstr ""
 
-#: eva/setup-eva.sh:417
+#: eva/setup-eva.sh:387
 msgid "- Username is $eVA_adminUser"
 msgstr ""
 
-#: eva/setup-eva.sh:418
+#: eva/setup-eva.sh:388
 msgid "- Password is $password_eva"
 msgstr ""
 
-#: eva/setup-eva.sh:419
+#: eva/setup-eva.sh:389
 msgid "Reboot to complete the configuration."
 msgstr ""
 

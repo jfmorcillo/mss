@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-08-28 16:52+0200\n"
 "Last-Translator: Maik Wagner <mwagner@mandriva.com>\n"
-"Language-Team: German "
-"<http://translate.mandriva.com/projects/mss/mds_mail/de_DE/>\n"
+"Language-Team: German <http://translate.mandriva.com/projects/mss/mds_mail/"
+"de_DE/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 "Vollständiger Maildienst mit POP/IMAP, Anti-Virus und Anti-Spam-Werkzeugen"
@@ -28,10 +28,6 @@ msgstr ""
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Verwaltungsschnittstelle"
-
-#: .name
-msgid "Mail Service"
-msgstr "Mail Dienst"
 
 #: .packages[0].name
 msgid "all"
@@ -114,7 +110,11 @@ msgstr "Maildienstezugang von externen Netzwerken erlauben"
 msgid "Mail"
 msgstr "Mail"
 
-#: mds_mail/setup-mail.sh:94
+#: .name
+msgid "Mail Service"
+msgstr "Mail Dienst"
+
+#: mds_mail/setup-mail.sh:84
 msgid ""
 "Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
 "c 'razor-admin -register && razor-admin -discover'"
@@ -123,11 +123,11 @@ msgstr ""
 "zu starten : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin "
 "-discover'"
 
-#: mds_mail/setup-mail.sh:128
+#: mds_mail/setup-mail.sh:118
 msgid "The mail service is configured."
 msgstr "Der Maildienst ist konfiguriert."
 
-#: mds_mail/setup-mail.sh:129
+#: mds_mail/setup-mail.sh:119
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
@@ -135,20 +135,20 @@ msgstr ""
 "Sie können Mailadressen und Aliases für Ihre Benutzer über die "
 "Verwaltungsschnittstelle hinzufügen unter  https://@HOSTNAME@/mmc/."
 
-#: mds_mail/setup-mail.sh:130
+#: mds_mail/setup-mail.sh:120
 msgid "- the mail domain $DOMAIN has been created"
 msgstr "- die Maildomain $DOMAIN wurde erstellt"
 
-#: mds_mail/setup-mail.sh:131
+#: mds_mail/setup-mail.sh:121
 msgid "- SSL is enabled on the SMTP server"
 msgstr "- SSL ist auf dem SMTP-Server aktiviert"
 
-#: mds_mail/setup-mail.sh:132
+#: mds_mail/setup-mail.sh:122
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
 msgstr ""
 "- Verbindungen ohne SSL sind standardmäßig auf dem IMAP/POP3 deaktiviert"
 
-#: mds_mail/setup-mail.sh:133
+#: mds_mail/setup-mail.sh:123
 msgid ""
 "- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""

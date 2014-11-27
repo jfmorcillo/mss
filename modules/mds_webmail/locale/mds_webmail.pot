@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:28+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description .desc
+#: .description
 msgid "Roundcube, a complete webmail solution for your mail service"
 msgstr ""
 
@@ -27,10 +27,6 @@ msgstr ""
 
 #: .actions[1].name
 msgid "Webmail interface"
-msgstr ""
-
-#: .name
-msgid "Webmail"
 msgstr ""
 
 #: .packages[0].name
@@ -69,11 +65,15 @@ msgstr ""
 msgid "Mail"
 msgstr ""
 
-#: mds_webmail/setup-webmail.sh:50
+#: .name
+msgid "Webmail"
+msgstr ""
+
+#: mds_webmail/setup-webmail.sh:49
 msgid "Webmail Roundcube is installed on your server."
 msgstr ""
 
-#: mds_webmail/setup-webmail.sh:51
+#: mds_webmail/setup-webmail.sh:50
 msgid ""
 "You can access the webmail interface at https://@HOSTNAME@/roundcubemail/."
 msgstr ""

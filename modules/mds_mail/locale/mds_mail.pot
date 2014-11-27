@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:28+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description .desc
+#: .description
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
-
-#: .name
-msgid "Mail Service"
 msgstr ""
 
 #: .packages[0].name
@@ -103,35 +99,39 @@ msgstr ""
 msgid "Mail"
 msgstr ""
 
-#: mds_mail/setup-mail.sh:94
+#: .name
+msgid "Mail Service"
+msgstr ""
+
+#: mds_mail/setup-mail.sh:84
 msgid ""
 "Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
 "c 'razor-admin -register && razor-admin -discover'"
 msgstr ""
 
-#: mds_mail/setup-mail.sh:128
+#: mds_mail/setup-mail.sh:118
 msgid "The mail service is configured."
 msgstr ""
 
-#: mds_mail/setup-mail.sh:129
+#: mds_mail/setup-mail.sh:119
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
 msgstr ""
 
-#: mds_mail/setup-mail.sh:130
+#: mds_mail/setup-mail.sh:120
 msgid "- the mail domain $DOMAIN has been created"
 msgstr ""
 
-#: mds_mail/setup-mail.sh:131
+#: mds_mail/setup-mail.sh:121
 msgid "- SSL is enabled on the SMTP server"
 msgstr ""
 
-#: mds_mail/setup-mail.sh:132
+#: mds_mail/setup-mail.sh:122
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
 msgstr ""
 
-#: mds_mail/setup-mail.sh:133
+#: mds_mail/setup-mail.sh:123
 msgid ""
 "- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""

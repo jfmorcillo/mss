@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2013-06-26 15:40+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .description .desc
+#: .description
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
 msgstr ""
 "Service de messagerie complet avec POP/IMAP et outils anti-virus et anti-spam"
@@ -28,10 +28,6 @@ msgstr ""
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface d'administration"
-
-#: .name
-msgid "Mail Service"
-msgstr "Service Mail"
 
 #: .packages[0].name
 msgid "all"
@@ -113,7 +109,11 @@ msgstr "Permettre l'accès au services de mail depuis les réseaux externes"
 msgid "Mail"
 msgstr "E-mail"
 
-#: mds_mail/setup-mail.sh:94
+#: .name
+msgid "Mail Service"
+msgstr "Service Mail"
+
+#: mds_mail/setup-mail.sh:84
 msgid ""
 "Failed to register razor. Try to run as root later : su - amavis -s /bin/sh -"
 "c 'razor-admin -register && razor-admin -discover'"
@@ -122,11 +122,11 @@ msgstr ""
 "root : su - amavis -s /bin/sh -c 'razor-admin -register && razor-admin -"
 "discover'"
 
-#: mds_mail/setup-mail.sh:128
+#: mds_mail/setup-mail.sh:118
 msgid "The mail service is configured."
 msgstr "Le service de Mail est configuré."
 
-#: mds_mail/setup-mail.sh:129
+#: mds_mail/setup-mail.sh:119
 msgid ""
 "You can add mail addresses and aliases to your users through the management "
 "interface at https://@HOSTNAME@/mmc/."
@@ -134,20 +134,20 @@ msgstr ""
 "Vous pouvez ajouter des adresses de messagerie et des alias pour vos "
 "utilisateurs grâce à l'interface de gestion située à https://@HOSTNAME@/mmc/."
 
-#: mds_mail/setup-mail.sh:130
+#: mds_mail/setup-mail.sh:120
 msgid "- the mail domain $DOMAIN has been created"
 msgstr "- le domaine de mail $DOMAIN a été créé"
 
-#: mds_mail/setup-mail.sh:131
+#: mds_mail/setup-mail.sh:121
 msgid "- SSL is enabled on the SMTP server"
 msgstr "- SSL est activé sur le serveur SMTP"
 
-#: mds_mail/setup-mail.sh:132
+#: mds_mail/setup-mail.sh:122
 msgid "- Non-SSL connexions are disabled by default on the IMAP/POP3 server"
 msgstr ""
 "- Les connexions non-SSL sont désactivés par défaut sur ​​le serveur IMAP/POP3"
 
-#: mds_mail/setup-mail.sh:133
+#: mds_mail/setup-mail.sh:123
 msgid ""
 "- Networks authorized to send mail without authentication : $smtpd_mynetworks"
 msgstr ""

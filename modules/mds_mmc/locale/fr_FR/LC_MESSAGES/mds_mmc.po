@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-08-28 12:07+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
-"Language-Team: French "
-"<http://translate.mandriva.com/projects/mss/mds_mmc/fr_FR/>\n"
+"Language-Team: French <http://translate.mandriva.com/projects/mss/mds_mmc/"
+"fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -88,41 +88,41 @@ msgstr "Permettre l'accès depuis les réseaux externes"
 msgid "Users"
 msgstr "Utilisateurs"
 
-#: mds_mmc/setup-mmc.sh:32
+#: mds_mmc/setup-mmc.sh:36
 msgid "Error while generating the password."
 msgstr "Erreur lors de la génération du mot de passe."
 
-#: mds_mmc/setup-mmc.sh:74
+#: mds_mmc/setup-mmc.sh:78
 msgid "OpenLDAP configuration has errors."
 msgstr "La configuration d'OpenLDAP est erronée."
 
-#: mds_mmc/setup-mmc.sh:86
+#: mds_mmc/setup-mmc.sh:90
 msgid "Database load test failed."
 msgstr "Le chargement de la base de données de test à échoué."
 
-#: mds_mmc/setup-mmc.sh:100
+#: mds_mmc/setup-mmc.sh:104
 msgid "Failed to initialize the database."
 msgstr "Erreur lors de l'initialisation de la base de donnée."
 
-#: mds_mmc/setup-mmc.sh:108
+#: mds_mmc/setup-mmc.sh:109
 msgid "Error while configuring lib nss-ldap."
 msgstr "Erreur lors de la configuration de nss-ldap."
 
-#: mds_mmc/setup-mmc.sh:131
+#: mds_mmc/setup-mmc.sh:134
 msgid "The MBS administration web interface is configured."
 msgstr "L'interface d'administration MBS est configurée."
 
-#: mds_mmc/setup-mmc.sh:132
+#: mds_mmc/setup-mmc.sh:135
 msgid ""
 "You can log in the interface at https://@HOSTNAME@/mmc/ after the reboot."
 msgstr ""
 "Vous pouvez vous connecter à l'interface d'administration à l'adresse "
 "https://@HOSTNAME@/mmc/ après le redémarrage du serveur."
 
-#: mds_mmc/setup-mmc.sh:133
+#: mds_mmc/setup-mmc.sh:136
 msgid "Administrator name : root"
 msgstr "Nom de l'administrateur : root"
 
-#: mds_mmc/setup-mmc.sh:134
+#: mds_mmc/setup-mmc.sh:137
 msgid "Administrator password : $mypass"
 msgstr "Mot de passe de l'administrateur : $mypass"

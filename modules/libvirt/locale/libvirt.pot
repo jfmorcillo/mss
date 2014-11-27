@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:28+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -95,37 +95,31 @@ msgstr ""
 msgid "Virtualization"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:76
+#: libvirt/setup-libvirt.sh:81
 msgid "Libvirt and KVM are now installed and configured."
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:77
+#: libvirt/setup-libvirt.sh:82
 msgid "Login to libvirt with the virt-manager client using TCP/SASL method:"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:78
+#: libvirt/setup-libvirt.sh:83
 msgid "- Hostname is @HOSTNAME@"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:79
+#: libvirt/setup-libvirt.sh:84
 msgid "- Username is admin"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:80
+#: libvirt/setup-libvirt.sh:85
 msgid "- Password is $admin_password"
 msgstr ""
 
-#: libvirt/setup-libvirt.sh:81
-msgid ""
-"Reboot to apply the network configuration. If you have a DHCP IP address "
-"your IP address may change."
-msgstr ""
-
-#: libvirt/__init__.py:68
+#: libvirt/__init__.py:70
 #, python-format
 msgid "Create a bridge for interface %s (%s, %s)"
 msgstr ""
 
-#: libvirt/__init__.py:69
+#: libvirt/__init__.py:71
 msgid "You will be able to setup virtual machines on this network."
 msgstr ""

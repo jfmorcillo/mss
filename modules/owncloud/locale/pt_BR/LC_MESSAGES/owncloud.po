@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-08-26 18:37+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) "
-"<http://translate.mandriva.com/projects/mss/owncloud/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
+"mss/owncloud/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -88,10 +88,10 @@ msgstr "owncloud_dataPath"
 msgid "Cloud"
 msgstr "Nuvem"
 
-#: owncloud/setup-owncloud.sh:137
+#: owncloud/setup-owncloud.sh:146
 msgid "ownCloud is now configured."
 msgstr "A ownCloud agora está configurada."
 
-#: owncloud/setup-owncloud.sh:138
+#: owncloud/setup-owncloud.sh:147
 msgid "You can access the web interface at https://@HOSTNAME@/owncloud/"
 msgstr "Você pode acessar a interface Web em https://@HOSTNAME@/owncloud/"

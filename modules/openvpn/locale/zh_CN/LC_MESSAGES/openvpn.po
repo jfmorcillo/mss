@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
-"Language-Team: Simplified Chinese "
-"<http://translate.mandriva.com/projects/mss/openvpn/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
+"mss/openvpn/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Allow your users to connect from outside your organization"
 msgstr ""
 
@@ -35,110 +35,126 @@ msgstr ""
 msgid "Client configuration"
 msgstr ""
 
-#: .name
-msgid "Virtual Private Network (VPN) service"
-msgstr ""
-
 #: .packages[0].name
 msgid "all"
 msgstr "所有"
 
 #: .config[0].name
-msgid "openvpn_country"
-msgstr ""
-
-#: .config[0].label
-msgid "Country code"
+msgid "listen"
 msgstr ""
 
 #: .config[1].name
-msgid "openvpn_province"
+msgid "vpn_network"
 msgstr ""
 
 #: .config[1].label
-msgid "Province"
-msgstr ""
-
-#: .config[2].name
-msgid "openvpn_city"
-msgstr ""
-
-#: .config[2].label
-msgid "City"
-msgstr ""
-
-#: .config[3].help
-msgid "Your organization name"
-msgstr ""
-
-#: .config[3].name
-msgid "openvpn_org"
-msgstr ""
-
-#: .config[3].label
-msgid "Organization"
-msgstr ""
-
-#: .config[4].name
-msgid "openvpn_email"
-msgstr ""
-
-#: .config[4].label
-msgid "Contact email"
-msgstr ""
-
-#: .config[5].name
-msgid "openvpn_networks"
-msgstr ""
-
-#: .config[5].label
 msgid "VPN network"
 msgstr ""
 
-#: .config[5].help
+#: .config[1].help
 msgid ""
-"Specify which network address you want to use for your VPN. If unsure leave "
-"the default value."
+"Specify the VPN network address. It should not conflict with one of your "
+"current networks."
+msgstr ""
+
+#: .config[2].name
+msgid "push_networks"
+msgstr ""
+
+#: .config[3].name
+msgid "country"
+msgstr ""
+
+#: .config[3].label
+msgid "Country code"
+msgstr ""
+
+#: .config[4].name
+msgid "province"
+msgstr ""
+
+#: .config[4].label
+msgid "Province"
+msgstr ""
+
+#: .config[5].name
+msgid "city"
+msgstr ""
+
+#: .config[5].label
+msgid "City"
+msgstr ""
+
+#: .config[6].help
+msgid "Your organization name"
 msgstr ""
 
 #: .config[6].name
-msgid "interface"
+msgid "org"
+msgstr ""
+
+#: .config[6].label
+msgid "Organization"
+msgstr ""
+
+#: .config[7].name
+msgid "email"
+msgstr ""
+
+#: .config[7].label
+msgid "Contact email"
 msgstr ""
 
 #: .categories[0].name
 msgid "Network"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:100
+#: .name
+msgid "Virtual Private Network (VPN) service"
+msgstr ""
+
+#: openvpn/setup-openvpn.sh:95
+msgid "Users authorized to connect to the VPN"
+msgstr ""
+
+#: openvpn/setup-openvpn.sh:147
 msgid "The VPN service is running."
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:101
+#: openvpn/setup-openvpn.sh:148
 msgid "- The VPN network address is $network"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:102
+#: openvpn/setup-openvpn.sh:149
 msgid "- The server IP in the VPN network is $vpn_ip"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:103
+#: openvpn/setup-openvpn.sh:150
 msgid ""
 "- Documentation for this addon is available at http://@HOSTNAME@/openvpn-"
 "documentation/"
 msgstr ""
 
-#: openvpn/setup-openvpn.sh:104
+#: openvpn/setup-openvpn.sh:151
 msgid ""
 "- An archive containing the clients configuration files is available in the "
 "addon's menu. Use it to configure your clients."
 msgstr ""
 
-#: openvpn/__init__.py:59
-msgid "VPN interface"
+#: openvpn/__init__.py:60
+msgid "Listen address"
 msgstr ""
 
-#: openvpn/__init__.py:60
+#: openvpn/__init__.py:61
 msgid ""
-"The network interface where the VPN server will listen. It must be "
-"accessible by your VPN clients."
+"The IP address where the VPN server will listen. It must be accessible by "
+"your VPN clients."
+msgstr ""
+
+#: openvpn/__init__.py:89
+msgid "Shared networks"
+msgstr ""
+
+#: openvpn/__init__.py:90
+msgid "The list of internal networks that will be accessible to VPN clients."
 msgstr ""

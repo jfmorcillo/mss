@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-11-27 10:03+0100\n"
 "PO-Revision-Date: 2014-08-28 16:45+0200\n"
 "Last-Translator: Maik Wagner <mwagner@mandriva.com>\n"
-"Language-Team: German "
-"<http://translate.mandriva.com/projects/mss/mds_quota/de_DE/>\n"
+"Language-Team: German <http://translate.mandriva.com/projects/mss/mds_quota/"
+"de_DE/>\n"
 "Language: de_DE\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -68,7 +68,7 @@ msgstr ""
 "Sie können nun die Benutzerquotas von der Verwaltungsschnittstelle "
 "konfigurieren : https://@HOSTNAME@/mmc/."
 
-#: mds_quota/__init__.py:53
+#: mds_quota/__init__.py:56
 #, python-format
 msgid "Device %s doesn't exists."
 msgstr "Device %s existiert nicht."
