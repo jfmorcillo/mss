@@ -53,7 +53,7 @@ def provision_samba4(mode, realm, admin_password):
     def provision_domain():
         print("Provisioning domain")
         cmd = ("%(prefix)s/bin/samba-tool domain provision"
-               " --dns-backend=NONE"
+               " --dns-backend='BIND9_FLATFILE'"
                " --adminpass='%(adminpass)s'"
                " --domain='%(workgroup)s'"
                " --workgroup='%(workgroup)s'"
