@@ -7,7 +7,11 @@ import socket
 import subprocess
 from time import sleep
 from mmc.plugins.samba4.smb_conf import SambaConf
-
+from mmc.plugins.network import addZone, addRecord
+from mmc.plugins.shorewall import get_zones, add_rule
+import re
+import netifaces
+from IPy import IP
 
 SLEEP_TIME = 1  # Sleep time between each check
 DESCRIPTION = "Mandriva Directory Server - SAMBA %v"
@@ -38,7 +42,8 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
 
 def provision_samba4(mode, realm, admin_password):
     if mode != 'dc':
-        fail_provisioning_samba4("We can only provision samba4 as Domain Controller")
+        fail_provisioning_samba4(
+            "We can only provision samba4 as Domain Controller")
 
     samba = SambaConf()
     params = {'realm': realm, 'prefix': samba.prefix,
@@ -46,8 +51,9 @@ def provision_samba4(mode, realm, admin_password):
               'workgroup': samba.workgroupFromRealm(realm)}
 
     def provision_domain():
-        print "Provisioning domain"
+        print("Provisioning domain")
         cmd = ("%(prefix)s/bin/samba-tool domain provision"
+               " --dns-backend=NONE"
                " --adminpass='%(adminpass)s'"
                " --domain='%(workgroup)s'"
                " --workgroup='%(workgroup)s'"
@@ -132,10 +138,70 @@ def provision_samba4(mode, realm, admin_password):
         sleep(SLEEP_TIME)
         check_ldap_is_running()
 
-    def stop_iptables_services():
-        print "Stopping iptables service"
-        # FIXME
-        shlaunch("systemctl stop iptables")
+    def reconfig_shorewall():
+        print "Configure shorewall"
+        src = os.path.join(os.getcwd(), 'templates',
+                           'shorewall_macro.Samba4AD')
+        dst = os.path.join('/etc/shorewall/', 'macro.Samba4AD')
+        shutil.copy(src, dst)
+        os.chmod(dst, 0600)
+
+        zones = get_zones('lan')
+        for zone in zones:
+            add_rule('Samba4AD/ACCEPT', zone, "fw")
+
+        shlaunch("systemctl restart shorewall")
+
+    def configure_dns():
+        print ("Configure dns")
+
+        # TODO: for the moment, create the DNS zone using the first local network as defined in
+        # shorewall configuration
+        with open('/etc/shorewall/interfaces') as f:
+            expr = re.compile('^lan0 (.*) .*', re.M)
+            for line in f:
+                match = expr.search(line)
+                if match:
+                    iface = match.group(1)
+                    if_detail = netifaces.ifaddresses(
+                        iface)[netifaces.AF_INET][0]
+                    addr = if_detail['addr']
+                    netmask = if_detail['netmask']
+                    ip = IP(addr).make_net(netmask)
+                    network = str(ip.net())
+                    netmask = ip.prefixlen()
+                else:
+                    fail_provisioning_samba4(
+                        'No suitable network interface for DNS configuration')
+        nameserver = shlaunch("hostname", ignore=True, stderr=None).strip()
+
+        addZone(zonename=realm,
+                network=network,
+                netmask=netmask,
+                reverse=True,
+                description='AD zone',
+                nameserver=nameserver,
+                nameserverip=addr)
+        print('Created DNS zone \'%s\' with network=%s, netmask=%s, nameserver=%s, nameserver ip=%s' %
+              (realm, network, netmask, nameserver, addr))
+
+        rec = {'_ldap._tcp.': '0 0 389',
+               '_kerberos._tcp.': '0 0 88',
+               '_ldap._tcp.dc._msdcs.': '0 0 389',
+               '_kerberos._tcp.dc._msdcs.': '0 0 88'}
+        for key, val in rec.items():
+            name = key + realm + '.'
+            if not addRecord(zone=realm,
+                             type='SRV',
+                             hostname=name,
+                             value=val):
+                fail_provisioning_samba4('Failed to create SRV record %s %s' %
+                                         (name, val))
+            else:
+                print('Created SRV record %s %s' %
+                      (name, val))
+
+        shlaunch("systemctl restart named-sdb")
 
     def start_samba4_service():
         print "Starting samba service"
@@ -165,8 +231,12 @@ def provision_samba4(mode, realm, admin_password):
 
     reconfig_ldap_service()
     print("### Done reconfig_ldap_service")
-    stop_iptables_services()
-    print("### Done stop_iptables_services")
+
+    reconfig_shorewall()
+    print("### Done reconfig_shorewall")
+
+    configure_dns()
+    print("### Done configure_dns")
 
     start_samba4_service()
     print("### Done start_samba4_service")

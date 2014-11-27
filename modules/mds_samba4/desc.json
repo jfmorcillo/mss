@@ -57,7 +57,7 @@
     ],
     "module": {
         "section": "core",
-        "dependencies": ["mds_mmc"],
+        "dependencies": ["mds_mmc", "mds_dns"],
         "conflicts": ["mds_smb"]
     }
 }
