@@ -5,6 +5,9 @@
 
 check_mmc_configured
 
+stop_service named-sdb
+stop_service named
+
 mds_network_template="templates/network.ini.tpl"
 bind_template="templates/named.conf.tpl"
 bind_conf="/var/lib/named/etc/named.conf"
