@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-08-28 12:07+0200\n"
+"PO-Revision-Date: 2014-11-27 11:02+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/pulse2_inventory/fr_FR/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: .description .desc
 msgid "The inventory management module of Pulse2"
@@ -26,7 +26,7 @@ msgstr "Le module de gestion d'inventaire de Pulse2"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr "Interface de gestion"
+msgstr "Interface d'administration"
 
 #: .name
 msgid "Pulse2 Inventory"
