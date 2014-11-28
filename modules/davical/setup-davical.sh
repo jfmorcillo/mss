@@ -81,6 +81,12 @@ restart_service $SERVICE_MMC
 ###Open the firewall port
 #No need to open a particular port as Davical listen on the standard http port that should be already opened
 
+echo "Stopping PostGre"
+service postgresql stop
+sed -i "s/#unix_socket_directory/unix_socket_directory/" /var/lib/pgsql/data/postgresql.conf
+echo "Starting PostGre"
+service postgresql start
+
 ###Sync the ldap user list with Davical user list (user provisioning)
 #first time sync
 su apache -c "/usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~E_NOTICE' /usr/share/davical/scripts/cron-sync-ldap.php $FQDN"
