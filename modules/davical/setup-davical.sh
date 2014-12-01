@@ -83,7 +83,7 @@ restart_service $SERVICE_MMC
 
 echo "Stopping PostGre"
 service postgresql stop
-sed -i "s/#unix_socket_directory/unix_socket_directory/" /var/lib/pgsql/data/postgresql.conf
+sed -i "s,#unix_socket_directory = '',unix_socket_directory= '/var/run/postgresql/',g" /var/lib/pgsql/data/postgresql.conf
 echo "Starting PostGre"
 service postgresql start
 
