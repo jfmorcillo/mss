@@ -90,6 +90,7 @@
                     $("#next").html("{% trans "Retry" %}");
                     $("#next").attr("href", "{{ transaction.current_step_url }}");
                     $('#next').removeClass("disabled");
+                    $('#home').removeClass("hidden");
                     install_summary = current_task.next();
                     log = new collectLog();
                     install_summary.html(log.toString());
@@ -179,6 +180,7 @@
         <div class="pull-right">
             <a href="#" class="disabled" id="next">{% trans "Please wait..." %}</a>
         </div>
+        <a href="/mss" class="hidden" id="home">{% trans "Home" %}</a>
     </div>
 </section>
 {% endblock %}
