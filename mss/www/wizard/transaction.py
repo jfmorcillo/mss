@@ -114,7 +114,9 @@ class Transaction(object):
                 self.update_step({'id': Steps.END,
                                   'title': _("Reboot"),
                                   'reboot': True,
-                                  'info': _("The installation is finished. The server must be rebooted.")})
+                                  'info': _("The installation is finished. The \
+                                      server must be rebooted. The reboot can \
+                                      take a few minutes.")})
 
     def update(self):
         self.modules_info = xmlrpc.call('get_modules_details', self.modules_list)
