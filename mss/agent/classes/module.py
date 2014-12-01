@@ -447,7 +447,7 @@ class Module(object):
                             if field.get("format") == "long":
                                 network = str(IP(network).strNormal(2))
                             else:
-                                network = str(IP(network).strNormal(0))
+                                network = str(IP(network).strNormal(1))
                             value += network + " "
                         value = value[:-1]
                         args_values.append(value)
