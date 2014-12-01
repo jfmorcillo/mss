@@ -1,4 +1,5 @@
 {% load i18n %}<!DOCTYPE html>
+{% load mss %}
 {% get_current_language as LANGUAGE_CODE %}
 <html>
     <head>
@@ -121,6 +122,14 @@
                     <div class="nav-collapse">
                         {% if user.is_authenticated %}
                         <ul class="nav pull-right">
+                            {% is_first_time as first_time %}
+                            {% if first_time %}
+                            <li>
+                              <a href="#link_to_docs">
+                                <strong><i class="icon-book icon-gray"></i>&nbsp;{% trans "Documentation" %}</strong>
+                              </a>
+                            </li>
+                            {% endif %}
                             {% if request.session.has_net %}
                             <li>
                                 <a href="#" data-placement="bottom" rel="tooltip"

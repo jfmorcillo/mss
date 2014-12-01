@@ -1,7 +1,11 @@
+from __future__ import absolute_import
+
 from django.conf import settings
 from django import template
 from django.utils.encoding import force_text
 from django.utils.safestring import mark_safe
+
+from mss.lib.xmlrpc import XmlRpc
 
 
 register = template.Library()
@@ -57,3 +61,9 @@ def markdown(value, arg=''):
             else:
                 return mark_safe(markdown.markdown(
                     force_text(value), extensions, safe_mode=False))
+
+
+@register.assignment_tag
+def is_first_time():
+    xmlrpc = XmlRpc()
+    return not xmlrpc.call('get_option', 'first-time')
