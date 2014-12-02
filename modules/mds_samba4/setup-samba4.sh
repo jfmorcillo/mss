@@ -3,8 +3,8 @@
 . ../functions.sh
 check_root
 check_mmc_configured
-
-python -u ./provision.py $1 $2 $3
+set -x
+python -u ./provision.py $1 $2 $3 $4
 if [ "$?" != "0" ]; then
     exit 1
 else

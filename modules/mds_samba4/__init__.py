@@ -1,11 +1,13 @@
 import re
 from mss.agent.managers.translation import TranslationManager
+from mmc.plugins.shorewall import get_zones
 
 _ = TranslationManager().translate
 
 
 def get_config_info():
-    return ("setup-samba4.sh", ["smb_mode", "smb_domain", "smb_passwd"])
+    return ("setup-samba4.sh", ["smb_mode", "smb_domain", "smb_passwd", "net"])
+
 
 def valid_domain(string):
     """Validate domain input"""
@@ -13,6 +15,7 @@ def valid_domain(string):
         return _("Incorrect SAMBA domain name.", "mds_samba4")
     else:
         return None
+
 
 def valid_password(passwd):
     if len(passwd) < 8:
@@ -24,3 +27,19 @@ def valid_password(passwd):
     if not re.search("[a-z]", passwd):
         return _("Password must have at least one lowercase letter", "mds_samba4")
     return None
+
+
+def get_network_config(config):
+    zones = get_zones('lan')
+    options = []
+    for zone in zones:
+        options.append({'name': zone, 'value': zone})
+
+    config.append({'slug': 'mds_samba4',
+                   'name': 'net',
+                   'require': 'yes',
+                   'label': _('Network', 'mds_samba4'),
+                   'help': _('Choose the network for the DNS zone and DHCP.', 'mds_samba4'),
+                   'type': 'options',
+                   'options': options})
+    return config

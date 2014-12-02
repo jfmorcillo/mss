@@ -41,6 +41,10 @@
             ]
         },
         {
+            "type":"custom",
+            "name":"network"
+        },
+        {
             "type":"text",
             "name":"smb_domain",
             "require":"yes",

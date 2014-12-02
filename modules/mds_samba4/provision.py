@@ -8,7 +8,7 @@ import subprocess
 from time import sleep
 from mmc.plugins.samba4.smb_conf import SambaConf
 from mmc.plugins.network import addZone, addRecord
-from mmc.plugins.shorewall import get_zones, add_rule
+from mmc.plugins.shorewall import get_zones, add_rule, get_zones_interfaces
 import re
 import netifaces
 from IPy import IP
@@ -40,10 +40,13 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     return stdout
 
 
-def provision_samba4(mode, realm, admin_password):
+def provision_samba4(mode, realm, admin_password, network):
     if mode != 'dc':
         fail_provisioning_samba4(
             "We can only provision samba4 as Domain Controller")
+
+    print('Provisionning samba mode: %s, realm: %s, admin_password:%s' %
+          (mode, realm, admin_password))
 
     samba = SambaConf()
     params = {'realm': realm, 'prefix': samba.prefix,
@@ -152,27 +155,17 @@ def provision_samba4(mode, realm, admin_password):
 
         shlaunch("systemctl restart shorewall")
 
-    def configure_dns():
-        print ("Configure dns")
+    def configure_dns(zone):
+        print ("Configure dns for zone %s" % zone)
 
-        # TODO: for the moment, create the DNS zone using the first local network as defined in
-        # shorewall configuration
-        with open('/etc/shorewall/interfaces') as f:
-            expr = re.compile('^lan0 (.*) .*', re.M)
-            for line in f:
-                match = expr.search(line)
-                if match:
-                    iface = match.group(1)
-                    if_detail = netifaces.ifaddresses(
-                        iface)[netifaces.AF_INET][0]
-                    addr = if_detail['addr']
-                    netmask = if_detail['netmask']
-                    ip = IP(addr).make_net(netmask)
-                    network = str(ip.net())
-                    netmask = ip.prefixlen()
-                else:
-                    fail_provisioning_samba4(
-                        'No suitable network interface for DNS configuration')
+        iface = get_zones_interfaces(zone)[0][1]
+        if_detail = netifaces.ifaddresses(iface)[netifaces.AF_INET][0]
+        addr = if_detail['addr']
+        netmask = if_detail['netmask']
+        ip = IP(addr).make_net(netmask)
+        network = str(ip.net())
+        netmask = ip.prefixlen()
+
         nameserver = shlaunch("hostname", ignore=True, stderr=None).strip()
 
         addZone(zonename=realm,
@@ -185,21 +178,20 @@ def provision_samba4(mode, realm, admin_password):
         print('Created DNS zone \'%s\' with network=%s, netmask=%s, nameserver=%s, nameserver ip=%s' %
               (realm, network, netmask, nameserver, addr))
 
-        rec = {'_ldap._tcp.': '0 0 389',
-               '_kerberos._tcp.': '0 0 88',
-               '_ldap._tcp.dc._msdcs.': '0 0 389',
-               '_kerberos._tcp.dc._msdcs.': '0 0 88'}
+        rec = {'_ldap._tcp': '0 0 389',
+               '_kerberos._tcp': '0 0 88',
+               '_ldap._tcp.dc._msdcs': '0 0 389',
+               '_kerberos._tcp.dc._msdcs': '0 0 88'}
         for key, val in rec.items():
-            name = key + realm + '.'
             if not addRecord(zone=realm,
                              type='SRV',
-                             hostname=name,
-                             value=val):
+                             hostname=key,
+                             value=val + ' ' + nameserver):
                 fail_provisioning_samba4('Failed to create SRV record %s %s' %
-                                         (name, val))
+                                         (key, val))
             else:
                 print('Created SRV record %s %s' %
-                      (name, val))
+                      (key, val + ' ' + nameserver))
 
         shlaunch("systemctl restart named-sdb")
 
@@ -235,7 +227,7 @@ def provision_samba4(mode, realm, admin_password):
     reconfig_shorewall()
     print("### Done reconfig_shorewall")
 
-    configure_dns()
+    configure_dns(network)
     print("### Done configure_dns")
 
     start_samba4_service()
