@@ -1,8 +1,11 @@
 import logging
 import Cookie
+from time import time
 from SimpleXMLRPCServer import SimpleXMLRPCRequestHandler
 
+from mss.agent import START_TIME
 from mss.agent.managers.module import ModuleManager
+from mss.agent.managers.translation import TranslationManager
 
 logger = logging.getLogger(__name__)
 UNAUTHENTICATED_METHODS = ('set_lang', 'get_lang',
@@ -70,7 +73,8 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
             response = self.server._marshaled_dispatch(
                     data, getattr(self, '_dispatch', None)
                 )
-        except: # This should only happen if the module is buggy
+        except:
+            # This should only happen if the module is buggy
             # internal error, report as HTTP server error
             self.send_response(500)
             self.end_headers()
@@ -96,8 +100,8 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
     def _dispatch(self, method, params):
         self.cookies = []
 
-        if method == 'authenticate':
-            return self.authenticate(*params)
+        if method in ('authenticate', 'info'):
+            return getattr(self, method)(*params)
         elif method in UNAUTHENTICATED_METHODS or self.check_token():
             try:
                 return ModuleManager()._dispatch(method, params)
@@ -106,6 +110,12 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
                 raise
         else:
             raise Exception(u"Authentication failed")
+
+    def info(self):
+        return {
+            'start_time': START_TIME,
+            'lang': TranslationManager().get_lang()
+        }
 
     def authenticate(self, login, password):
         token = ModuleManager().authenticate(login, password)
@@ -116,8 +126,8 @@ class MSSXMLRPCRequestHandler(SimpleXMLRPCRequestHandler):
         return False
 
     def check_token(self):
-        if self.headers.has_key('Token'):
+        if 'Token' in self.headers:
             # handle cookie based authentication
-            token = self.headers.get('Token')
+            token = self.headers['Token']
             return ModuleManager().check_token(token)
         return False

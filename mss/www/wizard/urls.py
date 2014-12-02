@@ -24,6 +24,8 @@ from django.core.urlresolvers import reverse
 from django.views.generic.simple import redirect_to
 
 urlpatterns = patterns('mss.www.wizard.views',
+    url(r'^agent/live/(?P<lang>[\w_]+)/$', 'on_agent_reconnect', name="agent_live"),
+    url(r'^agent/lang/(?P<lang>[\w_]+)/$', 'set_agent_lang', name="set_agent_lang"),
     url(r'^lang/(?P<lang>[\w_]+)/$', 'set_lang', name="set_lang"),
     url(r'^has_net/(?P<has_net>[\d]+)/$', 'has_net', name="has_net"),
     url(r'^account/login/$', 'mylogin', name="login"),

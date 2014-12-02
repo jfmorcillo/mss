@@ -35,6 +35,7 @@ from mss.agent.config import Config
 from mss.agent.server import MSSXMLRPCRequestHandler
 from mss.agent.lib.db import Base
 
+
 if __name__ == "__main__":
     parser = OptionParser()
     parser.add_option("-d", "--debug", action="store_true", dest="debug",

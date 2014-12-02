@@ -103,7 +103,9 @@
 
          })
          .error(function(xhr) {
-            if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
+            if (xhr.responseText && xhr.status == 500) {
+                window.location.href = '/mss/';
+            }
          });
     }
 

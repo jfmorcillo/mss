@@ -33,9 +33,18 @@ $(document).ready(function() {
     });
 });
 
+onReconnect = function(lang) {
+  $.get('/mss/agent/live/' + lang + '/')
+  .success(function(text) {
+    if (text == "REDIRECT") {
+      window.location.href = "/mss/";
+    }
+  });
+};
+
 setLang = function(lang) {
-    window.location = "/mss/lang/"+lang+"/";
-}
+  window.location.href = "/mss/lang/" + lang + "/";
+};
 
 scrollLog = function() {
     $('.log').each(function(i){ this.scrollTop = this.scrollHeight });
