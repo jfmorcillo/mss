@@ -32,20 +32,20 @@ def get_hostname(module):
         Return the current hostname
     """
     from socket import gethostname
-    return gethostname()
+    hostname = gethostname()
+    if hostname == 'localhost':
+        hostname = _("mbs", "system")
+    return hostname
 
 def get_domain(module):
     """
         Return the current domain
-        If none, return example.com
     """
     from socket import getfqdn
     try:
         domain = '.'.join(getfqdn().split('.')[1:])
     except:
-        pass
-    if not domain:
-        domain = _("example.com", "system")
+        domain = _("", "system")
     return domain
 
 def valid_hostname(string):
