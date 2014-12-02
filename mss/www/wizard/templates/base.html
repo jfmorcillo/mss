@@ -42,7 +42,7 @@
             reboot = function() {
                 $.get('{% url reboot_run %}')
                  .success(function() {
-                     window.location.href='{% url logout %}';
+                     window.location.href = '{% url logout %}';
                  })
                  .error(function(xhr) {
                     if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
@@ -56,7 +56,7 @@
                     // Last request was an error (maybe the mss-agent restarted)
                     // so we set the mss-agent language again
                     if (statusError) {
-                        setLang("{{ current_lang }}");
+                        onReconnect("{{ current_lang }}");
                         statusError = false;
                     }
                     // hide status on Ready state
@@ -75,6 +75,12 @@
                         $('#status').removeClass("alert-error");
                         $("#status").slideDown();
                     }
+                    else {
+                        $('#status').addClass("alert-info");
+                        $('#status').removeClass("alert-success");
+                        $('#status').removeClass("alert-error");
+                        $("#status").slideUp();
+                    }
                     // immediately refresh when no error
                     updateStatus(false);
                 })
@@ -82,11 +88,11 @@
                     // Wait a little before displaying the message
                     // requests are also aborted when the user changes pages
                     setTimeout(function() {
-                        statusError = true;
-                        // request aborted
-                        showError(xhr.responseText);
-                        // refresh every 2s on error
-                        setTimeout('updateStatus(false)', 2000);
+                      statusError = true;
+                      // request aborted
+                      showError(xhr.responseText);
+                      // refresh every 1s on error
+                      setTimeout('updateStatus(false)', 1000);
                     }, 100);
                 });
             }

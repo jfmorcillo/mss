@@ -38,6 +38,25 @@ from transaction import Transaction, Steps, State
 xmlrpc = XmlRpc()
 output = {"status": ""}
 
+
+def on_agent_reconnect(request, lang):
+    """
+    Return REDIRECT if the agent was restarded
+    """
+    info = xmlrpc.call('info')
+    if not info['lang'] == lang:
+        xmlrpc.call('set_lang', lang)
+    # check if the agent was restarted
+    # less than 10s ago
+    if time.time() - info['start_time'] < 10:
+        return HttpResponse("REDIRECT")
+    return HttpResponse("")
+
+def set_agent_lang(request, lang):
+    # set agent language
+    xmlrpc.call('set_lang', lang)
+    return HttpResponse("")
+
 # used to change interface + agent lang
 def set_lang(request, lang):
     if "url" in request.GET:
@@ -49,8 +68,7 @@ def set_lang(request, lang):
         request.session['django_language'] = lang
         settings.DEFAULT_LANGUAGE = lang
         activate(lang)
-        # set agent language
-        xmlrpc.call('set_lang', lang)
+        set_agent_lang(request, lang)
     # redirect to url if supplied in GET
     if url:
         return HttpResponseRedirect(url)
