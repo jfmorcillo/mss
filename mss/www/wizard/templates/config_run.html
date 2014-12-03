@@ -86,7 +86,7 @@
                 else {
                     current_task.removeClass("alert-info");
                     current_task.addClass("alert-error");
-                    current_task.html("{% trans "Configuration failed." %}");
+                    current_task.html('{% trans "Configuration failed." %}<br /><br />{% trans "Ask for help to Mandriva Support. Details and conditions on <a href=\"http://serviceplace.mandriva.com/services/\">Mandriva Service Place</a> or by phone +33 1 76 64 16 60." %}');
                     $("#next").html("{% trans "Retry" %}");
                     $("#next").attr("href", "{{ transaction.current_step_url }}");
                     $('#next').removeClass("disabled");
