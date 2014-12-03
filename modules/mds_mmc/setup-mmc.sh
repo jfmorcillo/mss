@@ -114,9 +114,6 @@ cat $nsswitch_template > /etc/nsswitch.conf
 # enable modules
 sed -i 's/disable = 1/disable = 0/' /etc/mmc/plugins/services.ini
 
-# apache redirect for homepage
-cp templates/mbs-homepage.conf /etc/httpd/conf/webapps.d/
-
 # http -> https redirection
 https_redirect mmc /etc/httpd/conf/webapps.d/mmc.conf
 

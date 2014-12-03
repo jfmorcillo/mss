@@ -37,7 +37,8 @@
                 "openldap-clients",
                 "openldap-mandriva-dit",
                 "apache-mod_ssl",
-                "nss-pam-ldapd"
+                "nss-pam-ldapd",
+                "mbs-homepage"
             ]
         }
     ],
