@@ -128,7 +128,7 @@ then
   backup /etc/shorewall/rules
   echo "$ZONE_NAME $vpn_dev detect routeback" >> /etc/shorewall/interfaces
   echo "$ZONE_NAME ipv4" >> /etc/shorewall/zones
-  # setup policies
+  # setup policies and rules
   python setup-fw.py
 fi
 
