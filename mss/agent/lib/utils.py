@@ -39,12 +39,14 @@ def formatExceptionInfo(maxTBlevel=5):
     except KeyError:
         excArgs = "<no args>"
     excTb = traceback.format_tb(trbk, maxTBlevel)
-    return str(excName+" "+excArgs+" : \n"+excTb[0])
+    return str(excName + " " + excArgs + " : \n" + excTb[0])
+
 
 def getINIoption(section, option, ini):
     config = ConfigParser.SafeConfigParser()
     config.read(ini)
     return config.get(section, option)
+
 
 def get_config_option(file, option):
     """
@@ -63,6 +65,7 @@ def get_config_option(file, option):
     else:
         raise OSError("File not found")
 
+
 def grep(search, file):
     if os.path.exists(file):
         with open(file) as f:
@@ -74,6 +77,7 @@ def grep(search, file):
             return False
     else:
         return False
+
 
 def ethernet_ifs():
     ifs = []
@@ -88,6 +92,18 @@ def ethernet_ifs():
                 ifs.append([interface, addr, network, netmask])
 
     return ifs
+
+
+def get_domain():
+    """
+        Return the current domain
+    """
+    from socket import getfqdn
+    try:
+        domain = '.'.join(getfqdn().split('.')[1:])
+    except:
+        domain = _("", "system")
+    return domain
 
 
 class Singleton(type):
