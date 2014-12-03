@@ -42,16 +42,7 @@
         },
         {
             "type":"custom",
-            "name":"network"
-        },
-        {
-            "type":"text",
-            "name":"smb_domain",
-            "require":"yes",
-            "default":"example.com",
-            "validation":"valid_domain",
-            "label":"SAMBA domain name",
-            "help":"The name of your Microsoft domain. Use only alphanumeric characters and dots."
+            "name":"custom"
         },
         {
             "type":"password",

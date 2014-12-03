@@ -1,6 +1,7 @@
 import re
 from mss.agent.managers.translation import TranslationManager
 from mmc.plugins.shorewall import get_zones
+from mss.agent.lib.utils import get_domain
 
 _ = TranslationManager().translate
 
@@ -29,7 +30,7 @@ def valid_password(passwd):
     return None
 
 
-def get_network_config(config):
+def get_custom_config(config):
     zones = get_zones('lan')
     options = []
     for zone in zones:
@@ -42,4 +43,14 @@ def get_network_config(config):
                    'help': _('Choose the network for the DNS zone and DHCP.', 'mds_samba4'),
                    'type': 'options',
                    'options': options})
+    domain = get_domain()
+    config.append({'slug': 'mds_samba4',
+                   'type': 'text',
+                   'name': 'smb_domain',
+                   'require': 'yes',
+                   'default': domain,
+                   'validation': 'valid_domain',
+                   'label': _('SAMBA domain name', 'mds_samba4'),
+                   'help': _('The name of your Microsoft domain. Use only alphanumeric characters and dots like: mandriva.int.', 'mds_samba4')
+                   })
     return config
