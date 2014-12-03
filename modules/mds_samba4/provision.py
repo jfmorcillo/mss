@@ -7,7 +7,7 @@ import socket
 import subprocess
 from time import sleep
 from mmc.plugins.samba4.smb_conf import SambaConf
-from mmc.plugins.network import addZone, addRecord
+from mmc.plugins.network import addZoneWithSubnet, addRecord, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
 from mmc.plugins.shorewall import get_zones, add_rule, get_zones_interfaces
 import re
 import netifaces
@@ -141,22 +141,49 @@ def provision_samba4(mode, realm, admin_password, network):
         sleep(SLEEP_TIME)
         check_ldap_is_running()
 
-    def reconfig_shorewall():
-        print "Configure shorewall"
-        src = os.path.join(os.getcwd(), 'templates',
-                           'shorewall_macro.Samba4AD')
-        dst = os.path.join('/etc/shorewall/', 'macro.Samba4AD')
-        shutil.copy(src, dst)
-        os.chmod(dst, 0600)
+    def configure_network(zone):
 
-        zones = get_zones('lan')
-        for zone in zones:
-            add_rule('Samba4AD/ACCEPT', zone, "fw")
+        def configure_shorewall():
+            print "Configure shorewall"
+            src = os.path.join(os.getcwd(), 'templates',
+                               'shorewall_macro.Samba4AD')
+            dst = os.path.join('/etc/shorewall/', 'macro.Samba4AD')
+            shutil.copy(src, dst)
+            os.chmod(dst, 0600)
 
-        shlaunch("systemctl restart shorewall")
+            zones = get_zones('lan')
+            for zone in zones:
+                add_rule('Samba4AD/ACCEPT', zone, "fw")
 
-    def configure_dns(zone):
-        print ("Configure dns for zone %s" % zone)
+            shlaunch("systemctl restart shorewall")
+
+        def configure_dns_records():
+            rec = {'_ldap._tcp': '0 0 389',
+                   '_kerberos._tcp': '0 0 88',
+                   '_ldap._tcp.dc._msdcs': '0 0 389',
+                   '_kerberos._tcp.dc._msdcs': '0 0 88'}
+            for key, val in rec.items():
+                if not addRecord(zone=realm,
+                                 type='SRV',
+                                 hostname=key,
+                                 value=val + ' ' + nameserver):
+                    fail_provisioning_samba4('Failed to create SRV record %s %s' %
+                                             (key, val))
+                else:
+                    print('Created SRV record %s %s' %
+                          (key, val + ' ' + nameserver))
+
+            shlaunch("systemctl restart named-sdb")
+
+        def configure_dhcp():
+            setSubnetDescription(network, 'AD network')
+            setSubnetAuthoritative(network)
+            setSubnetOption(network, 'domain-name', '\"' + realm + '\"')
+            setSubnetOption(network, 'domain-name-servers', addr)
+            start = IP(ip.net().int() + 100)
+            end = IP(start.int() + 99)
+            addPool(network, 'ADpool', str(start), str(end))
+            shlaunch("systemctl restart dhcpd")
 
         iface = get_zones_interfaces(zone)[0][1]
         if_detail = netifaces.ifaddresses(iface)[netifaces.AF_INET][0]
@@ -165,35 +192,21 @@ def provision_samba4(mode, realm, admin_password, network):
         ip = IP(addr).make_net(netmask)
         network = str(ip.net())
         netmask = ip.prefixlen()
-
         nameserver = shlaunch("hostname", ignore=True, stderr=None).strip()
 
-        addZone(zonename=realm,
-                network=network,
-                netmask=netmask,
-                reverse=True,
-                description='AD zone',
-                nameserver=nameserver,
-                nameserverip=addr)
-        print('Created DNS zone \'%s\' with network=%s, netmask=%s, nameserver=%s, nameserver ip=%s' %
+        addZoneWithSubnet(zonename=realm, network=network, netmask=netmask, reverse=True,
+                          description='AD network', nameserver=nameserver, nameserverip=addr)
+        print ("Configure dns for zone %s" % zone)
+
+        print('Created DNS zone \'%s\' and DHCP network with network=%s, netmask=%s, nameserver=%s, nameserver ip=%s' %
               (realm, network, netmask, nameserver, addr))
 
-        rec = {'_ldap._tcp': '0 0 389',
-               '_kerberos._tcp': '0 0 88',
-               '_ldap._tcp.dc._msdcs': '0 0 389',
-               '_kerberos._tcp.dc._msdcs': '0 0 88'}
-        for key, val in rec.items():
-            if not addRecord(zone=realm,
-                             type='SRV',
-                             hostname=key,
-                             value=val + ' ' + nameserver):
-                fail_provisioning_samba4('Failed to create SRV record %s %s' %
-                                         (key, val))
-            else:
-                print('Created SRV record %s %s' %
-                      (key, val + ' ' + nameserver))
-
-        shlaunch("systemctl restart named-sdb")
+        configure_dns_records()
+        print("### Done configure_dns")
+        configure_dhcp()
+        print("### Done configure_dhcp")
+        configure_shorewall()
+        print("### Done configure_shorewall")
 
     def start_samba4_service():
         print "Starting samba service"
@@ -224,11 +237,7 @@ def provision_samba4(mode, realm, admin_password, network):
     reconfig_ldap_service()
     print("### Done reconfig_ldap_service")
 
-    reconfig_shorewall()
-    print("### Done reconfig_shorewall")
-
-    configure_dns(network)
-    print("### Done configure_dns")
+    configure_network(network)
 
     start_samba4_service()
     print("### Done start_samba4_service")
