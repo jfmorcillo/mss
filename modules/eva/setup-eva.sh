@@ -376,6 +376,10 @@ service smb reload
 virsh pool-define-as --name ISO --type dir --target ${ISO_FOLDER}
 virsh pool-autostart ISO
 virsh pool-start ISO
+# Define a crontab for refreshing ISO pool
+echo "#!/bin/bash" > /etc/cron.d/pool-refresh
+echo "# refresh ISO pool every 5 minutes" >> /etc/cron.d/pool-refresh
+echo "*/5 * * * * root virsh pool-refresh ISO" >> /etc/cron.d/pool-refresh
 
 # Setup sudo commands
 echo "bind 'RETURN: \"\e[1~sudo \e[4~\n\"'" >> ~eva/.bash_profile
