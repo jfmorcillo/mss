@@ -1,0 +1,14 @@
+<!--
+WARNING: THIS IS AN AUTO-GENERATED FILE. CHANGES TO IT ARE LIKELY TO BE
+OVERWRITTEN AND LOST. Changes to this xml configuration should be made using:
+  virsh net-edit bridge
+or other application using the libvirt API.
+-->
+
+<network>
+  <name>bridge-@@INTERFACE@@</name>
+  <uuid>@@UUID@@</uuid>
+  <forward mode='bridge'/>
+  <bridge name='@@INTERFACE@@'/>
+</network>
+

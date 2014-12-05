@@ -12,6 +12,8 @@ QEMU_CONF=templates/qemu.conf
 QEMU_SASL=templates/sasl2-qemu.conf
 SHOREWALL_MACRO=templates/macro.Libvirtd
 APACHE_CONF="templates/libvirt-apache.conf"
+KVM_BRIDGE=templates/network-bridge.xml
+KVM_NAT=templates/network-nat.xml
 
 # set configuration
 cp -f $LIBVIRTD_CONF /etc/libvirt/libvirtd.conf
@@ -35,6 +37,15 @@ virsh pool-undefine default 2>/dev/null || echo ""
 virsh pool-define-as --type dir --name default --target $pool_location
 virsh pool-autostart default
 virsh pool-start default
+
+# Network setup
+virsh net-destroy default 2>/dev/null || echo "No default network found."
+virsh net-undefine default 2>/dev/null || echo ""
+cp -f $KVM_NAT /etc/libvirt/qemu/networks/nat.xml
+sed -i "s/@@UUID@@/`uuidgen`/" /etc/libvirt/qemu/networks/nat.xml
+virsh net-define /etc/libvirt/qemu/networks/nat.xml
+virsh net-autostart nat
+virsh net-start nat
 
 restart_service libvirtd
 
@@ -61,6 +72,14 @@ function configure_bridge {
         echo -n "Configuring bridge firewall."
         sed -i "s/$1/$bridge_name/" /etc/shorewall/interfaces
         echo "done."
+
+	echo -n "Creating bridge in kvm..."
+	cp -f $KVM_BRIDGE /etc/libvirt/qemu/networks/bridge-${bridge_name}.xml
+	sed -i "s/@@INTERFACE@@/${bridge_name}/" /etc/libvirt/qemu/networks/bridge-${bridge_name}.xml
+	sed -i "s/@@UUID@@/`uuidgen`/" /etc/libvirt/qemu/networks/bridge-${bridge_name}.xml
+	virsh net-define /etc/libvirt/qemu/networks/bridge-${bridge_name}.xml
+	virsh net-autostart bridge-${bridge_name}
+	virsh net-start bridge-${bridge_name}
     fi
 }
 
