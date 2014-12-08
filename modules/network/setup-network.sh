@@ -58,7 +58,7 @@ function end_shorewall_conf() {
     backup /etc/shorewall/zones
     backup /etc/shorewall/interfaces
     backup /etc/shorewall/policy
-    backup /etc/shorewall/rules
+    old_rules=`mybackup /etc/shorewall/rules`
     mv $shorewall_zones /etc/shorewall/zones
     mv $shorewall_interfaces /etc/shorewall/interfaces
     mv $shorewall_policy /etc/shorewall/policy
@@ -78,6 +78,7 @@ function allow() {
 
 lan_zones=""
 wan_zones=""
+old_rules=""
 
 begin_shorewall_conf
 
@@ -105,6 +106,8 @@ while [ $# -ne 0 ]; do
 done
 
 end_shorewall_conf
+
+python backport_old_rules "$old_rules"
 
 info_b $"Network and firewall configured."
 

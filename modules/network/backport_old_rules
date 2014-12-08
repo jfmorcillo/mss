@@ -1,0 +1,25 @@
+#!/usr/bin/python
+
+import sys
+
+try:
+    from mmc.plugins.shorewall import ShorewallRules, ShorewallZones
+except:
+    # shorewall module not installed, skip this
+    pass
+else:
+    zones = ShorewallZones()
+    old_rules_file = sys.argv[1]
+    old_rules = ShorewallRules(file=old_rules_file)
+    rules = ShorewallRules()
+
+    # get the current list of all shorewall zones
+    zones_list = list(set(reduce(lambda acc, zs: acc + zs,
+        map(zones.get, ["lan", "wan", "vpn", "fw"]), []
+    )))
+
+    for rule in old_rules.get():
+        # check zones still exists
+        if rule[1] in zones_list and rule[2] in zones_list:
+            # ok add the rule !
+            rules.add(rule[0], rule[1], rule[2], rule[3], rule[4])
