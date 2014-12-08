@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:17+0100\n"
+"POT-Creation-Date: 2014-12-08 15:26+0100\n"
 "PO-Revision-Date: 2014-09-10 20:58+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
@@ -73,11 +73,11 @@ msgid "Reboot"
 msgstr "Reiniciar"
 
 #: transaction.py:117
+#, fuzzy
 msgid ""
-"The installation is finished. The                                       "
-"server must be rebooted. The reboot "
-"can                                       take a few minutes."
-msgstr ""
+"The installation is finished. The server must be rebooted. The reboot can "
+"take a few minutes."
+msgstr "A instalação é concluída. O servidor deve ser reiniciado."
 
 #: views.py:116 templates/login.html:8
 msgid "Welcome"
@@ -390,6 +390,3 @@ msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""
 "Não tem complemento para o Mandriva Server Setup disponível. Tente fazer o "
 "login novamente."
-
-#~ msgid "The installation is finished. The server must be rebooted."
-#~ msgstr "A instalação é concluída. O servidor deve ser reiniciado."

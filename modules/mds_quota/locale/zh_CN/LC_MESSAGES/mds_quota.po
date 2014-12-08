@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2014-12-08 15:26+0100\n"
 "PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
@@ -63,7 +63,7 @@ msgid ""
 "@HOSTNAME@/mmc/."
 msgstr ""
 
-#: mds_quota/__init__.py:56
+#: mds_quota/__init__.py:66
 #, python-format
 msgid "Device %s doesn't exists."
 msgstr ""

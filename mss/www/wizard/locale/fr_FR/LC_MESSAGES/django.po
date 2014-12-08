@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:17+0100\n"
+"POT-Creation-Date: 2014-12-08 15:26+0100\n"
 "PO-Revision-Date: 2014-08-26 12:33+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French <http://translate.mandriva.com/projects/mss/wizard/"
@@ -72,11 +72,11 @@ msgid "Reboot"
 msgstr "Redémarrage"
 
 #: transaction.py:117
+#, fuzzy
 msgid ""
-"The installation is finished. The                                       "
-"server must be rebooted. The reboot "
-"can                                       take a few minutes."
-msgstr ""
+"The installation is finished. The server must be rebooted. The reboot can "
+"take a few minutes."
+msgstr "L'installation est terminée. Le serveur doit être redémarré."
 
 #: views.py:116 templates/login.html:8
 msgid "Welcome"
@@ -388,6 +388,3 @@ msgstr "Installer et configurer les addons sélectionnés"
 #: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr "Aucun addon disponible. Essayez de vous reconnecter."
-
-#~ msgid "The installation is finished. The server must be rebooted."
-#~ msgstr "L'installation est terminée. Le serveur doit être redémarré."

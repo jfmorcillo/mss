@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:17+0100\n"
+"POT-Creation-Date: 2014-12-08 15:26+0100\n"
 "PO-Revision-Date: 2013-06-19 08:13+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
@@ -71,11 +71,12 @@ msgid "Reboot"
 msgstr "Reboot"
 
 #: transaction.py:117
+#, fuzzy
 msgid ""
-"The installation is finished. The                                       "
-"server must be rebooted. The reboot "
-"can                                       take a few minutes."
+"The installation is finished. The server must be rebooted. The reboot can "
+"take a few minutes."
 msgstr ""
+"Die Installation ist abgeschlossen. Der Server muss neu gestartet werden."
 
 #: views.py:116 templates/login.html:8
 msgid "Welcome"
@@ -389,7 +390,3 @@ msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""
 "Kein Addon für Mandriva Server Setup verfügbar. Versuchen Sie es mit einem "
 "erneuten Login."
-
-#~ msgid "The installation is finished. The server must be rebooted."
-#~ msgstr ""
-#~ "Die Installation ist abgeschlossen. Der Server muss neu gestartet werden."

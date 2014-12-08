@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2014-12-08 15:26+0100\n"
 "PO-Revision-Date: 2014-10-07 21:59+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
@@ -70,7 +70,7 @@ msgstr ""
 "Agora você pode configurar as quotas do usuário através da interface de "
 "gerenciamento: https://@HOSTNAME@/mmc/."
 
-#: mds_quota/__init__.py:56
+#: mds_quota/__init__.py:66
 #, python-format
 msgid "Device %s doesn't exists."
 msgstr "Os dispositivos %s não existem."

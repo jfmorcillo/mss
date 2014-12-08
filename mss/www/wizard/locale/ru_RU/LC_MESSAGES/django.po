@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:17+0100\n"
+"POT-Creation-Date: 2014-12-08 15:26+0100\n"
 "PO-Revision-Date: 2013-06-19 08:03+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -72,9 +72,8 @@ msgstr ""
 
 #: transaction.py:117
 msgid ""
-"The installation is finished. The                                       "
-"server must be rebooted. The reboot "
-"can                                       take a few minutes."
+"The installation is finished. The server must be rebooted. The reboot can "
+"take a few minutes."
 msgstr ""
 
 #: views.py:116 templates/login.html:8
