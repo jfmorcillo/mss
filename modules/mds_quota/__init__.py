@@ -19,6 +19,7 @@
 # Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston,
 # MA 02110-1301, USA.
 
+import os
 import psutil
 from mss.agent.managers.translation import TranslationManager
 
@@ -29,15 +30,24 @@ def get_config_info():
     return ("setup-quota.sh", ['filesystems'])
 
 
+def _is_subdir(a, b):
+    """Return True if 'b' is a sub directory of 'a'"""
+    return os.path.commonprefix([a, b]) == a
+
 def get_filesystems(module):
     """
     Return all devices for quotas
     """
-    mountpoints = []
+    mountpoints = {}
     for part in psutil.disk_partitions(all=False):
+        # Filter out any bind mounts
+        if part.device in mountpoints:
+            if _is_subdir(mountpoints[part.device], part.mountpoint):
+                continue
         if part.fstype in ('ext3', 'ext4', 'xfs'):
-            mountpoints.append("%s:%s" % (part.device, part.mountpoint))
-    return mountpoints
+            mountpoints[part.device] = part.mountpoint
+
+    return ["%s:%s" % (dev, mntpnt) for dev, mntpnt in mountpoints.items()]
 
 
 def validate_filesystems(filesystems):
