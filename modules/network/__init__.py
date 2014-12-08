@@ -68,6 +68,9 @@ def get_interfaces_config(config):
                     if interface in line:
                         type = line.split()[0]
                         break
+            # need a type even if not configured
+            if not configured:
+                type = "none"
             if configured:
                 if grep("BOOTPROTO=dhcp", if_file):
                     method = "dhcp"
