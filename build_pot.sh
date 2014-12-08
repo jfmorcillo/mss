@@ -68,10 +68,10 @@ done
 
 popd
 pushd mss/www/wizard
-django-admin.py makemessages -l de_DE -l fr_FR -l pt_BR -l zh_CN
+django-admin.py makemessages -a
 
 popd
 pushd mss/www/errors
-django-admin.py makemessages -l de_DE -l fr_FR -l pt_BR -l zh_CN
+django-admin.py makemessages -a
 
 exit 0

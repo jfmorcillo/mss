@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:59+0100\n"
+"POT-Creation-Date: 2014-12-08 15:17+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,17 +41,17 @@ msgstr ""
 msgid "Failed to setup the database."
 msgstr ""
 
-#: davical/setup-davical.sh:91
+#: davical/setup-davical.sh:97
 msgid "The calendar and addressbook service is configured."
 msgstr ""
 
-#: davical/setup-davical.sh:93
+#: davical/setup-davical.sh:99
 msgid ""
 "- each user can access its personnal calendar at https://@HOSTNAME@/davical/"
 "caldav.php/[user_email]/calendar/ using a calendar client (Thunderbird with "
 "Lightning, iCal...)"
 msgstr ""
 
-#: davical/setup-davical.sh:94
+#: davical/setup-davical.sh:100
 msgid "- you can add shared calendars at https://@HOSTNAME@/mmc/"
 msgstr ""

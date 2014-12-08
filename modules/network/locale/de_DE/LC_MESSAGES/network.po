@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2014-12-08 15:10+0100\n"
 "PO-Revision-Date: 2014-08-28 16:45+0200\n"
 "Last-Translator: Maik Wagner <mwagner@mandriva.com>\n"
 "Language-Team: German <http://translate.mandriva.com/projects/mss/network/"
@@ -36,15 +36,15 @@ msgstr "Schnittstellen"
 msgid "Network setup"
 msgstr "Netzwerkeinrichtung"
 
-#: network/setup-network.sh:109
+#: network/setup-network.sh:112
 msgid "Network and firewall configured."
 msgstr "Netzwerk und Firewall konfiguriert."
 
-#: network/__init__.py:92
+#: network/__init__.py:95
 msgid "Interface type"
 msgstr "Art der Schnittstelle"
 
-#: network/__init__.py:93
+#: network/__init__.py:96
 msgid ""
 "Choose \"External\" if the interface is connected to the Internet. If the "
 "interface is connected to an internal network, choose \"Internal\""
@@ -53,70 +53,70 @@ msgstr ""
 "Wenn die Schnittstelle an ein internes Netzwerk angeschlossen ist, wählen "
 "Sie \"intern\"."
 
-#: network/__init__.py:96
+#: network/__init__.py:99
 msgid "Internal network"
 msgstr "Internes Netzwerk"
 
-#: network/__init__.py:97
+#: network/__init__.py:100
 msgid "External network"
 msgstr "Externes Netzwerk"
 
-#: network/__init__.py:104
+#: network/__init__.py:107
 msgid "Configuration method"
 msgstr "Konfigurationsmethode"
 
-#: network/__init__.py:107
+#: network/__init__.py:110
 msgid "No configuration"
 msgstr "Keine Konfiguration"
 
-#: network/__init__.py:108
+#: network/__init__.py:111
 msgid "DHCP configuration"
 msgstr "DHCP Konfiguration"
 
-#: network/__init__.py:109
+#: network/__init__.py:112
 msgid "Manual configuration"
 msgstr "Manuelle Konfiguration"
 
-#: network/__init__.py:117
+#: network/__init__.py:120
 msgid "IP Address"
 msgstr "IP Adresse"
 
-#: network/__init__.py:122
+#: network/__init__.py:125
 msgid "Netmask"
 msgstr "Netzmaske"
 
-#: network/__init__.py:127
+#: network/__init__.py:130
 msgid "First DNS server"
 msgstr "Erster DNS-Server"
 
-#: network/__init__.py:132
+#: network/__init__.py:135
 msgid "Second DNS server"
 msgstr "Zweiter DNS-Server"
 
-#: network/__init__.py:137
+#: network/__init__.py:140
 msgid "Domain search"
 msgstr "Domain search"
 
-#: network/__init__.py:142
+#: network/__init__.py:145
 msgid "Gateway"
 msgstr "Gateway"
 
-#: network/__init__.py:146
+#: network/__init__.py:149
 msgid "Firewall configuration"
 msgstr "Firewallkonfiguration"
 
-#: network/__init__.py:150
+#: network/__init__.py:153
 msgid "Allow access to Mandriva Server Setup from internal networks"
 msgstr "Zugriff auf Mandriva Server Setup von internen Netzwerken erlauben"
 
-#: network/__init__.py:155
+#: network/__init__.py:158
 msgid "Allow SSH access from internal networks"
 msgstr "SSH-Zugang von internen Netzwerken erlauben"
 
-#: network/__init__.py:160
+#: network/__init__.py:163
 msgid "Allow access to Mandriva Server Setup from external networks"
 msgstr "Zugriff auf Mandriva Server Setup von externen Netzwerken erlauben"
 
-#: network/__init__.py:165
+#: network/__init__.py:168
 msgid "Allow SSH access from external networks"
 msgstr "SSH-Zugang von externen Netzwerken erlauben"

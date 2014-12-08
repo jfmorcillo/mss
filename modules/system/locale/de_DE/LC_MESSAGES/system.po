@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2014-12-08 15:10+0100\n"
 "PO-Revision-Date: 2013-06-10 14:26+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
@@ -60,10 +60,9 @@ msgstr "System Setup"
 msgid "Hostname and domain name configured."
 msgstr "Hostname und Domainname konfiguriert."
 
-#: system/__init__.py:48
-msgid "example.com"
-msgstr "example.com"
-
 #: system/__init__.py:54
 msgid "Incorrect hostname."
 msgstr "Falscher Hostname."
+
+#~ msgid "example.com"
+#~ msgstr "example.com"

@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:29+0200\n"
+"POT-Creation-Date: 2014-12-08 15:17+0100\n"
 "PO-Revision-Date: 2014-11-06 09:06+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
-"Language-Team: Simplified Chinese "
-"<http://translate.mandriva.com/projects/mss/wizard/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
+"mss/wizard/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -69,67 +69,75 @@ msgid "Reboot"
 msgstr "重启"
 
 #: transaction.py:117
-msgid "The installation is finished. The server must be rebooted."
-msgstr "安装已经完成. 服务器将被重启."
+msgid ""
+"The installation is finished. The                                       "
+"server must be rebooted. The reboot "
+"can                                       take a few minutes."
+msgstr ""
 
-#: views.py:103 templates/login.html:7
+#: views.py:116 templates/login.html:8
 msgid "Welcome"
 msgstr "欢迎"
 
-#: views.py:104
+#: views.py:117
 msgid ""
 "Before you can install any services we need to setup a few things with you."
 msgstr "在您安装任何服务之前，我们需要为您配置一些信息."
 
-#: views.py:135
+#: views.py:148
 msgid "MSS agent is unreacheable."
 msgstr "MSS agent 不可使用."
 
-#: templates/base.html:27
+#: templates/base.html:29
 msgid "Hide log"
 msgstr "隐藏日志"
 
-#: templates/base.html:30 templates/config_run.html:160
+#: templates/base.html:32 templates/config_run.html:161
 #: templates/install.html:66 templates/media_add.html:95
 msgid "Show log"
 msgstr "显示日志"
 
-#: templates/base.html:63 templates/base.html.py:151
+#: templates/base.html:65 templates/base.html.py:161
 msgid "Ready"
 msgstr "准备"
 
-#: templates/base.html:126
+#: templates/base.html:129
+#, fuzzy
+msgid "Documentation"
+msgstr "我的验证"
+
+#: templates/base.html:136
 msgid "Update packages list on your server."
 msgstr "更新服务器上的包装列表."
 
-#: templates/base.html:127
+#: templates/base.html:137
 msgid "Update medias"
 msgstr "更新媒体"
 
-#: templates/base.html:131 templates/sections.html:46
+#: templates/base.html:141 templates/sections.html:46
 msgid "Logout"
 msgstr "注销"
 
-#: templates/config.html:109 templates/config.html.py:258
+#: templates/config.html:110 templates/config.html.py:260
 msgid "Add"
 msgstr "添加"
 
-#: templates/config.html:164
+#: templates/config.html:165
 msgid "Re-enter password"
 msgstr "重新输入密码"
 
-#: templates/config.html:281
+#: templates/config.html:284
 msgid "Required field"
 msgstr "必填字段"
 
-#: templates/config.html:284 templates/config_run.html:61
+#: templates/config.html:287 templates/config_run.html:61
 #: templates/download.html:30 templates/install.html:19
 #: templates/media_add.html:29 templates/media_add.html.py:74
 #: templates/preinst.html:34
 msgid "Continue"
 msgstr "继续"
 
-#: templates/config.html:286 templates/download.html:97
+#: templates/config.html:289 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
 #: templates/media_auth.html:40 templates/preinst.html:37
 msgid "Back"
@@ -155,7 +163,7 @@ msgstr "配置警告"
 msgid "Configuration errors"
 msgstr "配置错误"
 
-#: templates/config_run.html:58 templates/config_run.html.py:114
+#: templates/config_run.html:58 templates/config_run.html.py:115
 msgid "Configuration terminated, details are displayed below."
 msgstr "配置终止，详细信息将显示在下方."
 
@@ -167,43 +175,50 @@ msgstr "配置成功."
 msgid "Configuration failed."
 msgstr "配置失败."
 
-#: templates/config_run.html:90 templates/config_run.html.py:111
+#: templates/config_run.html:89
+msgid "Ask for help to Mandriva Support. Details and conditions on <a href=\\"
+msgstr ""
+
+#: templates/config_run.html:90 templates/config_run.html.py:112
 #: templates/download.html:73 templates/install.html:37
 msgid "Retry"
 msgstr "重试"
 
-#: templates/config_run.html:120
+#: templates/config_run.html:121
 msgid "Could not find any configuration script to execute."
 msgstr "找不到任何配置脚本来执行."
 
-#: templates/config_run.html:127
+#: templates/config_run.html:128
 msgid "Running configuration..."
 msgstr "运行配置..."
 
-#: templates/config_run.html:157 templates/media_add.html:92
+#: templates/config_run.html:158 templates/media_add.html:92
 msgid "Waiting..."
 msgstr "稍候..."
 
-#: templates/config_run.html:180 templates/download.html:95
+#: templates/config_run.html:181 templates/download.html:95
 #: templates/install.html:74 templates/media_add.html:104
 msgid "Please wait..."
 msgstr "请稍等..."
 
+#: templates/config_run.html:183 templates/end.html:17
+msgid "Home"
+msgstr "主页"
+
 #: templates/download.html:55
+#, python-brace-format
 msgid "Downloading <strong>{0}</strong>: {1}..."
 msgstr "下载 <strong>{0}</strong>: {1}..."
 
 #: templates/download.html:63
+#, python-brace-format
 msgid "Addon <strong>{0}</strong> downloaded."
 msgstr "插件<strong>{0}</strong> 下载完成."
 
 #: templates/download.html:71
+#, python-brace-format
 msgid "Failed to download <strong>{0}</strong> addon."
 msgstr "无法下载<strong>{0}</strong>插件."
-
-#: templates/end.html:17
-msgid "Home"
-msgstr "主页"
 
 #: templates/install.html:17
 msgid "Installation succeded."
@@ -222,57 +237,63 @@ msgid "The following addon is being installed"
 msgid_plural "The following addons are being installed"
 msgstr[0] "以下插件已经安装"
 
-#: templates/login.html:9
+#: templates/login.html:10
 msgid ""
 "Mandriva Server Setup (<em>MSS</em>) is a simple tool to help you quickly "
 "setup the services you need on your server."
-msgstr "Mandriva 服务器设置(<em>MSS</em>) 　为一个简单的工具来帮助您在服务器上快速的设置所需要的服务."
+msgstr ""
+"Mandriva 服务器设置(<em>MSS</em>) 　为一个简单的工具来帮助您在服务器上快速的"
+"设置所需要的服务."
 
-#: templates/login.html:9
+#: templates/login.html:10
 msgid "Login to begin to setup your server."
 msgstr "登录开始设置您的服务器."
 
-#: templates/login.html:12 templates/login.html.py:17
+#: templates/login.html:13 templates/login.html.py:18
 msgid "Login"
 msgstr "登录"
 
-#: templates/login.html:20
+#: templates/login.html:21
 msgid "Wrong username or password."
 msgstr "用户名或是密码错误."
 
-#: templates/login_form.html:12 templates/media_auth.html:21
+#: templates/login_form.html:14 templates/media_auth.html:21
 msgid "Your my.mandriva.com email address."
 msgstr "您的my.mandriva.com 　邮件地址."
 
-#: templates/login_form.html:16 templates/media_auth.html:29
+#: templates/login_form.html:18 templates/media_auth.html:29
 msgid "Your my.mandriva.com password."
 msgstr "您的my.mandriva.com 密码."
 
-#: templates/login_form.html:19
+#: templates/login_form.html:21
 msgid "Use your Mandriva account to login."
 msgstr "使用您的Mandriva账户登录."
 
-#: templates/login_form.html:28
+#: templates/login_form.html:21
+msgid "Forgot&nbsp;your&nbsp;password?"
+msgstr ""
+
+#: templates/login_form.html:30
 msgid "The server <strong>root</strong> password."
 msgstr "服务器 <strong>root</strong> 密码."
 
-#: templates/login_form.html:31
+#: templates/login_form.html:33
 msgid "No internet connection, use the root password to login."
 msgstr "无网络连接，使用 root 密码登录."
 
-#: templates/login_form.html:52 templates/media_auth.html:16
-msgid "Username"
-msgstr "用户名"
-
-#: templates/login_form.html:58 templates/media_auth.html:25
-msgid "Password"
-msgstr "密码"
-
-#: templates/login_form.html:64
+#: templates/login_form.html:54
 msgid "Language"
 msgstr "语言"
 
-#: templates/login_form.html:71
+#: templates/login_form.html:67 templates/media_auth.html:16
+msgid "Username"
+msgstr "用户名"
+
+#: templates/login_form.html:73 templates/media_auth.html:25
+msgid "Password"
+msgstr "密码"
+
+#: templates/login_form.html:80
 msgid "Enter"
 msgstr "进入"
 
@@ -357,3 +378,6 @@ msgstr "安装和配置已选择的插件"
 #: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr "无MSS可使用的插件，请重新登录再试."
+
+#~ msgid "The installation is finished. The server must be rebooted."
+#~ msgstr "安装已经完成. 服务器将被重启."

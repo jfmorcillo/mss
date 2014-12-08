@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2014-12-08 15:10+0100\n"
 "PO-Revision-Date: 2014-11-27 10:35+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French <http://translate.mandriva.com/projects/mss/openvpn-"
@@ -38,10 +38,6 @@ msgstr "Documentation"
 #: .actions[2].name
 msgid "Client configuration"
 msgstr "Configuration des clients"
-
-#: .name
-msgid "Virtual Private Network (VPN) service"
-msgstr "Service VPN"
 
 #: .packages[0].name
 msgid "all"
@@ -120,6 +116,10 @@ msgstr "Courriel de contact"
 #: .categories[0].name
 msgid "Network"
 msgstr "Réseau"
+
+#: .name
+msgid "Virtual Private Network (VPN) service"
+msgstr "Service VPN"
 
 #: openvpn/setup-openvpn.sh:95
 msgid "Users authorized to connect to the VPN"
