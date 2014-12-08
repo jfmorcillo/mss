@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-11-06 09:52+0200\n"
+"PO-Revision-Date: 2014-12-08 20:46+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese "
 "<http://translate.mandriva.com/projects/mss/network/zh_CN/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: .description
 msgid "Configure network interfaces"
@@ -31,7 +31,7 @@ msgstr "所有"
 
 #: .config[0].name
 msgid "interfaces"
-msgstr "interfaces"
+msgstr "接口"
 
 #: .name
 msgid "Network setup"
