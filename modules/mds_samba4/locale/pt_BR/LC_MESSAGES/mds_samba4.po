@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-09 18:34+0200\n"
-"PO-Revision-Date: 2014-12-09 18:34+0200\n"
+"PO-Revision-Date: 2014-12-09 19:12+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_samba4-mbs2/pt_BR/>\n"
@@ -19,6 +19,8 @@ msgid ""
 "Use MBS as a Domain Controller with SAMBA 4 and provide Windows file shares "
 "on your network"
 msgstr ""
+"Usar o MBS como um Controlador de Domínio com o SAMBA 4 e fornecer "
+"compartilhamentos de arquivos Windows em sua rede"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -30,23 +32,23 @@ msgstr "tudo"
 
 #: .config[0].help
 msgid "Which type of provisioning of SAMBA 4"
-msgstr ""
+msgstr "Qual o tipo de provisionamento do SAMBA 4"
 
 #: .config[0].label
 msgid "Mode"
-msgstr ""
+msgstr "Modo"
 
 #: .config[0].options[0].name
 msgid "Primary Domain Controller"
-msgstr ""
+msgstr "Controlador de Domínio Primário"
 
 #: .config[0].name
 msgid "smb_mode"
-msgstr ""
+msgstr "smb_mode"
 
 #: .config[1].name
 msgid "custom"
-msgstr ""
+msgstr "personalizar"
 
 #: .config[2].help
 msgid ""
@@ -54,63 +56,72 @@ msgid ""
 "composed, at least, of 8 characters with one number, one capital letter and "
 "one lowercase letter."
 msgstr ""
+"Senha para a conta do Administrador no domínio Microsoft. A senha deve ser "
+"composta, pelo menos, de 8 caracteres com um um número, uma letra maiúscula "
+"e uma letra minúscula."
 
 #: .config[2].label
 msgid "Administrator password"
-msgstr ""
+msgstr "Senha do administrador"
 
 #: .config[2].name
 msgid "smb_passwd"
-msgstr ""
+msgstr "smb_password"
 
 #: .categories[0].name
 msgid "Users"
-msgstr ""
+msgstr "Usuários"
 
 #: .name
 msgid "Windows domain controller and file sharing management"
 msgstr ""
+"Controlador do domínio Windows e gerenciamento do compartilhamento de "
+"arquivos"
 
 #: mds_samba4/setup-samba4.sh:15
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
 msgstr ""
+"Agora você poderá usar a interface de gerenciamento para administrar seus "
+"usuários e compartilhamentos do Windows em https://@HOSTNAME@/mmc/."
 
 #: mds_samba4/__init__.py:16
 msgid "Incorrect SAMBA domain name."
-msgstr ""
+msgstr "Nome de domínio SAMBA incorreto."
 
 #: mds_samba4/__init__.py:23
 msgid "Password must be at least 8 characters long"
-msgstr ""
+msgstr "A senha deve ser ter pelo menos 8 caracteres"
 
 #: mds_samba4/__init__.py:25
 msgid "Password must have at least one number"
-msgstr ""
+msgstr "A senha deve ter pelo menos um número"
 
 #: mds_samba4/__init__.py:27
 msgid "Password must have at least one capital letter"
-msgstr ""
+msgstr "A senha deve ter pelo menos uma letra maiúscula"
 
 #: mds_samba4/__init__.py:29
 msgid "Password must have at least one lowercase letter"
-msgstr ""
+msgstr "A senha deve ter pelo menos uma letra minúscula"
 
 #: mds_samba4/__init__.py:42
 msgid "Network"
-msgstr ""
+msgstr "Rede"
 
 #: mds_samba4/__init__.py:43
 msgid "Choose the network for the DNS zone and DHCP."
-msgstr ""
+msgstr "Escolha a rede para a zona DNS e DHCP."
 
 #: mds_samba4/__init__.py:53
 msgid "SAMBA domain name"
-msgstr ""
+msgstr "Nome de domínio SAMBA"
 
 #: mds_samba4/__init__.py:54
 msgid ""
 "The name of your Microsoft domain. Use only alphanumeric characters and dots "
 "like: mandriva.int."
 msgstr ""
+"O nome do seu domínio Microsoft. Use apenas caracteres alfanuméricos e "
+"pontos como: mandriva.int."
