@@ -1,7 +1,9 @@
 import re
 from mss.agent.managers.translation import TranslationManager
-from mmc.plugins.shorewall import get_zones
+from mmc.plugins.shorewall import get_zones, get_zones_interfaces
 from mss.agent.lib.utils import get_domain
+import netifaces
+from IPy import IP
 
 _ = TranslationManager().translate
 
@@ -32,9 +34,17 @@ def valid_password(passwd):
 
 def get_custom_config(config):
     zones = get_zones('lan')
+    interfaces = get_zones_interfaces(zones)
     options = []
-    for zone in zones:
-        options.append({'name': zone, 'value': zone})
+    for interface in interfaces:
+        if_detail = netifaces.ifaddresses(interface[1])
+        # check interface is configured
+        if netifaces.AF_INET in if_detail:
+            addr = if_detail[netifaces.AF_INET][0]['addr']
+            netmask = if_detail[netifaces.AF_INET][0]['netmask']
+            network = str(IP(addr).make_net(netmask).net())
+            options.append({'name': interface[0] + '(' + network + ')',
+                            'value': interface[1]})
 
     config.append({'slug': 'mds_samba4',
                    'name': 'net',
