@@ -12,7 +12,7 @@
         {
             "slug": "mbs_repo",
             "name": "Mandriva Business Server repository",
-            "url": "https://mirror.mandriva.com/factory/x86_64/",
+            "url": "https://mirror.mandriva.com/mbs2/x86_64/",
             "options": "--curl-options '-k' --distrib",
             "restricted": true
         }
