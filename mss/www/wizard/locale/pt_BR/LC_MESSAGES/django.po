@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-08 15:26+0100\n"
-"PO-Revision-Date: 2014-12-09 18:46+0200\n"
+"PO-Revision-Date: 2014-12-09 18:49+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/wizard-mbs2/pt_BR/>\n"
@@ -50,7 +50,7 @@ msgstr "Uma ou mais mídias necessitam de autenticação"
 
 #: transaction.py:74
 msgid "Medias add"
-msgstr "Adicionar midias"
+msgstr "Adicionar mídias"
 
 #: transaction.py:81
 msgid "Installation"
@@ -234,7 +234,7 @@ msgstr "Instalação com sucesso."
 
 #: templates/install.html:31
 msgid "Installation failed. Update your medias and retry to install."
-msgstr "Falha na instalação. Atualize suas midias e tente instalar novamente."
+msgstr "Falha na instalação. Atualize suas mídias e tente instalar novamente."
 
 #: templates/install.html:33
 msgid "Installation failed."
@@ -272,7 +272,7 @@ msgstr "Seu endereço de email no my.mandriva.com."
 
 #: templates/login_form.html:18 templates/media_auth.html:29
 msgid "Your my.mandriva.com password."
-msgstr "Sua senha no my.mandriva.com."
+msgstr "Sua senha em my.mandriva.com."
 
 #: templates/login_form.html:21
 msgid "Use your Mandriva account to login."
