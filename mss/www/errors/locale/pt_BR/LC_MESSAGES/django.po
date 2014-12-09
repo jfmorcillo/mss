@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-09-01 22:28+0200\n"
+"PO-Revision-Date: 2014-12-09 19:13+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/errors/pt_BR/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: templates/errors/404.html:6
 msgid "Page not found"
@@ -85,7 +85,7 @@ msgstr "Obrigado pelo seu feedback!"
 #: templates/errors/traceback_sent.html:8
 msgid "Developers have been notified and will take care of the issue."
 msgstr ""
-"Os desenvolvedores já foram notificados e estão cuidando do desta questão. "
+"Os desenvolvedores já foram notificados e estão cuidando do desta questão."
 
 #: templates/errors/traceback_sent.html:9
 msgid "Sorry for the inconvenience."
