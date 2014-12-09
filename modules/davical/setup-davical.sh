@@ -85,6 +85,7 @@ echo "Stopping PostGre"
 service postgresql stop
 sed -i "s,#unix_socket_directory = '',unix_socket_directory= '/var/run/postgresql/',g" /var/lib/pgsql/data/postgresql.conf
 echo "Starting PostGre"
+chown -R postgres:postgres /var/run/postgresql
 service postgresql start
 
 ###Sync the ldap user list with Davical user list (user provisioning)
