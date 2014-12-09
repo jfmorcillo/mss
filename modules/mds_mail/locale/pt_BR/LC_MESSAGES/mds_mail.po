@@ -10,7 +10,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-10-07 22:02+0200\n"
+"PO-Revision-Date: 2014-12-09 19:15+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/mds_mail/pt_BR/>\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: .description .desc
 msgid "Complete mail service with POP/IMAP, anti-virus and anti-spam toolkits"
@@ -137,7 +137,7 @@ msgstr ""
 
 #: mds_mail/setup-mail.sh:130
 msgid "- the mail domain $DOMAIN has been created"
-msgstr "- o domínio de e-mail $DOMAIN foi criado."
+msgstr "- o domínio de e-mail $DOMAIN foi criado"
 
 #: mds_mail/setup-mail.sh:131
 msgid "- SSL is enabled on the SMTP server"
