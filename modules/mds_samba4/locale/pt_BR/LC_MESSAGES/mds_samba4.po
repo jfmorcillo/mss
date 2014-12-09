@@ -1,3 +1,19 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-12-09 18:34+0200\n"
+"PO-Revision-Date: 2014-12-09 18:34+0200\n"
+"Last-Translator: Andre <andre@mandriva.com>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.mandriva.com/projects/mss/mds_samba4-mbs2/pt_BR/>\n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.1-dev\n"
+
 #: .description
 msgid ""
 "Use MBS as a Domain Controller with SAMBA 4 and provide Windows file shares "
@@ -6,11 +22,11 @@ msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
+msgstr "Interface de Gerenciamento"
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "tudo"
 
 #: .config[0].help
 msgid "Which type of provisioning of SAMBA 4"
