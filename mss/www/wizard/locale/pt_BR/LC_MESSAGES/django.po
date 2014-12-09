@@ -11,16 +11,16 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-08 15:26+0100\n"
-"PO-Revision-Date: 2014-09-10 20:58+0200\n"
+"PO-Revision-Date: 2014-12-09 18:46+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
-"mss/wizard/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) "
+"<http://translate.mandriva.com/projects/mss/wizard-mbs2/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: transaction.py:48
 msgid "Installation summary"
@@ -73,11 +73,12 @@ msgid "Reboot"
 msgstr "Reiniciar"
 
 #: transaction.py:117
-#, fuzzy
 msgid ""
 "The installation is finished. The server must be rebooted. The reboot can "
 "take a few minutes."
-msgstr "A instalação é concluída. O servidor deve ser reiniciado."
+msgstr ""
+"A instalação foi concluída. O servidor deve ser reiniciado. Isto pode levar "
+"alguns minutos."
 
 #: views.py:116 templates/login.html:8
 msgid "Welcome"
@@ -108,9 +109,8 @@ msgid "Ready"
 msgstr "Pronto"
 
 #: templates/base.html:129
-#, fuzzy
 msgid "Documentation"
-msgstr "Minha autenticação"
+msgstr "Documentação"
 
 #: templates/base.html:136
 msgid "Update packages list on your server."
@@ -184,6 +184,7 @@ msgstr "A configuração falhou."
 #: templates/config_run.html:89
 msgid "Ask for help to Mandriva Support. Details and conditions on <a href=\\"
 msgstr ""
+"Solicitar ajuda ao Suporte Mandriva. Detalhes e condições estão em <a href=\\"
 
 #: templates/config_run.html:90 templates/config_run.html.py:112
 #: templates/download.html:73 templates/install.html:37
@@ -279,7 +280,7 @@ msgstr "Use sua conta Mandriva para entrar."
 
 #: templates/login_form.html:21
 msgid "Forgot&nbsp;your&nbsp;password?"
-msgstr ""
+msgstr "Esqueceu&nbsp;sua&nbsp;senha?"
 
 #: templates/login_form.html:30
 msgid "The server <strong>root</strong> password."
