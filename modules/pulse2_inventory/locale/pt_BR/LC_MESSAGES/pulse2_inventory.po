@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-10-07 22:02+0200\n"
+"PO-Revision-Date: 2014-12-09 19:19+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) "
 "<http://translate.mandriva.com/projects/mss/pulse2_inventory/pt_BR/>\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: .description .desc
 msgid "The inventory management module of Pulse2"
@@ -82,7 +82,7 @@ msgstr "Permitir o acesso a partir de redes externas"
 
 #: .categories[0].name
 msgid "Pulse2"
-msgstr "Pulse2"
+msgstr "Pulse"
 
 #: pulse2_inventory/setup-pulse2-inventory.sh:105
 msgid ""
