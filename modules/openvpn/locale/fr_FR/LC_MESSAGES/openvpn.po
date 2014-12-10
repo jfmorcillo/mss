@@ -11,10 +11,10 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-08 15:10+0100\n"
-"PO-Revision-Date: 2014-12-08 19:51+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
-"Language-Team: French <http://translate.mandriva.com/projects/mss/openvpn-"
-"mbs2/fr_FR/>\n"
+"PO-Revision-Date: 2014-12-10 14:17+0200\n"
+"Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
+"Language-Team: French <http://translate.mandriva.com/projects/mss-"
+"mbs2/openvpn/fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -29,7 +29,7 @@ msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr "Interface d'administration"
+msgstr "Console de gestion"
 
 #: .actions[1].name
 msgid "Addon documentation"
@@ -45,12 +45,11 @@ msgstr "all"
 
 #: .config[0].name
 msgid "listen"
-msgstr ""
+msgstr "listen"
 
 #: .config[1].name
-#, fuzzy
 msgid "vpn_network"
-msgstr "openvpn_networks"
+msgstr "vpn_network"
 
 #: .config[1].label
 msgid "VPN network"
@@ -61,25 +60,24 @@ msgid ""
 "Specify the VPN network address. It should not conflict with one of your "
 "current networks."
 msgstr ""
+"Spécifiez l'adresse du réseau privé virtuel. Ce réseau ne doit pas être en "
+"conflit avec vos réseaux actuels."
 
 #: .config[2].name
-#, fuzzy
 msgid "push_networks"
-msgstr "openvpn_networks"
+msgstr "push_networks"
 
 #: .config[3].name
-#, fuzzy
 msgid "country"
-msgstr "openvpn_country"
+msgstr "country"
 
 #: .config[3].label
 msgid "Country code"
 msgstr "Code du pays"
 
 #: .config[4].name
-#, fuzzy
 msgid "province"
-msgstr "Région"
+msgstr "province"
 
 #: .config[4].label
 msgid "Province"
@@ -87,7 +85,7 @@ msgstr "Région"
 
 #: .config[5].name
 msgid "city"
-msgstr ""
+msgstr "city"
 
 #: .config[5].label
 msgid "City"
@@ -99,7 +97,7 @@ msgstr "Nom de votre organisation"
 
 #: .config[6].name
 msgid "org"
-msgstr ""
+msgstr "org"
 
 #: .config[6].label
 msgid "Organization"
@@ -107,11 +105,11 @@ msgstr "Organisation"
 
 #: .config[7].name
 msgid "email"
-msgstr ""
+msgstr "email"
 
 #: .config[7].label
 msgid "Contact email"
-msgstr "Courriel de contact"
+msgstr "Email de contact"
 
 #: .categories[0].name
 msgid "Network"
@@ -123,7 +121,7 @@ msgstr "Service VPN"
 
 #: openvpn/setup-openvpn.sh:95
 msgid "Users authorized to connect to the VPN"
-msgstr ""
+msgstr "Utilisateurs autorisés à se connecter au VPN"
 
 #: openvpn/setup-openvpn.sh:147
 msgid "The VPN service is running."
@@ -156,28 +154,23 @@ msgstr ""
 
 #: openvpn/__init__.py:60
 msgid "Listen address"
-msgstr ""
+msgstr "Adresse d'écoute"
 
 #: openvpn/__init__.py:61
-#, fuzzy
 msgid ""
 "The IP address where the VPN server will listen. It must be accessible by "
 "your VPN clients."
 msgstr ""
-"Interface réseau où le serveur VPN écoutera. Elle doit être accessible par "
-"les clients de votre VPN."
+"Adresse IP où le serveur VPN écoutera. Elle doit être accessible par les "
+"clients de votre VPN."
 
 #: openvpn/__init__.py:89
-#, fuzzy
 msgid "Shared networks"
-msgstr "Réseau VPN"
+msgstr "Réseaux partagés"
 
 #: openvpn/__init__.py:90
-#, fuzzy
 msgid "The list of internal networks that will be accessible to VPN clients."
-msgstr ""
-"Interface réseau où le serveur VPN écoutera. Elle doit être accessible par "
-"les clients de votre VPN."
+msgstr "La liste des réseaux internes qui seront accessibles aux clients VPN."
 
 #~ msgid "openvpn_province"
 #~ msgstr "openvpn_province"
