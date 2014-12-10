@@ -3,8 +3,8 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-08 15:10+0100\n"
-"PO-Revision-Date: 2014-12-08 19:53+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-12-10 11:25+0200\n"
+"Last-Translator: Jean-François <jfmorcillo@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/mds_samba4-mbs2/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -28,7 +28,7 @@ msgstr "Interface d'administration"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tous"
 
 #: .config[0].help
 msgid "Which type of provisioning of SAMBA 4"
