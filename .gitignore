@@ -8,3 +8,4 @@ doc/build
 mss/www/local_settings.py
 setup.cfg
 requirements/no_dep
+mss/www/*/locale/en/
