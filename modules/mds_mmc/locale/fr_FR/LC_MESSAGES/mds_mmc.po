@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-08-28 12:07+0200\n"
-"Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
+"PO-Revision-Date: 2014-12-10 11:25+0200\n"
+"Last-Translator: Jean-François <jfmorcillo@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/mds_mmc/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: .description .desc
 msgid "Users and groups management"
@@ -34,7 +34,7 @@ msgstr "Interface d'administration MBS"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tous"
 
 #: .config[0].help
 msgid ""
