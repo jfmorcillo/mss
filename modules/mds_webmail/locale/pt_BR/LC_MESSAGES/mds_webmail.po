@@ -10,16 +10,16 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-11-27 10:03+0100\n"
-"PO-Revision-Date: 2014-10-07 22:02+0200\n"
+"PO-Revision-Date: 2014-12-10 21:29+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
-"mss/mds_webmail/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects"
+"/mss-mbs2/mds_webmail/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
-"X-Generator: Weblate 2.0-dev\n"
+"X-Generator: Weblate 2.1-dev\n"
 
 #: .description
 msgid "Roundcube, a complete webmail solution for your mail service"
@@ -27,7 +27,7 @@ msgstr "Roundcube, uma completa solução de webmail para o serviço de Emails"
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr "Interface de Gerenciamento"
+msgstr "Interface de gerenciamento"
 
 #: .actions[1].name
 msgid "Webmail interface"
