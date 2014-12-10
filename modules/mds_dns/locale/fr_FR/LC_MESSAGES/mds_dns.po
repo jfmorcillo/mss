@@ -10,8 +10,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-12-08 19:51+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-12-10 11:25+0200\n"
+"Last-Translator: Jean-François <jfmorcillo@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/mds_dns/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -35,7 +35,7 @@ msgstr "Service DNS"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tous"
 
 #: .config[0].name
 msgid "bind_networks"
