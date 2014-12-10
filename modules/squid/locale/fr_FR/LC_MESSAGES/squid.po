@@ -9,8 +9,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-26 12:05+0200\n"
-"PO-Revision-Date: 2014-12-08 19:51+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-12-10 11:27+0200\n"
+"Last-Translator: Jean-François <jfmorcillo@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/squid/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -22,7 +22,7 @@ msgstr ""
 
 #: .description .desc
 msgid "Restrict and cache internet access"
-msgstr "Restreind et cache les accès à Internet"
+msgstr "Restreint et met en mémoire tampon les accès à Internet"
 
 #: .actions[0].name
 msgid "Management interface"
@@ -34,7 +34,7 @@ msgstr "Service de proxy-cache"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tous"
 
 #: .config[0].help
 msgid ""
@@ -74,7 +74,7 @@ msgstr "Réseau"
 
 #: squid/setup-squid.sh:58
 msgid "Something went wrong while creating the user groups."
-msgstr "Erreur lors de la création des groupes"
+msgstr "Erreur lors de la création des groupes."
 
 #: squid/setup-squid.sh:73
 msgid "The proxy service is running."
@@ -82,7 +82,7 @@ msgstr "Le service de proxy est en exécution."
 
 #: squid/setup-squid.sh:75
 msgid "Configure your clients to access the proxy service at @HOSTNAME@:3128"
-msgstr "Configurez le proxy de vos clients sur @HOSTNAME@:3128."
+msgstr "Configurez le proxy de vos clients sur @HOSTNAME@:3128"
 
 #: squid/setup-squid.sh:77
 msgid ""
@@ -98,4 +98,4 @@ msgstr "Accès complet à Internet"
 
 #: squid/create-groups.py:12
 msgid "Filtered access to Internet"
-msgstr "Accès restreind à Internet"
+msgstr "Accès restreint à Internet"
