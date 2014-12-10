@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-12-08 15:10+0100\n"
-"PO-Revision-Date: 2014-12-10 10:59+0200\n"
-"Last-Translator: Stéphane <spointu@mandriva.com>\n"
+"PO-Revision-Date: 2014-12-10 11:25+0200\n"
+"Last-Translator: Jean-François <jfmorcillo@mandriva.com>\n"
 "Language-Team: French <http://translate.mandriva.com/projects/mss/openvpn-"
 "mbs2/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -41,7 +41,7 @@ msgstr "Configuration des clients"
 
 #: .packages[0].name
 msgid "all"
-msgstr "all"
+msgstr "tous"
 
 #: .config[0].name
 msgid "listen"
