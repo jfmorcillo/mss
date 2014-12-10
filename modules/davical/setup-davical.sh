@@ -75,9 +75,6 @@ https_redirect davical $APACHE_DAVICAL_CONF
 mkdir -p /etc/mmc/hooks/
 cp ${DAVICAL_MMC_HOOK} /etc/mmc/hooks/
 
-restart_service $SERVICE
-restart_service $SERVICE_MMC
-
 ###Open the firewall port
 #No need to open a particular port as Davical listen on the standard http port that should be already opened
 
@@ -94,6 +91,9 @@ su apache -c "/usr/bin/php --define 'error_reporting = E_ALL & ~E_DEPRECATED & ~
 #cron rule for later sync
 cat $DAVICAL_CRON_TEMPLATE > $DAVICAL_CRON
 sed -i "s/\@FQDN\@/$FQDN/" $DAVICAL_CRON
+
+restart_service $SERVICE
+restart_service $SERVICE_MMC
 
 info_b $"The calendar and addressbook service is configured."
 
