@@ -11,8 +11,8 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2014-08-14 02:39+0200\n"
-"PO-Revision-Date: 2014-11-27 10:35+0200\n"
-"Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
+"PO-Revision-Date: 2014-12-10 10:59+0200\n"
+"Last-Translator: Stéphane <spointu@mandriva.com>\n"
 "Language-Team: French "
 "<http://translate.mandriva.com/projects/mss/openvpn/fr_FR/>\n"
 "Language: fr_FR\n"
@@ -89,7 +89,7 @@ msgstr "openvpn_email"
 
 #: .config[4].label
 msgid "Contact email"
-msgstr "Courriel de contact"
+msgstr "Email de contact"
 
 #: .config[5].name
 msgid "openvpn_networks"
