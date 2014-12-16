@@ -26,4 +26,4 @@ for desc_file in glob.glob('modules/*/desc.json'):
     for pkgs in desc['packages']:
         packages += pkgs["rpms"]
 
-print " ".join(packages)
+print(" ".join(packages))
