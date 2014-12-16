@@ -66,6 +66,7 @@ cat $roundcube_db_conf_template > /usr/share/roundcubemail/plugins/calendar/conf
 sed -i "s/\@MDSSERVER\@/$MDSSERVER/" /usr/share/roundcubemail/plugins/calendar/config.inc.php
 sed -i "s/^\$rcmail_config\['plugins'\].*/\$rcmail_config['plugins'] = array('managesieve', 'subscriptions_option', 'calendar');/" /etc/roundcubemail/main.inc.php
 
+sqlite /var/lib/roundcubemail/sqlite.db < /usr/share/roundcubemail/SQL/sqlite.initial.sql
 sqlite /var/lib/roundcubemail/sqlite.db < /usr/share/roundcubemail/plugins/calendar/SQL/sqlite.sql
 
 # http -> https redirection
