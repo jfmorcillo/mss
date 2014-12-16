@@ -27,7 +27,8 @@
                      "mbs-mmc-hooks",
                      "mmc-web-davical",
                      "python-mmc-davical",
-		     "sqlite3-tools"]
+		     "sqlite-tools",
+		     "php-pear-MDB2_Driver_sqlite"]
         }
     ],
     "dependencies": ["postgresql", "mds_webmail"],
