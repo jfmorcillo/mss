@@ -9,7 +9,7 @@ import json
 import glob
 
 exclude_modules = []
-packages = []
+packages = set()
 
 with open('MANIFEST.in') as h:
     for line in h.readlines():
@@ -24,6 +24,6 @@ for desc_file in glob.glob('modules/*/desc.json'):
     if 'packages' not in desc:
         continue
     for pkgs in desc['packages']:
-        packages += pkgs["rpms"]
+        packages |= set(pkgs["rpms"])
 
 print("\n".join(packages))
