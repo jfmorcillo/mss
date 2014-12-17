@@ -26,9 +26,7 @@
                      "roundcubemail-plugins",
                      "mbs-mmc-hooks",
                      "mmc-web-davical",
-                     "python-mmc-davical",
-		     "sqlite-tools",
-		     "php-pear-MDB2_Driver_sqlite"]
+                     "python-mmc-davical"]
         }
     ],
     "dependencies": ["postgresql", "mds_webmail"],

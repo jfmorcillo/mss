@@ -28,7 +28,8 @@
                 "sqlite-tools",
                 "php-fileinfo",
                 "php-pdo_sqlite",
-                "php-mcrypt"
+                "php-mcrypt",
+		"php-pear-MDB2_Driver_sqlite"
             ]
         }
     ],
