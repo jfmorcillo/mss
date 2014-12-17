@@ -36,7 +36,7 @@
                 "mmc-web-dyngroup",
                 "python-mmc-dyngroup",
                 "python-pulse2-common-database-dyngroup",
-                "nsis",
+                "mingw32-nsis",
                 "mingw32-filesystem",
                 "mingw32-binutils",
                 "mingw32-gcc",
