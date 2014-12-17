@@ -25,7 +25,7 @@ if [ -f /var/lib/roundcubemail/sqlite.db ]; then
 fi
 mkdir -p /var/lib/roundcubemail
 chown apache /var/lib/roundcubemail
-sqlite3 /var/lib/roundcubemail/sqlite.db < /usr/share/doc/roundcubemail/SQL/sqlite.initial.sql
+sqlite /var/lib/roundcubemail/sqlite.db < /usr/share/doc/roundcubemail/SQL/sqlite.initial.sql
 chown apache:apache /var/lib/roundcubemail/sqlite.db
 chmod 0600 /var/lib/roundcubemail/sqlite.db
 

@@ -25,7 +25,7 @@
             "name": "all",
             "rpms": [
                 "roundcubemail",
-                "sqlite3-tools",
+                "sqlite-tools",
                 "php-fileinfo",
                 "php-pdo_sqlite",
                 "php-mcrypt"
