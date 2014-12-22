@@ -29,6 +29,8 @@
                     $("#install-task").addClass("alert-error");
                     if (r.code == 13 || r.code == 14)
                         $(".alert").html("{% trans "Installation failed. Update your medias and retry to install." %}");
+                    else if (r.code == 4)
+                        $(".alert").html("{% trans "Installation failed. Make sure that the MBS CDROM is inserted." %}");
                     else
                         $(".alert").html("{% trans "Installation failed." %}");
                     if ($('#log').css('display') == "none")
