@@ -312,6 +312,10 @@ class ModuleManager:
         ProcessManager().update_medias()
 
     @expose
+    def unmount_medias(self):
+        ProcessManager().unmount_medias()
+
+    @expose
     def reboot(self):
         ProcessManager().reboot()
 

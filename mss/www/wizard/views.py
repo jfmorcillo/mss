@@ -272,6 +272,11 @@ def medias_update(request):
     return HttpResponse("")
 
 @login_required
+def medias_unmount(request):
+    xmlrpc.call('unmount_medias')
+    return HttpResponse("")
+
+@login_required
 def install(request):
     """ install page """
     transaction = Transaction(request)

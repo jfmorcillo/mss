@@ -19,10 +19,8 @@
                     $("#next").html("{% trans "Continue" %} →");
                     $("#next")[0].disabled = false;
                     $("#back").removeClass("disabled");
-                    $.get("{% url 'reload_packages' %}")
-                     .error(function(xhr) {
-                        if (xhr.responseText && xhr.status == 500) $('body').html(xhr.responseText);
-                     });
+                    $.get("{% url 'medias_unmount' %}");
+                    $.get("{% url 'reload_packages' %}");
                 }
                 else {
                     $("#install-task").removeClass("alert-info");

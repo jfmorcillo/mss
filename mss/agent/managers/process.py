@@ -21,6 +21,7 @@
 
 import os
 import logging
+from glob import glob
 from gettext import gettext as _
 
 from mss.agent.lib.utils import Singleton
@@ -47,9 +48,22 @@ class ProcessManager:
 
     def install_packages(self, packages):
         """ launch installation of packages list """
+        for cdrom in glob("/dev/disk/by-label/Mandriva*"):
+            m = self.launch("mount-cdrom",
+                            _('Mounting packages medium'),
+                            ["mount", cdrom, "/run/mss/urpmi-medium"])
+            m.join()
+            if m.process.returncode == 0:
+                break
+
         self.launch("install",
                     _('Installing packages...'),
                     ["urpmi", "--auto", "--no-suggests"] + packages)
+
+    def unmount_medias(self):
+        self.launch("umount-urpmi-medium",
+                    _('Unmounting packages medium'),
+                    ["umount", "/run/mss/urpmi-medium"])
 
     def run_script(self, script, args, cwd, module, callback):
         """ launch configuration script for module """
@@ -108,7 +122,7 @@ class ProcessManager:
                 self.threads.remove(thread)
             if not env:
                 env = {}
-            if not 'LC_ALL' in env:
+            if 'LC_ALL' not in env:
                 env['LC_ALL'] = TranslationManager().lang
             thread = ProcessThread(type, status, module, command, cwd, callback, shell, env)
             self.threads.append(thread)
@@ -118,6 +132,8 @@ class ProcessManager:
         else:
             # let the thread finish
             pass
+
+        return thread
 
     def request(self, type, status, url, params=None, headers=None,
                 callback=None, module="agent", replace=False):
