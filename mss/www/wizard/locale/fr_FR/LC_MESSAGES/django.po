@@ -283,7 +283,7 @@ msgstr "Utilisez votre compte Mandriva pour vous connecter."
 
 #: templates/login_form.html:21
 msgid "Forgot&nbsp;your&nbsp;password?"
-msgstr "Mot de passe oublié?"
+msgstr "Mot&nbsp;de&nbsp;passe&nbsp;oublié?"
 
 #: templates/login_form.html:30
 msgid "The server <strong>root</strong> password."
