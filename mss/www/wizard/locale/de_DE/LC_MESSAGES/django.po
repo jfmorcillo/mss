@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:26+0100\n"
+"POT-Creation-Date: 2014-12-23 10:05+0100\n"
 "PO-Revision-Date: 2013-06-19 08:13+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
@@ -144,7 +144,7 @@ msgstr "Fortfahren"
 
 #: templates/config.html:289 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
-#: templates/media_auth.html:40 templates/preinst.html:37
+#: templates/media_auth.html:41 templates/preinst.html:37
 msgid "Back"
 msgstr "Zurück"
 
@@ -229,8 +229,15 @@ msgstr "Fehler beim Herunterladen von Addon <strong>{0}</strong>."
 msgid "Installation succeded."
 msgstr "Installation erfolgreich."
 
-#: templates/install.html:31
+#: templates/install.html:29
 msgid "Installation failed. Update your medias and retry to install."
+msgstr ""
+"Installation fehlgeschlagen. Aktualisieren Sie Ihre Medien und versuchen Sie "
+"eine erneute Installation."
+
+#: templates/install.html:31
+#, fuzzy
+msgid "Installation failed. Make sure that the MBS CDROM is inserted."
 msgstr ""
 "Installation fehlgeschlagen. Aktualisieren Sie Ihre Medien und versuchen Sie "
 "eine erneute Installation."
@@ -265,11 +272,11 @@ msgstr "Login"
 msgid "Wrong username or password."
 msgstr "Falscher Benutzername oder Passwort"
 
-#: templates/login_form.html:14 templates/media_auth.html:21
+#: templates/login_form.html:14 templates/media_auth.html:22
 msgid "Your my.mandriva.com email address."
 msgstr "Ihre my.mandriva.com Emailadresse."
 
-#: templates/login_form.html:18 templates/media_auth.html:29
+#: templates/login_form.html:18 templates/media_auth.html:30
 msgid "Your my.mandriva.com password."
 msgstr "Ihr my.mandriva.com Passwort."
 
@@ -293,11 +300,11 @@ msgstr "Keine Internetverbindung, nutzen Sie das root-Passwort für den Login."
 msgid "Language"
 msgstr "Sprache"
 
-#: templates/login_form.html:67 templates/media_auth.html:16
+#: templates/login_form.html:67 templates/media_auth.html:17
 msgid "Username"
 msgstr "Benutzername"
 
-#: templates/login_form.html:73 templates/media_auth.html:25
+#: templates/login_form.html:73 templates/media_auth.html:26
 msgid "Password"
 msgstr "Passwort"
 
@@ -322,14 +329,20 @@ msgid "Failed to add media."
 msgstr "Fehler beim Hinzufügen des Mediums."
 
 #: templates/media_auth.html:14
-msgid "My authentication"
-msgstr "Meine Authentifizierung"
+#, fuzzy
+msgid "my.mandriva.com account"
+msgstr "Ihr my.mandriva.com Passwort."
 
-#: templates/media_auth.html:36
+#: templates/media_auth.html:15
+#, fuzzy
+msgid "Please enter your my.mandriva.com account details here."
+msgstr "Ihre my.mandriva.com Emailadresse."
+
+#: templates/media_auth.html:37
 msgid "Don't add medias"
 msgstr "Medien nicht hinzufügen"
 
-#: templates/media_auth.html:38
+#: templates/media_auth.html:39
 msgid "Add medias"
 msgstr "Medien hinzufügen"
 
@@ -390,3 +403,6 @@ msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""
 "Kein Addon für Mandriva Server Setup verfügbar. Versuchen Sie es mit einem "
 "erneuten Login."
+
+#~ msgid "My authentication"
+#~ msgstr "Meine Authentifizierung"

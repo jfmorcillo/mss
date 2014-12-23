@@ -2,11 +2,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-09 18:34+0200\n"
+"POT-Creation-Date: 2014-12-23 10:05+0100\n"
 "PO-Revision-Date: 2014-12-10 21:29+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects"
-"/mss-mbs2/mds_samba4/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
+"mss-mbs2/mds_samba4/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -86,39 +86,39 @@ msgstr ""
 "Agora você poderá usar a interface de gerenciamento para administrar seus "
 "usuários e compartilhamentos do Windows em https://@HOSTNAME@/mmc/."
 
-#: mds_samba4/__init__.py:16
+#: mds_samba4/__init__.py:18
 msgid "Incorrect SAMBA domain name."
 msgstr "Nome de domínio SAMBA incorreto."
 
-#: mds_samba4/__init__.py:23
+#: mds_samba4/__init__.py:25
 msgid "Password must be at least 8 characters long"
 msgstr "A senha deve ser ter pelo menos 8 caracteres"
 
-#: mds_samba4/__init__.py:25
+#: mds_samba4/__init__.py:27
 msgid "Password must have at least one number"
 msgstr "A senha deve ter pelo menos um número"
 
-#: mds_samba4/__init__.py:27
+#: mds_samba4/__init__.py:29
 msgid "Password must have at least one capital letter"
 msgstr "A senha deve ter pelo menos uma letra maiúscula"
 
-#: mds_samba4/__init__.py:29
+#: mds_samba4/__init__.py:31
 msgid "Password must have at least one lowercase letter"
 msgstr "A senha deve ter pelo menos uma letra minúscula"
 
-#: mds_samba4/__init__.py:42
+#: mds_samba4/__init__.py:52
 msgid "Network"
 msgstr "Rede"
 
-#: mds_samba4/__init__.py:43
+#: mds_samba4/__init__.py:53
 msgid "Choose the network for the DNS zone and DHCP."
 msgstr "Escolha a rede para a zona DNS e DHCP."
 
-#: mds_samba4/__init__.py:53
+#: mds_samba4/__init__.py:63
 msgid "SAMBA domain name"
 msgstr "Nome de domínio SAMBA"
 
-#: mds_samba4/__init__.py:54
+#: mds_samba4/__init__.py:64
 msgid ""
 "The name of your Microsoft domain. Use only alphanumeric characters and dots "
 "like: mandriva.int."

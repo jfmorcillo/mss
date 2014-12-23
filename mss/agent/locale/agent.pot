@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:26+0100\n"
+"POT-Creation-Date: 2014-12-23 10:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -41,47 +41,55 @@ msgstr ""
 msgid "Password mismatch."
 msgstr ""
 
-#: managers/process.py:44
+#: managers/process.py:45
 msgid "Loading packages list"
 msgstr ""
 
-#: managers/process.py:51
-msgid "Installing packages..."
+#: managers/process.py:53
+msgid "Mounting packages medium"
 msgstr ""
 
 #: managers/process.py:60
+msgid "Installing packages..."
+msgstr ""
+
+#: managers/process.py:65
+msgid "Unmounting packages medium"
+msgstr ""
+
+#: managers/process.py:74
 msgid "Running configuration"
 msgstr ""
 
-#: managers/process.py:70
+#: managers/process.py:84
 msgid "Rebooting..."
 msgstr ""
 
-#: managers/process.py:76
+#: managers/process.py:90
 msgid "Updating medias"
 msgstr ""
 
-#: managers/process.py:82
+#: managers/process.py:96
 msgid "Checking network"
 msgstr ""
 
-#: managers/process.py:87
+#: managers/process.py:101
 msgid "Adding media"
 msgstr ""
 
-#: managers/process.py:92
+#: managers/process.py:106
 #, python-format
 msgid "Downloading %s addon..."
 msgstr ""
 
-#: managers/process.py:94
+#: managers/process.py:108
 msgid "Downloading addon..."
 msgstr ""
 
-#: managers/process.py:167
+#: managers/process.py:183
 msgid "Ready"
 msgstr ""
 
-#: managers/module.py:726
+#: managers/module.py:730
 msgid "Connection failed with the ServicePlace."
 msgstr ""

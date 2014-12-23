@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:26+0100\n"
+"POT-Creation-Date: 2014-12-23 10:05+0100\n"
 "PO-Revision-Date: 2014-11-06 09:06+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
@@ -139,7 +139,7 @@ msgstr "继续"
 
 #: templates/config.html:289 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
-#: templates/media_auth.html:40 templates/preinst.html:37
+#: templates/media_auth.html:41 templates/preinst.html:37
 msgid "Back"
 msgstr "回到前叶"
 
@@ -224,8 +224,13 @@ msgstr "无法下载<strong>{0}</strong>插件."
 msgid "Installation succeded."
 msgstr "安装完成."
 
-#: templates/install.html:31
+#: templates/install.html:29
 msgid "Installation failed. Update your medias and retry to install."
+msgstr "安装时半. 等新您的媒体之后重新安装."
+
+#: templates/install.html:31
+#, fuzzy
+msgid "Installation failed. Make sure that the MBS CDROM is inserted."
 msgstr "安装时半. 等新您的媒体之后重新安装."
 
 #: templates/install.html:33
@@ -257,11 +262,11 @@ msgstr "登录"
 msgid "Wrong username or password."
 msgstr "用户名或是密码错误."
 
-#: templates/login_form.html:14 templates/media_auth.html:21
+#: templates/login_form.html:14 templates/media_auth.html:22
 msgid "Your my.mandriva.com email address."
 msgstr "您的my.mandriva.com 　邮件地址."
 
-#: templates/login_form.html:18 templates/media_auth.html:29
+#: templates/login_form.html:18 templates/media_auth.html:30
 msgid "Your my.mandriva.com password."
 msgstr "您的my.mandriva.com 密码."
 
@@ -285,11 +290,11 @@ msgstr "无网络连接，使用 root 密码登录."
 msgid "Language"
 msgstr "语言"
 
-#: templates/login_form.html:67 templates/media_auth.html:16
+#: templates/login_form.html:67 templates/media_auth.html:17
 msgid "Username"
 msgstr "用户名"
 
-#: templates/login_form.html:73 templates/media_auth.html:25
+#: templates/login_form.html:73 templates/media_auth.html:26
 msgid "Password"
 msgstr "密码"
 
@@ -314,14 +319,20 @@ msgid "Failed to add media."
 msgstr "媒体添加失败."
 
 #: templates/media_auth.html:14
-msgid "My authentication"
-msgstr "我的验证"
+#, fuzzy
+msgid "my.mandriva.com account"
+msgstr "您的my.mandriva.com 密码."
 
-#: templates/media_auth.html:36
+#: templates/media_auth.html:15
+#, fuzzy
+msgid "Please enter your my.mandriva.com account details here."
+msgstr "您的my.mandriva.com 　邮件地址."
+
+#: templates/media_auth.html:37
 msgid "Don't add medias"
 msgstr "不需添加媒体"
 
-#: templates/media_auth.html:38
+#: templates/media_auth.html:39
 msgid "Add medias"
 msgstr "添加媒体"
 
@@ -378,3 +389,6 @@ msgstr "安装和配置已选择的插件"
 #: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr "无MSS可使用的插件，请重新登录再试."
+
+#~ msgid "My authentication"
+#~ msgstr "我的验证"

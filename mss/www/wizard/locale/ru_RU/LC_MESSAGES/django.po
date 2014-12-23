@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:26+0100\n"
+"POT-Creation-Date: 2014-12-23 10:05+0100\n"
 "PO-Revision-Date: 2013-06-19 08:03+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -140,7 +140,7 @@ msgstr "Продолжить"
 
 #: templates/config.html:289 templates/download.html:97
 #: templates/install.html:76 templates/media_add.html:106
-#: templates/media_auth.html:40 templates/preinst.html:37
+#: templates/media_auth.html:41 templates/preinst.html:37
 msgid "Back"
 msgstr "Назад"
 
@@ -225,8 +225,12 @@ msgstr ""
 msgid "Installation succeded."
 msgstr "Удалось выполнить установку."
 
-#: templates/install.html:31
+#: templates/install.html:29
 msgid "Installation failed. Update your medias and retry to install."
+msgstr ""
+
+#: templates/install.html:31
+msgid "Installation failed. Make sure that the MBS CDROM is inserted."
 msgstr ""
 
 #: templates/install.html:33
@@ -258,11 +262,11 @@ msgstr "Вход"
 msgid "Wrong username or password."
 msgstr ""
 
-#: templates/login_form.html:14 templates/media_auth.html:21
+#: templates/login_form.html:14 templates/media_auth.html:22
 msgid "Your my.mandriva.com email address."
 msgstr "Ваш почтовый адрес на my.mandriva.com."
 
-#: templates/login_form.html:18 templates/media_auth.html:29
+#: templates/login_form.html:18 templates/media_auth.html:30
 msgid "Your my.mandriva.com password."
 msgstr "Ваш пароль на my.mandriva.com."
 
@@ -286,11 +290,11 @@ msgstr ""
 msgid "Language"
 msgstr "Язык"
 
-#: templates/login_form.html:67 templates/media_auth.html:16
+#: templates/login_form.html:67 templates/media_auth.html:17
 msgid "Username"
 msgstr "Имя пользователя"
 
-#: templates/login_form.html:73 templates/media_auth.html:25
+#: templates/login_form.html:73 templates/media_auth.html:26
 msgid "Password"
 msgstr "Пароль"
 
@@ -315,14 +319,20 @@ msgid "Failed to add media."
 msgstr "Не удалось добавить источник."
 
 #: templates/media_auth.html:14
-msgid "My authentication"
-msgstr "Моя аутентификация"
+#, fuzzy
+msgid "my.mandriva.com account"
+msgstr "Ваш пароль на my.mandriva.com."
 
-#: templates/media_auth.html:36
+#: templates/media_auth.html:15
+#, fuzzy
+msgid "Please enter your my.mandriva.com account details here."
+msgstr "Ваш почтовый адрес на my.mandriva.com."
+
+#: templates/media_auth.html:37
 msgid "Don't add medias"
 msgstr ""
 
-#: templates/media_auth.html:38
+#: templates/media_auth.html:39
 msgid "Add medias"
 msgstr "Добавить источники"
 
@@ -379,3 +389,6 @@ msgstr ""
 #: templates/sections.html:43
 msgid "No addon for Mandriva Server Setup available. Try to login again."
 msgstr ""
+
+#~ msgid "My authentication"
+#~ msgstr "Моя аутентификация"
