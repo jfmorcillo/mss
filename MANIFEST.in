@@ -11,8 +11,8 @@ prune modules/mds_audit
 prune modules/mds_smb
 prune modules/zarafa
 
-# For test
-# prune modules/libvirt
-# prune modules/squid
-# prune modules/owncloud
-# prune modules/davical
+# paid modules
+prune modules/libvirt
+prune modules/squid
+prune modules/owncloud
+prune modules/davical
