@@ -85,7 +85,7 @@ sed -i "s/\@DBNAME\@/$dbname/" /usr/share/glpi/config/config_db.php
 mysql_do_query "INSERT INTO glpi.glpi_entities (id ,name ,entities_id ,completename ,comment ,level ,sons_cache ,ancestors_cache) VALUES ( NULL , 'glpi', '0', 'glpi', '', '1', NULL , NULL )"
 
 # Enable Fusion inventory plugins
-php /usr/share/glpi/plugins/fusioninventory/tools/cli_install.php &> /dev/null
+php /usr/share/glpi/plugins/fusioninventory/scripts/cli_install.php &> /dev/null
 
 # Enable fusioninventory
 sh $ENABLE_FUSIONFILE
