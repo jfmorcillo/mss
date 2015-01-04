@@ -71,7 +71,7 @@ mysql_do_query "CREATE DATABASE ${dbname};"
 mysql_do_query "GRANT ALL ON ${dbname}.* to '${dbuser}'@'localhost' identified by '${dbpass}';"
 mysql_do_query "FLUSH PRIVILEGES;"
 
-mysql -u $dbuser -p$dbpass $dbname < /usr/share/glpi/install/mysql/glpi-0.83.1-empty.sql
+mysql -u $dbuser -p$dbpass $dbname < /usr/share/glpi/install/mysql/glpi-0.84.1-empty.sql
 
 # For security reason we delete the install folder
 rm -frv /usr/share/glpi/install
