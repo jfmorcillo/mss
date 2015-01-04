@@ -48,6 +48,7 @@ sed -i "s|/root/.ssh/id_rsa'|/root/.ssh/id_rsa'|" /usr/sbin/pulse2-setup
 sed -i 's|# glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=|glpi_computer_uri = http://localhost/glpi/front/computer.form.php?id=|' /etc/mmc/plugins/glpi.ini
 sed -i "s|# glpi_mode = False|glpi_mode = True|" /etc/mmc/pulse2/package-server/package-server.ini
 sed -i "s|disable = 1|disable = 0|" /etc/mmc/plugins/glpi.ini
+
 #overwritten by pulse2-setup
 #sed -i "s|# enable_forward = False|enable_forward = True|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
 #sed -i "s|# url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|url_to_forward = http://localhost/glpi/plugins/fusioninventory/front/plugin_fusioninventory.communication.php|" /etc/mmc/pulse2/inventory-server/inventory-server.ini
