@@ -1,7 +1,6 @@
 {
     "slug": "pulse2_deployment",
     "name": "Pulse2 Deployment",
-    "desc": "The software deployment module of Pulse2",
     "description": "The software deployment module of Pulse2",
     "actions": [
         {
@@ -26,10 +25,8 @@
             ]
         }
     ],
-    "dependencies": ["pulse2_inventory"],
     "module": {
         "section": "other",
         "dependencies": ["pulse2_inventory"]
-    },
-    "standalone": true
+    }
 }

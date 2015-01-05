@@ -2,7 +2,6 @@
     "slug":"eva",
     "name":"Mandriva eVA",
     "description":"Cloud Management Solution",
-    "desc":"Cloud Management Solution",
     "categories":[
         {
             "slug":"cloud",
@@ -92,18 +91,13 @@
             "label": "I accept the Oracle(c) License and install Oracle JDK"
         }
     ],
-    "dependencies":[
-        "mysql",
-        "postgresql",
-        "libvirt",
-        "mds_smb"
-    ],
     "module":{
         "section":"other",
         "dependencies":[
             "mysql",
             "postgresql",
-            "libvirt"
+            "libvirt",
+            "mds_smb"
         ]
     }
 }

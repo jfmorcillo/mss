@@ -2,7 +2,6 @@
     "slug":   "mds_kerberos",
     "name": "Kerberos authentication with MDS backend",
     "description": "Install and configure Kerberos authentication",
-    "desc": "Install and configure Kerberos authentication",
     "actions": [
         {
             "type": "link",
@@ -139,7 +138,6 @@
             "help": "Indicates whether weak encryption types should be filtered out"
         }
     ],
-    "dependencies": ["mds_mmc", "mds_dns"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc", "mds_dns"]

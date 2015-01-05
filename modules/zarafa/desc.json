@@ -2,7 +2,6 @@
     "slug": "zarafa",
     "name": "Zarafa Collaboration Platform",
     "description": "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface",
-    "desc": "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook compatibility, ActiveSync support and a rich webmail interface. Zarafa users and groups are managed in the MBS management interface",
     "actions": [
         {
             "type": "link",
@@ -115,10 +114,8 @@
             "help": "Specify which clients are authorized to send mails through the mail server. If your network address is 192.168.0.0 specify : 192.168.0.0/255.255.255.0"
         }
     ],
-    "dependencies": ["mds_mmc", "mysql"],
-    "conflicts": ["mds_mail", "mds_webmail"],
-    "standalone": false,
     "module": {
+        "section": "other",
         "dependencies": ["mds_mmc", "mysql"],
         "conflicts": ["mds_mail", "mds_webmail"]
     }

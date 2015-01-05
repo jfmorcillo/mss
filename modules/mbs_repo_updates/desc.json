@@ -18,6 +18,7 @@
         }
     ],
     "module": {
-        "section": "core"
+        "section": "core",
+        "dependencies": ["mbs_repo"]
     }
 }

@@ -1,7 +1,6 @@
 {
     "slug": "pulse2_imaging",
     "name": "Pulse2 Imaging",
-    "desc": "The imaging module of Pulse2",
     "description": "The imaging module of Pulse2",
     "actions": [
         {
@@ -29,10 +28,8 @@
             ]
         }
     ],
-    "dependencies": ["pulse2_inventory", "mds_dhcp", "tftp_server", "nfs_server"],
     "module": {
         "section": "other",
         "dependencies": ["pulse2_inventory", "mds_dhcp", "tftp_server", "nfs_server"]
-    },
-    "standalone": true
+    }
 }

@@ -2,7 +2,6 @@
     "slug": "mds_audit",
     "name": "Audit plugin",
     "description": "Track any changes made in the management interface",
-    "desc": "Track any changes made in the management interface",
     "actions": [
         {
             "type": "link",
@@ -33,7 +32,6 @@
         }
     ],
     "standalone": false,
-    "dependencies": ["mds_mmc", "mysql"],
     "module": {
         "dependencies": ["mds_mmc", "mysql"]
     }

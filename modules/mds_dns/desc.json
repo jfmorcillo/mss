@@ -1,8 +1,7 @@
 {
-    "slug":   "mds_dns",
+    "slug": "mds_dns",
     "name": "DNS Service",
     "description": "Resolve computer names on your network",
-    "desc": "Resolve computer names on your network",
     "categories": [
         {
             "slug": "network",
@@ -56,7 +55,6 @@
             "help": "Configure the firewall to accept DNS requests on interfaces configured as 'external'"
         }
     ],
-    "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"]

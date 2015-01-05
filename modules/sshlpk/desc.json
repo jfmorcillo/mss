@@ -2,7 +2,6 @@
     "slug": "sshlpk",
     "name": "SSH keys management",
     "description": "Manage your user's SSH keys using LDAP as a backend",
-    "desc": "Manage your user's SSH keys using LDAP as a backend",
     "categories": [
         {
             "slug": "users",
@@ -22,7 +21,6 @@
             "rpms": ["python-mmc-sshlpk", "mmc-web-sshlpk"]
         }
     ],
-    "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"]

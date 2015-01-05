@@ -8,7 +8,6 @@
             "rpms": ["mariadb", "mariadb-client"]
         }
     ],
-    "conflict": ["mysqlmax"],
     "config": [
         {
             "type": "password",

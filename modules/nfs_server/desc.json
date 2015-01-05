@@ -2,7 +2,6 @@
     "slug": "nfs_server",
     "name": "NFS service",
     "description": "Network File System service",
-    "desc": "Network File System service",
     "packages": [
         {
             "name": "all",

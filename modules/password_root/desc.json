@@ -1,7 +1,6 @@
 {
     "slug": "password_root",
     "name": "Change UNIX root password",
-    "desc": "Change the root password of the server",
     "description": "Change the root password of the server",
     "packages": [
         {

@@ -1,8 +1,7 @@
 {
-    "slug":   "mds_dhcp",
+    "slug": "mds_dhcp",
     "name": "DHCP Service",
     "description": "Configure automatically your client computers IP settings",
-    "desc": "Configure automatically your client computers IP settings",
     "categories": [
         {
             "slug": "network",
@@ -38,7 +37,6 @@
             "help": "Configure the firewall to accept DHCP requests on interfaces configured as 'external'"
         }
     ],
-    "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"]

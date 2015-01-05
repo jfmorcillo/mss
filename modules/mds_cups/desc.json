@@ -1,7 +1,6 @@
 {
     "slug":   "mds_cups",
     "name": "Printing service",
-    "desc": "Network printers management",
     "description": "Network printers management",
     "actions": [
         {

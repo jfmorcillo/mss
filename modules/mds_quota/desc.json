@@ -2,7 +2,6 @@
     "slug": "mds_quota",
     "name": "User quota management",
     "description": "Set file quotas on the server",
-    "desc": "Set file quotas on the server",
     "categories": [
         {
             "slug": "users",
@@ -30,7 +29,6 @@
             "help": "Specify the filesystems where you want to apply user quotas with the following format : 'Device path':'Identifier string' (eg: /dev/sda1:Root)"
         }
     ],
-    "dependencies": ["mds_mmc"],
     "module": {
         "section": "core",
         "dependencies": ["mds_mmc"]

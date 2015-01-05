@@ -2,7 +2,6 @@
     "slug": "owncloud",
     "name": "ownCloud",
     "description": "ownCloud gives your users an universal access to their files through a web interface or WebDAV.\n\nIt also provides a platform to easily view & sync your contacts, calendars and bookmarks across all your devices and enables basic editing right on the web",
-    "desc": "ownCloud gives your users an universal access to their files through a web interface or WebDAV.\n\nIt also provides a platform to easily view & sync your contacts, calendars and bookmarks across all your devices and enables basic editing right on the web",
     "categories": [
         {
             "slug": "cloud",
@@ -46,7 +45,6 @@
             "help": "Directory path where all users's data will be stored."
         }
     ],
-    "dependencies": ["mysql"],
     "module": {
         "section": "other",
         "dependencies": ["mysql"]

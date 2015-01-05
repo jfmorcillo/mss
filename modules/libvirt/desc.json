@@ -2,7 +2,6 @@
     "slug":"libvirt",
     "name":"Libvirt with KVM",
     "description":"Use your MBS server to run KVM virtual machines",
-    "desc":"Use your MBS server to run KVM virtual machines",
     "categories":[
         {
             "slug":"virtualization",

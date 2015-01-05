@@ -2,7 +2,6 @@
     "slug": "pulse2_inventory",
     "name": "Pulse2 Inventory",
     "description": "The inventory management module of Pulse2",
-    "desc": "The inventory management module of Pulse2",
     "actions": [
         {
             "type": "link",
@@ -57,13 +56,13 @@
         }
     ],
     "config": [
-         {   
+         {
              "type": "password",
              "name": "myrootpasswd",
              "require": "yes",
              "label": "MySQL root password",
              "help": "Used to create the glpi database"
-        },  
+        },
         {
             "type": "check",
             "name": "fw_lan",
@@ -79,10 +78,8 @@
             "help": "Configure the firewall to allow access to the Pulse2 inventory service from external networks"
         }
     ],
-    "dependencies": ["mds_mmc", "mysql"],
     "module": {
         "section": "other",
         "dependencies": ["mds_mmc", "mysql"]
-    },
-    "standalone": true
+    }
 }

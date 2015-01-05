@@ -1,7 +1,6 @@
 {
     "slug": "password_ldap",
     "name": "Change LDAP root password",
-    "desc": "Change the root password of the management console",
     "description": "Change the root password of the management console",
     "packages": [
         {
