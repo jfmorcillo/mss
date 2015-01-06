@@ -146,11 +146,9 @@ sed -i "s!^tcp_sproxy_host.*!tcp_sproxy_host = ${FQDN}!" /etc/mmc/pulse2/launche
 stop_service pulse2-scheduler
 stop_service pulse2-launchers
 stop_service pulse2-package-server
-stop_service pulse2-imaging-server
 disable_service pulse2-scheduler
 disable_service pulse2-launchers
 disable_service pulse2-package-server
-disable_service pulse2-imaging-server
 
 restart_service mmc-agent
 restart_service shorewall
