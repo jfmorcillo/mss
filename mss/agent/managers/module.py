@@ -499,7 +499,7 @@ class ModuleManager:
         for repository in repositories:
             if repository.slug == repo_slug:
                 if repository.clean:
-                    p = ProcessManager().launch("repository", _("Removing medias"), remove_medias_cmd())
+                    p = ProcessManager().launch("repository", _("Removing medias", "agent"), remove_medias_cmd())
                     p.join()
                 logger.info("Add repository: %s" % repository.name)
                 ProcessManager().add_repository(repository.get_command(login, passwd))
