@@ -10,6 +10,7 @@ prune modules/mds_kerberos
 prune modules/mds_audit
 prune modules/mds_smb
 prune modules/zarafa
+prune modules/egroupware
 
 # paid modules
 prune modules/libvirt
