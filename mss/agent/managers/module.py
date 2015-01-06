@@ -38,6 +38,7 @@ from mss.agent.lib.utils import Singleton
 from mss.agent.lib.db import get_session, OptionTable, LogTypeTable, LogTable, ModuleTable
 from mss.agent.managers.process import ProcessManager
 from mss.agent.managers.translation import TranslationManager
+from mss.agent.classes.media import remove_medias_cmd
 
 _ = TranslationManager().translate
 logger = logging.getLogger(__name__)
@@ -142,12 +143,12 @@ class ModuleManager:
 
         for module_desc in modules_list:
             if "module" in module_desc:
-                if not "path" in module_desc["module"]:
+                if "path" not in module_desc["module"]:
                     module_desc["module"]["path"] = os.path.join(Config().cacheDir,
                                                                  module_desc["slug"])
                 self.modules[module_desc['slug']] = Module(module_desc)
                 section = self.modules[module_desc['slug']].section
-                if not section in self.sections_modules:
+                if section not in self.sections_modules:
                     self.sections_modules[section] = []
                 if not module_desc["slug"] in self.sections_modules[section]:
                     self.sections_modules[section].append(module_desc["slug"])
@@ -174,7 +175,7 @@ class ModuleManager:
             except (ValueError, IOError):
                 logger.exception("Failed to load %s" % (path))
             else:
-                if not "module" in desc:
+                if "module" not in desc:
                     if desc['standalone'] is True:
                         raise Exception('Missing section "module" in module %s' % desc['slug'])
                     else:
@@ -330,7 +331,7 @@ class ModuleManager:
             _configured = module['module'].get('configured', False)
         for m in _conflicts:
             try:
-                if not m in conflicts and _configured:
+                if m not in conflicts and _configured:
                     conflicts.append(m)
                     logger.debug("Conflict with : %s" % m)
                     conflicts = self.get_conflicts(conflicts, m)
@@ -493,6 +494,9 @@ class ModuleManager:
         repositories = self.modules[module_slug].repositories
         for repository in repositories:
             if repository.slug == repo_slug:
+                if repository.clean:
+                    p = ProcessManager().launch("repository", _("Removing medias"), remove_medias_cmd())
+                    p.join()
                 logger.info("Add repository: %s" % repository.name)
                 ProcessManager().add_repository(repository.get_command(login, passwd))
 
@@ -644,7 +648,7 @@ class ModuleManager:
                         result.append(category)
                     for i, cat in enumerate(result[:]):
                         if category["slug"] == cat["slug"]:
-                            if not "modules" in cat:
+                            if "modules" not in cat:
                                 result[i]["modules"] = []
                             result[i]["modules"].append(details)
                             break

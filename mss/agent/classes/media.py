@@ -21,9 +21,15 @@
 
 import urllib
 
+
+def remove_medias_cmd():
+    return ['urpmi.removemedia', '-a']
+
+
 class Media:
 
-    def __init__(self, module_slug="", slug="", name="", url="", options="", restricted=False, required=False):
+    def __init__(self, module_slug="", slug="", name="", url="", options="",
+            restricted=False, required=False, clean=False):
         self.module_slug = module_slug
         self.slug = slug
         self.name = name
@@ -31,12 +37,13 @@ class Media:
         self.options = options.split()
         self.restricted = restricted
         self.required = required
+        self.clean = clean
 
     def get_command(self, login=None, password=None):
         options = []
         url = self.url
 
-        if not u'--distrib' in self.options and not u'--updates' in self.options:
+        if u'--distrib' not in self.options and u'--updates' not in self.options:
             options.append(self.slug)
         else:
             options = self.options
@@ -46,4 +53,4 @@ class Media:
             assert password
             url = url.replace("://", "://%s:%s@" % (urllib.quote(login), urllib.quote(password)), 1)
 
-        return ['urpmi.addmedia'] + options + [ url ]
+        return ['urpmi.addmedia'] + options + [url]
