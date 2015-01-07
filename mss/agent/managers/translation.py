@@ -41,6 +41,9 @@ class TranslationManager:
         self.catalogs = {}
 
     def set_lang(self, lang):
+        # FIXME HACK: manually set the wanted locale
+        if lang == "en":
+            lang = "en_US"
         self.lang = lang
         for name, infos in self.catalogs.items():
             (path, catalog) = infos
