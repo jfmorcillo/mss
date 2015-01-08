@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2013-04-08 10:17+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: French (France) (http://transifex.mandriva.com/projects/p/mss/"
@@ -20,17 +20,13 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1)\n"
 
-#: .description .desc
+#: .description
 msgid "Network printers management"
 msgstr "Gestion des imprimantes réseau"
 
 #: .actions[0].name
 msgid "Printers management"
 msgstr "Gestion des imprimantes"
-
-#: .name
-msgid "Printing service"
-msgstr "Service d'impression"
 
 #: .packages[0].name
 msgid "all"
@@ -69,6 +65,10 @@ msgstr "fw_wan"
 msgid "Allow connections to the management interface from external networks"
 msgstr ""
 "Permettre les connexions à l'interface de gestion depuis les réseaux externes"
+
+#: .name
+msgid "Printing service"
+msgstr "Service d'impression"
 
 #: mds_cups/setup-cups.sh:19
 msgid "The printing service is running."

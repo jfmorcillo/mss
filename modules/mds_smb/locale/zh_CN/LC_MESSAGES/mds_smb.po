@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-11-06 10:41+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
-"Language-Team: Simplified Chinese "
-"<http://translate.mandriva.com/projects/mss/mds_smb/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
+"mss/mds_smb/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,7 +19,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
@@ -28,10 +28,6 @@ msgstr "使用SAMBA 验证Windows 用户，以及在您的网络上提供"
 #: .actions[0].name
 msgid "Management interface"
 msgstr "管理界面"
-
-#: .name
-msgid "Windows users and file sharing management"
-msgstr "Windows 用户和文件共享管理"
 
 #: .packages[0].name
 msgid "all"
@@ -117,6 +113,10 @@ msgstr "允许来自于外部网络的链接"
 msgid "Users"
 msgstr "用户"
 
+#: .name
+msgid "Windows users and file sharing management"
+msgstr "Windows 用户和文件共享管理"
+
 #: mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
 msgstr "在设立SAMBA 密码时产生错误."
@@ -129,7 +129,9 @@ msgstr "填充目录时产生错误."
 msgid ""
 "Users are now created in the Domain Users group by default. If users were "
 "created before, they still remains in the users group."
-msgstr "用户现在在Domain Users群组默认情况下创建。如果用户在之前已创建，他们仍保留在用户群中."
+msgstr ""
+"用户现在在Domain Users群组默认情况下创建。如果用户在之前已创建，他们仍保留在"
+"用户群中."
 
 #: mds_smb/setup-smb.sh:70
 msgid "Failed to grant rights to the Domain Admins group"
@@ -159,7 +161,9 @@ msgstr "您可以在 /home/samba/netlogon中创建一个  logon.bat  脚本"
 msgid ""
 "You can now use the management interface to manage your Windows users and "
 "shares at https://@HOSTNAME@/mmc/."
-msgstr "您现在可以使用管理界面来管理您的Windows 用户以及在https://@HOSTNAME@/mmc/. 进行共享."
+msgstr ""
+"您现在可以使用管理界面来管理您的Windows 用户以及在https://@HOSTNAME@/mmc/. 进"
+"行共享."
 
 #: mds_smb/__init__.py:39
 msgid ""

@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-08-28 12:07+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French <http://translate.mandriva.com/projects/mss/libvirt/"
@@ -21,17 +21,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Use your MBS server to run KVM virtual machines"
 msgstr "Utilisez votre serveur MBS pour héberger des machines virtuelles"
 
 #: .actions[0].name
 msgid "Addon documentation"
 msgstr "Documentation"
-
-#: .name
-msgid "Libvirt with KVM"
-msgstr "Libvirt avec KVM"
 
 #: .packages[0].name
 msgid "all"
@@ -104,6 +100,10 @@ msgstr "Autoriser les connexions depuis les réseaux externes"
 #: .categories[0].name
 msgid "Virtualization"
 msgstr "Virtualisation"
+
+#: .name
+msgid "Libvirt with KVM"
+msgstr "Libvirt avec KVM"
 
 #: libvirt/setup-libvirt.sh:81
 msgid "Libvirt and KVM are now installed and configured."

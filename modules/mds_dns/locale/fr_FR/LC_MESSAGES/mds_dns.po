@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:10+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-12-10 18:51+0200\n"
 "Last-Translator: Jean-François <jfmorcillo@mandriva.com>\n"
-"Language-Team: French <http://translate.mandriva.com/projects/mss-"
-"mbs2/mds_dns/fr_FR/>\n"
+"Language-Team: French <http://translate.mandriva.com/projects/mss-mbs2/"
+"mds_dns/fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,17 +21,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.1-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Resolve computer names on your network"
 msgstr "Résous les noms de machine sur votre réseau"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Console de gestion"
-
-#: .name
-msgid "DNS Service"
-msgstr "Service DNS"
 
 #: .packages[0].name
 msgid "all"
@@ -100,6 +96,10 @@ msgstr "Autoriser les requêtes depuis les réseaux externes"
 #: .categories[0].name
 msgid "Network"
 msgstr "Réseau"
+
+#: .name
+msgid "DNS Service"
+msgstr "Service DNS"
 
 #: mds_dns/setup-dns.sh:37
 msgid "No networks are authorized to make external queries."

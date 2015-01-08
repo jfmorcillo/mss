@@ -1,18 +1,18 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# 
-## Translators:
+#
+# # Translators:
 #   <jpbraun@mandriva.com>, 2012, 2013.
 msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-14 02:39+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-08-22 16:09+0200\n"
 "Last-Translator: Mandriva Webteam <webteam@mandriva.com>\n"
-"Language-Team: French "
-"<http://translate.mandriva.com/projects/mss/mds_smb/fr_FR/>\n"
+"Language-Team: French <http://translate.mandriva.com/projects/mss/mds_smb/"
+"fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 1.10-dev\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "Authenticate Windows users with SAMBA and provide Windows file shares on "
 "your network"
@@ -31,10 +31,6 @@ msgstr ""
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface d'administration"
-
-#: .name
-msgid "Windows users and file sharing management"
-msgstr "Gestion des utilisateurs et partages de fichiers Windows"
 
 #: .packages[0].name
 msgid "all"
@@ -124,6 +120,10 @@ msgstr "Autoriser les connexions depuis les réseaux externes"
 msgid "Users"
 msgstr "Utilisateurs"
 
+#: .name
+msgid "Windows users and file sharing management"
+msgstr "Gestion des utilisateurs et partages de fichiers Windows"
+
 #: mds_smb/setup-smb.sh:32
 msgid "Error while setting SAMBA password."
 msgstr "Erreur lors du positionnement du mot de passe."
@@ -164,8 +164,8 @@ msgstr "- un partage public est créé dans /home/samba/shares/public"
 #: mds_smb/setup-smb.sh:94
 msgid "- you can create a logon.bat script in /home/samba/netlogon"
 msgstr ""
-"- vous pouvez créer un script de logon \"logon.bat\" dans "
-"/home/samba/netlogon"
+"- vous pouvez créer un script de logon \"logon.bat\" dans /home/samba/"
+"netlogon"
 
 #: mds_smb/setup-smb.sh:95
 msgid ""

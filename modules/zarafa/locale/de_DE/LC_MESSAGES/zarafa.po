@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-08-14 00:52+0000\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
@@ -18,7 +18,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
 "compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
@@ -31,10 +31,6 @@ msgstr ""
 
 #: .actions[1].name
 msgid "Zarafa webmail interface"
-msgstr ""
-
-#: .name
-msgid "Zarafa Collaboration Platform"
 msgstr ""
 
 #: .packages[0].name
@@ -165,4 +161,8 @@ msgstr ""
 
 #: .config[8].name
 msgid "smtpd_mynetworks"
+msgstr ""
+
+#: .name
+msgid "Zarafa Collaboration Platform"
 msgstr ""

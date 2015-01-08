@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Cloud Management Solution"
 msgstr "云计算管理解决方案"
 
@@ -36,10 +36,6 @@ msgstr "eVA 界面"
 msgid ""
 "Upgrade your unlicensed version into a fully licensed and supported version"
 msgstr "把您的不许可版本升级为完全许可和支持版本"
-
-#: .name
-msgid "Mandriva eVA"
-msgstr "Mandriva eVA"
 
 #: .packages[0].name
 msgid "all"
@@ -64,6 +60,10 @@ msgstr "我接受Oracle(c) 许可证 以及 安装 Oracle JDK"
 #: .categories[0].name
 msgid "Cloud"
 msgstr "Cloud"
+
+#: .name
+msgid "Mandriva eVA"
+msgstr "Mandriva eVA"
 
 #: eva/setup-eva.sh:386
 msgid "eVA is now configured."

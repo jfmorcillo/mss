@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2013-05-24 15:53+0000\n"
 "Last-Translator: Maik Wagner <maikwagner@yahoo.com>\n"
 "Language-Team: German (Germany) (http://transifex.mandriva.com/projects/p/"
@@ -19,7 +19,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1)\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "ownCloud gives your users an universal access to their files through a web "
 "interface or WebDAV.\n"
@@ -38,10 +38,6 @@ msgstr ""
 #: .actions[0].name
 msgid "ownCloud interface"
 msgstr "ownCloud Schnittstelle"
-
-#: .name
-msgid "ownCloud"
-msgstr "ownCloud"
 
 #: .packages[0].name
 msgid "all"
@@ -86,6 +82,10 @@ msgstr "owncloud_dataPath"
 #: .categories[0].name
 msgid "Cloud"
 msgstr "Cloud"
+
+#: .name
+msgid "ownCloud"
+msgstr "ownCloud"
 
 #: owncloud/setup-owncloud.sh:146
 msgid "ownCloud is now configured."

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:10+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
@@ -19,17 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Resolve computer names on your network"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "管理界面"
-
-#: .name
-msgid "DNS Service"
-msgstr ""
 
 #: .packages[0].name
 msgid "all"
@@ -91,6 +87,10 @@ msgstr ""
 
 #: .categories[0].name
 msgid "Network"
+msgstr ""
+
+#: .name
+msgid "DNS Service"
 msgstr ""
 
 #: mds_dns/setup-dns.sh:37

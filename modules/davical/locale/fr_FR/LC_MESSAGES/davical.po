@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:05+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-12-10 14:17+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French <http://translate.mandriva.com/projects/mss-mbs2/"
@@ -21,17 +21,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.1-dev\n"
 
-#: .description .desc
+#: .description
 msgid "DAViCal a service for calendar and addressbook sharing."
 msgstr "DAViCal un service de calendriers partagés et de carnet d'adresses."
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Console de gestion"
-
-#: .name
-msgid "Calendar and Addressbook"
-msgstr "Calendriers et carnet d'adresses"
 
 #: .packages[0].name
 msgid "all"
@@ -40,6 +36,10 @@ msgstr "all"
 #: .categories[0].name
 msgid "Collaboration"
 msgstr "Collaboration"
+
+#: .name
+msgid "Calendar and Addressbook"
+msgstr "Calendriers et carnet d'adresses"
 
 #: davical/setup-davical.sh:43
 msgid "Failed to setup the database."

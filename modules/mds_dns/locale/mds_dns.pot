@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:05+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description .desc
+#: .description
 msgid "Resolve computer names on your network"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
-
-#: .name
-msgid "DNS Service"
 msgstr ""
 
 #: .packages[0].name
@@ -89,6 +85,10 @@ msgstr ""
 
 #: .categories[0].name
 msgid "Network"
+msgstr ""
+
+#: .name
+msgid "DNS Service"
 msgstr ""
 
 #: mds_dns/setup-dns.sh:37

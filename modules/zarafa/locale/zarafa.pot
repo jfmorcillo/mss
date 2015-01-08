@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:05+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
 "compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
@@ -30,10 +30,6 @@ msgstr ""
 
 #: .actions[1].name
 msgid "Zarafa webmail interface"
-msgstr ""
-
-#: .name
-msgid "Zarafa Collaboration Platform"
 msgstr ""
 
 #: .packages[0].name
@@ -164,4 +160,8 @@ msgstr ""
 
 #: .config[8].name
 msgid "smtpd_mynetworks"
+msgstr ""
+
+#: .name
+msgid "Zarafa Collaboration Platform"
 msgstr ""

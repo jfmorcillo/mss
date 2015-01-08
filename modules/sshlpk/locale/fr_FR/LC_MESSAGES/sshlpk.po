@@ -8,11 +8,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-12-10 14:17+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
-"Language-Team: French <http://translate.mandriva.com/projects/mss-"
-"mbs2/sshlpk/fr_FR/>\n"
+"Language-Team: French <http://translate.mandriva.com/projects/mss-mbs2/"
+"sshlpk/fr_FR/>\n"
 "Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,17 +20,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n > 1;\n"
 "X-Generator: Weblate 2.1-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Manage your user's SSH keys using LDAP as a backend"
 msgstr "Utilise LDAP pour stocker les clefs SSH publiques de vos utilisateurs"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Console de gestion"
-
-#: .name
-msgid "SSH keys management"
-msgstr "Gestion des clefs SSH"
 
 #: .packages[0].name
 msgid "all"
@@ -39,3 +35,7 @@ msgstr "all"
 #: .categories[0].name
 msgid "Users"
 msgstr "Utilisateurs"
+
+#: .name
+msgid "SSH keys management"
+msgstr "Gestion des clefs SSH"

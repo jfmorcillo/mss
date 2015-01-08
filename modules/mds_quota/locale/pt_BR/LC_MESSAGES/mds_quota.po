@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-08 15:26+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-10-07 21:59+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
@@ -21,13 +21,9 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Set file quotas on the server"
 msgstr "Definir quotas de arquivos no servidor"
-
-#: .name
-msgid "User quota management"
-msgstr "Gerenciamento de Quota do Usuário"
 
 #: .packages[0].name
 msgid "all"
@@ -53,6 +49,10 @@ msgstr ""
 #: .categories[0].name
 msgid "Users"
 msgstr "Usuários"
+
+#: .name
+msgid "User quota management"
+msgstr "Gerenciamento de Quota do Usuário"
 
 #: mds_quota/setup-quota.sh:36
 msgid "Quotas not supported on this filesystem : $fs"

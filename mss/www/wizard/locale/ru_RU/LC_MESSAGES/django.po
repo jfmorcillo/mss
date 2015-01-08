@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:05+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2013-06-19 08:03+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -94,7 +94,7 @@ msgid "Hide log"
 msgstr "Скрыть журнал"
 
 #: templates/base.html:32 templates/config_run.html:161
-#: templates/install.html:66 templates/media_add.html:95
+#: templates/install.html:69 templates/media_add.html:95
 msgid "Show log"
 msgstr "Посмотреть журнал"
 
@@ -139,7 +139,7 @@ msgid "Continue"
 msgstr "Продолжить"
 
 #: templates/config.html:289 templates/download.html:97
-#: templates/install.html:76 templates/media_add.html:106
+#: templates/install.html:79 templates/media_add.html:106
 #: templates/media_auth.html:41 templates/preinst.html:37
 msgid "Back"
 msgstr "Назад"
@@ -181,7 +181,7 @@ msgid "Ask for help to Mandriva Support. Details and conditions on <a href=\\"
 msgstr ""
 
 #: templates/config_run.html:90 templates/config_run.html.py:112
-#: templates/download.html:73 templates/install.html:37
+#: templates/download.html:73 templates/install.html:40
 msgid "Retry"
 msgstr ""
 
@@ -198,7 +198,7 @@ msgid "Waiting..."
 msgstr "Ожидание..."
 
 #: templates/config_run.html:181 templates/download.html:95
-#: templates/install.html:74 templates/media_add.html:104
+#: templates/install.html:77 templates/media_add.html:104
 msgid "Please wait..."
 msgstr "Пожалуйста, подождите..."
 
@@ -229,15 +229,17 @@ msgstr "Удалось выполнить установку."
 msgid "Installation failed. Update your medias and retry to install."
 msgstr ""
 
-#: templates/install.html:31
-msgid "Installation failed. Make sure that the MBS CDROM is inserted."
+#: templates/install.html:32
+msgid ""
+"Installation failed. Make sure that the MBS CDROM is inserted or the "
+"Mandriva Business Server repository module has been installed."
 msgstr ""
 
-#: templates/install.html:33
+#: templates/install.html:35
 msgid "Installation failed."
 msgstr "Не удалось выполнить установку."
 
-#: templates/install.html:60
+#: templates/install.html:63
 msgid "The following addon is being installed"
 msgid_plural "The following addons are being installed"
 msgstr[0] ""

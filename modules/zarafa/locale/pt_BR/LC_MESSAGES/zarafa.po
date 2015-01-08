@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-08-26 18:37+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) "
-"<http://translate.mandriva.com/projects/mss/zarafa/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
+"mss/zarafa/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,7 +21,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "Zarafa is a replacement for Microsoft Exchange. It features full MS Outlook "
 "compatibility, ActiveSync support and a rich webmail interface. Zarafa users "
@@ -39,10 +39,6 @@ msgstr "Gerenciamento de usuários e grupos"
 #: .actions[1].name
 msgid "Zarafa webmail interface"
 msgstr "Zarafa webmail interface"
-
-#: .name
-msgid "Zarafa Collaboration Platform"
-msgstr "Zarafa Plataforma de Configuração"
 
 #: .packages[0].name
 msgid "all"
@@ -180,3 +176,7 @@ msgstr "Minhas redes"
 #: .config[8].name
 msgid "smtpd_mynetworks"
 msgstr "smtpd_mynetworks"
+
+#: .name
+msgid "Zarafa Collaboration Platform"
+msgstr "Zarafa Plataforma de Configuração"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-08-26 18:37+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
@@ -20,7 +20,7 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid ""
 "ownCloud gives your users an universal access to their files through a web "
 "interface or WebDAV.\n"
@@ -39,10 +39,6 @@ msgstr ""
 #: .actions[0].name
 msgid "ownCloud interface"
 msgstr "interface da ownCloud"
-
-#: .name
-msgid "ownCloud"
-msgstr "ownCloud (Nuvem Particular)"
 
 #: .packages[0].name
 msgid "all"
@@ -87,6 +83,10 @@ msgstr "owncloud_dataPath"
 #: .categories[0].name
 msgid "Cloud"
 msgstr "Nuvem"
+
+#: .name
+msgid "ownCloud"
+msgstr "ownCloud (Nuvem Particular)"
 
 #: owncloud/setup-owncloud.sh:146
 msgid "ownCloud is now configured."

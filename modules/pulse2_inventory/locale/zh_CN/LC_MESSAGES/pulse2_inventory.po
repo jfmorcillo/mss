@@ -7,11 +7,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-08-26 12:05+0200\n"
+"POT-Creation-Date: 2015-01-08 11:44+0100\n"
 "PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
-"Language-Team: Simplified Chinese "
-"<http://translate.mandriva.com/projects/mss/pulse2_inventory/zh_CN/>\n"
+"Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
+"mss/pulse2_inventory/zh_CN/>\n"
 "Language: zh_CN\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -19,17 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "The inventory management module of Pulse2"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "管理界面"
-
-#: .name
-msgid "Pulse2 Inventory"
-msgstr ""
 
 #: .packages[0].name
 msgid "all"
@@ -79,29 +75,33 @@ msgstr "允许来自外部网络的访问"
 msgid "Pulse2"
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:105
+#: .name
+msgid "Pulse2 Inventory"
+msgstr ""
+
+#: pulse2_inventory/setup-pulse2-inventory.sh:106
 msgid ""
 "You need to allow access to the Pulse2 Inventory server on either internal "
 "or external networks."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:108
+#: pulse2_inventory/setup-pulse2-inventory.sh:109
 msgid ""
 "A DNS entry must be set for this server if you want the Pulse2 services to "
 "listen on multiple interfaces."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:157
+#: pulse2_inventory/setup-pulse2-inventory.sh:156
 msgid "Pulse2 Inventory is installed and configured."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:158
+#: pulse2_inventory/setup-pulse2-inventory.sh:157
 msgid ""
 "The inventory is available on the management interface at https://@HOSTNAME@/"
 "mmc/."
 msgstr ""
 
-#: pulse2_inventory/setup-pulse2-inventory.sh:159
+#: pulse2_inventory/setup-pulse2-inventory.sh:158
 msgid ""
 "Check the documentation to use the Pulse2 inventory at http://serviceplace."
 "mandriva.com/addons/mbs/1.0/pulse2_inventory/."
