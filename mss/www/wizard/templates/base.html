@@ -125,7 +125,7 @@
                             {% is_first_time as first_time %}
                             {% if first_time %}
                             <li>
-                              <a href="http://{{ request.META.HTTP_HOST | cut:":8000" }}/home/">
+                                <a href="{% trans "http://www.mandriva.com/en/mbs/resources/" %}">
                                 <strong><i class="icon-book icon-gray"></i>&nbsp;{% trans "Documentation" %}</strong>
                               </a>
                             </li>
