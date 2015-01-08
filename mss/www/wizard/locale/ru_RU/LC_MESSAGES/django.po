@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-08 11:44+0100\n"
+"POT-Creation-Date: 2015-01-08 15:50+0100\n"
 "PO-Revision-Date: 2013-06-19 08:03+0000\n"
 "Last-Translator: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
 "Language-Team: Jean-Philippe Braun <jpbraun@mandriva.com>\n"
@@ -101,6 +101,10 @@ msgstr "Посмотреть журнал"
 #: templates/base.html:65 templates/base.html.py:161
 msgid "Ready"
 msgstr "Готово"
+
+#: templates/base.html:128
+msgid "http://www.mandriva.com/en/mbs/resources/"
+msgstr ""
 
 #: templates/base.html:129
 #, fuzzy
