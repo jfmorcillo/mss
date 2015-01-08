@@ -2,7 +2,6 @@
     "slug": "mds_mmc",
     "name": "MBS administration web interface",
     "description": "Users and groups management",
-    "desc": "Users and groups management",
     "categories": [
         {
             "slug": "users",
@@ -65,10 +64,6 @@
             "help": "Configure the firewall to allow access to the web interface from external networks"
         }
     ],
-    "dependencies": ["system", "network"],
-    "postinstall": {
-        "reboot": "yes"
-    },
     "module": {
         "section": "core",
         "dependencies": ["system", "network"],
