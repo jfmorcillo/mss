@@ -12,6 +12,10 @@ prune modules/mds_smb
 prune modules/zarafa
 prune modules/egroupware
 
+prune modules/pulse2_deployment
+prune modules/pulse2_imaging
+prune modules/pulse2_inventory
+
 # paid modules
 prune modules/libvirt
 prune modules/squid
