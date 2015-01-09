@@ -21,3 +21,4 @@ prune modules/libvirt
 prune modules/squid
 prune modules/owncloud
 prune modules/davical
+prune modules/openvpn
