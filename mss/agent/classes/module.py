@@ -284,7 +284,7 @@ class Module(object):
             except AttributeError:
                 self._script, self._script_args = (False, [])
         else:
-            logger.debug("No python module for %s found, can't get script name and args!" % self.name)
+            logger.debug("No python module for %s found, can't get script name and args!" % self.slug)
 
     def get_config(self):
         """ get module current config """
