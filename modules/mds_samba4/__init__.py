@@ -14,8 +14,13 @@ def get_config_info():
 
 def valid_domain(string):
     """Validate domain input"""
+    from socket import gethostname
+    hostname = gethostname()
+
     if not re.match("^[A-Z0-9-]+(\\.[A-Z0-9-]+)*(\\.[A-Z]{2,})$", string, re.IGNORECASE):
-        return _("Incorrect SAMBA domain name.", "mds_samba4")
+        return _("Incorrect SAMBA domain name, use only alphanumeric characters and dots.", "mds_samba4")
+    elif string.split('.')[0] == hostname:
+        return _("Incorrect SAMBA domain name, Must NOT start with short host name.", "mds_samba4")
     else:
         return None
 
@@ -61,6 +66,8 @@ def get_custom_config(config):
                    'default': domain,
                    'validation': 'valid_domain',
                    'label': _('SAMBA domain name', 'mds_samba4'),
-                   'help': _('The name of your Microsoft domain. Use only alphanumeric characters and dots like: mandriva.int.', 'mds_samba4')
+                   'help': _('The name of your Microsoft domain. Use only alphanumeric characters '
+                             'and dots like: mandriva.int. It Must NOT start with short host name.',
+                             'mds_samba4')
                    })
     return config
