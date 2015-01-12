@@ -2,7 +2,6 @@
     "slug": "asterisk",
     "name": "Asterisk VoIP server",
     "description": "A VoIP server",
-    "desc": "A VoIP server",
     "categories": [
         {
             "slug": "collaboration",
@@ -19,7 +18,12 @@
     "packages": [
         {
             "name": "all",
-            "rpms": ["asterisk", "asterisk-plugins-ldap", "asterisk-plugins-voicemail", "asterisk-core-sounds-fr"]
+            "rpms": ["asterisk",
+                   "asterisk-plugins-ldap",
+                   "asterisk-plugins-voicemail",
+                   "asterisk-core-sounds-fr",
+                   "python-mmc-asterisk",
+                   "mmc-web-asterisk"]
         }
     ],
     "config": [
