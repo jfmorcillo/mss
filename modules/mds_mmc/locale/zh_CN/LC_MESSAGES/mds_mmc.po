@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2015-01-14 10:56+0100\n"
 "PO-Revision-Date: 2014-11-06 09:52+0200\n"
 "Last-Translator: glassarre <glassarre@mandriva.com>\n"
 "Language-Team: Simplified Chinese <http://translate.mandriva.com/projects/"
@@ -19,17 +19,13 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Weblate 2.0-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Users and groups management"
 msgstr "用户与群组管理"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "管理界面"
-
-#: .name
-msgid "MBS administration web interface"
-msgstr "MBS 网络管理界面"
 
 #: .packages[0].name
 msgid "all"
@@ -80,6 +76,10 @@ msgstr "允许来自外部网络的访问"
 #: .categories[0].name
 msgid "Users"
 msgstr "用户"
+
+#: .name
+msgid "MBS administration web interface"
+msgstr "MBS 网络管理界面"
 
 #: mds_mmc/setup-mmc.sh:36
 msgid "Error while generating the password."

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2015-01-08 15:50+0100\n"
+"POT-Creation-Date: 2015-01-14 10:56+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,16 +17,12 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: .description .desc
+#: .description
 msgid "Users and groups management"
 msgstr ""
 
 #: .actions[0].name
 msgid "Management interface"
-msgstr ""
-
-#: .name
-msgid "MBS administration web interface"
 msgstr ""
 
 #: .packages[0].name
@@ -77,6 +73,10 @@ msgstr ""
 
 #: .categories[0].name
 msgid "Users"
+msgstr ""
+
+#: .name
+msgid "MBS administration web interface"
 msgstr ""
 
 #: mds_mmc/setup-mmc.sh:36

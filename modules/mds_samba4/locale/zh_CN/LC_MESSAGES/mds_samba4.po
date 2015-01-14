@@ -61,40 +61,44 @@ msgid ""
 "shares at https://@HOSTNAME@/mmc/."
 msgstr ""
 
-#: mds_samba4/__init__.py:18
-msgid "Incorrect SAMBA domain name."
+#: mds_samba4/__init__.py:20
+msgid "Incorrect SAMBA domain name, use only alphanumeric characters and dots."
 msgstr ""
 
-#: mds_samba4/__init__.py:25
-msgid "Password must be at least 8 characters long"
-msgstr ""
-
-#: mds_samba4/__init__.py:27
-msgid "Password must have at least one number"
+#: mds_samba4/__init__.py:22
+msgid "Incorrect SAMBA domain name, Must NOT start with short host name."
 msgstr ""
 
 #: mds_samba4/__init__.py:29
-msgid "Password must have at least one capital letter"
+msgid "Password must be at least 8 characters long"
 msgstr ""
 
 #: mds_samba4/__init__.py:31
+msgid "Password must have at least one number"
+msgstr ""
+
+#: mds_samba4/__init__.py:33
+msgid "Password must have at least one capital letter"
+msgstr ""
+
+#: mds_samba4/__init__.py:35
 msgid "Password must have at least one lowercase letter"
 msgstr ""
 
-#: mds_samba4/__init__.py:52
+#: mds_samba4/__init__.py:57
 msgid "Network"
 msgstr ""
 
-#: mds_samba4/__init__.py:53
+#: mds_samba4/__init__.py:58
 msgid "Choose the network for the DNS zone and DHCP."
 msgstr ""
 
-#: mds_samba4/__init__.py:63
+#: mds_samba4/__init__.py:68
 msgid "SAMBA domain name"
 msgstr ""
 
-#: mds_samba4/__init__.py:64
+#: mds_samba4/__init__.py:69
 msgid ""
 "The name of your Microsoft domain. Use only alphanumeric characters and dots "
-"like: mandriva.int."
+"like: mandriva.int. It Must NOT start with short host name."
 msgstr ""

@@ -9,11 +9,11 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-11-27 10:03+0100\n"
+"POT-Creation-Date: 2015-01-14 10:56+0100\n"
 "PO-Revision-Date: 2014-12-10 21:29+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects"
-"/mss-mbs2/mds_mmc/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
+"mss-mbs2/mds_mmc/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -21,17 +21,13 @@ msgstr ""
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Generator: Weblate 2.1-dev\n"
 
-#: .description .desc
+#: .description
 msgid "Users and groups management"
 msgstr "Gerenciamento de usuários e grupos"
 
 #: .actions[0].name
 msgid "Management interface"
 msgstr "Interface de gerenciamento"
-
-#: .name
-msgid "MBS administration web interface"
-msgstr "Interface Web de Administração do MBS"
 
 #: .packages[0].name
 msgid "all"
@@ -87,6 +83,10 @@ msgstr "Permitir o acesso a partir de redes externas"
 #: .categories[0].name
 msgid "Users"
 msgstr "Usuários"
+
+#: .name
+msgid "MBS administration web interface"
+msgstr "Interface Web de Administração do MBS"
 
 #: mds_mmc/setup-mmc.sh:36
 msgid "Error while generating the password."

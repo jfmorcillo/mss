@@ -1,0 +1,89 @@
+#: .description
+msgid "A VoIP server"
+msgstr ""
+
+#: .actions[0].name
+msgid "Management interface"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .config[0].help
+msgid ""
+"Configure the firewall to allow access to the VoIP Service from internal "
+"networks"
+msgstr ""
+
+#: .config[0].name
+msgid "fw_lan"
+msgstr ""
+
+#: .config[0].label
+msgid "Allow access from internal networks"
+msgstr ""
+
+#: .config[1].help
+msgid ""
+"Configure the firewall to allow access to the VoIP Service from external "
+"networks"
+msgstr ""
+
+#: .config[1].name
+msgid "fw_wan"
+msgstr ""
+
+#: .config[1].label
+msgid "Allow access from external networks"
+msgstr ""
+
+#: .config[2].help
+msgid "Create default folders for users in the selected language"
+msgstr ""
+
+#: .config[2].label
+msgid "Default language for Asterisk voicemail"
+msgstr ""
+
+#: .config[2].options[0].name
+msgid "English"
+msgstr ""
+
+#: .config[2].options[1].name
+msgid "Franais"
+msgstr ""
+
+#: .config[2].options[2].name
+msgid "Deutsch"
+msgstr ""
+
+#: .config[2].options[3].name
+msgid "Portuguese (Brazil)"
+msgstr ""
+
+#: .config[2].name
+msgid "asterisk_lang"
+msgstr ""
+
+#: .categories[0].name
+msgid "Collaboration"
+msgstr ""
+
+#: .name
+msgid "Asterisk VoIP server"
+msgstr ""
+
+#: asterisk/setup-asterisk.sh:153
+msgid "The VoIP service is configured."
+msgstr ""
+
+#: asterisk/setup-asterisk.sh:154
+msgid ""
+"You can add IP number to your users through the management interface at "
+"https://@HOSTNAME@/mmc/."
+msgstr ""
+
+#: asterisk/setup-asterisk.sh:155
+msgid "Use @HOSTNAME@ as the server."
+msgstr ""

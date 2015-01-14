@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2014-12-23 10:05+0100\n"
+"POT-Creation-Date: 2015-01-14 10:56+0100\n"
 "PO-Revision-Date: 2014-12-10 14:17+0200\n"
 "Last-Translator: Jean-Philippe <jpbraun@mandriva.com>\n"
 "Language-Team: French <http://translate.mandriva.com/projects/mss-mbs2/"
@@ -84,42 +84,51 @@ msgstr ""
 "Vous pouvez maintenant utiliser l'interface d'administration pour gérer les "
 "utilisateurs Windows et partages de fichiers sur https://@HOSTNAME@/mmc/."
 
-#: mds_samba4/__init__.py:18
-msgid "Incorrect SAMBA domain name."
+#: mds_samba4/__init__.py:20
+#, fuzzy
+msgid "Incorrect SAMBA domain name, use only alphanumeric characters and dots."
+msgstr ""
+"Le nom de votre domaine Microsoft. Utilisez uniquement des caractères "
+"alphanumériques et le point. eg.: mandriva.int."
+
+#: mds_samba4/__init__.py:22
+#, fuzzy
+msgid "Incorrect SAMBA domain name, Must NOT start with short host name."
 msgstr "Nom de domaine SAMBA incorrect."
 
-#: mds_samba4/__init__.py:25
+#: mds_samba4/__init__.py:29
 msgid "Password must be at least 8 characters long"
 msgstr "Le mot de passe doit comporter au minimum 8 caractères"
 
-#: mds_samba4/__init__.py:27
+#: mds_samba4/__init__.py:31
 msgid "Password must have at least one number"
 msgstr "Le mot de passe doit comporter au minimum un chiffre"
 
-#: mds_samba4/__init__.py:29
+#: mds_samba4/__init__.py:33
 msgid "Password must have at least one capital letter"
 msgstr "Le mot de passe doit comporter au minimum une lettre majuscule"
 
-#: mds_samba4/__init__.py:31
+#: mds_samba4/__init__.py:35
 msgid "Password must have at least one lowercase letter"
 msgstr "Le mot de passe doit comporter au minimum une lettre minuscule"
 
-#: mds_samba4/__init__.py:52
+#: mds_samba4/__init__.py:57
 msgid "Network"
 msgstr "Réseau"
 
-#: mds_samba4/__init__.py:53
+#: mds_samba4/__init__.py:58
 msgid "Choose the network for the DNS zone and DHCP."
 msgstr "Choisir le réseau à utiliser pour la zone DNS et le DHCP."
 
-#: mds_samba4/__init__.py:63
+#: mds_samba4/__init__.py:68
 msgid "SAMBA domain name"
 msgstr "Nom de domaine SAMBA"
 
-#: mds_samba4/__init__.py:64
+#: mds_samba4/__init__.py:69
+#, fuzzy
 msgid ""
 "The name of your Microsoft domain. Use only alphanumeric characters and dots "
-"like: mandriva.int."
+"like: mandriva.int. It Must NOT start with short host name."
 msgstr ""
 "Le nom de votre domaine Microsoft. Utilisez uniquement des caractères "
 "alphanumériques et le point. eg.: mandriva.int."
