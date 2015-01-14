@@ -92,7 +92,7 @@ popd
 rm -rf ${EASYRSA_PATH}
 
 # Create mmc group
-python mmc_groupadd.py -g VPNUsers -d $"Users authorized to connect to the VPN"
+python mmc_groupadd.py -d $"Users authorized to connect to the VPN" VPNUsers
 
 # Install documentation
 cp $APACHE_CONF /etc/httpd/conf/webapps.d/openvpn.conf

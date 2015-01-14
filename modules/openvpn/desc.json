@@ -81,7 +81,7 @@
     "packages": [
         {
             "name": "all",
-            "rpms": ["openvpn", "zip"]
+            "rpms": ["openvpn", "zip", "python-chardet"]
         }
     ],
     "module": {
