@@ -14,7 +14,7 @@ asterisk_lang=$3
 
 # Import LDAP schema
 add_schema ldap/asterisk.schema
-restart_service ldap
+restart_service slapd
 
 # Import LDIF file
 echo "
