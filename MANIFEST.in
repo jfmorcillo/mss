@@ -4,17 +4,19 @@ graft etc
 graft mss
 graft modules
 
+# mbs2 disabled modules
 prune modules/eva
-prune modules/mbs_repo_updates
 prune modules/mds_kerberos
 prune modules/mds_audit
 prune modules/mds_smb
 prune modules/zarafa
 prune modules/egroupware
 
+# wip modules
 prune modules/pulse2_deployment
 prune modules/pulse2_imaging
 prune modules/pulse2_inventory
+prune modules/asterisk
 
 # paid modules
 prune modules/libvirt
@@ -22,3 +24,6 @@ prune modules/squid
 prune modules/owncloud
 prune modules/davical
 prune modules/openvpn
+
+# online only modules
+prune modules/mbs_repo_updates
