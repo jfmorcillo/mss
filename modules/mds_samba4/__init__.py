@@ -1,6 +1,5 @@
 import re
 from mss.agent.managers.translation import TranslationManager
-from mmc.plugins.shorewall import get_zones, get_zones_interfaces
 from mss.agent.lib.utils import get_domain
 import netifaces
 from IPy import IP
@@ -38,6 +37,7 @@ def valid_password(passwd):
 
 
 def get_custom_config(config):
+    from mmc.plugins.shorewall import get_zones, get_zones_interfaces
     zones = get_zones('lan')
     interfaces = get_zones_interfaces(zones)
     options = []
