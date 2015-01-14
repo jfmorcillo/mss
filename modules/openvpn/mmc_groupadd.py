@@ -5,10 +5,11 @@ from mmc.plugins.base import createGroup, changeGroupDescription
 from optparse import OptionParser
 
 
-def mmc_create_group(group, description):
+def mmc_create_group(group, description=None):
     try:
         createGroup(group)
-        changeGroupDescription(group, description)
+        if description is not None:
+            changeGroupDescription(group, description)
     except ldap.ALREADY_EXISTS:
         pass
 
@@ -24,5 +25,7 @@ if __name__ == "__main__":
 
     # Check options
     if options.group:
+        description = None
         if options.description:
-            mmc_create_group(options.group, options.description)
+            description = options.description.decode('utf-8')
+        mmc_create_group(options.group, description)
