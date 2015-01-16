@@ -4,7 +4,7 @@
 check_root
 check_mmc_configured
 
-python -u ./provision.py $1 $2 $3 $4
+python -u ./provision.py $1 $2 $3 $4 $5
 if [ "$?" != "0" ]; then
     exit 1
 else

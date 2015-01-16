@@ -1,17 +1,22 @@
 #!/usr/bin/env python
+# coding=utf-8
 import sys
 import fileinput
 import os
 import shutil
 import socket
+from socket import gethostname
 import subprocess
 from time import sleep
 from mmc.plugins.samba4.smb_conf import SambaConf
 from mmc.plugins.network import zoneExists, getSubnet, addSubnet, addZone, addRecord, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
+from mmc.plugins.network import addRecordA, setHostAliases
 from mmc.plugins.shorewall import get_zones, add_rule, get_zones_interfaces
+from mss.agent.lib.utils import get_domain
 import re
 import netifaces
 from IPy import IP
+import ldap
 
 SLEEP_TIME = 1  # Sleep time between each check
 DESCRIPTION = "Mandriva Directory Server - SAMBA %v"
@@ -30,8 +35,10 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     p = subprocess.Popen(cmd, shell=True,
                          stdout=subprocess.PIPE,
                          stderr=stderr)
-    exit_code = p.wait()
-    stdout = "".join(p.stdout.readlines())
+#     exit_code = p.wait()
+    (stdout, _) = p.communicate()
+    exit_code = p.returncode
+#    stdout = "".join(p.stdout.readlines())
     if exit_code != 0:
         print "ERROR executing `%s`:\n%s" % (cmd, stdout)
         fail_provisioning_samba4()
@@ -40,13 +47,18 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     return stdout
 
 
-def provision_samba4(mode, realm, admin_password, iface):
-    if mode != 'dc':
+def provision_samba4(mode, realm, admin_password, iface, dns_ip):
+    if not mode in ['dc', 'bdc']:
         fail_provisioning_samba4(
             "We can only provision samba4 as Domain Controller")
 
     print('Provisionning samba mode: %s, realm: %s, admin_password:%s' %
           (mode, realm, admin_password))
+
+    bdc = False
+    if mode == 'bdc':
+        mode = 'dc'
+        bdc = True
 
     samba = SambaConf()
     params = {'realm': realm, 'prefix': samba.prefix,
@@ -66,11 +78,21 @@ def provision_samba4(mode, realm, admin_password, iface):
                " --server-role='%(role)s'" % params)
         shlaunch(cmd)
 
+    def join_domain():
+        print('Joining domain')
+        par = {'realm': realm,
+               'prefix': samba.prefix,
+               'adminpass': admin_password}
+        cmd = ("%(prefix)s/bin/samba-tool domain join %(realm)s DC "
+               "--username=Administrator "
+               "--realm=%(realm)s "
+               "--password=%(adminpass)s " % par)
+        shlaunch(cmd)
+
     def write_config_files():
         print "provision: domain_provision_cb"
-        netbios_domain_name = shlaunch("hostname",
-                                       ignore=True,
-                                       stderr=None).strip()
+        netbios_domain_name = gethostname()
+
         samba.writeSambaConfig(mode, netbios_domain_name, realm, DESCRIPTION)
         samba.writeKrb5Config(realm)
 
@@ -141,7 +163,63 @@ def provision_samba4(mode, realm, admin_password, iface):
         sleep(SLEEP_TIME)
         check_ldap_is_running()
 
+    def clean_etc_host():
+        cmd = "sed -i -e 's/.*%s.*//' /etc/hosts" % gethostname()
+        shlaunch(cmd)
+
     def configure_network():
+        def update_resolvconf():
+            with open('/etc/dhclient-enter-hooks', 'w') as f:
+                fic = '''make_resolv_conf(){
+                    echo "nameserver 127.0.0.1" > /etc/resolv.conf
+                    echo "search %s" >> /etc/resolv.conf
+                    }''' % realm
+                f.write(fic)
+
+        def add_dns():
+            base_dn = 'DC=%s,DC=%s' % tuple(realm.split('.'))
+            bind_dn = 'CN=Administrator,CN=Users,%s' % base_dn
+            dns_dn = 'OU=Domain Controllers,%s' % base_dn
+            l = ldap.initialize('ldap://%s:389' % dns_ip)
+            l.bind_s(bind_dn, admin_password)
+            entries = l.search_s(dns_dn,
+                                 ldap.SCOPE_ONELEVEL,
+                                 filterstr='(&(samAccountType=805306369)(primaryGroupID=516)(objectCategory=computer))',
+                                 attrlist=['dn',
+                                           'dNSHostName',
+                                           'distinguishedName',
+                                           'servicePrincipalName'])
+            for e in entries:
+                rec = {'cname': None}
+                if e[0] is None:
+                    continue
+
+                for key in e[1].keys():
+                    #             print(e[1][key])
+                    if key == 'servicePrincipalName':
+                        for name in e[1][key]:
+                            if name.startswith('ldap/') and name.endswith('_msdcs.%s' % realm):
+                                rec['cname'] = ('.').join(
+                                    name.split('.')[0:2])[5:]
+                    if key == 'dNSHostName':
+                        rec['dNSHostName'] = e[1][key][0]
+                print(rec)
+
+                fqdn = rec['dNSHostName'].split('.')
+                hostname = fqdn[0]
+                zone = '.'.join([fqdn[1], fqdn[2]])
+                alias = rec['cname']
+                if zone and hostname and alias:
+                    try:
+                        print(
+                            'addRecordA(%s,%s,%s)' % (zone, hostname, dns_ip))
+                        addRecordA(zone, hostname, dns_ip)
+                    except ldap.ALREADY_EXISTS as ex:
+                        print(ex)
+
+                    print(
+                        'setHostAliases(%s,%s,%s)' % (zone, hostname, [alias]))
+                    setHostAliases(zone, hostname, [alias])
 
         def configure_shorewall():
             print "Configure shorewall"
@@ -183,6 +261,9 @@ def provision_samba4(mode, realm, admin_password, iface):
                 except:
                     print('Check that SRV record \'%s %s\' exists in your DNS' %
                           (key, val + ' ' + nameserver))
+            if bdc:
+                add_dns()
+                update_resolvconf()
 
             shlaunch("systemctl restart named-sdb")
             print("### Done configure_dns")
@@ -207,10 +288,12 @@ def provision_samba4(mode, realm, admin_password, iface):
         ip = IP(addr).make_net(netmask)
         network = str(ip.net())
         netmask = ip.prefixlen()
-        nameserver = shlaunch("hostname", ignore=True, stderr=None).strip()
+        nameserver = gethostname()
 
         configure_dns()
-        configure_dhcp()
+        if not bdc:
+            configure_dhcp()
+
         configure_shorewall()
         print("### Done configure_shorewall")
 
@@ -233,12 +316,17 @@ def provision_samba4(mode, realm, admin_password, iface):
             for d in dirs:
                 shutil.rmtree(os.path.join(root, d))
 
-    provision_domain()
-    print("### Done provision_domain")
-    disable_password_complexity()
-    print("### Done disable_password_complexity")
     write_config_files()
     print("### Done write_config_files")
+
+    if not bdc:
+        provision_domain()
+        print("### Done provision_domain")
+        disable_password_complexity()
+        print("### Done disable_password_complexity")
+    else:
+        clean_etc_host()
+        join_domain()
 
     reconfig_ldap_service()
     print("### Done reconfig_ldap_service")
@@ -249,5 +337,6 @@ def provision_samba4(mode, realm, admin_password, iface):
     print("### Done start_samba4_service")
     start_s4sync_service()
     print("### Done start_s4sync_service")
+
 
 provision_samba4(*sys.argv[1:])
