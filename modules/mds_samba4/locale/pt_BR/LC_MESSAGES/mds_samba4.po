@@ -3,10 +3,10 @@ msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-14 10:56+0100\n"
-"PO-Revision-Date: 2014-12-10 21:29+0200\n"
+"PO-Revision-Date: 2015-01-16 19:13+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
-"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects/"
-"mss-mbs2/mds_samba4/pt_BR/>\n"
+"Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects"
+"/mss-mbs2/mds_samba4/pt_BR/>\n"
 "Language: pt_BR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -87,16 +87,15 @@ msgstr ""
 "usuários e compartilhamentos do Windows em https://@HOSTNAME@/mmc/."
 
 #: mds_samba4/__init__.py:20
-#, fuzzy
 msgid "Incorrect SAMBA domain name, use only alphanumeric characters and dots."
 msgstr ""
-"O nome do seu domínio Microsoft. Use apenas caracteres alfanuméricos e "
-"pontos como: mandriva.int."
+"Nome de domínio SAMBA incorreto, use apenas caracteres alfanuméricos e "
+"pontos."
 
 #: mds_samba4/__init__.py:22
-#, fuzzy
 msgid "Incorrect SAMBA domain name, Must NOT start with short host name."
-msgstr "Nome de domínio SAMBA incorreto."
+msgstr ""
+"Nome de domínio SAMBA incorreto, NÃO deve começar com nome de host curto."
 
 #: mds_samba4/__init__.py:29
 msgid "Password must be at least 8 characters long"
@@ -127,10 +126,9 @@ msgid "SAMBA domain name"
 msgstr "Nome de domínio SAMBA"
 
 #: mds_samba4/__init__.py:69
-#, fuzzy
 msgid ""
 "The name of your Microsoft domain. Use only alphanumeric characters and dots "
 "like: mandriva.int. It Must NOT start with short host name."
 msgstr ""
 "O nome do seu domínio Microsoft. Use apenas caracteres alfanuméricos e "
-"pontos como: mandriva.int."
+"pontos como: mandriva.int. NÃO deve começar com nome de host curto."
