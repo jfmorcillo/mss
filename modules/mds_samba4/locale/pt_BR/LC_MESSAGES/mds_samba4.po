@@ -62,7 +62,7 @@ msgstr ""
 
 #: .config[2].label
 msgid "Administrator password"
-msgstr "Senha do administrador"
+msgstr "Senha de Administrador"
 
 #: .config[2].name
 msgid "smb_passwd"
