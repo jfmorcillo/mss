@@ -8,13 +8,21 @@ package
 import json
 import glob
 
-exclude_modules = []
-packages = set()
+exclude_modules = [
+    "mds_audit",
+    "mds_smb",
+    "mds_kerberos",
+    "pulse2_inventory",
+    "pulse2_imaging",
+    "pulse2_deployment",
+    "zarafa",
+    "eva",
+    "egroupware",
+    "tftp_server",
+    "nfs_server",
+]
 
-with open('MANIFEST.in') as h:
-    for line in h.readlines():
-        if line.startswith('prune'):
-            exclude_modules.append(line.split('/')[1].strip())
+packages = set()
 
 for desc_file in glob.glob('modules/*/desc.json'):
     with open(desc_file) as h:
