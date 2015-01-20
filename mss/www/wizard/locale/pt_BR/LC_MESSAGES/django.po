@@ -11,7 +11,7 @@ msgstr ""
 "Project-Id-Version: Mandriva Server Setup\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2015-01-14 10:56+0100\n"
-"PO-Revision-Date: 2015-01-20 16:51+0200\n"
+"PO-Revision-Date: 2015-01-20 18:03+0200\n"
 "Last-Translator: Andre <andre@mandriva.com>\n"
 "Language-Team: Portuguese (Brazil) <http://translate.mandriva.com/projects"
 "/mss-mbs2/wizard/pt_BR/>\n"
@@ -38,11 +38,11 @@ msgstr "Obter complemento"
 
 #: transaction.py:61
 msgid "Download addons from the ServicePlace"
-msgstr "Baixar complementos do ServicePlace"
+msgstr "Baixar complementos da ServicePlace"
 
 #: transaction.py:67
 msgid "Medias authentication"
-msgstr "Autenticação das midias"
+msgstr "Autenticação das mídias"
 
 #: transaction.py:68
 msgid "One or more medias need authentication"
