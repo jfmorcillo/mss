@@ -117,14 +117,13 @@ MEDIA_URL = '/site_media/'
 LOGIN_URL = "/mss/account/login/"
 
 DEFAULT_LANGUAGE = locale.getdefaultlocale()[0]
-LANGUAGE_CODE = 'en'
 
 LANGUAGES = (
-  ('en', 'English'),
-  ('fr', 'Français'),
-  ('pt-br', 'Português do Brasil'),
-  ('de', 'Deutsch'),
-  ('zh-cn', 'Chinese'),
+    ('en', 'English'),
+    ('fr', 'Français'),
+    ('pt-br', 'Português do Brasil'),
+    ('de', 'Deutsch'),
+    ('zh-cn', 'Chinese'),
 )
 
 TEMPLATE_CONTEXT_PROCESSORS = (
