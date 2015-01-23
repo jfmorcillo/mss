@@ -123,7 +123,7 @@ class ProcessManager:
             if not env:
                 env = {}
             if 'LC_ALL' not in env:
-                env['LC_ALL'] = TranslationManager().lang
+                env['LC_ALL'] = TranslationManager().locale_name
             thread = ProcessThread(type, status, module, command, cwd, callback, shell, env)
             self.threads.append(thread)
             logger.debug("Create %s thread for module %s" % (type, module))

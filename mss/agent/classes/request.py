@@ -67,7 +67,8 @@ class RequestThread(threading.Thread):
         request = urllib2.Request(self.url, self.params)
         for header in self.headers:
             request.add_header(header[0], header[1])
-        request.add_header('Accept-Language', TranslationManager().get_lang().split('_')[0] + ',en')
+        languages = [TranslationManager().language_code, 'en']
+        request.add_header('Accept-Language', ",".join(languages))
         try:
             response = urllib2.urlopen(request)
         except urllib2.HTTPError as e:

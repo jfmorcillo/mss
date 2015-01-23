@@ -35,30 +35,37 @@ class TranslationManager:
     __metaclass__ = Singleton
 
     def __init__(self):
-        # set default locale when starting agent
-        self.lang = locale.getdefaultlocale()[0]
-        logger.debug("Selected lang: %s" % self.lang)
+        self._locale_name = "en_US"
+        self._language_code = "en-us"
         self.catalogs = {}
+        # get default locale when starting agent
+        self.locale_name, self.encoding = locale.getdefaultlocale()
+        logger.debug("Using locale %s" % self.locale_name)
 
-    def set_lang(self, lang):
-        # FIXME HACK: manually set the wanted locale
-        if lang == "en":
-            lang = "en_US"
-        self.lang = lang
+    @property
+    def locale_name(self):
+        return self._locale_name
+
+    @locale_name.setter
+    def locale_name(self, value):
+        if value == self._locale_name:
+            return
+        self._locale_name = value
+        self._language_code = value.replace('_', '-').lower()
         for name, infos in self.catalogs.items():
             (path, catalog) = infos
             self.set_catalog(name, path)
-        logger.debug("Lang changed to: %s" % self.lang)
+        logger.debug("Locale changed to: %s" % self._locale_name)
 
-    def get_lang(self):
-        return self.lang
+    @property
+    def language_code(self):
+        return self._language_code
 
     def set_catalog(self, name, path=''):
         try:
             translation = gettext.translation(name,
                                               os.path.join(path, "locale"),
-                                              languages=[self.lang])
-            self.lang = translation.info()['language']
+                                              languages=[self.locale_name])
         except AttributeError:
             translation = gettext.NullTranslations()
         except IOError:

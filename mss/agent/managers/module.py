@@ -261,12 +261,12 @@ class ModuleManager:
     @expose
     def set_lang(self, lang):
         """ change lang during execution """
-        TranslationManager().set_lang(lang)
+        TranslationManager().locale_name = lang
 
     @expose
     def get_lang(self):
         """ return current language """
-        return TranslationManager().get_lang()
+        return TranslationManager().locale_name
 
     @expose
     def set_option(self, slug, value):
@@ -719,7 +719,8 @@ class ModuleManager:
         request = urllib2.Request(url, params)
         if self._token:
             request.add_header('Authorization', 'Token ' + self._token)
-        request.add_header('Accept-Language', TranslationManager().get_lang().split('_')[0] + ',en')
+        languages = [TranslationManager().language_code, 'en']
+        request.add_header('Accept-Language', ",".join(languages))
         try:
             response = urllib2.urlopen(request)
             if response.info().gettype() == "application/json":
