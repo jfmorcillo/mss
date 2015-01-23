@@ -1,0 +1,48 @@
+{
+    "slug": "pykota",
+    "name": "Pykota",
+    "description": "Pykota print accounting software",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Export PyKota's datas in a number of formats",
+            "value": "https://@HOSTNAME@/pykota/dumpykota.cgi"
+        },
+        {
+            "type": "link",
+            "name": "Consult the printing history per user, printer, client hostname, or billing code",
+            "value": "https://@HOSTNAME@/pykota/printquota.cgi"
+        },
+        {
+            "type": "link",
+            "name": "Allow end users to know the cost of a print job in advance",
+            "value": "https://@HOSTNAME@/pykota/pikotme.cgi"
+        },
+        {
+            "type": "link",
+            "name": "Pykota documentation",
+            "value": "http://@HOSTNAME@/Documentations/pykota/"
+        },
+        {
+            "type": "link",
+            "name": "Printers management",
+            "value": "http://@HOSTNAME@:631/"
+        }
+    ],
+    "categories": [
+        {
+            "slug": "other",
+            "name": "Other"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": ["pykota"]
+        }
+    ],
+    "module": {
+        "section": "core",
+        "dependencies": ["mds_mmc", "mds_cups"]
+    }
+}

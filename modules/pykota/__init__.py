@@ -1,8 +1,6 @@
 # -*- coding: UTF-8 -*-
 #
-# (c) 2010 Mandriva, http://www.mandriva.com/
-#
-# $Id$
+# (c) 2013 Mandriva, http://www.mandriva.com/
 #
 # This file is part of Mandriva Server Setup
 #
@@ -23,4 +21,4 @@
 
 
 def get_config_info():
-    return ('setup-cups.sh', ['fw_lan', 'fw_wan'])
+    return ("setup-pykota.sh", [])
