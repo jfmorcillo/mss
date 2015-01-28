@@ -54,10 +54,9 @@
   <label class="control-label" for="language">{% trans "Language" %}: </label>
   <div class="controls">
     <select name="language" onchange="setLang(this.value, '/')">
-    {% get_language_info_list for LANGUAGES as languages %}
-    {% for language in languages %}
-      <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
-          {{ language.name_local | capitalize }}
+    {% for language_code, language_name in LANGUAGES %}
+      <option value="{{ language_code }}"{% if language_code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+          {{ language_name | capitalize }}
       </option>
     {% endfor %}
     </select>

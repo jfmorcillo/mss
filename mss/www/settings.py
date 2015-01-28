@@ -20,7 +20,6 @@
 # MA 02110-1301, USA.
 
 import os
-import locale
 import sys
 import logging
 import logging.handlers
@@ -116,13 +115,11 @@ MEDIA_ROOT = os.path.join(PROJECT_DIR, 'media')
 MEDIA_URL = '/site_media/'
 LOGIN_URL = "/mss/account/login/"
 
-DEFAULT_LANGUAGE = locale.getdefaultlocale()[0]
-
 LANGUAGES = (
-    ('en', 'English'),
-    ('fr', 'Français'),
+    ('en-us', 'English'),
+    ('fr-fr', 'Français'),
     ('pt-br', 'Português do Brasil'),
-    ('de', 'Deutsch'),
+    ('de-de', 'Deutsch'),
     ('zh-cn', 'Chinese'),
 )
 
