@@ -114,8 +114,8 @@ sed -i "s!dc=example,dc=com!$MDSSUFFIX!" ${PYKOTA_HOME}/pykotadmin.conf
 
 
 ### Fix persmissions
-chmod 644 ~pykota/pykota.conf
-chmod 640 ~pykota/pykotadmin.conf
+#chmod 644 ~pykota/pykota.conf
+#chmod 640 ~pykota/pykotadmin.conf
 
 # Link to CUPS server
 [ ! -L /usr/lib/cups/backend/cupspykota ] && ln -s /usr/share/pykota/cupspykota /usr/lib/cups/backend/cupspykota
