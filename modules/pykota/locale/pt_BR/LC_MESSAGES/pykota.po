@@ -1,0 +1,57 @@
+#: .description
+msgid "Pykota print accounting software"
+msgstr ""
+
+#: .actions[0].name
+msgid "Export PyKota's datas in a number of formats"
+msgstr ""
+
+#: .actions[1].name
+msgid ""
+"Consult the printing history per user, printer, client hostname, or billing "
+"code"
+msgstr ""
+
+#: .actions[2].name
+msgid "Allow end users to know the cost of a print job in advance"
+msgstr ""
+
+#: .actions[3].name
+msgid "Pykota documentation"
+msgstr ""
+
+#: .actions[4].name
+msgid "Printers management"
+msgstr ""
+
+#: .packages[0].name
+msgid "all"
+msgstr ""
+
+#: .categories[0].name
+msgid "Other"
+msgstr ""
+
+#: .name
+msgid "Pykota"
+msgstr ""
+
+#: pykota/setup-pykota.sh:59
+msgid "Failed to update the LDAP database."
+msgstr ""
+
+#: pykota/setup-pykota.sh:135
+msgid "Pykota is now ready and configured."
+msgstr ""
+
+#: pykota/setup-pykota.sh:136
+msgid ""
+"You can access reporting web pages at http://@HOSTNAME@/pykota/ with login "
+"'root' and password '$MDSPASS'."
+msgstr ""
+
+#: pykota/setup-pykota.sh:137
+msgid ""
+"Your installation may be configured on the commandline. The Pykota "
+"documentation is available at http://@HOSTNAME@/Documentations/pykota"
+msgstr ""
