@@ -16,7 +16,7 @@
         {
             "type": "link",
             "name": "Allow end users to know the cost of a print job in advance",
-            "value": "https://@HOSTNAME@/pykota/pikotme.cgi"
+            "value": "https://@HOSTNAME@/pykota/pykotme.cgi"
         },
         {
             "type": "link",
