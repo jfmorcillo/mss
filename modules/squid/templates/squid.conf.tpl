@@ -1,3 +1,6 @@
+### acl debug
+# debug_options ALL,1 28,5
+
 hierarchy_stoplist cgi-bin ?
 acl QUERY urlpath_regex cgi-bin \?
 no_cache deny QUERY
@@ -53,12 +56,11 @@ http_access deny CONNECT !SSL_ports
 # Permissions: Block and Allow? not remove #Allow and #Deny they are marks.
 #Allow
 http_access allow nonfiltered_group all
-http_access deny all filtered_group blacklist_ext
-http_access allow all filtered_group timeranges
-http_access deny filtered_group blacklist
-http_access allow filtered_group whitelist
-http_access allow filtered_group all
 http_access allow machines all
+http_access allow timeranges filtered_group whitelist
+http_access deny  filtered_group blacklist_ext
+http_access deny  filtered_group blacklist
+http_access allow timeranges filtered_group all
 
 #Deny
 http_access deny all
