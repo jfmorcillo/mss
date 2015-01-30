@@ -28,7 +28,7 @@ import netifaces
 from IPy import IP
 
 
-MANAGED_INTERFACE_NAMES = ('eth', 'br', 'ens', 'enp')
+MANAGED_INTERFACE_NAMES = ('eth', 'br', 'ens', 'enp', 'eno')
 
 
 def formatExceptionInfo(maxTBlevel=5):
