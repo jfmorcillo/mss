@@ -60,7 +60,8 @@
 		"pulse2-imaging-client",
 		"mmc-web-imaging",
 		"python-mmc-imaging",
-		"xinetd-simple-services"
+		"xinetd-simple-services",
+		"python-netaddr"
     		]
         }
     ],
