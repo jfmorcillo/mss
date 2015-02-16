@@ -328,14 +328,14 @@ sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/msc.ini
 sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/pkgs.ini
 
 
-configure_imaging
-zones=`get_pulse2_zones`
-for zone in $zones
-do
-    interface=`echo $zone | sed -e 's/lan/eth/' -e 's/wan/eth/'`
-    configure_firewall $interface $zone
-    configure_dhcp $interface
-done
+#configure_imaging
+#zones=`get_pulse2_zones`
+#for zone in $zones
+#do
+#    interface=`echo $zone | sed -e 's/lan/eth/' -e 's/wan/eth/'`
+#    configure_firewall $interface $zone
+#    configure_dhcp $interface
+#done
 
 restart_service mmc-agent
 
