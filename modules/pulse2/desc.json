@@ -61,7 +61,8 @@
 		"mmc-web-imaging",
 		"python-mmc-imaging",
 		"xinetd-simple-services",
-		"python-netaddr"
+		"python-netaddr",
+		"python-ipaddr"
     		]
         }
     ],
