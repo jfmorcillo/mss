@@ -1,0 +1,11 @@
+#
+# Shorewall version 4 - Pulse2 Inventory Macro
+#
+# /etc/shorewall/macro.Pulse2Inventory
+#
+#	This macro handles Pulse2 Inventory traffic.
+#
+###############################################################################
+#ACTION	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/
+#				PORT(S)	PORT(S)	LIMIT	GROUP
+PARAM	-	-	tcp	9999

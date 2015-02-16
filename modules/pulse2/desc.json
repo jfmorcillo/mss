@@ -1,0 +1,94 @@
+{
+    "slug": "pulse2",
+    "name": "Pulse2",
+    "description": "Pulse2 module",
+    "actions": [
+        {
+            "type": "link",
+            "name": "Management interface",
+            "value": "https://@HOSTNAME@/mmc/main.php"
+        }
+    ],
+    "categories": [
+        {
+            "slug": "pulse2",
+            "name": "Pulse2"
+        }
+    ],
+    "packages": [
+        {
+            "name": "all",
+            "rpms": [
+                "mmc-web-pkgs",
+                "python-mmc-pkgs",
+		"sqlite3-tools",
+                "pulse2",
+                "pulse2-homepage",
+                "pulse2-common",
+                "python-pulse2-common",
+                "mmc-web-pulse2",
+                "python-mmc-pulse2",
+                "mmc-web-inventory",
+                "python-mmc-inventory",
+                "pulse2-inventory-server",
+                "pulse2-package-server",
+                "python-pulse2-common-database-inventory",
+                "pulse2-launchers",
+                "pulse2-scheduler",
+                "mmc-web-dyngroup",
+                "python-mmc-dyngroup",
+                "python-pulse2-common-database-dyngroup",
+                "mingw32-nsis",
+                "mingw32-filesystem",
+                "mingw32-binutils",
+                "mingw32-gcc",
+                "mingw32-gcc-c++",
+                "mingw32-cpp",
+                "mmc-web-msc",
+                "python-mmc-msc",
+                "python-pulse2-common-database-msc",
+                "samba4-common",
+                "python-mmc-report",
+                "python-pygal",
+                "glpi",
+                "glpi-plugin-webservices",
+                "glpi-plugin-fusioninventory",
+                "python-mmc-glpi",
+                "mmc-web-glpi",
+                "python-pulse2-common-database-imaging",
+		"pulse2-package-server",
+		"pulse2-imaging-client",
+		"mmc-web-imaging",
+		"python-mmc-imaging",
+		"xinetd-simple-services"
+    		]
+        }
+    ],
+    "config": [
+         {
+             "type": "password",
+             "name": "myrootpasswd",
+             "require": "yes",
+             "label": "MySQL root password",
+             "help": "Used to create the glpi database"
+        },
+        {
+            "type": "check",
+            "name": "fw_lan",
+            "default": "on",
+            "label": "Allow access from internal networks",
+            "help": "Configure the firewall to allow access to the Pulse2 inventory service from internal networks"
+        },
+        {
+            "type": "check",
+            "name": "fw_wan",
+            "default": "off",
+            "label": "Allow access from external networks",
+            "help": "Configure the firewall to allow access to the Pulse2 inventory service from external networks"
+        }
+    ],
+    "module": {
+        "section": "other",
+	"dependencies": ["mds_mmc", "mysql"]
+    }
+}

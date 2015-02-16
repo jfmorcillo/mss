@@ -1,0 +1,26 @@
+#
+# Shorewall version 4 - Pulse2 Imaging Macro
+#
+# /etc/shorewall/macro.Pulse2Imaging
+#
+#	This macro handles Pulse2 Imaging traffic.
+#
+###############################################################################
+#ACTION	SOURCE	DEST	PROTO	DEST	SOURCE	RATE	USER/
+#				PORT(S)	PORT(S)	LIMIT	GROUP
+# TFTP
+PARAM	-	-	udp	69
+# Imaging server
+PARAM   -   -   udp 1001
+PARAM   -   -   tcp 1001
+# Time server
+PARAM   -   -   tcp 37
+# NFS
+PARAM	-	-	udp	111
+PARAM	-	-	tcp	111
+PARAM	-	-	udp	2049
+PARAM	-	-	tcp	2049
+PARAM	-	-	udp	32764:32769
+PARAM	-	-	tcp	32764:32769
+# Ping (may not enabled by default)
+PARAM   -   -   icmp    8
