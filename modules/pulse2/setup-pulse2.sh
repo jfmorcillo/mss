@@ -305,7 +305,7 @@ mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password=
 pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldap://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
- --enable-package --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root \
+ --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root \
  --glpi-dbpasswd="$mysql_password" \
  --glpi-url="localhost/glpi"\
  | sed -r 's/\x1b.*?[mGKHh]//g'
