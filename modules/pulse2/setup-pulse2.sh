@@ -204,6 +204,8 @@ dbpass=`randpass 10 1`
 dhcp_configured=""
 dhcp_external=""
 
+ZABBIX_CONF=templates/zabbix.conf.php.tpl
+
 # Tune PHP: increase maximum upload filesize
 sed -i 's!^upload_max_filesize = .*$!upload_max_filesize = 150M!' /etc/php.ini
 sed -i 's!^post_max_size = .*$!post_max_size = 150M!' /etc/php.ini
@@ -336,6 +338,65 @@ sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/pkgs.ini
 #    configure_firewall $interface $zone
 #    configure_dhcp $interface
 #done
+
+#Configuration of zabbix
+
+cp $ZABBI_CONF /usr/share/zabbix/conf
+
+echo -n "Create ownCloud database..."
+dbname="zabbix"
+dbuser="zabbix"
+dbpass=`randpass 10 1`
+mysql_do_query "DROP USER ${dbuser}@'localhost';"
+mysql_do_query "DROP DATABASE IF EXISTS ${dbname};"
+mysql_do_query "CREATE DATABASE ${dbname};"
+mysql_do_query "GRANT ALL ON ${dbname}.* to '${dbuser}'@'localhost' identified by '${dbpass}';"
+mysql_do_query "FLUSH PRIVILEGES;"
+echo "done."
+
+
+mysql_do_query "UPDATE drules SET status=\"0\" WHERE druleid=\"2\";"
+mysql_do_query "UPDATE hosts SET status=\"0\" WHERE hostid=\"10084\";"
+mysql_do_query "UPDATE actions SET status=\"0\" WHERE actionid=\"3\";"
+mysql_do_query "UPDATE actions SET status=\"0\" WHERE actionid=\"2\";"
+mysql_do_query "UPDATE drules SET iprange=\"$RANGE\" WHERE druleid=\"2\";"
+mysql_do_query "UPDATE triggers SET status=\"1\" WHERE triggerid=\"13083\";"
+mysql_do_query "INSERT INTO groups (groupid, name, internal) VALUES (\"6\", \'Windows\', 0), ( \"7\", \'Apple\', 0), ( \"8\", \'Device\', 0);"
+mysql_do_query "INSERT INTO actions (actionid, name, eventsource, evaltype, status, esc_period, def_shortdata, def_longdata, recovery_msg, r_shortdata, r_longdata) VALUES (4, 'Auto discovery. Windows servers.', 1, 0, 0, 0, 'Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}', 'Discovery rule: {DISCOVERY.RULE.NAME}\r\n\r\nDevice IP:{DISCOVERY.DEVICE.IPADDRESS}\r\nDevice DNS: {DISCOVERY.DEVICE.DNS}\r\nDevice status: {DISCOVERY.DEVICE.STATUS}\r\nDevice uptime: {DISCOVERY.DEVICE.UPTIME}\r\n\r\nDevice service name: {DISCOVERY.SERVICE.NAME}\r\nDevice service port: {DISCOVERY.SERVICE.PORT}\r\nDevice service status: {DISCOVERY.SERVICE.STATUS}\r\nDevice service uptime: {DISCOVERY.SERVICE.UPTIME}', 0, '', ''), (5, 'Auto discovery. Mac servers.', 1, 0, 0, 0, 'Discovery: {DISCOVERY.DEVICE.STATUS} {DISCOVERY.DEVICE.IPADDRESS}', 'Discovery rule: {DISCOVERY.RULE.NAME}\r\n\r\nDevice IP:{DISCOVERY.DEVICE.IPADDRESS}\r\nDevice DNS: {DISCOVERY.DEVICE.DNS}\r\nDevice status: {DISCOVERY.DEVICE.STATUS}\r\nDevice uptime: {DISCOVERY.DEVICE.UPTIME}\r\n\r\nDevice service name: {DISCOVERY.SERVICE.NAME}\r\nDevice service port: {DISCOVERY.SERVICE.PORT}\r\nDevice service status: {DISCOVERY.SERVICE.STATUS}\r\nDevice service uptime: {DISCOVERY.SERVICE.UPTIME}', 0, '', '');"
+mysql_do_query "INSERT INTO conditions (conditionid, actionid, conditiontype, operator, value) VALUES
+(7, 4, 12, 0, 'windows'),
+(8, 4, 10, 0, '0'),
+(9, 4, 8, 0, '9'),
+(10, 5, 12, 0, 'apple'),
+(11, 5, 10, 0, '0'),
+(12, 5, 8, 0, '9');"
+mysql_do_query "INSERT INTO operations (operationid, actionid, operationtype, esc_period, esc_step_from, esc_step_to, evaltype) VALUES
+(4, 2, 2, 0, 1, 1, 0),
+(5, 5, 2, 0, 1, 1, 0),
+(6, 5, 4, 0, 1, 1, 0),
+(7, 5, 6, 0, 1, 1, 0),
+(8, 4, 2, 0, 1, 1, 0),
+(9, 4, 4, 0, 1, 1, 0),
+(10, 4, 6, 0, 1, 1, 0);"
+mysql_do_query "INSERT INTO optemplate (optemplateid, operationid, templateid) VALUES
+(2, 7, 10050),
+(3, 7, 10079),
+(4, 10, 10050),
+(5, 10, 10081);"
+mysql_do_query "INSERT INTO opgroup (opgroupid, operationid, groupid) VALUES
+(2, 6, 7),
+(3, 9, 6);"
+mysql_do_query "INSERT INTO dchecks (dcheckid, druleid, type, key_, snmp_community, ports, snmpv3_securityname, snmpv3_securitylevel, snmpv3_authpassphrase, snmpv3_privpassphrase, uniq) VALUES
+(3, 2, 12, '', '', '0', '', 0, '', '', 0);"
+mysql_do_query "INSERT INTO rights (rightid, groupid, permission, id) VALUES
+(15, 8, 2, 7),
+(16, 8, 2, 8),
+(17, 8, 2, 5),
+(18, 8, 2, 2),
+(19, 8, 2, 1),
+(20, 8, 2, 6),
+(21, 8, 2, 4);"
+
 
 restart_service mmc-agent
 
