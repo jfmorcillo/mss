@@ -340,9 +340,6 @@ sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/pkgs.ini
 #done
 
 #Configuration of zabbix
-
-cp $ZABBI_CONF /usr/share/zabbix/conf
-
 echo -n "Create ownCloud database..."
 dbname="zabbix"
 dbuser="zabbix"
@@ -354,6 +351,11 @@ mysql_do_query "GRANT ALL ON ${dbname}.* to '${dbuser}'@'localhost' identified b
 mysql_do_query "FLUSH PRIVILEGES;"
 echo "done."
 
+
+cp $ZABBI_CONF /usr/share/zabbix/conf
+sed -i "s!\$NAME!$dbname!" /usr/share/zabbix/conf/zabbix.conf.php
+sed -i "s!\$USER!$dbuser!" /usr/share/zabbix/conf/zabbix.conf.php
+sed -i "s!\$PASS!$dbpass!" /usr/share/zabbix/conf/zabbix.conf.php
 
 mysql_do_query "UPDATE drules SET status=\"0\" WHERE druleid=\"2\";"
 mysql_do_query "UPDATE hosts SET status=\"0\" WHERE hostid=\"10084\";"
