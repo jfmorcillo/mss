@@ -212,6 +212,12 @@ echo -n "Create ownCloud database..."
 zabbixdbname="zabbix"
 zabbixdbuser="zabbix"
 zabbixdbpass=`randpass 10 1`
+
+cp $ZABBIX_CONF /usr/share/zabbix/conf
+sed -i "s!\$NAME!$zabbixdbname!" /usr/share/zabbix/conf/zabbix.conf.php
+sed -i "s!\$USER!$zabbixdbuser!" /usr/share/zabbix/conf/zabbix.conf.php
+sed -i "s!\$PASS!$zabbixdbpass!" /usr/share/zabbix/conf/zabbix.conf.php
+
 mysql_do_query "DROP USER ${zabbixdbuser}@'localhost';"
 mysql_do_query "DROP DATABASE IF EXISTS ${zabbixdbname};"
 mysql_do_query "CREATE DATABASE ${zabbixdbname};"
@@ -219,11 +225,6 @@ mysql_do_query "GRANT ALL ON ${zabbixdbname}.* to '${zabbixdbuser}'@'localhost' 
 mysql_do_query "FLUSH PRIVILEGES;"
 echo "done."
 
-
-cp $ZABBIX_CONF /usr/share/zabbix/conf
-sed -i "s!\$NAME!$zabbixdbname!" /usr/share/zabbix/conf/zabbix.conf.php
-sed -i "s!\$USER!$zabbixdbuser!" /usr/share/zabbix/conf/zabbix.conf.php
-sed -i "s!\$PASS!$zabbixdbpass!" /usr/share/zabbix/conf/zabbix.conf.php
 
 mysql_do_query "UPDATE drules SET status=\"0\" WHERE druleid=\"2\";"
 mysql_do_query "UPDATE hosts SET status=\"0\" WHERE hostid=\"10084\";"
