@@ -62,7 +62,10 @@
 		"python-mmc-imaging",
 		"xinetd-simple-services",
 		"python-netaddr",
-		"python-ipaddr"
+		"python-ipaddr",
+		"zabbix-web",
+		"zabbix-server",
+		"zabbix-server-mysql"
     		]
         }
     ],
