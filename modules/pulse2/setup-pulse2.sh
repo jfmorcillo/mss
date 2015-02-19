@@ -220,7 +220,7 @@ mysql_do_query "FLUSH PRIVILEGES;"
 echo "done."
 
 
-cp $ZABBI_CONF /usr/share/zabbix/conf
+cp $ZABBIX_CONF /usr/share/zabbix/conf
 sed -i "s!\$NAME!$zabbixdbname!" /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$USER!$zabbixdbuser!" /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$PASS!$zabbixdbpass!" /usr/share/zabbix/conf/zabbix.conf.php
