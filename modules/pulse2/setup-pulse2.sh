@@ -213,6 +213,11 @@ zabbixdbname="zabbix"
 zabbixdbuser="zabbix"
 zabbixdbpass=`randpass 10 1`
 
+
+if [ ! -e /usr/share/zabbix/conf/ ]; then
+	mkdir -p /usr/share/zabbix/conf/
+fi
+
 cp $ZABBIX_CONF /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$NAME!$zabbixdbname!" /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$USER!$zabbixdbuser!" /usr/share/zabbix/conf/zabbix.conf.php
