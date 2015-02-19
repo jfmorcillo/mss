@@ -230,6 +230,11 @@ mysql_do_query "GRANT ALL ON ${zabbixdbname}.* to '${zabbixdbuser}'@'localhost' 
 mysql_do_query "FLUSH PRIVILEGES;"
 echo "done."
 
+mysql_password=`cat /root/.my.cnf | grep password  | head -n1 | sed "s/password='\(.*\)'/\1/"`
+
+mysql -uroot -p$mysql_password zabbix < /usr/share/zabbix/schema/database/mysql/schema.sql
+mysql -uroot -p$mysql_password zabbix < /usr/share/zabbix/schema/database/mysql/images.sql
+mysql -uroot -p$mysql_password zabbix < /usr/share/zabbix/schema/database/mysql/data.sql
 
 mysql_do_query "UPDATE drules SET status=\"0\" WHERE druleid=\"2\";"
 mysql_do_query "UPDATE hosts SET status=\"0\" WHERE hostid=\"10084\";"
