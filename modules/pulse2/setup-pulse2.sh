@@ -208,12 +208,12 @@ ZABBIX_CONF=templates/zabbix.conf.php.tpl
 
 
 #Configuration of zabbix
-echo -n "Create ownCloud database..."
+echo -n "Create zabbix database..."
 zabbixdbname="zabbix"
 zabbixdbuser="zabbix"
 zabbixdbpass=`randpass 10 1`
 
-cp $ZABBIX_CONF /usr/share/zabbix/conf
+cp $ZABBIX_CONF /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$NAME!$zabbixdbname!" /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$USER!$zabbixdbuser!" /usr/share/zabbix/conf/zabbix.conf.php
 sed -i "s!\$PASS!$zabbixdbpass!" /usr/share/zabbix/conf/zabbix.conf.php
