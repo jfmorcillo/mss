@@ -236,10 +236,10 @@ mysql -uroot -p$mysql_password zabbix < /usr/share/zabbix/schema/database/mysql/
 mysql -uroot -p$mysql_password zabbix < /usr/share/zabbix/schema/database/mysql/images.sql
 mysql -uroot -p$mysql_password zabbix < /usr/share/zabbix/schema/database/mysql/data.sql
 
-mysql_do_query "UPDATE drules SET status=\"0\" WHERE druleid=\"2\";"
-mysql_do_query "UPDATE hosts SET status=\"0\" WHERE hostid=\"10084\";"
-mysql_do_query "UPDATE actions SET status=\"0\" WHERE actionid=\"3\";"
-mysql_do_query "UPDATE actions SET status=\"0\" WHERE actionid=\"2\";"
+mysql_do_query "UPDATE drules SET status=0 WHERE druleid=2;"
+mysql_do_query "UPDATE hosts SET status=0 WHERE hostid=10084;"
+mysql_do_query "UPDATE actions SET status=0 WHERE actionid=3;"
+mysql_do_query "UPDATE actions SET status=0 WHERE actionid=2;"
 mysql_do_query "UPDATE drules SET iprange=\"$RANGE\" WHERE druleid=\"2\";"
 mysql_do_query "UPDATE triggers SET status=\"1\" WHERE triggerid=\"13083\";"
 mysql_do_query "INSERT INTO groups (groupid, name, internal) VALUES (\"6\", \'Windows\', 0), ( \"7\", \'Apple\', 0), ( \"8\", \'Device\', 0);"
