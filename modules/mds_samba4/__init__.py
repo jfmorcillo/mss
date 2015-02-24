@@ -8,7 +8,7 @@ _ = TranslationManager().translate
 
 
 def get_config_info():
-    return ("setup-samba4.sh", ["smb_mode", "smb_domain", "smb_passwd", "net"])
+    return ("setup-samba4.sh", ["smb_mode", "smb_domain", "smb_passwd", "net", 'dns_ip'])
 
 
 def valid_domain(string):
@@ -24,6 +24,14 @@ def valid_domain(string):
         return None
 
 
+def valid_mode(mode):
+    if mode == '':
+        return _('Please select a mode', 'mds_samba4')
+    else:
+        return None
+#         return _('Please select a mode', 'mds_samba4')
+
+
 def valid_password(passwd):
     if len(passwd) < 8:
         return _("Password must be at least 8 characters long", "mds_samba4")
@@ -37,6 +45,23 @@ def valid_password(passwd):
 
 
 def get_custom_config(config):
+
+    config.append({'slug': 'mds_samba4',
+                   "type": "options",
+                   "name": "smb_mode",
+                   "require": "yes",
+                   "label": "Mode",
+                   'validation': 'valid_mode',
+                   "help": "Which type of provisioning of SAMBA 4",
+                   "options": [
+                       {'name': '',
+                        'value': ''},
+                       {"name": "Create a new Active Directory domain",
+                        "value": "dc"},
+                       {"name": "Join an existing Active Directory domain",
+                        "value": "bdc",
+                        'toggle': ['dns_ip']}]})
+
     from mmc.plugins.shorewall import get_zones, get_zones_interfaces
     zones = get_zones('lan')
     interfaces = get_zones_interfaces(zones)
@@ -70,4 +95,22 @@ def get_custom_config(config):
                              'and dots like: mandriva.int. It Must NOT start with short host name.',
                              'mds_samba4')
                    })
+    config.append({'slug': 'mds_samba4',
+                   'type': 'text',
+                   'name': 'dns_ip',
+                   'require': 'yes',
+                   'default': '',
+                   'validation': 'ip',
+                   'label': _('DNS server IP', 'mds_samba4'),
+                   'help': _('The IP address of the DNS server', 'mds_samba4')
+                   })
+    config.append({'slug': 'mds_samba4',
+                   "type": "password",
+                   "name": "smb_passwd",
+                   "require": "yes",
+                   "validation": "valid_password",
+                   "label": "Administrator password",
+                   "help": "Password for the Microsoft domain Administrator account. Password must be composed, at least, of 8 characters with one number, one capital letter and one lowercase letter."
+                   })
+
     return config

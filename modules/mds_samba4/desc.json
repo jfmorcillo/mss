@@ -22,35 +22,15 @@
                 "mmc-web-samba4",
                 "python-mmc-samba4",
                 "python-s4sync",
-                "samba4-dc"
+                "samba4-dc",
+                "krb5-workstation"
             ]
         }
     ],
     "config":[
         {
-            "type":"options",
-            "name":"smb_mode",
-            "require":"yes",
-            "label":"Mode",
-            "help":"Which type of provisioning of SAMBA 4",
-            "options":[
-                {
-                    "name":"Primary Domain Controller",
-                    "value":"dc"
-                }
-            ]
-        },
-        {
             "type":"custom",
             "name":"custom"
-        },
-        {
-            "type":"password",
-            "name":"smb_passwd",
-            "require":"yes",
-            "validation":"valid_password",
-            "label":"Administrator password",
-            "help":"Password for the Microsoft domain Administrator account. Password must be composed, at least, of 8 characters with one number, one capital letter and one lowercase letter."
         }
     ],
     "module":{
