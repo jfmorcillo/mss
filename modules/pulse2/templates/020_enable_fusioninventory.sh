@@ -13,8 +13,9 @@ echo
 # Define $HOME so mysql can find .my.cnf !!!!!
 if [ -z ${home} ] && [ `id -u` -eq 0 ]; then export "HOME=/root"; fi
 
-php /usr/share/glpi/plugins/fusioninventory/tools/cli_install.php
-echo
+echo 'Installation in progress...'
+php /usr/share/glpi/plugins/fusioninventory/tools/cli_install.php > /dev/null 2>&1
+echo '... Done !'
 
 fusioninventoryid=`mysql -N -s -e 'SELECT id FROM glpi_plugins WHERE directory="fusioninventory"' glpi;`
 fusinvinventoryid=`mysql -N -s -e 'SELECT id FROM glpi_plugins WHERE directory="fusinvinventory"' glpi;`
@@ -49,8 +50,7 @@ echo "update glpi_plugin_fusioninventory_configs set value = '/var/lib/glpi/file
 
 echo "update glpi_plugin_fusioninventory_configs set value = 'http://127.0.0.1/glpi' where type = 'agent_base_url';" | mysql glpi
 
-chown -R apache /var/lib/glpi/_plugins/fusi*
-
+chown -R apache /var/lib/glpi/_plugins/fusioninventory/
 
 ### Add a few blacklists
 echo "INSERT INTO glpi_plugin_fusinvinventory_blacklists (plugin_fusioninventory_criterium_id, value) VALUES ('2', '00020003-0004-0005-0006-000700080009');" | mysql glpi
