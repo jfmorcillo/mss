@@ -356,7 +356,7 @@ pulse2-setup -b -R --reset-db \
  --glpi-url="localhost/glpi" --zabbix-uri=$MDSSERVER/zabbix --zabbix-user=${_zabbix_user} --zabbix-password=${_zabbix_password} \
  | sed -r 's/\x1b.*?[mGKHh]//g'
 
-sed -i 's!\(glpi_base_url[[:space:]]*=[[:space:]]*http://\)[.[:alnum:]]*\(.*\)!\1localhost\2!' /etc/mmc/plugins/glpi.ini.local
+#sed -i 's!\(glpi_base_url[[:space:]]*=[[:space:]]*http://\)[.[:alnum:]]*\(.*\)!\1localhost\2!' /etc/mmc/plugins/glpi.ini.local
 
 # Disable agent threading
 sed -i 's!^multithreading.*$!multithreading = 0!' /etc/mmc/agent/config.ini
