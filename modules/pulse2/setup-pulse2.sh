@@ -372,8 +372,8 @@ sed -i "s!^tcp_sproxy_host.*!tcp_sproxy_host = ${FQDN}!" /etc/mmc/pulse2/launche
 
 
 # Enable plugins
-sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/msc.ini
-sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/pkgs.ini
+#sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/msc.ini
+#sed -i 's!^disable.*$!disable = 0!' /etc/mmc/plugins/pkgs.ini
 
 
 #configure_imaging
