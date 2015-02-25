@@ -47,7 +47,7 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     return stdout
 
 
-def provision_samba4(mode, realm, admin_password, iface, dns_ip):
+def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
     if not mode in ['dc', 'bdc']:
         fail_provisioning_samba4(
             "We can only provision samba4 as Domain Controller")
@@ -82,9 +82,10 @@ def provision_samba4(mode, realm, admin_password, iface, dns_ip):
         print('Joining domain')
         par = {'realm': realm,
                'prefix': samba.prefix,
+               'username': admin,
                'adminpass': admin_password}
         cmd = ("%(prefix)s/bin/samba-tool domain join %(realm)s DC "
-               "--username=Administrator "
+               "--username=%(username)s "
                "--realm=%(realm)s "
                "--password=%(adminpass)s " % par)
         shlaunch(cmd)
@@ -178,7 +179,7 @@ def provision_samba4(mode, realm, admin_password, iface, dns_ip):
 
         def add_dns():
             base_dn = 'DC=%s,DC=%s' % tuple(realm.split('.'))
-            bind_dn = 'CN=Administrator,CN=Users,%s' % base_dn
+            bind_dn = 'CN=%s,CN=Users,%s' % (admin, base_dn)
             dns_dn = 'OU=Domain Controllers,%s' % base_dn
             l = ldap.initialize('ldap://%s:389' % dns_ip)
             l.bind_s(bind_dn, admin_password)

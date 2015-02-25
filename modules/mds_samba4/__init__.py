@@ -8,7 +8,7 @@ _ = TranslationManager().translate
 
 
 def get_config_info():
-    return ("setup-samba4.sh", ["smb_mode", "smb_domain", "smb_passwd", "net", 'dns_ip'])
+    return ("setup-samba4.sh", ["smb_mode", "smb_domain", 'admin', "smb_passwd", "net", 'dns_ip'])
 
 
 def valid_domain(string):
@@ -29,7 +29,6 @@ def valid_mode(mode):
         return _('Please select a mode', 'mds_samba4')
     else:
         return None
-#         return _('Please select a mode', 'mds_samba4')
 
 
 def valid_password(passwd):
@@ -60,7 +59,7 @@ def get_custom_config(config):
                         "value": "dc"},
                        {"name": "Join an existing Active Directory domain",
                         "value": "bdc",
-                        'toggle': ['dns_ip']}]})
+                        'toggle': ['dns_ip', 'admin']}]})
 
     from mmc.plugins.shorewall import get_zones, get_zones_interfaces
     zones = get_zones('lan')
@@ -103,6 +102,14 @@ def get_custom_config(config):
                    'validation': 'ip',
                    'label': _('DNS server IP', 'mds_samba4'),
                    'help': _('The IP address of the DNS server', 'mds_samba4')
+                   })
+    config.append({'slug': 'mds_samba4',
+                   "type": "text",
+                   "name": "admin",
+                   "require": "yes",
+                   'default': '',
+                   "label": "Administrator account",
+                   "help": "Account name of the Administrator."
                    })
     config.append({'slug': 'mds_samba4',
                    "type": "password",
