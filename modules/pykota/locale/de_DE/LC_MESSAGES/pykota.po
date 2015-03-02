@@ -1,3 +1,19 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-03-02 17:37+0200\n"
+"PO-Revision-Date: 2015-03-02 17:37+0200\n"
+"Last-Translator: Maik <mwagner@mandriva.com>\n"
+"Language-Team: German <http://translate.mandriva.com/projects/mss-"
+"mbs2/pykota/de_DE/>\n"
+"Language: de_DE\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Weblate 2.1-dev\n"
+
 #: .description
 msgid "Pykota print accounting software"
 msgstr ""
@@ -26,7 +42,7 @@ msgstr ""
 
 #: .packages[0].name
 msgid "all"
-msgstr ""
+msgstr "alle"
 
 #: .categories[0].name
 msgid "Other"
