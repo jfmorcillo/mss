@@ -20,6 +20,7 @@
 # MA 02110-1301, USA.
 
 import os
+import re
 import netifaces
 
 from mss.agent.lib.utils import grep, get_config_option, MANAGED_INTERFACE_NAMES
@@ -52,6 +53,7 @@ def get_interfaces_config(config):
     CONFIG_DIR = "/etc/sysconfig/network-scripts"
     for interface in netifaces.interfaces():
         if interface.startswith(MANAGED_INTERFACE_NAMES):
+            interface_id = re.sub(r'[a-z]', '', interface)
             if_file = os.path.join(CONFIG_DIR, "ifcfg-%s" % interface)
             if_detail = netifaces.ifaddresses(interface)
             configured = os.path.exists(if_file) and netifaces.AF_INET in if_detail
@@ -71,6 +73,8 @@ def get_interfaces_config(config):
             # need a type even if not configured
             if not configured:
                 type = "none"
+            else:
+                type = "lan" + interface_id
             if configured:
                 if grep("BOOTPROTO=dhcp", if_file):
                     method = "dhcp"
@@ -83,21 +87,28 @@ def get_interfaces_config(config):
                 domain = get_config_option(if_file, "DOMAIN")
                 gateway = get_config_option(if_file, "GATEWAY")
 
+                if addr:
+                    title = _("Interface %(int_name)s (%(addr)s)",
+                              "network") % {'int_name': interface, 'addr': addr}
+                else:
+                    title = _("Interface %(int_name)s (no IP address)",
+                              "network") % {'int_name': interface}
+
             config.append({'slug': 'network',
-                           'type': 'subtitle', 'label': interface})
+                           'type': 'subtitle', 'label': title})
             config.append({'slug': 'network', 'name': interface + '_name',
                            'type': 'text', 'hidden': 'yes', 'default': interface})
             config.append({'slug': 'network',
                            'name': interface + '_type',
-                           'show_if_unconfigured': 'yes',
                            'require': 'yes',
                            'default': type,
                            'label': _('Interface type', 'network'),
                            'help': _('Choose "External" if the interface is connected to the Internet. If the interface is connected to an internal network, choose "Internal"', 'network'),
                            'type': 'options',
                            'options': [
-                               {'name': _('Internal network', 'network'), 'value': 'lan' + interface[-1]},
-                               {'name': _('External network', 'network'), 'value': 'wan' + interface[-1]}
+                               {'name': _('No configuration', 'network'), 'value': 'none'},
+                               {'name': _('Internal network', 'network'), 'value': 'lan' + interface_id},
+                               {'name': _('External network', 'network'), 'value': 'wan' + interface_id}
                            ]
                            })
             config.append({'slug': 'network',
