@@ -83,8 +83,15 @@ def get_interfaces_config(config):
                 domain = get_config_option(if_file, "DOMAIN")
                 gateway = get_config_option(if_file, "GATEWAY")
 
+                if addr:
+                    title = _("Interface %(int_name)s (%(addr)s)",
+                              "network") % {'int_name': interface, 'addr': addr}
+                else:
+                    title = _("Interface %(int_name)s (no IP address)",
+                              "network") % {'int_name': interface}
+
             config.append({'slug': 'network',
-                           'type': 'subtitle', 'label': interface})
+                           'type': 'subtitle', 'label': title})
             config.append({'slug': 'network', 'name': interface + '_name',
                            'type': 'text', 'hidden': 'yes', 'default': interface})
             config.append({'slug': 'network',
