@@ -8,15 +8,15 @@ import socket
 from socket import gethostname
 import subprocess
 from time import sleep
-from mmc.plugins.samba4.smb_conf import SambaConf
-from mmc.plugins.network import zoneExists, getSubnet, addSubnet, addZone, addRecord, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
-from mmc.plugins.network import addRecordA, setHostAliases
-from mmc.plugins.shorewall import get_zones, add_rule, get_zones_interfaces
-from mss.agent.lib.utils import get_domain
-import re
 import netifaces
 from IPy import IP
 import ldap
+
+from mmc.plugins.samba4.smb_conf import SambaConf
+from mmc.plugins.network import zoneExists, getSubnet, addSubnet, addZone, addRecord, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
+from mmc.plugins.network import addRecordA, setHostAliases
+from mmc.plugins.shorewall import get_zones, add_rule
+
 
 SLEEP_TIME = 1  # Sleep time between each check
 DESCRIPTION = "Mandriva Directory Server - SAMBA %v"
@@ -48,7 +48,7 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
 
 
 def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
-    if not mode in ['dc', 'bdc']:
+    if mode not in ['dc', 'bdc']:
         fail_provisioning_samba4(
             "We can only provision samba4 as Domain Controller")
 
@@ -178,7 +178,7 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
                 f.write(fic)
 
         def add_dns():
-            base_dn = 'DC=%s,DC=%s' % tuple(realm.split('.'))
+            base_dn = ",".join(map(lambda p: "DC=%s" % p, realm.split('.')))
             bind_dn = 'CN=%s,CN=Users,%s' % (admin, base_dn)
             dns_dn = 'OU=Domain Controllers,%s' % base_dn
             l = ldap.initialize('ldap://%s:389' % dns_ip)
@@ -208,7 +208,7 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
 
                 fqdn = rec['dNSHostName'].split('.')
                 hostname = fqdn[0]
-                zone = '.'.join([fqdn[1], fqdn[2]])
+                zone = '.'.join(fqdn[1:])
                 alias = rec['cname']
                 if zone and hostname and alias:
                     try:
