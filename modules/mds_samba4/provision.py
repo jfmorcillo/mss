@@ -84,10 +84,10 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
                'prefix': samba.prefix,
                'username': admin,
                'adminpass': admin_password}
-        cmd = ("%(prefix)s/bin/samba-tool domain join %(realm)s DC "
-               "--username=%(username)s "
-               "--realm=%(realm)s "
-               "--password=%(adminpass)s " % par)
+        cmd = ("%(prefix)s/bin/samba-tool domain join %(realm)s DC"
+               " --username='%(username)s'"
+               " --realm='%(realm)s'"
+               " --password='%(adminpass)s'" % par)
         shlaunch(cmd)
 
     def write_config_files():
