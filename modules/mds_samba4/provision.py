@@ -175,13 +175,13 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
             for line in fileinput.input('/etc/ntp.conf', inplace=1):
                 # replace first server
                 if line.startswith('fudge'):
-                    print line
+                    print line,
                     state = 1
                 if line.startswith('server') and state == 1:
                     print 'server %s' % dns_ip
                     state = 2
                 else:
-                    print line
+                    print line,
             shlaunch("ntpdate %s" % dns_ip)
             shlaunch("systemctl start ntpd")
 
