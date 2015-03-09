@@ -1,6 +1,6 @@
 {
     "slug":"mds_samba4",
-    "name":"Windows domain controller and file sharing management",
+    "name":"Windows Domain Controller and file sharing management",
     "description":"Use MBS as a Domain Controller with SAMBA 4 and provide Windows file shares on your network",
     "categories":[
         {
@@ -23,7 +23,9 @@
                 "python-mmc-samba4",
                 "python-s4sync",
                 "samba4-dc",
-                "krb5-workstation"
+                "krb5-workstation",
+                "ntp",
+                "ntp-client"
             ]
         }
     ],

@@ -121,11 +121,10 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         fail_provisioning_samba4("Ldap is not running after waiting long time")
 
     def openldap_smb5pwd_config():
-        f = open('/etc/openldap/slapd.conf', 'r')
-        for line in f:
-            if line.lstrip().startswith('moduleload') and 'smbk5pwd' in line:
-                return
-        f.close()
+        with open('/etc/openldap/slapd.conf', 'r') as h:
+            for line in h:
+                if line.lstrip().startswith('moduleload') and 'smbk5pwd' in line:
+                    return
         state = 0
         for line in fileinput.input('/etc/openldap/slapd.conf', inplace=1):
             print line,
@@ -169,12 +168,30 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         shlaunch(cmd)
 
     def configure_network():
+
+        def configure_ntpd():
+            shlaunch("systemctl stop ntpd")
+            state = 0
+            for line in fileinput.input('/etc/ntp/ntp.conf', inplace=1):
+                # replace first server
+                if line.startswith('fudge'):
+                    print line
+                    state = 1
+                if line.startswith('server') and state == 1:
+                    print 'server %s' % dns_ip
+                    state = 2
+                else:
+                    print line
+            shlaunch("ntpdate %s" % dns_ip)
+            shlaunch("systemctl start ntpd")
+
         def update_resolvconf():
             with open('/etc/dhclient-enter-hooks', 'w') as f:
-                fic = '''make_resolv_conf(){
-                    echo "nameserver 127.0.0.1" > /etc/resolv.conf
-                    echo "search %s" >> /etc/resolv.conf
-                    }''' % realm
+                fic = """make_resolv_conf() {
+    echo "nameserver %s" > /etc/resolv.conf
+    echo "nameserver 127.0.0.1" >> /etc/resolv.conf
+    echo "search %s" >> /etc/resolv.conf
+}""" % (dns_ip, realm)
                 f.write(fic)
 
         def add_dns():
@@ -294,6 +311,8 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         configure_dns()
         if not bdc:
             configure_dhcp()
+        else:
+            configure_ntpd()
 
         configure_shorewall()
         print("### Done configure_shorewall")
