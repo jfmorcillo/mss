@@ -172,7 +172,7 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         def configure_ntpd():
             shlaunch("systemctl stop ntpd")
             state = 0
-            for line in fileinput.input('/etc/ntp/ntp.conf', inplace=1):
+            for line in fileinput.input('/etc/ntp.conf', inplace=1):
                 # replace first server
                 if line.startswith('fudge'):
                     print line
