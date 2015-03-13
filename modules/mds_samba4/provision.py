@@ -7,10 +7,11 @@ import shutil
 import socket
 from socket import gethostname
 import subprocess
-from time import sleep
+from time import sleep, time
 import netifaces
 from IPy import IP
 import ldap
+from threading import Thread, Event
 
 from mmc.plugins.samba4.smb_conf import SambaConf
 from mmc.plugins.network import zoneExists, getSubnet, addSubnet, addZone, addRecord, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
@@ -22,16 +23,84 @@ SLEEP_TIME = 1  # Sleep time between each check
 DESCRIPTION = "Mandriva Directory Server - SAMBA %v"
 
 
+class ReadFlux(Thread):
+
+    """Reads Popen stdout and stderr
+    """
+
+    def __init__(self, pipe):
+        Thread.__init__(self)
+        self.pipe = pipe
+        self._stop = Event()
+
+    def record_line(self, line):
+        if line:
+            print(line.strip())
+
+    def run(self):
+        while not self._stop.is_set():
+            line = self.pipe.readline()
+            self.record_line(line)
+
+    def stop(self):
+        self._stop.set()
+        # get last lines
+        for line in self.pipe.readlines():
+            self.record_line(line)
+
+
+def run_async(cmd, **kwargs):
+    os.environ['LC_ALL'] = 'C'
+    print("Running command '%s'" % cmd)
+    print('kwargs: %s' % kwargs)
+    process = subprocess.Popen(cmd, **kwargs)
+    return process
+
+
+def run(cmd, **kwargs):
+    """Launch a cmd synchronously.
+    """
+    if 'stdout' in kwargs:
+        kwargs.pop('stdout')
+    if 'stderr' in kwargs:
+        kwargs.pop('stderr')
+
+    process = run_async(cmd,
+                        stdout=subprocess.PIPE,
+                        stderr=subprocess.PIPE,
+                        **kwargs)
+
+    err_reader = ReadFlux(process.stderr)
+    err_reader.start()
+    std_reader = ReadFlux(process.stdout,)
+    std_reader.start()
+
+    exit_code = process.wait()
+
+    err_reader.stop()
+    std_reader.stop()
+
+    if exit_code != 0:
+        print("ERROR executing `%s`" % cmd)
+        fail_provisioning_samba4()
+
+
+def backup(filename):
+    backuped = filename + '.' + str(time())
+    shutil.copyfile(filename, backuped)
+    return backuped
+
+
 def fail_provisioning_samba4(msg=None):
     if msg:
-        print "ERROR:\n\t%s" % msg
-    print "SAMBA 4 provisioning has failed"
+        print("ERROR:\n\t%s" % msg)
+    print("SAMBA 4 provisioning has failed")
     sys.exit(1)
 
 
 def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     if not ignore:
-        print "$ %s" % cmd
+        print("$ %s" % cmd)
     p = subprocess.Popen(cmd, shell=True,
                          stdout=subprocess.PIPE,
                          stderr=stderr)
@@ -40,15 +109,15 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     exit_code = p.returncode
 #    stdout = "".join(p.stdout.readlines())
     if exit_code != 0:
-        print "ERROR executing `%s`:\n%s" % (cmd, stdout)
+        print("ERROR executing `%s`:\n%s" % (cmd, stdout))
         fail_provisioning_samba4()
     if not ignore:
-        print stdout
+        print(stdout)
     return stdout
 
 
 def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
-    if mode not in ['dc', 'bdc']:
+    if mode not in ['dc', 'bdc', 'robdc']:
         fail_provisioning_samba4(
             "We can only provision samba4 as Domain Controller")
 
@@ -56,9 +125,14 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
           (mode, realm, admin_password))
 
     bdc = False
+    rodc = False
     if mode == 'bdc':
         mode = 'dc'
         bdc = True
+    elif mode == 'robdc':
+        mode = 'dc'
+        bdc = True
+        rodc = True
 
     samba = SambaConf()
     params = {'realm': realm, 'prefix': samba.prefix,
@@ -80,25 +154,35 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
 
     def join_domain():
         print('Joining domain')
+        if bdc is True:
+            if rodc is True:
+                mode_bdc = 'RODC'
+            else:
+                mode_bdc = 'DC'
+        else:
+            fail_provisioning_samba4('Unsupported DC mode.')
+
         par = {'realm': realm,
+               'mode_bdc': mode_bdc,
                'prefix': samba.prefix,
                'username': admin,
                'adminpass': admin_password}
-        cmd = ("%(prefix)s/bin/samba-tool domain join %(realm)s DC"
+        cmd = ("%(prefix)s/bin/samba-tool domain join %(realm)s %(mode_bdc)s"
                " --username='%(username)s'"
                " --realm='%(realm)s'"
                " --password='%(adminpass)s'" % par)
-        shlaunch(cmd)
+        # shlaunch(cmd)
+        run(cmd, shell=True)
 
     def write_config_files():
-        print "provision: domain_provision_cb"
+        print("provision: domain_provision_cb")
         netbios_domain_name = gethostname()
 
         samba.writeSambaConfig(mode, netbios_domain_name, realm, DESCRIPTION)
         samba.writeKrb5Config(realm)
 
     def disable_password_complexity():
-        print "provision: disable_password_complexity"
+        print("provision: disable_password_complexity")
         cmd = ("%s/bin/samba-tool domain passwordsettings set"
                " --complexity=off"
                " --min-pwd-length=0"
@@ -111,7 +195,7 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         max_checkings_ldap_running = 10
         tries = 1
         while tries < max_checkings_ldap_running:
-            print "Checking ldap is running"
+            print("Checking ldap is running")
             sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             result = sock.connect_ex(('127.0.0.1', 389))
             if result == 0:
@@ -126,21 +210,24 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
                 if line.lstrip().startswith('moduleload') and 'smbk5pwd' in line:
                     return
         state = 0
-        for line in fileinput.input('/etc/openldap/slapd.conf', inplace=1):
-            print line,
-            if state == 0:
-                if line.lstrip().startswith('moduleload'):
-                    print 'moduleload smbk5pwd.so'
-                    state = 1
-            elif state == 1:
-                if line.lstrip().startswith('database'):
-                    print 'overlay smbk5pwd'
-                    state = 2
+        conf_file = '/etc/openldap/slapd.conf'
+        backup_file = backup(conf_file)
+        with open(conf_file, 'w') as file_out, open(backup_file, 'r') as file_in:
+            for line in file_in:
+                file_out.write(line)
+                if state == 0:
+                    if line.lstrip().startswith('moduleload'):
+                        file_out.write('moduleload smbk5pwd.so\n')
+                        state = 1
+                elif state == 1:
+                    if line.lstrip().startswith('database'):
+                        file_out.write('overlay smbk5pwd\n')
+                        state = 2
         # TODO: fix this strange chmodS
         shlaunch("chown root:ldap /etc/openldap/slapd.conf")
 
     def reconfig_ldap_service():
-        print "Reconfiguring ldap service"
+        print("Reconfiguring ldap service")
         openldap_smb5pwd_config()
         should_reconfing = True
         f = None
@@ -175,13 +262,13 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
             for line in fileinput.input('/etc/ntp.conf', inplace=1):
                 # replace first server
                 if line.startswith('fudge'):
-                    print line,
+                    print(line,)
                     state = 1
                 if line.startswith('server') and state == 1:
-                    print 'server %s' % dns_ip
+                    print('server %s' % dns_ip)
                     state = 2
                 else:
-                    print line,
+                    print(line,)
             shlaunch("ntpdate %s" % dns_ip)
             shlaunch("systemctl start ntpd")
 
@@ -240,12 +327,12 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
                     setHostAliases(zone, hostname, [alias])
 
         def configure_shorewall():
-            print "Configure shorewall"
+            print("Configure shorewall")
             src = os.path.join(os.getcwd(), 'templates',
                                'shorewall_macro.Samba4AD')
             dst = os.path.join('/etc/shorewall/', 'macro.Samba4AD')
             shutil.copy(src, dst)
-            os.chmod(dst, 0600)
+            os.chmod(dst, 0o600)
 
             zones = get_zones('lan')
             for zone in zones:
@@ -254,7 +341,7 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
             shlaunch("systemctl restart shorewall")
 
         def configure_dns():
-            print ("Configure dns for zone %s" % realm)
+            print("Configure dns for zone %s" % realm)
             if not zoneExists(realm):
                 addZone(realm,
                         network,
@@ -318,12 +405,12 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         print("### Done configure_shorewall")
 
     def start_samba4_service():
-        print "Starting samba service"
+        print("Starting samba service")
         shlaunch("systemctl restart samba")
         sleep(SLEEP_TIME)
 
     def start_s4sync_service():
-        print "Starting s4sync daemon"
+        print("Starting s4sync daemon")
         shlaunch("systemctl start s4sync")
 
     # Clean up previous provisions

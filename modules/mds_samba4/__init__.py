@@ -51,14 +51,17 @@ def get_custom_config(config):
                    "require": "yes",
                    "label": "Mode",
                    'validation': 'valid_mode',
-                   "help": "Which type of provisioning of SAMBA 4",
+                   "help": _("Which type of provisioning of SAMBA 4", 'mds_samba4'),
                    "options": [
                        {'name': '',
                         'value': ''},
-                       {"name": "Create a new Active Directory domain",
+                       {"name": _("Create a new Active Directory domain", 'mds_samba4'),
                         "value": "dc"},
-                       {"name": "Join an existing Active Directory domain",
+                       {"name": _("Join an existing Active Directory domain", 'mds_samba4'),
                         "value": "bdc",
+                        'toggle': ['dns_ip', 'admin']},
+                       {"name": _("Join an existing Active Directory domain as RODC", 'mds_samba4'),
+                        "value": "robdc",
                         'toggle': ['dns_ip', 'admin']}]})
 
     from mmc.plugins.shorewall import get_zones, get_zones_interfaces
@@ -109,7 +112,7 @@ def get_custom_config(config):
                    "require": "yes",
                    'default': '',
                    "label": "Administrator account",
-                   "help": "Account name of the Administrator."
+                   "help": _("Account name of the Administrator.", 'mds_samba4')
                    })
     config.append({'slug': 'mds_samba4',
                    "type": "password",
@@ -117,7 +120,9 @@ def get_custom_config(config):
                    "require": "yes",
                    "validation": "valid_password",
                    "label": "Administrator password",
-                   "help": "Password for the Microsoft domain Administrator account. Password must be composed, at least, of 8 characters with one number, one capital letter and one lowercase letter."
+                   "help": _('Password for the Microsoft domain Administrator account. '
+                             'Password must be composed, at least, of 8 characters with'
+                             ' one number, one capital letter and one lowercase letter.', 'mds_samba4')
                    })
 
     return config

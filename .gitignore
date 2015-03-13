@@ -8,3 +8,7 @@ doc/build
 mss/www/local_settings.py
 setup.cfg
 requirements/no_dep
+.project
+.pydevproject
+.settings
+/prepare.sh
