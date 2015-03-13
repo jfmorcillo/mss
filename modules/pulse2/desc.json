@@ -65,7 +65,8 @@
 		"python-ipaddr",
 		"zabbix-web",
 		"zabbix-server",
-		"zabbix-server-mysql"
+		"zabbix-server-mysql",
+		"python-mmc-connection-manager"
     		]
         }
     ],
