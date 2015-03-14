@@ -50,7 +50,7 @@
                 "php-curl",
                 "php-soap",
                 "php-pdo",
-                "python-virtinst",
+                "virt-manager",
                 "hexedit",
                 "libguestfs",
                 "libguestfs-devel",
