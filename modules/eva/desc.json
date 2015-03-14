@@ -35,7 +35,7 @@
                 "apache-mod_jk-tools",
                 "apache-mod_perl",
                 "apache-mod_perl-devel",
-                "apache-mod_python",
+                "apache-mod_python-compat",
                 "apache-mod_php",
                 "apache-mod_deflate",
                 "apache-devel",
