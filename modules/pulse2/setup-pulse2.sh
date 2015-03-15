@@ -251,6 +251,27 @@ mysql_do_query "USE zabbix; INSERT INTO opgroup (opgroupid, operationid, groupid
 mysql_do_query "USE zabbix; INSERT INTO dchecks (dcheckid, druleid, type, key_, snmp_community, ports, snmpv3_securityname, snmpv3_securitylevel, snmpv3_authpassphrase, snmpv3_privpassphrase, uniq) VALUES(3, 2, 12, '', '', '0', '', 0, '', '', 0);"
 mysql_do_query "USE zabbix; INSERT INTO rights (rightid, groupid, permission, id) VALUES(15, 8, 2, 7),(16, 8, 2, 8),(17, 8, 2, 5),(18, 8, 2, 2),(19, 8, 2, 1),(20, 8, 2, 6),(21, 8, 2, 4);"
 
+
+
+zabbix_api_path="/usr/share/doc/mmc/contrib/monitoring/zabbix-templates"
+
+if [ -e "${zabbix_api_path}/zabbix_api.py.gz" ]; then
+	    gunzip -f ${zabbix_api_path}/zabbix_api.py.gz
+fi
+
+# Create zabbix autoregistration action
+python ${zabbix_api_path}/zabbix_configuration.py --url http://127.0.0.1/zabbix -p ${zabbixdbpass} autoregistration -t "Template App Zabbix Agent"
+
+# add templates
+for template in `find ${zabbix_api_path}/templates -type f -name "*.gz"`; do
+	gunzip -f ${template}
+done
+
+for template in `find ${zabbix_api_path}/templates -type f -name "*.xml" | grep -v "contrib/failed"`; do
+	python ${zabbix_api_path}/zabbix_configuration.py --url http://127.0.0.1/zabbix -p ${zabbixdbpass} template ${template}
+done
+
+
 # Tune PHP: increase maximum upload filesize
 sed -i 's!^upload_max_filesize = .*$!upload_max_filesize = 150M!' /etc/php.ini
 sed -i 's!^post_max_size = .*$!post_max_size = 150M!' /etc/php.ini
@@ -353,7 +374,7 @@ pulse2-setup -b -R --reset-db \
  --mysql-host=localhost --mysql-user=root --mysql-passwd="$mysql_password" \
  --ldap-uri=ldap://$MDSSERVER/ --ldap-basedn="$MDSSUFFIX" --ldap-admindn="$LDAP_ADMINDN" --ldap-passwd="$MDSPASS" \
  --glpi-enable --glpi-dbhost=localhost --glpi-dbname="glpi" --glpi-dbuser=root --glpi-purge-machines --glpi-dbpasswd="$mysql_password" \
- --glpi-url="localhost/glpi" --zabbix-uri=$MDSSERVER/zabbix --zabbix-user=${_zabbix_user} --zabbix-password=${_zabbix_password} \
+ --glpi-url="localhost/glpi" --zabbix-uri=$MDSSERVER/zabbix --zabbix-user=${zabbixdbuser} --zabbix-password=${zabbixdbpass} \
  | sed -r 's/\x1b.*?[mGKHh]//g'
 
 #sed -i 's!\(glpi_base_url[[:space:]]*=[[:space:]]*http://\)[.[:alnum:]]*\(.*\)!\1localhost\2!' /etc/mmc/plugins/glpi.ini.local
