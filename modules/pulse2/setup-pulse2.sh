@@ -330,7 +330,7 @@ sed -i "s/\@DBPASS\@/$dbpass/" /usr/share/glpi/config/config_db.php
 sed -i "s/\@DBNAME\@/$dbname/" /usr/share/glpi/config/config_db.php
 
 #Create initial entitie ( if not done pulse2 backtrace )
-mysql_do_query "INSERT INTO glpi.glpi_entities (id ,name ,entities_id ,completename ,comment ,level ,sons_cache ,ancestors_cache) VALUES ( NULL , 'glpi', '0', 'glpi', '', '1', NULL , NULL )"
+mysql_do_query "INSERT INTO glpi.glpi_entities (id,entities_id,level,name,completename) VALUES (1,0,1,'glpi','glpi')"
 
 # Enable Fusion inventory plugins
 php /usr/share/glpi/plugins/fusioninventory/scripts/cli_install.php &> /dev/null
