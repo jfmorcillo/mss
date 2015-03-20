@@ -77,6 +77,25 @@
                 {% if module.has_configuration %}
         <fieldset>
             <legend>{{ module.name }}</legend>
+            <script type="text/javascript">
+                var toggleable = [];
+            {% for field in m.config %}
+                {% for option in field.options %}
+                    {% for field in option.toggle %}
+                        toggleable.push("{{ m.slug }}_{{ field }}")
+                    {% endfor %}
+                {% endfor %}
+            {% endfor %}
+                var hideToggleable = function() {
+                    toggleable.forEach(function(field) {
+                        $('#' + field).parent().parent().hide();
+                        $('#' + field).val('');
+                    });
+                }
+                $(document).ready(function() {
+                    hideToggleable();
+                });
+            </script>
             {% for field in m.config %}
             {% if module.configured and field.show_if_unconfigured %}
                 <input
@@ -195,25 +214,20 @@
                                 {% ifequal option.value field.default %}selected="selected"{% endifequal %}>
                                 {{ option.name }}
                             </option>
-                            {% if option.toggle %}
                             <script type="text/javascript">
                                 $('#{{ field.slug }}_{{ field.name }}').change(function() {
                                     if ("{{ option.value }}" == $(this).val()) {
-                                    {% for f in option.toggle %}$('#{{ field.slug }}_{{ f }}').parent().parent().show();{% endfor %}
-                                    }
-                                    else {
-                                    {% for f in option.toggle %}$('#{{ field.slug }}_{{ f }}').parent().parent().hide();
-                                    $('#{{ field.slug }}_{{ f }}').val("");{% endfor %}
+                                        hideToggleable();{% for f in option.toggle %}
+                                        $('#{{ field.slug }}_{{ f }}').parent().parent().show();{% endfor %}
                                     }
                                 });
-                                {% ifnotequal option.value field.default %}
+                                {% ifequal option.value field.default %}
                                 $(document).ready(function() {
-                                    {% for f in option.toggle %}$('#{{ field.slug }}_{{ f }}').parent().parent().hide();
-                                    $('#{{ field.slug }}_{{ f }}').val("");{% endfor %}
+                                    {% for f in option.toggle %}
+                                    $('#{{ field.slug }}_{{ f }}').parent().parent().show();{% endfor %}
                                 });
-                                {% endifnotequal %}
+                                {% endifequal %}
                             </script>
-                                {% endif %}
                         {% endfor %}
                         </select>
                         {% if field.error %}
