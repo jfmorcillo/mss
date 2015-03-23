@@ -214,14 +214,14 @@ zabbixdbuser="zabbix"
 zabbixdbpass=`randpass 10 1`
 
 
-if [ ! -e /usr/share/zabbix/conf/ ]; then
-	mkdir -p /usr/share/zabbix/conf/
+if [ ! -e /etc/zabbix/web/ ]; then
+	mkdir -p /etc/zabbix/web/
 fi
 
-cp $ZABBIX_CONF /usr/share/zabbix/conf/zabbix.conf.php
-sed -i "s!\$NAME!$zabbixdbname!" /usr/share/zabbix/conf/zabbix.conf.php
-sed -i "s!\$USER!$zabbixdbuser!" /usr/share/zabbix/conf/zabbix.conf.php
-sed -i "s!\$PASS!$zabbixdbpass!" /usr/share/zabbix/conf/zabbix.conf.php
+cp $ZABBIX_CONF /etc/zabbix/web/zabbix.conf.php
+sed -i "s!\$NAME!$zabbixdbname!" /etc/zabbix/web/zabbix.conf.php
+sed -i "s!\$USER!$zabbixdbuser!" /etc/zabbix/web/zabbix.conf.php
+sed -i "s!\$PASS!$zabbixdbpass!" /etc/zabbix/web/zabbix.conf.php
 
 mysql_do_query "DROP USER ${zabbixdbuser}@'localhost';"
 mysql_do_query "DROP DATABASE IF EXISTS ${zabbixdbname};"
