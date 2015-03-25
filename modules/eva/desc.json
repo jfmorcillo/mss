@@ -64,7 +64,6 @@
                 "postgresql9.2-server",
                 "postgresql-jdbc",
                 "jboss-as",
-                "winexe",
                 "samba-client",
                 "lib64guac3",
                 "lib64guac-client-vnc0",
