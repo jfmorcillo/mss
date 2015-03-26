@@ -177,7 +177,8 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip,
         print("provision: domain_provision_cb")
         netbios_domain_name = gethostname()
 
-        samba.writeSambaConfig(mode, netbios_domain_name, realm, DESCRIPTION)
+        samba.writeSambaConfig(mode, netbios_domain_name, realm, DESCRIPTION,
+                               dns_forwarder=dns_forwarder)
         samba.writeKrb5Config(realm)
 
     def disable_password_complexity():
