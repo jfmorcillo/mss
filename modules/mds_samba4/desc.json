@@ -36,14 +36,14 @@
         }
     ],
     "module":{
-        "section":"core",
-        "dependencies":[
+        "section": "core",
+        "dependencies": [
             "mds_mmc",
-            "mds_dns",
             "mds_dhcp"
         ],
-        "conflicts":[
-            "mds_smb"
+        "conflicts": [
+            "mds_smb",
+            "mds_dns"
         ],
         "reboot":true
     }
