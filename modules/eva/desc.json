@@ -64,7 +64,7 @@
                 "postgresql9.2-server",
                 "postgresql-jdbc",
                 "jboss-as",
-                "samba-client",
+                "samba4-client",
                 "lib64guac3",
                 "lib64guac-client-vnc0",
                 "lib64guacamole-vnc-over-ssh0",
