@@ -20,7 +20,7 @@
             "name": "all",
             "rpms": ["asterisk",
                    "asterisk-plugins-ldap",
-                   "asterisk-plugins-voicemail",
+                   "asterisk-plugins-voicemail-plain",
                    "asterisk-core-sounds-fr",
                    "python-mmc-asterisk",
                    "mmc-web-asterisk"]
