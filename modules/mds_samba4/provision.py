@@ -114,7 +114,8 @@ def shlaunch(cmd, ignore=False, stderr=subprocess.STDOUT):
     return stdout
 
 
-def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
+def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip,
+                     dns_forwarder):
     if mode not in ['dc', 'bdc', 'robdc']:
         fail_provisioning_samba4(
             "We can only provision samba4 as Domain Controller")
@@ -135,7 +136,8 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
     samba = SambaConf()
     params = {'realm': realm, 'prefix': samba.prefix,
               'role': mode, 'adminpass': admin_password,
-              'workgroup': samba.workgroupFromRealm(realm)}
+              'workgroup': samba.workgroupFromRealm(realm),
+              'dns_forwarder': dns_forwarder}
 
     def provision_domain():
         print("Provisioning domain")
