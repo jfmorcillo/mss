@@ -10,12 +10,10 @@ import subprocess
 from time import sleep, time
 import netifaces
 from IPy import IP
-import ldap
 from threading import Thread, Event
 
 from mmc.plugins.samba4.smb_conf import SambaConf
-from mmc.plugins.network import zoneExists, getSubnet, addSubnet, addZone, addRecord, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
-from mmc.plugins.network import addRecordA, setHostAliases
+from mmc.plugins.network import getSubnet, addSubnet, setSubnetAuthoritative, setSubnetOption, addPool, setSubnetDescription
 from mmc.plugins.shorewall import get_zones, add_rule
 
 
@@ -281,51 +279,6 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
 }""" % (dns_ip, realm)
                 f.write(fic)
 
-        def add_dns():
-            base_dn = ",".join(map(lambda p: "DC=%s" % p, realm.split('.')))
-            bind_dn = 'CN=%s,CN=Users,%s' % (admin, base_dn)
-            dns_dn = 'OU=Domain Controllers,%s' % base_dn
-            l = ldap.initialize('ldap://%s:389' % dns_ip)
-            l.bind_s(bind_dn, admin_password)
-            entries = l.search_s(dns_dn,
-                                 ldap.SCOPE_ONELEVEL,
-                                 filterstr='(&(samAccountType=805306369)(primaryGroupID=516)(objectCategory=computer))',
-                                 attrlist=['dn',
-                                           'dNSHostName',
-                                           'distinguishedName',
-                                           'servicePrincipalName'])
-            for e in entries:
-                rec = {'cname': None}
-                if e[0] is None:
-                    continue
-
-                for key in e[1].keys():
-                    #             print(e[1][key])
-                    if key == 'servicePrincipalName':
-                        for name in e[1][key]:
-                            if name.startswith('ldap/') and name.endswith('_msdcs.%s' % realm):
-                                rec['cname'] = ('.').join(
-                                    name.split('.')[0:2])[5:]
-                    if key == 'dNSHostName':
-                        rec['dNSHostName'] = e[1][key][0]
-                print(rec)
-
-                fqdn = rec['dNSHostName'].split('.')
-                hostname = fqdn[0]
-                zone = '.'.join(fqdn[1:])
-                alias = rec['cname']
-                if zone and hostname and alias:
-                    try:
-                        print(
-                            'addRecordA(%s,%s,%s)' % (zone, hostname, dns_ip))
-                        addRecordA(zone, hostname, dns_ip)
-                    except ldap.ALREADY_EXISTS as ex:
-                        print(ex)
-
-                    print(
-                        'setHostAliases(%s,%s,%s)' % (zone, hostname, [alias]))
-                    setHostAliases(zone, hostname, [alias])
-
         def configure_shorewall():
             print("Configure shorewall")
             src = os.path.join(os.getcwd(), 'templates',
@@ -339,39 +292,6 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
                 add_rule('Samba4AD/ACCEPT', zone, "fw")
 
             shlaunch("systemctl restart shorewall")
-
-        def configure_dns():
-            print("Configure dns for zone %s" % realm)
-            if not zoneExists(realm):
-                addZone(realm,
-                        network,
-                        netmask,
-                        reverse=True,
-                        description='AD network',
-                        nameserver=nameserver,
-                        nameserverip=addr)
-
-            rec = {'_ldap._tcp': '0 0 389',
-                   '_kerberos._tcp': '0 0 88',
-                   '_ldap._tcp.dc._msdcs': '0 0 389',
-                   '_kerberos._tcp.dc._msdcs': '0 0 88'}
-            for key, val in rec.items():
-                try:
-                    if addRecord(zone=realm,
-                                 type='SRV',
-                                 hostname=key,
-                                 value=val + ' ' + nameserver):
-                        print('Created SRV record \'%s %s\'' %
-                              (key, val + ' ' + nameserver))
-                except:
-                    print('Check that SRV record \'%s %s\' exists in your DNS' %
-                          (key, val + ' ' + nameserver))
-            if bdc:
-                add_dns()
-                update_resolvconf()
-
-            shlaunch("systemctl restart named-sdb")
-            print("### Done configure_dns")
 
         def configure_dhcp():
             subnet = getSubnet(network)
@@ -393,9 +313,7 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
         ip = IP(addr).make_net(netmask)
         network = str(ip.net())
         netmask = ip.prefixlen()
-        nameserver = gethostname()
 
-        configure_dns()
         if not bdc:
             configure_dhcp()
         else:
