@@ -265,8 +265,8 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip):
                     print('server %s' % dns_ip)
                     state = 2
                 else:
-                    print(line,)
-            shlaunch("ntpdate %s" % dns_ip)
+                    print line,
+            shlaunch("ntpdate %s" % dns_ip, False, subprocess.PIPE)
             shlaunch("systemctl start ntpd")
 
         def update_resolvconf():
