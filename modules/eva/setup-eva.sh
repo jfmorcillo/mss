@@ -376,8 +376,7 @@ popd
 service libvirtd start
 
 cat /var/lib/mss/local/eva/templates/smb.conf.tpl >> /etc/samba/smb.conf
-# Convert to samba 4
-#service smb reload
+service samba reload
 virsh pool-define-as --name ISO --type dir --target ${ISO_FOLDER}
 virsh pool-autostart ISO
 virsh pool-start ISO
