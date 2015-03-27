@@ -372,6 +372,9 @@ if [ ! -e "virtio-win-0.1-100.iso" ] ; then
 fi
 cp virtio-win-0.1-100.iso  ${ISO_FOLDER}
 popd
+
+service libvirtd start
+
 cat /var/lib/mss/local/eva/templates/smb.conf.tpl >> /etc/samba/smb.conf
 service smb reload
 virsh pool-define-as --name ISO --type dir --target ${ISO_FOLDER}
