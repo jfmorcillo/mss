@@ -322,7 +322,7 @@ chown apache: $rep_apache2/conf/webapps.d/eva.conf
 CONF_EVA_REDIR="/var/lib/mss/local/eva/templates/eva-redirect.conf.tpl"
 cp -fv $CONF_EVA_REDIR $rep_apache2/conf/eva-redirect.conf
 chown apache: $rep_apache2/conf/eva-redirect.conf
-sed -i "s/^<\/VirtualHost>$/Include \/etc\/httpd\/conf\/eva-redirect\.conf\n<\/VirtualHost>/g" $rep_apache2/conf/vhosts.d/01_default_ssl_vhost.conf
+sed -i "s/^<\/VirtualHost>$/Include \/etc\/httpd\/conf\/eva-redirect\.conf\n<\/VirtualHost>/g" $rep_apache2/conf/vhosts.d/00_default_ssl_vhost.conf
 
 local=`ls -l /etc/localtime | awk 'BEGIN { FS="/"; OFS=""; } {print $(NF-1),"/",$NF}'`
 sed -i -e "s~^;date.timezone.*$~date.timezone = ${local}~g" /etc/php.ini
