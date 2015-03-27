@@ -97,7 +97,7 @@
             "mysql",
             "postgresql",
             "libvirt",
-            "mds_smb"
+            "mds_samba4"
         ]
     }
 }
