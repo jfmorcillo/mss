@@ -71,7 +71,8 @@
                 "guacd",
                 "lib64vncserver0",
                 "guacd",
-                "eva"
+                "eva",
+		"libvirt-utils"
             ]
         }
     ],
