@@ -68,7 +68,6 @@
         {
             "type": "text",
             "name": "dns_ip",
-            "require": "yes",
             "default": "",
             "validation": "ip",
             "label": "DNS server IP",
@@ -77,7 +76,6 @@
         {
             "type": "text",
             "name": "admin",
-            "require": "yes",
             "default": "",
             "label": "Administrator account",
             "help": "Account name of the Administrator."
