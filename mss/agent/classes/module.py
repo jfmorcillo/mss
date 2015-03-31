@@ -392,7 +392,7 @@ class Module(object):
                 field["default"] = field_value
 
                 # check if field is not empty
-                if field.get("require"):
+                if field.get("require", "no") == "yes":
                     if not field_value:
                         errors = True
                         field["error"] = _("This field can't be empty.", "agent")

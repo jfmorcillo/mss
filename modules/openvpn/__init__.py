@@ -56,7 +56,7 @@ def get_listen_config(config):
 
     config.append({'slug': 'openvpn',
                    'name': 'listen',
-                   'required': 'yes',
+                   'require': 'yes',
                    'label': _('Listen address', 'openvpn'),
                    'help': _('The IP address where the VPN server will listen. It must be accessible by your VPN clients.',
                              'openvpn'),
