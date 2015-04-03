@@ -89,6 +89,7 @@ if [ $USE_ORACLE -eq 1 ]; then
     mkdir /tmp/oracle
     pushd /tmp/oracle
     if [ ! -e "jdk-7u65-linux-x64.rpm" ] ; then
+	echo "Download of Oracle JDK7 in progress"
         wget --no-check-certificate --no-cookies --header "Cookie: oraclelicense=accept-securebackup-cookie" http://download.oracle.com/otn-pub/java/jdk/7u65-b17/jdk-7u65-linux-x64.rpm &> /dev/null
     fi
     urpmi ./jdk-7u65-linux-x64.rpm
@@ -368,6 +369,7 @@ chmod 777 ${ISO_FOLDER}
 mkdir /tmp/virtio-win
 pushd /tmp/virtio-win
 if [ ! -e "virtio-win-0.1-100.iso" ] ; then
+	echo "Download of virtio-win-0.1-100.iso in progress"
 	wget http://alt.fedoraproject.org/pub/alt/virtio-win/latest/images/virtio-win-0.1-100.iso &> /dev/null
 fi
 cp virtio-win-0.1-100.iso  ${ISO_FOLDER}
