@@ -11,4 +11,4 @@ requirements/no_dep
 .project
 .pydevproject
 .settings
-/prepare.sh
+prepare.sh
