@@ -79,6 +79,7 @@ codeActivationFile="/etc/ssl/private/siveo.sc"
 export JAVA_HOME=$default_rep_javahome
 
 eVA_adminUser="evaadmin"
+password_eva_sed=`escape_sed $1`
 password_eva=$1
 
 iface_addr=`get_interface_addr`
@@ -212,18 +213,16 @@ echo "Install eVA"
 	export JBOSS_ADMIN=${JBOSS_HOME}/eva-admin
 	export JBOSS_REPORTING=${JBOSS_HOME}/eva-reporting
 	
-    export passwordForUserSiveo=$password_eva
-     	  
     cp ${workspace}/.eva/createdb.sql ${workspace}/.eva/createdb.sql.parse
-    sed -i "s/@PASSWORD@/${passwordForUserSiveo}/g" ${workspace}/.eva/createdb.sql.parse
+    sed -i "s/@PASSWORD@/${password_eva_sed}/g" ${workspace}/.eva/createdb.sql.parse
         	  
     cp ${workspace}/.eva/activiti.cfg.xml.generique ${workspace}/.eva/activiti.cfg.xml
-    sed -i "s/@PASSWORD@/${passwordForUserSiveo}/g" ${workspace}/.eva/activiti.cfg.xml
+    sed -i "s/@PASSWORD@/${password_eva_sed}/g" ${workspace}/.eva/activiti.cfg.xml
         	  
-    echo "localhost:5432:*:siveo:${passwordForUserSiveo}" >> ~/.pgpass
+    echo "localhost:5432:*:siveo:${password_eva_sed}" >> ~/.pgpass
     chmod 600 ~/.pgpass
 
-    JBOSS_ENCRYPTED_PASSWORD=`java -cp ${workspace}/.tools/siveo-persistence-jpa.jar:${workspace}/.tools/log4j-1.2.16.jar:${workspace}/.tools net.siveo.eva.domain.security.Crypt crypt ${passwordForUserSiveo}`
+    JBOSS_ENCRYPTED_PASSWORD=`java -cp ${workspace}/.tools/siveo-persistence-jpa.jar:${workspace}/.tools/log4j-1.2.16.jar:${workspace}/.tools net.siveo.eva.domain.security.Crypt crypt ${password_eva_sed}`
         	  
     cp ${workspace}/.jboss/eva.xml $JBOSS_EVA/configuration/eva.xml
     sed -i "s/@PASSWORD_SIVEO@/${JBOSS_ENCRYPTED_PASSWORD}/g" $JBOSS_EVA/configuration/eva.xml
