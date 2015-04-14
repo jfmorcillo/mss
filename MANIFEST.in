@@ -16,6 +16,7 @@ prune modules/egroupware
 prune modules/pulse2_deployment
 prune modules/pulse2_imaging
 prune modules/pulse2_inventory
+prune modules/pulse2
 prune modules/asterisk
 prune modules/pykota
 
