@@ -1,6 +1,6 @@
 {
     "slug":"mds_samba4",
-    "name":"Windows domain controller and file sharing management",
+    "name":"Windows Domain Controller and file sharing management",
     "description":"Use MBS as a Domain Controller with SAMBA 4 and provide Windows file shares on your network",
     "categories":[
         {
@@ -23,25 +23,81 @@
                 "python-mmc-samba4",
                 "python-s4sync",
                 "samba4-dc",
-                "krb5-workstation"
+                "krb5-workstation",
+                "ntp",
+                "ntp-client"
             ]
         }
     ],
     "config":[
         {
+            "type": "options",
+            "name": "smb_mode",
+            "require": "yes",
+            "label": "Mode",
+            "validation": "valid_mode",
+            "help": "Which type of provisioning of SAMBA 4",
+            "options": [
+                {"name": "Create a new Active Directory domain", "value": "dc"},
+                {"name": "Join an existing Active Directory domain", "value": "bdc",
+                    "toggle": ["dns_ip", "admin"]},
+                {"name": "Join an existing Active Directory domain as RODC", "value": "robdc",
+                    "toggle": ["dns_ip", "admin"]}
+            ]
+        },
+        {
             "type":"custom",
             "name":"custom"
+        },
+        {
+            "type": "text",
+            "name": "smb_forwarder",
+            "validation": "ip",
+            "label": "DNS forwarder",
+            "help": "Forward external DNS queries to the DNS of your choice"
+        },
+        {
+            "type": "text",
+            "name": "smb_domain",
+            "require": "yes",
+            "default": "get_domain",
+            "validation": "valid_domain",
+            "label": "SAMBA domain name",
+            "help": "The name of your Microsoft domain. Use only alphanumeric characters and dots like: mandriva.int. It Must NOT start with short host name. Avoid the .local domain to not conflict with Zeroconf/Bonjour protocols."
+        },
+        {
+            "type": "text",
+            "name": "dns_ip",
+            "default": "",
+            "validation": "ip",
+            "label": "DNS server IP",
+            "help": "The IP address of the DNS server"
+        },
+        {
+            "type": "text",
+            "name": "admin",
+            "default": "",
+            "label": "Administrator account",
+            "help": "Account name of the Administrator."
+        },
+        {
+            "type": "password",
+            "name": "smb_passwd",
+            "require": "yes",
+            "validation": "valid_password",
+            "label": "Administrator password",
+            "help": "Password for the Microsoft domain Administrator account. Password must be composed, at least, of 8 characters with one number, one capital letter and one lowercase letter."
         }
     ],
     "module":{
-        "section":"core",
-        "dependencies":[
+        "section": "core",
+        "dependencies": [
             "mds_mmc",
-            "mds_dns",
             "mds_dhcp"
         ],
-        "conflicts":[
-            "mds_smb"
+        "conflicts": [
+            "mds_smb",
+            "mds_dns"
         ],
         "reboot":true
     }

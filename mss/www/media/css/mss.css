@@ -352,6 +352,7 @@ h3 {
     line-height: 14px;
     padding: 2px 5px 2px 5px;
     text-shadow: none;
+    resize:vertical;
 }
 
 .log span {
