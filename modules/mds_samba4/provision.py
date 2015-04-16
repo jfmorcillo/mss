@@ -181,13 +181,6 @@ def provision_samba4(mode, realm, admin, admin_password, iface, dns_ip,
                                dns_forwarder=dns_forwarder)
         samba.writeKrb5Config(realm)
 
-        dc_mode = 'dc'
-        if bdc is True:
-            dc_mode = 'bdc'
-        if rodc is True:
-            dc_mode = 'rodc'
-        samba.writeDcConfig(dc_mode, admin, admin_password)
-
     def disable_password_complexity():
         print("provision: disable_password_complexity")
         cmd = ("%s/bin/samba-tool domain passwordsettings set"
